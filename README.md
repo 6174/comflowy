@@ -1,23 +1,7 @@
-# Nextra Docs Template 
+# About
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+Comfy UI 相比于 Stable Diffusion 有自身的特点和优势，但是中文社区却匮乏文档和交流社区，所以我们计划在 Github 上建立一个 Comfy 的中文社区。
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+目前正在筹备中，有任何需求和想要讨论的都可以到：
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
-
-## Quick Start
-
-Click the button to clone this repository and deploy it on Vercel:
-
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
-
-## Local Development
-
-First, run `pnpm i` to install the dependencies.
-
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
-
-## License
-
-This project is licensed under the MIT License.
+- https://github.com/6174/comflowy/discussions/1
