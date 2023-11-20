@@ -6,9 +6,9 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/6174/comflowy',
   },
-  chat: {
-    link: 'https://discord.com',
-  },
+  // chat: {
+  //   link: 'https://discord.com',
+  // },
   docsRepositoryBase: 'https://github.com/6174/comflowy',
   footer: {
     text: 'Comflowy - ComfyUI 中文社区',

@@ -1,15 +1,19 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
+  "index": "Comflowy 介绍",
+  "basics": "基础入门",
+  "comfynodes": "核心节点",
+  "examples": "案例应用",
+  "theory": "理论知识",
+  "dicussion": {
+    "title": "交流讨论",
+    "type": "page",
+    "href": "https://github.com/6174/comflowy/discussions",
+    "newWindow": true
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "联系我们 ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://xuejia.wiki",
     "newWindow": true
   }
 }
