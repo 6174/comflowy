@@ -4,6 +4,8 @@
   "comfynodes": "核心节点",
   "examples": "案例应用",
   "theory": "理论知识",
+  "applications": "真实应用",
+  "extensions": "扩展安装",
   "dicussion": {
     "title": "交流讨论",
     "type": "page",
