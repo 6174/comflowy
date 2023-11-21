@@ -1,0 +1,58 @@
+# 模型下载配置
+> 跳到模型下载部分可直接下载，其他部分都是在讲 WHY
+
+在下载模型前，我们得先简单介绍一下 Stable Diffusion（后面也会有更完整的介绍讲解），如果这里没有理解清楚，那后面可能会有很多问题。
+
+## Stable Diffusion 的繁荣与混乱
+
+文生图这个魔法从去年到今年整个开始大爆发，我们耳熟能详的 MidJourney, Dalle-3, Stable Diffusion 这些服务在这个新兴的行业里边都扮演着重要的角色
+
+Stable Diffusion 的特殊在于其开源性，因为其开源特性，它就像是一颗大树的根，社区围绕着这个根基在爆发生长，最近一年我们真实感受到了百花齐放的繁荣以至到混乱的程度。Lora、Dreambooth、CivitAI、SDWebUI、
+ComfyUI、SD.Next、VAE、Latent Space、Prompt、Clip、ControlNet、Diffusers 这些词汇太多根本没法消化，也没有串联的逻辑。
+
+我能理解大家的混乱，ComfyUI 复杂的地方也在这里，所以这也是为什么我想把这里着重强调，而且也想和大家一起把这些混乱的内容梳理清楚，能够简单的理解。大家也不用先着急全部理解这些概念，我们得一步一步的来消化。
+
+## 不同 Stable Diffusion 的差别
+
+最关键的是还是从根开始走，Stable Diffusion 发展很快，在短时间就出了多个版本，而且多个版本的差异也非常大，围绕不同版本的根生成了不同的树，但这些树并不是兼容的
+所以我们一定要明白不同版本的区别，不然就会出现各种离奇且折磨人的报错 ：-）
+
+1. <b>Stable Diffusion v1.5</b>: 这是Stable Diffusion的的早期版本，目前市场上的很多 Lora 模型以及 ContrlNet 模型都是基于它来构建的，所以在开始使用 Comfy UI 的时候为了不踩坑，建议围绕 1.5 版本这个跟进行学习和使用
+    - [Stable Diffusion v1.x press release](https://stability.ai/blog/stable-diffusion-public-release)
+    - 1.x 版本的文本编码模型 CLIP 使用的是 OpenAI 的模型（ CLIP 后续会介绍，这是一个很关键的概念）
+2. <b>Stable Diffusion 2.0</b>: 这是Stable Diffusion的一个重大更新，相比于v1.5版本，它在图像生成质量和速度上都有所提升。
+    - [Stable Diffusion v2.1 press release](https://link.zhihu.com/?target=https%3A//stability.ai/blog/stablediffusion2-1-release7-dec-2022)
+    - [Stable Diffusion v2 press release](https://stability.ai/blog/stable-diffusion-v2-release)
+    - 2.0版本采用了新的文本编码器OpenCLIP，可以更好地理解文本提示，从而生成更高质量的图像。
+    - 此外，2.0版本还支持更高的图像分辨率，可以生成默认分辨率为512x512像素和768x768像素的图像。
+3. <b>Stable Diffusion XL</b>: 这是Stable Diffusion的最新版本，它在2.0版本的基础上进行了进一步的优化和改进。
+    - [Stable Diffusion xl 0.9 press release](https://stability.ai/news/sdxl-09-stable-diffusion)
+    - XL版本的主要特点是其更大的模型大小，从0.98B扩大到6.6B参数，这使得它能够生成更高质量的图像。
+    - XL版本还引入了新的功能，如更有艺术感的图像，更真实的图像，以及更清晰可读的字体等
+    - XL 的工作流程和以前的版本有很大的差异，这个我们后续会介绍
+
+# 模型下载 
+
+> 根据上面的结论，我们可以从 1.5 版本的模型开始
+
+- 基础 Stable Diffusion 模型
+  - https://huggingface.co/runwayml/stable-diffusion-v1-5
+
+- 【可选】CivitAI 站点下载模型 （记得要基于 1.5 版本作为根基的）
+  - https://civitai.com/
+
+- 【可选】ContolNet 模型 
+  - https://huggingface.co/lllyasviel/ControlNet/tree/main/models
+
+
+模型下载好后我们将对应的模型放到 ComfyUI 的 models 目录下
+
+```
+# 基础模型放到 
+**/ComfyUI/models/checkpoints/
+
+# ContrlNet 模型放到
+**/ComfyUI/models/controlnet
+```
+
+模型下载好后，那共享，我们就可以开始 Hello world 之旅了 
