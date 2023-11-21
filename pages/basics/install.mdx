@@ -1,8 +1,59 @@
 # 安装
 
-## Windows 用户
+ComfyUI 的源码地址在 [https://github.com/comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)， 安装过程在 Readme 中其实非常详细，我们这里会简要描述完整过程，更关键的是后续可能遇到的问题整理
 
-## Mac 用户
+> 为了后续更好的使用，这里仅介绍手动源码安装，不介绍 Jupyter 或者 Zip 安装模式
 
-# 下载模型
+## 安装过程
+- Step0: 备齐各种安装前需要的依赖
+  - Python >3.11
+  - Git
+- Step1: 安装好最新版本的 `pytorch`
+  - 非 Mac 用户：
+  ```shell
+  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6
+  ```
+  - Mac 用户：需要根据苹果官网的的 pytorch 安装手册 https://developer.apple.com/metal/pytorch/
+  ```shell
+  # M 芯片
+  curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+  sh Miniconda3-latest-MacOSX-arm64.sh
+  pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+
+  # x86
+  curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+  sh Miniconda3-latest-MacOSX-x86_64.sh
+  pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+  ```
+- Step2: 代码 Clone 到本地 
+  ```shell
+  git clone https://github.com/comfyanonymous/ComfyUI
+  ```
+- Step3: 安装依赖 
+  ```shell
+  # 如果遇到网络问题看后面的 Q&A
+  pip install -r requirements.txt
+  ```
+- Step4: 启动服务
+  ```shell
+  # 记得要 cd 进入 comfyui 目录，确定找到 main.py 入口文件再执行
+  python main.py
+  ```
+
+- Step5: 如果一切正常那么久可以进入 Web 服务了
+  ```shell
+  打开 http://127.0.0.1:8188/ 
+  ```
+
+- Step6: 恭喜你也就完成 80% 了，但现在还不能跑生图服务，因为最关键的东西 `模型` 我们还没有准备好，你可以开始点击到模型下载页面继续了
+
+## Q&A
+
+- Q: 在终端命令行无法下载内容该怎么办？
+  - 这是因为网络没有做到终端 FanQiang，终端 FanQiang 需要配置好代理
+  ```shell
+  # 具体端口要根据自己的 FanQiang 服务来看，最好把这个配置到默认的终端启动项里边
+  export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+  ```
+
 
