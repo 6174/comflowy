@@ -1,5 +1,6 @@
 {
   "install": "安装",
+  "models": "模型下载",
   "hello-world": "你好世界",
   "concepts": "基础概念"
 }

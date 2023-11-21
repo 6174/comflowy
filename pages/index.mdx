@@ -1,12 +1,56 @@
 # Comflowy 介绍
 
-Comfy UI 相比于 Stable Diffusion 有自身的特点和优势，但是社区却匮乏文档和交流，所以我们计划在 Github 上建立一个 Comfyui 的中文社区 - https://github.com/6174/comflowy
+ComfyUI 相比于 Stable Diffusion 有自身的特点和优势，但是社区却匮乏文档和交流，所以我们计划在 Github 上建立一个 ComfyUI 的中文社区 - https://github.com/6174/comflowy
 
 这个社区能提供什么：
 
-1. **提供更完善系统的 Comfyui 文档**：Comfyui 的文档不仅是英文的，且内容非常少，仅这些内容就想要用好 Comfyui 非常困难，所以我们打算更系统的学习并输出 Comfyui 里边的各种文档内容
-2. **提供可以互动讨论的 Comfyui 社区**：交流学习才是推动社区发展的根本，我们打算基于 [Github Disscussion](https://github.com/6174/comflowy/discussions/1) 开始
-3. **提供一些最佳实践模板**：Comfyui 一个重要的价值是 Workflow 具备传播性，我认为这是一个被严重低估的功能，我们希望基于这个能力建立一个最简实践池 
+1. **提供更完善系统的 ComfyUI 文档**：ComfyUI 的文档不仅是英文的，且内容非常少，仅这些内容就想要用好 ComfyUI 非常困难，所以我们打算更系统的学习并输出 ComfyUI 里边的各种文档内容
+2. **提供可以互动讨论的 ComfyUI 社区**：交流学习才是推动社区发展的根本，我们打算基于 [Github Disscussion](https://github.com/6174/comflowy/discussions/1) 开始
+3. **提供一些最佳实践模板**：ComfyUI 一个重要的价值是 Workflow 具备传播性，我认为这是一个被严重低估的功能，我们希望基于这个能力建立一个最简实践池 
 
 现在的时间是刚好 Kickstarted, 目前维护者有 `@Marc`, `@Jimmy`, `@Luka`, 我们前期的计划是先做好文档内容，期待大家一起贡献
+
+## ComfyUI 介绍
+
+ComfyUI是一个基于节点的用户界面，用于 Stable Diffusion。 ComfyUI是由 Comfyanonymous 于2023年1月创建的，他创建了这个工具来学习 Stable Diffusion 的工作原理。
+
+更直观的理解它的价值，StabilityAI，Stable Diffusion 的创建者，使用 ComfyUI 在内部测试 Stable Diffusion。他们后来雇用了 Comfyanonymous 来帮助他们开发内部工具，所以可以看到作者的 Github 主页的组织是 StabilityAI。
+
+ComfyUI看起来像这样：
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Image from 'next/image';
+
+<PhotoProvider>
+  <PhotoView src="/comfy-basic-workflow.jpg">
+    <img src="/comfy-basic-workflow.jpg" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+基于节点的界面最常见于3D设计和VFX行业。你可能在Maya或Blender3D等工具已经遇到过它们。
+
+在这些界面中，每个节点都会执行一些代码。
+
+节点具有输入，这些输入是传递给代码的值，以及输出，这些输出是代码返回的值。
+
+使用鼠标，用户可以：
+
+创建新节点
+编辑节点上的参数（变量）
+通过它们的输入和输出将节点连接在一起
+
+
+# ComfyUI vs Stable Diffusion WebUI vs SD.Next
+
+许多新手来自像 AUTOMATIC1111、InvokeAI或 SD.Next 这样的简单界面。他们都在想同样的问题：为什么要使用这样一个复杂的工具来做同样的事情呢？
+
+流程看起来就很复杂，里边的概念太难理解了，这像是给程序员的工具而不是用户的。
+
+确实，如果只是想要最简单的找个模型，然后执行 PromptText 得到图片，那完全可以使用 Stable Diffusion WebUI。 但是如果你想要把 Stable Diffusion 应用到你的真实应用中，或者在项目中真实使用
+那可能真的只有 ComfyUI 或者直接使用代码能满足你的需求了，相比与代码，ComfyUI 明显是更高效的方案。
+
+
+1. 本质逻辑的不同：ComfyUI 本质是把底层的代码逻辑用可视化的方式串联起来而已，逻辑流程都可以用户自定义，这就带来了它的超强扩展性。
+2. 性能和速度的不同：因为它的可自定义性，你可以根据你的场景进行流程性能优化，这在 Stable Diffusion 中是无法做到的。
+3. 真正的理解 Stable Diffusion：如果你真的想成为专业的从业者，而不是业余爱好，那你就应该要理解它背后的执行逻辑，而 ComfyUI 能帮助你理解每个细节过程。
 
