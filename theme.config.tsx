@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 const Vercel = ({ height = 20 }) => (
   <svg height={height} viewBox="0 0 283 64" fill="none">
     <path
@@ -6,6 +7,22 @@ const Vercel = ({ height = 20 }) => (
     />
   </svg>
 )
+
+const TITLE = {
+  'zh-CN': 'Comflowy - ComfyUI 中文社区',
+  'en-US': 'Comflowy - ComfyUI English Community',
+}
+
+const FEEDBACK_TEXT = {
+  'zh-CN': '遇到问题？请给我们反馈 →',
+  'en-US': 'Question? Give us feedback →',
+}
+
+const EDIT_TEXT = {
+  'zh-CN': '在 GitHub 上编辑此页 →',
+  'en-US': 'Edit this page on GitHub →',
+
+}
 
 export default {
   project: { link: 'https://github.com/6174/comflowy' }, // GitHub link in the navbar
@@ -36,18 +53,26 @@ export default {
       )
     },
   },
-
-  editLink: {
-    text: ({ locale }) => {
-      switch (locale) {
-        case 'zh-CN':
-          return '在 GitHub 上编辑本页 →'
-        default:
-          return 'Edit this page on GitHub →'
-      }
-    },
+  feedback: {
+    content: function useText() {
+      const { locale } = useRouter()
+      return FEEDBACK_TEXT[locale]
+    }
   },
-  logo: <span>Comflowy - ComfyUI 中文社区</span>,
+  editLink: {
+    text: function useText() {
+      const { locale } = useRouter()
+      return EDIT_TEXT[locale]
+    }
+  },
+  logo: function Logo() {
+    const { locale } = useRouter()
+    return (
+      <strong>
+        {TITLE[locale]}
+      </strong>
+    )
+  },
   head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,6 +85,7 @@ export default {
     </>
   ),
   i18n: [
-    { locale: 'zh-CN', text: '简体中文' }
+    { locale: 'zh-CN', text: '简体中文' },
+    { locale: 'en-US', text: 'English'}
   ],
 }
