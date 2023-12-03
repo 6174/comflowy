@@ -2,5 +2,6 @@
   "install": "安装",
   "model": "模型下载",
   "stable-diffusion-foundation": "Stable Diffusion 基础",
-  "comfyui-foundation": "ComfyUI 基础"
+  "comfyui-foundation": "ComfyUI 基础",
+  "image-to-image": "图生图"
 }
