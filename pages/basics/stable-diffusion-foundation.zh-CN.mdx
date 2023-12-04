@@ -27,7 +27,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/001.png">
-    <img src="/stable-diffusion-foundation/001.png" alt="" />
+      <img src="/stable-diffusion-foundation/001.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -35,7 +35,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/002.png">
-    <img src="/stable-diffusion-foundation/002.png" alt="" />
+    <img src="/stable-diffusion-foundation/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -71,7 +71,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/004.png">
-    <img src="/stable-diffusion-foundation/004.png" alt="" />
+    <img src="/stable-diffusion-foundation/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -79,7 +79,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">
-    <img src="/stable-diffusion-foundation/005.png" alt="" />
+    <img src="/stable-diffusion-foundation/005.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -98,6 +98,10 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 如果你有用过 Stable Diffusion 的工具，你会发现 Prompt 的输入框有两个，一个是正向的，一个负向的。那负向的 Prompt 是如何生效的呢？用上述的数学方法，简单理解，当输入负向的 Prompt 的时候，也会生成一张噪声图 B2，但此时我们会用正向的 Prompt 生成的噪声图 B1 减去 B2 再减去 C 得出 D，那就意味着最终生成的图片会更加远离 B2，因为减掉了更多与 B2 相关的噪声。
 </Callout>
 
+<Callout type="info">
+你可能好奇为何是「降噪」而不是其他方式？你可以查看 [Stable Diffusion 进阶](../advanced/stable-diffusion-advanced.zh-CN.mdx)。
+</Callout>
+
 ## Image Decoder
 
 接着我们再来聊下 Latent Space（潜空间）。我在学习这个概念的时候，最大的疑惑就是为何要在潜空间里进行？而不是直接用图片进行去噪？
@@ -109,7 +113,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 看上去很复杂，简单理解就是潜空间会将图片编码成一堆数字，同时对这些数字进行压缩。让我们通过可视化的方式看看这个过程：
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/006.png">
-    <img src="/stable-diffusion-foundation/006.png" alt="" />
+    <img src="/stable-diffusion-foundation/006.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -140,7 +144,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/007.png">
-    <img src="/stable-diffusion-foundation/007.png" alt="" />
+    <img src="/stable-diffusion-foundation/007.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -150,7 +154,7 @@ OpenAI 使用了 4 亿组图片文本对，对此模型进行了训练，最后�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/008.png">
-    <img src="/stable-diffusion-foundation/008.png" alt="" />
+    <img src="/stable-diffusion-foundation/008.png" alt="" width="90%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -158,19 +162,23 @@ OpenAI 使用了 4 亿组图片文本对，对此模型进行了训练，最后�
 
 回到前面提到的两个问题，其实他们互为对方的答案 😁
 
-为何当我们输入 Cat 的时候，生成的图大概率是一只橘猫或者斑点猫？因为 Text Encoder 将 Cat 转化成 77 个等长的向量里会包含与 Cat 相关的一些特征和含义（注意：因为模型有些地方具有不可解释性，所以实际上这些向量不一定包含这些特征，主要是为了更好地解释，所以我举了几个比较具象的例子）：
+为何当我们输入 Cat 的时候，生成的图大概率是一只橘猫或者斑点猫？因为 Text Encoder 将 Cat 转化成 77 个等长的向量里会包含与 Cat 相关的一些特征和含义：
 
-形态特征：向量表示可能会捕捉到 Cat 的形态特征，比如它的体型、头部的形状、四肢的位置等。这些特征可以帮助区分 Cat 与其他动物或物体。
+* 形态特征：向量表示可能会捕捉到 Cat 的形态特征，比如它的体型、头部的形状、四肢的位置等。这些特征可以帮助区分 Cat 与其他动物或物体。
 
-视觉特征：向量表示可能会包含 Cat 的视觉特征，比如它的颜色、斑纹、眼睛的形状等。这些特征可以帮助识别 Cat 的外观特点。
+* 视觉特征：向量表示可能会包含 Cat 的视觉特征，比如它的颜色、斑纹、眼睛的形状等。这些特征可以帮助识别 Cat 的外观特点。
 
-语义含义：向量表示可能会包含与 Cat 相关的语义含义，比如它是一种宠物、一种独立的动物、与人类有亲密关系等。这些含义可以帮助理解 Cat 在人类文化和社会中的角色和意义。
+* 语义含义：向量表示可能会包含与 Cat 相关的语义含义，比如它是一种宠物、一种独立的动物、与人类有亲密关系等。这些含义可以帮助理解 Cat 在人类文化和社会中的角色和意义。
+
+<Callout type="warning" emoji="⚠️">
+注意：因为模型有些地方具有不可解释性，所以实际上这些向量不一定包含这些特征，主要是为了更好地解释，所以我举了几个比较具象的例子
+</Callout>
+
+最后，因为在 Stable Diffusion 里，只用到了 CLIP 的 Text Encoder 的部分，所以在一些产品里，这个又称为 CLIP Text Encoder，或者 CLIP Text Encode。
 
 <Callout emoji="💡">
 为何使用 Stable Diffusion 或者 Midjourney 时，输入的 Prompt 不需要在意语法？以及大小写不明感呢？因为这些 Prompt 都会被 Text Encoder 转成特征向量，语法、大小写被转成特征向量后，都会是一串数字了，在没有对模型进行调整的情况下，这些都不太敏感了。
 </Callout>
-
-最后，因为在 Stable Diffusion 里，只用到了 CLIP 的 Text Encoder 的部分，所以在一些产品里，这个又称为 CLIP Text Encoder，或者 CLIP Text Encode。
 
 ## 总结
 

@@ -5,9 +5,9 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 上一章，我们介绍了 Stable Diffusion 的基本原理，以及如何使用它生成图片。这一章，我们来介绍 ComfyUI 的基本操作，以及如何使用 ComfyUI 生成图片。
 
-## 默认的 Workflow
+## 默认 Workflow
 
-安装并打开 ComfyUI 后，你会看到一个这样的界面：
+安装并打开 ComfyUI 后，你会看到一个这样的界面（图片可以点击放大 👇）：
 <br/>
 <PhotoProvider>
   <PhotoView src="/confyui-foundation/001.png">
@@ -25,11 +25,13 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 再看看，这些块块是不是变得似曾相识了？ComfyUI 上的这个初始 Workflow 上的这些块块（后续我会用「节点」来称呼这些块块），其实就是前面一章中提到的 Stable Diffusion 包含的三大组件，只是这些组件在 ComfyUI 里名字不太一样而已：
 
-- Text Encoder：在这个 Workflow 上带有两个输入框的组件，叫 CLIP Text Encode。还记得上一章我们提到过 Stable Diffusion 的 Text Encoder 用的是 CLIP 里的 Text Encoder 吗？其实这个组件和上一章提到的 Text Encoder 是一个东西。
+| ComfyUI 上的节点名称        | 在 SD 模型里对应的名称         | 解释                                                       |
+| :------------------------ | :-------------------------- | :-------------------------------------------------------- |
+| CLIP Text Encode          | Text Encoder                | 还记得上一章我们提到过 Stable Diffusion 的 Text Encoder 用的是 CLIP 里的 Text Encoder 吗？其实这个组件和上一章提到的 Text Encoder 是一个东西。|
+| KSmapler                  | Image Information Creator   | 这个其实对应的就是我们的最核心的模型生成图片的部分，在 ComfyUI 里名字差异比较大，且配置项很多，后续我会详细讲解。                                  |
+| Empty Latent Image        | Image Information Creator   | 上一章我们也提到，整个生图过程是在 Latent Space 里进行，所以在 ComfyUI 里的这个节点叫 Empty Latent Image。                                  |
+| VAE Decoder               | Image Decoder               | 整个生成过程都在 Latent Space 进行，上一章中我有提到过，该过程全称为 Variational Auto Encoder（变分自编码器）简称 VAE，所以这个在 ComfyUI 里就被称为 VAE Decoder 了。    |
 
-- Image Information Creator：就是图里的 KSmapler，名字差异很大。后续我会详细讲解。还有就是 Creator 里的 Random Image，就是 Workflow 上的 Empty Latent Image，上一章我们也提到，整个生图过程是在 Latent Space 里进行，所以在 ComfyUI 里的这个节点叫 Empty Latent Image。
-
-- Image Decoder：就是上一章提到的 VAE Decoder 了。
 
 然后两端各有两个上一章没有提到的东西：
 
@@ -42,6 +44,30 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 了解完基本的 Workflow 后，你就可以运行模型了。因为 CLIP Text Encode 里已经写好了 Prompt，你只需要点击右侧的 Queue Prompt 就可以生成图片了。
 
 🚧 补充下载模型，快捷键，历史记录，新增节点操作。
+
+| Keybind                   | Explanation                                                                                                        |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------|
+| Ctrl + Enter              | Queue up current graph for generation                                                                              |
+| Ctrl + Shift + Enter      | Queue up current graph as first for generation                                                                     |
+| Ctrl + Z/Ctrl + Y         | Undo/Redo                                                                                                          |
+| Ctrl + S                  | Save workflow                                                                                                      |
+| Ctrl + O                  | Load workflow                                                                                                      |
+| Ctrl + A                  | Select all nodes                                                                                                   |
+| Alt + C                   | Collapse/uncollapse selected nodes                                                                                 |
+| Ctrl + M                  | Mute/unmute selected nodes                                                                                         |
+| Ctrl + B                  | Bypass selected nodes (acts like the node was removed from the graph and the wires reconnected through)            |
+| Delete/Backspace          | Delete selected nodes                                                                                              |
+| Ctrl + Delete/Backspace   | Delete the current graph                                                                                           |
+| Space                     | Move the canvas around when held and moving the cursor                                                             |
+| Ctrl/Shift + Click        | Add clicked node to selection                                                                                      |
+| Ctrl + C/Ctrl + V         | Copy and paste selected nodes (without maintaining connections to outputs of unselected nodes)                     |
+| Ctrl + C/Ctrl + Shift + V | Copy and paste selected nodes (maintaining connections from outputs of unselected nodes to inputs of pasted nodes) |
+| Shift + Drag              | Move multiple selected nodes at the same time                                                                      |
+| Ctrl + D                  | Load default graph                                                                                                 |
+| Q                         | Toggle visibility of the queue                                                                                     |
+| H                         | Toggle visibility of history                                                                                       |
+| R                         | Refresh graph                                                                                                      |
+| Double-Click LMB          | Open node quick search palette                                                                                     |
 
 ## 连线
 
@@ -59,11 +85,11 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 如果你细看这些连线，会发现这些线和连接点都有对应的颜色，并且还有一些文字说明。简单总结一下连线的规则，懂了这些规则后，连起来基本上不会有问题：
 
-- 同类相连：只有同类才能相互连接起来，比如 KSampler 左侧的 model 端点，就只能跟另一个 MODEL 输出点相连。或者跟具象点说，只有同颜色的端点能相连，如果你将 CLIP Text Encode 右边橙色的点，连到 KSampler 的紫色点 model 上是不可能的。因为他们类型不一样。橙色点只能跟橙色点连。另外，还有一个技巧，当你点击端点并拉出一条线的时候，只有那些能连接的线会高亮出来，不能连的会变暗。
+- **同类相连**：只有同类才能相互连接起来，比如 KSampler 左侧的 model 端点，就只能跟另一个 MODEL 输出点相连。或者跟具象点说，只有同颜色的端点能相连，如果你将 CLIP Text Encode 右边橙色的点，连到 KSampler 的紫色点 model 上是不可能的。因为他们类型不一样。橙色点只能跟橙色点连。另外，还有一个技巧，当你点击端点并拉出一条线的时候，只有那些能连接的线会高亮出来，不能连的会变暗。
 
-- 左进右出：比如 KSampler 左边的 model、positive、negative、latent_image 都是是输入端，输出端是右边的 LATENT。你可以将其理解为一个函数，左边输入数字，右边是输出。那也就意味着你不能将一个节点右边的输出端，连到另一节点右边的输出端。
+- **左进右出**：比如 KSampler 左边的 model、positive、negative、latent_image 都是是输入端，输出端是右边的 LATENT。你可以将其理解为一个函数，左边输入数字，右边是输出。那也就意味着你不能将一个节点右边的输出端，连到另一节点右边的输出端。
 
-- 一进多出：一个输入端只能和另一个节点的输出端相连，没法和多个输出端相连。比如上图中的 KSampler 的 positive 端点，只能和一个 CLIP Text Encode 相连，没法同时连多个。但一个输出端，能和多个输入端相连。还是上面那个例子，一个 CLIP Text Encode 可以和多个 KSampler 相连，比如可以和 KSampler A 的 positive 端连，也可以和 KSampler B 的 negative 点连，最后出两张图。
+- **一进多出**：一个输入端只能和另一个节点的输出端相连，没法和多个输出端相连。比如上图中的 KSampler 的 positive 端点，只能和一个 CLIP Text Encode 相连，没法同时连多个。但一个输出端，能和多个输入端相连。还是上面那个例子，一个 CLIP Text Encode 可以和多个 KSampler 相连，比如可以和 KSampler A 的 positive 端连，也可以和 KSampler B 的 negative 点连，最后出两张图。
 
 了解这些规则后，你基本上就不会不知所措了。
 

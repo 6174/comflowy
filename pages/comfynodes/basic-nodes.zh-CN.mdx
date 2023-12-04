@@ -1,2 +1,90 @@
 # 基础节点
 
+🚧 截图待补充
+
+上一章我们简单介绍了下 ComfyUI 的 Workflow 还有基础操作。本章介绍一下基础 Workflow 上的各个配置项。
+
+## Load Checkpoint
+
+我们从左往右开始介绍各个节点。第一个是 Load Checkpoint，上一章中我提到这是一个模型加载器，从节点的右边链接端点可以看出，Checkpoint 包含了三个部分：模型、CLIP 还有 VAE，这三部分其实就是之前介绍的 Stable Diffusion 的模型三大步骤。可以说这个节点是所有 Workflow 的起点。
+
+点击下方可以切换模型，这里只能切换你已经下载好的模型，关于如何下载模型可以看对应的章节。
+
+说到模型，我想着重强调下，你会看到两种后缀的模型：
+
+* safetensors：这种模型一般用的是 numpy 格式保存，这就意味着它只保存了张量数据，没有任何代码，加载这类文件会更安全和更快。
+
+* ckpt：这种文件是序列化过的，这意味着它们可能会包含一些恶意代码，加载这类模型就可能会带来安全风险。
+
+所以我建议各位优先下载和使用 safetensors 后缀的模型文件。
+
+## CLIP Text Encode(Prompt)
+
+接着是 CLIP Text Enocde 节点，这个节点主要是输入 Prompt。一般会有两个这样的节点，一个是正向的 Prompt，一个是负向的 Prompt。
+
+另外，还有个小技巧，你可以输入 (keyword:weight) 方式来控制关键词的权重，比如 (hight building: 1.2 ) 就意味着 hight building 的权重变高，如果填写的权重数小于 1，则意味着这个词的权重会变低，生成的图与这个词更不相关。
+
+## Empty Latent Image
+
+然后是空的潜空间图像节点。如果你需要调整最终生成的图片的大小，就需要调整 width（宽）、height（高）这两个值。
+
+而 batch_size 则是设置每次运行时生成的图片数量，比如你将这个设置成了 4，就意味着每次会生成 4 张图。
+
+## Save Image
+
+完成图片生成后，对着图片点击右键，会看到「Save Image」的选项，点击此按钮就可以下载生成好的图片。节点里的输入框，则是设置图片名称的前缀。比如默认是 ComfyUI，那就意味着你保存的图片的文件名是 ComfyUI 开头，后面跟着一串数字。
+
+## KSampler
+
+最后是 KSampler，Sampler 中文名称是采样器，如果你想详细了解采样器，可以阅读相关进阶教程，而基础教程只会告诉你如何使用。KSampler 包含以下参数：
+
+* seed：这个是随机种子，它主要用于控制潜空间的初始噪声。如果你想重复生成一模一样的图片。就需要用到这个随机种子。需要注意种子和 Prompt 都要相同，才能生成一模一样的图。举个例子，你可以使用 Default Workflow 的默认 Prompt（beautiful scenery nature glass bottle landscape, purple galaxy bottle），生成一张图片。接着将这个随机种子 copy 下来比如 156680208700286，然后将 Prompt 里的 purple 改成 green，生成一张新的图片，再将之前复制的种子 156680208700286 覆盖黏贴到新种子上，然后将 Prompt 改回原来的 purple，重新生成图片。你会发现此时生成的图片与第一次生成的图片是一模一样的。
+
+* control_after_generate：每次生成完图片后，上面的 seed 数字都会变化，而这个配置项，则是设置这个变化规则：randomize（随机）、increment（递增 1）、decrement（递减 1）、fixed（固定）。
+
+* step：采样的步数。一般步数越大，效果越好，但也跟采样器有关。
+
+* sampler_name：采样器名称。你可以通过这个来设置采样器算法。如果你对它感兴趣，可以阅读相关的进阶教程。
+
+* scheduler：调度器主要是控制每个步骤中去噪的过程。你可以通过它选择不同的调度算法，有些算法是选择每一步减去相同数量的噪声，有些则是每一步都尽可能去掉多的噪声。
+
+* denoise：表示要去掉多少初始噪声，1 表示全部。
+
+在此节点，最影响出图质量的是 sampler_name、scheduler 和 step，进阶教程会分享各个采样器的特点，本章节，就只分享下最佳实践：
+
+{<table>
+  <thead>
+    <tr>
+      <th>需求</th>
+      <th>sampler_name</th>
+      <th>scheduler</th>
+      <th width={80}>step</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={2} >在意图像质量，同时在意生成图片内容多样行</td>
+      <td>dpmpp_2m</td>
+      <td>karras</td>
+      <td>20-30</td>
+    </tr>
+    <tr>
+      <td>UniPC（相较于 dpmpp_2m 会更快一些）</td>
+      <td>karras</td>
+      <td>20-30</td>
+    </tr>
+    <tr>
+      <td rowSpan={2} >在意图像质量，不太在意多样性，但想提高生成速度</td>
+      <td>dpmpp_sde</td>
+      <td>karras</td>
+      <td>10-15</td>
+    </tr>
+    <tr>      
+      <td>ddim</td>
+      <td>normal</td>
+      <td>10-15</td>
+    </tr>
+  </tbody>
+</table>}
+
+
