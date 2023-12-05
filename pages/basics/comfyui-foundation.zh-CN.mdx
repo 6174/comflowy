@@ -10,16 +10,16 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 安装并打开 ComfyUI 后，你会看到一个这样的界面（图片可以点击放大 👇）：
 <br/>
 <PhotoProvider>
-  <PhotoView src="/confyui-foundation/001.png">
-    <img src="/confyui-foundation/001.png" alt="" />
+  <PhotoView src="/comfyui-foundation/001.png">
+    <img src="/comfyui-foundation/001.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
 你可能会很疑惑，这些方块和线都代表什么？不用慌，我稍微调整下里面的顺序，你应该就很熟悉了：
 <br/>
 <PhotoProvider>
-  <PhotoView src="/confyui-foundation/002.png">
-    <img src="/confyui-foundation/002.png" alt="" />
+  <PhotoView src="/comfyui-foundation/002.png">
+    <img src="/comfyui-foundation/002.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -78,8 +78,8 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 其实这些节点就像是一个个乐高一样，能自由组合的同时，还有一定的规则，我们拿图中连线点最多的 KSampler 为例：
 <br/>
 <PhotoProvider>
-  <PhotoView src="/confyui-foundation/003.png">
-    <img src="/confyui-foundation/003.png" alt="" />
+  <PhotoView src="/comfyui-foundation/003.png">
+    <img src="/comfyui-foundation/003.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -105,8 +105,8 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </Tabs.Tab>
   <Tabs.Tab>
     <PhotoProvider>
-      <PhotoView src="/confyui-foundation/004.png">
-        <img src="/confyui-foundation/004.png" alt="" />
+      <PhotoView src="/comfyui-foundation/004.png">
+        <img src="/comfyui-foundation/004.png" alt="" />
       </PhotoView>
     </PhotoProvider>
       * 要将 Empty Latent Image 转成人能看的图片，首先右键新增一个 Empty Latent Image 节点。回忆下上一章的内容，要将一个 Latent Image 转成一个肉眼可见的图。只需要将这个图传给 Decoder 就行了，Decoder 会将其转化为人能看到的图。右键 → Add Node → latent → VAE Decode，然后将 Empty Latent Image 与其相连。
