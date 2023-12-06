@@ -5,6 +5,6 @@
   "inpaint": "去水印",
   "lora": "LoRA",
   "multi-subject-workflows": "多主体合成",
-  "upscale": "老照片修复",
+  "upscale": "Upscale",
   "visual-area-condition": "视觉区域调节"
 }

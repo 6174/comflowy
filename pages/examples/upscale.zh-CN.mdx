@@ -39,7 +39,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 搭建一个 Upscale 模型对比效果 workflow。只加载一张图片，但这张图片会传递给 3 个不同模型的 Upscale 节点，最后生成 3 张 Image，这样你就能同时看到不同模型的输出效果了。
 
-<Tabs items={['提示', '答案']}>
+<Tabs items={['提示', '答案']} >
   <Tabs.Tab>
     推荐几个能提高效率的技巧：
     * 对着节点点击右键，会看到一个 clone 选项，点击这个选项会原地复制黏贴出该节点。这样你就不用右键点来点去添加新的节点了。
@@ -55,17 +55,14 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </Tabs.Tab>
 </Tabs>
 
-
-
-
+### 选择哪种模型
 
 OK 聊完如何搭建 workflow，我们再来聊下上面没有聊到的模型。你可能会在 ComfyUI Manger 里看到一些 Upscale 模型，里面我比较推荐的是 Real-ESRGAN，它在还原风景上效果挺好的。
 
-另外再推荐两个，你可以在 Github 上下载模型，或者到 OpenModel DB  https://openmodeldb.info/ 上下载也行：
+另外再推荐两个，你可以在 Github 上下载模型，或者到 [OpenModel DB](https://openmodeldb.info/) 上下载也行：
 
-Swin2SR: https://github.com/mv-lab/swin2sr 
-
-BSRGAN: https://github.com/cszn/BSRGAN
+* [Swin2SR](https://github.com/mv-lab/swin2sr)
+* [BSRGAN](https://github.com/cszn/BSRGAN)
 
 另外，你可能在下载和使用 Upscale 模型时遇到一些疑惑：
 
@@ -74,3 +71,42 @@ BSRGAN: https://github.com/cszn/BSRGAN
 根据训练集的不同，有的模型会将一个模型拆成多个，比如 Swin2SR 模型有 Lightweight、RealWorld 等，我觉得比较关键的就是他们俩，如果你在意速度就选 Lightweight，在意效果就选 RealWorld。如果你不懂模型名称里的含义，可以看模型的介绍，一般作者会进行介绍。
 
 不同的模型效果也不一样，有一些 Upscale 模型更适合优化动漫题材的图片，有一些责比较适合真实图片。我在上面推荐的几个模型都比较适合真实图片。
+
+## 生成图片优化
+
+另外一个 Upscale 的场景是在文生图的时候使用。因为模型的生成的默认图像大小一般有一个最大的大小，比如 512X512，超过这个大小生成的效果就会变差。所以如果想要生成更大的图片，比如 1024X1024，就需要用到 Upscale 节点了。
+
+要在文生图的 workflow 里加入 upscale 也很简单，在 VAE Decode 节点后连上 Upscale Image 节点就行了。
+
+但在这里我还想教大家另一种 Upscale 的方法，这个方法被称为 Hi-res Latent fix Upscale，正如它名字所写的那样，这种方法与之前提到的方法最大的不同就在于它使用了 Latent Space，以下是几张效果图，第一张是用 SD XL 生成的 512X512 的图片，第二张是 BSRGAN Upscale 2 倍厚的效果，第三张是用 Hi-res Latent fix Upscale 方法生成，对比可以看到：
+
+* 图二是在不改变图一信息的情况下，将图片放大，但细看图片局部有种算法的涂抹感。
+* 图三除了做到了放大外，还对图片细节进行了补充，比如上方的云朵。但也有不好的地方，比如猫的手消失了。
+
+对比来看，你应该就能区分这两种方法的区别了：
+
+* 使用 BSRGAN 这种模型 Upscale 只放大，但不会新增信息，而且实际使用，速度更快。
+* 而使用 Hi-res Latent fix Upscale 除了放大外，还会改变一些原图的信息，细节更丰富，但可能会偏离原图，且速度比较慢。
+
+<PhotoProvider>
+  <PhotoView src="/comfyui-upscale/003.png">
+    <img src="/comfyui-upscale/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+比较完区别，我们再来看看如何搭建 Hi-res Latent Upscale workflow。
+<Steps>
+  ### 在 Default Workflow 上添加 Upscale Latent
+  第一步，右键 → All node → latent 里就能找到。另外，再教大家一个快速的方法，如果你记得节点的名字，可以鼠标双击空白处，唤起节点搜索窗口，通过输入节点名称的方式找到该节点。添加完成后，将此节点与 KSampler 的 Latent 相连。
+  并将 width 和 height 设置成最终图片的大小。比如我原图是 512，我想放大 2 倍，所以这里我就设置为 1024。
+  ### 添加 KSampler 节点
+  接着添加一个新的 KSampler 节点，然后和刚刚的添加的 Upscale Latent 相连，另外注意，要将 denoise 设置成小于 1，我一般设为 0.5。下图蓝色框的就是 Hi-res Latnet Upscale 的关键 workflow：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-upscale/004.png">
+      <img src="/comfyui-upscale/004.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
+
+当你将这些节点都相连后，不妨细想一下里面的原理。本质上来说是先将第一次生成的图在 Latent 空间放大，然后再用图生图的方式，让模型再生成一张图。
