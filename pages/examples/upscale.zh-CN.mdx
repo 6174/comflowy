@@ -1,1 +1,76 @@
-| https://civitai.com/models/81540/comfyui-advanced-upscaler-workflow-sdxl-09-compatible
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+
+# Upscale
+
+你可能不知道 Upscale 是什么，但你应该有看过一些所谓的「老照片」修复产品，它可以将一些分辨率很低的照片转化成高清照片。
+
+左边这张图是一张分辨率很低的照片，右边则是通过技术手段修复并放大后的图片，看起来效果是不是还挺不错的？而这类产品背后所用到的技术就是 Upscale。
+<PhotoProvider>
+  <PhotoView src="/comfyui-upscale/001.png">
+    <img src="/comfyui-upscale/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+## 老照片修复
+
+按照惯例，我们先来简单聊下 Upscale 的原理。Upscale 算法有很多种，比较常见的有：
+
+* 双三次插值算法：它通过使用周围像素的数值来模拟新像素的值，从而填充缺失的像素信息。这种方法看起来比较自然，但放大后的图像可能会显得模糊，因为算法在像素化和平滑之间寻求一种折衷。
+
+* Lanczos 插值算法：它是一种更高级的算法，它试图保留图像中的边缘和纹理，但它们通常缺乏通用性，难以处理不同类型的图像。
+
+* 基于神经网络的算法：它则是一种新兴的 Upscale 方法，它利用深度学习技术，通过训练神经网络来理解图像的纹理和对象，从而在放大图像时生成更加真实和富有细节的图像。
+
+目前常用的是第三种。OK，说了一大堆内容，关键点是啥呢？其实关键点在内容之外（哈哈哈），这些 Upscale 算法都没有提到任何 Stable Diffusion 相关的内容，换句话说，Upscale 没有用到 Stable Diffusion 的技术，也就是说，要使用它不需要破坏我们的 Stable Diffusion workflow。
+
+基于这个原则，我们用 ComfyUI 一步步实现老照片修复功能：
+
+<Steps>
+  ### 添加 Load Image 和 Save Image 节点
+  既然跟照片有关，第一步当然就是加载两个右键 → All node → image 里可以找到这两个节点。
+  ### 添加 Upscale Image 节点
+  然后我们来添加跟 Upscale 有关的节点，首先是 Upscale Image（using Model）节点，它在 All node → image → upscaling 里。
+  ### 添加 Load Upscale Model 节点
+  前两步可能大家都能通过简单推理就能，但这个可能第一次使用的朋友就不太确定了。其实很好了理解，前面一步的节点是 using model 节点，前置需要连一个 model，那我们就要在它前面「加载」一个模型，那该节点就肯定在 loaders 里了。添加好节点后，将各个节点按顺序连起来即可。
+</Steps>
+
+为了让大家更好地理解下一部分的内容，我建议各位和我一起做一个小练习：
+
+搭建一个 Upscale 模型对比效果 workflow。只加载一张图片，但这张图片会传递给 3 个不同模型的 Upscale 节点，最后生成 3 张 Image，这样你就能同时看到不同模型的输出效果了。
+
+<Tabs items={['提示', '答案']}>
+  <Tabs.Tab>
+    推荐几个能提高效率的技巧：
+    * 对着节点点击右键，会看到一个 clone 选项，点击这个选项会原地复制黏贴出该节点。这样你就不用右键点来点去添加新的节点了。
+    * 你可以按住 Ctrl 键，并框选多个节点。
+  </Tabs.Tab>
+  <Tabs.Tab>
+    基本流程其实跟前面的一致，只是多了几个节点罢了：
+    <PhotoProvider>
+      <PhotoView src="/comfyui-upscale/002.png">
+        <img src="/comfyui-upscale/002.png" alt="" />
+      </PhotoView>
+    </PhotoProvider>
+  </Tabs.Tab>
+</Tabs>
+
+
+
+
+
+OK 聊完如何搭建 workflow，我们再来聊下上面没有聊到的模型。你可能会在 ComfyUI Manger 里看到一些 Upscale 模型，里面我比较推荐的是 Real-ESRGAN，它在还原风景上效果挺好的。
+
+另外再推荐两个，你可以在 Github 上下载模型，或者到 OpenModel DB  https://openmodeldb.info/ 上下载也行：
+
+Swin2SR: https://github.com/mv-lab/swin2sr 
+
+BSRGAN: https://github.com/cszn/BSRGAN
+
+另外，你可能在下载和使用 Upscale 模型时遇到一些疑惑：
+
+你在下载模型的时候会看到模型标题里写 X2 或 X4，意思是放大的倍数，X2 就是放大两倍，以此类推。
+
+根据训练集的不同，有的模型会将一个模型拆成多个，比如 Swin2SR 模型有 Lightweight、RealWorld 等，我觉得比较关键的就是他们俩，如果你在意速度就选 Lightweight，在意效果就选 RealWorld。如果你不懂模型名称里的含义，可以看模型的介绍，一般作者会进行介绍。
+
+不同的模型效果也不一样，有一些 Upscale 模型更适合优化动漫题材的图片，有一些责比较适合真实图片。我在上面推荐的几个模型都比较适合真实图片。

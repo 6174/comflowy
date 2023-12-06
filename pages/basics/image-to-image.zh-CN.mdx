@@ -1,4 +1,4 @@
-import { Callout, Tabs } from 'nextra-theme-docs';
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # 图生图
@@ -7,11 +7,13 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 除了文生图外，图生图是另一个 Stable Diffusion 比较常用的工作流，它可以根据输入的 prompt 和输入的图像生成对应的图像。
 
-## 基础用法
+## 使用已有图片生图
 
 首先回忆下 Stable Diffusion 的原理，文生图的原理是将随机噪声图降噪成一张新的图。而图生图的原理则是先给输入的图片添加噪音，再用相同的方法将这个噪音图降噪成新的图片。
 
 还是拿雕刻做类比的话，它的过程类似是雕刻师（模型）拿了一个雕像（初始输入的图），根据你的指令（Prompt）在其基础上重新雕一个雕塑（输出的图）。
+
+🚧 补充原理可视化
 
 那不妨自己试试连接一个图生图的 Workflow 😎
 
@@ -21,12 +23,17 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
     * 加载图片可以右键 → All node → image 里找到。
   </Tabs.Tab>
   <Tabs.Tab>
-    正如我在 Hint 里提到的那样，关键在于要将图片转为潜空间图片，那就需要用到 VAE Encode，所以只需要将 Load Image 与 VAE Encode 相连，然后再跟 KSampler 连起来就可以了。
-    
-    另外，还有一个小细节需要注意，KSampler 里的 denoise 设置项可以设置得小一点，这样能让生成的图更像输入图，越小就越像。
-    
-    拿雕刻来类比会更好理解。雕刻师（模型）对旧雕像（输入的图）进行雕刻之前，需要先糊一些石膏（噪声）在上面，然后再根据你的指令重新雕刻新雕像（输出的图）。而这个 denoise 选项则表示需要糊多少石膏，如果糊得少，不就越像旧雕像（输入的图片）了吗？
-    <br />
+    <Steps>
+      ### 添加 Load Image 节点
+      加载图片可以右键 → All node → image 里找到。
+      
+      ### 连接节点
+      正如我在 Hint 里提到的那样，关键在于要将图片转为潜空间图片，那就需要用到 VAE Encode，所以只需要将 Load Image 与 VAE Encode 相连，然后再跟 KSampler 连起来就可以了。
+
+      ### 设置 KSampler
+      另外，还有一个小细节需要注意，KSampler 里的 denoise 设置项可以设置得小一点，这样能让生成的图更像输入图，越小就越像。
+      拿雕刻来类比会更好理解。雕刻师（模型）对旧雕像（输入的图）进行雕刻之前，需要先糊一些石膏（噪声）在上面，然后再根据你的指令重新雕刻新雕像（输出的图）。而这个 denoise 选项则表示需要糊多少石膏，如果糊得少，不就越像旧雕像（输入的图片）了吗？
+    </Steps>
     <PhotoProvider>
       <PhotoView src="/comfyui-img2img/001.png">
         <img src="/comfyui-img2img/001.png" alt="" />
@@ -39,7 +46,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </Tabs.Tab>
 </Tabs>
 
-## 进阶用法
+## 边画边生图
 
 除了使用静态的图片外，还有一种方式是边画图，边生成图片。原理上其实是一样的，只是节点稍微有点不一样：
 
@@ -55,4 +62,14 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </PhotoView>
 </PhotoProvider>
 
-最后，还需要对设置下 Queue，以实现自动生图。勾选右侧面板上的 Extra options，然后再将新出现的 Auto Queue 勾上。点击 Queue Prompt 此时就会自动运行了，暂停则只需要重新点一下 Queue Prompt 即可。
+最后，还需要设置下 Queue 以实现自动生图：
+
+<Steps>
+### 步骤一
+勾选右侧面板上的 Extra options：
+
+### 步骤二
+然后再将新出现的 Auto Queue 勾上：
+### 步骤三
+点击 Queue Prompt 此时就会自动运行了，暂停则只需要重新点一下 Queue Prompt 即可。
+</Steps>

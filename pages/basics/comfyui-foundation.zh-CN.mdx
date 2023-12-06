@@ -1,4 +1,4 @@
-import { Callout, Tabs } from 'nextra-theme-docs';
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # ComfyUI 基础
@@ -97,7 +97,9 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 简单介绍完基本的连线操作后，我们来完成一个小练习，让你能将这两章的内容融会贯通。
 
-首先，点击右边的 Clear 按钮，将 Default Workflow 都清除，并从零完成以下目标：将 Empty Latent Image 转为人能看的图片。
+首先，点击右边的 Clear 按钮，将 Default Workflow 都清除。
+
+然后从零完成以下目标：**将 Empty Latent Image 转为人能看的图片**。
 
 <Tabs items={['提示', '答案']}>
   <Tabs.Tab>
@@ -109,9 +111,14 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
         <img src="/comfyui-foundation/004.png" alt="" />
       </PhotoView>
     </PhotoProvider>
-      * 要将 Empty Latent Image 转成人能看的图片，首先右键新增一个 Empty Latent Image 节点。回忆下上一章的内容，要将一个 Latent Image 转成一个肉眼可见的图。只需要将这个图传给 Decoder 就行了，Decoder 会将其转化为人能看到的图。右键 → Add Node → latent → VAE Decode，然后将 Empty Latent Image 与其相连。
-      * 然后我们会看到 VAE Decode 右边输出端是 IMAGE，我们点击右键 → Add Node → image → Save Image（或者 Preview Image），添加完后，将 VAE Decode 连在上面。
-      * 最后，你 VAE Decode 还有一个输入端没有连，练习中的 Hint 提到在 loader 找找，你就能找到一个叫 VAE loader 的东西，添加这个 loader 然后和 VAE Decode 相连，就完成了。
+    <Steps>
+      ### 新增 Empty Latent Image 节点
+      要将 Empty Latent Image 转成人能看的图片，首先右键新增一个 Empty Latent Image 节点。回忆下上一章的内容，要将一个 Latent Image 转成一个肉眼可见的图。只需要将这个图传给 Decoder 就行了，Decoder 会将其转化为人能看到的图。右键 → Add Node → latent → VAE Decode，然后将 Empty Latent Image 与其相连。
+      ### 新增 Image 节点
+      然后我们会看到 VAE Decode 右边输出端是 IMAGE，我们点击右键 → Add Node → image → Save Image（或者 Preview Image），添加完后，将 VAE Decode 连在上面。
+      ### 新增 VAE 节点
+      最后，你 VAE Decode 还有一个输入端没有连，练习中的 Hint 提到在 loader 找找，你就能找到一个叫 VAE loader 的东西，添加这个 loader 然后和 VAE Decode 相连，就完成了。
+    </Steps>
   </Tabs.Tab>
 </Tabs>
 
