@@ -3,6 +3,8 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # Upscale
 
+🚧 文章结构待调整
+
 你可能不知道 Upscale 是什么，但你应该有看过一些所谓的「老照片」修复产品，它可以将一些分辨率很低的照片转化成高清照片。
 
 左边这张图是一张分辨率很低的照片，右边则是通过技术手段修复并放大后的图片，看起来效果是不是还挺不错的？而这类产品背后所用到的技术就是 Upscale。
@@ -12,7 +14,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </PhotoView>
 </PhotoProvider>
 
-## 老照片修复
+## AI Upscale
 
 按照惯例，我们先来简单聊下 Upscale 的原理。Upscale 算法有很多种，比较常见的有：
 
@@ -35,9 +37,22 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   前两步可能大家都能通过简单推理就能，但这个可能第一次使用的朋友就不太确定了。其实很好了理解，前面一步的节点是 using model 节点，前置需要连一个 model，那我们就要在它前面「加载」一个模型，那该节点就肯定在 loaders 里了。添加好节点后，将各个节点按顺序连起来即可。
 </Steps>
 
-为了让大家更好地理解下一部分的内容，我建议各位和我一起做一个小练习：
+OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模型。你可能会在 ComfyUI Manger 里看到一些 Upscale 模型，里面我比较推荐的是 Real-ESRGAN，它在还原风景上效果挺好的。
 
-搭建一个 Upscale 模型对比效果 workflow。只加载一张图片，但这张图片会传递给 3 个不同模型的 Upscale 节点，最后生成 3 张 Image，这样你就能同时看到不同模型的输出效果了。
+另外再推荐两个，你可以在 Github 上下载模型，或者到 [OpenModel DB](https://openmodeldb.info/) 上下载也行：
+
+* [Swin2SR](https://github.com/mv-lab/swin2sr)
+* [BSRGAN](https://github.com/cszn/BSRGAN)
+
+另外，你可能在下载和使用 Upscale 模型时遇到一些疑惑：
+
+* 你在下载模型的时候会看到模型标题里写 X2 或 X4，意思是放大的倍数，X2 就是放大两倍，以此类推。
+* 根据训练集的不同，有的模型会将一个模型拆成多个，比如 Swin2SR 模型有 Lightweight、RealWorld 等，我觉得比较关键的就是他们俩，如果你在意速度就选 Lightweight，在意效果就选 RealWorld。如果你不懂模型名称里的含义，可以看模型的介绍，一般作者会进行介绍。
+* 不同的模型效果也不一样，有一些 Upscale 模型更适合优化动漫题材的图片，有一些责比较适合真实图片。我在上面推荐的几个模型都比较适合真实图片。
+
+最后，为了让大家更好地理解下一部分的内容，我建议各位和我一起做一个小练习：
+
+**搭建一个 Upscale 模型对比效果 workflow。只加载一张图片，但这张图片会传递给 3 个不同模型的 Upscale 节点，最后生成 3 张 Image，这样你就能同时看到不同模型的输出效果了。**
 
 <Tabs items={['提示', '答案']} >
   <Tabs.Tab>
@@ -55,24 +70,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </Tabs.Tab>
 </Tabs>
 
-### 选择哪种模型
-
-OK 聊完如何搭建 workflow，我们再来聊下上面没有聊到的模型。你可能会在 ComfyUI Manger 里看到一些 Upscale 模型，里面我比较推荐的是 Real-ESRGAN，它在还原风景上效果挺好的。
-
-另外再推荐两个，你可以在 Github 上下载模型，或者到 [OpenModel DB](https://openmodeldb.info/) 上下载也行：
-
-* [Swin2SR](https://github.com/mv-lab/swin2sr)
-* [BSRGAN](https://github.com/cszn/BSRGAN)
-
-另外，你可能在下载和使用 Upscale 模型时遇到一些疑惑：
-
-你在下载模型的时候会看到模型标题里写 X2 或 X4，意思是放大的倍数，X2 就是放大两倍，以此类推。
-
-根据训练集的不同，有的模型会将一个模型拆成多个，比如 Swin2SR 模型有 Lightweight、RealWorld 等，我觉得比较关键的就是他们俩，如果你在意速度就选 Lightweight，在意效果就选 RealWorld。如果你不懂模型名称里的含义，可以看模型的介绍，一般作者会进行介绍。
-
-不同的模型效果也不一样，有一些 Upscale 模型更适合优化动漫题材的图片，有一些责比较适合真实图片。我在上面推荐的几个模型都比较适合真实图片。
-
-## 生成图片优化
+## Hi-res Fix Latent Upscale
 
 另外一个 Upscale 的场景是在文生图的时候使用。因为模型的生成的默认图像大小一般有一个最大的大小，比如 512X512，超过这个大小生成的效果就会变差。所以如果想要生成更大的图片，比如 1024X1024，就需要用到 Upscale 节点了。
 

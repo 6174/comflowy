@@ -1,4 +1,5 @@
 {
   "basic-nodes": "基础节点",
-  "controlnet": "ControlNet"
+  "controlnet": "ControlNet",
+  "in&outpainting": "In/Outpainting"
 }
