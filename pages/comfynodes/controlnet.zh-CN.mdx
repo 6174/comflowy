@@ -1,3 +1,49 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+
 # ContrlNet
 
-ControlNet 节点
+在使用 Stable Diffusion 的时候，你可能会希望控制构图，但通过 prompt 调整，效果并不会特别好。本章会教大家几个常用的 ControlNet 方法，以此解决控制构图的需求。
+
+🚧 补充 ControlNet 和 img2img 的区别。
+
+## Scribble ControlNet
+
+首先介绍下我认为最常用的 ControlNet —— 简笔画的控制。效果大概是这样的：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-controlnet/001.png">
+      <img src="/comfyui-controlnet/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+有了 ControlNet 后，模型输出的图片会根据你画的简笔画构图来生成图片。你可以看到左侧的简笔画是一个画得非常粗糙的动漫人物，右图是生成后的图，整个构图和人物的特征（两个大大的耳朵）都基本匹配左侧简笔画。
+
+OK，大家对 Scribble ControlNet 有一定的印象后，再来介绍一下连接步骤很简单：
+
+<Steps>
+  ### 添加 Apply ControlNet 节点
+  我们还是从 Default workflow 开始（你可以右边的 Load Default 按钮加载默认 workflow），然后鼠标点击空白处，输入 Apply ControlNet，并添加此节点。节点里的 strength 代表的是 Control Net 的影响强度，数值越大，意味着最后生成的图片越像输入的结构图。这个值跟你使用的模型有很大关系，你可以根据自己需求多测试几遍，我一般是设置为 0.9。
+
+  ### 添加 Load ControlNet Model 和 Load Image 节点
+  细看 Apply ControlNet 节点，其左边还有一个 control_net 端点和 image 端点，image 端点各位应该就比较熟悉了，这里需要连接 Load Image 端点。而 control_net 端点则意味着它还要接入 ControlNet 的模型，所以双击空白处，搜索并添加 Load ControlNet Model 节点，然后选择 ControlNet Scribble 模型。
+
+  ### 连接节点
+  正如我前面提到的那样，ControlNet 影响的是 Conditioning，所以 Apply ControlNet 右边端点与 KSampler 的 positive 相连，然后将 positive CLIP Text Encode（Prompt）右侧的 conditioning 端点与 Apply ControlNet 左侧相连。并将上一步的 Load ControlNet Model 和 Load Image 节点都与 Apply ControlNet  相连。
+
+  ### 调整参数 & 模型
+  最后调整下参数 & 模型，KSampler 的参数可以跟普通的文生图类似，我一般都是用 dpmpp 2m 和 karras，步数和 cfg 可以根据你的需求来配置。这里还有一个需要注意的点，Checkpoint 里的模型需要是 SD 1.5 为基底的模型，比如案例中我用的 Anything 或者是直接使用 SD 1.5。
+
+  如果你在 Load ControlNet 里没有使用我推荐的 ControlNet Scribble 而是其他 Scribble 模型，那就需要切换该模型对应的 Checkpoint 模型。
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-controlnet/002.png">
+        <img src="/comfyui-controlnet/002.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
+
+<Callout emoji="💡">
+在 LoRA 一章中，我将 LoRA 类比为滤镜。而 ControlNet 我则认为更像是可视化的指令补充，将原有文字很难描述的指令可视化，同时也让模型更好地理解。从而解决 CLIP 模型对语法理解比较差的问题。这么理解，大家应该就能更好地记忆应该如何连线了。LoRA 是滤镜，影响是模型，所以跟 Model 相连。而 ControlNet 则是 prompt 的补充，控制的是 Conditioning，所以跟 Prompt 节点相连。
+</Callout>
+
