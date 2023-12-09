@@ -15,20 +15,20 @@ ComfyUI、SD.Next、VAE、Latent Space、Prompt、Clip、ControlNet、Diffusers 
 ## 不同 Stable Diffusion 的差别
 
 最关键的是还是从根开始走，Stable Diffusion 发展很快，在短时间就出了多个版本，而且多个版本的差异也非常大，围绕不同版本的根生成了不同的树，但这些树并不是兼容的
-所以我们一定要明白不同版本的区别，不然就会出现各种离奇且折磨人的报错 ：-）
+所以我们一定要明白不同版本的区别，不然就会出现各种离奇且折磨人的报错：-）
 
-1. <b>Stable Diffusion v1.5</b>: 这是Stable Diffusion的的早期版本，目前市场上的很多 Lora 模型以及 ContrlNet 模型都是基于它来构建的，所以在开始使用 Comfy UI 的时候为了不踩坑，建议围绕 1.5 版本这个跟进行学习和使用
+1. <b>Stable Diffusion v1.5</b>: 这是 Stable Diffusion 的的早期版本，目前市场上的很多 Lora 模型以及 ContrlNet 模型都是基于它来构建的，所以在开始使用 Comfy UI 的时候为了不踩坑，建议围绕 1.5 版本这个跟进行学习和使用
     - [Stable Diffusion v1.x press release](https://stability.ai/blog/stable-diffusion-public-release)
-    - 1.x 版本的文本编码模型 CLIP 使用的是 OpenAI 的模型（ CLIP 后续会介绍，这是一个很关键的概念）
-2. <b>Stable Diffusion 2.0</b>: 这是Stable Diffusion的一个重大更新，相比于v1.5版本，它在图像生成质量和速度上都有所提升。
+    - 1.x 版本的文本编码模型 CLIP 使用的是 OpenAI 的模型（CLIP 后续会介绍，这是一个很关键的概念）
+2. <b>Stable Diffusion 2.0</b>: 这是 Stable Diffusion 的一个重大更新，相比于 v1.5 版本，它在图像生成质量和速度上都有所提升。
     - [Stable Diffusion v2.1 press release](https://link.zhihu.com/?target=https%3A//stability.ai/blog/stablediffusion2-1-release7-dec-2022)
     - [Stable Diffusion v2 press release](https://stability.ai/blog/stable-diffusion-v2-release)
-    - 2.0版本采用了新的文本编码器OpenCLIP，可以更好地理解文本提示，从而生成更高质量的图像。
-    - 此外，2.0版本还支持更高的图像分辨率，可以生成默认分辨率为512x512像素和768x768像素的图像。
-3. <b>Stable Diffusion XL</b>: 这是Stable Diffusion的最新版本，它在2.0版本的基础上进行了进一步的优化和改进。
+    - 2.0 版本采用了新的文本编码器 OpenCLIP，可以更好地理解文本提示，从而生成更高质量的图像。
+    - 此外，2.0 版本还支持更高的图像分辨率，可以生成默认分辨率为 512x512 像素和 768x768 像素的图像。
+3. <b>Stable Diffusion XL</b>: 这是 Stable Diffusion 的最新版本，它在 2.0 版本的基础上进行了进一步的优化和改进。
     - [Stable Diffusion xl 0.9 press release](https://stability.ai/news/sdxl-09-stable-diffusion)
-    - XL版本的主要特点是其更大的模型大小，从0.98B扩大到6.6B参数，这使得它能够生成更高质量的图像。
-    - XL版本还引入了新的功能，如更有艺术感的图像，更真实的图像，以及更清晰可读的字体等
+    - XL 版本的主要特点是其更大的模型大小，从 0.98B 扩大到 6.6B 参数，这使得它能够生成更高质量的图像。
+    - XL 版本还引入了新的功能，如更有艺术感的图像，更真实的图像，以及更清晰可读的字体等
     - XL 的工作流程和以前的版本有很大的差异，这个我们后续会介绍
 
 ## 模型下载 
@@ -38,7 +38,7 @@ ComfyUI、SD.Next、VAE、Latent Space、Prompt、Clip、ControlNet、Diffusers 
 - 基础 Stable Diffusion 模型
   - https://huggingface.co/runwayml/stable-diffusion-v1-5
 
-- 【可选】CivitAI 站点下载模型 （记得要基于 1.5 版本作为根基的）
+- 【可选】CivitAI 站点下载模型（记得要基于 1.5 版本作为根基的）
   - https://civitai.com/
 
 - 【可选】ContolNet 模型 

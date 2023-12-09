@@ -1,9 +1,9 @@
 {
   "index": "Comflowy 介绍",
-  "basics": "基础入门",
-  "comfynodes": "节点介绍",
-  "examples": "案例分析",
-  "advanced": "进阶教程",
+  "preparation-for-study": "⏳ 学习前的准备",
+  "basics": "🏎️ 基础篇",
+  "advanced": "🛩️ 中级篇",
+  "expert": "🚀 高级篇",  
   "dicussion": {
     "title": "交流讨论",
     "type": "page",

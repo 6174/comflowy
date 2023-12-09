@@ -1,4 +1,7 @@
 {
-  "stable-diffusion-advanced": "Stable Diffusion 进阶",
-  "sampler": "采样器"
+  "image-to-image": "图生图",
+  "upscale": "Upscale",
+  "in&outpainting": "In/Outpainting",
+  "controlnet": "ControlNet",
+  "advanced-optional": "进阶选修"
 }
