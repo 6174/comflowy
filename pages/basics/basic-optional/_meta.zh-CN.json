@@ -1,4 +1,5 @@
 {
   "model-recommendation": "模型推荐",
-  "LoRA-recommendation": "LoRA 推荐"
+  "LoRA-recommendation": "LoRA 推荐",
+  "prompt-recommendation": "Prompt 推荐"
 }

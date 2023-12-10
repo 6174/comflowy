@@ -17,13 +17,18 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 ## Simple img2img workflow
 
-首先回忆下 Stable Diffusion 的原理，文生图的原理是将随机噪声图降噪成一张新的图。而图生图的原理则是先给输入的图片添加噪音，再用相同的方法将这个噪音图降噪成新的图片。
+首先回忆下 Stable Diffusion 的原理，文生图是将随机噪声图降噪成一张新的图。而图生图的则是先给输入的图片添加噪音，再用相同的方法将这个噪音图降噪成新的图片。大概的流程是这样的：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-img2img/003.png">
+    <img src="/comfyui-img2img/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
 
 还是拿雕刻做类比的话，它的过程类似是雕刻师（模型）拿了一个雕像（初始输入的图），根据你的指令（Prompt）在其基础上重新雕一个雕塑（输出的图）。
 
-🚧 补充原理可视化
-
-那不妨自己试试连接一个图生图的 Workflow 😎
+既然原理类似，你应该能猜测出应该如何搭建 Simple img2img workflow。那不妨自己先试试 😎
 
 <Tabs items={['提示', '答案']}>
   <Tabs.Tab>
@@ -39,8 +44,9 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
       正如我在 Hint 里提到的那样，关键在于要将图片转为潜空间图片，那就需要用到 VAE Encode，所以只需要将 Load Image 与 VAE Encode 相连，然后再跟 KSampler 连起来就可以了。
 
       ### 设置 KSampler
-      另外，还有一个小细节需要注意，KSampler 里的 denoise 设置项可以设置得小一点，这样能让生成的图更像输入图，越小就越像。
-      拿雕刻来类比会更好理解。雕刻师（模型）对旧雕像（输入的图）进行雕刻之前，需要先糊一些石膏（噪声）在上面，然后再根据你的指令重新雕刻新雕像（输出的图）。而这个 denoise 选项则表示需要糊多少石膏，如果糊得少，不就越像旧雕像（输入的图片）了吗？
+      另外，有几个小细节需要注意：
+      1. KSampler 里的 denoise 设置项可以设置得小一点，这样能让生成的图更像输入图，越小就越像。拿雕刻来类比会更好理解。雕刻师（模型）对旧雕像（输入的图）进行雕刻之前，需要先糊一些石膏（噪声）在上面，然后再根据你的指令重新雕刻新雕像（输出的图）。而这个 denoise 选项则表示需要糊多少石膏，如果糊得少，不就越像旧雕像（输入的图片）了吗？
+      2. 如果你用的 Checkpoint 模型是 1024X1024 的，那么最好你加载的图片也是 1024X1024 的，而且宽高比也最好一致。这样生成的图片效果才会更好。
       <Callout type="info">
         注意：我用了 Dreamshaper 模型生成图片，所以你生成的图片可能跟我不一样。
       </Callout>
@@ -55,5 +61,8 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 </Tabs>
 
 ## unCLIP model workflow
+
+另一种图生图的工作流是 unCLIP model workflow，它的原理是将输入的图片转为 latent 图片，然后再用 unCLIP model 生成新的图片。大概的流程是这样的：
+
 
 
