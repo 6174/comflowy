@@ -1,116 +1,98 @@
-import { Callout } from 'nextra-theme-docs';
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
-# 基础节点
+# ComfyUI 基础 ➁
 
-🚧 截图待补充
+了解完基本的配置后，我们再来看看连线和基本操作。
 
-上一章我们简单介绍了下 ComfyUI 的 Workflow 还有基础操作。本章介绍一下基础 Workflow 上的各个配置项。
+## 连线
 
-## Load Checkpoint
+千万不要被这些看似繁琐的连线所困扰，觉得这很难懂。甚至有种拆炸弹的感觉，不知道应该减红线，还是减黄线 😂
 
-我们从左往右开始介绍各个节点。第一个是 Load Checkpoint，上一章中我提到这是一个模型加载器，从节点的右边链接端点可以看出，Checkpoint 包含了三个部分：模型、CLIP 还有 VAE，这三部分其实就是之前介绍的 Stable Diffusion 的模型三大步骤。可以说这个节点是所有 Workflow 的起点。
+其实这些节点就像是一个个乐高一样，能自由组合的同时，还有一定的规则，我们拿图中连线点最多的 KSampler 为例：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/003.png">
+    <img src="/comfyui-foundation/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
 
-点击下方可以切换模型，这里只能切换你已经下载好的模型，关于如何下载模型可以看对应的章节。
+如果你细看这些连线，会发现这些线和连接点都有对应的颜色，并且还有一些文字说明。简单总结一下连线的规则，懂了这些规则后，连起来基本上不会有问题：
 
-说到模型，我想着重强调下，你会看到两种后缀的模型：
+- **同类相连**：只有同类才能相互连接起来，比如 KSampler 左侧的 model 端点，就只能跟另一个 MODEL 输出点相连。或者跟具象点说，只有同颜色的端点能相连，如果你将 CLIP Text Encode 右边橙色的点，连到 KSampler 的紫色点 model 上是不可能的。因为他们类型不一样。橙色点只能跟橙色点连。另外，还有一个技巧，当你点击端点并拉出一条线的时候，只有那些能连接的线会高亮出来，不能连的会变暗。
 
-* safetensors：这种模型一般用的是 numpy 格式保存，这就意味着它只保存了张量数据，没有任何代码，加载这类文件会更安全和更快。
+- **左进右出**：比如 KSampler 左边的 model、positive、negative、latent_image 都是是输入端，输出端是右边的 LATENT。你可以将其理解为一个函数，左边输入数字，右边是输出。那也就意味着你不能将一个节点右边的输出端，连到另一节点右边的输出端。
 
-* ckpt：这种文件是序列化过的，这意味着它们可能会包含一些恶意代码，加载这类模型就可能会带来安全风险。
+- **一进多出**：一个输入端只能和另一个节点的输出端相连，没法和多个输出端相连。比如上图中的 KSampler 的 positive 端点，只能和一个 CLIP Text Encode 相连，没法同时连多个。但一个输出端，能和多个输入端相连。还是上面那个例子，一个 CLIP Text Encode 可以和多个 KSampler 相连，比如可以和 KSampler A 的 positive 端连，也可以和 KSampler B 的 negative 点连，最后出两张图。
 
-我建议各位优先下载和使用 safetensors 后缀的模型文件。
+了解这些规则后，你基本上就不会不知所措了。后面我会介绍更多的案例，你会越来越熟悉这些规则。
 
-另外，你还可能看到有些模型在名字里会标注为 fp16，这是什么意思呢？
 
-这个是 half-precision floating point format，即半精度浮点格式。这种格式相比标准的 32 位浮点数，占用的存储空间更小，且运算速度更快。但它生成图片的精度，以及多样性相较完整版会稍微差一些。所以如果你想要更快的得出结果，可以考虑 fp16 版本的模型。
+## 常用操作 & 快捷键
 
-## CLIP Text Encode(Prompt)
+最后，再来介绍下 ComfyUI 的常用操作和快捷键，我罗列了 ComfyUI 的完整快捷键列表。里面比较常用的有：
 
-接着是 CLIP Text Enocde 节点，这个节点主要是输入 Prompt。一般会有两个这样的节点，一个是正向的 Prompt，一个是负向的 Prompt。
+* **点击鼠标右键**：会弹出一个菜单，你可以在里面找到需要添加的节点。
+* **双击鼠标左键**：会打开节点搜索框，你可以在里面搜索你想要的节点，然后方向键上下选择节点，然后点击回车就能添加到画布上。
+* **Ctrl + Enter**：效果等同于点击右侧面板上的 Queue Prompt 按钮。
+* **Ctrl + D**: 效果等同于点击右侧面板上的 Default Workflow 按钮。有的时候你可能需要重新搭建 workflow，我一般都会建议从 Default Workflow 开始。
+* **H**：隐藏/显示历史记录面板。这个面板会记录你的操作历史，你可以在里面找到之前的操作，然后点击回退到之前的状态。
 
-另外，还有个小技巧，你可以输入 `(keyword:weight)` 方式来控制关键词的权重，比如 `(hight building: 1.2 )` 就意味着 hight building 的权重变高，如果填写的权重数小于 1，则意味着这个词的权重会变低，生成的图与这个词更不相关。
+另外，还有一个常用操作，需要用到多个快捷键。当你需要移动多个节点时，需要：
+* **Ctrl/Shift + 点击**：选中多个节点。
+* **Shift + 拖动**：然后拖动的时候，需要按住 Shift 再拖动。
 
-## Empty Latent Image
+完整的快捷键列表如下：
 
-然后是空的潜空间图像节点。如果你需要调整最终生成的图片的大小，就需要调整 width（宽）、height（高）这两个值。而 batch_size 则是设置每次运行时生成的图片数量，比如你将这个设置成了 4，就意味着每次会生成 4 张图。
+| Keybind                   | Explanation                                                                                                        |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------|
+| Ctrl + Enter              | Queue up current graph for generation                                                                              |
+| Ctrl + Shift + Enter      | Queue up current graph as first for generation                                                                     |
+| Ctrl + Z/Ctrl + Y         | Undo/Redo                                                                                                          |
+| Ctrl + S                  | Save workflow                                                                                                      |
+| Ctrl + O                  | Load workflow                                                                                                      |
+| Ctrl + A                  | Select all nodes                                                                                                   |
+| Alt + C                   | Collapse/uncollapse selected nodes                                                                                 |
+| Ctrl + M                  | Mute/unmute selected nodes                                                                                         |
+| Ctrl + B                  | Bypass selected nodes (acts like the node was removed from the graph and the wires reconnected through)            |
+| Delete/Backspace          | Delete selected nodes                                                                                              |
+| Ctrl + Delete/Backspace   | Delete the current graph                                                                                           |
+| Space                     | Move the canvas around when held and moving the cursor                                                             |
+| Ctrl/Shift + Click        | Add clicked node to selection                                                                                      |
+| Ctrl + C/Ctrl + V         | Copy and paste selected nodes (without maintaining connections to outputs of unselected nodes)                     |
+| Ctrl + C/Ctrl + Shift + V | Copy and paste selected nodes (maintaining connections from outputs of unselected nodes to inputs of pasted nodes) |
+| Shift + Drag              | Move multiple selected nodes at the same time                                                                      |
+| Ctrl + D                  | Load default graph                                                                                                 |
+| Q                         | Toggle visibility of the queue                                                                                     |
+| H                         | Toggle visibility of history                                                                                       |
+| R                         | Refresh graph                                                                                                      |
+| Double-Click LMB          | Open node quick search palette                                                                                     |
 
-<Callout emoji="💡">
-你可能会好奇，为何有些模型图片大小设置成 512X512，生成的效果会非常诡异（比如两个人头），而有一些模型，比如 SDXL 默认大小就是 512X512 呢？主要的原因是这些模型在训练的时候，训练的图片大小不同，像 SDXL 训练用的就是更大的图片。如果拿雕刻做类比的话，这些模型就像是雕刻家，他们需要通过训练学习的方式学会雕刻大理石。而有一些雕刻家在学的时候，用的就是 512X512 的大理石，没有学过 128X128，所以雕刻小的大理石效果反而不好。
-</Callout>
+## 练习
 
-## Save Image
+简单介绍完基本的连线操作后，我们来完成一个小练习，让你能将这两章的内容融会贯通。
 
-完成图片生成后，对着图片点击右键，会看到「Save Image」的选项，点击此按钮就可以下载生成好的图片。节点里的输入框，则是设置图片名称的前缀。比如默认是 ComfyUI，那就意味着你保存的图片的文件名是 ComfyUI 开头，后面跟着一串数字。
+首先，点击右边的 Clear 按钮，将 Default Workflow 都清除。
 
-## KSampler
+然后从零完成以下目标：**将 Empty Latent Image 转为人能看的图片**。
 
-最后是 KSampler，Sampler 中文名称是采样器，如果你想详细了解采样器，可以阅读相关进阶教程，而基础教程只会告诉你如何使用。KSampler 包含以下参数：
-
-* seed：这个是随机种子，它主要用于控制潜空间的初始噪声。如果你想重复生成一模一样的图片。就需要用到这个随机种子。需要注意种子和 Prompt 都要相同，才能生成一模一样的图。举个例子，你可以使用 Default Workflow 的默认 Prompt（beautiful scenery nature glass bottle landscape, purple galaxy bottle），生成一张图片。接着将这个随机种子 copy 下来比如 156680208700286，然后将 Prompt 里的 purple 改成 green，生成一张新的图片，再将之前复制的种子 156680208700286 覆盖黏贴到新种子上，然后将 Prompt 改回原来的 purple，重新生成图片。你会发现此时生成的图片与第一次生成的图片是一模一样的。
-
-* control_after_generate：每次生成完图片后，上面的 seed 数字都会变化，而这个配置项，则是设置这个变化规则：randomize（随机）、increment（递增 1）、decrement（递减 1）、fixed（固定）。
-
-* step：采样的步数。一般步数越大，效果越好，但也跟采样器有关。
-
-* cfg：全称 Classifier Free Guidance，我在 SD 基础一章中有介绍过，这个值设置一般设置为 6～8 之间会比较好。
-
-* sampler_name：采样器名称。你可以通过这个来设置采样器算法。如果你对它感兴趣，可以阅读相关的进阶教程。
-
-* scheduler：调度器主要是控制每个步骤中去噪的过程。你可以通过它选择不同的调度算法，有些算法是选择每一步减去相同数量的噪声，有些则是每一步都尽可能去掉多的噪声。
-
-* denoise：表示要增加多少初始噪声，1 表示全部。一般文生图你都可以默认将其设置成 1。
-
-## 最佳实践
-
-在各个配置项中，除了模型会影响出图的结果外，其次就是 KSampler 的几个配置项，进阶教程会分享各个采样器的特点，本章节，就只分享下最佳实践：
-
-{<table>
-  <thead>
-    <tr>
-      <th>需求</th>
-      <th>checkpoint</th>
-      <th>sampler_name</th>
-      <th>scheduler</th>
-      <th width={80}>step</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>非常在意速度</td>
-      <td>SDXL Turbo fp16</td>
-      <td>dpmpp_2m（有些软件会叫它 dpm++2M）</td>
-      <td>normal</td>
-      <td>20-30</td>
-    </tr>
-    <tr>
-      <td rowSpan={2} >非常在意图像质量，同时在意生成图片内容多样行</td>
-      <td rowSpan={2}>SDXL refiner</td>
-      <td>dpmpp_2m（有些软件会叫它 dpm++2M）</td>
-      <td>karras</td>
-      <td>20-30</td>
-    </tr>
-    <tr>
-      <td>UniPC（相较于 dpmpp_2m 会更快一些）</td>
-      <td>karras</td>
-      <td>20-30</td>
-    </tr>
-    <tr>
-      <td rowSpan={2} >在意图像质量，不太在意多样性，但想提高生成速度</td>
-      <td rowSpan={2}>SDXL refiner fp16</td>
-      <td>dpmpp_sde</td>
-      <td>karras</td>
-      <td>10-15</td>
-    </tr>
-    <tr>      
-      <td>ddim</td>
-      <td>normal</td>
-      <td>10-15</td>
-    </tr>
-  </tbody>
-</table>}
-
-<Callout type="info">
-补充说明下，KSampler 的配置跟模型（checkpoint）比较强相关，比如 SDXL-Turbo 因为对图片生成过程进行了压缩，其最佳 cfg 反而不能太大，实验下来，可能 1 或 4 最好。另外，你在下载别人的模型的时候，作者一般会在模型介绍中写明最佳的参数配置。
-</Callout>
-
-我目前比较常用的是 SDXL Turbo，另外使用什么模型还取决于你的做图需求，各位需要根据场景自行斟酌，并且多尝试。
+<Tabs items={['提示', '答案']}>
+  <Tabs.Tab>
+    如果你找不到你想要的节点时，点击右键 → Add Node → loader 里看看。应该能找到。
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <PhotoProvider>
+      <PhotoView src="/comfyui-foundation/004.png">
+        <img src="/comfyui-foundation/004.png" alt="" />
+      </PhotoView>
+    </PhotoProvider>
+    <Steps>
+      ### 新增 Empty Latent Image 节点
+      要将 Empty Latent Image 转成人能看的图片，首先右键新增一个 Empty Latent Image 节点。回忆下上一章的内容，要将一个 Latent Image 转成一个肉眼可见的图。只需要将这个图传给 Decoder 就行了，Decoder 会将其转化为人能看到的图。右键 → Add Node → latent → VAE Decode，然后将 Empty Latent Image 与其相连。
+      ### 新增 Image 节点
+      然后我们会看到 VAE Decode 右边输出端是 IMAGE，我们点击右键 → Add Node → image → Save Image（或者 Preview Image），添加完后，将 VAE Decode 连在上面。
+      ### 新增 VAE 节点
+      最后，你 VAE Decode 还有一个输入端没有连，练习中的 Hint 提到在 loader 找找，你就能找到一个叫 VAE loader 的东西，添加这个 loader 然后和 VAE Decode 相连，就完成了。
+    </Steps>
+  </Tabs.Tab>
+</Tabs>

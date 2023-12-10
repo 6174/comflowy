@@ -1,7 +1,8 @@
 {
-  "stable-diffusion-foundation": "Stable Diffusion 基础",
-  "comfyui-foundation": "ComfyUI 基础",
-  "basic-nodes": "基础节点",
-  "lora": "LoRA",
+  "stable-diffusion-foundation": "1. Stable Diffusion 基础",
+  "comfyui-foundation": "2. ComfyUI 基础 ➀",
+  "basic-nodes": "3. ComfyUI 基础 ➁",
+  "lora": "4. LoRA",
+  "embeddings": "5. Embeddings",
   "basic-optional": "基础选修"
 }

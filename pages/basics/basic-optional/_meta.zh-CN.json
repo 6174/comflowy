@@ -1,3 +1,4 @@
 {
-  "embedding-prompt": "Embedding prompt"
+  "model-recommendation": "模型推荐",
+  "LoRA-recommendation": "LoRA 推荐"
 }

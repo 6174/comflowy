@@ -1,0 +1,32 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+
+# 涂鸦生图
+
+🚧 截图待补充
+
+除了使用静态的图片外，还有一种方式是边画图，边生成图片。原理上其实是一样的，只是节点稍微有点不一样：
+
+* 首先我们将 Load Image 节点替换成 Painter Node，你会看到 Painter Node 就是一个简单的画板。
+
+* 另外，为了实现边画边生成，还需要将 Checkpoint 的模型换成 SDXL Turbo，并且将 KSampler 上的 step 改成 1，cfg 改成 1。
+
+配置好的 workflow 如下所示：
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-img2img/002.png">
+    <img src="/comfyui-img2img/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+最后，还需要设置下 Queue 以实现自动生图：
+
+<Steps>
+### 步骤一
+勾选右侧面板上的 Extra options：
+
+### 步骤二
+然后再将新出现的 Auto Queue 勾上：
+### 步骤三
+点击 Queue Prompt 此时就会自动运行了，暂停则只需要重新点一下 Queue Prompt 即可。
+</Steps>

@@ -5,11 +5,19 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 🚧 补充 workflow 下载
 
-除了通过加载不同的 Checkpoint 模型来影响生成图片的效果外，还有一种影响图片效果的方式是 LoRA。
+了解完 ComfyUI 的所有基础节点和操作后，你应该就能使用 ComfyUI 生成图片了。
 
-关于 LoRA 的原理可以查看进阶教程的内容，基础教程只会教大家如何使用。
+但是，生成的图片效果可能并不是你想要的，比如你想要生成的图片是动漫风格的，但生成的图片却是真人风格的，这时你就需要调整图片的风格了。
 
-## 调整图片风格
+要想调整图片风格，有多种方法：
+
+* **方法一**：通过加载不同的 Checkpoint 模型来影响生成图片的效果。这个是最简单的做法，你可以查看基础选修里的 [模型推荐](./basic-optional/model-recommendation) 了解行业常用模型。
+* **方法二**：通过 LoRA 来影响生成图片的效果。这个方法稍微复杂一些，但是相较于方法一，可用的模型会更多，而且文件也小非常多。
+* **方法三**：通过调整 Prompt Embeding 来影响生成图片的效果。这个方法最复杂，但是也是最灵活的方法，你可以通过调整 Prompt 来达到你想要的效果。
+
+本章会详细介绍方法二，即如何使用 LoRA 来调整图片风格。下一章则会介绍方法三。
+
+## 原理介绍
 
 介绍如何使用之前，按照管理，我们聊聊 LoRA 的原理。在 Stable Diffusion 基础篇，我聊到整个图片生成的过程就像是降噪，但在当时还有一个东西没有展开介绍——“Noise Predictor”：
 <br/>
@@ -41,35 +49,42 @@ LoRA 是在不破坏任何一层函数，而是将参数注入到原有的每一
 用类比来理解，可以将 LoRA 视为类似相机「滤镜」。下方两张图都是用相同的模型、Prompt 和 Seed 生成。左侧这张图是没有 LoRA 的效果，而右边则是加了笔绘风 LoRA 的效果，加了笔绘风 LoRA 的图看起来会更像漫画线稿一些，而且看起是不是有点像是给左边的图加了滤镜？
 <br/>
 <PhotoProvider>
-  <PhotoView src="/comfyui-lora/003.png">
-      <img src="/comfyui-lora/003.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+  <PhotoView src="/comfyui-lora/003.jpeg">
+      <img src="/comfyui-lora/003.jpeg" alt="" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 这就是加 LoRA 的作用，如果你觉得普通的 Stable Diffusion 模型不够好看，或者风格不是你喜欢的，不妨试试添加一些 LoRA。
 
+## LoRA workflow
+
 OK，简单介绍完 LoRA 的原理后，我们再来看看在 ComfyUI 上该如何使用 LoRA，其实看完前面的原理介绍你应该就能推测出如何加 LoRA 节点了：
 
 <Steps>
-### 添加 LoRA 节点
-只需要右键 → All node → loaders → Load LoRA 即可添加 LoRA 节点。
-### 连接节点
-节点左侧与 Checkpoint 模型相连，右侧与 CLIP 和 KSampler 相连。
+  ### 添加 LoRA 节点
+  只需要右键 → All node → loaders → Load LoRA 即可添加 LoRA 节点。
+  
+  ### 连接节点
+  节点左侧与 Checkpoint 模型相连，右侧与 CLIP 和 KSampler 相连。
+  
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-lora/004.png">
+        <img src="/comfyui-lora/004.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+  另外，如果你细看我的 workflow，你会发现我并没有直接使用 checkpoint 的 VAE 而是自己加了额外的 VAE。这是因为，整个 Denoise 过程都是在 Latent Space 进行的，所以有一些 LoRA 在某些 VAE 算法下效果会更好。使用何种 VAE，以及 Sampler 算法，LoRA 的共享者一般都会公布出来，比如我使用的这个 Anime Lineart LoRA 其推荐的配置是这样的：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-lora/005.png">
+        <img src="/comfyui-lora/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+
 </Steps>
 
-<PhotoProvider>
-  <PhotoView src="/comfyui-lora/004.png">
-      <img src="/comfyui-lora/004.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>
-另外，如果你细看我的 workflow，你会发现我并没有直接使用 checkpoint 的 VAE 而是自己加了额外的 VAE。这是因为，整个 Denoise 过程都是在 Latent Space 进行的，所以有一些 LoRA 在某些 VAE 算法下效果会更好。使用何种 VAE，以及 Sampler 算法，LoRA 的共享者一般都会公布出来，比如我使用的这个 Anime Lineart LoRA 其推荐的配置是这样的：
-<br/>
-<PhotoProvider>
-  <PhotoView src="/comfyui-lora/005.png">
-      <img src="/comfyui-lora/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>
+最后，你如果对 LoRA 感兴趣，可以查阅基础选修中的 [LoRA 推荐](./basic-optional/LoRA-recommendation) 一章了解更多 LoRA 模型。
 
-## 加快生成速度
+## LCM-LoRA workflow
 
 LoRA 除了能影响出图的风格外，最新的 LCM-LoRA 还可以提升出图的效率，虽然现在 SDXL Turbo 的生成速度也挺快的，但从各种对比测试来看，LCM-LoRA 相较于 Turbo 有以下优势：
 
@@ -89,19 +104,22 @@ LoRA 除了能影响出图的风格外，最新的 LCM-LoRA 还可以提升出�
 再说下如何在 ComfyUI 上配置 LCM-LoRA，连接方法跟上面的一样，只是在节点的配置上需要进行一些调整：
 
 <Steps>
-### 设置 Load LoRA
-需要选择跟你的 checkpoint 一致的 LoRA，比如你的 checkpoint 是 sdxl，就要使用 sdxl LCM-LoRA。
-### 设置 KSample
-* step = 5（一般大于 4 都可以）
-* cfg = 1.8（一般大于 1.5 就行）
-* sampler_name = LCM
-* scheduler = sgm_uniform
-### 设置 Empty Latent Image
-长宽比设置为 1024 * 1024，大于 1024 也可以。
+  ### 设置 Load LoRA
+  需要选择跟你的 checkpoint 一致的 LoRA，比如你的 checkpoint 是 sdxl，就要使用 sdxl LCM-LoRA。
+  
+  ### 设置 KSample
+  * step = 5（一般大于 4 都可以）
+  * cfg = 1.8（一般大于 1.5 就行）
+  * sampler_name = LCM
+  * scheduler = sgm_uniform
+  
+  ### 设置 Empty Latent Image
+  长宽比设置为 1024 * 1024，大于 1024 也可以。
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-lora/007.png">
+        <img src="/comfyui-lora/007.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
 </Steps>
 
-<PhotoProvider>
-  <PhotoView src="/comfyui-lora/007.png">
-      <img src="/comfyui-lora/007.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>

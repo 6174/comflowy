@@ -5,9 +5,17 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 🚧 补充 workflow 下载
 
-除了文生图外，图生图是另一个 Stable Diffusion 比较常用的工作流，它可以根据输入的 prompt 和输入的图像生成对应的图像。
+完成基础篇的学习后，你可能对生成的图片不满意，比如觉得：
 
-## 使用已有图片生图
+* 生成的图片分辨率不够。
+* 觉得生成的图片部分内容不满意，想要对其进行修改。
+* 亦或者觉得想要加强对生成过程的控制，比如想控制图中人物的姿势等。
+
+中级篇将会介绍更多方法，帮助你解决以上问题。不过在讲解以上问题的解决方案之前，我想先介绍一下 Stable Diffusion 的另一个关键工作流：图生图。
+
+模型可以根据输入的 prompt 和输入的图像生成新的图像。本章会介绍两个常用的图生图工作流：Simple img2img workflow，以及 unCLIP model workflow。
+
+## Simple img2img workflow
 
 首先回忆下 Stable Diffusion 的原理，文生图的原理是将随机噪声图降噪成一张新的图。而图生图的原理则是先给输入的图片添加噪音，再用相同的方法将这个噪音图降噪成新的图片。
 
@@ -33,43 +41,19 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
       ### 设置 KSampler
       另外，还有一个小细节需要注意，KSampler 里的 denoise 设置项可以设置得小一点，这样能让生成的图更像输入图，越小就越像。
       拿雕刻来类比会更好理解。雕刻师（模型）对旧雕像（输入的图）进行雕刻之前，需要先糊一些石膏（噪声）在上面，然后再根据你的指令重新雕刻新雕像（输出的图）。而这个 denoise 选项则表示需要糊多少石膏，如果糊得少，不就越像旧雕像（输入的图片）了吗？
+      <Callout type="info">
+        注意：我用了 Dreamshaper 模型生成图片，所以你生成的图片可能跟我不一样。
+      </Callout>
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-img2img/001.png">
+          <img src="/comfyui-img2img/001.png" alt="" />
+        </PhotoView>
+      </PhotoProvider>
     </Steps>
-    <PhotoProvider>
-      <PhotoView src="/comfyui-img2img/001.png">
-        <img src="/comfyui-img2img/001.png" alt="" />
-      </PhotoView>
-    </PhotoProvider>
-
-    <Callout type="info">
-      注意：我用了 Dreamshaper 模型生成图片，所以你生成的图片可能跟我不一样。
-    </Callout>
   </Tabs.Tab>
 </Tabs>
 
-## 边画边生图
+## unCLIP model workflow
 
-除了使用静态的图片外，还有一种方式是边画图，边生成图片。原理上其实是一样的，只是节点稍微有点不一样：
 
-* 首先我们将 Load Image 节点替换成 Painter Node，你会看到 Painter Node 就是一个简单的画板。
-
-* 另外，为了实现边画边生成，还需要将 Checkpoint 的模型换成 SDXL Turbo，并且将 KSampler 上的 step 改成 1，cfg 改成 1。
-
-配置好的 workflow 如下所示：
-<br />
-<PhotoProvider>
-  <PhotoView src="/comfyui-img2img/002.png">
-    <img src="/comfyui-img2img/002.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
-
-最后，还需要设置下 Queue 以实现自动生图：
-
-<Steps>
-### 步骤一
-勾选右侧面板上的 Extra options：
-
-### 步骤二
-然后再将新出现的 Auto Queue 勾上：
-### 步骤三
-点击 Queue Prompt 此时就会自动运行了，暂停则只需要重新点一下 Queue Prompt 即可。
-</Steps>
