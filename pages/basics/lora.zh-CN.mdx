@@ -17,6 +17,14 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 本章会详细介绍方法二，即如何使用 LoRA 来调整图片风格。下一章则会介绍方法三。
 
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Anime Lineart LoRA](https://civitai.com/models/16014/anime-lineart-manga-like-style)：将其放到 ComfyUI 里的 models/loras 文件夹内。
+  * [AnythingElse V4](https://civitai.com/models/4855/anythingelse-v4)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+  * [OrangeMixs](https://huggingface.co/WarriorMama777/OrangeMixs)：将其放到 ComfyUI 里的 models/vae 文件夹内。
+  * [LCM-LoRA](https://huggingface.co/latent-consistency/lcm-lora-sdxl/tree/main)：将其放到 ComfyUI 里的 models/loras 文件夹内。
+</Callout>
+
 ## 原理介绍
 
 介绍如何使用之前，按照管理，我们聊聊 LoRA 的原理。在 Stable Diffusion 基础篇，我聊到整个图片生成的过程就像是降噪，但在当时还有一个东西没有展开介绍——“Noise Predictor”：
@@ -105,7 +113,7 @@ LoRA 除了能影响出图的风格外，最新的 LCM-LoRA 还可以提升出�
 
 <Steps>
   ### 设置 Load LoRA
-  需要选择跟你的 checkpoint 一致的 LoRA，比如你的 checkpoint 是 sdxl，就要使用 sdxl LCM-LoRA。
+  继续使用 LoRA workflow，首先将 Load LoRA 里的模型，切换成 LCM-LoRA。需要注意，这里需要选择跟你的 checkpoint 一致的 LoRA，比如我这用的 checkpoint 是 sdxl，就要使用 sdxl LCM-LoRA。
   
   ### 设置 KSample
   * step = 5（一般大于 4 都可以）

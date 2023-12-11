@@ -5,13 +5,17 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 上一章，我们介绍了 Stable Diffusion 的基本原理，以及如何使用它生成图片。这一章，我们来介绍 ComfyUI 的基本操作，以及如何使用 ComfyUI 生成图片。
 
+<Callout type="warning" emoji="⚠️">
+  学习本章前，请确保你已经完成 ComfyUI 的安装，并且下载好了 Stable Diffusion v1.5 或 Stable Diffusion XL 模型。
+</Callout>
+
 ## 默认 Workflow
 
 安装并打开 ComfyUI 后，你会看到一个这样的界面（图片可以点击放大 👇）：
 
 <Callout type="info">
   如果你打开 ComfyUI 后没有看到这个界面，可以点击右侧面板里的 Load Default 按钮。
- </Callout>
+</Callout>
 
 <br/>
 <PhotoProvider>
@@ -63,11 +67,11 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 ### Load Checkpoint
 
-第一个是 Load Checkpoint，上一章中我提到这是一个模型加载器，从节点的右边输出端点可以看出，Checkpoint 包含了三个部分：模型、CLIP 还有 VAE，这三部分其实就是之前介绍的 Stable Diffusion 的模型三大步骤。可以说这个节点是所有 Workflow 的起点。
+第一个是 Load Checkpoint，从节点的右边输出端点可以看出，Checkpoint 包含了三个部分：模型、CLIP 还有 VAE，这三部分其实就是之前介绍的 Stable Diffusion 的模型三大步骤。可以说这个节点是所有 Workflow 的起点。
 
-点击节点里的选项按钮可以切换模型，这里只能切换你已经下载好的模型，关于如何下载模型可以看对应的章节。
+点击节点里的选项按钮可以切换模型，这里只能切换你已经下载好的模型，关于如何下载模型可以看[对应的章节](../preparation-for-study/model.mdx)。
 
-说到模型，我想着重强调下，一般你会看到两种后缀的模型：
+说到模型，我想再强调下，一般你会看到两种后缀的模型：
 
 * safetensors：这种模型一般用的是 numpy 格式保存，这就意味着它只保存了张量数据，没有任何代码，加载这类文件会更安全和更快。
 
@@ -81,7 +85,13 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 ### CLIP Text Encode(Prompt)
 
-接着是 CLIP Text Enocde 节点，这个节点主要是输入 Prompt。一般会有两个这样的节点，一个是正向的 Prompt，一个是负向的 Prompt。
+接着是 CLIP Text Enocde 节点，这个节点主要是输入 Prompt。一般会有两个这样的节点，一个是正向的 Prompt，列你希望在图片中看到的内容；另一个是负向的 Prompt，列你不希望在图片中出现的内容。
+
+一般说来，写 Stable Diffusion 的 prompt 有几个原则：
+
+1. 使用逗号分隔。Stable Diffusion 并不懂语法，所以你需要将画面中的关键词罗列出来，并用逗号分隔。
+2. 越重要的词放在靠前的位置。比如你想要生成一张美丽的风景图，那么你可以将 beautiful scenery nature 放在最前面。
+3. 将提示保持在 75 个 token（或约 60 个字）以内。
 
 另外，还有个小技巧，你可以输入 `(keyword:weight)` 方式来控制关键词的权重，比如 `(hight building: 1.2 )` 就意味着 hight building 的权重变高，如果填写的权重数小于 1，则意味着这个词的权重会变低，生成的图与这个词更不相关。
 
@@ -89,8 +99,30 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 然后是空的潜空间图像节点。如果你需要调整最终生成的图片的大小，就需要调整 width（宽）、height（高）这两个值。而 batch_size 则是设置每次运行时生成的图片数量，比如你将这个设置成了 4，就意味着每次会生成 4 张图。
 
+如果你使用的是 SD v1.5 模型的话，最优的大小是 512x512，部分基于 SD v1.5 微调的版本也支持 768x768。所以其常见宽高比有：
+
+* 1:1（正方形）：512x512、768x768
+* 3:2（横向）：768x512
+* 2:3（纵向）：512x768
+* 4:3（横向）：768x576
+* 3:4（纵向）：576x768
+* 16:9（宽屏）：912x512
+* 9:16 (竖屏): 512x912
+
+如果你使用的是 SDXL 模型的话，最优的大小是 1024x1024，其常见宽高比有：
+
+* 1:1（正方形）：1024x1024、768x768
+* 3:2（横向）：1152x768
+* 2:3（纵向）：768x1152
+* 4:3（横向）：1152x864
+* 3:4（纵向）：864x1152
+* 16:9（宽屏）：1360x768
+* 9:16（竖屏）：768x1360
+
+最后，需要注意宽度和高度必须能被 8 整除。
+
 <Callout emoji="💡">
-你可能会好奇，为何有些模型图片大小设置成 512X512，生成的效果会非常诡异（比如两个人头），而有一些模型，比如 SDXL 默认大小就是 512X512 呢？主要的原因是这些模型在训练的时候，训练的图片大小不同，像 SDXL 训练用的就是更大的图片。如果拿雕刻做类比的话，这些模型就像是雕刻家，他们需要通过训练学习的方式学会雕刻大理石。而有一些雕刻家在学的时候，用的就是 512X512 的大理石，没有学过 128X128，所以雕刻小的大理石效果反而不好。
+你可能会好奇，为何有些模型图片大小设置成 512X512，生成的效果会非常诡异（比如两个人头），而有一些模型，比如 SDXL 默认大小就是 1024x1024 呢？主要的原因是这些模型在训练的时候，训练的图片大小不同，像 SDXL 训练用的就是更大的图片。如果拿雕刻做类比的话，这些模型就像是雕刻家，他们需要通过训练学习的方式学会雕刻大理石。而有一些雕刻家在学的时候，用的就是 1024x1024 的大理石，没有学过 2048x2048，所以雕刻大的大理石效果反而不好。
 </Callout>
 
 ### Save Image
@@ -105,7 +137,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 * control_after_generate：每次生成完图片后，上面的 seed 数字都会变化，而这个配置项，则是设置这个变化规则：randomize（随机）、increment（递增 1）、decrement（递减 1）、fixed（固定）。
 
-* step：采样的步数。一般步数越大，效果越好，但也跟采样器有关。
+* step：采样的步数。一般步数越大，效果越好，但也跟使用的模型和采样器有关。
 
 * cfg：全称 Classifier Free Guidance，我在 SD 基础一章中有介绍过，这个值设置一般设置为 6～8 之间会比较好。
 
@@ -165,7 +197,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 </table>}
 
 <Callout type="info">
-补充说明下，KSampler 的配置跟模型（checkpoint）比较强相关，比如 SDXL-Turbo 因为对图片生成过程进行了压缩，其最佳 cfg 反而不能太大，实验下来，可能 1 或 4 最好。另外，你在下载别人的模型的时候，作者一般会在模型介绍中写明最佳的参数配置。
+补充说明下，KSampler 的配置跟模型（checkpoint）比较强相关，比如 SDXL-Turbo 因为对图片生成过程进行了压缩，其最佳 cfg 反而不能太大，实验下来，可能 1 或 4 最好。另外，你在下载别人的模型的时候，作者一般会在模型介绍中写明最佳的参数配置。你可以按照这个配置去设置参数。
 </Callout>
 
 我目前比较常用的是 SDXL Turbo，另外使用什么模型还取决于你的做图需求，各位需要根据场景自行斟酌，并且多尝试。
