@@ -1,51 +1,157 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+
 # 安装 ComfyUI
 
-ComfyUI 的源码地址在 [https://github.com/comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)，安装过程在 Readme 中其实非常详细，我们这里会简要描述完整过程，更关键的是后续可能遇到的问题整理
+ComfyUI 的源码地址在 [https://github.com/comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)，安装过程在 Readme 中其实非常详细，你也可以按照 Readme 文档进行操作。
+<Callout type="info">
+  为了后续更好的使用，这里仅介绍手动源码安装，不介绍 Jupyter 或者 Zip 安装模式。
+</Callout>
 
-> 为了后续更好的使用，这里仅介绍手动源码安装，不介绍 Jupyter 或者 Zip 安装模式
+## 第一步，安装 pytorch
+首先你需要打开系统 Terminal，一般可以通过系统搜索即可找到。
 
-## 安装过程
-- Step0: 备齐各种安装前需要的依赖
-  - Python >3.11
-  - Git
-- Step1: 安装好最新版本的 `pytorch`
-  - 非 Mac 用户：
-  ```shell
+Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能跟我的截图不一样，只要名字对就可以了：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/001.png">
+      <img src="/install-comfyui-and-model/001.png" alt="" width="60%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+然后打开 Terminal，不管是什么系统，你应该都会看到类似的界面，可能 UI 颜色不一样，但一定是一串字符后有一个闪烁的光标：
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/002.png">
+      <img src="/install-comfyui-and-model/002.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+此时不同的系统需要输入不同的命令。
+
+**Windows 用户：**
+Windows 的安装相对简单，只需要一步，复制以下代码到 Terminal，然后敲一下回车即可。
+```shell
   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6
-  ```
-  - Mac 用户：需要根据苹果官网的的 pytorch 安装手册 https://developer.apple.com/metal/pytorch/
-  ```shell
+```
+
+**Mac 用户：**
+Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你电脑的芯片不同，输入不同的代码。
+```shell
   # M 芯片
   curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
-  sh Miniconda3-latest-MacOSX-arm64.sh
-  pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
-
   # x86
   curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+```
+运行完后，继续输入以下代码，安装 Miniconda3：
+```shell
+  # M 芯片
+  sh Miniconda3-latest-MacOSX-arm64.sh
+  # x86
   sh Miniconda3-latest-MacOSX-x86_64.sh
+```
+在安装 Miniconda 3 的时候，你会看到「Please, press ENTER to continue」，此时你需要按下回车键。然后会进入阅读协议环节，此时你需要一直按回车，直到显示「Do you accept the license terms? 」，然后输入 yes，并按下回车。最后会让你确认安装的目录，基本可以不用改，按下回车即可。如果显示「Thank you for installing Miniconda3!」就意味着你完成了安装。
+
+最后不管是 M 芯片还是 x86 都复制以下代码到 Terminal：
+```shell
   pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
-  ```
-- Step2: 代码 Clone 到本地 
-  ```shell
+```
+这一步因为需要下载安装一些东西，所以可能会比较久，请耐心等待。当显示「Successfully installed XXXXX」，就意味着你完成了所有的安装。
+
+## 第二步，下载  ComfyUI
+此步需要你将 ComfyUI 代码拉到本地。如果你会 Git 请在 Terminal 运行以下代码，即可完成此步骤：
+```shell
   git clone https://github.com/comfyanonymous/ComfyUI
-  ```
-- Step3: 安装依赖 
+```
+
+如果你不会用 Git，我推荐你使用 [Github 的客户端](https://desktop.github.com/) 拉代码，这是更简单的方式。
+
+1. 下载并安装好 Github Desktop 后，打开该应用。
+2. 然后打开 ComfyUI 的 [Github 页面](https://github.com/comfyanonymous/ComfyUI)，点击右上角的绿色按钮（下图 ①），并点击菜单里的「Open with GitHub Desktop」（下图 ②），此时浏览器会弹出你是否要打开 GitHub Desktop，点击「是」。
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/003.png">
+        <img src="/install-comfyui-and-model/003.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+3. 接着 GitHub Desktop 会让你选择一个保存位置，你可以按需调整，然后点击确定。Github Desktop 会同步云端的代码到本地，如果你看到下方这样的界面，这就意味着你已经完成了代码同步。
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/004.png">
+        <img src="/install-comfyui-and-model/004.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+
+## 第三步，安装依赖
+下载好代码后，需要安装依赖。有两种方法安装依赖。
+
+### VS Code 方法（推荐）
+
+如果你安装过 [Visual Studio Code](https://code.visualstudio.com/)，那你只需要：
+
+1. 在 Github Desktop 上点击「Open in Visual Studio Code」按钮。此时 VS Code 会打开。
+2. 接着你需要点击 VS Code 右上角的第二个 icon，然后你会在软件底部看到一个类似你之前在 Terminal 里看到的命令输入界面。
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/005.png">
+        <img src="/install-comfyui-and-model/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+3. 最后一步你需要在底部 Terminal 输入以下代码，并点击回车：
   ```shell
   # 如果遇到网络问题看后面的 Q&A
   pip install -r requirements.txt
   ```
-- Step4: 启动服务
+
+### Terminal 方法
+
+如果你没有安装 VS Code 也不想安装，那你可以实用 Terminal 安装这些依赖。你只需要按照以下步骤进行：
+
+1. 在 Github Desktop 上点击「Show in Finder」按钮，如果是 Win 则是「Show in Explorer」按钮。
+2. 此时 Finder 会打开 ComfyUI 的文件夹，你需要在空白处点击右键，然后点击 Get Info（或者是类似「文件夹信息」之类的按钮）。然后你会在新的窗口看到此文件夹的位置信息，类似下图所示。Win 的用户可以直接在文件夹的导航处看到这个位置信息。框选并复制这串个信息。你复制的信息应该是一些斜杠加字符，比如我的是这样的：/Users/jimmywang/Documents/GitHub
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/006.png">
+        <img src="/install-comfyui-and-model/006.png" alt="" width="40%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+3. 打开 Terminal 输入 cd，然后空格，接着黏贴上一步复制好的代码。然后需要注意，此时你还需要在最后补上 ComfyUI 然后按下回车，如果顺利的话，会是这样：
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/007.png">
+        <img src="/install-comfyui-and-model/007.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+4. 最后一步你需要在那里输入以下代码，并点击回车：
   ```shell
-  # 记得要 cd 进入 comfyui 目录，确定找到 main.py 入口文件再执行
+  # 如果遇到网络问题看后面的 Q&A
+  pip install -r requirements.txt
+  ```
+
+不管使用哪种方法，你应该都会在最后看到「Successfully installed XXXXX」这就意味着你完成了安装。
+
+## 第四步，启动服务
+
+不管你在上一步是用 VS Code 运行，还是在 Terminal 里运行，你都可以继续输入以下代码：
+
+```shell
   python main.py
-  ```
+```
+<Callout type="info">
+  这一步，如果你想让 ComfyUI 运行得更快，可以输入以下代码：
 
-- Step5: 如果一切正常那么久可以进入 Web 服务了
   ```shell
-  打开 http://127.0.0.1:8188/ 
+    python main.py --force-fp16
   ```
+</Callout>
 
-- Step6: 恭喜你也就完成 80% 了，但现在还不能跑生图服务，因为最关键的东西 `模型` 我们还没有准备好，你可以开始点击到模型下载页面继续了
+当你看到「To see the GUI go to: http://127.0.0.1:8188」，
+就意味着你已经完成了 ComfyUI 的安装，并成功运行。此时你只需要在浏览器里复制黏贴下方地址即可：
+
+```shell
+  打开 http://127.0.0.1:8188/ 
+```
+你应该能看到以下界面。恭喜你，ComfyUI 已经安装好了。但此时还没法运行 Stable DIffusion 生图。你还需要下载关键的模型，在下一章我会教大家如何下载并安装所需的模型。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/008.png">
+      <img src="/install-comfyui-and-model/008.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
 
 ## Q&A
 

@@ -1,59 +1,107 @@
-# 模型下载配置
-> 跳到模型下载部分可直接下载，其他部分都是在讲 WHY
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
-在下载模型前，我们得先简单介绍一下 Stable Diffusion（后面也会有更完整的介绍讲解），如果这里没有理解清楚，那后面可能会有很多问题。
+# 下载 & 导入模型
 
-## Stable Diffusion 的繁荣与混乱
-
-文生图这个魔法从去年到今年整个开始大爆发，我们耳熟能详的 MidJourney, Dalle-3, Stable Diffusion 这些服务在这个新兴的行业里边都扮演着重要的角色
-
-Stable Diffusion 的特殊在于其开源性，因为其开源特性，它就像是一颗大树的根，社区围绕着这个根基在爆发生长，最近一年我们真实感受到了百花齐放的繁荣以至到混乱的程度。Lora、Dreambooth、CivitAI、SDWebUI、
-ComfyUI、SD.Next、VAE、Latent Space、Prompt、Clip、ControlNet、Diffusers 这些词汇太多根本没法消化，也没有串联的逻辑。
-
-我能理解大家的混乱，ComfyUI 复杂的地方也在这里，所以这也是为什么我想把这里着重强调，而且也想和大家一起把这些混乱的内容梳理清楚，能够简单的理解。大家也不用先着急全部理解这些概念，我们得一步一步的来消化。
+安装完 ComfyUI 后，你需要下载对应的模型，并将对应的模型导入到对应的文件夹内。在讲解如何下载模型之前，我们先来简单了解一下 Stable Diffusion 的不同版本之间的差别，你可以根据你自己的需求下载一个合适的版本。
 
 ## 不同 Stable Diffusion 的差别
 
-最关键的是还是从根开始走，Stable Diffusion 发展很快，在短时间就出了多个版本，而且多个版本的差异也非常大，围绕不同版本的根生成了不同的树，但这些树并不是兼容的
-所以我们一定要明白不同版本的区别，不然就会出现各种离奇且折磨人的报错：-）
+<Callout type="info">
+  在后续的教程中，我会介绍更多模型相关的介绍。
+</Callout>
 
-1. <b>Stable Diffusion v1.5</b>: 这是 Stable Diffusion 的的早期版本，目前市场上的很多 Lora 模型以及 ContrlNet 模型都是基于它来构建的，所以在开始使用 Comfy UI 的时候为了不踩坑，建议围绕 1.5 版本这个跟进行学习和使用
-    - [Stable Diffusion v1.x press release](https://stability.ai/blog/stable-diffusion-public-release)
-    - 1.x 版本的文本编码模型 CLIP 使用的是 OpenAI 的模型（CLIP 后续会介绍，这是一个很关键的概念）
-2. <b>Stable Diffusion 2.0</b>: 这是 Stable Diffusion 的一个重大更新，相比于 v1.5 版本，它在图像生成质量和速度上都有所提升。
-    - [Stable Diffusion v2.1 press release](https://link.zhihu.com/?target=https%3A//stability.ai/blog/stablediffusion2-1-release7-dec-2022)
-    - [Stable Diffusion v2 press release](https://stability.ai/blog/stable-diffusion-v2-release)
-    - 2.0 版本采用了新的文本编码器 OpenCLIP，可以更好地理解文本提示，从而生成更高质量的图像。
-    - 此外，2.0 版本还支持更高的图像分辨率，可以生成默认分辨率为 512x512 像素和 768x768 像素的图像。
-3. <b>Stable Diffusion XL</b>: 这是 Stable Diffusion 的最新版本，它在 2.0 版本的基础上进行了进一步的优化和改进。
-    - [Stable Diffusion xl 0.9 press release](https://stability.ai/news/sdxl-09-stable-diffusion)
-    - XL 版本的主要特点是其更大的模型大小，从 0.98B 扩大到 6.6B 参数，这使得它能够生成更高质量的图像。
-    - XL 版本还引入了新的功能，如更有艺术感的图像，更真实的图像，以及更清晰可读的字体等
-    - XL 的工作流程和以前的版本有很大的差异，这个我们后续会介绍
+### Stable Diffusion v1.5
+- 这是 Stable Diffusion 的的早期版本，目前市场上的很多 Lora 模型以及 ContrlNet 模型都是基于它来构建的，所以在开始使用 ComfyUI 的时候为了少踩坑，建议围绕 1.5 版本进行学习。
+- 模型官方介绍：[Stable Diffusion v1.x press release](https://stability.ai/blog/stable-diffusion-public-release)
+
+### Stable Diffusion v2.0
+- 这是 Stable Diffusion 的一个重大更新，相比于 v1.5 版本，它在图像生成质量和速度上都有所提升。
+- 2.0 版本采用了新的文本编码器 OpenCLIP，可以更好地理解文本提示，从而生成更高质量的图像。此外，2.0 版本还支持更高的图像分辨率，可以生成默认分辨率为 512x512 像素和 768x768 像素的图像。
+- 模型官方介绍：[Stable Diffusion v2 press release](https://stability.ai/blog/stable-diffusion-v2-release)
+
+### Stable Diffusion XL
+- 这是 Stable Diffusion 的最新版本，它在 2.0 版本的基础上进行了进一步的优化和改进。
+- XL 版本的主要特点是其更大的模型大小，从 0.98B 扩大到 6.6B 参数，这使得它能够生成更高质量的图像。
+- XL 版本还引入了新的功能，如更有艺术感的图像，更真实的图像，以及更清晰可读的字体等。
+- 模型官方介绍：[Stable Diffusion xl 1.0 press release](https://stability.ai/news/stable-diffusion-sdxl-1-announcement)
 
 ## 模型下载 
 
-> 根据上面的结论，我们可以从 1.5 版本的模型开始
+我常用的下载渠道有两个，一个是 HuggingFace，最后一个是 CivitAI 站点。
 
-- 基础 Stable Diffusion 模型
-  - https://huggingface.co/runwayml/stable-diffusion-v1-5
+### HuggingFace
 
-- 【可选】CivitAI 站点下载模型（记得要基于 1.5 版本作为根基的）
-  - https://civitai.com/
+你可以将 HuggingFace 理解为 AI 届的 Github。上面会有不少人或组织会将他们的模型分享到上面。你可以通过 HuggingFace 的搜索功能来搜索你想要的模型：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/009.jpeg">
+      <img src="/install-comfyui-and-model/009.jpeg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
 
-- 【可选】ContolNet 模型 
-  - https://huggingface.co/lllyasviel/ControlNet/tree/main/models
-  - https://huggingface.co/lllyasviel/ControlNet-v1-1/
+比如我们搜索 Stable Diffusion v1.5，你会看到这样的页面，然后我们点击页面里的 Files and versions 按钮（图中 1），接着你会看到很多文件，此时你需要选择你需要下载的模型文件，然后点击下载按钮（图中 2）：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/010.png">
+      <img src="/install-comfyui-and-model/010.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+一般你会看到两种后缀的模型：
+
+- **safetensors**：这种模型一般用的是 numpy 格式保存，这就意味着它只保存了张量数据，没有任何代码，加载这类文件会更安全和更快。
+- **ckpt**：这种文件是序列化过的，这意味着它们可能会包含一些恶意代码，加载这类模型就可能会带来安全风险。
+
+所以在上述的案例中，我会推荐你下载 safetensors 格式的模型。
+
+另外，我建议你在搜索模型的时候，需要看看是不是该模型的官方发的，一般我会看模型的下载数，一般下载数越多的模型，越有可能是官方发的。
+
+### CivitAI
+
+与 HuggingFace 不同，CivitAI 站点更偏向于 UGC 一些，所以你会看到更多个人训练的模型，但是这并不意味着它们的质量会差，相反，你会发现有些模型的质量非常好。
+
+而且 CivitAI 比 HuggingFace 多了很多好用的功能，比如你可以通过筛选等方式，看到各种各样优秀的模型：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/011.jpeg">
+      <img src="/install-comfyui-and-model/011.jpeg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+同样的，你也可以通过 CivitAI 的搜索功能来搜索你想要的模型，并下载该模型，以 DreamShaper 为例，你只要点击下载按钮（图中 1）即可下载模型：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/012.jpeg">
+      <img src="/install-comfyui-and-model/012.jpeg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+<Callout type="warning" emoji="⚠️">
+  在后续的教程中，我会使用到各种模型，你都可以根据自己的需求在以上两个渠道下载不同的模型。但现在我建议你先在 HuggingFace 上下载 Stable Diffusion v1.5 模型，因为后续的基础篇教程都是基于该模型来讲解的。
+</Callout>
+
+## 模型导入
+
+模型下载好后，我们要将对应的模型放到 ComfyUI 的 models 目录下。
+
+<Steps>
+  ### 打开 ComfyUI 项目文件夹
+  你可以使用上一章提到的 Github Desktop，打开 ComfyUI 项目的文件夹。在 Github Desktop 上点击「Show in Finder」按钮，如果是 Win 则是「Show in Explorer」按钮。即可打开该项目的文件夹。然后你需要点击进入到 models 目录下：
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/013.png">
+        <img src="/install-comfyui-and-model/013.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+
+  ### 将模型添加到对应的文件夹
+  进入到 Model 文件夹后，你会看到很多个文件夹，这些文件夹分别对应着不同的模型，你需要将你下载的模型放到对应的文件夹下。比如我们刚刚下载的是 Stable Diffusion v1.5 模型，属于 checkpoints 就需要将该模型放到 checkpoints 文件夹下。后续我们会介绍不同的类型的模型，你需要将其放到对应的文件夹里，比如后面会介绍的 LoRA 模型就要放到 loras 文件夹下。
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/014.png">
+        <img src="/install-comfyui-and-model/014.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
 
 
-模型下载好后我们将对应的模型放到 ComfyUI 的 models 目录下
-
-```
-# 基础模型放到 
-**/ComfyUI/models/checkpoints/
-
-# ContrlNet 模型放到
-**/ComfyUI/models/controlnet
-```
-
-模型下载好后，那共享，我们就可以开始 Hello world 之旅了 
+🎉 恭喜你，又完成了一个重要的步骤，接下来我们就可以正式进入 ComfyUI 基础篇的学习了。
