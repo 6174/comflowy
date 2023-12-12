@@ -1,0 +1,31 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+
+# SD Prompt 基础
+
+Embeddings
+
+继续介绍第三种调整图片风格的方法 —— Embedding。
+
+## 原理介绍
+
+在 Stable Diffusion 基础一章中，我有介绍过为何机器能知道 Cat 是长什么样子的。关键是 Text Encoder 将自然语意的 Prompt 转成了词特征向量 Embedding。比如 Cat 转为词特征向量后就有可能包含：
+
+* 形态特征：向量表示可能会捕捉到 Cat 的形态特征，比如它的体型、头部的形状、四肢的位置等。这些特征可以帮助区分 Cat 与其他动物或物体。
+* 视觉特征：向量表示可能会包含 Cat 的视觉特征，比如它的颜色、斑纹、眼睛的形状等。这些特征可以帮助识别 Cat 的外观特点。
+* 语义含义：向量表示可能会包含与 Cat 相关的语义含义，比如它是一种宠物、一种独立的动物、与人类有亲密关系等。这些含义可以帮助理解 Cat 在人类文化和社会中的角色和意义。
+
+那也就意味着我们可以针对从 prompt 到向量这个映射过程对模型进行特殊的训练，修改其映射关系。从而达到改变最终输入图片风格，甚至样貌等目标。可视化流程类似这样：
+<PhotoProvider>
+  <PhotoView src="/comfyui-embedding/001.png">
+    <img src="/comfyui-embedding/001.png" alt="" width="60%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+当用户输入 A photo of S* 时，各个词语会被分成特定的词向量，在图中我用灰色的方块表示。一些基础词对图片并没有影响，那我们就可以不管，然后我们可以训练一个新词出来，然后映射出特殊的词向量。
+
+那这有什么用呢？比如我们将 S* 与加菲猫的视觉特征映射。这样以后我们在 Prompt 里输入 S* 时，生成的图片就会是加菲猫了。
+
+
+
+由于它生成的是一套纯文字的映射记录，所以相对于 LoRA 来说就更小了，一般就几百 K。
