@@ -7,7 +7,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 如果你对技术比较熟悉，可以直接查看 ComfyUI Manager 的官方文档：https://github.com/ltdrdata/ComfyUI-Manager
 
-## 安装
+## 安装 ComfyUI Manager
 
 安装方法两种，如果你之前使用的 VS Code 安装 ComfyUI 我会推荐你使用这个方式，使用 VS Code 安装相对比较简单。
 
@@ -65,6 +65,37 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   安装完后，再启动一下 ComfyUI。
 </Steps>
 
-## 操作介绍
+## 功能介绍
+插件我比较常用的有两个功能，其余功能，我会在后续的章节中给大家介绍。
+
+### 下载模型
+首先点击右侧面板上的 Manager 按钮，会弹出这样的一个框，接着我们再点击中间的「Install Models」按钮：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/017.png">
+      <img src="/install-comfyui-and-model/017.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+然后会弹出这样的弹窗。第一列是代表这个模型用在什么类型的节点，你可以根据自己的需求点击右边的 Install 按钮，进行下载安装。下载好后，插件会自动将模型放到对应的文件夹内，不需要你手动移动。
+但需要注意，下载的时候，无法出图。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/018.png">
+      <img src="/install-comfyui-and-model/018.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+### 补全 nodes
+ComfyUI 右侧的面板中有个 Load 按钮，点击该按钮，可以将别人制作好的 workflow 导入到 ComfyUI 里，但有的时候，你导入的 workflow 用了一些你没有安装过的插件。此时 ComfyUI 就会弹出提示告知没有安装某些节点。
+
+此时就可以用到 ComfyUI Manager 的另一个常用功能是 Install Missing Custom Nodes。
+
+点击该功能后，插件会自动搜索你没有安装的节点，然后加载一个列表，点击列表右侧的安装即可完成安装。当然你可以点击 ComfyUI Manager 菜单里的 Install Custom Nodes 自己搜索安装，安装后还能将其禁用 Disable，或者卸载 Unistall：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/019.png">
+      <img src="/install-comfyui-and-model/019.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
 
 

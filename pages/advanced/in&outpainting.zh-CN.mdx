@@ -9,7 +9,12 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 那要如何不影响其他地方的，只改变某一区域呢？
 
-## Inpainting
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Dreamshaper 8-inpainting](https://civitai.com/models/4384?modelVersionId=131004)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+</Callout>
+
+## Inpainting workflow
 
 我以下面这个场景为例解释下如何搭建 Inpainting，左侧这张图是我先用文生图功能生成的，我对图中人物的发色不满意，于是我用 ComfyUI 在原图的基础上重新生成了红色头发的人物，且对比原图，新图片除了头发外，其他地方都没有发生变化：
 <PhotoProvider>
@@ -21,11 +26,8 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 要想将图片里的某一部分替换成其他，主要用到的技术是 Inpainting，其步骤跟图生图很像：
 
 <Steps>
-  ### 加载 Default workflow
-  按照惯例，我们先从默认的 workflow 开始。点击右侧面板里的 Load Default 按钮，加载完
-
   ### 添加 VAE Encode(for Inpainting)
-  双击空白处，输入 Inpainting，添加该节点。你会看到这个节点上有个 grow_mask_by 的配置项，我这一般会设置成 6～8。
+  按照惯例，我们先从默认的 workflow 开始。点击右侧面板里的 Load Default 按钮加载默认 workflow。然后双击空白处，输入 Inpainting，添加该节点。你会看到这个节点上有个 grow_mask_by 的配置项，我这一般会设置成 6～8。一般来说，这个值越大越好，新生成的图片部分会跟原图融合得越自然。
 
   ### 添加 Load Image 节点
   添加完节点后，加载你想要修改的图片。并将 Load Image 节点和 VAE Encode（for Inpainting）相连。VAE Encode（for Inpainting）和 KSampler 相连。
@@ -42,7 +44,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   ### 切换模型 & 配置
   接着，将 Load Checkpoint 里的模型切换成 inpainting 模型。这里有一个技巧，使用 Inpainting 的模型最好和初始图片使用的模型一致，比如我要修改的这张宇航员图片是用 Dreamshaper 生成的，所以在 Inpainting 场景我用的是 Dreamshaper 的 Inpainting 模型。
   
-  除了要调整模型外，还需要将 KSampler 里的 denosie 调成 0.85，当然你也可以根据自己的测试来，这个值小于 1 即可。
+  除了要调整模型外，还需要将 KSampler 里的 denosie 调成 0.85，当然你也可以根据自己的测试来，越小就越像原图。
   
   ### 输入 prompt
   最后，就是在 positive prompt 上输入你要修改的 prompt。比如我是要将头发颜色改为红色，我就输入 red hair。然后点击 Queue Prompt 即可生成图片了：
@@ -54,7 +56,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </PhotoProvider>
 </Steps>
 
-## Outpainting
+## Outpainting workflow
 
 除了修改部分内容外，还有一个常见需求是将原来的图片扩大。比如还是上面那个宇航员的例子，宇航员的右手和下肢都没有生成出来，我希望 AI 能继续生成，比如像这样：
 <br/>
