@@ -1,5 +1,6 @@
 {
   "how-to-learn": "1. 如何学习",
   "install": "2. 安装 ComfyUI",
-  "model": "3. 下载 & 导入模型"
+  "model": "3. 下载 & 导入模型",
+  "custom-nodes": "4. 安装插件"
 }

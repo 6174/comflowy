@@ -14,83 +14,88 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   </PhotoView>
 </PhotoProvider>
 
-## AI upscale workflow
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Real-ESRGAN x2](https://openmodeldb.info/models/2x-realesrgan-x2plus)：将其放到 ComfyUI 里的 models/upscale_models 文件夹内。
+  * [BSRGAN x2](https://openmodeldb.info/models/2x-BSRGAN)：将其放到 ComfyUI 里的 models/upscale_models 文件夹内。
+  * [BSRGAN x4](https://openmodeldb.info/models/4x-BSRGAN)：将其放到 ComfyUI 里的 models/upscale_models 文件夹内。
+</Callout>
 
-按照惯例，我们先来简单聊下 Upscale 的原理。Upscale 算法有很多种，比较常见的有：
+## 原理介绍
+
+按照惯例，我们先来简单聊下 Upscale 的原理。目前主流的 upscale 的方法有两种：
+
+* Upscale pixel：将可视的图直接 upscale。如果拿 ComfyUI 节点解释，这个节点输入的是 image，输出的是 upscale 后的 image。
+* Upscale latent：另一种是将不可视的潜空间图像 upscale，如果拿 ComfyUI 节点解释，这个节点输入的是 latent 输出的是 upscale 后的 latent，最后需要经过 decode 才能变成可视的图片。
+
+这两种方法各有利弊，在后续讲解 workflow 时，我会给大家介绍它们的区别。最后，再讲下 Upscale 的算法，比较常见的有：
 
 * 双三次插值算法：它通过使用周围像素的数值来模拟新像素的值，从而填充缺失的像素信息。这种方法看起来比较自然，但放大后的图像可能会显得模糊，因为算法在像素化和平滑之间寻求一种折衷。
 
 * Lanczos 插值算法：它是一种更高级的算法，它试图保留图像中的边缘和纹理，但它们通常缺乏通用性，难以处理不同类型的图像。
 
-* 基于神经网络的算法：它则是一种新兴的 Upscale 方法，它利用深度学习技术，通过训练神经网络来理解图像的纹理和对象，从而在放大图像时生成更加真实和富有细节的图像。
+* 基于神经网络训练后的模型：它则是一种新兴的 Upscale 方法，它利用深度学习技术，通过训练神经网络来理解图像的纹理和对象，从而在放大图像时生成更加真实和富有细节的图像。
 
-目前常用的是第三种。OK，说了一大堆内容，关键点是啥呢？其实关键点在内容之外（哈哈哈），这些 Upscale 算法都没有提到任何 Stable Diffusion 相关的内容，换句话说，Upscale 没有用到 Stable Diffusion 的技术，也就是说，要使用它不需要破坏我们的 Stable Diffusion workflow。
+后续你会看到这些算法在 ComfyUI 上的应用。
 
-基于这个原则，我们用 ComfyUI 一步步实现老照片修复功能：
+## Upscale pixel by algorithm workflow
+首先介绍下 Upscale pixel 方法，方法还挺简单的：
 
+* 如果你是想将生图后的图 upscale 就在最后生成的图片后，加上一个 Upscale Image 节点。
+* 如果是想将已有的照片 upscale 就可以在 load image 后加 Upscale Image 节点。
+
+不过但这里有两种方式可以实现：
+* 第一种是直接使用算法实现，比如前面提到的双三次插值算法等，这种方式生图速度是最快的，但效果稍逊于模型。
+* 第二种是使用模型的方式实现，这种效果会相对好一些，但时间比较久一些。
+
+我们先来看看如何用算法 Upscale：
 <Steps>
   ### 添加 Load Image 和 Save Image 节点
+  首先，我们先点击右侧的 Clear 按钮，清除掉所有节点，然后从零开始搭建。
+  
   既然跟照片有关，第一步当然就是加载两个图片节点。右键 → All node → image 里可以找到这两个节点。
-  ### 添加 Upscale Image 节点
-  然后我们来添加跟 Upscale 有关的节点，首先是 Upscale Image（using Model）节点，它在 All node → image → upscaling 里。
-  ### 添加 Load Upscale Model 节点
-  前两步可能大家都能通过简单推理就能，但这个可能第一次使用的朋友就不太确定了。其实很好了理解，前面一步的节点是 using model 节点，前置需要连一个 model，那我们就要在它前面「加载」一个模型，那该节点就肯定在 loaders 里了。添加好节点后，将各个节点按顺序连起来即可。
+  ### 添加 Upscale Image by 节点
+  然后我们来添加跟 Upscale 有关的节点，首先是 Upscale Image by 节点，它在 All node → image → upscaling 里。
+  你会看到这个节点上有两个可配置的参数，首先是 method 参数，这个参数就是本章开头提到的几种 upscale 算法：
+  * bicubic：双三次插值算法
+  * bilinear：双线性法
+  * nearest-exact：整数最临近算法
+  
+  你可以像我一样实验一下各个算法的效果。然后下面的 Scale 则是输入放大倍数，比如我就输入了 2 倍。从结果来看，我输入了一个非常低清晰度的照片，但输出结果虽然图片变大了，但清晰度依然很差。
+  <br/>
+    <PhotoProvider>
+      <PhotoView src="/comfyui-upscale/005.png">
+        <img src="/comfyui-upscale/005.png" alt="" />
+      </PhotoView>
+    </PhotoProvider>
 </Steps>
 
-OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模型。你可能会在 ComfyUI Manger 里看到一些 Upscale 模型，里面我比较推荐的是 Real-ESRGAN，它在还原风景上效果挺好的。
 
+## Upscale pixel by model workflow
+
+要解决清晰度的问题，就要用到更高级的方法，就是开头介绍原理时，提到的使用神经网络训练后的模型。以下是 ComfyUI workflow 连接步骤：
+
+<Steps>
+  ### 添加 Upscale Image（using Model）节点
+  我们可以继续使用上一个 workflow，然后先删掉 Upscale Image By 节点。然后添加 Upscale Image（using Model）节点，它在 All node → image → upscaling 里。
+  ### 添加 Load Upscale Model 节点
+  你会发现 Upscale Image（using Model）还有一个 model 端点需要连接。那我们就要在它前面「加载」一个模型，那该节点就肯定在 loaders 里了。添加好节点后，将各个节点按顺序连起来即可。
+</Steps>
+
+OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模型。你可能会在 ComfyUI Manger 里看到一些 Upscale 模型，里面我比较推荐的是 [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN)，它在还原风景上效果挺好的。
 另外再推荐两个，你可以在 Github 上下载模型，或者到 [OpenModel DB](https://openmodeldb.info/) 上下载也行：
 
 * [Swin2SR](https://github.com/mv-lab/swin2sr)
 * [BSRGAN](https://github.com/cszn/BSRGAN)
 
-另外，你可能在下载和使用 Upscale 模型时，遇到一些疑惑：
+最后，你可能在下载和使用 Upscale 模型时，遇到一些疑惑：
 
 * 你在下载模型的时候会看到模型标题里写 X2 或 X4，它们的意思是放大的倍数，X2 就是放大两倍，以此类推。
 * 根据训练集的不同，有的模型会将一个模型拆成多个，比如 Swin2SR 模型有 Lightweight、RealWorld 等，我觉得比较关键的就是他们俩，如果你在意速度就选 Lightweight，在意效果就选 RealWorld。如果你不懂模型名称里的含义，可以看模型的介绍，一般作者会进行介绍。
 * 不同的模型效果也不一样，有一些 Upscale 模型更适合优化动漫题材的图片，有一些责比较适合真实图片。我在上面推荐的几个模型都比较适合真实图片。
 
-## Hi-res fix latent upscale workflow
-
-另外一个 Upscale 的场景是在文生图的时候使用。因为模型的生成的默认图像大小一般有一个最大的大小，比如 512X512，超过这个大小生成的效果就会变差。所以如果想要生成更大的图片，比如 1024X1024，就需要用到 Upscale 节点了。
-
-要在文生图的 workflow 里加入 upscale 也很简单，在 VAE Decode 节点后连上 Upscale Image 节点就行了。
-
-但在这里我还想教大家另一种 Upscale 的方法，这个方法被称为 Hi-res Latent fix Upscale，正如它名字所写的那样，这种方法与之前提到的方法最大的不同就在于它使用了 Latent Space，以下是几张效果图，第一张是用 SD XL 生成的 512X512 的图片，第二张是 BSRGAN Upscale 2 倍厚的效果，第三张是用 Hi-res Latent fix Upscale 方法生成，对比可以看到：
-
-* 图二是在不改变图一信息的情况下，将图片放大，但细看图片局部有种算法的涂抹感。
-* 图三除了做到了放大外，还对图片细节进行了补充，比如上方的云朵。但也有不好的地方，比如猫的手消失了。
-
-<PhotoProvider>
-  <PhotoView src="/comfyui-upscale/003.png">
-    <img src="/comfyui-upscale/003.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
-
-对比来看，你应该就能区分这两种方法的区别了：
-
-* 使用 BSRGAN 这种模型 Upscale 只放大，但不会新增信息，而且实际使用，速度更快。
-* 而使用 Hi-res Latent fix Upscale 除了放大外，还会改变一些原图的信息，细节更丰富，但可能会偏离原图，且速度比较慢。
-
-比较完区别，我们再来看看如何搭建 Hi-res Latent Upscale workflow。
-<Steps>
-  ### 在 Default Workflow 上添加 Upscale Latent
-  第一步，右键 → All node → latent 里就能找到。另外，再教大家一个快速的方法，如果你记得节点的名字，可以鼠标双击空白处，唤起节点搜索窗口，通过输入节点名称的方式找到该节点。添加完成后，将此节点与 KSampler 的 Latent 相连。
-  并将 width 和 height 设置成最终图片的大小。比如我原图是 512，我想放大 2 倍，所以这里我就设置为 1024。
-  ### 添加 KSampler 节点
-  接着添加一个新的 KSampler 节点，然后和刚刚的添加的 Upscale Latent 相连，另外注意，要将 denoise 设置成小于 1，我一般设为 0.5。下图蓝色框的就是 Hi-res Latnet Upscale 的关键 workflow：
-  <br/>
-  <PhotoProvider>
-    <PhotoView src="/comfyui-upscale/004.png">
-      <img src="/comfyui-upscale/004.png" alt="" />
-    </PhotoView>
-  </PhotoProvider>
-</Steps>
-
-当你将这些节点都相连后，不妨细想一下里面的原理。本质上来说是先将第一次生成的图在 Latent 空间放大，然后再用图生图的方式，让模型再生成一张图。
-
 ## 练习
-最后，为了让大家更好地记忆本章内容，我建议各位和我一起做一个小练习：
+为了让大家更好地记忆上述的 workflow，我建议各位和我一起做一个小练习：
 
 **搭建一个 AI upscale 对比效果 workflow。只加载一张图片，但这张图片会传递给 3 个不同模型的 Upscale 节点，最后生成 3 张 Image，这样你就能同时看到不同模型的输出效果了。**
 
@@ -108,5 +113,99 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
         <img src="/comfyui-upscale/002.png" alt="" />
       </PhotoView>
     </PhotoProvider>
+  </Tabs.Tab>
+</Tabs>
+
+## Hi-res fix latent upscale workflow
+
+另外一种 Upscale 的方式是 Upscale latent，方法也很简单，在 VAE Decode 节点后连上 Upscale Image 节点就行了。
+
+这个直接在潜空间 upscale 的方法被称为 Hi-res Latent fix Upscale。以下是几张效果图，第一张是用 SD XL 生成的 512X512 的图片，第二张是用前面教的 Upscale pixel workflow 并使用 BSRGAN 模型 upscale 2 倍的效果，第三张是用 Hi-res Latent fix Upscale 方法生成，对比可以发现：
+
+* 图二是在不改变图一信息的情况下，将图片放大，但细看图片局部有种算法的涂抹感。
+* 图三除了做到了放大外，还对图片细节进行了补充，比如上方的云朵。但也有不好的地方，画面内容也会出现一些差异，比如猫的手消失了（当然这个可以通过一些参数微调克服，但会稍微麻烦一点）。
+
+<PhotoProvider>
+  <PhotoView src="/comfyui-upscale/003.png">
+    <img src="/comfyui-upscale/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+对比来看，你应该就能区分这两种方法的区别了：
+
+* 使用 BSRGAN 这种 Pixel Upscale 只放大，但不会新增信息，而且实际使用，生成的速度更快。但算法涂抹感会比较严重，有的时候放大后，会感觉细节有缺失。
+* 而使用 Hi-res Latent fix Upscale 除了放大外，还会改变一些原图的信息，让画面的细节更丰富，但可能会偏离原图，且生成的速度比较慢。
+
+各位可以根据自己的需求选择不同的方法。
+
+比较完区别，我们再来看看如何搭建 Hi-res Latent Upscale workflow。
+<Steps>
+  ### 在 Default Workflow 上添加 Upscale Latent 节点
+  第一步，右键 → All node → latent 里就能找到 Upscale Latent 节点。另外，再教大家一个快速添加节点方法，如果你记得节点的名字，可以鼠标双击空白处，唤起节点搜索窗口，通过输入节点名称的方式找到该节点。添加完成后，将此节点与 KSampler 的 Latent 相连。
+  
+  ### 配置 Upscale Latent 节点参数
+
+  
+  我比较常用的是第三种，我会在中级进阶中的 [Upscale 进阶](./advanced-optional/upscale-advanced.mdx) 一文中讲解各个模型，及算法的区别。
+  
+  除了调整算法外，还需要将 width 和 height 设置成最终图片的大小。比如我原图是 512，我想放大 2 倍，所以这里我就设置为 1024。Crop 是指是否裁切，我这里是选择 disable。
+  <Callout emoji="💡">
+    如果你觉得单独设置宽高比较低效，只想设置倍数，那你也可以考虑使用 Upscale Latent By 节点，这个节点就可以直接设置 scale。
+  </Callout>
+  ### 添加 KSampler 节点
+  接着添加一个新的 KSampler 节点，然后和刚刚的添加的 Upscale Latent 相连，另外注意，要将 denoise 设置成小于 1，我一般设为 0.5-0.7。这个值越大就越不像原图。下图蓝色框的就是 Hi-res Latnet Upscale 的关键 workflow：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-upscale/004.png">
+      <img src="/comfyui-upscale/004.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+  
+</Steps>
+
+当你将这些节点都相连后，不妨细想一下里面的原理。本质上来说是先将第一次生成的图在 Latent 空间放大，然后再用图生图的方式，让模型再生成一张图。
+
+## Upscale pixel and Hi-res fix workflow
+
+在上一个 workflow 里，你应该不难看出，两种 workflow 方法是不冲突的，可以同时并行分开跑，那有没有一种可能，可以将它们连起来呢？
+
+比如可以将 pixel upscale 后的图放到 Hi-res fix 的流程里？让其再放大？你可以试试放大后再放大的玩法。但如果你细看前面的优缺点分析，你会发现其实这两个 workflow 稍微调整一下，然后在就可以互补：
+* 先用 pixel upscale 放大，确保图片内容不会出现太大变化。
+* 再使用 Hi-res fix workflow 给图片增加细节。
+* 并且为了让图片看起来细节更丰富，采取先放大，后缩小的方式。
+
+不妨自己动手试试如何连接 workflow 吧：
+
+<Tabs items={['提示', '答案']} >
+  <Tabs.Tab>
+    * 尝试使用 Upscale Latent By 节点来实现 Hi-res workflow。
+    * 注意可以先将图片放大 4 倍，在缩小 1/2。
+    * 尝试在原有的 workflow 基础上加 workflow，这样你就可以看到几种方法的效果图。
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Steps>
+      ### 添加 VAE Encode 节点
+      基本流程其实跟前面的一致，只是将 Upscale pixel by model workflow 的尾端与 Hi-res fix latent upscale workflow 相连，因为 Upscale pixel by model 生成是图片，所以需要用 VAE Enocde 节点，先将像素图片转为潜空间图片。
+
+      ### 配置参数
+      正如我在 Hint 里提到的那样，可以先将图片放到 4 倍，然后再缩小 1/2，这样最终图片就会变成原来的 2 倍。所以：
+      * Load Upscale Model：用 BSRANx4 放大图片。
+      * Upscale Lantent By：将 scale 设置为 0.5（就是缩小 1/2），最终尺寸变成 2 倍。
+      * 第二个 KSampler 的 denosie 就不需要设置那么大，我设置成了 0.25，你也可以设置成 0.5（越小越接近原图）。
+      最终的 workflow 就是这样：
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-upscale/006.png">
+          <img src="/comfyui-upscale/006.png" alt="" />
+        </PhotoView>
+      </PhotoProvider>
+    </Steps>
+    <Callout emoji="💡">
+      最后，各位可以根据需求，以及使用的模型不同，选择不同的 upscale workflow，并没有哪个更好，只有哪个更适合你。
+      * 如果你想要绝对的还原，那用 Upscale pixel by algorithm workflow。
+      * 如果你想要放大图片的同时还想让图片变得更加清晰，可以选择 Upscale pixel by model workflow。
+      * 如果你想要放大的同时，想让图片呈现更多细节，并且不在意跟原图有些许出入，那就选择 Hi-res fix latent upscale workflow。
+      * 如果想要相对平衡的效果，可以选择 Upscale pixel and Hi-res fix workflow。
+    </Callout>
   </Tabs.Tab>
 </Tabs>

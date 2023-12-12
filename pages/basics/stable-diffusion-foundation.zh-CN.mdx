@@ -171,13 +171,13 @@ OpenAI 使用了 4 亿组图片文本对，对此模型进行了训练，最后�
 * 语义含义：向量表示可能会包含与 Cat 相关的语义含义，比如它是一种宠物、一种独立的动物、与人类有亲密关系等。这些含义可以帮助理解 Cat 在人类文化和社会中的角色和意义。
 
 <Callout type="warning" emoji="⚠️">
-注意：因为模型有些地方具有不可解释性，所以实际上这些向量不一定包含这些特征，主要是为了更好地解释，所以我举了几个比较具象的例子
+  注意：因为模型有些地方具有不可解释性，所以实际上这些向量不一定包含这些特征，主要是为了更好地解释，所以我举了几个比较具象的例子
 </Callout>
 
 最后，因为在 Stable Diffusion 里，只用到了 CLIP 的 Text Encoder 的部分，所以在一些产品里，这个又称为 CLIP Text Encoder，或者 CLIP Text Encode。
 
 <Callout emoji="💡">
-为何使用 Stable Diffusion 或者 Midjourney 时，输入的 Prompt 不需要在意语法？以及大小写不明感呢？因为这些 Prompt 都会被 Text Encoder 转成特征向量，语法、大小写被转成特征向量后，都会是一串数字了，在没有对模型进行调整的情况下，这些都不太敏感了。
+  为何使用 Stable Diffusion 或者 Midjourney 时，输入的 Prompt 不需要在意语法？以及大小写不明感呢？因为这些 Prompt 都会被 Text Encoder 转成特征向量，语法、大小写被转成特征向量后，都会是一串数字了，在没有对模型进行调整的情况下，这些都不太敏感了。
 </Callout>
 
 ## 总结

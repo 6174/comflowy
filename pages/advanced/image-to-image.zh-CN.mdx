@@ -18,7 +18,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
   * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main)：你可以下载 h 或 l 版本，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
   * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth)：将其放到 ComfyUI 里的 models/style_models 文件夹内。
-  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14): 将其放到 ComfyUI 里的 models/clip_vision 文件夹内。
+  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14)：将其放到 ComfyUI 里的 models/clip_vision 文件夹内。
 </Callout>
 
 ## 原理介绍
@@ -57,7 +57,7 @@ Stable Diffusion 模型图生图主流方法有两种：
 
 * 如果你将图片作为文字 prompt 的补充，那生成的图片里也会包含原图里的元素。比如上面原理介绍的图里，我将一张有桥、河流、城墙的图输入给模型，而文字 prompt 并没有提到图里的这些内容。
 但最终生成的图里却包含了原图里的信息（桥、河流、城墙），甚至风格也跟原图很类似。这种 workflow 一般称为 unCLIP model workflow。
-* 除了以上用法外，还有一种就是仅将原图的风格输入给模型，这样生成的图片就只会有原图的风格，而不会有原图的内容。这种 workflow 一般称为 Style model workflow。
+* 另一种则是仅将原图的风格输入给模型，这样生成的图片就会有原图的风格，而不会有原图的内容。这种 workflow 一般称为 Style model workflow。
 
 ## Simple img2img workflow
 既然原理很简单，你应该能猜测出应该如何搭建 Simple img2img workflow。你不妨自己先试试，搭建一个 workflow 😎
@@ -147,10 +147,31 @@ Stable Diffusion 模型图生图主流方法有两种：
 
 ## Style model workflow
 
-另一种重绘，则是只用图片的风格，而不用图片的内容。其实实现方法跟 unCLIP model workflow 很类似，只是需要将图片的内容去掉，只保留风格。
+另一种重绘，则是只用图片的风格，而不用图片的内容。其实现方法跟 unCLIP model workflow 很类似，只是需要将图片的内容去掉，只保留风格。我们来讲解下其 ComfyUI workflow：
 
 <Steps>
+  ### 更换节点
+  第一步，我们可以继续使用上一个案例的 workflow，但需要更换一些节点。第一个是将 unCLIPCheckpointLoader 换成 Checkpoint 并将模型切换成 v1.5。接着再将 unCLIPCondtioning 
+  切换成 Apple Style Model 节点，这个你可以右键 → All node → conditioning → style_model 里找到。
+
+  接着就可以将这些节点连载一起，此时你会发现还有两个端点没连，我们进入下一步。
+
+  ### 添加 Load CLIP Version 和 Load Style Model 节点
+  右键 → All node → loaders 里能找到这两个节点，然后将他们分别连在 CLIP Vision Encode 节点和 Apply Style Model 上。连接完后，我们再来讲解下完整 Workflow，
+  整个流程还挺好理解的，输入图片，然后将图片进行 encode 后，使用 Apply Style Model 将图片里的 Style 信息过滤出来，并和文字 prompt 融合在一起并传给 KSampler。
   
+  与 unCLIP model workflow 不一样的地方就是它只用了 style。所以绘制的内容，不一定跟原图很像，但风格会比较像。
+
+  <Callout type="warning" emoji="⚠️">
+    需要注意，这个 style model 只能理解常用的 style，名画或人物的图片效果会比较好，但如果导入的是一些小众，并且抽象的图，效果就会非常差。
+  </Callout>
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-img2img/007.png">
+      <img src="/comfyui-img2img/007.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+
 </Steps>
 
 
