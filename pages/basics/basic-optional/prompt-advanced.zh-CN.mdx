@@ -3,29 +3,42 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # Stable Diffusion prompt 进阶
 
-## Embeddings
+## SDXL prompt styler workflow
+你可能有用过一些基于 Stable Diffusion 的产品，他们比 Midjourney 会多一个 Style 的选项，这个选项就是用来调整图片风格的。有了这个功能，你就不需要在 prompt 里写 Style 了。
 
-首先介绍一下，之前基础篇提到的第三种调整图片风格的方法 —— Embedding。
+那在 ComfyUI 里，是否也能实现呢？答案是肯定的。
 
-### 原理介绍
+我们可以使用一个叫 SDXL prompt styler 的插件来实现这个功能。以下是操作步骤。
 
-在 Stable Diffusion 基础一章中，我有介绍过为何机器能知道 Cat 是长什么样子的。关键是 Text Encoder 将自然语意的 Prompt 转成了词特征向量 Embedding。比如 Cat 转为词特征向量后就有可能包含：
+<Steps>
+  ### 下载 & 安装 SDXL prompt styler 插件
+  首先，需要下载并安装插件。我们会用到 ComfyUI Manager 协助我们完成这个操作。如果你没有安装 ComfyUI Manager，可以查看 [安装插件](../preparation-for-study/custom-nodes) 一文。
+  点击右侧面板的 Manager 按钮，然后在弹出的窗口里，点击「Install custom nodes」按钮，然后在弹出的窗口里，搜索「SDXL prompt styler」，然后点击「Install」按钮进行安装。
+  <Callout type="info">
+    注意，安装完成后，需要点击一下 restart 按钮，重启 ComfyUI。
+    如果你在下一步操作时，发现没有「SDXL prompt styler」这个节点，但你已经重启过 ComfyUI，那么请刷新一下页面。
+  </Callout>
+  
+  ### 加载 Default workflow
+  点击右侧面板的 Load Default 按钮，加载默认的 workflow。
 
-* 形态特征：向量表示可能会捕捉到 Cat 的形态特征，比如它的体型、头部的形状、四肢的位置等。这些特征可以帮助区分 Cat 与其他动物或物体。
-* 视觉特征：向量表示可能会包含 Cat 的视觉特征，比如它的颜色、斑纹、眼睛的形状等。这些特征可以帮助识别 Cat 的外观特点。
-* 语义含义：向量表示可能会包含与 Cat 相关的语义含义，比如它是一种宠物、一种独立的动物、与人类有亲密关系等。这些含义可以帮助理解 Cat 在人类文化和社会中的角色和意义。
+  ### 添加 SDXL prompt styler 节点
+  接着点击右键 -> Add Node -> utils -> SDXL prompt styler，添加这个节点。
+  添加后，你会发现这个节点可以填写 postive 和 negative text 这两个其实是填写 prompt 的输入框。然后下方还有一个 style 的选项，点击后可以看到各种风格，感觉自己的需要选择即可。
 
-那也就意味着我们可以针对从 prompt 到向量这个映射过程对模型进行特殊的训练，修改其映射关系。从而达到改变最终输入图片风格，甚至样貌等目标。可视化流程类似这样：
-<PhotoProvider>
-  <PhotoView src="/stable-diffusion-prompt/001.png">
-    <img src="/stable-diffusion-prompt/001.png" alt="" width="60%" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>
+  ### 连接节点
+  这个节点连起来稍稍有点复杂。
+  1. 你需要右键点击与 KSampler positive 端点相连的 CLIP Text Encode(Prompt) 节点。
+  2. 然后在菜单里点击 Convert text to input，此时 CLIP Text Encode(Prompt) 节点的输入框会消失，同时左端点多了一个 text 端点。
+  3. 此时需要将此端点与 SDXL prompt styler 节点的 positive text 端点连接起来。
+  4. 另一个 CLIP Text Encode(Prompt) 节点的重复上述操作。
+  
+  连接后的 Workflow 是这样的：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/stable-diffusion-prompt/002.png">
+      <img src="/stable-diffusion-prompt/002.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
 
-当用户输入 A photo of S* 时，各个词语会被分成特定的词向量，在图中我用灰色的方块表示。一些基础词对图片并没有影响，那我们就可以不管，然后我们可以训练一个新词出来，然后映射出特殊的词向量。
-
-那这有什么用呢？比如我们将 S* 与加菲猫的视觉特征映射。这样以后我们在 Prompt 里输入 S* 时，生成的图片就会是加菲猫了。
-
-
-
-由于它生成的是一套纯文字的映射记录，所以相对于 LoRA 来说就更小了，一般就几百 K。
