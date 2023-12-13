@@ -89,9 +89,9 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 一般说来，写 Stable Diffusion 的 prompt 有几个原则：
 
-1. 使用逗号分隔。Stable Diffusion 并不懂语法，所以你需要将画面中的关键词罗列出来，并用逗号分隔。
-2. 越重要的词放在靠前的位置。比如你想要生成一张美丽的风景图，那么你可以将 beautiful scenery nature 放在最前面。
-3. 将提示保持在 75 个 token（或约 60 个字）以内。
+1. Prompt 并不是越长越好，尽量保持在 75 个 token（或约 60 个字）以内。
+2. 使用逗号分隔。Stable Diffusion 并不懂语法，所以你需要将画面中的关键词罗列出来，并用逗号分隔。
+3. 越重要的词放在靠前的位置。比如你想要生成一张美丽的风景图，那么你可以将 beautiful scenery nature 放在最前面。
 
 另外，还有个小技巧，你可以输入 `(keyword:weight)` 方式来控制关键词的权重，比如 `(hight building: 1.2 )` 就意味着 hight building 的权重变高，如果填写的权重数小于 1，则意味着这个词的权重会变低，生成的图与这个词更不相关。
 
