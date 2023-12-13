@@ -1,6 +1,6 @@
 {
-  "drawing-to-image": "涂鸦生图",
-  "upscale-advanced": "Upscale 进阶",
-  "stable-diffusion-advanced": "Stable Diffusion 进阶",
-  "sampler": "采样器"
+  "stable-diffusion-advanced": "SD 进阶 🚧",
+  "drawing-to-image": "图生图进阶 🚧",
+  "upscale-advanced": "Upscale 进阶 🚧",
+  "controlnet-advanced": "ContorlNet 进阶 🚧"
 }
