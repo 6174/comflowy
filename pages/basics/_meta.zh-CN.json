@@ -2,7 +2,7 @@
   "stable-diffusion-foundation": "1. Stable Diffusion 基础",
   "comfyui-foundation": "2. ComfyUI 基础 ➀",
   "basic-nodes": "3. ComfyUI 基础 ➁",
-  "Prompt": "4. SD Prompt 基础",
+  "prompt": "4. SD Prompt 基础",
   "lora": "5. LoRA",
   "basic-optional": "基础选修"
 }

@@ -1,13 +1,13 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
-# SD Prompt 基础
+# Stable Diffusion prompt 进阶
 
-Embeddings
+## Embeddings
 
-继续介绍第三种调整图片风格的方法 —— Embedding。
+首先介绍一下，之前基础篇提到的第三种调整图片风格的方法 —— Embedding。
 
-## 原理介绍
+### 原理介绍
 
 在 Stable Diffusion 基础一章中，我有介绍过为何机器能知道 Cat 是长什么样子的。关键是 Text Encoder 将自然语意的 Prompt 转成了词特征向量 Embedding。比如 Cat 转为词特征向量后就有可能包含：
 
@@ -17,8 +17,8 @@ Embeddings
 
 那也就意味着我们可以针对从 prompt 到向量这个映射过程对模型进行特殊的训练，修改其映射关系。从而达到改变最终输入图片风格，甚至样貌等目标。可视化流程类似这样：
 <PhotoProvider>
-  <PhotoView src="/comfyui-embedding/001.png">
-    <img src="/comfyui-embedding/001.png" alt="" width="60%" style={{ display: "block", margin: "0 auto" }}/>
+  <PhotoView src="/stable-diffusion-prompt/001.png">
+    <img src="/stable-diffusion-prompt/001.png" alt="" width="60%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
