@@ -3,6 +3,7 @@
   "comfyui-foundation": "2. ComfyUI 基础 ➀",
   "basic-nodes": "3. ComfyUI 基础 ➁",
   "prompt": "4. SD Prompt 基础",
-  "lora": "5. LoRA",
+  "embedding": "5. Embedding",
+  "lora": "6. LoRA",
   "basic-optional": "基础选修"
 }
