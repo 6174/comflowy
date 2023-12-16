@@ -30,7 +30,7 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 
 **Windows 用户：**
 Windows 的安装相对简单，只需要一步，复制以下代码到 Terminal，然后敲一下回车即可。
-```shell
+```shell copy
   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6
 ```
 **Mac 用户：**
@@ -58,7 +58,7 @@ Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你�
 
   ### 安装 pytorch
   最后不管是 M 芯片还是 x86 都复制以下代码到 Terminal：
-  ```shell
+  ```shell copy
     pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
   ```
   这一步因为需要下载安装一些东西，所以可能会比较久，请耐心等待。当显示「Successfully installed XXXXX」，就意味着你完成了所有的安装。
@@ -66,7 +66,7 @@ Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你�
 
 ## 第二步，下载  ComfyUI
 此步需要你将 ComfyUI 代码拉到本地。如果你会 Git 请在 Terminal 运行以下代码，即可完成此步骤：
-```shell
+```shell copy
   git clone https://github.com/comfyanonymous/ComfyUI
 ```
 
@@ -150,13 +150,13 @@ Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你�
 
 不管你在上一步是用 VS Code 运行，还是在 Terminal 里运行，你都可以继续输入以下代码：
 
-```shell
+```shell copy
   python main.py
 ```
 <Callout type="info">
   这一步，如果你想让 ComfyUI 运行得更快，可以输入以下代码：
 
-  ```shell
+  ```shell copy
     python main.py --force-fp16
   ```
 </Callout>
@@ -164,7 +164,7 @@ Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你�
 当你看到「To see the GUI go to: http://127.0.0.1:8188」，
 就意味着你已经完成了 ComfyUI 的安装，并成功运行。此时你只需要在浏览器里复制黏贴下方地址即可：
 
-```shell
+```shell copy
   http://127.0.0.1:8188/ 
 ```
 你应该能看到以下界面。恭喜你，ComfyUI 已经安装好了。但此时还没法运行 Stable DIffusion 生图。你还需要下载关键的模型，在下一章我会教大家如何下载并安装所需的模型。

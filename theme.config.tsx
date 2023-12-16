@@ -9,8 +9,8 @@ const Vercel = ({ height = 20 }) => (
 )
 
 const TITLE = {
-  'zh-CN': 'Comflowy - ComfyUI 中文社区',
-  'en-US': 'Comflowy - ComfyUI English Community',
+  'zh-CN': 'Comflowy - ComfyUI 社区',
+  'en-US': 'Comflowy - ComfyUI Community',
 }
 
 const FEEDBACK_TEXT = {

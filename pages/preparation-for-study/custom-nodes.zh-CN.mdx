@@ -20,11 +20,11 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   打开 Terminal 输入 cd，然后空格，接着黏贴 ComfyUI 的项目文件夹地址（如果你不知道如何找到这个地址，请查阅 [安装 ComfyUI](./install.mdx) 一章中的第三步）。
   ### 输入命令
   如果你用的是 VS Code 则点击 VS Code 右上角的第二个 icon，然后你会在软件底部看到一个类似你之前在 Terminal 里看到的命令输入界面。此时输入以下命令，并回车。如果你使用的是 Terminal，就直接输入以下命令：
-  ```shell
+  ```shell copy
   cd custom_nodes
   ```
   然后再输入：
-  ```shell
+  ```shell copy
   git clone https://github.com/ltdrdata/ComfyUI-Manager.git
   ```
   ### 启动 ComfyUI
@@ -42,7 +42,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   **Terminal：** 这个也很简单，你需要点击按一下键盘的上方向键，输入框里就会出现你上一步输入的命令，此时你需要回退到最开始的那一步。
 
   最后输入以下命令，启动 ComfyUI:
-  ```shell
+  ```shell copy
   python main.py --force-fp16 
   ```
   启动 ComfyUI 后，你应该你能看到右侧的面板多了两个按钮，Manager 和 Share，那证明你已经安装完成。
@@ -59,7 +59,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   Cannot import /Users/jimmywang/Documents/GitHub/ComfyUI/custom_nodes/ComfyUI-Manager module for custom nodes: No module named 'torchvision'
   ```
   这意味着你需要安装 torchvision，你需要先关闭 ComfyUI 的服务（在 Terminal 面板里点击 Ctrl+C），然后在 Terminal 里输入：
-  ```shell
+  ```shell copy
   pip install torchvision
   ```
   安装完后，再启动一下 ComfyUI。
