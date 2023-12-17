@@ -31,14 +31,28 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 <Tabs items={['Windows 用户', 'Mac 用户']}>
   <Tabs.Tab>
     Windows 用户我建议你在有 NVIDIA 显卡的电脑上使用。
-    
-    安装相对简单，只需要安装 pytorch 的 nightly 版本即可。输入以下命令：
-    ```shell copy
-      pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
-    ```
+
+    <Steps>
+      ### 下载 Miniconda3
+      第一步输入以下命令：
+      ```shell copy
+        curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe -o miniconda.exe
+      ```
+      ### 安装 Miniconda3
+      下载完后，继续输入以下代码，安装 Miniconda3：
+      ```shell copy
+        start /wait "" miniconda.exe /S
+      ```
+
+      ### 安装 pytorch
+      安装 pytorch 的 nightly 版本即可。输入以下命令：
+      ```shell copy
+        pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
+      ```
+    </Steps>
   </Tabs.Tab>
   <Tabs.Tab>
-    Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你电脑的芯片不同，输入不同的代码。
+    Mac 的安装需要根据你电脑的芯片不同，输入不同的代码。
     <Steps>
       ### 下载 Miniconda3
       第一步输入以下命令：
