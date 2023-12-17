@@ -28,41 +28,48 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 
 此时不同的系统需要输入不同的命令。
 
-**Windows 用户：**
-Windows 的安装相对简单，只需要一步，复制以下代码到 Terminal，然后敲一下回车即可。
-```shell copy
-  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6
-```
-**Mac 用户：**
-Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你电脑的芯片不同，输入不同的代码。
+<Tabs items={['Windows 用户', 'Mac 用户']}>
+  <Tabs.Tab>
+    Windows 用户我建议你在有 NVIDIA 显卡的电脑上使用。
+    
+    安装相对简单，只需要安装 pytorch 的 nightly 版本即可。输入以下命令：
+    ```shell copy
+      pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Mac 的安装过程会稍微复杂一些，需要三步，并且需要根据你电脑的芯片不同，输入不同的代码。
+    <Steps>
+      ### 下载 Miniconda3
+      第一步输入以下命令：
+      ```shell
+      # M 芯片
+      curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+      # x86
+      curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+      ```
+      
+      ### 安装 Miniconda3
+      下载完后，继续输入以下代码，安装 Miniconda3：
+      ```shell
+        # M 芯片
+        sh Miniconda3-latest-MacOSX-arm64.sh
+        # x86
+        sh Miniconda3-latest-MacOSX-x86_64.sh
+      ```
+      在安装 Miniconda 3 的时候，你会看到「Please, press ENTER to continue」，此时你需要按下回车键。然后会进入阅读协议环节，此时你需要一直按回车，直到显示「Do you accept the license terms? 」，然后输入 yes，并按下回车。最后会让你确认安装的目录，基本可以不用改，按下回车即可。如果显示「Thank you for installing Miniconda3!」就意味着你完成了安装。
 
-<Steps>
-  ### 下载 Miniconda3
-  第一步输入以下命令：
-  ```shell
-  # M 芯片
-  curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
-  # x86
-  curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-  ```
-  
-  ### 安装 Miniconda3
-  下载完后，继续输入以下代码，安装 Miniconda3：
-  ```shell
-    # M 芯片
-    sh Miniconda3-latest-MacOSX-arm64.sh
-    # x86
-    sh Miniconda3-latest-MacOSX-x86_64.sh
-  ```
-  在安装 Miniconda 3 的时候，你会看到「Please, press ENTER to continue」，此时你需要按下回车键。然后会进入阅读协议环节，此时你需要一直按回车，直到显示「Do you accept the license terms? 」，然后输入 yes，并按下回车。最后会让你确认安装的目录，基本可以不用改，按下回车即可。如果显示「Thank you for installing Miniconda3!」就意味着你完成了安装。
+      ### 安装 pytorch
+      最后不管是 M 芯片还是 x86 都复制以下代码到 Terminal：
+      ```shell copy
+        pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+      ```
+      这一步因为需要下载安装一些东西，所以可能会比较久，请耐心等待。当显示「Successfully installed XXXXX」，就意味着你完成了所有的安装。
+    </Steps>
 
-  ### 安装 pytorch
-  最后不管是 M 芯片还是 x86 都复制以下代码到 Terminal：
-  ```shell copy
-    pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
-  ```
-  这一步因为需要下载安装一些东西，所以可能会比较久，请耐心等待。当显示「Successfully installed XXXXX」，就意味着你完成了所有的安装。
-</Steps>
+    
+  </Tabs.Tab>
+</Tabs>
 
 ## 第二步，下载  ComfyUI
 此步需要你将 ComfyUI 代码拉到本地。如果你会 Git 请在 Terminal 运行以下代码，即可完成此步骤：
