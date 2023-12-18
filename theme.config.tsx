@@ -53,6 +53,9 @@ export default {
       )
     },
   },
+  chat: {
+    link: 'https://discord.gg/t7jwRy83uN',
+  },
   feedback: {
     content: function useText() {
       const { locale } = useRouter()

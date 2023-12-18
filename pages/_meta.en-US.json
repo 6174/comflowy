@@ -2,17 +2,5 @@
 {
   "index": "Comflowy Introduction", 
   "basics": "Basic Concepts",
-  "advanced": "Advanced Concepts",
-  "dicussion": {
-    "title": "Discussion",
-    "type": "page",
-    "href": "https://github.com/6174/comflowy/discussions",
-    "newWindow": true
-  },
-  "contact": {
-    "title": "Contact Us ↗",
-    "type": "page",
-    "href": "https://xuejia.wiki",
-    "newWindow": true
-  }
+  "advanced": "Advanced Concepts"
 }
