@@ -90,6 +90,7 @@ export default {
       />
       <meta name="og:title" content="Comflowy: ComfyUI 中文社区" />
       <meta name="og:tags" content="comflowy, comfyui, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library" />
+      <link rel="icon" href="/logo.png" type="image/png" />
     </>
   ),
   i18n: [

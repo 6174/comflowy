@@ -1,5 +1,6 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
 
 # ContrlNet
 
@@ -47,3 +48,4 @@ OK，大家对 Scribble ControlNet 有一定的印象后，再来介绍一下连
 在 LoRA 一章中，我将 LoRA 类比为滤镜。而 ControlNet 我则认为更像是可视化的指令补充，将原有文字很难描述的指令可视化，同时也让模型更好地理解。从而解决 CLIP 模型对语法理解比较差的问题。这么理解，大家应该就能更好地记忆应该如何连线了。LoRA 是滤镜，影响是模型，所以跟 Model 相连。而 ControlNet 则是 prompt 的补充，控制的是 Conditioning，所以跟 Prompt 节点相连。
 </Callout>
 
+<Subscribe />

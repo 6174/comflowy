@@ -1,9 +1,8 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
 
 # 图生图
-
-🚧 补充 workflow 下载
 
 完成基础篇的学习后，你可能对生成的图片不满意，比如觉得：
 
@@ -53,11 +52,15 @@ Stable Diffusion 模型图生图主流方法有两种：
 
 注意看，图中有一个与之前介绍的不一样地方，第一步不再是一个 Text Encoder 而是 Encorder。这其实很好理解，因为不止是文字 prompt 需要输入到模型，还有图片 prompt 需要输入。
 
+如果那雕刻做类比的话，这个过程类似于你给雕刻师下了文字指令（prompt）外，还给雕刻师看了张图片，让 TA 参考一下，然后根据你的指令和图片重新雕刻一个雕塑（输出的图）。
+
 另外，如何使用 Image 的数据，也会影响生成图片的效果：
 
 * 如果你将图片作为文字 prompt 的补充，那生成的图片里也会包含原图里的元素。比如上面原理介绍的图里，我将一张有桥、河流、城墙的图输入给模型，而文字 prompt 并没有提到图里的这些内容。
 但最终生成的图里却包含了原图里的信息（桥、河流、城墙），甚至风格也跟原图很类似。这种 workflow 一般称为 unCLIP model workflow。
 * 另一种则是仅将原图的风格输入给模型，这样生成的图片就会有原图的风格，而不会有原图的内容。这种 workflow 一般称为 Style model workflow。
+
+<Subscribe />
 
 ## Simple img2img workflow
 既然原理很简单，你应该能猜测出应该如何搭建 Simple img2img workflow。你不妨自己先试试，搭建一个 workflow 😎
@@ -174,5 +177,5 @@ Stable Diffusion 模型图生图主流方法有两种：
 
 </Steps>
 
-
+<Subscribe />
 

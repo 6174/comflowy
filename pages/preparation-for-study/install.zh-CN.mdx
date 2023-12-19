@@ -1,11 +1,12 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
 
 # 安装 ComfyUI
 
-ComfyUI 的源码地址在 [https://github.com/comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)，安装过程在 Readme 中其实非常详细，你也可以按照 Readme 文档进行操作。
+ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)，安装方法在 Readme 中，作者其实写得非常详细，你也可以按照 Readme 文档进行操作。
 <Callout type="info">
-  为了后续更好的使用，这里仅介绍手动源码安装，不介绍 Jupyter 或者 Zip 安装模式。
+  为了后续更好地使用，这里仅介绍手动源码安装，不介绍 Jupyter 或者 Zip 安装模式。
 </Callout>
 
 ## 第一步，安装 pytorch
@@ -85,6 +86,8 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
   </Tabs.Tab>
 </Tabs>
 
+<Subscribe />
+
 ## 第二步，下载  ComfyUI
 此步需要你将 ComfyUI 代码拉到本地。如果你会 Git 请在 Terminal 运行以下代码，即可完成此步骤：
 ```shell copy
@@ -115,55 +118,55 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 ## 第三步，安装依赖
 下载好代码后，需要安装依赖。有两种方法安装依赖。
 
-### VS Code 方法（推荐）
-
-如果你安装过 [Visual Studio Code](https://code.visualstudio.com/)，那你只需要：
-<Steps>
-  ### 打开项目文件夹
-  在 Github Desktop 上点击「Open in Visual Studio Code」按钮。此时 VS Code 会打开。
-  ### 打开 VS Code Terminal
-  接着你需要点击 VS Code 右上角的第二个 icon，然后你会在软件底部看到一个类似你之前在 Terminal 里看到的命令输入界面。
-  <PhotoProvider>
-    <PhotoView src="/install-comfyui-and-model/005.png">
-        <img src="/install-comfyui-and-model/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
-    </PhotoView>
-  </PhotoProvider>
-  ### 输入命令
-  最后一步你需要在底部 Terminal 输入以下命令，并点击回车：
-  ```shell
-  # 如果遇到网络问题看后面的 Q&A
-  pip install -r requirements.txt
-  ```
-</Steps>
-
-### Terminal 方法
-
-如果你没有安装 VS Code 也不想安装，那你可以实用 Terminal 安装这些依赖。你只需要按照以下步骤进行：
-
-<Steps>
-  ### 打开项目文件夹
-  在 Github Desktop 上点击「Show in Finder」按钮，如果是 Win 则是「Show in Explorer」按钮。
-  ### 找到项目文件夹的路径
-  此时 Finder 会打开 ComfyUI 的文件夹，你需要在空白处点击右键，然后点击 Get Info（或者是类似「文件夹信息」之类的按钮）。然后你会在新的窗口看到此文件夹的位置信息，类似下图所示。Win 的用户可以直接在文件夹的导航处看到这个位置信息。框选并复制这串个信息。你复制的信息应该是一些斜杠加字符，比如我的是这样的：/Users/jimmywang/Documents/GitHub
-  <PhotoProvider>
-    <PhotoView src="/install-comfyui-and-model/006.png">
-        <img src="/install-comfyui-and-model/006.png" alt="" width="40%" style={{ display: "block", margin: "0 auto" }}/>
-    </PhotoView>
-  </PhotoProvider>
-  ### cd 到项目文件夹
-  打开 Terminal 输入 cd，然后空格，接着黏贴上一步复制好的代码。然后需要注意，此时你还需要在最后补上 ComfyUI 然后按下回车，如果顺利的话，会是这样：
-  <PhotoProvider>
-    <PhotoView src="/install-comfyui-and-model/007.png">
-        <img src="/install-comfyui-and-model/007.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
-    </PhotoView>
-  </PhotoProvider>
-  ### 输入命令
-  最后一步你需要在那里输入以下代码，并点击回车：
-  ```shell
-  # 如果遇到网络问题看后面的 Q&A
-  pip install -r requirements.txt
-  ```
-</Steps>
+<Tabs items={['VS Code 方法（推荐）', 'Terminal 方法']}>
+  <Tabs.Tab>
+    如果你安装过 [Visual Studio Code](https://code.visualstudio.com/)，那你只需要：
+    <Steps>
+      ### 打开项目文件夹
+      在 Github Desktop 上点击「Open in Visual Studio Code」按钮。此时 VS Code 会打开。
+      ### 打开 VS Code Terminal
+      接着你需要点击 VS Code 右上角的第二个 icon，然后你会在软件底部看到一个类似你之前在 Terminal 里看到的命令输入界面。
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/005.png">
+            <img src="/install-comfyui-and-model/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+      ### 输入命令
+      最后一步你需要在底部 Terminal 输入以下命令，并点击回车：
+      ```shell
+      # 如果遇到网络问题看后面的 Q&A
+      pip install -r requirements.txt
+      ```
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    如果你没有安装 VS Code 也不想安装，那你可以实用 Terminal 安装这些依赖。你只需要按照以下步骤进行：
+    <Steps>
+      ### 打开项目文件夹
+      在 Github Desktop 上点击「Show in Finder」按钮，如果是 Win 则是「Show in Explorer」按钮。
+      ### 找到项目文件夹的路径
+      此时 Finder 会打开 ComfyUI 的文件夹，你需要在空白处点击右键，然后点击 Get Info（或者是类似「文件夹信息」之类的按钮）。然后你会在新的窗口看到此文件夹的位置信息，类似下图所示。Win 的用户可以直接在文件夹的导航处看到这个位置信息。框选并复制这串个信息。你复制的信息应该是一些斜杠加字符，比如我的是这样的：/Users/jimmywang/Documents/GitHub
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/006.png">
+            <img src="/install-comfyui-and-model/006.png" alt="" width="40%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+      ### cd 到项目文件夹
+      打开 Terminal 输入 cd，然后空格，接着黏贴上一步复制好的代码。然后需要注意，此时你还需要在最后补上 ComfyUI 然后按下回车，如果顺利的话，会是这样：
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/007.png">
+            <img src="/install-comfyui-and-model/007.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+      ### 输入命令
+      最后一步你需要在那里输入以下代码，并点击回车：
+      ```shell
+      # 如果遇到网络问题看后面的 Q&A
+      pip install -r requirements.txt
+      ```
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
 
 不管使用哪种方法，你应该都会在最后看到「Successfully installed XXXXX」这就意味着你完成了安装。
 
@@ -198,11 +201,13 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 
 ## Q&A
 
-- Q: 在终端命令行无法下载内容该怎么办？
-  - 这是因为网络没有做到终端 FanQiang，终端 FanQiang 需要配置好代理
-  ```shell
-  # 具体端口要根据自己的 FanQiang 服务来看，最好把这个配置到默认的终端启动项里边
-  export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-  ```
+**Q: 在终端命令行无法下载内容该怎么办？**
 
+这是因为网络没有做到终端 FanQiang，终端 FanQiang 需要配置好代理
+```shell
+# 具体端口要根据自己的 FanQiang 服务来看，最好把这个配置到默认的终端启动项里边
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+```
+
+<Subscribe />
 

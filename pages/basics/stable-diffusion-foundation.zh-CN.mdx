@@ -1,5 +1,6 @@
 import { Callout } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
 
 # Stable Diffusion 基础
 
@@ -60,6 +61,8 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 <Callout emoji="💡">
   你可能好奇，为何前面的解释里，Stable Diffusion 最后是直接出图，而不像 Midjourney 那样？实际上，在第二步中，机器会分多次对图进行「降噪」，只是没有将每一次的结果用 Image Decoder 解码成图片，而是只将最后一次结果解码成照片。所以你使用 Stable Diffusion 的时候才不会像 Midjourney 那样看到生成的过程。
 </Callout>
+
+<Subscribe />
 
 ## Image Information Creator
 
@@ -184,4 +187,4 @@ OpenAI 使用了 4 亿组图片文本对，对此模型进行了训练，最后�
 
 感谢你看完这么长的 Stable Diffusion 基础解释，下一章我们会正式进入 ComfyUI 的教学。相信我，当你了解完这些基础概念后，学习 ComfyUI 你会更加得心应手。
 
-
+<Subscribe />

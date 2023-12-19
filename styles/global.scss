@@ -1,6 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .site-heading-title {
   font-size: 40px;
   text-align: center;
   font-weight: bold;
   margin: 40px 0 60px;
+}
+
+.subscribe-heading-title {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
 }
