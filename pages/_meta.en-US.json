@@ -1,6 +1,16 @@
 
 {
-  "index": "Comflowy Introduction", 
-  "basics": "Basic Concepts",
-  "advanced": "Advanced Concepts"
+  "index": "Comflowy", 
+  "introduction": "📖｜Introduction",
+  "preparation-for-study": "⏳｜Preparation",
+  "basics": "🏎️｜Basics",
+  "advanced": "🛩️｜Advanced",
+  "expert": "🚀｜Expert",
+  "blog": {
+    "title": "Blog",
+    "type": "page",
+    "theme": {
+      "sidebar": false
+    }
+  }
 }
