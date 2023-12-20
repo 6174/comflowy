@@ -1,0 +1,110 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Download & Import Model
+
+After installing ComfyUI, you need to download the corresponding models and import them into the corresponding folders. Before explaining how to download models, let's first briefly understand the differences between different versions of Stable Diffusion, so you can download a suitable version according to your needs.
+
+## Differences between Stable Diffusion versions
+
+<Callout type="info">
+  In the subsequent tutorials, I will introduce more about the models.
+</Callout>
+
+### Stable Diffusion v1.5
+- This is an early version of Stable Diffusion, and many Lora models and ContrlNet models on the market are built based on it. Therefore, to avoid pitfalls when starting to use ComfyUI, it is recommended to start with the 1.5 version.
+- The official model introduction: [Stable Diffusion v1.x press release](https://stability.ai/blog/stable-diffusion-public-release)
+
+### Stable Diffusion v2.0
+- This is a major update for Stable Diffusion. Compared to version 1.5, it has improved both in image generation quality and speed.
+- Version 2.0 adopts a new text encoder, OpenCLIP, which can better understand text prompts, thus generating higher quality images. In addition, version 2.0 supports higher image resolution, capable of generating images with default resolutions of 512x512 and 768x768 pixels.
+- The official model introduction: [Stable Diffusion v2 press release](https://stability.ai/blog/stable-diffusion-v2-release)
+
+### Stable Diffusion XL
+- This is the latest version of Stable Diffusion, and it has further optimization and improvements based on version 2.0.
+- The main feature of the XL version is its larger model size, expanding from 0.98B to 6.6B parameters, enabling it to generate higher quality images.
+- The XL version also introduces new features like more artistic images, more realistic images, and more readable fonts.
+- The official model introduction: [Stable Diffusion xl 1.0 press release](https://stability.ai/news/stable-diffusion-sdxl-1-announcement)
+
+<Subscribe />
+
+## Download models
+
+There are two download channels that I often use, one is HuggingFace, and the last one is from the CivitAI site.
+
+### HuggingFace
+
+You can understand HuggingFace as the Github for AI. There are many individuals or organizations that share their models there. You can search for the model you want via HuggingFace's search function.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/009.jpeg">
+      <img src="/install-comfyui-and-model/009.jpeg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+For example, when we search for Stable Diffusion v1.5, you will see this page, and then we click the "Files and versions" button on the page (shown as 1), then you'll see many files. At this point, you need to choose the model file you want to download, then click the download button (shown as 2):
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/010.png">
+      <img src="/install-comfyui-and-model/010.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+Generally, you will see two types of model suffixes:
+- **safetensors**: This type of model is generally saved in numpy format, which means it only saves tensor data with no code, so loading these files is safer and faster.
+- **ckpt**: This file is serialized, meaning that they might contain malicious code, loading these type of models could pose a security risk.
+
+So in the above case, I would recommend you download the safetensors format model.
+
+In addition, when searching for a model, I suggest you make sure that it's an official model. Generally, I would look at the download count of the model, typically, the more downloads a model has, the more likely it's from the official source.
+
+### CivitAI
+
+Unlike HuggingFace, the CivitAI site tends to lean more towards UGC (User-Generated Content), so you'll see many more personally trained models. However, this does not mean that their quality will be poor. On the contrary, you'll find that the quality of some models is very good.
+
+Moreover, CivitAI has many more useful functions than HuggingFace. For instance, you can see various excellent models through different filters:
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/011.jpeg">
+      <img src="/install-comfyui-and-model/011.jpeg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+Similarly, you can also use the search function in CivitAI to search for the model you want and download it. Take DreamShaper as an example, you just need to click on the download button (shown as 1) to download the model:
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/012.jpeg">
+      <img src="/install-comfyui-and-model/012.jpeg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+<Callout type="warning" emoji="⚠️">
+  In the following tutorials, I will be using various models. You can download different models from the above two channels according to your needs. But now, I'd recommend you first download the Stable Diffusion v1.5 and Stable Diffusion XL models on HuggingFace. The former has many complementary models, while the latter tends to provide better output images. Many of the latest models are also optimized based on it.
+</Callout>
+
+## Import models
+
+Once the models are downloaded, we need to place the corresponding models in the 'models' directory of ComfyUI.
+
+<Steps>
+  ### Open the ComfyUI project folder
+  You can use Github Desktop mentioned in the previous chapter to open the ComfyUI project folder. Click the "Show in Finder" button on Github Desktop. If you are using Windows, click the "Show in Explorer" button. This will open the folder of this project. Then you need to click and navigate into the models directory:
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/013.png">
+        <img src="/install-comfyui-and-model/013.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+
+  ### Add the models to the corresponding folders
+  After entering the Model folder, you will see many folders. These folders correspond to different models. You need to put the model you downloaded into the corresponding folder. For example, we just downloaded the Stable Diffusion v1.5 model, which belongs to checkpoints, so you need to put this model into the checkpoints folder. We will introduce different types of models in the future, you need to put them in the corresponding folders, for example, the LoRA model that will be introduced later must be placed in the Lora folder.
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/014.png">
+        <img src="/install-comfyui-and-model/014.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
+
+🎉 Congratulations, you have completed another important step. Now we can formally enter the study of ComfyUI basics.
+
+<Subscribe />

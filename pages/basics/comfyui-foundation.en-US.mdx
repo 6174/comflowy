@@ -1,0 +1,194 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# ComfyUI Basics ➀
+
+In the last chapter, we introduced the basic principles of Stable Diffusion and how to use it to generate images. In this chapter, we will cover the basic operations of ComfyUI and how to use ComfyUI to generate images.
+
+<Callout type="warning" emoji="⚠️">
+  Please ensure that you have installed ComfyUI and downloaded the Stable Diffusion v1.5 or Stable Diffusion XL model before proceeding with this chapter.
+</Callout>
+
+## Default Workflow
+
+Upon installing and opening ComfyUI, you should see a screen looking like this (image can be clicked to enlarge👇):
+
+<Callout type="info">
+  If you don't see this interface after opening ComfyUI, you can click the Load Default button on the right panel.
+</Callout>
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/001.png">
+    <img src="/comfyui-foundation/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+You might be wondering about the boxes and lines are all about.
+
+For easier explanation later, let me first briefly introduce the individual boxes. I will refer to these boxes as Nodes in the future, with the left end being the Input end and the right end being the Output end. There will also be some configuration items in the nodes, which I will refer to as Parameters:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/005.jpg">
+    <img src="/comfyui-foundation/005.jpg" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+Looking back at these nodes, all of them were mentioned in the last chapter. If I slightly adjust the order, you should find them quite familiar (image can be clicked to enlarge👇):
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/002.png">
+    <img src="/comfyui-foundation/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Does it all look familiar now? The blocks on the initial Workflow (which I will refer to as "nodes" later) represent the three main components mentioned in the previous chapter on Stable Diffusion, they just have different names in ComfyUI:
+
+| Node Name in ComfyUI     | Corresponding Name in SD Model | Explanation |
+| :----------------------- | :----------------------------- | :---------- |
+| CLIP Text Encode         | Text Encoder                   | Remember in the last chapter, we mentioned that the Text Encoder used in Stable Diffusion is the Text Encoder from CLIP? In fact, this component and the Text Encoder mentioned in the last chapter are the same thing. It's just that there are two here, but if you follow the output connections downwards, you will see that the two nodes connect to the positive and negative ends, signifying one is for positive prompt and the other for negative prompt. |
+| KSmapler                 | Image Information Creator      | This corresponds to the core part of the model generating images. In ComfyUI, the names are quite different and there are many configuration items, which I will explain in detail in later chapters.     |
+| Empty Latent Image       | Image Information Creator      | As we mentioned in the last chapter, the entire image creation process takes place in Latent Space, so this node in ComfyUI is called Empty Latent Image.      |
+| VAE Decoder              | Image Decoder                  | The whole generation process happens in Latent Space, and as I mentioned before, the full name for the process is Variational Auto Encoder (VAE), hence why it's called VAE Decoder in ComfyUI. |
+
+Both ends also have items that were not mentioned in the last chapter:
+- Save Image: As the name suggests, this is to save the image after output.
+- Load Checkpoint: This can be understood as an image model loader. For example, Stable Diffusion has versions like 1.5, XL, XL-Turbo, etc. To switch or load different models, this node is necessary.
+
+After introducing the entire workflow, you can generate images by clicking the Queue Prompt button on the right panel.
+
+<Subscribe />
+
+## Node Introduction
+
+After viewing the entire workflow, let's discuss in detail the configuration of each node. We start from the left and introduce each node.
+
+### Load Checkpoint
+
+The first one is Load Checkpoint. From the output node on the right, we can see that the Checkpoint consists of three parts: model, CLIP and VAE. These three parts are the three key steps of the Stable Diffusion model we introduced earlier. This node serves as the starting point of all workflows.
+
+Clicking on the selection button in the node allows you to switch models, but only to those you have already downloaded. Refer to the relevant chapter for information on how to download models.
+
+Speaking of models, I'd like to emphasize again that you generally see two types of model extensions:
+
+* safetensors: Models with this extension are typically saved in numpy format, meaning only tensor data is saved, no code at all, hence loading these files would be safer and faster.
+* ckpt: This type of file is serialized, implying they could contain some malicious code, thus posing a potential security risk when such models are loaded.
+
+I would recommend prioritizing the downloading and usage of model files with the safetensors extension.
+
+In addition, you may see some models marked as fp16 in their name. What does that mean?
+
+It stands for half-precision floating-point format. Compared with the standard 32-bit floating point, this format requires less storage space and performs calculations faster. However, the precision and diversity of the images it produces might be slightly inferior compared to the full version. Therefore, if you want quicker results, you might want to consider the fp16 version of the model.
+
+### CLIP Text Encode(Prompt)
+Next up is the CLIP Text Encode node, which primarily inputs prompts. Typically, there will be two such nodes; one for positive Prompt detailing what you would like to see in the image; and the other for negative Prompt listing what you do not want to appear in the image.
+
+Generally, there are a few principles to follow when writing Stable Diffusion prompts:
+
+1. The length of the Prompt is not necessarily better; try to keep it within 75 tokens (or about 60 words).
+2. Use commas to separate. Stable Diffusion doesn't understand grammar, so you need to list the keywords that you want in the image and separate them with commas.
+3. Place the more important words in the front. If you want to generate a beautiful landscape picture, you can put 'beautiful scenery nature' at the very front.
+
+Furthermore, there's a little trick where you can input `(keyword:weight)` to control the weight of keywords. For example, `(high building: 1.2 )` means that the weight for 'high building' increases. If the weight number is less than 1, it means that the relevance of this word decreases in the generated image.
+
+### Empty Latent Image
+
+Following is the empty subspace image node. If you need to adjust the size of the final image produced, you would need to adjust the values of width and height. The batch_size is the number of images produced each time the model runs. If you set this to 4, it means four images will be generated each time.
+
+If you're using the SD v1.5 model, the optimal size is 512x512. Some fine-tuned versions based on SD v1.5 also support 768x768. Therefore, some common aspects ratios include:
+
+- 1:1 (Square): 512x512, 768x768
+- 3:2 (Horizontal): 768x512
+- 2:3 (Vertical): 512x768
+- 4:3 (Horizontal): 768x576
+- 3:4 (Vertical): 576x768
+- 16:9 (Widescreen): 912x512
+- 9:16 (Portrait): 512x912
+
+If you're using the SDXL model, the optimal size is 1024x1024, with common aspect ratios including:
+
+- 1:1 (Square): 1024x1024, 768x768
+- 3:2 (Horizontal): 1152x768
+- 2:3 (Vertical): 768x1152
+- 4:3 (Horizontal): 1152x864
+- 3:4 (Vertical): 864x1152
+- 16:9 (Widescreen): 1360x768
+- 9:16 (Portrait): 768x1360
+
+Lastly, it should be noted that both width and height must be divisible by 8.
+
+<Callout emoji="💡">
+  You might wonder why some models, when set to an image size of 512X512, produce very bizarre results, such as two heads in one image, while some models, like SDXL, have a default size of 1024x1024. The main reason is that these models were trained on images of different sizes during their training phase. For instance, SDXL was trained on larger images. If we draw a parallel with sculpting, these models can be compared to sculptors who learn to carve marble through training. Some sculptors only practiced on 1024x1024 marbles and didn't learn on 2048x2048 ones, hence they wouldn't do so well on larger marbles.
+</Callout>
+
+### Save Image
+After the image generation is completed, if you right-click on the image, you will see a 'Save Image' option. Clicking this button allows you to download the generated image. The text box in the node is for setting the prefix of the image name. For example, if the default is ComfyUI, it means that the filename of the image you saved will start with ComfyUI, followed by a string of numbers.
+
+### KSampler
+Finally, there's KSampler. A sampler in English, if you want to know more about the sampler, you can look up related advanced tutorials; the basic tutorial only tells you how to use it. The KSampler contains the following parameters:
+
+- seed: This is a random seed mainly used for controlling the initial noise in the subspace. If you want to generate identical images, you would need to use this random seed. It should be noted that the seed and the Prompt must be the same in order to generate identical images. For example, you could use the default Prompt from the Default Workflow (beautiful scenery nature glass bottle landscape, purple galaxy bottle) to generate an image. Then you can copy this random seed, for example, 156680208700286, change the word purple in the Prompt to green to generate a new image, paste the copied seed 156680208700286 to replace the new seed, then change the Prompt back to the original purple and regenerate the image. You will find that the image produced this time is exactly the same as the one generated the first time.
+- control_after_generate: After each image is generated, the seed value will change. This configuration item is for setting the rules for this change: randomize, increment (increase by 1), decrement (decrease by 1), fixed.
+- step: Number of sampling steps. Generally, the larger the number of steps, the better the effect, but it also depends on the model and the sampler being used.
+- cfg: Full name is Classifier Free Guidance. I introduced it in chapter SD Basics. Generally, setting this value between 6~8 yields good results.
+- sampler_name: Sampler name. You can choose the sampler algorithm through this field. If you're interested in it, you can read related advanced tutorials.
+- scheduler: The scheduler mainly controls the denoising process in each step. You can choose different scheduling algorithms through it. Some algorithms opt to subtract the same amount of noise in each step, while some strive to remove as much noise as possible in each step.
+- denoise: This indicates how much initial noise to add, with 1 representing all. Generally, for creating text to image, you can simply set it to 1 as default.
+
+### Best Practices
+
+Among all the configuration items, besides the model affecting the results of the output, the next is the several configurations of the KSampler. The advanced tutorial will share the features of each sampler, and in this section, I will only share the best practices:
+
+{<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>checkpoint</th>
+      <th>sampler_name</th>
+      <th>scheduler</th>
+      <th width={80}>step</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Very concerned about speed</td>
+      <td>SDXL Turbo fp16</td>
+      <td>dpmpp_2m（some software will call it  dpm++2M）</td>
+      <td>normal</td>
+      <td>20-30</td>
+    </tr>
+    <tr>
+      <td rowSpan={2} style={{ backgroundColor: "white" }}>Very concerned about image quality and diversity of generated content</td>
+      <td rowSpan={2} style={{ backgroundColor: "white" }}>SDXL refiner</td>
+      <td>dpmpp_2m（some software will call it  dpm++2M）</td>
+      <td>karras</td>
+      <td>20-30</td>
+    </tr>
+    <tr>
+      <td>UniPC（faster than dpmpp_2m）</td>
+      <td>karras</td>
+      <td>20-30</td>
+    </tr>
+    <tr>
+      <td rowSpan={2} style={{ backgroundColor: "white" }}>Concerned about image quality, not so much about diversity, but want to improve generation speed</td>
+      <td rowSpan={2} style={{ backgroundColor: "white" }}>SDXL refiner fp16</td>
+      <td>dpmpp_sde</td>
+      <td>karras</td>
+      <td>10-15</td>
+    </tr>
+    <tr>      
+      <td>ddim</td>
+      <td>normal</td>
+      <td>10-15</td>
+    </tr>
+  </tbody>
+</table>}
+
+<Callout type="info">
+  Please note that the configuration of KSampler is strongly related to the model (checkpoint), for example, SDXL-Turbo, because it compresses the image generation process, its optimal cfg should not be too large, it might be best to try 1 or 4. Also, when you download other people's models, the author usually specifies the optimal parameter configuration in the model introduction. You can follow this configuration to set the parameters.
+</Callout>
+
+I currently use SDXL Turbo quite often. What model to use also depends on your image creation needs. You need to consider your situation, and try different options.
+<Subscribe />
