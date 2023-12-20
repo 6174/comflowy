@@ -1,1 +1,105 @@
+import { Steps, Callout } from 'nextra-theme-docs'
+import { PhotoProvider, PhotoView } from 'react-image-previewer'
+import Subscribe from 'components/subscribtion'
+
 # Why you should learn ComfyUI?
+
+In the field of AI image generation, there are many products such as Midjourney, Stability AI, and so on. Why should you learn to use ComfyUI?
+
+## Midjourney & Stability VS SD WebUI & ComfyUI
+
+Before answering this question, I think it's necessary to introduce the current products on the market. In my view, they mainly fall into two categories:
+
+1. Products where the model and product are **integrated**, such as Midjourney, Stability AI, and so on.
+2. Products where the model and product are **separate**, such as SD Web UI, ComfyUI, and so on.
+
+The advantages and disadvantages of these two types of products are as follows:
+| | Integrated Products (e.g. Midjourney, Stability AI) | Separate Products (e.g. SD WebUI, ComfyUI) |
+|---------------|----------------------------------------------------------------------------------|--------------------------------------------|
+| Learning Cost | Low, as the products are generally UX optimized and come with various tutorials. | High, as they are typically open-source products involving multiple developers, possibly lacking in UX optimization and tutorials. |
+| Migration Cost| High, as when you switch to a different product, you need to learn how to use it anew, and you also need to relearn model-related knowledge. | Low, as you only need to relearn model-related knowledge. |
+| Freedom | Low, as products are generally closed, and you can only use the features that they provide. | High, as products are typically open source, and you can modify the product freely, or even develop your own. |
+| Cost | High, as there are generally no local versions available and you have to pay for them. | Medium, as they generally provide a local version. If you use the local version, you do not have to pay, but you may need to purchase a GPU. |
+
+It's not difficult to see that neither type of product has an absolute advantage. **Which product to choose depends entirely on your needs.**
+
+**If you see this as entertainment, and occasionally want to create some images or videos, then I recommend you choose an integrated product.** The learning cost is low, so you can quickly learn how to use it, and it also has comprehensive product features, enabling you to quickly create images or videos.
+
+**However, if you are a designer, or if you want to make money from this new technology, I recommend you choose a separate product.** Why so? I think many people often overlook two key reasons when choosing which software to learn.
+
+The first is the **migration cost.**
+
+If we choose to learn the first type of integrated product, it means that we are binding ourselves to the model while learning the software. Taking Midjourney as an example, when you learn Midjourney, you need to learn how to use the software and how to use the model better, i.e., how to write a good prompt, at the same time.
+
+This results in a very high learning migration cost. When you want to change products, you need to relearn the methods of using the new product, and relearn model-related knowledge.
+
+If the industry was developing at a slower pace, this cost might be acceptable (because you would have plenty of time to learn). However, given the rapid development of the AI industry today, where new products or models appear every month, it becomes challenging to find time to learn every product. To illustrate this with a practical example, if you choose to learn integrated products, it means:
+
+- When you see that AI can generate images by entering text, you might go learn Midjourney, Stability AI, or even Adobe's AI products.
+- Then you might discover that there are new products that can create images by drawing, so you might go learn Krea.
+- Then you find out AI can also generate videos, and you run to learn Runway, Pika.
+
+In the end, you may find that, although you've learned a ton of software, it feels as if you haven't comprehended anything at all. Each piece of software requires a significant investment of time to truly master, and purely exploratory learning doesn't add any tangible accumulation (unless you're just doing it for entertainment).
+
+On the other hand, learning separate products can significantly reduce this migration cost. When a new model appears, you only need to switch models, without needing to relearn how to use the product. For instance, once you've mastered products like SD WebUI or ComfyUI, and learned how to generate images from text, if you need to create images through drawing, all you need to do is switch some models or operate within the product to achieve effects similar to Krea.
+
+Another key point is **freedom.**
+
+I always believe that AI will not replace human beings, but it will replace those who don't know how to use it.
+
+If you want to stand out in this wave of AI, you must learn how to use AI. Not only how to use it, but also how to adjust it, and even change your workflow.
+
+Because of its high degree of freedom, you can freely modify the product, or even develop your own product. This means you can integrate the product into your workflow to improve your work efficiency, or even transform your workflow.
+
+<Subscribe />
+
+## SD Web UI VS ComfyUI
+
+Why choose ComfyUI among the many decoupled products on the market?
+
+Let's take a quick look at the UI interfaces of SD Web UI and ComfyUI, and you should recognize their differences.
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/introduction/001.png">
+    <img src="/introduction/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+From the screenshot above, SD WebUI's UI resembles more traditional products, with numerous input fields and multiple buttons. ComfyUI's UI interface, on the other hand, is extremely intricate. In addition to input fields, it features a vast array of blocks and many complex connections.
+
+Indeed, in terms of learning cost, ComfyUI's might be higher than SD WebUI. However, these connections are not as complex as they seem and you can understand it in this way:
+
+- These small blocks are akin to the input fields and buttons in SD WebUI and serve to configure parameters.
+- These connections are somewhat akin to setting up an automated workflow that runs sequentially from left to right.
+- Functionally, the two product screenshots provide identical features, but ComfyUI adopts this plugging method.
+
+What are the benefits of this method? Let's look at these two workflows built with ComfyUI:
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/introduction/002.png">
+    <img src="/introduction/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Comparing the two workflows, you'll notice just one differing node: one loads images directly, and the other creates images via a drawing board. This allows for two different functionalities to be achieved (importing an image to create an image and drawing to create an image). This implies that you can change the workflow and hence the function by modifying the nodes, offering two benefits:
+
+- You can build your own workflow according to your needs, without relying on developers.
+- You can also develop and modify a certain node as per your needs.
+
+Hence, the cornerstone for choosing ComfyUI is its freedom and extensibility. This means you can tweak ComfyUI to suit your workflow, or even alter that workflow.
+
+In this era of rapid AI development, I believe that being adaptable is of the utmost importance.
+
+<Callout emoji="💡">
+  If you check various comparison reviews, you will find that ComfyUI performs
+  better than SD WebUI in terms of performance. However, its coverage scope is
+  less than SD WebUI. For example, ComfyUI's Inpainting editor is inferior to SD
+  WebUI's editor. However, these are not issues. These issues will be gradually
+  improved through the open-source ecosystem, or we might say it's a trade-off.
+  Yet, I believe that, without significant changes, SD WebUI cannot achieve the
+  same level of freedom as ComfyUI.
+</Callout>
+
+<Subscribe />

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 
 const TITLE = {
   'zh-CN': '🥰 感谢你的阅读！',
-  'en-US': '🥰 Thanks for reading Comflowy!',
+  'en-US': '🥰 Thanks for reading!',
 }
 
 const SUBTITLE = {
