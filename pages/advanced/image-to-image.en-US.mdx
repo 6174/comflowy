@@ -1,0 +1,58 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Image-to-Image
+
+After completing the basic learning, you might not be satisfied with the generated images, for example:
+
+* The resolution of the generated images is not enough.
+* Some parts of the generated images are not satisfactory and you want to modify them.
+* Or maybe you want to enhance control over the generation process, such as controlling the pose of the character in the picture.
+
+The intermediate section will introduce more methods to help you solve the above problems. But before discussing the solutions to these issues, I'd like to introduce another crucial workflow of Stable Diffusion: image-to-image.
+
+<Callout type="warning" emoji="⚠️">
+ Before officially starting this chapter, please download the following models and put them into the corresponding folders:
+  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper): place it inside the models/checkpoints folder in ComfyUI.
+  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main): you can download the h or l version, and place it inside the models/checkpoints folder in ComfyUI.
+  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth): place it inside the models/style_models folder in ComfyUI.
+  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14): place it inside the models/clip_vision folder in ComfyUI.
+</Callout>
+
+## Principle Introduction
+
+The two mainstream methods of Stable Diffusion model for image-to-image are:
+* Overdraw: Take the input image as a base and use the model to regenerate a new image on it.
+* Reference: Take the input image as a parameter, input it and the prompt together into the model, and then generate a new image.
+
+It may be a bit difficult to understand literally, so let's visualize these two methods as per tradition.
+
+### Method 1: Overdraw
+
+First, remember the Stable Diffusion principle. The image-to-text process denoises a random noise image into a new image. Image-to-image is to first add noise to the input image and then denoise this noisy image into a new image using the same method. The rough flow is like this. Its corresponding workflow is generally called Simple img2img workflow.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-img2img/003.png">
+    <img src="/comfyui-img2img/003.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+If we use the analogy of sculpture, the process is similar to the sculpture artist (model) taking a statue (initial input image), and sculpting a new one (output image) based on your instructions (Prompt).
+
+### Method 2: Reference
+
+The second method does not redraw the input image, but uses the input image as part of the prompt. It is then input into the model together with the text prompt to finally generate a new image. The rough flow is as follows:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-img2img/004.png">
+    <img src="/comfyui-img2img/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+## Simple img2img workflow
+
