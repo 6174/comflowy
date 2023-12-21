@@ -31,6 +31,11 @@ export default {
   docsRepositoryBase: 'https://github.com/6174/comflowy/tree/master/example', // base URL for the docs repository
   titleSuffix: ' – comflowy',
   unstable_flexsearch: true,
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – Comflowy',
+    }
+  },
   toc: {
     float: true,
   },
