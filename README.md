@@ -12,7 +12,7 @@
     <span> | </span>
     <a href="https://discord.gg/xqB9VyEX">Our Discord</a>
     <span> | </span>
-    <a href="">中文版本</a>
+    <a href="https://github.com/6174/comflowy/blob/main/REAME-CN.md">中文版本</a>
 </h4>
 </div>
 
