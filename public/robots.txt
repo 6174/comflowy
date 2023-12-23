@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://comflowy.com
+
+# Sitemaps
+Sitemap: https://comflowy.com/sitemap.xml
