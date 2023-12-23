@@ -1,19 +1,40 @@
-# Comflowy - ComfyUI 社区
+<div align="center">
+<h1>👋 Welcome to Comflowy</h1>
+<p>
+   <strong>Unleash endless possibilities with ComfyUI and Stable Diffusion, </strong>
+   <br/>
+   <strong>committed to crafting refined AI-Gen tools and cultivating a vibrant community for both developers and users.</strong>
+</p>
+<h4>
+    <a href="https://comflowy.com">Start Learning ComfyUI & Stable Diffusion</a>
+    <span> | </span>
+    <a href="https://www.comflowy.com/blog">Our Blog</a>
+    <span> | </span>
+    <a href="https://discord.gg/xqB9VyEX">Our Discord</a>
+    <span> | </span>
+    <a href="">中文版本</a>
+</h4>
+</div>
 
-一句话定位：探索 ComfyUI 的无限可能，致力于以 ComfyUI 和 Stable Diffusion 为核心，打造更优质的生产工具、构建开发者与用户内容社区
+## 🤔 Why
+We believe that the future of AI generative graphics will revolve around Stable Diffusion, and compared to other open-source products such as Stable Diffusion WebUI, ComfyUI has a very strong differentiation capability. It exhibits high extensibility and applicability, truly enabling developers and users to develop personalized generative workflows based on their needs.
 
-## WHY
-我们认为 AI 生图领域的未来一定是围绕 Stable Diffusion 展开，而 ComfyUI 相比于 Stable Diffusion WebUI 等其他开源产品具备非常强的差异化能力，它具备高度的扩展性和应用可能性，真正做到了让开发者和用户能够根据自己的需求打造个性化的生图流程。
+However, ComfyUI lacks comprehensive tutorials and experience documentation, and the tools also lack good experience design, thus presenting a high threshold that many Stable Diffusion users find daunting. This also allows our team to see that if these issues are resolved, ComfyUI might have a chance of becoming mainstream. Therefore, we decided to establish a ComfyUI community - [Comflowy](https://www.comflowy.com/).
 
-尽管如此，ComfyUI 却缺乏系统成熟的教程和经验文档，工具也缺乏良好的体验设计，以至上手门槛过高被很多 Stable Diffusion 用户拒之门外。但反过来这也让我们团队看到，如果解决了这些问题，那兴许能够有机会让 ComfyUI 走向大众化，所以我们决定先做一个 ComfyUI 社区- https://www.comflowy.com/
+## 😎 How
+What this community can provide:
 
+1. **More comprehensive and systematic Stable Diffusion & ComfyUI tutorials**: Currently, there are relatively few tutorials about ComfyUI on the market, and they are not systematic. To fully leverage ComfyUI, relying solely on these fragmented pieces of information is not sufficient. Thus, we plan to study and systematically cover all aspects of ComfyUI in [our tutorials](https://www.comflowy.com/).
 
-## HOW
-这个社区能提供什么：
+2. **Interactive discussion through a Discord community**: Communication and learning stand as the central driving force for community development. You're welcome to join our [Discord community](https://discord.gg/cj623WvcVx) and communicate with other ComfyUI users.
 
-1. **提供更完善系统的 Stable Diffusion & ComfyUI 教程**：目前市面上关于 ComfyUI 的教程数量较少，而且它们并不成体系。想要充分利用 ComfyUI，仅仅依赖这些零散的信息显然是不够的。因此，我们计划系统地学习并输出涵盖 ComfyUI 各方面的教程。
-2. **提供可以互动讨论的 Discord 社群**：交流学习是社区发展的核心推动力。欢迎您加入我们的 Discord 社群，与其他 ComfyUI 用户进行交流和讨论。
-3. **提供一个 Workflow、模型内容数据库**：ComfyUI 的一项重要价值在于能够分享或导入 Workflow。我们认为这一功能被严重低估，因此我们计划基于此建立一个 Workflow 数据库，以便更多人能够分享自己的 Workflow，并从中受益。此外，随着 AI 模型的不断丰富，我们通常难以确定哪种模型最适合使用。因此，我们还希望在提供 Workflow 的同时，建立一个模型数据库，帮助用户更好地选择适用的模型。
-4. **提供一个开源版的 Better ComfyUI**：尽管 ComfyUI 具有巨大的潜力，但目前其产品交互体验仍有许多可以提升的空间。正巧我们的团队擅长改进用户体验，因此我们希望能够将我们的专业能力贡献给 ComfyUI 生态系统，真正推动 ComfyUI 走向大众化。
+3. **A database of workflow and model content**: A significant value of ComfyUI lies in its ability to share or import workflows. We think this feature is severely underestimated, so we plan to build a workflow database based on this, enabling more people to share their workflows and benefit from them. Besides, with the constant enrichment of AI models, it's usually difficult to determine the most suitable model to use. Therefore, we also hope to establish a model database to help users make better choices, in addition to providing workflows.
 
-目前的社区维护者包括 `@Marc` 和 `@Jimmy`，期待各位的积极贡献与参与。欢迎加入我们，共同推动 ComfyUI 社区的发展。
+4. **An open-source version of Better ComfyUI**: Despite ComfyUI's immense potential, there is still much room for improvement in terms of product interaction experience. Our team excels in improving user experience, so we wish to contribute our professional skills to the ComfyUI ecosystem, effectively promoting ComfyUI's mainstream prevalence.
+
+The current community maintainers include `@Marc` and `@Jimmy`. We look forward to everyone's active contributions and participation. Welcome to join us in promoting the development of the ComfyUI community.
+
+## 🥰 Like Comflowy?
+If you like Comflowy, give our repo a [⭐ STAR ⬆️](https://github.com/6174/comflowy) and [WATCH 👀](https://github.com/6174/comflowy/subscription) our repository to stay updated with our latest tutorial and posts!
+
+Every encouragement and feedback can support us to go further.
