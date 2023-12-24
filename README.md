@@ -1,19 +1,20 @@
 <div align="center">
-<h1>👋 Welcome to Comflowy</h1>
-<p>
-   <strong>Unleash endless possibilities with ComfyUI and Stable Diffusion, </strong>
-   <br/>
-   <strong>committed to crafting refined AI-Gen tools and cultivating a vibrant community for both developers and users.</strong>
-</p>
-<h4>
-    <a href="https://comflowy.com">Start Learning ComfyUI & Stable Diffusion</a>
-    <span> | </span>
-    <a href="https://www.comflowy.com/blog">Our Blog</a>
-    <span> | </span>
-    <a href="https://discord.gg/xqB9VyEX">Our Discord</a>
-    <span> | </span>
-    <a href="https://github.com/6174/comflowy/blob/main/REAME-CN.md">中文版本</a>
-</h4>
+   <img src="public/logo.png" width="120px" />
+   <h1>👋 Welcome to Comflowy</h1>
+   <p>
+      <strong>Unleash endless possibilities with ComfyUI and Stable Diffusion, </strong>
+      <br/>
+      <strong>committed to crafting refined AI-Gen tools and cultivating a vibrant community for both developers and users.</strong>
+   </p>
+   <h4>
+       <a href="https://comflowy.com">Start Learning ComfyUI & Stable Diffusion</a>
+       <span> | </span>
+       <a href="https://www.comflowy.com/blog">Our Blog</a>
+       <span> | </span>
+       <a href="https://discord.gg/xqB9VyEX">Our Discord</a>
+       <span> | </span>
+       <a href="https://github.com/6174/comflowy/blob/main/REAME-CN.md">中文版本</a>
+   </h4>
 </div>
 
 ## 🤔 Why
