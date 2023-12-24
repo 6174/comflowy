@@ -86,22 +86,41 @@ export default {
       </>
     )
   },
-  head: (
-    <>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta
-        name="description"
-        content="Comflowy: ComfyUI Community"
-      />
-      <meta
-        name="keywords"
-        content="ComfyUI, Stable Diffusion, comflowy, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library, text-to-image, text2img, text2video, text-to-video, ComfyUI 教程, ComfyUI tutorial, How to use ComfyUI, ComfyUI 使用教程, 如何使用 ComfyUI"
-      />
-      <meta name="og:title" content="Comflowy: ComfyUI Community" />
-      <meta name="og:tags" content="comflowy, comfyui, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library" />
-      <link rel="icon" href="/logo.png" type="image/png" />
-    </>
-  ),
+  head: () => {
+    const {asPath} = useRouter();
+    return (
+      <>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Comflowy: ComfyUI Community"
+        />
+        <meta
+          name="keywords"
+          content="ComfyUI, Stable Diffusion, comflowy, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library, text-to-image, text2img, text2video, text-to-video, ComfyUI 教程, ComfyUI tutorial, How to use ComfyUI, ComfyUI 使用教程, 如何使用 ComfyUI"
+        />
+        <meta 
+          name="og:title" 
+          content="Comflowy: ComfyUI Community" 
+        />
+        <meta 
+          property="og:url" 
+          content={`https://comflowy.com${asPath}`} 
+        />
+        <meta
+          property="og:description"
+          content={
+            "Unleash endless possibilities with ComfyUI and Stable Diffusion, committed to crafting refined AI-Gen tools and cultivating a vibrant community for both developers and users."
+          }
+        />
+        <meta 
+          name="og:tags" 
+          content="comflowy, comfyui, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library" 
+        />
+        <link rel="icon" href="/logo.png" type="image/png" />
+      </>
+    )
+  },
   i18n: [
     { locale: 'zh-CN', text: '简体中文' },
     { locale: 'en-US', text: 'English'}
