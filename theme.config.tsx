@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
 import logo from '../public/logo.png'
 
 const Vercel = ({ height = 20 }) => (
@@ -87,6 +88,7 @@ export default {
     )
   },
   head: () => {
+    const { title } = useConfig();
     const {asPath} = useRouter();
     return (
       <>
@@ -101,7 +103,7 @@ export default {
         />
         <meta 
           name="og:title" 
-          content="Comflowy: ComfyUI Community" 
+          content={title ? title + ' – Comflowy' : 'Comflowy'}
         />
         <meta 
           property="og:url" 
@@ -117,6 +119,14 @@ export default {
           name="og:tags" 
           content="comflowy, comfyui, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library" 
         />
+        <meta 
+          name="og:image" 
+          content = {'http://www.comflowy.com/index/Comflowy_banner.png'}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={'http://www.comflowy.com/index/Comflowy_banner.png'} />
+        <meta name="twitter:site:domain" content="comflowy.com" />
+        <meta name="twitter:url" content="https://comflowy.com" />
         <link rel="icon" href="/logo.png" type="image/png" />
       </>
     )
