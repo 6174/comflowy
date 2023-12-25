@@ -88,21 +88,23 @@ export default {
     )
   },
   head: () => {
-    const { title } = useConfig();
     const {asPath} = useRouter();
+    const { title, ...meta } = useConfig().frontMatter;
     return (
       <>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Comflowy: ComfyUI Community"
+          content={
+            meta.description ||
+            "Unleash endless possibilities with ComfyUI and Stable Diffusion, committed to crafting refined AI-Gen tools and cultivating a vibrant community for both developers and users."}
         />
         <meta
           name="keywords"
           content="ComfyUI, Stable Diffusion, comflowy, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library, text-to-image, text2img, text2video, text-to-video, ComfyUI 教程, ComfyUI tutorial, How to use ComfyUI, ComfyUI 使用教程, 如何使用 ComfyUI"
         />
         <meta 
-          name="og:title" 
+          property="og:title" 
           content={title ? title + ' – Comflowy' : 'Comflowy'}
         />
         <meta 
@@ -112,21 +114,23 @@ export default {
         <meta
           property="og:description"
           content={
+            meta.description ||
             "Unleash endless possibilities with ComfyUI and Stable Diffusion, committed to crafting refined AI-Gen tools and cultivating a vibrant community for both developers and users."
           }
         />
         <meta 
-          name="og:tags" 
+          property="og:tags" 
           content="comflowy, comfyui, stable-diffusion, stable-diffusion-webui, sd.next, comfy, ui, ui-library" 
         />
         <meta 
-          name="og:image" 
+          property="og:image" 
           content = {'http://www.comflowy.com/index/Comflowy_banner.png'}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={'http://www.comflowy.com/index/Comflowy_banner.png'} />
         <meta name="twitter:site:domain" content="comflowy.com" />
         <meta name="twitter:url" content="https://comflowy.com" />
+        <meta name="twitter:description" content={meta.description} />
         <link rel="icon" href="/logo.png" type="image/png" />
       </>
     )
