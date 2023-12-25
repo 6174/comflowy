@@ -1,17 +1,18 @@
 <div align="center">
-<h1>👋 Welcome to Comflowy</h1>
-<p>
-   <strong>探索 ComfyUI 的无限可能，致力于以 ComfyUI 和 Stable Diffusion 为核心，</strong>
-   <br/>
-   <strong>打造更优质的生产工具、构建开发者与用户内容社区。</strong>
-</p>
-<h4>
-    <a href="https://comflowy.com">开始学习 ComfyUI 和 Stable Diffusion</a>
-    <span> | </span>
-    <a href="https://www.comflowy.com/blog">我们的博客</a>
-    <span> | </span>
-    <a href="https://discord.gg/xqB9VyEX">我们的 Discord</a>
-</h4>
+   <img width="1920" alt="Comflowy_banner" src="https://github.com/6174/comflowy/assets/37492595/72468977-95a6-4330-990f-08ee6119200b">
+   <h1>👋 Welcome to Comflowy</h1>
+   <p>
+      <strong>探索 ComfyUI 的无限可能，致力于以 ComfyUI 和 Stable Diffusion 为核心，</strong>
+      <br/>
+      <strong>打造更优质的生产工具、构建开发者与用户内容社区。</strong>
+   </p>
+   <h4>
+       <a href="https://comflowy.com">开始学习 ComfyUI 和 Stable Diffusion</a>
+       <span> | </span>
+       <a href="https://www.comflowy.com/blog">我们的博客</a>
+       <span> | </span>
+       <a href="https://discord.gg/xqB9VyEX">我们的 Discord</a>
+   </h4>
 </div>
 
 ## 🤔 Why
