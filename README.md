@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="public/logo.png" width="120px" />
+   <img width="1920" alt="Comflowy_banner" src="https://github.com/6174/comflowy/assets/37492595/72468977-95a6-4330-990f-08ee6119200b">
    <h1>👋 Welcome to Comflowy</h1>
    <p>
       <strong>Unleash endless possibilities with ComfyUI and Stable Diffusion, </strong>
