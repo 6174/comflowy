@@ -81,7 +81,7 @@ export default {
     return (
       <>
         <img src="/logo.png" width="26" height="26" />
-        <span style={{ marginLeft: '.4em', fontWeight: 800 ,fontSize:20 }}>
+        <span className="text-pretty text-xl max-[480px]:text-sm" style={{ marginLeft: '.4em', fontWeight: 800 }}>
           {TITLE[locale]}
         </span>
       </>
@@ -110,6 +110,10 @@ export default {
         <meta 
           property="og:url" 
           content={`https://comflowy.com${asPath}`} 
+        />
+        <meta 
+          property="og:type" 
+          content="website" 
         />
         <meta
           property="og:description"
