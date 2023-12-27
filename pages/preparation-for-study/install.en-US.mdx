@@ -177,6 +177,12 @@ You need to install dependencies after downloading the code. There are two ways 
       # Refer to the Q&A below in case of any network issues.
       pip install -r requirements.txt
       ```
+      <Callout type="warning" emoji="⚠️">
+        You may encounter errors with pip installation, in this case, you can try pip3:
+        ```shell copy
+        pip3 install -r requirements.txt
+        ```
+      </Callout>
     </Steps>
   </Tabs.Tab>
   <Tabs.Tab>
@@ -205,6 +211,12 @@ You need to install dependencies after downloading the code. There are two ways 
       # Refer to the Q&A below in case of any network issues.
       pip install -r requirements.txt
       ```
+      <Callout type="warning" emoji="⚠️">
+        You may encounter errors with pip installation, in this case, you can try pip3:
+        ```shell copy
+        pip3 install -r requirements.txt
+        ```
+      </Callout>
     </Steps>
   </Tabs.Tab>
 </Tabs>
@@ -215,11 +227,15 @@ Whether you ran the command in VS Code or the Terminal in the last step, you can
 ```shell copy
   python main.py
 ```
-<Callout type="info">
+<Callout type="warning" emoji="⚠️">
   At this step, if you want ComfyUI to run faster, you can enter the following command:
   ```shell copy
     python main.py --force-fp16
   ```
+  Additionally, if you encounter similar errors as in the previous step, you can try using python3:
+  ```shell copy
+    python3 main.py
+  ``` 
 </Callout>
 
 When you see "To see the GUI go to: http://127.0.0.1:8188", it means you've completed the installation of ComfyUI and successfully ran it. Now all you need to do is copy and paste the address in your browser:

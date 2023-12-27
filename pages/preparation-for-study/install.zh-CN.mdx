@@ -137,6 +137,12 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
       # 如果遇到网络问题看后面的 Q&A
       pip install -r requirements.txt
       ```
+      <Callout type="warning" emoji="⚠️">
+        你有可能会遇到如 pip 安装的报错，那此时你可以尝试下 pip3：
+        ```shell copy
+        pip3 install -r requirements.txt
+        ```
+      </Callout>
     </Steps>
   </Tabs.Tab>
   <Tabs.Tab>
@@ -164,6 +170,12 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
       # 如果遇到网络问题看后面的 Q&A
       pip install -r requirements.txt
       ```
+      <Callout type="warning" emoji="⚠️">
+        你有可能会遇到如 pip 安装的报错，那此时你可以尝试下 pip3：
+        ```shell copy
+        pip3 install -r requirements.txt
+        ```
+      </Callout>
     </Steps>
   </Tabs.Tab>
 </Tabs>
@@ -177,12 +189,17 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 ```shell copy
   python main.py
 ```
-<Callout type="info">
+<Callout type="warning" emoji="⚠️">
   这一步，如果你想让 ComfyUI 运行得更快，可以输入以下代码：
 
   ```shell copy
     python main.py --force-fp16
   ```
+  
+  另外，如果你遇到类似上一步的报错问题，可以尝试用 python3：
+  ```shell copy
+    python3 main.py
+  ``` 
 </Callout>
 
 当你看到「To see the GUI go to: http://127.0.0.1:8188」，
