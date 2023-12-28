@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://comflowy.com",
+  siteUrl: "https://www.comflowy.com",
   transform: async (config, path) => {
 
     console.log("origin:", path);
