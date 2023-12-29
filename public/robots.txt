@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://comflowy.com
+Host: https://www.comflowy.com
 
 # Sitemaps
-Sitemap: https://comflowy.com/sitemap.xml
+Sitemap: https://www.comflowy.com/sitemap.xml
