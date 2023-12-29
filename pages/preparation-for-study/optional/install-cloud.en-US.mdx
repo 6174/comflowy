@@ -1,0 +1,65 @@
+---
+title: ComfyUI Cloud Installation
+description: Learn how to install ComfyUI on various cloud platforms including Kaggle, Google Colab, and Paperspace. This step-by-step guide provides detailed instructions for setting up ComfyUI in the cloud, making it easy for users to get started with ComfyUI and leverage the power of cloud computing.
+keywords: ["ComfyUI, Cloud Installation, Kaggle, Google Colab, Paperspace, GPU usage, Notebook duplication, Execute notebook, Python environment, Install a model, Start WebUI, Cloud computing, Cloud services, Free GPU"]
+---
+
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# ComfyUI Cloud Installation
+
+## Step one, register for cloud services
+
+You can install ComfyUI on various cloud platforms, such as Kaggle, Google Colab (currently, running Stable Diffusion models may not be allowed), Paperspace, etc.
+
+We recommend using [Kaggle](https://www.kaggle.com/) because their free version offers up to 30 hours of free GPU usage per week, which is a great value. If you haven't registered for Kaggle, you can click [here](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F) to sign up.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/021.png">
+      <img src="/install-comfyui-and-model/021.png" alt="" width="100%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+## Step two, notebook duplication
+
+After registration, you can visit the ComfyUI's Kaggle page by clicking [here](https://www.kaggle.com/code/pogscafe/comfyui-kaggle). Click the `Copy and Edit` button in the upper right corner to clone the ComfyUI Notebook to your Kaggle account.
+
+## Step three, execute notebook
+
+<Steps>
+  ### Setting notebook options
+  After navigating to your Notebook page, click to expand the Notebook Options panel on the right:
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/020.png">
+        <img src="/install-comfyui-and-model/020.png" alt="" width="100%" style={{ display: "block", margin: "0 auto" }}/>
+    </PhotoView>
+  </PhotoProvider>
+  Then do the following:
+  1. Change the Accelerator to a faster GPUT4X2 or P100.
+  2. Set Persistence to Files only.
+  3. Set Environment to Pin to original (this ensures that subsequent code runs won't fail due to environmental changes. If you are familiar with Python, you can set it to Always use latest environment).
+  4. Enable Internet.
+  ### Execute the Installation code
+  Click the code under the Installation title, then you'll see a `Run` button on the left. Click on it to initiate executing code, at this point, you'll notice `Run` turns into to a `Stop` button. Wait for awhile; once it displays the following code, that means the installation is complete:
+  ```shell
+  Successfully installed matrix-client-0.4.0
+  ```
+  Or when you see the `Stop` button change back to a `Run` button, that also means that the code has finished execution.
+  ### Execute the Install a Model code
+  Next, skip over the Start the WebUI section and first execute the install a model code. This way, after running the Start code, you can immediately generate graphs, saving some time. Click the code under the Install a model title. Again, you'll see a `Run` button on the left. Click on it to start executing code. Wait for awhile; once it displays the following code, that means the model installation is complete:
+  ```shell
+  ‘JuggernautXL.safetensors’ saved
+  ```
+  ### Execute the Start the WebUI Code
+  Lastly, execute the Start the WebUI code. During the execution, you should see a link ending with "moe", similar to:
+  ```shell
+  http://ssshdiosaoshagohdaoghdoa.remote.moe/
+  ```
+  Click the link to access the ComfyUI WebUI page.
+  <Callout type="warning" emoji="⚠️">
+    Note: After executing the Start the WebUI code, it will continuously consume GPU time.
+  </Callout>
+</Steps>
