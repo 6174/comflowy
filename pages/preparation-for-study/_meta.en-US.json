@@ -1,6 +1,5 @@
 {
   "install": "1. Installing ComfyUI",
   "model": "2. Download & Import",
-  "custom-nodes": "3. Installing Plugins",
   "optional": "Optional"
 }

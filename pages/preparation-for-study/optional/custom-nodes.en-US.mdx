@@ -2,7 +2,7 @@ import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-# Installing Plugins (Optional)
+# Installing Plugins
 
 After the models are installed, you can actually proceed to learning the next chapter. However, I'd also like to recommend a small tool called the ComfyUI Manager, which can improve the efficiency of using ComfyUI. 
 
@@ -95,18 +95,30 @@ But please note, you cannot generate images while downloading.
   </PhotoView>
 </PhotoProvider>
 
-### Complete nodes
-There is a Load button on the right panel of ComfyUI. By clicking this button, you can import other people's workflows into ComfyUI, but sometimes, the workflow you import uses some plugins that you haven't installed. In this case, ComfyUI will pop up a prompt to tell you that some nodes are not installed.
+### Downloading and Installing Plugins
 
-This is when you can use another common function of the ComfyUI Manager, Install Missing Custom Nodes.
+Another feature I often use is plugin installation. Many developers have created a variety of plugins for ComfyUI, greatly enhancing its functionality. For example, the LLM Text Prompt plugin enables the LLM model to generate prompts without any need for manual input.
 
-After clicking this feature, the plugin will automatically search for nodes that you haven't installed, and then load a list. Click the install button on the right side of the list to complete the installation. Of course, you can click Install Custom Nodes in the ComfyUI Manager menu to search and install by yourself. After the installation, you can disable or uninstall it:
+Clicking on the Manager button on the right side panel will bring up a box. Next, click on the 'Install Custom Nodes' button in the middle, leading you to this interface:
 <br/>
 <PhotoProvider>
   <PhotoView src="/install-comfyui-and-model/019.png">
       <img src="/install-comfyui-and-model/019.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
+
+You can use the search function at the top right to look for the desired plugin. Then click on the Install button on the right to complete the installation. After your installation, you'll need to restart ComfyUI to see the installed plugin.
+
+<Callout type="warning" emoji="⚠️">
+  Please note that after restarting ComfyUI, you can double-click on the blank space and enter the nodes' name from the plugin. If the search yields results, it means the installation has been successful. If you can't find it, return to the Install Custom Nodes list in the ComfyUI Manager, search for the plugin, and check if its status is installed. If it is marked as installed, try refreshing the browser page, or close and reopen the browser page, and then search again.
+</Callout>
+
+### Complete Nodes
+There is a Load button on the right panel of ComfyUI. By clicking this button, you can import other people's workflows into ComfyUI, but sometimes, the workflow you import uses some plugins that you haven't installed. In this case, ComfyUI will pop up a prompt to tell you that some nodes are not installed.
+
+This is when you can use another common function of the ComfyUI Manager, Install Missing Custom Nodes.
+
+After clicking this feature, the plugin will automatically search for nodes that you haven't installed, and then load a list. Click the install button on the right side of the list to complete the installation. Of course, you can click Install Custom Nodes in the ComfyUI Manager menu to search and install by yourself. 
 
 Finally, if you are still unable to complete the missing nodes using the above plugin function, you can also search for the corresponding nodes on Github to see if you can find them.
 
