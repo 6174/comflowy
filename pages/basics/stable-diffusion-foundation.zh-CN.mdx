@@ -93,7 +93,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 </Callout>
 
 * 接着，Denoise 会拿噪音图 B 和 C 相减得出图 D。我们用简单的数学解释下这张图是啥。首先，图 B 是用 Prompt 加随机图预测的噪声，简单理解，就包含了「根据 Prompt 预测的噪声」+「根据随机图预测的噪声」，而 C 则是「根据随机图预测的噪声」，B 减 C 就等于「根据 Prompt 预测的噪声」。
-* 再之后，Denoise 会将 C 噪声放大，一般就是会乘以一个系数，这个系数在一些 Stable Diffusion 里会以<mark> CFG、CFG Scale 或者 Guidance Scale </mark>表示。接着再那这张放大后的图与噪声图 C 相加，得到图 E。这样做的原因是为了提高图片生成的准确性，所以通过乘以一个系数，来刻意提高「根据 Prompt 预测的噪声」的权重。如果没有这一步，生成的图片就跟 Prompt 没那么相关了。这个方法也被称为 Classifier Free Guidance（无分类引导法）。
+* 再之后，Denoise 会将 D 噪声放大，一般就是会乘以一个系数，这个系数在一些 Stable Diffusion 里会以<mark> CFG、CFG Scale 或者 Guidance Scale </mark>表示。接着再拿这张放大后的图与噪声图 C 相加，得到图 E。这样做的原因是为了提高图片生成的准确性，所以通过乘以一个系数，来刻意提高「根据 Prompt 预测的噪声」的权重。如果没有这一步，生成的图片就跟 Prompt 没那么相关了。这个方法也被称为 Classifier Free Guidance（无分类引导法）。
 * 最后，Denoise 会将图 A 减去图 E，得出一张新的图。也就是我前面提到的「雕刻」的过程，去掉不需要的噪声。
 
 <Callout emoji="💡">
