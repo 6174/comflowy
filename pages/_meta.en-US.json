@@ -6,18 +6,25 @@
   "basics": "🏎️｜Basics",
   "advanced": "🛩️｜Advanced",
   "expert": "🚀｜Expert",
-   "space": {
-    "title": "Product",
+  "space": {
+    "title": "💻 Product",
     "type": "page",
     "theme": {
       "sidebar": false
     }
   },
   "blog": {
-    "title": "Blog",
+    "title": "📰 Blog",
     "type": "page",
     "theme": {
       "sidebar": false
+    }
+  },
+  "special-thanks": {
+    "title": "🥰 Thanks",
+    "type": "page",
+    "theme": {
+      "toc": true
     }
   }
 }

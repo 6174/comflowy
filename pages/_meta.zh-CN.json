@@ -5,18 +5,25 @@
   "basics": "🏎️｜基础篇",
   "advanced": "🛩️｜中级篇",
   "expert": "🚀｜高级篇",
-    "space": {
-    "title": "产品",
+  "space": {
+    "title": "💻 产品",
     "type": "page",
     "theme": {
       "sidebar": false
     }
   },
   "blog": {
-    "title": "博客",
+    "title": "📰 博客",
     "type": "page",
     "theme": {
       "sidebar": false
+    }
+  },
+  "special-thanks": {
+    "title": "🥰 感谢",
+    "type": "page",
+    "theme": {
+      "toc": true
     }
   }
 }

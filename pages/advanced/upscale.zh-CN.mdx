@@ -1,6 +1,7 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
 
 # Upscale
 
@@ -208,5 +209,22 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
     </Callout>
   </Tabs.Tab>
 </Tabs>
+
+## FAQ
+
+<FAQBox title="Empty latent image 可以直接调整尺寸大小，为什么还有一个 upscale latent 节点，有哪些情况下需要使用到吗？">
+ This question asked by Discord user **heiba_wk**
+
+ **Answer from Jimmy:**
+  建议你再看看 SD 原理那篇教程，用 empty latent image 直接调整大小，效果不一定好。 
+  拿教程里用到的雕刻石雕类比来解释： 
+  * empty latent image 是雕刻师（模型）雕刻的石头，但有些雕刻师（模型）训练雕刻的时候，只会雕刻 512x512 的石头（图片），你如果让它雕 1024x1024 的石头（图片），它是雕刻不来的，效果会很差（比如 512 的情况下画人是一个头，1024 情况下画人是两个头）。 
+  * 但我就想要一个 1024x1024 的怎么办呢？这就需要请 Upscale 雕刻师（模型）来干了，这个雕刻师（模型）不擅长创作，但很擅长等比例放大，甚至有一些还能放大的同时补充内容细节。
+
+  **Answer from Marc:**
+  从代码逻辑上来说，upscale 放大图像的方法其实是用基础的图像处理方法，["nearest-exact", "bilinear", "area", "bicubic", "bislerp"]  ，这些方法生成大尺寸图像成本低很多。
+</FAQBox>
+
+
 
 <Subscribe />

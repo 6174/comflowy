@@ -36,6 +36,6 @@ What this community can provide:
 The current community maintainers include `@Marc` and `@Jimmy`. We look forward to everyone's active contributions and participation. Welcome to join us in promoting the development of the ComfyUI community.
 
 ## 🥰 Like Comflowy?
-If you like Comflowy, give our repo a [⭐ STAR ⬆️](https://github.com/6174/comflowy) and [WATCH 👀](https://github.com/6174/comflowy/subscription) our repository to stay updated with our latest tutorial and posts!
+If you like Comflowy, give our repo a [⭐ Star](https://github.com/6174/comflowy) and [👀 Watch](https://github.com/6174/comflowy/subscription) our repository to stay updated with our latest tutorial and posts!
 
 Every encouragement and feedback can support us to go further.

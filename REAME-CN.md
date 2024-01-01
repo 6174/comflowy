@@ -31,6 +31,6 @@
 目前的社区维护者包括 `@Marc` 和 `@Jimmy`，期待各位的积极贡献与参与。欢迎加入我们，共同推动 ComfyUI 社区的发展。
 
 ## 🥰 喜欢 Comflowy?
-如果你喜欢 Comflowy 不妨给我们一个 [⭐ STAR ⬆️](https://github.com/6174/comflowy) 或者 [WATCH 👀](https://github.com/6174/comflowy/subscription) 我们的项目，从而能马上获得最新的更新!
+如果你喜欢 Comflowy 不妨给我们一个 [⭐ Star](https://github.com/6174/comflowy) 或者 [👀 Watch](https://github.com/6174/comflowy/subscription) 我们的项目，从而能马上获得最新的更新！
 
 你们的每一个鼓励和反馈都能支持我们走得更远。
