@@ -19,7 +19,10 @@ import Subscribe from "components/subscribtion";
       如果你有安装 Github Desktop，那你可以直接在应用里点击「Open in Visual Studio Code」按钮。如果没有则找到 ComfyUI 项目文件夹，然后将整个文件夹拖到 VS Code 里。
     </Tabs.Tab>
     <Tabs.Tab>
-      打开 Terminal 输入 cd，然后空格，接着黏贴 ComfyUI 的项目文件夹地址（如果你不知道如何找到这个地址，请查阅 [安装 ComfyUI](./install.mdx) 一章中的第三步）。
+      打开 Terminal 输入 cd，然后空格，接着黏贴 ComfyUI 的项目文件夹地址（如果你不知道如何找到这个地址，请查阅 [安装 ComfyUI](../install.mdx) 一章中的第三步）。以我为例的话，你要输入的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+    ```shell
+    cd /Users/jimmywang/Documents/GitHub/ComfyUI
+    ```
     </Tabs.Tab>
   </Tabs>
   ### 输入命令
@@ -49,6 +52,10 @@ import Subscribe from "components/subscribtion";
     </Tabs.Tab>
     <Tabs.Tab>
       这个也很简单，你需要点击按一下键盘的上方向键，输入框里就会出现你上一步输入的命令，此时你需要回退到最开始的那一步。
+      以我为例的话，你看到的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+      ```shell
+      cd /Users/jimmywang/Documents/GitHub/ComfyUI
+      ```
       最后输入以下命令，启动 ComfyUI:
       ```shell copy
       python main.py --force-fp16 
