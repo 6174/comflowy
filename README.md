@@ -31,7 +31,7 @@ What this community can provide:
 
 3. **A database of workflow and model content**: A significant value of ComfyUI lies in its ability to share or import workflows. We think this feature is severely underestimated, so we plan to build a workflow database based on this, enabling more people to share their workflows and benefit from them. Besides, with the constant enrichment of AI models, it's usually difficult to determine the most suitable model to use. Therefore, we also hope to establish a model database to help users make better choices, in addition to providing workflows.
 
-4. **An open-source version of Better ComfyUI**: Despite ComfyUI's immense potential, there is still much room for improvement in terms of product interaction experience. Our team excels in improving user experience, so we wish to contribute our professional skills to the ComfyUI ecosystem, effectively promoting ComfyUI's mainstream prevalence.
+4. **An open-source version of Better ComfyUI - [Comfyspace](https://github.com/6174/comfyspace)**: Despite ComfyUI's immense potential, there is still much room for improvement in terms of product interaction experience. Our team excels in improving user experience, so we wish to contribute our professional skills to the ComfyUI ecosystem, effectively promoting ComfyUI's mainstream prevalence.
 
 The current community maintainers include `@Marc` and `@Jimmy`. We look forward to everyone's active contributions and participation. Welcome to join us in promoting the development of the ComfyUI community.
 
