@@ -12,8 +12,8 @@ const Vercel = ({ height = 20 }) => (
 )
 
 const TITLE = {
-  'zh-CN': 'Comflowy - ComfyUI 社区',
-  'en-US': 'Comflowy - ComfyUI Community',
+  'zh-CN': 'Comflowy',
+  'en-US': 'Comflowy',
 }
 
 const FEEDBACK_TEXT = {
@@ -79,12 +79,12 @@ export default {
   logo: function Logo() {
     const { locale } = useRouter()
     return (
-      <>
+      <div style={{position: "relative", left: -4, "display": "flex"}}>
         <img src="/logo.png" width="26" height="26" />
         <span className="text-pretty text-xl max-[480px]:text-sm" style={{ marginLeft: '.4em', fontWeight: 800 }}>
           {TITLE[locale]}
         </span>
-      </>
+      </div>
     )
   },
   head: () => {

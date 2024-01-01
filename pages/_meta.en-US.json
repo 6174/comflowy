@@ -6,6 +6,13 @@
   "basics": "🏎️｜Basics",
   "advanced": "🛩️｜Advanced",
   "expert": "🚀｜Expert",
+   "space": {
+    "title": "Product",
+    "type": "page",
+    "theme": {
+      "sidebar": false
+    }
+  },
   "blog": {
     "title": "Blog",
     "type": "page",
