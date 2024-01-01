@@ -36,5 +36,5 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment:**
- - ComfyUI or Comfyspace version: 
+ - ComfyUI or Comflowyspace version: 
  - OS, if relevant: [e.g. MacOS]
