@@ -2,7 +2,7 @@ import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-# 安装插件（选修）
+# 安装插件
 
 安装完模型后，你其实就可以进入下一个章节的学习，但我还想推荐一个叫 ComfyUI Manager 的小工具，这个工具可以提升使用 ComfyUI 的效率。
 
@@ -76,7 +76,7 @@ import Subscribe from "components/subscribtion";
 </Steps>
 
 ## 功能介绍
-插件我比较常用的有两个功能，其余功能，我会在后续的章节中给大家介绍。
+插件我比较常用的有三个功能，其余功能，我会在后续的章节中给大家介绍。
 
 ### 下载模型
 首先点击右侧面板上的 Manager 按钮，会弹出这样的一个框，接着我们再点击中间的「Install Models」按钮：
@@ -95,12 +95,10 @@ import Subscribe from "components/subscribtion";
   </PhotoView>
 </PhotoProvider>
 
-### 补全 nodes
-ComfyUI 右侧的面板中有个 Load 按钮，点击该按钮，可以将别人制作好的 workflow 导入到 ComfyUI 里，但有的时候，你导入的 workflow 用了一些你没有安装过的插件。此时 ComfyUI 就会弹出提示告知没有安装某些节点。
+### 下载安装插件
+另外一个我比较常用的功能是安装插件。现在有非常多的开发者给 ComfyUI 开发了各种各样的插件，这些插件极大地增加了 ComfyUI 的功能，比如 LLM Text Prompt 插件就可以让 LLM 模型生成 Prompt，而不需要你手动输入。
 
-此时就可以用到 ComfyUI Manager 的另一个常用功能是 Install Missing Custom Nodes。
-
-点击该功能后，插件会自动搜索你没有安装的节点，然后加载一个列表，点击列表右侧的安装即可完成安装。当然你可以点击 ComfyUI Manager 菜单里的 Install Custom Nodes 自己搜索安装，安装后还能将其禁用 Disable，或者卸载 Unistall：
+点击右侧面板上的 Manager 按钮，会弹出这样的一个框，接着我们再点击中间的「Install Custom Nodes」按钮，你会看到这个界面：
 <br/>
 <PhotoProvider>
   <PhotoView src="/install-comfyui-and-model/019.png">
@@ -108,6 +106,20 @@ ComfyUI 右侧的面板中有个 Load 按钮，点击该按钮，可以将别人
   </PhotoView>
 </PhotoProvider>
 
-最后，如果使用上述插件的功能，你还是补全缺失的节点，你还可以在 Github 上搜索对应的节点，看看能否找到。
+你可以使用右上角的搜索功能搜索想要的插件。然后点击右侧的 Install 按钮，即可完成安装。安装完后，你需要重启 ComfyUI 就能看到该插件。
+
+<Callout type="warning" emoji="⚠️">
+  需要注意，重启 ComfyUI 后，你可以双击空白处，然后输入插件里的 nodes 名称，如果能搜索到，就意味着插件安装成功。如果搜索不到，那就重新回到 ComfyUI Manager 里的 Install Custom Nodes 列表，然后搜索该插件，看看该插件状态是否是已安装状态。
+  如果是已安装状态，那就尝试刷新浏览器页面，或者关闭浏览器页面再重新打开，然后再搜索看看是否能搜索到。
+</Callout>
+
+### 补全 nodes
+ComfyUI 右侧的面板中有个 Load 按钮，点击该按钮，可以将别人制作好的 workflow 导入到 ComfyUI 里，但有的时候，你导入的 workflow 用了一些你没有安装过的插件。此时 ComfyUI 就会弹出提示告知没有安装某些节点。
+
+此时就可以用到 ComfyUI Manager 的另一个常用功能是 Install Missing Custom Nodes。
+
+点击该功能后，插件会自动搜索你没有安装的节点，然后加载一个列表，点击列表右侧的安装即可完成安装。当然你可以点击 ComfyUI Manager 菜单里的 Install Custom Nodes 自己搜索安装，安装后还能将其禁用 Disable，或者卸载 Unistall。
+
+最后，如果使用上述插件的功能，你还是无法补全缺失的节点，你还可以在 Github 上搜索对应的节点，看看能否找到。
 
 <Subscribe />

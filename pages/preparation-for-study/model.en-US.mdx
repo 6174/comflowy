@@ -1,3 +1,9 @@
+---
+title: Download & Import Model
+description: This detailed guide provides step-by-step instructions on how to download and import models for ComfyUI, a powerful tool for AI image generation. Understand the differences between various versions of Stable Diffusion and learn how to choose the right model for your needs. Ideal for both beginners and experts in AI image generation and manipulation.
+keywords: [ComfyUI, Download Model, Import Model, AI Image Generation, Stable Diffusion, Model Versions, HuggingFace, CivitAI, AI Tools, Image Manipulation, AI Workflow, AI Tutorial, Model Parameters, Image Resolution]
+---
+
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
@@ -87,23 +93,55 @@ Similarly, you can also use the search function in CivitAI to search for the mod
 
 Once the models are downloaded, we need to place the corresponding models in the 'models' directory of ComfyUI.
 
-<Steps>
-  ### Open the ComfyUI project folder
-  You can use Github Desktop mentioned in the previous chapter to open the ComfyUI project folder. Click the "Show in Finder" button on Github Desktop. If you are using Windows, click the "Show in Explorer" button. This will open the folder of this project. Then you need to click and navigate into the models directory:
-  <PhotoProvider>
-    <PhotoView src="/install-comfyui-and-model/013.png">
-        <img src="/install-comfyui-and-model/013.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-    </PhotoView>
-  </PhotoProvider>
+<Callout type="info">
+If you have previously installed SD WebUI and have downloaded a number of models, there's no need to manually import the models again. All you need to do is modify the configuration file.
+</Callout>
 
-  ### Add the models to the corresponding folders
-  After entering the Model folder, you will see many folders. These folders correspond to different models. You need to put the model you downloaded into the corresponding folder. For example, we just downloaded the Stable Diffusion v1.5 model, which belongs to checkpoints, so you need to put this model into the checkpoints folder. We will introduce different types of models in the future, you need to put them in the corresponding folders, for example, the LoRA model that will be introduced later must be placed in the Lora folder.
-  <PhotoProvider>
-    <PhotoView src="/install-comfyui-and-model/014.png">
-        <img src="/install-comfyui-and-model/014.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-    </PhotoView>
-  </PhotoProvider>
-</Steps>
+<Tabs items={['SD WebUI not installed', 'SD WebUI installed']}>
+  <Tabs.Tab>
+    After downloading the model, we need to place the corresponding model in the models directory of ComfyUI.
+    <Steps>
+      ### Open the ComfyUI project folder
+      You can use the Github Desktop mentioned in the previous chapter to open the ComfyUI project folder. Click the "Show in Finder" button on Github Desktop, or "Show in Explorer" button if you are using Windows, to open the project's folder. Then you need to navigate to the models directory:
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/013.png">
+            <img src="/install-comfyui-and-model/013.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+
+      ### Add models to their respective folders
+      Upon entering the Model folder, you'll see many folders, each corresponding to a different model. You need to put the model you downloaded into the corresponding folder. For example, the model we just downloaded is the Stable Diffusion v1.5 model, which belongs to checkpoints, and thus needs to be placed in the checkpoints folder. In the future, we will introduce different types of models and you will need to put them in their respective folders. For example, the LoRA model we will cover later should be placed in the loras folder.
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/014.png">
+            <img src="/install-comfyui-and-model/014.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Steps>
+      ### Open the ComfyUI project folder
+      Open the ComfyUI project folder and find a file called `extra_model_paths.yaml.example` within the ComfyUI folder.
+      
+      ### Renaming the file
+      Next, rename this file to `extra_model_paths.yaml`.
+      
+      ### Right-click to open the file with VSCode and modify the configuration
+      Once the file is open, find this line of code:
+      ``` yaml
+      base_path: path/to/stable-diffusion-webui/ 
+      ```
+      Change the path after the colon to your SD webui path. For example, if you're a Mac user, it might be:
+      ```shell
+      Users/jimmy/stable-diffusion-webui/
+      ```
+      If you're a Win user, it might be:
+      ```shell
+      C:/Users/jimmy/stable-diffusion-webui/
+      ```
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
 
 🎉 Congratulations, you have completed another important step. Now we can formally enter the study of ComfyUI basics.
 

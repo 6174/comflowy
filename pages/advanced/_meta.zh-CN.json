@@ -2,6 +2,6 @@
   "image-to-image": "1. 图生图",
   "upscale": "2. Upscale",
   "in-out-painting": "3. In/Outpainting",
-  "controlnet": "4. ControlNet 🚧",
-  "advanced-optional": "进阶选修"
+  "controlnet": "4. ControlNet",
+  "advanced-optional": "中级选修"
 }

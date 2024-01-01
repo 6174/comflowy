@@ -1,5 +1,5 @@
 {
   "install": "1. 安装 ComfyUI",
   "model": "2. 下载 & 导入模型",
-  "custom-nodes": "3. 安装插件"
+  "optional": "选修"
 }

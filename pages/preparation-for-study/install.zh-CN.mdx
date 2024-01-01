@@ -5,11 +5,19 @@ import Subscribe from "components/subscribtion";
 # 安装 ComfyUI
 
 ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)，安装方法在 Readme 中，作者其实写得非常详细，你也可以按照 Readme 文档进行操作。
-<Callout type="info">
-  为了后续更好地使用，这里仅介绍手动源码安装，不介绍 Jupyter 或者 Zip 安装模式。
-</Callout>
+
+我们会介绍两种安装 ComfyUI 的方法，你可以根据自己的需求选择一种：
+* 安装到本地：将 ComfyUI 安装在自己的电脑中，这样你可以在本地运行 ComfyUI。这种方式基本是 0 成本。但如果你的电脑 GPU 配置相对较差，有可能生图的速度会比较慢（我个人更推荐这个方式）。
+* 安装到云端：将 ComfyUI 安装在云端，这样的好处是云端配置相对较高，生成图片的速度会更快，但是需要一定的费用。
+
+本章节会主要介绍如何在本地安装 ComfyUI，如果你想在云端安装，可以跳到 [云端安装]()。
+
 
 ## 第一步，安装 pytorch
+<Callout type="info">
+  如果你已经安装过 SD WebUI，那你可以跳到第二步。
+</Callout>
+
 首先你需要打开系统 Terminal，一般可以通过系统搜索即可找到。
 
 Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能跟我的截图不一样，只要名字对就可以了：
@@ -216,7 +224,7 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
   </PhotoView>
 </PhotoProvider>
 
-## Q&A
+### Q&A
 
 **Q: 在终端命令行无法下载内容该怎么办？**
 
@@ -225,6 +233,7 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 # 具体端口要根据自己的 FanQiang 服务来看，最好把这个配置到默认的终端启动项里边
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 ```
+
 
 <Subscribe />
 
