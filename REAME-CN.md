@@ -11,7 +11,7 @@
        <span> | </span>
        <a href="https://www.comflowy.com/blog">我们的博客</a>
        <span> | </span>
-       <a href="https://discord.gg/xqB9VyEX">我们的 Discord</a>
+       <a href="https://discord.gg/cj623WvcVx">我们的 Discord</a>
    </h4>
 </div>
 
