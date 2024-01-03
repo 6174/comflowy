@@ -192,7 +192,7 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
   </Tabs.Tab>
 </Tabs>
 
-不管使用哪种方法，你应该都会在最后看到「Successfully installed XXXXX」这就意味着你完成了安装。
+不管使用哪种方法，你应该都会在最后看到「Successfully installed XXXXX」这就意味着你完成了安装。另外如果你遇到其他问题，可以查看本章最后的 Q&A。
 
 ## 第四步，启动服务
 
@@ -228,16 +228,23 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
   </PhotoView>
 </PhotoProvider>
 
-### Q&A
+## Q&A
 
-**Q: 在终端命令行无法下载内容该怎么办？**
+**Q: 终端显示某个模块下载失败，或无法下载该怎么办？**
 
 这是因为网络没有做到终端 FanQiang，终端 FanQiang 需要配置好代理。
 ```shell
 # 具体端口要根据自己的 FanQiang 服务来看，最好把这个配置到默认的终端启动项里边
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 ```
+**Q: 终端显示 ERROR: Could not find a version that satisfies the requirement pyyaml (from versions: none) 该如何处理？**
+> 此问题来自 Discord 用户 Lulu。
 
+这是因为缺少 pyyaml，你可以运行：
+```shell
+ pip install pyyaml
+ ```
 
+ 完成安装后，再继续安装 ComfyUI。
 <Subscribe />
 

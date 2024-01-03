@@ -269,5 +269,12 @@ This is because your network hasn't been set up to bypass the firewall in the te
 # The specific ports depend on your own bypass service. It's best to configure this in your default terminal startup options.
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 ```
+**Q: How to handle the terminal displaying "ERROR: Could not find a version that satisfies the requirement pyyaml (from versions: none)"?**
+>This question was asked by Discord user **Lulu**.
 
+This is due to the lack of pyyaml, you can run:
+```shell
+ pip install pyyaml
+ ```
+After the installation is completed, continue installing ComfyUI.
 <Subscribe />
