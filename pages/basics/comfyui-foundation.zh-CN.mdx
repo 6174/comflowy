@@ -162,6 +162,7 @@ import Subscribe from "components/subscribtion";
       <th>sampler_name</th>
       <th>scheduler</th>
       <th width={80}>step</th>
+      <th width={70}>cfg</th>
     </tr>
   </thead>
   <tbody>
@@ -169,8 +170,9 @@ import Subscribe from "components/subscribtion";
       <td>非常在意速度</td>
       <td>SDXL Turbo fp16</td>
       <td>dpmpp_2m（有些软件会叫它 dpm++2M）</td>
-      <td>normal</td>
-      <td>20-30</td>
+      <td>normal 或者使用 Turbo 专用 scheduler</td>
+      <td>1-2</td>
+      <td>6-8</td>
     </tr>
     <tr>
       <td rowSpan={2} style={{ backgroundColor: "white" }}>非常在意图像质量，同时在意生成图片内容多样行</td>
@@ -178,11 +180,13 @@ import Subscribe from "components/subscribtion";
       <td>dpmpp_2m（有些软件会叫它 dpm++2M）</td>
       <td>karras</td>
       <td>20-30</td>
+      <td>6-8</td>
     </tr>
     <tr>
       <td>UniPC（相较于 dpmpp_2m 会更快一些）</td>
       <td>karras</td>
       <td>20-30</td>
+      <td>1-2</td>
     </tr>
     <tr>
       <td rowSpan={2} style={{ backgroundColor: "white" }}>在意图像质量，不太在意多样性，但想提高生成速度</td>
@@ -190,11 +194,13 @@ import Subscribe from "components/subscribtion";
       <td>dpmpp_sde</td>
       <td>karras</td>
       <td>10-15</td>
+      <td>6-8</td>
     </tr>
     <tr>      
       <td>ddim</td>
       <td>normal</td>
       <td>10-15</td>
+      <td>6-8</td>
     </tr>
   </tbody>
 </table>}

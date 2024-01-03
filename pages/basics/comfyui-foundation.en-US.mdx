@@ -155,27 +155,31 @@ Among all the configuration items, besides the model affecting the results of th
       <th>sampler_name</th>
       <th>scheduler</th>
       <th width={80}>step</th>
+      <th width={70}>cfg</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Very concerned about speed</td>
       <td>SDXL Turbo fp16</td>
-      <td>dpmpp_2m（some software will call it  dpm++2M）</td>
+      <td>dpmpp_2m(some software will call it  dpm++2M)</td>
       <td>normal</td>
-      <td>20-30</td>
+      <td>1-2</td>
+      <td>6-8</td>
     </tr>
     <tr>
       <td rowSpan={2} style={{ backgroundColor: "white" }}>Very concerned about image quality and diversity of generated content</td>
       <td rowSpan={2} style={{ backgroundColor: "white" }}>SDXL refiner</td>
-      <td>dpmpp_2m（some software will call it  dpm++2M）</td>
+      <td>dpmpp_2m(some software will call it  dpm++2M)</td>
       <td>karras</td>
       <td>20-30</td>
+      <td>6-8</td>
     </tr>
     <tr>
       <td>UniPC（faster than dpmpp_2m）</td>
       <td>karras</td>
       <td>20-30</td>
+      <td>6-8</td>
     </tr>
     <tr>
       <td rowSpan={2} style={{ backgroundColor: "white" }}>Concerned about image quality, not so much about diversity, but want to improve generation speed</td>
@@ -183,11 +187,13 @@ Among all the configuration items, besides the model affecting the results of th
       <td>dpmpp_sde</td>
       <td>karras</td>
       <td>10-15</td>
+      <td>6-8</td>
     </tr>
     <tr>      
       <td>ddim</td>
       <td>normal</td>
       <td>10-15</td>
+      <td>6-8</td>
     </tr>
   </tbody>
 </table>}
