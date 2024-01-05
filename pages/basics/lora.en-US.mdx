@@ -39,7 +39,7 @@ How does the Noise Predictor work? In simple terms, it involves a series of comp
 
 The left side is the input, the right side is the output, and the data is subjected to a series of computations after being input. The long bars in the picture represent each step of the computation. We can change the output results by adjusting the parameter weights inside the pillars, ultimately changing the effect of generated images. However, changing the result inside each pillar is relatively complex. 
 
-As a result, researchers began to look for a simpler method, and they found that if parameters are injected into each function layer, the effect of changing the image can also be achieved. This method is called LoRA (Loopy Recurrent Attention).
+As a result, researchers began to look for a simpler method, and they found that if parameters are injected into each function layer, the effect of changing the image can also be achieved. This method is called LoRA (Low-Rank Adaptation).
 
 LoRA allows parameters to be injected into each existing layer without disrupting any single function. The advantage of this is that it doesn't damage the original model, it's plug-and-play, and the model size is also relatively small. The visualization effect is as follows:
 

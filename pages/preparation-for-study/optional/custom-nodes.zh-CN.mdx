@@ -4,85 +4,146 @@ import Subscribe from "components/subscribtion";
 
 # 安装插件
 
-安装完模型后，你其实就可以进入下一个章节的学习，但我还想推荐一个叫 ComfyUI Manager 的小工具，这个工具可以提升使用 ComfyUI 的效率。
+安装完模型后，你其实就可以进入基础篇的学习，但我还想教大家如何安装插件。ComfyUI 有不少好用的插件可以显著提升你的使用效率。本章我会以 ComfyUI Manager 为例，教大家如何安装插件。
 
 如果你对技术比较熟悉，可以直接查看 ComfyUI Manager 的[官方文档](https://github.com/ltdrdata/ComfyUI-Manager)。
 
 ## 安装 ComfyUI Manager
 
-安装方法两种，如果你之前使用的 VS Code 安装 ComfyUI 我会推荐你使用这个方式，使用 VS Code 安装相对比较简单。
+安装方法两种，如果你之前使用的 VS Code 或 Terminal 安装，另一种是手动导入安装。如果你对命令行工具比较熟悉，我会推荐你使用第一种方法。如果你不想使用命令行，可以考虑手动的方式。
+<Tabs items={['VS Code/Terminal', '手动安装']}>
+  <Tabs.Tab>
+    <Steps>
+      ### 使用 VS Code / Terminal 打开 ComfyUI 项目
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          如果你有安装 Github Desktop，那你可以直接在应用里点击「Open in Visual Studio Code」按钮。如果没有则找到 ComfyUI 项目文件夹，然后将整个文件夹拖到 VS Code 里。
+        </Tabs.Tab>
+        <Tabs.Tab>
+          打开 Terminal 输入 cd，然后空格，接着黏贴 ComfyUI 的项目文件夹地址（如果你不知道如何找到这个地址，请查阅 [安装 ComfyUI](../install.mdx) 一章中的第三步）。以我为例的话，你要输入的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+        ```shell
+        cd /Users/jimmywang/Documents/GitHub/ComfyUI
+        ```
+        </Tabs.Tab>
+      </Tabs>
+      ### 输入命令
+      如果你用的是 VS Code 则点击 VS Code 右上角的第二个 icon，然后你会在软件底部看到一个类似你之前在 Terminal 里看到的命令输入界面。此时输入以下命令，并回车。如果你使用的是 Terminal，就直接输入以下命令：
+      ```shell copy
+      cd custom_nodes
+      ```
+      然后再输入：
+      ```shell copy
+      git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+      ```
+      <Callout type="info">
+        如果你要安装其他插件，只需要将上面的链接替换成你要安装的插件的 git 链接即可。
+      </Callout>
+      ### 启动 ComfyUI
+      此时需要启动 ComfyUI，需要注意你不能直接输入启动的命令，而是要先将 Terminal cd 到上一个目录（即 ComfyUI 的目录）。
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          最简单的方法就是点击 VS Code 里 Terminal 右上角的小垃圾桶。然后再点一下右上角的第二个 icon 此时就回到了 ComfyUI 的目录。
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          然后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          这个也很简单，你需要点击按一下键盘的上方向键，输入框里就会出现你上一步输入的命令，此时你需要回退到最开始的那一步。
+          以我为例的话，你看到的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          最后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+          启动 ComfyUI 后，你应该你能看到右侧的面板多了两个按钮，Manager 和 Share，那证明你已经安装完成。
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/016.png">
+                <img src="/install-comfyui-and-model/016.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Steps>
+      ### 下载 ComfyUI Manager
+      在下载之前，我建议你先将 ComfyUI 服务关闭，然后再下载。
 
-<Steps>
-  ### 使用 VS Code / Terminal 打开 ComfyUI 项目
-  <Tabs items={['VS Code', 'Terminal']}>
-    <Tabs.Tab>
-      如果你有安装 Github Desktop，那你可以直接在应用里点击「Open in Visual Studio Code」按钮。如果没有则找到 ComfyUI 项目文件夹，然后将整个文件夹拖到 VS Code 里。
-    </Tabs.Tab>
-    <Tabs.Tab>
-      打开 Terminal 输入 cd，然后空格，接着黏贴 ComfyUI 的项目文件夹地址（如果你不知道如何找到这个地址，请查阅 [安装 ComfyUI](../install.mdx) 一章中的第三步）。以我为例的话，你要输入的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
-    ```shell
-    cd /Users/jimmywang/Documents/GitHub/ComfyUI
-    ```
-    </Tabs.Tab>
-  </Tabs>
-  ### 输入命令
-  如果你用的是 VS Code 则点击 VS Code 右上角的第二个 icon，然后你会在软件底部看到一个类似你之前在 Terminal 里看到的命令输入界面。此时输入以下命令，并回车。如果你使用的是 Terminal，就直接输入以下命令：
-  ```shell copy
-  cd custom_nodes
-  ```
-  然后再输入：
-  ```shell copy
-  git clone https://github.com/ltdrdata/ComfyUI-Manager.git
-  ```
-  ### 启动 ComfyUI
-  此时需要启动 ComfyUI，需要注意你不能直接输入启动的命令，而是要先将 Terminal cd 到上一个目录（即 ComfyUI 的目录）。
-  <Tabs items={['VS Code', 'Terminal']}>
-    <Tabs.Tab>
-      最简单的方法就是点击 VS Code 里 Terminal 右上角的小垃圾桶。然后再点一下右上角的第二个 icon 此时就回到了 ComfyUI 的目录。
+      首先你需要下载 ComfyUI Manager，你可以点击[这里](https://github.com/ltdrdata/ComfyUI-Manager)下载，然后点击右上角的绿色按钮，选择 Download ZIP。 
       <br/>
       <PhotoProvider>
-        <PhotoView src="/install-comfyui-and-model/015.png">
-            <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+        <PhotoView src="/install-comfyui-and-model/022.png">
+            <img src="/install-comfyui-and-model/022.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
         </PhotoView>
       </PhotoProvider>
-      然后输入以下命令，启动 ComfyUI:
-      ```shell copy
-      python main.py --force-fp16 
-      ```
-    </Tabs.Tab>
-    <Tabs.Tab>
-      这个也很简单，你需要点击按一下键盘的上方向键，输入框里就会出现你上一步输入的命令，此时你需要回退到最开始的那一步。
-      以我为例的话，你看到的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
-      ```shell
-      cd /Users/jimmywang/Documents/GitHub/ComfyUI
-      ```
-      最后输入以下命令，启动 ComfyUI:
-      ```shell copy
-      python main.py --force-fp16 
-      ```
-      启动 ComfyUI 后，你应该你能看到右侧的面板多了两个按钮，Manager 和 Share，那证明你已经安装完成。
-      <br/>
-      <PhotoProvider>
-        <PhotoView src="/install-comfyui-and-model/016.png">
-            <img src="/install-comfyui-and-model/016.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-        </PhotoView>
-      </PhotoProvider>
-    </Tabs.Tab>
-  </Tabs>
+      ### 解压
+      接着将下载好的文件解压，你会看到一个文件夹，文件夹名字是 ComfyUI-Manager-main，你需要将这个文件夹重命名为 ComfyUI-Manager。
 
-  ### 意外
-  但有可能你完成启动后，并没有看到 ComfyUI Manager 的面板，同时你会在 Terminal 里看到类似这样的内容：
-  ```shell
-  Cannot import /Users/jimmywang/Documents/GitHub/ComfyUI/custom_nodes/ComfyUI-Manager module for custom nodes: No module named 'torchvision'
-  ```
-  这意味着你需要安装 torchvision，你需要先关闭 ComfyUI 的服务（在 Terminal 面板里点击 Ctrl+C），然后在 Terminal 里输入：
-  ```shell copy
-  pip install torchvision
-  ```
-  安装完后，再启动一下 ComfyUI。
-</Steps>
+      ### 移动
+      然后，将 ComfyUI-Manager 文件夹移动到 ComfyUI 项目的 custom_nodes 文件夹里。
+      
+      ### 启动 ComfyUI
+      最后，只需要启动 ComfyUI 即可。 
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          最简单的方法就是点击 VS Code 里 Terminal 右上角的小垃圾桶。然后再点一下右上角的第二个 icon 此时就回到了 ComfyUI 的目录。
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          然后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          这个也很简单，你需要点击按一下键盘的上方向键，输入框里就会出现你上一步输入的命令，此时你需要回退到最开始的那一步。
+          以我为例的话，你看到的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          最后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+          启动 ComfyUI 后，你应该你能看到右侧的面板多了两个按钮，Manager 和 Share，那证明你已经安装完成。
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/016.png">
+                <img src="/install-comfyui-and-model/016.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
 
-## 功能介绍
+### 意外
+但有可能你完成启动后，并没有看到 ComfyUI Manager 的面板，同时你会在 Terminal 里看到类似这样的内容：
+```shell
+Cannot import /Users/jimmywang/Documents/GitHub/ComfyUI/custom_nodes/ComfyUI-Manager module for custom nodes: No module named 'torchvision'
+```
+这意味着你需要安装 torchvision，你需要先关闭 ComfyUI 的服务（在 Terminal 面板里点击 Ctrl+C），然后在 Terminal 里输入：
+```shell copy
+pip install torchvision
+```
+安装完后，再启动一下 ComfyUI。
+
+## ComfyUI Manager 功能介绍
 插件我比较常用的有三个功能，其余功能，我会在后续的章节中给大家介绍。
 
 ### 下载模型
