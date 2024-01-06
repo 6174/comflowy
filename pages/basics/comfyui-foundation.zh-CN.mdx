@@ -70,7 +70,7 @@ import Subscribe from "components/subscribtion";
 
 ### Load Checkpoint
 
-第一个是 Load Checkpoint，从节点的右边输出端点可以看出，Checkpoint 包含了三个部分：模型、CLIP 还有 VAE，这三部分其实就是之前介绍的 Stable Diffusion 的模型三大步骤。可以说这个节点是所有 Workflow 的起点。
+第一个是 Load Checkpoint，从节点的右边输出端点可以看出，Checkpoint 包含了三个部分：MODEL、CLIP 还有 VAE，这三部分其实就是之前介绍的 Stable Diffusion 的模型三大步骤。可以说这个节点是所有 Workflow 的起点。
 
 点击节点里的选项按钮可以切换模型，这里只能切换你已经下载好的模型，关于如何下载模型可以看[对应的章节](../preparation-for-study/model.mdx)。
 
@@ -88,7 +88,7 @@ import Subscribe from "components/subscribtion";
 
 ### CLIP Text Encode(Prompt)
 
-接着是 CLIP Text Enocde 节点，这个节点主要是输入 Prompt。一般会有两个这样的节点，一个是正向的 Prompt，列你希望在图片中看到的内容；另一个是负向的 Prompt，列你不希望在图片中出现的内容。
+接着是 CLIP Text Enocde 节点，CLIP 全称是 Contrastive Language-Image Pre-training，即对比文本图像预训练。这个节点主要是输入 Prompt。一般会有两个这样的节点，一个是正向的 Prompt，列你希望在图片中看到的内容；另一个是负向的 Prompt，列你不希望在图片中出现的内容。
 
 一般说来，写 Stable Diffusion 的 prompt 有几个原则：
 
