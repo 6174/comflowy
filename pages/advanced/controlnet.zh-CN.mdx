@@ -11,6 +11,7 @@ import Subscribe from "components/subscribtion";
   * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
   * [ControlNet Scribble](https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.safetensors?download=true)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
   * [ControlNet Openpose](https://huggingface.co/lllyasviel/sd-controlnet-openpose/resolve/main/diffusion_pytorch_model.safetensors?download=true): 将其放到 ComfyUI 里的 models/controlnet 文件夹内。
+  * [ControlNet Canny](https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
 </Callout>
 
 ## 原理介绍
@@ -190,6 +191,22 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/010.png">
       <img src="/comfyui-controlnet/010.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## Canny ControlNet workflow
+第四种 ControlNet 的用法是通过 Canny 边缘图来控制模型生成的图片。这种方法的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
+<PhotoProvider>
+  <PhotoView src="/comfyui-controlnet/011.png">
+      <img src="/comfyui-controlnet/011.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+从上面的例子可以看出，Canny 跟第一个 Scribble 有点像。Canny 是拿已有图片生成边缘图，而 Scribble 是自己画草图。其 workflow 也比较简单，可以参考 Pose ControlNet workflow，只需要将 DWPose Estimation 节点换成 Canny 节点即可。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-controlnet/012.png">
+      <img src="/comfyui-controlnet/012.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 <Subscribe />
