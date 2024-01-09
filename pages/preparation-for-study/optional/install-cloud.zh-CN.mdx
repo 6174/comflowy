@@ -1,6 +1,7 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
 
 # 云端安装 ComfyUI
 
@@ -60,3 +61,17 @@ import Subscribe from "components/subscribtion";
     注意：在运行 Start the WebUI 代码后，会持续消耗 GPU 时间。
   </Callout>
 </Steps>
+
+## Q&A
+
+<FAQBox title="在 start the webui 的地方报 openssl 错误">
+  > 报错代码如下：OpenSSL version mismatch. Built against 30000020, you have 30100040
+  rm: cannot remove '/root/.ssh/id_rsa': No such file or directory
+  OpenSSL version mismatch. Built against 30000020, you have 30100040
+  OpenSSL version mismatch. Built against 30000020, you have 30100040 此问题来自 Discord 用户 **designwill**
+
+  **Answer from Jimmy:**
+  这种情况是因为你暂停了服务后，想要再次启动服务时，仅重新运行 start the webui 的代码导致的。你需要运行 Installation 代码后，再次运行 start the webui 的代码，就不会报错了。
+</FAQBox>
+
+<Subscribe />

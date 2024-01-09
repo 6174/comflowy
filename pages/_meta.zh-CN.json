@@ -16,7 +16,8 @@
     "title": "📰 博客",
     "type": "page",
     "theme": {
-      "sidebar": false
+      "sidebar": false,
+      "pagination": false
     }
   },
   "special-thanks": {

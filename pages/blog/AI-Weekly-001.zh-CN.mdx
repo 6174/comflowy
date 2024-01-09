@@ -4,3 +4,74 @@ image: /space/banner.png
 ---
 
 # AI Weekly #001
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 🆕 更新了什么？
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/banner.png">
+    <img src="/space/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+我们团队这在开发一款体验更友好的 ComfyUI。你可以在[这里](../space)查看到产品的介绍。如果你对我们的产品感兴趣，欢迎加入我们的 [Discord](https://discord.gg/xqB9VyEX) 获得最新的消息。
+
+**Enjoy last week's new tutorial:**
+- [ControlNet](https://www.comflowy.com/zh-CN/advanced/controlnet)
+- [云端安装 ComfyUI](https://www.comflowy.com/zh-CN/preparation-for-study/optional/install-cloud)：感谢 Discord 用户 **otto pan** 给予的内容建议。
+- [特别感谢](https://www.comflowy.com/special-thanks)：网站增加了更新日志，以及特别感谢页面。以此感谢为我们教程和产品提出宝贵意见的朋友们。
+
+**Articles updates:** 
+- [安装 ComfyUI](https://www.comflowy.com/zh-CN/preparation-for-study/install)：补充了 pip3 相关的指令。感谢 Github 用户 **[fansanqiu](https://github.com/fansanqiu)** 提出的 [Issue](https://github.com/6174/comflowy/issues/2)。
+- [下载 & 导入模型](https://www.comflowy.com/zh-CN/preparation-for-study/model)：增加了导入 SD WebUI 文件夹里的模型的流程。感谢 Discord 用户 **Haaan**提出此问题。
+- [安装插件](https://www.comflowy.com/zh-CN/preparation-for-study/optional/custom-nodes)：补充了启动 ComfyUI 的代码。感谢 Discord 用户**Tennisatw** 指出此问题。
+- [Upscale](https://www.comflowy.com/zh-CN/advanced/upscale)：补充了 Upscale latent 使用场景的解释。感谢 Discord 用户 **heiba_wk** 提出的问题。
+
+**Community Q&A Highlights:**
+
+Q: Empty latent image 可以直接调整尺寸大小，为什么还有一个 upscale latent 节点，有哪些情况下需要使用到吗？此问题来自 Discord 用户 **heiba_wk**
+
+* Answer from Jimmy: 建议你再看看 SD 原理那篇教程，用 empty latent image 直接调整大小，效果不一定好。拿教程里用到的雕刻石雕类比来解释：
+  * empty latent image 是雕刻师（模型）雕刻的石头，但有些雕刻师（模型）训练雕刻的时候，只会雕刻 512x512 的石头（图片），你如果让它雕 1024x1024 的石头（图片），它是雕刻不来的，效果会很差（比如 512 的情况下画人是一个头，1024 情况下画人是两个头）。
+  * 但我就想要一个 1024x1024 的怎么办呢？这就需要请 Upscale 雕刻师（模型）来干了，这个雕刻师（模型）不擅长创作，但很擅长等比例放大，甚至有一些还能放大的同时补充内容细节。
+
+* Answer from Marc: 从代码逻辑上来说，upscale 放大图像的方法其实是用基础的图像处理方法，["nearest-exact", "bilinear", "area", "bicubic", "bislerp"] ，这些方法生成大尺寸图像成本低很多。
+
+## 🤩 每周 AI 精选
+
+### 📄 值得关注的论文 & 技术
+
+* [**HarmonyView: Harmonizing Consistency and Diversity in One-Image-to-3D**](https://byeongjun-park.github.io/HarmonyView/)
+
+仅仅只需要一张图就能通 AI 生成该图的 3D 版本。你可以在此看一些演示图，看示例感觉效果还可以。未来可能只需要一张图片就能生成基础的 3D 模型了，将会极大地提高模型创作者的效率。
+
+* [**InsActor: Instruction-driven Physics-based Characters**](https://huggingface.co/papers/2312.17135)
+
+使用文本指令控制 3D 物体，如游戏里的人物，一直是个业界难题（因为使用文字表述一些空间指令相对没有那么准确），这篇论文则提出了一个新的技术使得使用文字控制 3D 人物成为可能。
+
+### 🛠️ 值得尝试的产品
+
+* [Pika 1.0](https://pika.art/login) : a text-to-video app is now available to everyone. 
+
+* [BabyStoryAI](https://babystoryai.com/): 一款 AI 生成生成儿童故事产品，它与市面上的同类产品最大的不同之处就在于它可以将内容转成语音，并且还会自动配背景音乐。如果图还能根据剧情生成绘本就更好了。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-001/001.jpeg">
+    <img src="/blog/AI-weekly-001/001.jpeg" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [Room Renivented](https://roomreinvented.com/): 这是一款 AI 生成室内设计图的产品。市面上有很多类似的产品，我为何还要分享这款产品呢？主要是因为我觉得这个领域还有很多机会。现在大多数同类产品最大的问题就在于设计出来的东西一点都不好看，这并不仅仅是技术的问题，还有一个关键——大多数研发这里产品的人并不像专业设计师那样有品味。如果你在室内设计中有好的品味，不妨考虑下这个方向。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-001/002.jpeg">
+    <img src="/blog/AI-weekly-001/002.jpeg" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />

@@ -1,7 +1,80 @@
 ---
 date: January 4th, 2024
 image: /space/banner.png
+description: In "AI Weekly 001", we share the latest developments in ComfyUI, new tutorials from the past week, article updates, community Q&A highlights, and noteworthy AI-related papers and techniques. Special thanks are given to Discord and Github users for their valuable feedback on our tutorials and products. If you're interested in AI and ComfyUI, this article will provide a wealth of useful information.
+keywords: ["AI Weekly", "ComfyUI", "AI tutorials", "Community Q&A", "AI papers", "AI techniques", "Discord", "Github", "ControlNet", "Remote Install ComfyUI", "Upscale", "3D models", "AI model creation", "AI updates"]
 ---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
 
 # AI Weekly #001
 
+## 🆕 What's new
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/banner.png">
+    <img src="/space/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Our team is developing a more user-friendly ComfyUI. Detailed information can be found [here](../space). If you're interested, feel free to join our [Discord](https://discord.gg/xqB9VyEX) server to stay updated on our progress.
+
+**Enjoy last week's new tutorial:**
+- [ControlNet](https://www.comflowy.com/advanced/controlnet)
+- [Remote Install ComfyUI](https://www.comflowy.com/preparation-for-study/optional/install-cloud): Thanks to Discord user **otto pan** for the content suggestion.
+- [Special Thanks](https://www.comflowy.com/special-thanks): - Added a change log and a special thanks page to the website to show our appreciation for friends who provide valuable feedback on our tutorials and products.
+
+**Articles updates:**
+- [Install ComfyUI](https://www.comflowy.com/preparation-for-study/install): Added instructions related to pip3. Thanks to Github user **[fansanqiu](https://github.com/fansanqiu)** for raising this [Issue](https://github.com/6174/comflowy/issues/2).
+- [Download & Import Model](https://www.comflowy.com/preparation-for-study/model): Added steps to import models from the SD WebUI folder. Thanks to Discord user **Haaan** for raising this question.
+- [Install Plugins](https://www.comflowy.com/preparation-for-study/optional/custom-nodes): Added the code to start ComfyUI. Thanks to Discord user **Tennisatw** for pointing out this issue.
+- [Upscale](https://www.comflowy.com/advanced/upscale): Added an explanation for the use case of Upscale latent. Thanks to Discord user **heiba_wk** for asking this question.
+
+**Community Q&A Highlights:**
+
+Q : The size of the output image can be directly adjusted using the Empty latent image. Why is there an upscale latent node and under what circumstances is it necessary to use it? (asked by **heiba_wk**)
+
+* Answer from Jimmy: I suggest you take another look at the tutorial about SD principles. Adjusting the size directly with an empty latent image may not produce good results. To explain by comparing it to the stone carving mentioned in the tutorial:
+  * The empty latent image is like the stone carved by the sculptor (model). However, some sculptors (models) only carve 512x512 stones (images) during training. If you ask them to carve a 1024x1024 stone (image), they won't be able to do it well, and the result will be poor (for example, in case of a 512 image, the human figure is one head, but in a 1024 image, there are two heads).
+  * But what if I want a 1024x1024 image? This is where you need to call on the Upscale sculptor (model). This sculptor (model) is not particularly good at creating, but is very good at proportional upsizing, and even some can add content details while enlarging.
+
+* Answer from Marc: In terms of code logic, the method used by upscale to enlarge the image actually uses basic image processing methods, such as ["nearest-exact", "bilinear", "area", "bicubic", "bislerp"]. These methods are much more cost-effective for generating large-sized images.
+
+## 🤩 Weekly‘s AI highlights
+> If you encounter interesting AI-related articles or perhaps products during your studies, you are welcome to share them on our Discord [Share Channel](https://discord.gg/fzzdw6e8vk), or submit a newsletter [Issue](https://github.com/6174/comflowy/issues/new/choose) on Github. If your submission is accepted, we will feature it in our newsletter to be seen by more people.
+
+### 📄 Noteworthy papers and technic
+
+* [**HarmonyView: Harmonizing Consistency and Diversity in One-Image-to-3D**](https://byeongjun-park.github.io/HarmonyView/)
+
+Just one image is needed to generate a 3D version of it through AI. You can see some demos here, and the results seem pretty good from the examples. In the future, it may be possible to generate basic 3D models with just one picture, which will greatly enhance the efficiency of model creators.
+
+* [**InsActor: Instruction-driven Physics-based Characters**](https://huggingface.co/papers/2312.17135)
+
+Generating animation of physics-based characters with intuitive control has long been a desirable task with numerous applications. However, generating physically simulated animations that reflect high-level human instructions remains a difficult problem due to the complexity of physical environments and the richness of human language. In this paper, researcher present InsActor, a principled generative framework that leverages recent advancements in diffusion-based human motion models to produce instruction-driven animations of physics-based characters.
+
+### 🛠️ Products you should try
+
+* [Pika 1.0](https://pika.art/login) : a text-to-video app is now available to everyone. 
+
+* [BabyStoryAI](https://babystoryai.com/): There's a product that uses AI to generate children's stories - what sets it apart from similar products is that it can convert content into speech and automatically add background music. It would be even better if it could generate illustrations based on the plot.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-001/001.jpeg">
+    <img src="/blog/AI-weekly-001/001.jpeg" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [Room Renivented](https://roomreinvented.com/): The other product is an AI-generated interior design tool. There are many similar products on the market, so why am I sharing this one? Mainly because I think there are still many opportunities in this field. Right now, the biggest problem with most of these products is that the designs are not appealing. This is not just a technical problem, but a crucial one - most people developing these products don't have taste like professional designers. If you have good taste in interior design, you might want to consider this direction.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-001/002.jpeg">
+    <img src="/blog/AI-weekly-001/002.jpeg" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />

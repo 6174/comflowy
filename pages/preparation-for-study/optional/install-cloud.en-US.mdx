@@ -7,6 +7,7 @@ keywords: ["ComfyUI, Cloud Installation, Kaggle, Google Colab, Paperspace, GPU u
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
 
 # ComfyUI Cloud Installation
 
@@ -66,3 +67,17 @@ After registration, you can visit the ComfyUI's Kaggle page by clicking [here](h
     Note: After executing the Start the WebUI code, it will continuously consume GPU time.
   </Callout>
 </Steps>
+
+## Q&A
+
+<FAQBox title="Getting an OpenSSL error when starting the webui">
+  > Error code as follows: OpenSSL version mismatch. Built against 30000020, you have 30100040
+  rm: Cannot remove '/root/.ssh/id_rsa': No such file or directory
+  OpenSSL version mismatch. Built against 30000020, you have 30100040
+  OpenSSL version mismatch. Built against 30000020, you have 30100040. This issue is from Discord user **designwill**.
+
+  **Answer from Jimmy:**
+  This situation occurs when you pause the service and then try to restart it by just rerunning the start the webui code. You need to run the Installation code again before rerunning the start the webui code to avoid this error.
+</FAQBox>
+
+<Subscribe />

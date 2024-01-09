@@ -1,0 +1,145 @@
+---
+date: January 4th, 2024
+image: /blog/generate-app-logo/banner.png
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何使用 ComfyUI 生成 App 的 logo?
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/banner.png">
+    <img src="/blog/generate-app-logo/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+我们的教程教了很多 ComfyUI 的使用方法，但也有一些同学反馈，当想要将 ComfyUI 用在工作上时，又不知道该如何下手。另外，ComfyUI 里有很多小的配置项，教程里也没有一一介绍，有些配置不知道该如何配置。
+
+所以，我们决定写一系列的实操教程，通过实际的工作案例来教大家将 ComfyUI 运用到工作当中，同时还会教大家一些使用 ComfyUI 的小技巧，从而帮助大家更好地使用 ComfyUI。
+
+本期先介绍一个相对简单的场景 —— 使用 ComfyUI 生成 App 的 logo。
+
+## 1. 使用 prompt 生成
+
+最简单的方法当然就是 prompt 直接生成了，但你如果你有使用 Midjourney 的经验，你可能会发现使用 ComfyUI 生成的 logo 好像不如 Midjourney 生成的 logo 好看。
+
+那是因为 Midjourney 的模型在训练的时候，有针对 logo 进行过优化，但我们在 ComfyUI 上直接使用 Stable Diffusion v1.5 或者 Stable Diffusion XL 并没有像 Midjounry 那样进行深度的优化。
+
+但这并不代表我们没法做出类似的效果，只是说我们需要使用到一些额外的技术去实现。
+
+首先大家可能第一反应想到的应该是使用针对 App Logo 微调过的模型。这的确是一个可行的方法，但因为微调模型的成本比较高，所以据我所知市面上比较少针对 App Logo 进行微调的模型。
+
+所以这种情况我一般会推荐大家使用 LoRA 而不是微调模型。另外，你可以通过在 [Civitai](https://civitai.com/) 上通过搜索的方式，找一找是否有跟你的场景匹配的 Checkpoint 模型，如果没有则可以考虑 LoRA。
+
+以下是 LoRA 的 workflow，搭建起来很简单。如果想更进一步了解 LoRA 的原理，可以查阅关于 [LoRA](../basics/lora) 的教程（⬇️ 点击下图可以放大）：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/001.png">
+    <img src="/blog/generate-app-logo/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+简单介绍下这 workflow 里需要关注的点：
+
+* Checkpoint：我是先从 [Civitai](https://civitai.com/) 上找到了一个跟 App Logo 相关的 LoRA 模型。我建议你在使用 LoRA 的时候，先看看 LoRA 作者写的 LoRA 简介，一般会包含一些使用建议。比如这个模型的作者提到这个 LoRA 是基于 SD XL 1.0 微调训练而成（下图中的 ①），所以 Checkpoint 的使用上最好使用同 base 模型。所以 Checkpoint 我就直接使用了 SD XL 1.0。
+* Prompt：我建议第一次使用 LoRA 的时候，先用作者的示例 prompt 来生成一下，看看效果如何。然后再参考作者的 prompt 来写自己的 prompt。你可以点击下图中的 ② 的按钮，来查看作者的 prompt。
+* Batch_Size：在 empty latent image 节点中，有一个 batch 的参数项，我这里设置了 4，这就意味着最后模型会连续生成 4 张图。这里有一个效率相关的技巧，你可以在测试的时候，将这个 batch_size 设置为 1，这样可以加快生成速度。当你确定好 prompt 后，就可以将这个 batch_size 设置为一个较大的值，然后就去忙别的事情，或者去喝杯咖啡😆。一会后，就能看到多张图，然后从中挑选几张你喜欢的。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/002.png">
+    <img src="/blog/generate-app-logo/002.png" alt="" width="90%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+最后我们再来比对下使用相同的 prompt 的情况下，Midjourney 生成的 logo（左）和 ComfyUI 生成的 logo（右），你会更喜欢哪一个生成的呢？
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/003.png">
+    <img src="/blog/generate-app-logo/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+
+## 2. 使用 ControlNet 生成
+
+前一种方法，我认为主要的使用场景是让 AI 给你生成灵感，你可以通过不断地调整 prompt 来生成不同的 logo，然后从中挑选你喜欢的，再将其导入到 Photoshop 里进行二次调整。
+
+不过在实际的设计过程中，你可能并不会仅有内容上的要求，可能你已经有一些初步的想法，比如这个 logo 需要包含一个 R 字母。这时候，你就可以使用 ControlNet 技术来辅助你生成 logo。
+
+你可以根据你的工作流使用不同的 ControlNet：
+
+* 如果你习惯手绘草稿，那可以考虑使用 Scribble ControlNet Workflow。你可以导入你的草稿，然后使用 Scribble ControlNet Workflow 来生成 logo。
+* 如果你想生成的 logo，比较有层次感，那可以考虑绘制一个简单的 depth 图，然后使用 Depth ControlNet Workflow 来生成。
+* 如果你习惯使用绘图软件绘制草稿，我建议你使用 Canny ControlNet Workflow。
+
+我这主要介绍下 Canny，你可以使用各种绘图工具，绘制一个简单的初稿，然后使用 Canny workflow 对原图进行重绘制（其他 workflow 可以查看[这篇教程](../advanced/controlnet)）。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/004.png">
+    <img src="/blog/generate-app-logo/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+使用 ControlNet 的时候需要注意。Checkpoint 和 ControlNet 的 base 模型要一致，不然会报错。比如上述的例子中，在 Checkpoint 里我用的是 Dreamshaper，它的 Base 模型是 SD v1.5，所以我在 ControlNet 里也要使用 SD v1.5 canny。 
+
+另外，如果你是想重绘某些 App 的 logo（比如你的工作是绘制一个手机主题），那你还可以将多个 App 的 logo 作为 ControlNet 的输入，这样就能一次生成多个 App 的 logo 了。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/005.png">
+    <img src="/blog/generate-app-logo/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+上面的面包主题我还挺喜欢的，第二个风格是 Art Nouveau。这里再推荐给大家一个 Stable Diffusion 可用的 Prompt 风格列表网站。你可以在[这个网站](https://rikkar69.github.io/SDXL-artist-study/)上先看看有哪些风格适合你，然后用到 prompt 里。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/006.png">
+    <img src="/blog/generate-app-logo/006.png" alt="" width="90%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3. 参考生成
+
+最后，你可能还会遇这样的情况：你的客户给了一些参考图给你，让你参考这些图来设计 logo。那么在这种情况下，除了直接让 AI 生成外，你还可以拿这些参考图来让 AI 生成新的 logo。
+
+目前有两种方式可以实现这个需求。
+
+第一种是 Reference-only ControlNet 方法。你可以简单理解为模型用某张图片作为参考，生成新的图片。
+
+搭建这个 workflow 需要用到 ComfyUI 的实验性节点，所以你需要先安装 [ComfyUI_experiments](https://github.com/comfyanonymous/ComfyUI_experiments) 这个插件。你可以使用 ComfyUI Manager 来安装，或者自己手动下载导入安装。如果不懂得如何安装，可以查看[安装插件](../preparation-for-study/optional/custom-nodes)教程。
+
+完成安装后，只需要在原有的 ControlNet workflow 中，将 Empty Latent Image 替换为一个参考图片。首先双击空白处，搜索 Reference 即可看到 ReferenceOnlySimple 的节点，添加该节点，并将与 Ksampler 连接起来。因为这个节点仅支持导入 latent，所以你还需要使用 VAE Encode 将图片转成 latent。最后的 workflow 如下图所示：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/007.png">
+    <img src="/blog/generate-app-logo/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+从上图中可以看到使用这种方法，虽然不能完全按照参考图生成新的图片，但整体设计风格还是比较接近的。另外，你应该还注意到，我加了一个 upscale 节点。因为我的参考图比较小，所以需要先将这张图放大。如果你的参考图比较大，那可以不用加这个节点。
+
+第二种方法是 IPAdapter + ControlNet 方法。这种方法也是类似地用一张图作为参考，生成新的图片，但这种方法相对来说，效果没有第一种方法那么好。我实验下来，在人像的生成上，这种方法才有比较好的效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-app-logo/008.png">
+    <img src="/blog/generate-app-logo/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+但我认为这种方法，仍然是一个很好的使用参考图生图的方法。虽然在我的例子中，绘制的效果不太好，但你仍然可以尝试一下，说不定能生成出比较不错的图片。
+
+## 4. 总结
+
+最后，我想给所有使用 ComfyUI 的新手，或者使用其他 AI 生图工具的朋友们几个建议：
+
+1. 不管使用何种方法，只要能符合你的需求就是好方法。我遇到不少新手朋友，一上来就安装各种插件，下载各种复杂的模板。其实很多时候，你根本用不到这些，适合你的才是最好的。有时间解决各种插件导致的报错，不如多花点时间，想想如何用 AI 给你的工作提效。
+2. 多一点耐心，多一点尝试。我遇到有不少刚学 ComfyUI 的朋友，一上来就下载各种别人做好的 workflow，运行后发现根本生成不了好的图片，于是就放弃了。坦率说来，现在的 AI 技术还没有到达完全替代人类的地步，仍然需要人类的参与。你需要多尝试，多调整，多思考，才能得到你想要的结果。况且如果 AI 已经能在没有设计师的干预下，生成完美的图片，那你和我不就都失业了吗😂。
+
+<Subscribe />
