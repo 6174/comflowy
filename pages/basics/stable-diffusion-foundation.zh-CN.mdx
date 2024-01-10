@@ -33,12 +33,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 </PhotoProvider>
 
 但实际上，整个生成的过程经过三个大的步骤。我会先概括地介绍这三大步骤分别是什么，先让大家对 Stable Diffusion 有一个整体的理解，然后再细讲里面的细节：
-<br/>
-<PhotoProvider>
-  <PhotoView src="/stable-diffusion-foundation/002.png">
-    <img src="/stable-diffusion-foundation/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>
+
 
 1. 首先，用户输入的 Prompt 会被一个叫 <mark>Text Encoder（文本编译器）</mark>的东西编译成一个个的词特征向量。此步骤下会输出 77 个等长的向量，每个向量包含 768 个维度。后续我会展开讲讲这些向量的作用，现在各位可以简单将其理解为「将文本转化为机器能识别的多组数字」。
 2. 接着，这些特征向量会和一张随机图（可以简单理解这是一张布满电子雪花的图，或充满信息噪声的图），一起放到 Image Information Creator 里。在这一步，机器会将这些特征向量和随机图先转化到一个 <mark>Latent Space（潜空间）</mark>里，然后根据这些特征向量，将随机图「降噪」为一个「中间产物」。你可以简单理解，此时的「中间产物」是人类看不懂的「图」，是一堆数字，但此时这个中间产物所呈现的信息已经是是一只站在城堡上的猫了。
@@ -47,8 +42,8 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 如果将以上的三大步骤可视化的话，会是这样：
 <br/>
 <PhotoProvider>
-  <PhotoView src="/stable-diffusion-foundation/003.png">
-    <img src="/stable-diffusion-foundation/003.png" alt="" />
+  <PhotoView src="/stable-diffusion-foundation/002.png">
+    <img src="/stable-diffusion-foundation/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -57,6 +52,13 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 整个过程，与其说 AI 是在「生成」图片，不如称其为「雕刻」更合适。就像米开朗基罗在完成大卫雕像后，说过的一句话那样：雕像本来就在石头里，我只是把不要的部分去掉。
 
 所有图片都存在了一张充满噪点的图片里，AI 只是把不要的部分去掉了。所以如果你用同样是 Diffusion Model 搭建的 Midjourney 话，你会看到如下的过程，首先是一张模糊甚至黑色的图片，然后图片会一步步变得越来越清晰，这就是我前面所说的「降噪」或者「雕刻」的过程：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-diffusion-foundation/003.png">
+    <img src="/stable-diffusion-foundation/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
 
 <Callout emoji="💡">
   你可能好奇，为何前面的解释里，Stable Diffusion 最后是直接出图，而不像 Midjourney 那样？实际上，在第二步中，机器会分多次对图进行「降噪」，只是没有将每一次的结果用 Image Decoder 解码成图片，而是只将最后一次结果解码成照片。所以你使用 Stable Diffusion 的时候才不会像 Midjourney 那样看到生成的过程。

@@ -39,12 +39,7 @@ When we input a prompt, such as "Cat, standing on the castle", Stable Diffusion 
 </PhotoProvider>
 
 In reality, the entire generation process goes through three major steps. I will first outline what these three steps are to give you all an overall understanding of Stable Diffusion, and then delve into the details:
-<br/>
-<PhotoProvider>
-  <PhotoView src="/stable-diffusion-foundation/002.png">
-    <img src="/stable-diffusion-foundation/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>
+
 
 1. First, the user-input Prompt will be compiled into individual word feature vectors by something called a <mark>Text Encoder</mark>. This step will output 77 equally long vectors, each containing 768 dimensions. I will further explain the role of these vectors later on, but for now, you can simply understand it as 'converting text into groups of numbers that machines can recognize'.
 2. Then, these feature vectors and a random image (which you can simply understand as an image full of electronic snowflakes, or full of information noise), are placed in the Image Information Creator. In this step, the machine will first convert these feature vectors and random image into a <mark>Latent Space</mark>, and then 'denoise' the random image into an 'intermediate product' based on these feature vectors. You can simply understand that the 'intermediate product' at this moment is an 'image' that humans cannot understand, a bunch of numbers, but the information presented by this intermediate product at this moment is already a cat standing on a castle.
@@ -53,8 +48,8 @@ In reality, the entire generation process goes through three major steps. I will
 If the above three steps are visualized, it would look like this:
 <br/>
 <PhotoProvider>
-  <PhotoView src="/stable-diffusion-foundation/003.png">
-    <img src="/stable-diffusion-foundation/003.png" alt="" />
+  <PhotoView src="/stable-diffusion-foundation/002.png">
+    <img src="/stable-diffusion-foundation/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -63,6 +58,13 @@ To sum up, in simple terms, the user inputs a Prompt command, and the machine wi
 In the whole process, it is more appropriate to say that the AI is 'sculpting' images rather than 'generating' them. It's just like what Michelangelo said after completing the David statue: The statue was already in the stone, and I just removed the unnecessary parts.
 
 All images exist in an image full of noise, and AI just removes the unnecessary parts. So if you use the Midjourney built with the same Diffusion Model, you will see the following process: at first, it's a blurred or even black image, and then the image will step by step become clearer, which is the 'denoising' or 'sculpting' process I mentioned earlier:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-diffusion-foundation/003.png">
+    <img src="/stable-diffusion-foundation/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
 
 <Callout emoji="💡">
   You may be curious why in the previous explanation, Stable Diffusion directly outputs images rather than doing it like Midjourney. In fact, in the second step, the machine denoises the image multiple times, but does not decode each result into an image using the Image Decoder. Instead, it only decodes the final result into a photo. Therefore, when you use Stable Diffusion, you don't see the generation process like Midjourney.
