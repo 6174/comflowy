@@ -111,24 +111,24 @@ After introducing the redraw, let's talk about the reference. First is the unCLI
   ### Add Load Image Node
   The first step is to start from the Default workflow. Then, based on the existing foundation, add a load image node, which can be found by right-clicking → All Node → Image.
 
-  ### Add CLIP Version Encode Node
-  In the second step, we need to input the image into the model, so we need to first encode the image into a vector. So, we need to add a CLIP Version Encode node, which can be found by right-clicking → All Node → Conditioning.
+  ### Add CLIP Vision Encode Node
+  In the second step, we need to input the image into the model, so we need to first encode the image into a vector. So, we need to add a CLIP Vision Encode node, which can be found by right-clicking → All Node → Conditioning.
   
-  Then, we can connect the Load Image node to the CLIP Version Encode node.
+  Then, we can connect the Load Image node to the CLIP Vision Encode node.
 
   ### Add unCLIPConditioning Node
   Then, we need to fuse the data from the image encoding with the Text Encode data, so we need to add an unCLIPConditioning node. This can be found by right-clicking → All Node → Conditioning.
   
-  Next, we connect the Positive Prompt to the unCLIPConditioning node, followed by connecting the CLIP Version Encode to the unCLIPConditioning node. Then, the unCLIPConditioning node is connected to the KSampler's positive.
+  Next, we connect the Positive Prompt to the unCLIPConditioning node, followed by connecting the CLIP Vision Encode to the unCLIPConditioning node. Then, the unCLIPConditioning node is connected to the KSampler's positive.
 
   Lastly, I'll introduce the two parameters in the nodes:
   * strength: This sets the influence strength of the prompt. The larger the number, the closer it is to the description of the prompt. It's somewhat similar to the weight notation you use when writing Prompts in CLIP Text Encode, like (red hat:1.2).
   * noise_augmentation: This mainly represents the closeness between the new image and the old image. 0 means the closest, I usually set it between 0.1 - 0.3.
   
   ### Replace Load Checkpoint Node with unCLIPCheckpointLoader Node
-  The final step, you will notice that there's a point in the CLIP Version Encode node we added in the second step that hasn't been connected yet. It reads Clip Vision, but what it actually needs to connect to is a node called unCLIPCheckpointLoader, which can be found by right-clicking → All Node → Loaders.
+  The final step, you will notice that there's a point in the CLIP Vision Encode node we added in the second step that hasn't been connected yet. It reads Clip Vision, but what it actually needs to connect to is a node called unCLIPCheckpointLoader, which can be found by right-clicking → All Node → Loaders.
   
-  Then, delete the original Checkpoint and replace it with the unCLIPCheckpointLoader node, and connect it to the CLIP Version Encode node. Set its model to the sd21-unclip-h model.
+  Then, delete the original Checkpoint and replace it with the unCLIPCheckpointLoader node, and connect it to the CLIP Vision Encode node. Set its model to the sd21-unclip-h model.
   <Callout type="warning" emoji="⚠️">
     Note that although this loader is called unCLIPCheckpointLoader, you can't find the folder for this node in the ComfyUI project folder. In fact, it shares a folder with the Checkpoint node. So, you need to put the unCLIP model files in the Checkpoint.
   </Callout>
@@ -165,7 +165,7 @@ Another type of redraw involves only using the style of the image and not its co
 
   You can then connect these nodes, and you'll find that there are still two endpoints not connected, and we'll move to the next step.
 
-  ### Add Load CLIP Version and Load Style Model Nodes
+  ### Add Load CLIP Vision and Load Style Model Nodes
   These two nodes can be found by right-clicking → All node → loaders. Then connect them to the CLIP Vision Encode node and Apply Style Model respectively. After connecting, let's explain the complete workflow. The whole process is quite easy to understand: input an image, then encode the image, and use Apply Style Model to filter out the Style information from the image, and fuse it with the text prompt and pass it to KSampler.
 
   What's different from the unCLIP model workflow is that it only uses style. So the content of the drawing may not be very similar to the original image, but the style will look alike.

@@ -7,6 +7,7 @@ keywords: ["ComfyUI Basics", "AI Image Generation", "Node Connections", "Basic O
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
 
 # ComfyUI Basics ➁
 
@@ -142,5 +143,14 @@ You can move the panel by holding down the top left corner, and the top right co
 * Invert Menu Scrolling
 * Color palette	
 * Link Render Mode
+
+## Q&a
+<FAQBox title="What to do when an error occurs while running the basic workflow in KSampler?">
+  > Complete error message: Error occurred when executing KSampler: module 'torch' has no attribute 'mps'
+  This issue is from Discord user **123321123**.
+
+  **Answer from Jimmy:**
+  This error is likely due to not having the latest version of PyTorch installed. Update the PyTorch version on the computer to resolve this.
+</FAQBox>
 
 <Subscribe />

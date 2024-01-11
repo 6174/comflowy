@@ -1,6 +1,7 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
 
 # ComfyUI 基础 ➁
 
@@ -134,5 +135,16 @@ import Subscribe from "components/subscribtion";
 * Invert Menu Scrolling
 * Color palette	
 * Link Render Mode
+
+## Q&A 
+
+<FAQBox title="运行基础 workflow 时，KSampler 报错该怎么办？">
+  > 完整报错信息：Error occurred when executing KSampler: module 'torch' has no attribute 'mps'
+  This issue is from Discord user **123321123**.
+
+  **Answer from Jimmy:**
+  看这个报错应该是没有安装最新 pytorch 导致的。更新下电脑的 pytorch 版本即可。
+</FAQBox>
+
 
 <Subscribe />

@@ -103,15 +103,15 @@ Stable Diffusion 模型图生图主流方法有两种：
   ### 添加 Load Image 节点
   第一步，我们还是从 Default workflow 开始。然后在原有的基础上，添加加载图片节点，你可以右键 → All node → image 里找到此节点。
 
-  ### 添加 CLIP Version Encode 节点
-  第二步，我们需要将图片输入到模型中，所以需要将图片先 encode 成向量。所以我们要先添加 CLIP Version Encode 节点，你可以右键 → All node → conditioning 里找到此节点。
+  ### 添加 CLIP Vision Encode 节点
+  第二步，我们需要将图片输入到模型中，所以需要将图片先 encode 成向量。所以我们要先添加 CLIP Vision Encode 节点，你可以右键 → All node → conditioning 里找到此节点。
   
-  然后我们可以将 Load Image 节点与 CLIP Version Encode 节点相连。
+  然后我们可以将 Load Image 节点与 CLIP Vision Encode 节点相连。
 
   ### 添加 unCLIPCondtioning 节点
   接着我们还要将图片 Encode 后的数据跟 Text Encode 的数据相融合，所以我们需要添加 unCLIPCondtioning 节点。你可以右键 → All node → conditioning 里找到此节点。
   
-  然后我们将 Positive prompt 与 unCLIPCondtioning 节点相连，再将 CLIP Version Encode 与 unCLIPCondtioning 节点相连。接着将 unCLIPCondtioning 连到 KSampler 的 positive 处。
+  然后我们将 Positive prompt 与 unCLIPCondtioning 节点相连，再将 CLIP Vision Encode 与 unCLIPCondtioning 节点相连。接着将 unCLIPCondtioning 连到 KSampler 的 positive 处。
 
   最后介绍下节点里的两个参数：
   * strength：这是设置 prompt 的影响强度，数值越大，就越接近 prompt 的描述。它有点类似于你在 CLIP Text Encode 里写 Prompt 时会用到的权重写法，比如 (red hat:1.2)。
@@ -119,9 +119,9 @@ Stable Diffusion 模型图生图主流方法有两种：
   
 
   ### 替换 Load Checkpoint 节点为 unCLIPCheckpointLoader 节点
-  最后一步，你会发现，我们在第二步添加的 CLIP Version Encode 节点还有一个点没有连，看文字是要连一个 Clip vision，其实它要连的是一个叫 unCLIPCheckpointLoader 的节点，你可以右键 → All node → loaders 里找到此节点。
+  最后一步，你会发现，我们在第二步添加的 CLIP Vision Encode 节点还有一个点没有连，看文字是要连一个 Clip vision，其实它要连的是一个叫 unCLIPCheckpointLoader 的节点，你可以右键 → All node → loaders 里找到此节点。
   
-  然后将原来的 Checkpoint 删掉，将其替换为 unCLIPCheckpointLoader 节点，再将 CLIP Version Encode 与 unCLIPCheckpointLoader 节点相连。并将其模型设置为 sd21-unclip-h 模型。
+  然后将原来的 Checkpoint 删掉，将其替换为 unCLIPCheckpointLoader 节点，再将 CLIP Vision Encode 与 unCLIPCheckpointLoader 节点相连。并将其模型设置为 sd21-unclip-h 模型。
   <Callout type="warning" emoji="⚠️">
     注意，虽然这个 loader 是叫 unCLIPCheckpointLoader，但你没法在 ComfyUI 的项目文件夹里找到该节点的文件夹，其实它跟 Checkpoint 节点共用一个文件夹。所以你需要将 unCLIP 的模型文件放到 Checkpoint 里。
   </Callout>
@@ -159,7 +159,7 @@ Stable Diffusion 模型图生图主流方法有两种：
 
   接着就可以将这些节点连载一起，此时你会发现还有两个端点没连，我们进入下一步。
 
-  ### 添加 Load CLIP Version 和 Load Style Model 节点
+  ### 添加 Load CLIP Vision 和 Load Style Model 节点
   右键 → All node → loaders 里能找到这两个节点，然后将他们分别连在 CLIP Vision Encode 节点和 Apply Style Model 上。连接完后，我们再来讲解下完整 Workflow，
   整个流程还挺好理解的，输入图片，然后将图片进行 encode 后，使用 Apply Style Model 将图片里的 Style 信息过滤出来，并和文字 prompt 融合在一起并传给 KSampler。
   
