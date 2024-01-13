@@ -39,9 +39,15 @@ const SUBTITLE = {
   ),
 }
 
+const BUTTON = {
+  'zh-CN': '订阅',
+  'en-US': 'Subscribe',
+}
+
 export default function BlogSubscribe() {
   const { locale } = useRouter()
   const [showImage, setShowImage] = useState(false);
+  const [showIframe, setShowIframe] = useState(false); // 新增状态变量
   const SubtitleComponent = SUBTITLE[locale]  || (() => null);
   return (
     <div
@@ -78,13 +84,39 @@ export default function BlogSubscribe() {
           }
         </div>
       </div>
-      <iframe
-        src="https://comflowy.substack.com/embed"
-        width="100%"
-        height="150"
-        style={{ background: 'white', display: 'block', margin: '0 auto' }}
-        frameBorder="0"
-      ></iframe>
+      <div style={{ textAlign: 'center' }}>
+        <button 
+          onClick={() => setShowIframe(!showIframe)}
+          className="mx-auto mt-6 mb-4 px-4 py-2 border border-gray-500 rounded-md"
+        >
+          {BUTTON[locale]}
+        </button>
+      </div>
+      {showIframe && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          onClick={() => setShowIframe(false)}
+        >
+          <div className="relative bg-white rounded-lg w-1/2 h-1/5">
+            <button
+              className="absolute top-3 right-3 hover:bg-black-700 text-black font-bold py-1 px-2 rounded"
+              onClick={() => setShowIframe(false)}
+            >
+              X
+            </button>
+            <div className="flex justify-center items-center mt-10">
+              <img src='/logo.png' alt="Logo" className="w-16 h-16" />
+            </div>
+            <h1 className="text-black text-center mt-4 text-4xl font-bold">Comflowy</h1>
+            <iframe
+            src="https://comflowy.substack.com/embed"
+            className="w-full h-2xl rounded-lg"
+            frameBorder="0"
+            ></iframe>
+          </div>
+          
+        </div>
+      )}
     </div>
   )
 }
