@@ -47,7 +47,7 @@ const BUTTON = {
 export default function BlogSubscribe() {
   const { locale } = useRouter()
   const [showImage, setShowImage] = useState(false);
-  const [showIframe, setShowIframe] = useState(false); // 新增状态变量
+  const [showIframe, setShowIframe] = useState(false); 
   const SubtitleComponent = SUBTITLE[locale]  || (() => null);
   return (
     <div
