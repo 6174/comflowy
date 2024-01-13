@@ -121,55 +121,7 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
   </PhotoView>
 </PhotoProvider>
 
-但如果你没法直接绘制 pose，那就可以尝试导入一张你觉得比较合适的图，然后通过插件将其转换成 pose，然后再输入到 ControlNet 的模型中。这样你就可以通过图片来控制模型生成的人物的姿势了。
 
-方法也很简单。
-<Steps>
-  ### 下载插件
-  首先你需要去下载一名为 [ComfyUI's ControlNet Auxiliary Preprocessors](https://github.com/Fannovel16/comfyui_controlnet_aux?tab=readme-ov-file) 的插件，安装有两种方法：
-
-  <Tabs items={['ComfyUI-Manager（推荐）', 'Github']}>
-    <Tabs.Tab>
-      如果你已经安装过 ComfyUI-Manager，那么你可以直接在 ComfyUI-Manager 里搜索并安装该插件。
-
-      安装 ComfyUI-Manager 的方法，以及插件的方法可以参考 [安装插件](../../preparation-for-study/optional/custom-nodes) 这篇教程。
-    </Tabs.Tab>
-    <Tabs.Tab>
-      如果你不想安装 ComfyUI-Manager，那么你可以直接在 Github 上下载该插件，然后将其放到 ComfyUI 里的 `custom_nodes` 文件夹内。然后重启 ComfyUI 即可。
-      <Callout type="warning" emoji="⚠️">
-        需要注意，重启 ComfyUI 后，你可以双击空白处，然后输入插件里的 nodes 名称，如果能搜索到，就意味着插件安装成功。如果搜索不到，那就尝试刷新浏览器页面，或者关闭浏览器页面再重新打开，然后再搜索看看是否能搜索到。
-      </Callout>
-    </Tabs.Tab>
-  </Tabs>
-  ### 插入 DWPose Estimation 节点
-  双击空白处，在搜索框中输入 DWPose Estimation，然后添加该节点。然后将这节点左端点与 Load Image 节点相连。参数配置如下：
-  * detect_hand: disable
-  * detect_body: enable
-  * detect_face: disable
-  * resolution: 512（因为我们生成的图片是 512 * 512 所以这里设置为 512 * 512）
-  * bbox_detector: yolox_l.onnx
-  * pose_estimator: dw-ll_ucoco_384.onnx
-  
-  头三个，因为我们主要是为了控制人物的姿势，所以这里只需要检测人物的身体即可。后两个这么设置能速度更快一些。
-  ### 增加 Upscale Image 节点
-  增加这一步主要是为了让图片的分辨率与生成的图片分辨率一致，这样能更好地控制模型生成的图片。我们还可以添加一个 Upscale Image 节点，然后将 DWPose Estimation 的右端点与 Upscale Image 的左端点相连。参数配置如下：
-  * upscale_method: nearest-exact
-  * width: 512
-  * height: 512
-  * crop: disable
-  因为 pose 图像素的排列比较规整，所以我们选择 nearest-exact，然后宽高设置为与生成图片一致，最后关闭 crop。
-  
-  添加了这个节点后，我们就可以将 Upscale Image 的右端点与 Apply ControlNet 的左端点相连了。
-  
-  另外，如果你想要获得 pose 图，你还可以添加一个 Preview Image 节点，然后将其与 DWPose Estimation 的右端点相连，这样你就能看到 pose 图了。
-  <br/>
-  <PhotoProvider>
-    <PhotoView src="/comfyui-controlnet/008.png">
-        <img src="/comfyui-controlnet/008.png" alt="" />
-    </PhotoView>
-  </PhotoProvider>
-
-</Steps>
 
 ## Depth ControlNet workflow
 第三种 ControlNet 的用法是通过深度图来控制模型生成的图片。这种方法的好处是，你可以通过深度图来控制模型生成的图片的景深。比如像这样：
@@ -202,11 +154,11 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
   </PhotoView>
 </PhotoProvider>
 
-从上面的例子可以看出，Canny 跟第一个 Scribble 有点像。Canny 是拿已有图片生成边缘图，而 Scribble 是自己画草图。其 workflow 也比较简单，可以参考 Pose ControlNet workflow，只需要将 DWPose Estimation 节点换成 Canny 节点即可。
+Workflow 搭建与之前的类似，只要将 ControlNet 模型换成 Canny 模型即可。
 <br/>
 <PhotoProvider>
-  <PhotoView src="/comfyui-controlnet/012.png">
-      <img src="/comfyui-controlnet/012.png" alt="" />
+  <PhotoView src="/comfyui-controlnet/013.png">
+      <img src="/comfyui-controlnet/013.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 <Subscribe />

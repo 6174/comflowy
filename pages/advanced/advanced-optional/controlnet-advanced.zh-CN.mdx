@@ -1,5 +1,86 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
 # ControlNet 进阶
+
+在 ControlNet 基础篇，我介绍了几种使用 ControlNet 的方式，但这些方式都需要你直接将 Pose、Depth 等图导入到工作流。那如果没有这些图又该怎么办呢？
+
+最好的方式就是直接使用已有的图，然后将其转化为 Pose 或者 Depth 图片。进阶篇会教大家如何使用插件将图片转化为 ControlNet 能使用的图片。
+
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+  * [ControlNet Scribble](https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.safetensors?download=true)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
+  * [ControlNet Openpose](https://huggingface.co/lllyasviel/sd-controlnet-openpose/resolve/main/diffusion_pytorch_model.safetensors?download=true): 将其放到 ComfyUI 里的 models/controlnet 文件夹内。
+  * [ControlNet Canny](https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
+</Callout>
+
+## Image pose ControlNet workflow
+如果你没法直接绘制 pose，那就可以尝试导入一张你觉得比较合适的图，然后通过插件将其转换成 pose，再输入到 ControlNet 的模型中。这样你就可以通过图片来控制模型生成的人物的姿势了。
+
+方法也很简单。
+<Steps>
+  ### 下载插件
+  首先你需要去下载一名为 [ComfyUI's ControlNet Auxiliary Preprocessors](https://github.com/Fannovel16/comfyui_controlnet_aux?tab=readme-ov-file) 的插件，安装有两种方法：
+
+  <Tabs items={['ComfyUI-Manager（推荐）', 'Github']}>
+    <Tabs.Tab>
+      如果你已经安装过 ComfyUI-Manager，那么你可以直接在 ComfyUI-Manager 里搜索并安装该插件。
+
+      安装 ComfyUI-Manager 的方法，以及插件的方法可以参考 [安装插件](../../preparation-for-study/optional/custom-nodes) 这篇教程。
+    </Tabs.Tab>
+    <Tabs.Tab>
+      如果你不想安装 ComfyUI-Manager，那么你可以直接在 Github 上下载该插件，然后将其放到 ComfyUI 里的 `custom_nodes` 文件夹内。然后重启 ComfyUI 即可。
+      <Callout type="warning" emoji="⚠️">
+        需要注意，重启 ComfyUI 后，你可以双击空白处，然后输入插件里的 nodes 名称，如果能搜索到，就意味着插件安装成功。如果搜索不到，那就尝试刷新浏览器页面，或者关闭浏览器页面再重新打开，然后再搜索看看是否能搜索到。
+      </Callout>
+    </Tabs.Tab>
+  </Tabs>
+  ### 插入 DWPose Estimation 节点
+  双击空白处，在搜索框中输入 DWPose Estimation，然后添加该节点。然后将这节点左端点与 Load Image 节点相连。参数配置如下：
+  * detect_hand: disable
+  * detect_body: enable
+  * detect_face: disable
+  * resolution: 512（因为我们生成的图片是 512 * 512 所以这里设置为 512 * 512）
+  * bbox_detector: yolox_l.onnx
+  * pose_estimator: dw-ll_ucoco_384.onnx
+  
+  头三个，因为我们主要是为了控制人物的姿势，所以这里只需要检测人物的身体即可。后两个这么设置能速度更快一些。
+  ### 增加 Upscale Image 节点
+  增加这一步主要是为了让图片的分辨率与生成的图片分辨率一致，这样能更好地控制模型生成的图片。我们还可以添加一个 Upscale Image 节点，然后将 DWPose Estimation 的右端点与 Upscale Image 的左端点相连。参数配置如下：
+  * upscale_method: nearest-exact
+  * width: 512
+  * height: 512
+  * crop: disable
+  因为 pose 图像素的排列比较规整，所以我们选择 nearest-exact，然后宽高设置为与生成图片一致，最后关闭 crop。
+  
+  添加了这个节点后，我们就可以将 Upscale Image 的右端点与 Apply ControlNet 的左端点相连了。
+  
+  另外，如果你想要获得 pose 图，你还可以添加一个 Preview Image 节点，然后将其与 DWPose Estimation 的右端点相连，这样你就能看到 pose 图了。
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-controlnet/008.png">
+        <img src="/comfyui-controlnet/008.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+
+</Steps>
+
+## Image canny ControlNet workflow
+第四种 ControlNet 的用法是通过 Canny 边缘图来控制模型生成的图片。这种方法的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
+<PhotoProvider>
+  <PhotoView src="/comfyui-controlnet/011.png">
+      <img src="/comfyui-controlnet/011.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+从上面的例子可以看出，Canny 跟第一个 Scribble 有点像。Canny 是拿已有图片生成边缘图，而 Scribble 是自己画草图。其 workflow 也比较简单，可以参考 Pose ControlNet workflow，只需要将 DWPose Estimation 节点换成 Canny 节点即可。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-controlnet/012.png">
+      <img src="/comfyui-controlnet/012.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
 
 <Subscribe />
