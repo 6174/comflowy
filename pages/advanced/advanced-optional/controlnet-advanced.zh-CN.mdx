@@ -16,10 +16,16 @@ import Subscribe from "components/subscribtion";
   * [ControlNet Canny](https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
 </Callout>
 
-## Image pose ControlNet workflow
-如果你没法直接绘制 pose，那就可以尝试导入一张你觉得比较合适的图，然后通过插件将其转换成 pose，再输入到 ControlNet 的模型中。这样你就可以通过图片来控制模型生成的人物的姿势了。
+## Image canny ControlNet workflow
+在必修课中，我介绍了 Scribble ControlNet workflow, 这个 workflow 可以将手绘稿转化成图片。但如果你没有手绘稿，而是想用别人的图片来生成的话，我不建议将图片转化为 scribble 图片，而是使用
+ Canny。这样生成的参考图片比手绘风格更加精准。比如像这样：
+<PhotoProvider>
+  <PhotoView src="/comfyui-controlnet/011.png">
+      <img src="/comfyui-controlnet/011.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
 
-方法也很简单。
+从上面的例子可以看出，Canny 跟第一个 Scribble 有点像。Canny 是拿已有图片生成边缘图，而 Scribble 是自己画草图。其 workflow 也比较简单，可以参考 Pose ControlNet workflow，只需要将 DWPose Estimation 节点换成 Canny 节点即可。
 <Steps>
   ### 下载插件
   首先你需要去下载一名为 [ComfyUI's ControlNet Auxiliary Preprocessors](https://github.com/Fannovel16/comfyui_controlnet_aux?tab=readme-ov-file) 的插件，安装有两种方法：
@@ -37,6 +43,23 @@ import Subscribe from "components/subscribtion";
       </Callout>
     </Tabs.Tab>
   </Tabs>
+  ### 插入 Canny 节点
+  接着你需要加载之前的 Canny workflow（或者自己新建一个），然后双击空白处，在搜索框中输入 Canny，然后添加该节点。然后将这节点左端点与 Load Image 节点相连，右端点与 Apple ControlNet 节点相连。
+  如果你想获得 Canny 图，你还可以在 Canny 节点的右端点加一个 Preview Image 节点，这样你就能看到 Canny 图了。最后 workflow 如图所示：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-controlnet/012.png">
+        <img src="/comfyui-controlnet/012.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
+
+
+## Image pose ControlNet workflow
+如果你没法直接绘制 pose，那就可以尝试导入一张你觉得比较合适的图，然后通过插件将其转换成 pose，再输入到 ControlNet 的模型中。这样你就可以通过图片来控制模型生成的人物的姿势了。
+
+方法也很简单。
+<Steps>
   ### 插入 DWPose Estimation 节点
   双击空白处，在搜索框中输入 DWPose Estimation，然后添加该节点。然后将这节点左端点与 Load Image 节点相连。参数配置如下：
   * detect_hand: disable
@@ -47,8 +70,10 @@ import Subscribe from "components/subscribtion";
   * pose_estimator: dw-ll_ucoco_384.onnx
   
   头三个，因为我们主要是为了控制人物的姿势，所以这里只需要检测人物的身体即可。后两个这么设置能速度更快一些。
-  ### 增加 Upscale Image 节点
-  增加这一步主要是为了让图片的分辨率与生成的图片分辨率一致，这样能更好地控制模型生成的图片。我们还可以添加一个 Upscale Image 节点，然后将 DWPose Estimation 的右端点与 Upscale Image 的左端点相连。参数配置如下：
+  ### 增加 Upscale Image 节点（可选）
+  增加这一步主要是为了让图片的分辨率与生成的图片分辨率一致，这样能更好地控制模型生成的图片。你可以在其他 ControlNet 使用这个技巧。
+  
+  我们还可以添加一个 Upscale Image 节点，然后将 DWPose Estimation 的右端点与 Upscale Image 的左端点相连。参数配置如下：
   * upscale_method: nearest-exact
   * width: 512
   * height: 512
@@ -67,20 +92,27 @@ import Subscribe from "components/subscribtion";
 
 </Steps>
 
-## Image canny ControlNet workflow
-第四种 ControlNet 的用法是通过 Canny 边缘图来控制模型生成的图片。这种方法的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
-<PhotoProvider>
-  <PhotoView src="/comfyui-controlnet/011.png">
-      <img src="/comfyui-controlnet/011.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
+## Image depth ControlNet workflow
+🚧 修订中
 
-从上面的例子可以看出，Canny 跟第一个 Scribble 有点像。Canny 是拿已有图片生成边缘图，而 Scribble 是自己画草图。其 workflow 也比较简单，可以参考 Pose ControlNet workflow，只需要将 DWPose Estimation 节点换成 Canny 节点即可。
-<br/>
-<PhotoProvider>
-  <PhotoView src="/comfyui-controlnet/012.png">
-      <img src="/comfyui-controlnet/012.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
+## Reference-only ControlNet workflow
+最后，你在实际工作中可能还会遇这样的情况：你的客户给了一些参考图给你，让你参考这些图来设计某样东西，比如 logo。那么在这种情况下，除了直接让 AI 生成外，你还可以拿这些参考图来让 AI 生成新的 logo。
+<Callout emoji="💡">
+  如果你对如何使用 AI 生成 logo 感兴趣，不妨阅读我们的博客文章 [如何使用 ComfyUI 生成 App 的 logo?](/blog/generate-app-logo)
+</Callout>
+
+<Steps>
+  ### 下载插件
+  搭建这个 workflow 需要用到 ComfyUI 的实验性节点，所以你需要先安装 [ComfyUI_experiments](https://github.com/comfyanonymous/ComfyUI_experiments) 这个插件。你可以使用 ComfyUI Manager 来安装，或者自己手动下载导入安装。
+
+  ### 插入 ReferenceOnlySimple 节点
+  只需要在原有的 ControlNet workflow 中，将 Empty Latent Image 替换为一个参考图片。首先双击空白处，搜索 Reference 即可看到 ReferenceOnlySimple 的节点，添加该节点，并将与 Ksampler 连接起来。因为这个节点仅支持导入 latent，所以你还需要使用 VAE Encode 将图片转成 latent。最后的 workflow 如下图所示：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/blog/generate-app-logo/007.png">
+      <img src="/blog/generate-app-logo/007.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
 
 <Subscribe />
