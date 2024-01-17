@@ -10,11 +10,39 @@ import Subscribe from 'components/subscribtion'
 
 # Installing ComfyUI
 
-The source code of ComfyUI can be found [here](https://github.com/comfyanonymous/ComfyUI), and the installation method is in the Readme. The author has described it quite explicitly, and you could also follow the Readme for the installation process.
+The source code for ComfyUI can be found [here](https://github.com/comfyanonymous/ComfyUI), and the installation method is in the Readme. The author has written very detailed instructions, and you can also follow the Readme document for operations.
 
-<Callout type="info">
-  For better use in the future, I will only introduce the manual source code installation here and will not cover the Jupyter or Zip installation modes. **Additionally, if you have already installed SD WebUI, you can skip to the second step.**
-</Callout>
+We will introduce two ways to install ComfyUI, and you can choose one based on your needs:
+* Install on local: Install ComfyUI on your own computer, so you can run ComfyUI locally. This way is almost cost-free. But if your computer's GPU configuration is relatively poor, the speed of generating images can be slower.
+* Install in the cloud: Install ComfyUI in the cloud. The advantage of this is that the cloud configuration is relatively high, the speed of image generation will be faster, but it requires a certain cost.
+
+This section will primarily discuss how to install ComfyUI locally. If you want to install in the cloud, you can jump to [cloud installation](./optional/install-cloud).
+
+## ComflowySpace
+
+### Command Line Installation
+
+There are two ways to install locally. The first method is the most universally applicable method, and the probability of encountering problems after installation is the lowest. But for users unfamiliar with command lines and coding, there can be some threshold. So this tutorial mainly introduces this method. If you encounter problems during installation, please join our [Discord](https://discord.gg/cj623WvcVx) group, we will do our best to help you.
+
+### Package Installation
+
+The second method is package installation. This method is relatively simple to install, download and use, at present, I recommend two packages:
+
+**① Official package of ComfyUI:** Please note that it currently **only supports Windows system**, and the graphics card must be Nvidia. The download link is [here](https://github.com/comfyanonymous/ComfyUI/releases), you only need to download the latest version, and you can use it after decompressing.
+
+**② ComflowySpace:** Compared to the ComfyUI package, I recommend you install our newly developed open-source ComfyUI product, ComflowySpace 😎. This is a product based on the secondary development of ComfyUI, and its usage function is consistent with ComfyUI. But we have made a lot of optimizations:
+
+* Support for Mac system.
+* Support for template functions not available in ComfyUI, allowing one-click use of all templates provided in this tutorial.
+* Optimized many experience issues with ComfyUI, making it more convenient and simple to use. A full introduction can be found [here](../space).
+
+Welcome everyone to download and use it. The download link is [here](https://github.com/6174/comflowyspace/releases).
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/banner.png">
+      <img src="/space/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
 
 ## Step one, install Pytorch
 
