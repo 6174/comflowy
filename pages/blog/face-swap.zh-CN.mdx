@@ -1,0 +1,132 @@
+---
+date: January 16th, 2024
+image: /blog/face-swap/004.png
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+
+# 如何使用 ComfyUI 实现换脸？
+
+上一期我们介绍了[如何使用 ComfyUI 生成 App Logo](./generate-app-logo)，本期我们介绍下如何使用 ComfyUI 实现换脸。
+
+## 1. ReActor
+
+第一种方法是使用 ReActor 插件，使用这种方法的效果类似这样：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-swap/006.png">
+    <img src="/blog/face-swap/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Workflow 很好搭建，首先你需要安装 [ReActor 插件](https://github.com/Gourieff/comfyui-reactor-node)。如果你不知道如何安装插件可以查阅我写的另一篇教程：[安装插件](../preparation-for-study/optional/custom-nodes)。
+
+<Steps>
+  ### 添加 ReActor 节点
+  首先加载我们的默认 workflow，然后双击空白处，输入 `ReActor` ，然后添加 `ReActor Fast Face Swap` 节点。然后将该节点的 `input image` 与 VAE Decode 的 image 相连。
+  ### 添加其他 Loader 节点
+  添加一个 load image 节点，选择一张你想要换脸的图片，然后将其与 ReActor 节点的 `input face` 相连。最后再添加一个 save image 节点，将其与 ReActor 节点的 `image` 相连。
+  最后的 workflow 如下：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/blog/face-swap/007.png">
+      <img src="/blog/face-swap/007.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+  最后，ReActor Fast Face Swap 上有几个参数需要注意：
+  1. swap model：没法更换，仅用默认的即可。
+  2. facedetection：侦测脸的方法，你可以根据你的实际情况选择，但一般我都选第一个。
+  3. face restore model：有两个模型可供选择：
+    * [CodeFormer](https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/codeformer.pth)
+    * [GFPGAN](https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/GFPGANv1.4.pth) 
+     
+     将模型下载好后，你需要将其放在 `ComfyUI\models\facerestore_models` 文件夹中。
+     我一般选择第二个。
+
+  其余参数都比较好理解，你可以根据自己需求进行调整。
+</Steps>
+## 2. IPAdapter
+
+第二种方法实现近似 Face Swap，但它也能达到让 AI 生成一张与某个人脸一致的图片。效果类似这样：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-swap/001.png">
+    <img src="/blog/face-swap/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+但与第一种方法的实现方式刚好相反，这个方法是将原图作为输入，然后让 AI 生成一张与某个人脸一致的图片。这样做的好处有两点：
+1. 它不仅仅适用于人类，你还可以使用动物的脸。
+2. ReActor 方法更聚焦于换脸，它对头发的处理稍微弱一些，拿上面爱因斯坦的照片为例，你会发现 IPAdapter 生成的图片的头发更像原图。
+
+要想实现这个效果，我推荐使用 [ComfyUI IPAdapter Plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus) 这款插件。
+
+注意，安装好该插件后，你没法直接使用：
+1. 你需要在 `ComfyUI/models/` 文件夹里创建一个名为 `ipadapter` 的文件夹，然后下载对应的 IPAdapter 模型，并将其放入该文件夹中。
+2. 另外，除了 IPAdapter 模型，你还需要下载 image encoders，并将其放到 `ComfyUI/models/clip_vision/` 文件夹中。
+
+只有完成以上两个步骤才能使用此插件。另外，经过我的测试，我会推荐以下几个组合（如果你想了解更多组合，可以看 [ComfyUI IPAdapter Plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus) 的 ReadMe 文档）：
+
+| SD Version | Checkpoint | IPAdapter 模型 | Image encoder |
+| --- | --- | --- | --- |
+| SD 1.5 |[realisticVisionV51_v51VAE](https://huggingface.co/frankjoshua/realisticVisionV51_v51VAE/resolve/main/realisticVisionV51_v51VAE.safetensors?download=true)|[ip-adapter-full-face_sd15](https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors)|[ViT-H](https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors)|
+| SD XL | [Juggernaut XL](https://civitai.com/models/133005/juggernaut-xl)|[ip-adapter-plus-face_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)|[ViT-H](https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors)|
+
+下载好对应的模型后，就可以搭建我们的 workflow 了。
+<Steps>
+  ### 添加 Apply IPAdapter 节点
+  首先加载我们的默认 workflow，然后双击空白处，输入 `Apply IPAdapter`，然后将其添加到 workflow 中。然后你可以将 weight 调整到小于 0.8。然后 noise 可以根据实际的输出进行调整，最小可以调整到 0.01。
+  ### 添加其他 Loader 节点
+  然后依次添加：
+  1. Load Image 节点：选择一张你想让 AI 生成的图片。这里需要注意，因为图片会被 CLIP 模型进行编码，编码器会将图像调整大小为 224×224，并将其裁剪到中心位置。所以你导入的图片最好人脸处于图片的正中间，并且图片最好是方形的。不然最终生成的效果会比较差。
+  2. Load CLIP Version 节点：选择 ViT-H 模型。
+  3. Load IPAdapter Model 节点：根据你的 Checkpoint 中加载的模型不同，选择对应的 IPAdapter 模型。
+  最后，将这三个节点依次连接到 Apply IPAdapter 节点。
+  ### 设置 KSampler 节点
+  最后设置一下 KSampler 节点：
+  1. Steps 通常需要比正常多 10 步以上，比如你正常是 25，那这里就需要 35.
+  2. CFG 建议设置小一点。
+  最终的 workflow 如下：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/blog/face-swap/002.png">
+      <img src="/blog/face-swap/002.png" alt="" />
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
+另外，再教大家一个技巧，你还可以尝试在 Workflow 里添加多个 Apply IPAdapter 节点，然后将其连接到不同的 KSampler 节点，这样可以使用不同的模型生成图片，如下面这个 workflow 就添加了 SDXL 和 SD 1.5 的 Checkpoint，这样你就能在一个 workflow 下看到两个模型的结果：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-swap/003.png">
+    <img src="/blog/face-swap/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 3. IPAdapter Inpainting
+
+第二种方法每次运行都是生成新的图片，所以没法做到像第一种方法那样，通过导入第二张图的方式去实现 face swap。
+
+方法三就能解决这个问题，我们还会用到 IPAdapter。但除了它，我们还会用到 Inpainting 功能，这样我们就能将 A 中的某个部分替换成 B 图。比如像这样，我们可以将第一张图的猫脸换成第二张图，最后生成一张柯基宇航员：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-swap/004.png">
+    <img src="/blog/face-swap/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Workflow 的搭建也很简单，你可以在 Upscale workflow（如何使用 Upscale 可以查看我的[另一篇教程](../advanced/in-out-painting)）上添加 IPdapater 即可。最后的 workflow 如下：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-swap/005.png">
+    <img src="/blog/face-swap/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+
+## 特别感谢
+* [Art Gourieff](https://github.com/Gourieff/comfyui-reactor-node)
+* [Cubiq](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
+
+<Subscribe />
