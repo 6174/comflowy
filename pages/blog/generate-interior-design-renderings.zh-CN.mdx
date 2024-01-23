@@ -1,6 +1,6 @@
 ---
 date: January 23th, 2024
-image: /blog/generate-Interior Design Renderings/banner.png
+image: /blog/generate-interior-design-renderings/banner.png
 ---
 
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
@@ -10,8 +10,8 @@ import Subscribe from "components/subscribtion";
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/banner.png">
-    <img src="/blog/generate-Interior Design Renderings/banner.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/banner.png">
+    <img src="/blog/generate-interior-design-renderings/banner.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -25,23 +25,23 @@ Midjourney 可能在室内设计风格的控制上不如 ComfyUI 灵活，使用
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/001.png">
-    <img src="/blog/generate-Interior Design Renderings/001.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/001.png">
+    <img src="/blog/generate-interior-design-renderings/001.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
-如果你想要切换风格，可以在提示词框增减内容，比如：Japanese style 或者 Modern Style 去改变图片的风格，但这种方式生成的效果不是很稳定，同时生成的图片，风格把控的不是很准确，推荐的做法就是加入特定风格的 LoRA 模型。以下是 LoRA 的 workflow，搭建起来很简单。如果想更进一步了解 LoRA 的原理，可以查阅我们的关于 [LoRA]（https://www.comflowy.com/basics/lora）的教程：
+如果你想要切换风格，可以在提示词框增减内容，比如：Japanese style 或者 Modern Style 去改变图片的风格，但这种方式生成的效果不是很稳定，同时生成的图片，风格把控的不是很准确，推荐的做法就是加入特定风格的 LoRA 模型。以下是 LoRA 的 workflow，搭建起来很简单。如果想更进一步了解 LoRA 的原理，可以查阅我们的关于 [LoRA](https://www.comflowy.com/basics/lora)的教程：
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/002.png">
-    <img src="/blog/generate-Interior Design Renderings/002.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/002.png">
+    <img src="/blog/generate-interior-design-renderings/002.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
 简单介绍下这 workflow 里需要关注的点：
 
-* Checkpoint：我是先从 [Civitai]（https://civitai.com/）上找到了几个跟室内设计相关的 LoRA 模型。页面中包含 LoRA 作者写的 LoRA 简介，一般还有一些使用建议。比如这个模型的作者提到这个 LoRA 基于 SD1.5 训练，推荐底模：SD 1.5，Chilloutmix，realistic 等写实系列大模型。风格倾向于现代室内，极简，灰色质感，摩登系列。推荐权重：0.6-1。触发词：Indoor Grey。推荐采样器：Eular a，DPM++ 2S a Karras，DPM++ SDE Karras。
+* Checkpoint：我是先从 [Civitai](https://civitai.com/)上找到了几个跟室内设计相关的 LoRA 模型。页面中包含 LoRA 作者写的 LoRA 简介，一般还有一些使用建议。比如这个模型的作者提到这个 LoRA 基于 SD1.5 训练，推荐底模：SD 1.5，Chilloutmix，realistic 等写实系列大模型。风格倾向于现代室内，极简，灰色质感，摩登系列。推荐权重：0.6-1。触发词：Indoor Grey。推荐采样器：Eular a，DPM++ 2S a Karras，DPM++ SDE Karras。
 * Prompt：第一次使用 这个 LoRA 的时候，先用作者的示例 prompt 来生成一下，看看效果如何。参考作者的推荐，例如权重，触发词等来写自己的 prompt 。
 * Batch_Size：在 empty latent image 节点中，有一个 batch 的参数项，我这里设置了 4，这就意味着最后模型会连续生成 4 张图。可以看到加入 LoRA 模型后，同时生成4张图，风格都是很统一的。
 
@@ -49,14 +49,14 @@ Midjourney 可能在室内设计风格的控制上不如 ComfyUI 灵活，使用
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/003.png">
-    <img src="/blog/generate-Interior Design Renderings/003.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/003.png">
+    <img src="/blog/generate-interior-design-renderings/003.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
 下面我推荐一些自己使用下来比较满意的室内设计 LoRA 模型，选了四个不同的风格。
 
-### 1. 新古典主义风格：[neoclassic] (https://civitai.com/models/97680/neoclassic-interior) 
+### 1. 新古典主义风格：[neoclassic](https://civitai.com/models/97680/neoclassic-interior) 
  
  主要受到古希腊和古罗马艺术和建筑的影响，这种风格在不同的领域如建筑、家具设计、绘画和雕塑中都有所体现。其生成的室内效果图线条还是家具风格优雅且精致，有古典美，细节丰富。
 
@@ -65,7 +65,7 @@ Midjourney 可能在室内设计风格的控制上不如 ComfyUI 灵活，使用
 * 是否可商用：否
 * 触发词：neoclassic bedroom，neoclassic living room
 
-### 2. 日式侘寂风：[Japan style interior design style] (https://civitai.com/models/182703/japan-style-interior-design-style)
+### 2. 日式侘寂风：[Japan style interior design style](https://civitai.com/models/182703/japan-style-interior-design-style)
 
 侘寂风：它强调简约、朴素和自然的美。这种风格在室内设计和艺术中体现出独特的特点，与自然的联系较深。
 
@@ -74,7 +74,7 @@ Midjourney 可能在室内设计风格的控制上不如 ComfyUI 灵活，使用
 - 是否可商用：否
 - 触发词：rishi
 
-### 3. 奶油风：[Cream style interior design] (https://civitai.com/models/175123/cream-style-interior-design-style)
+### 3. 奶油风：[Cream style interior design](https://civitai.com/models/175123/cream-style-interior-design-style)
 
 奶油风：多使用奶油色、米色或其他柔和的、温暖的色调，强调柔软、舒适的材质，如绒面布料、羊毛等，倾向于温馨、舒适的感觉。
 
@@ -83,7 +83,7 @@ Midjourney 可能在室内设计风格的控制上不如 ComfyUI 灵活，使用
 - 是否可商用：否
 - 触发词：naiyou
 
-### 4. 现代风格：[Modern Grey Style Interior ] (https://civitai.com/models/115175/ormodern-grey-style-interior-design)
+### 4. 现代风格：[Modern Grey Style Interior ](https://civitai.com/models/115175/ormodern-grey-style-interior-design)
 
 现代风：现代设计强调简单、干净的线条和几何形状。不必要的装饰被省略，重视空间的功能性和形式的简洁性。内部空间通常少有隔断，采用开放式布局以增强空间感。
 - Base Model：Stable Diffusion v1.5
@@ -93,8 +93,8 @@ Midjourney 可能在室内设计风格的控制上不如 ComfyUI 灵活，使用
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/004.png">
-    <img src="/blog/generate-Interior Design Renderings/004.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/004.png">
+    <img src="/blog/generate-interior-design-renderings/004.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -106,8 +106,8 @@ ComfyUI 支持通过由一张底图，直接生成不同风格的方案效果图
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/005.png">
-    <img src="/blog/generate-Interior Design Renderings/005.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/005.png">
+    <img src="/blog/generate-interior-design-renderings/005.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -115,16 +115,16 @@ ComfyUI 支持通过由一张底图，直接生成不同风格的方案效果图
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/006.png">
-    <img src="/blog/generate-Interior Design Renderings/006.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/006.png">
+    <img src="/blog/generate-interior-design-renderings/006.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
-- Checkpoint：首先下载inpainting的模型 [Dreamshaper 8-inpainting] (https://civitai.com/models/4384?modelVersionId=131004)，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。在checkpoint节点中更换到这个模型。
+- Checkpoint：首先下载inpainting的模型 [Dreamshaper 8-inpainting](https://civitai.com/models/4384?modelVersionId=131004)，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。在checkpoint节点中更换到这个模型。
 - Prompt：添加 Load Image 节点，加载你想要修改的图片。并将 Load Image 节点和 VAE Encode（for Inpainting）相连。VAE Encode（for Inpainting）和 KSampler 相连。
 - 局部更改：右键点击 Load Image 节点，在菜单里点击 Open in MaskEditor。进入到 MaskEditor 后，可以涂抹出你想要修改的地方，我这里想要改变背景装饰画，就把装饰画涂抹掉，在提示词中写入想要的风格，比如风景画便可生成。
 
-除了要调整模型外，还可以调整 KSampler 里的 denosie ，根据自己的测试来，越小就越像原图。如果你想要更大的场景，还可以尝试 AI 扩图，添加 Pad Image for Outpainting 节点实现这一功能，更详细的步骤可以参考我们的教程：[Comflowy] (https://www.comflowy.com/advanced/in-out-painting)
+除了要调整模型外，还可以调整 KSampler 里的 denosie ，根据自己的测试来，越小就越像原图。如果你想要更大的场景，还可以尝试 AI 扩图，添加 Pad Image for Outpainting 节点实现这一功能，更详细的步骤可以参考我们的教程：[Comflowy](https://www.comflowy.com/advanced/in-out-painting)
 
 ## 3. 使用ControlNet生成
 
@@ -136,8 +136,8 @@ ControlNet 可以根据我们提供的设计底图生成一样结构的图，在
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/007.png">
-    <img src="/blog/generate-Interior Design Renderings/007.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/007.png">
+    <img src="/blog/generate-interior-design-renderings/007.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -147,8 +147,8 @@ ControlNet 可以根据我们提供的设计底图生成一样结构的图，在
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/008.png">
-    <img src="/blog/generate-Interior Design Renderings/008.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/008.png">
+    <img src="/blog/generate-interior-design-renderings/008.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -160,8 +160,8 @@ M-LSD 直线检测，如果你想要重新设计这个房间，可以通过这�
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/009.png">
-    <img src="/blog/generate-Interior Design Renderings/009.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/009.png">
+    <img src="/blog/generate-interior-design-renderings/009.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -169,8 +169,8 @@ M-LSD 直线检测，如果你想要重新设计这个房间，可以通过这�
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/010.png">
-    <img src="/blog/generate-Interior Design Renderings/010.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/010.png">
+    <img src="/blog/generate-interior-design-renderings/010.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -182,8 +182,8 @@ M-LSD 直线检测，如果你想要重新设计这个房间，可以通过这�
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/011.png">
-    <img src="/blog/generate-Interior Design Renderings/011.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/011.png">
+    <img src="/blog/generate-interior-design-renderings/011.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -191,16 +191,16 @@ M-LSD 直线检测，如果你想要重新设计这个房间，可以通过这�
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Interior Design Renderings/012.png">
-    <img src="/blog/generate-Interior Design Renderings/012.png" alt="" />
+  <PhotoView src="/blog/generate-interior-design-renderings/012.png">
+    <img src="/blog/generate-interior-design-renderings/012.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
-除了这三个模型，我们的教程中还介绍了 Depth ， Pose 等模型，如果你想试用的的话，可以去查阅我们的教程：[Comflowy] (https://www.comflowy.com/advanced/controlnet)。
+除了这三个模型，我们的教程中还介绍了 Depth ， Pose 等模型，如果你想试用的的话，可以去查阅我们的教程：[Comflowy](https://www.comflowy.com/advanced/controlnet)。
 
 ## 4. 总结
 
-随着我们深入探讨了ComfyUI在室内设计领域的应用及其潜力，你可能对这个创新的 AI 生图工具产生了浓厚的兴趣。想要了解更多关于 ComfyUI 的信息，体验它是如何革新设计流程的，敬请访问 [Comflowy 介绍 – Comflowy] (https://www.comflowy.com/)。在那里，你将发现更多的应用案例，和详细的 ComfyUI 使用指南。
+随着我们深入探讨了ComfyUI在室内设计领域的应用及其潜力，你可能对这个创新的 AI 生图工具产生了浓厚的兴趣。想要了解更多关于 ComfyUI 的信息，体验它是如何革新设计流程的，敬请访问 [Comflowy 介绍 – Comflowy](https://www.comflowy.com/)。在那里，你将发现更多的应用案例，和详细的 ComfyUI 使用指南。
 
 <Subscribe />
 
