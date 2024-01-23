@@ -1,0 +1,207 @@
+---
+date: January 23th, 2024
+image: /blog/generate-interior-design-renderings/banner.png
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何将 ComfyUI 应用于室内设计?
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/banner.png">
+    <img src="/blog/generate-interior-design-renderings/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+传统的室内设计行业中，设计师和客户常常面临着多种挑战。因为手动绘制设计方案和修改设计需要大量的时间和精力，所以设计过程往往耗时且成本高昂。客户也很难在设计完成前准确想象最终效果，这导致了沟通不畅和满意度下降。传统设计方法的灵活性和个性化程度有限，难以迅速响应市场趋势和个人喜好的变化。
+
+所以，这篇文章以室内设计为主题，教大家将 ComfyUI 运用到设计工作当中，同时还会推荐一些适合室内的设计的 LoRA 模型，从而帮助大家能用 AI 生成更好的室内设计方案。
+
+## 1. 使用 prompt 生成
+
+Midjourney 可能在室内设计风格的控制上不如 ComfyUI 灵活，使用 ComfyUI 是更好的选择，在 ComfyUI 中最直接的方式就是 prompt ，下面我搭建了基础的工作流，在正向提示词中描述了我想要一个室内设计图，有敞亮的客厅和丰富的细节，最后呈现的效果图达到了所提到的要求，空间布局也比较科学，如果你加入更多的细节描述，比如房间的长宽高，窗帘的颜色，天花吊顶，灯具等信息，生成的图片将会更符合你的预期。设计师在跟客户沟通时展示更加方便确认对方喜欢什么效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/001.png">
+    <img src="/blog/generate-interior-design-renderings/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+如果你想要切换风格，可以在提示词框增减内容，比如：Japanese style 或者 Modern Style 去改变图片的风格，但这种方式生成的效果不是很稳定，同时生成的图片，风格把控的不是很准确，推荐的做法就是加入特定风格的 LoRA 模型。以下是 LoRA 的 workflow，搭建起来很简单。如果想更进一步了解 LoRA 的原理，可以查阅我们的关于 [LoRA](https://www.comflowy.com/basics/lora)的教程：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/002.png">
+    <img src="/blog/generate-interior-design-renderings/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+简单介绍下这 workflow 里需要关注的点：
+
+* Checkpoint：我是先从 [Civitai](https://civitai.com/)上找到了几个跟室内设计相关的 LoRA 模型。页面中包含 LoRA 作者写的 LoRA 简介，一般还有一些使用建议。比如这个模型的作者提到这个 LoRA 基于 SD1.5 训练，推荐底模：SD 1.5，Chilloutmix，realistic 等写实系列大模型。风格倾向于现代室内，极简，灰色质感，摩登系列。推荐权重：0.6-1。触发词：Indoor Grey。推荐采样器：Eular a，DPM++ 2S a Karras，DPM++ SDE Karras。
+* Prompt：第一次使用 这个 LoRA 的时候，先用作者的示例 prompt 来生成一下，看看效果如何。参考作者的推荐，例如权重，触发词等来写自己的 prompt 。
+* Batch_Size：在 empty latent image 节点中，有一个 batch 的参数项，我这里设置了 4，这就意味着最后模型会连续生成 4 张图。可以看到加入 LoRA 模型后，同时生成4张图，风格都是很统一的。
+
+做下加入 LoRA 之前和之后生成效果的对比，可以发现，提示词内容一样，加入 LoRA 模型之后，现代感更足，画面细节也更加丰富，风格色调很统一，甚至连桌子的花纹都是一致的。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/003.png">
+    <img src="/blog/generate-interior-design-renderings/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+下面我推荐一些自己使用下来比较满意的室内设计 LoRA 模型，选了四个不同的风格。
+
+### 1. 新古典主义风格：[neoclassic](https://civitai.com/models/97680/neoclassic-interior) 
+ 
+ 主要受到古希腊和古罗马艺术和建筑的影响，这种风格在不同的领域如建筑、家具设计、绘画和雕塑中都有所体现。其生成的室内效果图线条还是家具风格优雅且精致，有古典美，细节丰富。
+
+* Base Model：Stable Diffusion v1.5
+* 许可协议：无
+* 是否可商用：否
+* 触发词：neoclassic bedroom，neoclassic living room
+
+### 2. 日式侘寂风：[Japan style interior design style](https://civitai.com/models/182703/japan-style-interior-design-style)
+
+侘寂风：它强调简约、朴素和自然的美。这种风格在室内设计和艺术中体现出独特的特点，与自然的联系较深。
+
+- Base Model：Stable Diffusion v1.0
+- 许可协议：无
+- 是否可商用：否
+- 触发词：rishi
+
+### 3. 奶油风：[Cream style interior design](https://civitai.com/models/175123/cream-style-interior-design-style)
+
+奶油风：多使用奶油色、米色或其他柔和的、温暖的色调，强调柔软、舒适的材质，如绒面布料、羊毛等，倾向于温馨、舒适的感觉。
+
+- Base Model：Stable Diffusion v1.0
+- 许可协议：无
+- 是否可商用：否
+- 触发词：naiyou
+
+### 4. 现代风格：[Modern Grey Style Interior ](https://civitai.com/models/115175/ormodern-grey-style-interior-design)
+
+现代风：现代设计强调简单、干净的线条和几何形状。不必要的装饰被省略，重视空间的功能性和形式的简洁性。内部空间通常少有隔断，采用开放式布局以增强空间感。
+- Base Model：Stable Diffusion v1.5
+- 许可协议：无
+- 是否可商用：否
+- 触发词：indoor grey
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/004.png">
+    <img src="/blog/generate-interior-design-renderings/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## Inpainting
+
+ComfyUI 支持通过由一张底图，直接生成不同风格的方案效果图。但是你可能对图片里的某些部分不太满意。比如，你对图片里沙发摆放的位置不满意，或者灯具的选择不喜欢，你可能会想通过修改 Prompt 的方式进行修改，比如添加提示词：水晶灯。但使用这种方式，生成的图片除了灯具发生改变，可能其他地方也会发生变化。
+
+那要如何不影响其他地方的，只改变某一区域呢？可以使用 Inpainting 解决这个问题。以这张效果图为例，我通过 Inpainting 的方式仅改变装饰画，其余部分都保持了一致：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/005.png">
+    <img src="/blog/generate-interior-design-renderings/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+这样的功能方便设计师在效果图中替换客户喜欢的局部，又能保持统一。以下是 ComfyUI 的 workflow：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/006.png">
+    <img src="/blog/generate-interior-design-renderings/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+- Checkpoint：首先下载inpainting的模型 [Dreamshaper 8-inpainting](https://civitai.com/models/4384?modelVersionId=131004)，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。在checkpoint节点中更换到这个模型。
+- Prompt：添加 Load Image 节点，加载你想要修改的图片。并将 Load Image 节点和 VAE Encode（for Inpainting）相连。VAE Encode（for Inpainting）和 KSampler 相连。
+- 局部更改：右键点击 Load Image 节点，在菜单里点击 Open in MaskEditor。进入到 MaskEditor 后，可以涂抹出你想要修改的地方，我这里想要改变背景装饰画，就把装饰画涂抹掉，在提示词中写入想要的风格，比如风景画便可生成。
+
+除了要调整模型外，还可以调整 KSampler 里的 denosie ，根据自己的测试来，越小就越像原图。如果你想要更大的场景，还可以尝试 AI 扩图，添加 Pad Image for Outpainting 节点实现这一功能，更详细的步骤可以参考我们的教程：[Comflowy](https://www.comflowy.com/advanced/in-out-painting)
+
+## 3. 使用ControlNet生成
+
+ControlNet 可以根据我们提供的设计底图生成一样结构的图，在室内家装设计中，有一些不变量，比如说窗户的位置，承重墙，管道等等，这些不能修改，沙发桌子的摆放位置也可以固定，所以使用 ControlNet 会更加方便，我试用了支持 ControlNet 的模型，其中有三个比较适合室内设计场景，分别是：Canny 、M-lsd 、Scribbles 。
+
+### Canny
+
+使用 Canny 模型的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/007.png">
+    <img src="/blog/generate-interior-design-renderings/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+生成的图片尽管风格不一样，但构图和内容都与原图保持一致。ComfyUI 的 workflow 搭建也比较简单。
+
+双击面板加入 Apply ControlNet ，并与 Load ControlNet Model 节点相连，同时选择 Canny 模型。然后使用 Load Image Model 加载线稿图，最后运行 workflow。生成的图片中，除了硬装和家具风格的改变，其他的设计保存的很完整，整个画面渲染出来的效果和谐统一。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/008.png">
+    <img src="/blog/generate-interior-design-renderings/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### M-lsd
+
+M-LSD 直线检测，如果你想要重新设计这个房间，可以通过这个模型识别房间里所有的直线，通过直线线稿重新将房间里的家具重置材质和颜色。
+
+我用下面这张图作为底稿利用 M-LSD 模型重新生成，在生成的过程中也只需要将 Load ControlNet Model 的模型 更改为 M-LSD 模型即可。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/009.png">
+    <img src="/blog/generate-interior-design-renderings/009.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+需要注意的是相对于 Canny 来说，M-LSD 对于图像中的直线识别度非常准确，你会发现卧室中所有的直线都识别出来了，但球形灯这种曲线在识别线稿中会没有显示，所以曲线的物品成为了渲染图中唯一的变量，其余家具仅在材质和颜色上有所改变。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/010.png">
+    <img src="/blog/generate-interior-design-renderings/010.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### Scribbles
+
+除了上述两个场景外，你可能还会遇到一些紧急的情况，比如需要通过快速手绘的方式生成一些稿件给客户。但绘制出好的手绘稿也需要较长的时间。有了 AI 之后，你可以尝试用 AI 将你的手绘稿绘制成可供商用的稿件。
+
+方法很简单，你还是需要用到 ControlNet 模型，但此时要导入的是你的手绘稿，你可以选择你喜欢的绘图软件进行绘制，比如 iPad 上的 Procreate ，然后将涂鸦图像导入 ComfyUI。以下是我导入的简单卧室线稿后，AI 生成的效果图：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/011.png">
+    <img src="/blog/generate-interior-design-renderings/011.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+我在正向提示词中描述了我想要温馨的室内设计图，有床，窗户和装饰画，在流程中加入 Load ControlNet Model 节点并选择 Scribbles 模型，同时选择了一个现代风的 LoRA 模型，最后选择 Scribbles 模型生成。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-interior-design-renderings/012.png">
+    <img src="/blog/generate-interior-design-renderings/012.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+除了这三个模型，我们的教程中还介绍了 Depth ， Pose 等模型，如果你想试用的的话，可以去查阅我们的教程：[Comflowy](https://www.comflowy.com/advanced/controlnet)。
+
+## 4. 总结
+
+随着我们深入探讨了ComfyUI在室内设计领域的应用及其潜力，你可能对这个创新的 AI 生图工具产生了浓厚的兴趣。想要了解更多关于 ComfyUI 的信息，体验它是如何革新设计流程的，敬请访问 [Comflowy 介绍 – Comflowy](https://www.comflowy.com/)。在那里，你将发现更多的应用案例，和详细的 ComfyUI 使用指南。
+
+<Subscribe />
+
+
