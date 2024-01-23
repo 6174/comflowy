@@ -46,7 +46,7 @@ Ok，言归正传。首先你需要下载 SDXL 的模型：
 下载好后，我们再打开 ComfyUI，先加载 Default workflow。然后我们一步步地来搭建 SDXL 的 workflow。
 
 <Steps>
-  ### 将 KSampler 替换为 KSampler XL
+  ### 将 KSampler 替换为 KSampler Advanced
   首先我们需要将 Default workflow 里的 KSampler 删除，然后双击空白处，搜索 KSampler，然后选择 KSampler Advanced，将其添加到 workflow 中。另外，正如我在前面模型介绍中提到的那样，SDXL 是由两个模型组成的，所以除了替换第一个外，你还需要额外添加一个。
   同时因为是先用 Base 再用 Refined，所以我们需要将两个 KSampler 连起来。最后的样子应该类似这样：
   <br/>

@@ -7,10 +7,38 @@ import Subscribe from "components/subscribtion";
 ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)，安装方法在 Readme 中，作者其实写得非常详细，你也可以按照 Readme 文档进行操作。
 
 我们会介绍两种安装 ComfyUI 的方法，你可以根据自己的需求选择一种：
-* 安装到本地：将 ComfyUI 安装在自己的电脑中，这样你可以在本地运行 ComfyUI。这种方式基本是 0 成本。但如果你的电脑 GPU 配置相对较差，有可能生图的速度会比较慢（我个人更推荐这个方式）。
+* 安装到本地：将 ComfyUI 安装在自己的电脑中，这样你可以在本地运行 ComfyUI。这种方式基本是 0 成本。但如果你的电脑 GPU 配置相对较差，有可能生图的速度会比较慢。
 * 安装到云端：将 ComfyUI 安装在云端，这样的好处是云端配置相对较高，生成图片的速度会更快，但是需要一定的费用。
 
-本章节会主要介绍如何在本地安装 ComfyUI，如果你想在云端安装，可以跳到 [云端安装]()。
+本章节会主要介绍如何在本地安装 ComfyUI，如果你想在云端安装，可以跳到 [云端安装](./optional/install-cloud)。
+
+## ComflowySpace
+
+### 命令行安装
+
+本地安装有两种方法。第一种方法是普适性最强的方法，且安装后二次遇到问题的概率最低。但是对于不熟悉命令行以及代码的用户来说，可能会有一定的门槛。所以本篇教程，主要是介绍这种方法。如果你在安装的过程中遇到问题，欢迎加入我们的 [Discord](https://discord.gg/cj623WvcVx) 交流群，我们会尽力帮助你。
+
+### 安装包安装
+
+第二种方法是安装包安装。这种方法安装比较简单，下载就能用，目前我推荐两个安装包：
+
+**① ComfyUI 的官方安装包：** 需要注意，目前**仅支持 Windows 系统**，且显卡必须是 Nivida。下载地址是[这里](https://github.com/comfyanonymous/ComfyUI/releases)，你只想需要下载最新的版本，解压就能使用。
+
+**② ComflowySpace：** 相对于 ComfyUI 安装包，我更推荐你安装我们开发的全新开源 ComfyUI 产品 ComflowySpace 😎。这是一款基于 ComfyUI 二次开发的产品，使用功能上与 ComfyUI 一致。但我们对其进行了很多优化：
+
+* 支持 Mac 系统。
+* 支持 ComfyUI 没有的模板功能，可以一键使用本教程中提供的所有模板。
+* 优化了非常多 ComfyUI 的体验问题，使用起来更方便和简单。完整介绍可以查看[这里](../space)。
+
+欢迎各位下载使用，下载地址是[这里](https://github.com/6174/comflowyspace/releases)。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/banner.png">
+      <img src="/space/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
 
 
 ## 第一步，安装 pytorch

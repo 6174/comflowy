@@ -1,0 +1,133 @@
+---
+date: January 19th, 2024
+image: /blog/comflowy-vs-comfyui/banner.png
+title: ComflowySpace 和 ComfyUI 有什么区别？
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/banner.png">
+    <img src="/blog/comflowy-vs-comfyui/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+很多朋友看到我们的产品后，最大的疑惑是「我们的产品和 ComfyUI 有什么区别？」
+
+本篇博客将会解答各位的疑惑。
+
+## ComflowySpace 是什么？
+
+简单理解，ComflowySpace 是基于 ComfyUI 进行二次开发的产品，其内核依然是 ComfyUI。并且我们也按照 ComfyUI 的协议要求，对代码进行了开源。
+
+那这就意味着，ComfyUI 几乎所有的功能，ComflowySpace 都有。包括但不限于：
+
+### ① 基础 Workflow 功能
+
+ComflowySpace 包含了所有 ComfyUI 的基础 Workflow 功能，**并且整体交互形式也几乎保持一致**，你如果熟悉 ComfyUI 的使用方式，那么你也可以很快上手 ComflowySpace。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/001.png">
+    <img src="/blog/comflowy-vs-comfyui/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### ② 模型
+
+ComfyUI 第二个重要的功能是可以灵活使用各种模型，ComflowySpace 也支持所有这些模型。如果你已经安装过 ComfyUI，并且下载了很多模型，**ComflowySpace 可以直接加载 ComfyUI 里的模型**，你只需要安装时选择「I have installed ComfyUI before」即可。这样你就不需要重新下载模型，同时也不会占用额外的存储空间。
+
+另外，对于使用 Stable Diffusion WebUI 的朋友也可以放心迁移到 ComflowySpace，**因为 ComflowySpace 也支持直接加载 Stable Diffusion WebUI 内的模型**。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/002.png">
+    <img src="/blog/comflowy-vs-comfyui/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+###  ③ 插件
+
+得益于开源社区生态，ComfyUI 还支持各种各样的第三方插件，ComflowySpace 也支持插件功能，**你可以继续在 ComflowySpace 上使用所有 ComfyUI 的插件**。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/003.png">
+    <img src="/blog/comflowy-vs-comfyui/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## ComflowySpace 有何不同？
+
+那 ComflowySpace 和 ComfyUI 又有什么不同之处呢？为何要使用 ComflowySpace 而不是 ComfyUI 呢？
+
+### ① 支持一键安装
+
+如果你没有安装过 ComfyUI，那我推荐你去看看 ComfyUI 的[官方文档](https://github.com/comfyanonymous/ComfyUI)，看看其安装流程，亦或者看看我们写的 ComfyUI [安装教程](../preparation-for-study/install)。
+看完你就会发现，安装起来非常困难，为了解决这个问题，ComflowySpace 提供一键安装功能，无需再进行各种繁琐的安装操作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/004.png">
+    <img src="/blog/comflowy-vs-comfyui/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### ② 支持 Workflow 管理功能
+
+ComflowySpace 第二个重要差异化功能是增加了 Workflow 管理功能，这个功能可以让你更方便地管理你的 Workflow，且你的每次更改都会自动保存，你不再需要手动导出保存 workflow。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/005.png">
+    <img src="/blog/comflowy-vs-comfyui/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### ③ 支持模板功能
+
+在 ComflowySpace 中，你可以利用各种模板来搭建 workflow，从而让搭建 workflow 变得更加简单和便捷，并且所有模板都有对应的详细教程，方便你更好地学会如何使用。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/006.png">
+    <img src="/blog/comflowy-vs-comfyui/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### ④ UI & UX 优化
+
+最后，ComflowySpace 还针对各种细节进行了优化，让你的使用体验更加舒适：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/007.png">
+    <img src="/blog/comflowy-vs-comfyui/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-vs-comfyui/008.png">
+    <img src="/blog/comflowy-vs-comfyui/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+<br/>
+<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+  <PhotoProvider>
+    <PhotoView src="/blog/comflowy-vs-comfyui/009.png">
+      <img src="/blog/comflowy-vs-comfyui/009.png" alt="" style={{ maxWidth: '48%' }}/>
+    </PhotoView>
+  </PhotoProvider>
+
+  <PhotoProvider>
+    <PhotoView src="/blog/comflowy-vs-comfyui/010.png">
+      <img src="/blog/comflowy-vs-comfyui/010.png" alt="" style={{ maxWidth: '48%' }}/>
+    </PhotoView>
+  </PhotoProvider>
+</div>
+
+<br/>
+
+<Subscribe />
