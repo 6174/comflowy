@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Cards } from 'nextra/components'
 
-function BlogCard(){
+export function PageCard({pagesUnderRoute}){
   const { locale, defaultLocale } = useRouter();
-  return filterRouteLocale(getPagesUnderRoute("/blog"), locale, defaultLocale).map((page) => {
+  return filterRouteLocale(getPagesUnderRoute(pagesUnderRoute), locale, defaultLocale).map((page) => {
     return (
       <Cards.Card image arrow title={page.meta?.title || page.frontMatter?.title || page.name} href={page.route}>
         <img 
@@ -26,7 +26,9 @@ export default function BlogCards({ more = "Read more" }) {
   return (
     <div>
       <Cards className="mb-10">
-        <BlogCard />
+        <PageCard 
+          pagesUnderRoute={"/blog"}
+        />
       </Cards>
     </div>
   );

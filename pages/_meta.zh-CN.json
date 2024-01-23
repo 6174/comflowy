@@ -20,6 +20,14 @@
       "pagination": false
     }
   },
+  "model": {
+    "title": "📦 模型",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "pagination": false
+    }
+  },
   "special-thanks": {
     "title": "🥰 感谢",
     "type": "page",
