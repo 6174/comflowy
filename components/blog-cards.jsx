@@ -1,6 +1,5 @@
 import { getPagesUnderRoute } from "nextra/context";
 import filterRouteLocale from "nextra/filter-route-locale"
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Cards } from 'nextra/components'
 
