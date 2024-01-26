@@ -1,0 +1,67 @@
+---
+title: DreamShaper V8.0
+image: /model/dream-shaper/banner.png
+tag: Checkpoint
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# DreamShaper V8.0
+
+<ModelDetailCard 
+  Name={<span>DreamShaper V8.0</span>}
+  Image={"/model/dream-shaper/modelimg.png"}
+  Uploaded={<span>Jul 29, 2023</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SD v1.5</span>}
+  Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
+  License={<span>CreativeML Open RAIL-M</span>}
+  Commercial={true}
+  Specializes={<span>Generating portraits of real people and anime-style content.</span>}
+  Score={"10"}
+  Downloadlink={"https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16"}
+/>
+
+### Comflowy Review
+
+The creator of DreamShaper initially positioned this model as an alternative to MidJourney. The creator believed MidJourney was too proprietary, which led to the inception of DreamShaper. The overall quality of the image generation is very good, and this model can be used if you want to generate realistic portraits or anime-style content.
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/dream-shaper/001.jpg">
+    <img src="/model/dream-shaper/001.jpg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** (masterpiece), (extremely intricate:1.3), (realistic), portrait of a girl, the most beautiful in the world, (medieval armor), metal reflections, upper body, outdoors, intense sunlight, far away castle, professional photograph of a stunning woman detailed, sharp focus, dramatic, award winning, cinematic lighting, octane render  unreal engine,  volumetrics dtx, (film grain, blurry background, blurry foreground, bokeh, depth of field, sunset, motion blur:1.3), chainmail
+* **Negative Prompt:** BadDream, (UnrealisticDream:1.3)
+* **Batch Size:** 512x832
+* **KSampler:**
+  * Steps: 30
+  * Seed: 5775713
+  * Sampler: DPM++ SDE 
+  * Scheduler: Karras
+  * CFG scale: 9
+  * Denoise: 0.9
+
+### Recommended Resources
+
+In addition to this model, DreamShaper also offers other models, such as the Inpainting model and the LCM model.
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/dream-shaper-inpainting/modelimg.png"}
+      title={"DreamShaper V8.0 Inpainting"}
+      href={"/model/dream-shaper-v-8-inpainting"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+
+
+
