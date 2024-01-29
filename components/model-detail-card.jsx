@@ -50,11 +50,11 @@ const SPECIALIZESIN = {
 export default function ModelDetailCard({Name, Image, Author, Uploaded, Type, BaseModel, License, Commercial, Specializes, Score, Downloadlink}) {
   const { locale } = useRouter()
   return (
-    <div class="rounded-lg border border-solid border-gray-300 my-4 p-4">
+    <div className="rounded-lg border border-solid border-gray-300 my-4 p-4">
       
-      <div class="grid grid-cols-4 gap-2">
-        <img src={Image} alt="model" class="col-span-1 rounded-lg"/>
-        <div class="col-span-2 px-2">
+      <div className="grid grid-cols-4 gap-2">
+        <img src={Image} alt="model" className="col-span-1 rounded-lg"/>
+        <div className="col-span-2 px-2">
           <div className="flex flex-row items-center pb-2">
             <p className='font-bold mr-2'>{AUTHOR[locale]}</p>
             {Author}
@@ -84,7 +84,7 @@ export default function ModelDetailCard({Name, Image, Author, Uploaded, Type, Ba
             {Specializes}
           </div>
         </div>
-        <div class="col-span-1">
+        <div className="col-span-1">
           <ModelScoreCard 
             score={Score}
             downloadlink={Downloadlink}
