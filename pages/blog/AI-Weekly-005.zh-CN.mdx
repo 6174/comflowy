@@ -1,0 +1,115 @@
+---
+date:  February 1th, 2024
+image: /blog/AI-weekly-005/banner.png
+description: In AI Weekly 005, we share updates on new tutorials, including how to generate an App logo using ComfyUI and advanced Stable Diffusion. We also highlight updates to existing tutorials, thanks to feedback from our Discord and Github users. The article features noteworthy AI-related papers and technologies, such as Mobile ALOHA and IP-Adapter-FaceID, and introduces new products like Convai. This article is a must-read for anyone keeping up with the latest in AI and ComfyUI.
+keywords: ["AI Weekly", "ComfyUI", "Stable Diffusion", "App Logo Generation", "ControlNet", "Cloud Installation", "ComfyUI Basic", "Image-to-Image", "Mobile ALOHA", "IP-Adapter-FaceID", "Phi-2", "AI Tutorials", "AI Updates", "AI Technologies", "AI Papers"]
+---
+
+# AI Weekly #005
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 🤩 每周 AI 精选
+
+### 📄 值得关注的论文 & 技术
+
+* [**Lumiere视频生成技术:**](https://arxiv.org/abs/2401.12945)
+
+这是一个由 Google Research 开发的文本到视频的扩散模型，采用了创新的空间时间U-Net架构，支持多种视频生成和编辑功能（文本到视频、图像到视频 、风格化视频生成 、视频编辑）。能够一次性生成整个视频，且能确保视频的连贯性和逼真度。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/001.png">
+    <img src="/blog/AI-weekly-005/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**26 种多模态大模型研究报告:**](https://arxiv.org/abs/2401.13601)
+
+这篇论文对目前市面上 26 种多模态大语言模型（MM-LLMs）进行了全面的研究和分析。提供了对多模态大语言模型的深入了解信息，详细介绍了模型架构和训练流程的设计。26 种现存的 MM-LLMs，每种模型都有其独特的设计和功能，这篇论文讨论了其未来研究方向的同时，也提供了实时跟踪这些模型最新发展的资源，值得一看。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/002.png">
+    <img src="/blog/AI-weekly-005/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**SUPIR:**](https://arxiv.org/abs/2401.13627)
+
+SUPIR通过增加模型的规模（即增加模型的参数数量）提升图像修复的能力，不仅能够修复图像中的错误或损坏，还能根据文本提示进行智能修复。例如根据描述来改变图像中的特定细节。这样的处理方式提升了图像修复的质量和智能度，使得模型能够更准确、更灵活地恢复和改进图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/003.png">
+    <img src="/blog/AI-weekly-005/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Diffuse to Choose:**](https://arxiv.org/abs/2401.13795)
+
+这是一个在线购物“虚拟试穿”模型，这个模型能让你将任何商品放入任何环境中，并和环境完美融合。比如，你可以把一个在线商店的椅子放进你的客厅的照片里，看看它实际放在那里会是什么样子。简而言之，它帮助用户更好地了解产品在真实环境中的样子，提高了在线购物的体验。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/004.png">
+    <img src="/blog/AI-weekly-005/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+* [**Nijijourney V6:**](https://nijijourney.com/en/)
+
+Niji V6 现在能够进一步理解各种主题，并生成该主题作品。即使是一些平时动漫里不常见的主题也能生成。如果你想要的不只是动漫风格，Niji V6 还有一个“RAW模式”，可以生成看起来更真实的图片。如果 Niji V6 不理解某个概念，用户也可以通过解释来帮助它理解。
+
+他们计划在2月底的全面发布中引入一系列新功能，如 vary(Region 调整图片的某个部分)、pan（移动）和zoom（缩放），进一步增强用户体验和创作灵活性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/005.png">
+    <img src="/blog/AI-weekly-005/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**ElevenLabs AI 配音/视频翻译工具：**](https://elevenlabs.io/dubbing)
+
+这是一个全自动 AI 工具，你只需要上传视频或者粘贴视频链接，就能在几十秒到几分钟内将你的视频翻译成29种语言。更厉害的是，它还可以克隆原视频里面的声音，来帮你配音，就算是视频里面有多个人说话也能全部克隆翻译。除了视频文件，它还能处理音频文件，如MP3、MP4等。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/006.png">
+    <img src="/blog/AI-weekly-005/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**StreamRAG：**](https://github.com/video-db/StreamRAG)
+
+StreamRAG 是一个视频搜索和流媒体代理工具，它可以让你在2分钟内基于你的视频数据构建一个定制的个人 GPT，然后你可以和你的视频进行对话。也能够迅速浏览存储的大量视频资料，帮你找到想要搜索的内容或主题的视频片段，并把这些片段展示给你，这样你就能直接观看到与你搜索内容相关的视频部分。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/007.png">
+    <img src="/blog/AI-weekly-005/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**轻子搜索：**](https://search.lepton.run/)
+
+轻子搜索（Lepton Search）是贾扬清团队，仅用 500 行代码打造的一个 AI 搜索引擎。我平时在查资料时，经常使用困惑（Perplexity）引擎，但这个轻子 AI 搜索，已经能达到与困惑引擎相似的效果了。他仅用500行代码，就打造“轻子搜索”，作为Demo演示，而不是正式产品，只为向开发者展示“天下没有难构建的AI应用”。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-005/008.png">
+    <img src="/blog/AI-weekly-005/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+
+<Subscribe />
+
+
+
+
+
