@@ -35,17 +35,17 @@ export function PageCard({pagesUnderRoute}){
   const { locale, defaultLocale } = useRouter();
   return (
     <div className="flex flex-wrap justify-start gap-4">
-    {filterRouteLocale(getPagesUnderRoute(pagesUnderRoute), locale, defaultLocale).map((page) => {
-    return (
-      <Cards 
-        image={page.frontMatter?.image} 
-        title={page.meta?.title || page.frontMatter?.title || page.name} 
-        href={page.route}
-        tag={page.frontMatter?.tag}
-      />
-    );
-  })}
-  </div>
+      {filterRouteLocale(getPagesUnderRoute(pagesUnderRoute), locale, defaultLocale).map((page) => {
+        return (
+          <Cards 
+            image={page.frontMatter?.image} 
+            title={page.meta?.title || page.frontMatter?.title || page.name} 
+            href={page.route}
+            tag={page.frontMatter?.tag}
+          />
+        );
+      })}
+    </div>
   );
 }
 
