@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
-import Cors from 'cors';
 
 import stablediffusionbasics from 'public/thumbnails/stable-diffusion-basics.png';
 import comfyuibasics1 from 'public/thumbnails/comfyui-basics-1.png';
@@ -16,31 +15,11 @@ import stablediffusionadvanced from 'public/thumbnails/stable-diffusion-advanced
 import controlnetadvanced from 'public/thumbnails/controlnet-advanced.png';
 
 
-const cors = Cors({
-  methods: ['GET', 'HEAD'], 
-});
-
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: Function) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
-      if (result instanceof Error) {
-        return reject(result)
-      }
-
-      return resolve(result)
-    })
-  })
-}
-
 const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
-  await runMiddleware(req, res, cors);
-
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   try {
-    // 读取 JSON 文件
-    // const data = fs.readFileSync('/path/to/your/json/file.json', 'utf-8');
-
     const data = [
       {
         image: stablediffusionbasics.src,
