@@ -54,7 +54,7 @@ export default function ModelDetailCard({Name, Image, Author, Uploaded, Type, Ba
       
       <div className="grid grid-cols-4 gap-2">
         <img src={Image} alt="model" className="col-span-1 rounded-lg"/>
-        <div className="col-span-2 px-2">
+        <div className="col-span-2 px-2 text-sm">
           <div className="flex flex-row items-center pb-2">
             <p className='font-bold mr-2'>{AUTHOR[locale]}</p>
             {Author}

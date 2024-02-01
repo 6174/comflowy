@@ -51,7 +51,7 @@ export default function ModelScoreCard({score,downloadlink}) {
   return (
     <div className="border-l-2 border-gray-300 flex flex-col h-full">
       <div className="px-4">
-        <p className="text-l font-bold">{RATING[locale]}</p>
+        <p className="font-bold">{RATING[locale]}</p>
         <p className="text-6xl my-2 font-bold ">{score}</p>
         <p className="text-2xl font-bold">{scoreText}</p>
       </div>

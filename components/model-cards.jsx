@@ -21,11 +21,11 @@ export function Cards({image, title, href, tag}) {
 
 
   return (
-    <Link href={href} className={`rounded-lg border ${cardStyle}  overflow-hidden w-80 h-72 block `}>
-      <img className="w-full h-48 object-cover" src={image} alt={title} />
-      <div className={`p-4 ${backgroundStyle}`}>
-        <h2 className="text-xl font-bold">{title}</h2>
-        <div className={`mt-1 ${tagbackgroundStyle} py-1 px-2 rounded inline-block whitespace-nowrap`}>{tag}</div>
+    <Link href={href} className={`rounded-lg border ${cardStyle}  overflow-hidden w-64 h-62 block `}>
+      <img className="w-full h-44 object-cover" src={image} alt={title} />
+      <div className={`p-2 ${backgroundStyle}`}>
+        <h2 className="text-base font-bold">{title}</h2>
+        <div className={`mt-1 ${tagbackgroundStyle} py-1 px-2 rounded text-sm inline-block whitespace-nowrap`}>{tag}</div>
       </div>
     </Link>
   );
