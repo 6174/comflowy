@@ -1,0 +1,48 @@
+---
+date:  February 4th, 2024
+image: /blog/comflowy-faq/banner.png
+---
+
+# Comflowy FAQ
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## Potential Issues During Installation
+
+During the installation process, you may encounter some issues. Here are solutions for some common problems.
+
+If you come across any issues not mentioned in this article, you can provide feedback on our [Discord](https://discord.gg/xqB9VyEX), and we will be happy to assist you 😎
+
+During the installation, our product will display the progress. You can identify which step the installation has reached by the title of the progress and look up the corresponding solutions.
+
+### Git Installation Failure
+
+If you encounter an error message similar to the one below while installing Git, you could try to manually install [Git](https://git-scm.com/), and then restart Comflowy afterward.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/001.png">
+    <img src="/blog/comflowy-faq/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### Conda Installation Failure
+
+If you encounter a long wait time during the Install Conda step, this is normal because the Conda package is quite large and takes some time to download. If you have waited a long time and there is still no response, you could try to manually install [Conda](https://docs.conda.io/projects/miniconda/en/latest/). After installation, restart Comflowy.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/002.png">
+    <img src="/blog/comflowy-faq/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+You can install it in one of the following two ways:
+1. Download the Installer and install it.
+2. Use command line for installation:
+```bash
+mkdir -p ~/miniconda3
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+```

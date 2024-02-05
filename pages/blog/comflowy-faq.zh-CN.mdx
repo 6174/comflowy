@@ -1,0 +1,48 @@
+---
+date:  February 4th, 2024
+image: /blog/comflowy-faq/banner.png
+---
+
+# Comflowy FAQ
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 安装时可能遇到的问题
+
+在安装的过程中，你有可能遇到一些问题。这里是一些常见问题的解决方案。
+
+如果你遇到了本文中没有提到的问题，你可以去我们的 [Discord](https://discord.gg/xqB9VyEX) 反馈，我们很乐意为你解答 😎
+
+在安装过程中，我们的产品会显示安装进度，你可以通过安装进度的标题来定位目前安装到哪一步，并查看对应的解决方案。
+
+### Git 安装失败
+
+如果在 Install Git 的时候遇到了如下类似的报错，你可以尝试手动安装 [Git](https://git-scm.com/)，安装好后，再重启 Comflowy 即可。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/001.png">
+    <img src="/blog/comflowy-faq/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Conda 安装失败
+
+如果你在 Install Conda 这一步遇到等很久的问题。这是正常现象，因为 Conda 的安装包比较大，所以需要等待一段时间。如果你等了很久还是没有反应，你可以尝试手动安装 [Conda](https://docs.conda.io/projects/miniconda/en/latest/)。安装好后，再重启 Comflowy 即可。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/002.png">
+    <img src="/blog/comflowy-faq/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+你可以通过以下两种方式安装：
+1. 下载 Installer 并安装。
+2. 使用命令行安装：
+```bash
+mkdir -p ~/miniconda3
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+```
