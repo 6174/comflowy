@@ -3,6 +3,93 @@ date: February 5th, 2024
 image: /blog/how-to-choose-a-model/banner.png
 ---
 
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {Cards} from '../../components/model-cards';
+
 # 如何选择合适的模型？
 
-🚧 In the process of writing
+你可能会在各大社交媒体，或者各种 AI 模型分享网站看到各式各样的模型分享。比如像 [Civitai](https://civitai.com/) 可能就有几千个模型可供下载。
+
+那很多人会疑惑，到底什么模型才是适合我的呢？本篇博文会分享我的一些思路。
+
+## 1. 确定模型类型
+
+首先，你需要确定你的需求，然后根据不同的需求下载不同的模型。
+
+根据需求，常见的模型有以下几类：
+- **Base 模型：** 就是最常见的 AI 文生图模型，输入一段文字指令，AI 会根据你的指令生成图片。较常见的有 Stable Diffusion v1.5，Stable Diffusion XL 等。
+- **LoRA 模型：** 你可以简单将其理解为一种滤镜模型。通过它能生成更特殊的图片，比如在 Workflow 中加载线稿 LoRA 模型，就可以生成线稿风格的图片。甚至还有一些 LoRA 模型能让 AI 生成特定样貌的人物，比如一些名人的 LoRA，加载这种模型后，就可以生成特定的名人。但需要注意，这种模型没法脱离 Base 模型使用，这就意味着你需要先下载 Base 模型，然后再下载对应的 LoRA 模型才行。
+- **Inpainting 模型：** 如果你想要修改某张图片，比如去掉某个物体，或者修复某个物体，那么你就需要使用 Inpainting 模型。这种模型输入一张图片，然后输入一个遮罩，AI 会根据遮罩修复图片。这个模型可以单独使用。
+- **Upscale 模型：** 如果你想将一张图片放大，那么你就需要使用 Upscale 模型。这种模型输入一张图片，然后输入一个倍数，AI 会根据倍数放大图片。这个模型也可以单独使用。
+- **ControlNet 模型：** 如果你想控制图片中某个物体出现的位置，或者人物的站姿，那么你就需要使用 ControlNet 模型。但需要注意这个模型和 LoRA 类似，不能脱离 Base 模型使用。
+- **图生视频模型：** 这种模型输入一段文字指令，AI 会根据你的指令将图片转为视频。
+
+## 2. 查看自己的电脑配置
+
+确定好你需要的模型类型后，你就可以根据类型进一步筛选模型了。不过在此之前，我想提一个很多人都会忽略的考虑因素，那就是你的电脑配置。
+
+AI 生图模型需要大量的计算资源，如果你的电脑配置不够，那么即使你下载了模型，也可能无法运行，或者运行起来会很慢，生成一张图片可能要 30 ～ 40 秒。按照前面提到的类型，不同类型的模型对电脑配置的要求也不同。
+
+对配置影响最大的应该是 Base、Inpainting 还有图生视频模型。目前，市面上没有一个官方统一的 AI 模型运行配置要求，但根据我的经验：
+
+- Base & Inpainting 模型： 
+  - 如果你是 Windows 电脑，显存小于 6G，或者是 M 系列的 MacBook 内存小于 16G，我会推荐你使用 Stable Diffusion v1.5 或者基于此模型微调后的模型。
+  - 如果你的电脑配置比较好，显存大于 8G，或者 M 系列的 MacBook 内存大于 16G，我则会推荐你使用 Stable Diffusion XL 或者基于此模型微调后的模型。
+- 如果你想使用图生视频模型，或者图片生视频模型，那么你的显存最好大于 16G，且最好使用 Nvidia 的显卡。不然基本很难将模型运行起来。
+
+那如何知道要下载的模型是基于 Stable Diffusion v1.5 还是 Stable Diffusion XL 呢？一般在模型分享网站都会标注出来。在 Comflowy 的模型分享页面上，会有一个 `Base Model` 的标签，标注这个模型是基于 Stable Diffusion v1.5 还是 Stable Diffusion XL。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/how-to-choose-a-model/001.png">
+    <img src="/blog/how-to-choose-a-model/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3. 关注模型的配套
+
+确定好自己的电脑配置后，就可以进一步去挑选自己需要的模型了。正如我前面提到的那样，对于一些配置比较低的电脑，我会建议你使用 Stable Diffusion v1.5 或者基于此模型微调后的模型。
+
+一般来说，大家都会去一些模型分享网站下载模型，然后根据评价或者下载数来判断模型的好坏。这种方法是一个挺不错的方法，但我认为还需要关注一个因素——模型的配套。
+
+什么意思呢？我以这两个模型为例。这两个模型的 Base Model 都是 Stable Diffusion v1.5，且都是偏写实风格，左边的模型不管是下载量还是评价数（图中 ① 和 ②）都要比右边的高。
+
+一般大家都会选择下载左边的模型，但如果这两个模型效果差不多的话，我会更推荐右边的模型。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/how-to-choose-a-model/002.png">
+    <img src="/blog/how-to-choose-a-model/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+因为右边的模型提供更多的配套能力，比如它还有 Inpainting、LCM 模型（图中 ④），而左边的模型虽然迭代次数比较多，但只更新了 Base 模型（图中 ③）。举个实际的例子，你就能理解这个配套的重要性。
+
+你使用了左边的模型生成了一张图片，但你发现图中有一些内容不合适，比如人物的发色不是你想要的。那你只能通过修改 Prompt 的方式去重新生成图片，虽然最后生成的人物发色是你想要的，但其他内容也会发生变化。
+当然，你也可以用另一个 Inpainting 模型对这张图进行修复，但因为是用另一个 Inpainting 模型生成，那有可能效果就不一定好。
+而如果你使用了右边的模型，你就可以使用它的 Inpainting 模型，而不需要用另一个 Inpainting 模型，这样就能保证整体风格的一致性。
+
+## 4. 我的推荐
+
+如果你是初学者，我会推荐你使用 DreamShaper 这个模型，它有基于 SDv1.5 的 Base 模型，也有基于 SDXL 的版本。同时配套也很不错。有 Inpainting 模型，也有 LCM 模型等。而且生成的效果也很不错。
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/dream-shaper/banner.png"}
+      title={"DreamShaper V8.0"}
+      href={"/model/dream-shaper-v-8"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-xl/banner.png"}
+      title={"DreamShaper XL"}
+      href={"/model/dream-shaper-xl"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+<Subscribe />
