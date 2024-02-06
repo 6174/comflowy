@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 
+import choosemodel from 'public/thumbnails/choose-model.png';
+import worthdownloadmodels from 'public/thumbnails/worth-download-models.png';
 import newtocomflowy from 'public/thumbnails/new-to-comflowy.png';
 import haveproblems from 'public/thumbnails/have-problems.png';
 import stablediffusionbasics from 'public/thumbnails/stable-diffusion-basics.png';
@@ -20,6 +22,19 @@ import controlnetadvanced from 'public/thumbnails/controlnet-advanced.png';
 const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
   try {
     const data = [
+      {
+        image: choosemodel.src,
+        title: "How to choose the right model?",
+        subtitle: "Not sure what model is good to download?",
+        url: "https://www.comflowy.com/blog/how-to-choose-a-model",
+        tag: "model suggestion"
+      },
+      {
+        image: worthdownloadmodels.src,
+        title: "10 Models Worth Downloading",
+        url: "https://www.comflowy.com/introduction/new-to-comflowy",
+        tag: "model suggestion"
+      },
       {
         image: newtocomflowy.src,
         title: "New to ComFlowy?",
