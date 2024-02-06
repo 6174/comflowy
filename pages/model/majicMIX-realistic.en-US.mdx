@@ -1,0 +1,46 @@
+---
+title: MajicMIX Realistic
+image: /model/realistic/majicMIX-realistic.png
+tag: Checkpoint
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# MajicMIX Realistic
+
+<ModelDetailCard 
+  Name={<span>MajicMIX Realistic</span>}
+  Image={"/model/realistic/majicMIX-realistic-modelimg.png"}
+  Uploaded={<span>Oct 5, 2023</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Merjic">Merjic</a>}
+  License={<span>CreativeML Open RAIL-M</span>}
+  Commercial={true}
+  Specializes={<span>Specializes in generating images of characters.</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/176425"}
+/>
+
+### Comflowy Review
+This model excels at creating images of Asian characters (especially females), with high-quality outputs rich in detail, and it is complemented by a comprehensive suite of models, including Inpainting.
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/realistic/003.png">
+    <img src="/model/realistic/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 1girl,sweater,white background,
+* **Negative Prompt:** Negative prompt: (worst quality:2),(low quality:2),(normal quality:2),lowres,watermark,
+* **Batch Size:** 512x768
+* **KSampler:** 
+  * Steps: 20
+  * Seed: 3882543293
+  * Sampler: Euler a
+  * CFG scale: 12
+  * Denoising : 0.15

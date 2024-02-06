@@ -3,6 +3,116 @@ date: February 5th, 2024
 image: /blog/ten-models-worth-downloading/banner.png
 ---
 
+import { Steps, Callout } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {Cards} from '../../components/model-cards';
+
 # 10 个值得下载的模型
 
-🚧 In the process of writing
+## DreamShaper 系列模型
+
+如果只推荐一个模型的话，我会推荐 DreamShaper，首先它的成像质量不差，整体质感有点像 Midjourney。
+
+其次，它的 SD v1.5 版本模型大小也不是很大，甚至比基础模型还要小一点点。
+
+最后，也是我最喜欢的一点，它的配套模型比较丰富。有 LCM、Inpainting 模型，还有基于 SDXL Turbo 微调的模型。
+对于电脑配置较差的朋友，我推荐你们使用 SD v1.5 的模型，即它的 V8.0 版本。
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/dream-shaper/banner.png"}
+      title={"DreamShaper V8.0"}
+      href={"/model/dream-shaper-v-8"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-xl/banner.png"}
+      title={"DreamShaper XL"}
+      href={"/model/dream-shaper-xl"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+## Realistic 风格模型
+
+如果你主要是以生成人像为主，那么 Realistic 风格模型是一个不错的选择。他们生成的人像质量比较高，且看起来更加真实。以下是两个基于 SD v1.5 微调的模型。
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/realistic/realistic-version-banner.png"}
+      title={"Realistic Vision V6.0"}
+      href={"/model/realistic-vision-v-6"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/realistic/majicMIX-realistic.png"}
+      title={"MajicMIX Realistic"}
+      href={"/model/majicMIX-realistic"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+如果你的电脑性能不错，则可以考虑下面几个 SDXL 的微调模型。RealVisXL 是 Realistic Vision 的 XL 版本。如果你喜欢他们的 SD v1.5 版本，那么你也会喜欢他们的 XL 版本。
+另一个是 Juggernaut XL，它不仅仅能生成 Realistic 风格图片，还能生成像科幻类场景照片，但我个人觉得它升成人会更好一些。
+最后一个是 HelloWorld SDXL，它的最新版本使用的是 GTP-4V 模型辅助训练生成，生成图片的真实性很高。
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/realistic/realvisxl.png"}
+      title={"RealVisXL"}
+      href={"/model/realvisxl"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/realistic/juggernaut-xl.png"}
+      title={"Juggernaut XL"}
+      href={"/model/juggernaut-xl"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/realistic/hello-world-sdxl.png"}
+      title={"HelloWorld SDXL"}
+      href={"/model/hello-world-sdxl"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+## 动漫风格模型
+
+动漫风格的模型就比较多了，我这里只推荐几个我觉得比较好的模型。Dark Sushi Mix 和 MeinaMix 是两款基于 SD v1.5 微调的模型，而 Animagine XL 则是基于 SDXL 微调的模型。
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/anime/dark-sushi.png"}
+      title={"Dark Sushi Mix"}
+      href={"/model/dark-sushi-mix"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/anime/meina-mix.png"}
+      title={"Meina Mix"}
+      href={"/model/meina-mix"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/anime/animagine-xl.png"}
+      title={"Animagine XL"}
+      href={"/model/animagine-xl"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+<Subscribe />

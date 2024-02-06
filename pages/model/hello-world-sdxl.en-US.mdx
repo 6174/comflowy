@@ -1,0 +1,48 @@
+---
+title: HelloWorld SDXL
+image: /model/realistic/hello-world-sdxl.png
+tag: Checkpoint
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Hello World SDXL
+
+<ModelDetailCard 
+  Name={<span>Hello World SDXL</span>}
+  Image={"/model/realistic/hello-world-sdxl-modelimg.png"}
+  Uploaded={<span>Jan 31, 2024</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SDXL 1.0</span>}
+  Author={<a href="https://civitai.com/user/LEOSAM">LEOSAM</a>}
+  License={<span>CreativeML Open RAIL-M</span>}
+  Commercial={true}
+  Specializes={<span>Generate images of characters, as well as realistic landscapes, buildings, and objects.</span>}
+  Score={"8"}
+  Downloadlink={"https://civitai.com/api/download/models/320950"}
+/>
+
+### Comflowy Review
+The previous version was already quite effective. The latest version utilizes GPT-4V for fine-tuning, and since it is an intermediary version, the improvement is not very significant, which is why it's scored at 8. However, I believe subsequent upgrades are likely to be more noticeable.
+I am looking forward to future versions, which have the potential to be rated above 8.
+
+### Creator's sample images
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/realistic/001.png">
+    <img src="/model/realistic/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** Close-up, Asian female, beauty shot, clear skin, natural makeup, brown eyes, subtle lipstick, earrings, silver rings, white outfit, serene expression, framing face with hands, delicate pose, studio lighting, high-resolution image, neutral background, fashion accessories, manicured nails, skincare advertisement aesthetic, youthful appearance, elegance, simplicity in composition, portrait orientation.,
+* **Negative Prompt:** (worst quality,low resolution,bad hands,open mouth),distorted,twisted,watermark,
+* **Batch Size:** 832x1260
+* **KSampler:** 
+  * Steps: 21
+  * Seed: 1865114629
+  * Sampler: Restart
+  * CFG scale: 7
+  * Denoising: 0.25

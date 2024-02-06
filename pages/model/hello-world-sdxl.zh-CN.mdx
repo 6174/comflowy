@@ -1,0 +1,49 @@
+---
+title: HelloWorld SDXL
+image: /model/realistic/hello-world-sdxl.png
+tag: Checkpoint
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Hello World SDXL
+
+<ModelDetailCard 
+  Name={<span>Hello World SDXL</span>}
+  Image={"/model/realistic/hello-world-sdxl-modelimg.png"}
+  Uploaded={<span>Jan 31, 2024</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SDXL 1.0</span>}
+  Author={<a href="https://civitai.com/user/LEOSAM">LEOSAM</a>}
+  License={<span>CreativeML Open RAIL-M</span>}
+  Commercial={true}
+  Specializes={<span>生成人物图片，以及真实风景、建筑、物件图片。</span>}
+  Score={"8"}
+  Downloadlink={"https://civitai.com/api/download/models/320950"}
+/>
+
+### 编辑评语
+
+该之前的版本效果就很好，最新版本使用的是 GPT-4V 辅助微调，因为是过度版本，提升不算明显，所以只给了 8 分，但我认为后续应该提升会比较明显。
+期待后续的版本，有望提升到 8 分以上。
+
+### 作者样张
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/realistic/001.png">
+    <img src="/model/realistic/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** Close-up, Asian female, beauty shot, clear skin, natural makeup, brown eyes, subtle lipstick, earrings, silver rings, white outfit, serene expression, framing face with hands, delicate pose, studio lighting, high-resolution image, neutral background, fashion accessories, manicured nails, skincare advertisement aesthetic, youthful appearance, elegance, simplicity in composition, portrait orientation.,
+* **Negative Prompt:** (worst quality,low resolution,bad hands,open mouth),distorted,twisted,watermark,
+* **Batch Size:** 832x1260
+* **KSampler:** 
+  * Steps: 21
+  * Seed: 1865114629
+  * Sampler: Restart
+  * CFG scale: 7
+  * Denoising: 0.25

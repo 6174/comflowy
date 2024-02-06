@@ -1,0 +1,47 @@
+---
+title: Animagine XL
+image: /model/anime/animagine-xl.png
+tag: Checkpoint
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Animagine XL
+
+<ModelDetailCard 
+  Name={<span>Animagine XL</span>}
+  Image={"/model/anime/animagine-xl-modelimg.png"}
+  Uploaded={<span>Jan 10, 2024</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SDXL 1.0</span>}
+  Author={<a href="https://civitai.com/user/CagliostroLab">CagliostroLab</a>}
+  License={<span>Fair AI Public License 1.0-SD</span>}
+  Commercial={true}
+  Specializes={<span>Generating portraits of anime-style content.</span>}
+  Score={"8"}
+  Downloadlink={"https://civitai.com/api/download/models/293564"}
+/>
+
+### Comflowy Review
+
+The latest version has optimized the understanding of instructions, rather than enhancing aesthetics. I believe this direction is correct, as the aesthetics of the model were already good, and what it lacked more was the ability to understand instructions.
+This is especially true for anime-style content, which can include specific elements like hair, eyes, and so on, all requiring the model to have a better understanding. The newest model has made great improvements in this respect.
+
+The score is 8 out of 10, mainly because it is somewhat lacking in complementary features, such as an Inpainting model.
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/anime/001.png">
+    <img src="/model/anime/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 1girl, amiya \(arknights\), arknights, dirty face, outstretched hand, close-up, cinematic angle, foreshortening, dark, dark background, masterpiece, best quality
+* **Negative Prompt:** nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, artist name,
+* **KSampler:**
+  * Steps: 28
+  * Sampler: Euler a
+  * CFG scale: 7

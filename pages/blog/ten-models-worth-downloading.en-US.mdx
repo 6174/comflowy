@@ -3,6 +3,117 @@ date: February 5th, 2024
 image: /blog/ten-models-worth-downloading/banner.png
 ---
 
-# Ten Models Worth Downloading
+import { Steps, Callout } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {Cards} from '../../components/model-cards';
 
-🚧 In the process of writing
+# 10 Models Worth Downloading
+
+## DreamShaper Model Series
+
+If I were to recommend just one model, it would be DreamShaper. First of all, its imaging quality is quite good, with an overall texture somewhat reminiscent of Midjourney.
+
+Furthermore, its SD v1.5 version isn't very large, it's even slightly smaller than the base model.
+
+Lastly, and my favorite point, is that it has a rich set of companion models. It offers LCM, Inpainting models, and models fine-tuned from SDXL Turbo.
+
+For those with less powerful computers, I recommend using the SD v1.5 model, specifically its V8.0 version.
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/dream-shaper/banner.png"}
+      title={"DreamShaper V8.0"}
+      href={"/model/dream-shaper-v-8"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-xl/banner.png"}
+      title={"DreamShaper XL"}
+      href={"/model/dream-shaper-xl"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+## Realistic Style Models
+
+If your primary focus is on generating portraits, then the Realistic style models are a good choice. They produce high-quality portraits that appear more lifelike. Below are two models fine-tuned from SD v1.5.
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/realistic/realistic-version-banner.png"}
+      title={"Realistic Vision V6.0"}
+      href={"/model/realistic-vision-v-6"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/realistic/majicMIX-realistic.png"}
+      title={"MajicMIX Realistic"}
+      href={"/model/majicMIX-realistic"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+If you have good computer performance, you might consider the following SDXL fine-tuned models. RealVisXL is the XL version of Realistic Vision. If you like their SD v1.5 version, you will likely enjoy their XL version as well.
+Another is Juggernaut XL, which can generate not only Realistic style images but also science fiction scenes. However, I personally feel it excels more in generating human likenesses.
+The last one is HelloWorld SDXL. Its latest version uses the GTP-4V model to assist in training, resulting in highly realistic image generation.
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/realistic/realvisxl.png"}
+      title={"RealVisXL"}
+      href={"/model/realvisxl"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/realistic/juggernaut-xl.png"}
+      title={"Juggernaut XL"}
+      href={"/model/juggernaut-xl"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/realistic/hello-world-sdxl.png"}
+      title={"HelloWorld SDXL"}
+      href={"/model/hello-world-sdxl"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+## Anime Style Models
+
+There are quite a few anime-style models available, but I will only recommend a few that I think are good. Dark Sushi Mix and MeinaMix are two models fine-tuned from SD v1.5, while Animagine XL is fine-tuned from SDXL.
+
+<br/>
+{
+  <div className="flex flex-wrap justify-start gap-4">
+    <Cards 
+      image={"/model/anime/dark-sushi.png"}
+      title={"Dark Sushi Mix"}
+      href={"/model/dark-sushi-mix"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/anime/meina-mix.png"}
+      title={"Meina Mix"}
+      href={"/model/meina-mix"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/anime/animagine-xl.png"}
+      title={"Animagine XL"}
+      href={"/model/animagine-xl"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}
+
+<Subscribe />

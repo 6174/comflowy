@@ -1,0 +1,45 @@
+---
+title: Meina Mix
+image: /model/anime/meina-mix.png
+tag: Checkpoint
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Meina Mix
+
+<ModelDetailCard 
+  Name={<span>Meina Mix</span>}
+  Image={"/model/anime/meina-mix-modelimg.png"}
+  Uploaded={<span>Jul 17, 2023</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Meina">Meina</a>}
+  License={<span>CreativeML Open RAIL-M</span>}
+  Commercial={true}
+  Specializes={<span>Generating portraits of anime-style content.</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/119057?type=Model&format=SafeTensor&size=pruned&fp=fp16"}
+/>
+### Comflowy Review
+A model of high quality and diversity, well-complemented by additional features, including an Inpainting model, hence it scores highly. If you're considering using a fine-tuned SD 1.5 model for generating anime images, this should be your top choice.
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/anime/003.png">
+    <img src="/model/anime/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+* **Positive Prompt:** 1girl, japanese clothes, ponytail ,white hair, purple eyes, magic circle, blue fire, blue flames, wallpaper, landscape, blood, blood splatter, depth of field, night, light particles, light rays, sidelighting, thighs, fate \(series\), genshin impact, ****, open jacket, skirt, thighhighs, cloud
+* **Negative Prompt:** (worst quality:1.6, low quality:1.6), (zombie, sketch, interlocked fingers, comic)
+* **Batch Size:** 512x1024
+* **KSampler:**
+  * Steps: 30
+  * Seed: 3474686987
+  * Sampler: DPM++ 2M 
+  * Scheduler: Karras
+  * CFG scale: 7
+  * Denoising: 0.45
