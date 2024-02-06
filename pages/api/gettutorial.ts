@@ -32,7 +32,7 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
       {
         image: worthdownloadmodels.src,
         title: "10 Models Worth Downloading",
-        url: "https://www.comflowy.com/introduction/new-to-comflowy",
+        url: "https://www.comflowy.com/blog/ten-models-worth-downloading",
         tag: "model suggestion"
       },
       {
