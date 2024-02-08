@@ -1,0 +1,128 @@
+---
+date:  February 8th, 2024
+image: /blog/AI-weekly-006/banner.png
+description: In AI Weekly 006, we share updates on new tutorials, including how to generate an App logo using ComfyUI and advanced Stable Diffusion. We also highlight updates to existing tutorials, thanks to feedback from our Discord and Github users. The article features noteworthy AI-related papers and technologies, such as Mobile ALOHA and IP-Adapter-FaceID, and introduces new products like Convai. This article is a must-read for anyone keeping up with the latest in AI and ComfyUI.
+keywords: ["AI Weekly", "ComfyUI", "Stable Diffusion", "App Logo Generation", "ControlNet", "Cloud Installation", "ComfyUI Basic", "Image-to-Image", "Mobile ALOHA", "IP-Adapter-FaceID", "Phi-2", "AI Tutorials", "AI Updates", "AI Technologies", "AI Papers"]
+---
+
+# AI Weekly #006
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 🤩 每周 AI 精选
+
+### 📄 值得关注的论文 & 技术
+
+* [**MGIE:**](https://openreview.net/forum?id=S1RKWSyZ2Y)
+
+这是苹果开源的一个图像编辑模型，用户可以通过文字提示来编辑任何图像。比如说，“让天空变成粉红色”，或者“在这张照片中加一个恐龙”。模型会根据命令实现改变图片颜色，添减物体或调整、移除图片中的某些元素等操作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/001.png">
+    <img src="/blog/AI-weekly-006/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**InstructIR:**](https://arxiv.org/abs/2401.16468)
+
+它能按照人类指令进行高质量图像恢复，包括去噪、去雨、去模糊、去雾以及（低光）图像增强等问题。你只需要使用文字描述就能修复和改善图片。比如说，如果你有一张因为雨滴而看起来模糊的照片，你可以告诉它：请去掉照片上的雨滴，但保持图片内容不变”，它就能自动帮你操作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/002.png">
+    <img src="/blog/AI-weekly-006/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Google Bard 更新:**](https://blog.google/products/bard/google-bard-gemini-pro-image-generation/)
+
+Gemini Pro 将支持包括中文在内超过40种语言和230多个国家和地区使用，产品新增图像生成功能和多语言双重检查功能。只需输入描述，例如“创建一只骑着冲浪板的狗的图像”，即可生成对应的图片。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/003.png">
+    <img src="/blog/AI-weekly-006/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Media2Face:**](https://arxiv.org/abs/2401.15687)
+
+Media2Face能够根据声音来生成与语音同步的、表现力丰富的3D面部动画。同时允许用户对生成的面部动画进行更细致的个性化调整，如情感调整，“快乐”或“悲伤”等。它还能理解多种类型的输入信息（音频、文本、图像），并将这些信息作为生成面部动画的指引。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/004.png">
+    <img src="/blog/AI-weekly-006/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Boximator:**](https://boximator.github.io/)
+
+Boximator是一个控制视频主体运动轨迹的产品。字节发布的方法是，先圈出图片中的主体，再圈出要移动到位置，即可生成主体从起点到终点移动的视频，支持设置移动路线，支持圈选多个主体。与SD视频模型兼容，可作为插件使用。 暂无体验网站，目前可以发邮件让项目方给生成视频。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/005.png">
+    <img src="/blog/AI-weekly-006/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+* [**ML Blocks:**](https://www.mlblocks.com/)
+
+这是一个无代码AI图像生成和分析工作流平台，主要解决在电商领域遇到的批量处理图片问题。它提供了一个拖放式的界面，允许用户轻松地创建复杂的图像处理工作流。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/006.png">
+    <img src="/blog/AI-weekly-006/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**ElevenLabs 官方GPTs:**](https://chat.openai.com/g/g-h0lbLuFF1-elevenlabs-text-to-speech)
+
+它能通过你上传或粘贴的任何文档内容，提供在线链接，帮你朗读在线文章，目前支持五种声音选择。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/007.png">
+    <img src="/blog/AI-weekly-006/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Galileo:**](https://www.usegalileo.ai/explore)
+
+Galileo 支持文字生成 UI 和图片生成 UI ，效果很不错。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/008.png">
+    <img src="/blog/AI-weekly-006/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Clipdrop:**](https://clipdrop.co/)
+
+ Clipdrop 神器能为你轻松搞定抠图烦恼，无论毛发还是细节都能完美抠出。上传图片，一抹即净，马赛克图片也能瞬间变高清。
+ 
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-006/009.png">
+    <img src="/blog/AI-weekly-006/009.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
