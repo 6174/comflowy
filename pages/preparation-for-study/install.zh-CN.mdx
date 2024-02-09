@@ -4,7 +4,7 @@ import Subscribe from "components/subscribtion";
 
 # 安装 ComfyUI
 
-ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)，安装方法在 Readme 中，作者其实写得非常详细，你也可以按照 Readme 文档进行操作。
+ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)，安装方法写在了 Readme 中。你可以按照 Readme 文档进行操作，并不一定要参照我的教程。
 
 我们会介绍两种安装 ComfyUI 的方法，你可以根据自己的需求选择一种：
 * 安装到本地：将 ComfyUI 安装在自己的电脑中，这样你可以在本地运行 ComfyUI。这种方式基本是 0 成本。但如果你的电脑 GPU 配置相对较差，有可能生图的速度会比较慢。
@@ -12,7 +12,7 @@ ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)�
 
 本章节会主要介绍如何在本地安装 ComfyUI，如果你想在云端安装，可以跳到 [云端安装](./optional/install-cloud)。
 
-## ComflowySpace
+## 本地安装方法
 
 ### 命令行安装
 
@@ -28,9 +28,9 @@ ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)�
 
 * 支持 Mac 系统。
 * 支持 ComfyUI 没有的模板功能，可以一键使用本教程中提供的所有模板。
-* 优化了非常多 ComfyUI 的体验问题，使用起来更方便和简单。完整介绍可以查看[这里](../space)。
+* 优化了非常多 ComfyUI 的体验问题，使用起来更方便和简单。完整介绍可以查看[这里](../space)，以及 Comflowy 和 ComfyUI 的区别可以查看[这篇文章](../blog/comflowy-vs-comfyui)。
 
-欢迎各位下载使用，下载地址是[这里](https://github.com/6174/comflowyspace/releases)。
+欢迎各位下载使用，下载地址在[这里](https://github.com/6174/comflowyspace/releases)。
 
 <br/>
 <PhotoProvider>
@@ -39,9 +39,8 @@ ComfyUI 的源码地址在 [这里](https://github.com/comfyanonymous/ComfyUI)�
   </PhotoView>
 </PhotoProvider>
 
-
-
-## 第一步，安装 pytorch
+## 命令行安装步骤
+### 第一步，安装 pytorch
 <Callout type="info">
   如果你已经安装过 SD WebUI，那你可以跳到第二步。
 </Callout>
@@ -122,9 +121,7 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
   </Tabs.Tab>
 </Tabs>
 
-<Subscribe />
-
-## 第二步，下载  ComfyUI
+### 第二步，下载  ComfyUI
 此步需要你将 ComfyUI 代码拉到本地。如果你会 Git 请在 Terminal 运行以下代码，即可完成此步骤：
 ```shell copy
   git clone https://github.com/comfyanonymous/ComfyUI
@@ -151,7 +148,7 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
   </PhotoProvider>
 </Steps>
 
-## 第三步，安装依赖
+### 第三步，安装依赖
 下载好代码后，需要安装依赖。有两种方法安装依赖。
 
 <Tabs items={['VS Code 方法（推荐）', 'Terminal 方法']}>
@@ -222,7 +219,7 @@ Mac 和 Windows 上是长这样的。Windows 上因为版本不同，有可能�
 
 不管使用哪种方法，你应该都会在最后看到「Successfully installed XXXXX」这就意味着你完成了安装。另外如果你遇到其他问题，可以查看本章最后的 Q&A。
 
-## 第四步，启动服务
+### 第四步，启动服务
 
 不管你在上一步是用 VS Code 运行，还是在 Terminal 里运行，你都可以继续输入以下代码：
 

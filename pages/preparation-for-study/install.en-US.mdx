@@ -18,7 +18,7 @@ We will introduce two ways to install ComfyUI, and you can choose one based on y
 
 This section will primarily discuss how to install ComfyUI locally. If you want to install in the cloud, you can jump to [cloud installation](./optional/install-cloud).
 
-## ComflowySpace
+## Local installation method.
 
 ### Command Line Installation
 
@@ -34,7 +34,7 @@ The second method is package installation. This method is relatively simple to i
 
 * Support for Mac system.
 * Support for template functions not available in ComfyUI, allowing one-click use of all templates provided in this tutorial.
-* Optimized many experience issues with ComfyUI, making it more convenient and simple to use. A full introduction can be found [here](../space).
+* Optimized many experience issues with ComfyUI, making it more convenient and simple to use. For a full introduction, you can check [here](../space), as well as the differences between Comflowy and ComfyUI are detailed in [this article](../blog/comflowy-vs-comfyui).
 
 Welcome everyone to download and use it. The download link is [here](https://github.com/6174/comflowyspace/releases).
 <br/>
@@ -44,7 +44,9 @@ Welcome everyone to download and use it. The download link is [here](https://git
   </PhotoView>
 </PhotoProvider>
 
-## Step one, install Pytorch
+## Command line installation steps
+
+### Step one, install Pytorch
 
 First, you need to open the system Terminal, which can
 generally be found through a system search.
@@ -138,9 +140,7 @@ At this point, different systems will require different commands.
   </Tabs.Tab>
 </Tabs>
 
-<Subscribe />
-
-## Step two, download ComfyUI
+### Step two, download ComfyUI
 
 This step requires you to pull the ComfyUI code locally. If you are comfortable with Git, run the following code in the Terminal to complete this step:
 
@@ -186,7 +186,7 @@ If you're not familiar with Git, I recommend using the [Github Desktop](https://
   </PhotoProvider>
 </Steps>
 
-## Step three, install dependencies
+### Step three, install dependencies
 You need to install dependencies after downloading the code. There are two ways to install dependencies.
 
 <Tabs items={['VS Code(Recommend)', 'Terminal']}>
@@ -258,7 +258,7 @@ You need to install dependencies after downloading the code. There are two ways 
 </Tabs>
 Regardless of which method you use, in the end, you should see "Successfully installed XXXXX." This means you've completed the installation.
 
-## Step four, start the service
+### Step four, start the service
 Whether you ran the command in VS Code or the Terminal in the last step, you can continue to enter the following command:
 ```shell copy
   python main.py

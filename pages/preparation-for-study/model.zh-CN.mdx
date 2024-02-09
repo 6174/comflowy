@@ -6,6 +6,10 @@ import Subscribe from "components/subscribtion";
 
 安装完 ComfyUI 后，你需要下载对应的模型，并将对应的模型导入到对应的文件夹内。在讲解如何下载模型之前，我们先来简单了解一下 Stable Diffusion 的不同版本之间的差别，你可以根据你自己的需求下载一个合适的版本。
 
+另外，你也可以参考这两篇博客：
+1. [如何选择合适的模型？](https://www.comflowy.com/zh-CN/blog/how-to-choose-a-model)
+2. [10 个值得下载的模型](https://www.comflowy.com/zh-CN/blog/ten-models-worth-downloading)
+
 ## 不同 Stable Diffusion 的差别
 
 <Callout type="info">
@@ -30,8 +34,6 @@ import Subscribe from "components/subscribtion";
 - 下载链接：
   - [Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0_0.9vae.safetensors?download=true)
   - [Refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors?download=true)
-
-<Subscribe />
 
 ## 模型下载 
 
@@ -90,58 +92,74 @@ import Subscribe from "components/subscribtion";
 
 ## 模型导入
 
-在下载完模型后，我们需要将模型导入到 ComfyUI 的 models 目录下，这样 ComfyUI 才能够加载到对应的模型。
-
-<Callout type="info">
-如果你曾经安装过 SD WebUI，并且下载过比较多的模型，那此时你不需要手动再导入模型，只需要更改一下配置文件即可。
-</Callout>
-
-<Tabs items={['未安装过 SD WebUI', '已安装 SD WebUI']}>
+<Tabs items={['ComflowySpace 导入', 'ComfyUI 导入']}>
   <Tabs.Tab>
-    模型下载好后，我们要将对应的模型放到 ComfyUI 的 models 目录下。
-    <Steps>
-      ### 打开 ComfyUI 项目文件夹
-      你可以使用上一章提到的 Github Desktop，打开 ComfyUI 项目的文件夹。在 Github Desktop 上点击「Show in Finder」按钮，如果是 Win 则是「Show in Explorer」按钮。即可打开该项目的文件夹。然后你需要点击进入到 models 目录下：
-      <PhotoProvider>
-        <PhotoView src="/install-comfyui-and-model/013.png">
-            <img src="/install-comfyui-and-model/013.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-        </PhotoView>
-      </PhotoProvider>
-
-      ### 将模型添加到对应的文件夹
-      进入到 Model 文件夹后，你会看到很多个文件夹，这些文件夹分别对应着不同的模型，你需要将你下载的模型放到对应的文件夹下。比如我们刚刚下载的是 Stable Diffusion v1.5 模型，属于 checkpoints 就需要将该模型放到 checkpoints 文件夹下。后续我们会介绍不同的类型的模型，你需要将其放到对应的文件夹里，比如后面会介绍的 LoRA 模型就要放到 loras 文件夹下。
-      <PhotoProvider>
-        <PhotoView src="/install-comfyui-and-model/014.png">
-            <img src="/install-comfyui-and-model/014.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-        </PhotoView>
-      </PhotoProvider>
-    </Steps>
+    如果你使用的是 ComflowySpace，那么你可以直接在 ComflowySpace 上导入模型。具体的操作步骤如下：
+    1. 切换到 Models 的界面，然后点击右上角的 Model Folder 的按钮（图中①），
+    2. 打开该文件夹后，点击进入里面的 checkpoint 文件夹，将你下载好的模型放入其中。
+    3. 最后再点击一下 Refresh 按钮（图中②）。
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/install-comfyui-and-model/023.png">
+          <img src="/install-comfyui-and-model/023.png" alt="" className='rounded-lg'/>
+      </PhotoView>
+    </PhotoProvider>
   </Tabs.Tab>
   <Tabs.Tab>
-    <Steps>
-      ### 打开 ComfyUI 项目文件夹
-      打开 ComfyUI 项目文件夹，并在 ComfyUI 文件夹里找到一个叫 `extra_model_paths.yaml.example` 的文件。
-      
-      ### 修改文件名
-      接着，将这个文件名改为 `extra_model_paths.yaml`。
-      
-      ### 右键使用 VSCode 打开该文件，并修改配置
-      打开文件后，找到这一行代码：
-      ``` yaml
-      base_path: path/to/stable-diffusion-webui/ 
-      ```
-      将冒号后面的路径改为你的 SD webui 的路径。比如你是 Mac 用户，那就可能是：
-      ```shell
-      Users/jimmy/stable-diffusion-webui/
-      ```
-      如果你是 Win 用户，那就可能是 
-      ```shell
-      C:/Users/jimmy/stable-diffusion-webui/
-      ```
-    </Steps>
-  </Tabs.Tab>
+    在下载完模型后，我们需要将模型导入到 ComfyUI 的 models 目录下，这样 ComfyUI 才能够加载到对应的模型。
 
+    <Callout type="info">
+    如果你曾经安装过 SD WebUI，并且下载过比较多的模型，那此时你不需要手动再导入模型，只需要更改一下配置文件即可。
+    </Callout>
+
+    <Tabs items={['未安装过 SD WebUI', '已安装 SD WebUI']}>
+      <Tabs.Tab>
+        模型下载好后，我们要将对应的模型放到 ComfyUI 的 models 目录下。
+        <Steps>
+          ### 打开 ComfyUI 项目文件夹
+          你可以使用上一章提到的 Github Desktop，打开 ComfyUI 项目的文件夹。在 Github Desktop 上点击「Show in Finder」按钮，如果是 Win 则是「Show in Explorer」按钮。即可打开该项目的文件夹。然后你需要点击进入到 models 目录下：
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/013.png">
+                <img src="/install-comfyui-and-model/013.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+
+          ### 将模型添加到对应的文件夹
+          进入到 Model 文件夹后，你会看到很多个文件夹，这些文件夹分别对应着不同的模型，你需要将你下载的模型放到对应的文件夹下。比如我们刚刚下载的是 Stable Diffusion v1.5 模型，属于 checkpoints 就需要将该模型放到 checkpoints 文件夹下。后续我们会介绍不同的类型的模型，你需要将其放到对应的文件夹里，比如后面会介绍的 LoRA 模型就要放到 loras 文件夹下。
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/014.png">
+                <img src="/install-comfyui-and-model/014.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+        </Steps>
+      </Tabs.Tab>
+      <Tabs.Tab>
+        <Steps>
+          ### 打开 ComfyUI 项目文件夹
+          打开 ComfyUI 项目文件夹，并在 ComfyUI 文件夹里找到一个叫 `extra_model_paths.yaml.example` 的文件。
+          
+          ### 修改文件名
+          接着，将这个文件名改为 `extra_model_paths.yaml`。
+          
+          ### 右键使用 VSCode 打开该文件，并修改配置
+          打开文件后，找到这一行代码：
+          ``` yaml
+          base_path: path/to/stable-diffusion-webui/ 
+          ```
+          将冒号后面的路径改为你的 SD webui 的路径。比如你是 Mac 用户，那就可能是：
+          ```shell
+          Users/jimmy/stable-diffusion-webui/
+          ```
+          如果你是 Win 用户，那就可能是 
+          ```shell
+          C:/Users/jimmy/stable-diffusion-webui/
+          ```
+        </Steps>
+      </Tabs.Tab>
+    </Tabs>
+  </Tabs.Tab>
 </Tabs>
+
 🎉 恭喜你，又完成了一个重要的步骤，接下来我们就可以正式进入 ComfyUI 基础篇的学习了。
 
 <Subscribe />
