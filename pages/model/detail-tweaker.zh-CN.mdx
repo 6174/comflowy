@@ -1,0 +1,49 @@
+---
+title: Detail Tweaker 
+image: /model/lora/detail-tweaker.png
+tag: LoRA
+---
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Detail Tweaker 
+
+<ModelDetailCard 
+  Name={<span>Detail Tweaker </span>}
+  Image={"/model/lora/detail-tweaker-modelimg.png"}
+  Uploaded={<span>May 5, 2023</span>}
+  Type={<span>LoRA</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/CyberAIchemist">CyberAIchemist</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>动漫类和人像类内容。</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/62833"}
+/>
+
+### 编辑评语
+Detail Tweaker 能为你所生成的图片增加或减少细节，并且不会影响图片的整体风格。而且适应于各种基础模型。
+
+### 最佳实践
+* lora 强度：-2 ～ 2
+* 并且最好将 negative prompt embedding 关闭，否则可能会生成一些不符合像素风格的图片。
+
+### 作者样张
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/lora/002.png">
+    <img src="/model/lora/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+* **Positive Prompt:** masterpiece, best quality, 1girl, solo, long hair, skirt, outdoors, cloud, black hair, blue eyes, shirt, long sleeves, shoes, sky, tree, black skirt, full body, blue sky, bangs, blush, blue shirt, sneakers, standing, grass, white footwear, cloudy sky, day, print shirt, looking at viewer, walking, from side, < lora:add_detail:1 >
+* **Negative Prompt:** EasyNegative, badhandv4
+* **Batch Size:** 768x512
+* **KSampler:**
+  * Steps: 20
+  * Seed: 3857540070
+  * Sampler: DPM++ 2M 
+  * Scheduler: Karras
+  * CFG scale: 7
+  * Denoising: 0.5

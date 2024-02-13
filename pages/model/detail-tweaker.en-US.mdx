@@ -1,0 +1,49 @@
+---
+title: Detail Tweaker 
+image: /model/lora/detail-tweaker.png
+tag: LoRA
+---
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Detail Tweaker 
+
+<ModelDetailCard 
+  Name={<span>Detail Tweaker </span>}
+  Image={"/model/lora/detail-tweaker-modelimg.png"}
+  Uploaded={<span>May 5, 2023</span>}
+  Type={<span>LoRA</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/CyberAIchemist">CyberAIchemist</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>Anime and portraits.</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/62833"}
+/>
+
+### Comflowy Review
+The Detail Tweaker can add or remove details from the images you generate without affecting the overall style of the picture, and it's compatible with various base models.
+
+### Best Practices
+* Lora intensity: -2 to 2
+* It's best to turn off negative prompt embedding to avoid generating images that don't match the desired pixel art style.
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/lora/002.png">
+    <img src="/model/lora/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+* **Positive Prompt:** masterpiece, best quality, 1girl, solo, long hair, skirt, outdoors, cloud, black hair, blue eyes, shirt, long sleeves, shoes, sky, tree, black skirt, full body, blue sky, bangs, blush, blue shirt, sneakers, standing, grass, white footwear, cloudy sky, day, print shirt, looking at viewer, walking, from side, < lora:add_detail:1 >
+* **Negative Prompt:**  EasyNegative, badhandv4
+* **Batch Size:** 768x512
+* **KSampler:**
+  * Steps: 20
+  * Seed: 3857540070
+  * Sampler: DPM++ 2M 
+  * Scheduler: Karras
+  * CFG scale: 7
+  * Denoising: 0.5
