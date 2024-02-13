@@ -1,0 +1,53 @@
+---
+title: LCM&TurboMix
+image: /model/lora/lcm-and-turbomix.png
+tag: LoRA
+---
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# LCM&TurboMix
+
+<ModelDetailCard 
+  Name={<span>LCM&TurboMix</span>}
+  Image={"/model/lora/lcm-and-turbomix-modelimg.png"}
+  Uploaded={<span>Dec 2, 2023</span>}
+  Type={<span>LoRA</span>}
+  BaseModel={<span>SDXL 1.0</span>}
+  Author={<a href="https://civitai.com/user/LEOSAM">LEOSAM</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>Portrait-related content.</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/112969?type=Model&format=SafeTensor"}
+/>
+
+### Comflowy Review
+The author of this LoRA is LEOSAM, who is the same person behind the SDXL model Hello World SDXL that I recommended. They work very effectively together.
+
+### Best Practices
+* LoRA weight: 1
+* CFG: 2 (Important! For LCM models, a CFG scale of 1.5~2.5 is recommended.)
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/lora/008.png">
+    <img src="/model/lora/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 
+```plaintext
+<lora:LCMTurboMix2fix:1>,abstract portrait of 1girl,undefined gender,fragmented visual style,red and black color palette,evokes feelings of rebellion,passion,and freedom,blurred boundaries,high resolution,aesthetic,
+```
+* **Negative Prompt:** 
+```plaintext
+(worst quality, low resolution, bad hands, side view, blurry),distorted,twisted,watermark,
+```
+* **Batch Size:** 832x1280
+* **KSampler:**
+  * Steps: 8
+  * Seed: 314365678
+  * Sampler: Euler a
