@@ -1,0 +1,61 @@
+---
+title: MoXin
+image: /model/lora/moxin.png
+tag: LoRA
+---
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# MoXin
+
+<ModelDetailCard 
+  Name={<span>MoXin</span>}
+  Image={"/model/lora/moxin-modelimg.png"}
+  Uploaded={<span>Feb 24, 2023</span>}
+  Type={<span>LoRA</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/simhuang">simhuang</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>Portrait and landscape content.</span>}
+  Score={"8"}
+  Downloadlink={"https://civitai.com/api/download/models/14856"}
+/>
+
+### Comflowy Review
+MoXin is a Lora trained from on Chinese painting Masters lived in Ming and Qing dynasties. After using this LoRA, the generated images will tend to have a traditional Chinese style, and it achieves excellent results not only with characters but also with animals and landscape paintings.
+
+
+### Best Practices
+* LoRA weight: less than 0.85
+* CFG range will change the style:
+  * 1~3: Bold freehand
+  * 3~7: Gradually meticulous
+
+### Creator's sample images
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/lora/004.png">
+    <img src="/model/lora/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+* **Positive Prompt:** 
+```plaintext
+shukezouma, negative space, , shuimobysim , <lora:shuV2:0.8>, portrait of a woman standing , willow branches, (masterpiece, best quality:1.2), traditional chinese ink painting, <lora:shuimobysimV3:0.7>, modelshoot style, peaceful, (smile), looking at viewer, wearing long hanfu, hanfu, song, willow tree in background, wuchangshuo,
+```
+* **Negative Prompt:** 
+```plaintext
+(worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, skin spots, acnes, skin blemishes, age spot, glans, (watermark:2),
+```
+* **Batch Size:** 640x1024
+* **KSampler:**
+  * Steps: 30
+  * Seed: 2205695018
+  * Sampler: DPM++ SDE
+  * Scheduler: Karras
+  * CFG scale: 3.5
+  * Denoising: 0.4
