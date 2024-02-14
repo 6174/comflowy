@@ -21,8 +21,8 @@ export function Cards({image, title, href, tag}) {
   const cardStyle = theme === 'dark' ? carddarkThemeStyle : cardlightThemeStyle;
 
   return (
-    <Link href={href} className={`w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 rounded-lg border ${cardStyle}  overflow-hidden block `}>
-      <img className="w-full h-48 object-cover" src={image} alt={title} />
+    <Link href={href} className={`flex flex-col flex-grow w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 rounded-lg border ${cardStyle}  overflow-hidden block `}>
+      <img className="w-full flex-col h-48 object-cover" src={image} alt={title} />
       <div className={`p-2 ${backgroundStyle}`}>
         <h2 className="text-base font-bold">{title}</h2>
         <div className={`mt-1 ${tagbackgroundStyle} py-1 px-2 rounded text-sm inline-block whitespace-nowrap`}>{tag}</div>
@@ -55,7 +55,7 @@ export default function ModelCards() {
   const [selectedTag, setSelectedTag] = useState(null);
   const tagStyle = "rounded-2xl px-4 py-1 text-white mr-2 mb-6";
   return (
-    <div className="mt-4">
+    <div className="mt-6">
       <div>
         <button className={` ${tagStyle} ${selectedTag === null ? 'bg-slate-700' : 'bg-slate-500'} `} onClick={() => setSelectedTag(null)}>All</button>
         <button className={` ${tagStyle} ${selectedTag === 'Checkpoint' ? 'bg-slate-700' : 'bg-slate-500'} `} onClick={() => setSelectedTag('Checkpoint')}>Checkpoint</button>
