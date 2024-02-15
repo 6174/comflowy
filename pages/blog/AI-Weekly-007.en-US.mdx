@@ -1,0 +1,92 @@
+---
+date:  February 15th, 2024
+image: /blog/AI-weekly-007/banner.png
+---
+
+# AI Weekly #007
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 🆕 What's New?
+**Product Updates:**
+
+- To better pinpoint various bugs, we have added some logging features.
+- The search function has been optimized; you can now search for plugin nodes. Thanks to the Discord user Marlouis_ZXK for the suggestion.
+- Improved Conda installation compatibility; thanks to Discord user Kadir Nar and Github user Tobe2d for helping us test and fix this issue.
+
+**New tutorials:**
+
+The website has updated recommendations related to the LoRA model, and everyone is welcome to download and try it out.
+- [10 LoRAs Worth Downloading](https://www.comflowy.com/blog/ten-lora-worth-downloading)
+
+## 🤩  Weekly‘s AI highlights
+
+### 📄 Noteworthy papers and technic
+
+* [**Introducing Stable Cascade**](https://stability.ai/news/introducing-stable-cascade)
+
+This week's paper of note is certainly Stable Cascade released by Stability AI, notable for several features:
+
+1. Lower training costs: With bigger parameters and faster speeds, it uses a smaller latent space, encoding 1024x1024 as 24x24 (compared to SD's 128x128) without sacrificing quality, reducing training costs by a factor of 16 compared to SD1.5.
+2. Wide compatibility: It can employ all the well-known techniques such as fine-tuning, LoRA, ControlNet, IP Adapter, LCM, etc.
+3. Exceptional performance: Demonstrates superior prompt alignment and aesthetic quality.
+
+Moreover, user testing across major platforms has shown significant improvements in text generation. Accuracy is particularly high for generating short words/phrases and the integration of text with images is very good; creating simple logos is basically a success.
+
+* [**ConsiStory**](https://consistory-paper.github.io/)
+
+Creating consistent content with AI has always been challenging. ConsiStory introduces a new method that uses multiple text prompts to help generate not only consistent content but also ensures diversity. Here's an example from the paper, where the character's appearance does not change much across multiple images, but the background and actions vary.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/001.png">
+    <img src="/blog/AI-weekly-007/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+* [**Gemini 1.5**](https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/#sundar-note)
+
+Google's newly released Gemini 1.5 model supports up to 1 million token contexts, likely the largest such model currently available. It has significantly enhanced performance and ability to handle complex tasks.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/004.png">
+    <img src="/blog/AI-weekly-007/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**NVIDIA Chat with RTX**](https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/)
+
+This is NVIDIA's local AI-powered chat software that can generate various types of text and supports online features, such as inputting a YouTube link for the AI to produce a video summary. One of its other significant features is that it can operate locally without an internet connection. It currently only supports 30 and 40 series graphics cards with more than 16GB of VRAM.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/002.png">
+    <img src="/blog/AI-weekly-007/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Memory and new controls for ChatGPT**](https://openai.com/blog/memory-and-new-controls-for-chatgpt)
+
+ChatGPT now has a permanent memory feature, allowing memories to carry over into multiple conversations. You can also instruct ChatGPT to remember certain information for later use. This facilitates interesting scenarios, like recommending a book considering the books you've read before or revisiting past conversation topics to make recommendations more precise and personalized.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/003.png">
+    <img src="/blog/AI-weekly-007/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Voice Changer**](https://elevenlabs.io/voice-changer)
+
+Elevenlabs has launched a new AI voice changer, where you can upload your recording and have AI generate different voices, like changing a male voice to female. This could be very popular in gaming.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/005.png">
+    <img src="/blog/AI-weekly-007/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
