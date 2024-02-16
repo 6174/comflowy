@@ -60,7 +60,7 @@ export default function ModelScoreCard({score,downloadlink, size}) {
         <div className="text-[#FFFFFF]/50">
           Size: {size}
         </div>
-        <button href={downloadlink} className="w-full p-2 rounded-lg bg-[#2ABDAE] text-white mt-2 flex items-center">
+        <button href={downloadlink} className="w-full p-2 rounded-lg bg-[#2ABDAE] text-white mt-2 flex items-center justify-center">
           <img src="/tray.and.arrow.down.svg" alt="Download Icon" className="mr-2" /> 
           {DOWNLOAD[locale]}
         </button>
