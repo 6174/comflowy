@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import logo from '../public/logo.png'
+import { t } from 'nextra/dist/types-c8e621b7'
 
 const Vercel = ({ height = 20 }) => (
   <svg height={height} viewBox="0 0 283 64" fill="none">
@@ -44,7 +45,10 @@ export default {
     prev: true,
     next: true,
   },
-  darkMode: true,
+  darkMode: false,
+  nextThemes: {
+    defaultTheme: 'dark',
+  },
   footer: {
     text: () => {
       return (

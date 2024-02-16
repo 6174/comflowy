@@ -25,7 +25,6 @@
     "type": "page",
     "theme": {
       "sidebar": false,
-      "layout": "full",
       "toc": true,
       "pagination": false
     }

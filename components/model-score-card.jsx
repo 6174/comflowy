@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 
 const RATING = {
-  'zh-CN': 'Comflowy 评分：',
-  'en-US': 'Comflowy Rating:',
+  'zh-CN': '评分',
+  'en-US': 'Rating',
 }
 
 const DOWNLOAD = {
@@ -38,25 +38,30 @@ const SCORE_TEXT = {
   }
 }
 
-export default function ModelScoreCard({score,downloadlink}) {
+export default function ModelScoreCard({score,downloadlink, size}) {
   const { locale } = useRouter()
-  const { theme } = useTheme()
 
   let scoreText = SCORE_TEXT[locale][score];
 
-  const lightThemeButtonStyle = "w-full px-6 py-2 border border-gray-500 rounded-lg bg-black text-white";
-  const darkThemeButtonStyle = "w-full px-6 py-2 border border-gray-500 rounded-lg bg-white text-black";
-  const buttonStyle = theme === 'dark' ? darkThemeButtonStyle : lightThemeButtonStyle;
-
   return (
-    <div className="border-l-2 border-gray-300 flex flex-col h-full">
-      <div className="px-4">
-        <p className="font-bold">{RATING[locale]}</p>
-        <p className="text-6xl my-2 font-bold ">{score}</p>
-        <p className="text-2xl font-bold">{scoreText}</p>
+    <div className="border-l-[0.5px] border-[#3D3F53] flex flex-col h-full items-center">
+      <div className="flex flex-col items-center">
+        <div className="text-[#FFFFFF]/50 ">
+          {RATING[locale]}
+        </div>
+        <div className="text-5xl font-bold bg-gradient-to-r from-[#2ACBBB] to-[#2BAFF7] rounded-tl-2xl rounded-tr-md rounded-bl-md rounded-br-2xl text-[#252630] py-2 px-3 my-4">
+          {score}
+        </div>
+        <div className="text-lg font-bold uppercase">
+          {scoreText}
+        </div>
       </div>
-      <div className="p-2 mt-auto ml-2">
-        <button href={downloadlink} className={buttonStyle}>
+      <div className="p-2 mt-auto ml-2 flex flex-col items-center">
+        <div className="text-[#FFFFFF]/50">
+          Size: {size}
+        </div>
+        <button href={downloadlink} className="w-full p-2 rounded-lg bg-[#2ABDAE] text-white mt-2 flex items-center">
+          <img src="/tray.and.arrow.down.svg" alt="Download Icon" className="mr-2" /> 
           {DOWNLOAD[locale]}
         </button>
       </div>

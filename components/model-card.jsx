@@ -1,16 +1,16 @@
 import {Cards} from './model-cards';
 import { useRouter } from "next/router";
+import matter from 'gray-matter';
 
-export default function ModelCard({ page }) {
-  const { locale, defaultLocale } = useRouter();
+export default function ModelCard({ pageData }) {
   return (
     <div className="mt-4">
       <Cards 
-        image={page.frontMatter?.image} 
-        title={page.meta?.title || page.frontMatter?.title || page.name} 
-        href={page}
-        tag={page.frontMatter?.tag}
-        className="mb-10"
+        image={pageData.frontMatter?.image} 
+        title={pageData.meta?.title || pageData.frontMatter?.title || pageData.name} 
+        href={pageData.path}
+        tag={pageData.frontMatter?.tag}
+        size={pageData.frontMatter?.size || "Unknown"}
       />
     </div>
   );
