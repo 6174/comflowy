@@ -2,7 +2,7 @@ import { getPagesUnderRoute } from "nextra/context";
 import filterRouteLocale from "nextra/filter-route-locale";
 import { useRouter } from "next/router";
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 export function Cards({image, title, href, tag, size}) {
   // const { theme } = useTheme()
@@ -77,14 +77,14 @@ export default function ModelCards() {
   const [tagCounts, setTagCounts] = useState({});
   const tagStyle = "rounded-2xl px-4 py-1 text-white mr-2 mb-6";
 
-  const pagesUnderRoute = getPagesUnderRoute("/model");
+  const pagesUnderRoute = useMemo(() => getPagesUnderRoute("/model"), []);
   
 
   useEffect(() => {
     setTagCounts(countCardsByTag(pagesUnderRoute));
   }, [pagesUnderRoute]);
 
-  const totalCards = Object.values(tagCounts).reduce((a, b) => a + b, 0);
+  const totalCards = Object.keys(tagCounts).length > 0 ? Object.values(tagCounts).reduce((a, b) => a + b, 0) : 0;
 
   return (
     <div className="mt-6">
