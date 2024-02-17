@@ -48,6 +48,7 @@ export default {
   darkMode: false,
   nextThemes: {
     defaultTheme: 'dark',
+    forcedTheme: 'dark',
   },
   footer: {
     text: () => {
