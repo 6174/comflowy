@@ -25,49 +25,49 @@ const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
         image: addMoreDetails.src,
         title: "Add More Details",
         url: "https://www.comflowy.com/model/add-more-details",
-        tag: "LoRA"
+        tag: "LoRA",
         size: "9.11 MB"
       },
       {
         image: animagineXL.src,
         title: "Animagine XL",
         url: "https://www.comflowy.com/model/animagine-xl",
-        tag: "Checkpoint"
+        tag: "Checkpoint",
         size: "6.46 GB"
       },
       {
         image: darkSushi.src,
         title: "Dark Sushi Mix",
         url: "https://www.comflowy.com/model/dark-sushi-mix",
-        tag: "Checkpoint"
+        tag: "Checkpoint",
         size: "1.99 GB"
       },
       {
         image: detailTweaker.src,
         title: "Detail Tweaker",
         url: "https://www.comflowy.com/model/detail-tweaker",
-        tag: "LoRA"
+        tag: "LoRA",
         size: "36.11 MB"
       },
       {
         image: dreamShaperInpainting.src,
         title: "DreamShaper V8.0 Inpainting",
         url: "https://www.comflowy.com/model/dream-shaper-inpainting-v-8",
-        tag: "Checkpoint"
+        tag: "Checkpoint",
         size: "1.99 GB"
       },
       {
         image: dreamShaperLcm.src,
         title: "DreamShaper V8.0 LCM",
         url: "https://www.comflowy.com/model/dream-shaper-lcm",
-        tag: "Checkpoint"
+        tag: "Checkpoint",
         size: "1.99 GB"
       },
       {
         image: dreamShaper.src,
         title: "DreamShaper V8.0",
         url: "https://www.comflowy.com/model/dream-shaper-v-8",
-        tag: "Checkpoint"
+        tag: "Checkpoint",
         size: "1.99 GB"
       },
 
