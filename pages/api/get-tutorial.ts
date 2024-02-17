@@ -57,13 +57,13 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
       },
       {
         image: comfyuibasics1.src,
-        title: "ComfyUI Basics ①",
+        title: "ComfyUI Basics ➊",
         url: "https://www.comflowy.com/basics/comfyui-foundation",
         tag: "SD Fundamentals"
       },
       {
         image: comfyuibasics2.src,
-        title: "ComfyUI Basics ②",
+        title: "ComfyUI Basics ➋",
         url: "https://www.comflowy.com/basics/basic-nodes",
         tag: "SD Fundamentals"
       },
