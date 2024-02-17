@@ -9,14 +9,6 @@ import detailTweaker from 'public/model/lora/detail-tweaker.png';
 import dreamShaperInpainting from 'public/model/dream-shaper-inpainting/modelimg.png';
 import dreamShaperLcm from 'public/model/dream-shaper-lcm/banner.png';
 import dreamShaper from 'public/model/dream-shaper/banner.png';
-import embedding from 'public/thumbnails-v2/embedding.png';
-import lora from 'public/thumbnails-v2/lora.png';
-import imagetoimage from 'public/thumbnails-v2/image-to-image.png';
-import upscale from 'public/thumbnails-v2/upscale.png';
-import inoutpainting from 'public/thumbnails-v2/in-out-painting.png';
-import controlnet from 'public/thumbnails-v2/controlnet.png';
-import stablediffusionadvanced from 'public/thumbnails-v2/stable-diffusion-advanced.png';
-import controlnetadvanced from 'public/thumbnails-v2/controlnet-advanced.png';
 
 
 const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
