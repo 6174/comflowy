@@ -19,7 +19,7 @@ import stablediffusionadvanced from 'public/thumbnails-v2/stable-diffusion-advan
 import controlnetadvanced from 'public/thumbnails-v2/controlnet-advanced.png';
 
 
-const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
+const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
   try {
     const data = [
       {
@@ -85,8 +85,8 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json(data);
   } catch (error) {
     // 处理错误
-    res.status(500).json({ error: 'Failed to fetch tutorial data' });
+    res.status(500).json({ error: 'Failed to fetch model data' });
   }
 };
 
-export default getTutorial;
+export default getModel;
