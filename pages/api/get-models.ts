@@ -21,7 +21,11 @@ import pixelArtStyle from 'public/model/lora/pixel-art-style.png';
 import pixelArtXL from 'public/model/lora/pixel-art-xl.png';
 import realistic from 'public/model/realistic/realistic-version-banner.png';
 import realVisXL from 'public/model/realistic/realvisxl.png';
-
+import badDream from 'public/model/embedding/baddream.png';
+import unrealDream from 'public/model/embedding/unrealistic-dream.png';
+import negativeHand from 'public/model/embedding/negative-hand.png';
+import ageSlider from 'public/model/embedding/age-slider.png';
+import ageSliderNegative from 'public/model/embedding/age-slider-negative.png';
 
 const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -166,7 +170,41 @@ const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
         tag: "Checkpoint",
         size: "6.46 GB"
       },
-
+      {
+        image: badDream.src,
+        title: "Bad Dream",
+        url: "https://www.comflowy.com/model/baddream",
+        tag: "Embedding",
+        size: "207.85 KB"
+      },
+      {
+        image: unrealDream.src,
+        title: "Unrealistic Dream",
+        url: "https://www.comflowy.com/model/unrealistic-dream",
+        tag: "Embedding",
+        size: "111.85 KB"
+      },
+      {
+        image: negativeHand.src,
+        title: "Negative Hand",
+        url: "https://www.comflowy.com/model/negative-hand",
+        tag: "Embedding",
+        size: "24.93 KB"
+      },
+      {
+        image: ageSlider.src,
+        title: "Age Slider",
+        url: "https://www.comflowy.com/model/age-slider",
+        tag: "Embedding",
+        size: "51.86 KB"
+      },
+      {
+        image: ageSliderNegative.src,
+        title: "Age Slider Negative",
+        url: "https://www.comflowy.com/model/age-slider-negative",
+        tag: "Embedding",
+        size: "36.94 KB"
+      }
     ];
     
     // 将 JSON 数据作为响应返回

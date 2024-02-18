@@ -38,7 +38,7 @@ import Subscribe from "components/subscribtion";
 
 这就是为何我们能通过在 prompt 里输入 Style 词来改变图片风格，甚至输入人名就能生成特定人物图的原因（当然这并不仅仅是 CLIP 的功劳，也有 Diffusion 模型的功劳）。
 
-## Embedding workflow
+## Postive embedding workflow
 
 那我们在 ComfyUI 里能做这些事情吗？很抱歉，我们没法在 ComfyUI 里去对 CLIP 模型进行训练。但我们可以使用别人训练好的。
 
@@ -75,6 +75,8 @@ import Subscribe from "components/subscribtion";
   </PhotoProvider>
 
 </Steps>
+
+## Negative embedding workflow
 
 另一个常用的 Embedding 场景是在 negative prompt 里使用，从而降低某些特殊情况出现的概率，比如生成有 6 根手指的手掌。下方左图，是我用 DreamShaper 生成的手，你会发现它很诡异，两只手融合在了一起，而且还有 6 根手指的手掌。
 

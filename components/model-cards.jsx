@@ -90,8 +90,17 @@ export default function ModelCards() {
     <div className="mt-6">
       <div>
         <button className={` ${tagStyle} ${selectedTag === null ? 'bg-[#454758]' : 'bg-[#262837]'} `} onClick={() => setSelectedTag(null)}>All ({totalCards})</button>
-        <button className={` ${tagStyle} ${selectedTag === 'Checkpoint' ? 'bg-[#454758]' : 'bg-[#262837]'} `} onClick={() => setSelectedTag('Checkpoint')}>Checkpoint ({tagCounts['Checkpoint'] || 0})</button>
-        <button className={` ${tagStyle} ${selectedTag === 'LoRA' ? 'bg-[#454758]' : 'bg-[#262837]'} `} onClick={() => setSelectedTag('LoRA')}>LoRA ({tagCounts['LoRA'] || 0})</button>
+        {
+          Object.keys(tagCounts).map(tag => (
+            <button 
+              key={tag}
+              className={` ${tagStyle} ${selectedTag === tag ? 'bg-[#454758]' : 'bg-[#262837]'} `}
+              onClick={() => setSelectedTag(tag)}
+            >
+              {tag} ({tagCounts[tag] || 0})
+            </button>
+          ))
+        }
       </div>
       <PageCard 
         pagesUnderRoute={"/model"}

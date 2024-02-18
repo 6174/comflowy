@@ -1,0 +1,45 @@
+---
+title: Negative Hand
+image: /model/embedding/negative-hand.png
+tag: Embedding
+size: 24.93 KB
+---
+
+# Negative Hand
+
+<ModelDetailCard 
+  Name={<span>Negative Hand</span>}
+  Image={"/model/embedding/negative-hand-modelimg.png"}
+  Uploaded={<span>May 3, 2023</span>}
+  Type={<span>Embedding</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Nerfgun3">Nerfgun3</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>生成真人肖像，以及动漫类内容。</span>}
+  Score={"8"}
+  Downloadlink={"https://civitai.com/api/download/models/60938?type=Negative&format=Other"}
+  Size={"24.93 KB"}
+/>
+
+### 编辑评语
+推荐这款 Embedding 的原因有两点：
+
+1. 对人物的手有专门的优化。
+2. 不会因为加了 Negative Prompt Embedding 而导致图片风格发生改变。有一些 Negative Embedding 
+虽然对提高图像质量有很大帮助，但会导致生成的图片风格发生改变。而这款 Negative Hand 则不会。
+
+### 最佳实践
+直接在 Negative Prompt 中输入 embedding:negative_hands 即可使用。
+
+如果想要调整权重则在后面加上权重，例如 embedding:negative_hands:0.5。
+
+
+### 作者样张
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/embedding/003.png">
+    <img src="/model/embedding/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>

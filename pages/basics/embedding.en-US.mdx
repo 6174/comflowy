@@ -44,7 +44,7 @@ These vectors may contain various visual features of Garfield Cat. In this way, 
 
 That's why we can change the image style by inputting a Style word in the prompt, or even generate a specific character's image by inputting a name (Of course, this is not solely the credit of the CLIP model, the Diffusion model also plays a significant role).
 
-## Embedding workflow
+## Postive embedding workflow
 
 So can we do these things in ComfyUI? Unfortunately, we cannot train the CLIP model in ComfyUI. However, we can use ones trained by others.
 
@@ -79,6 +79,8 @@ So how do you use Embedding in ComfyUI?
   </PhotoProvider>
 
 </Steps>
+
+## Negative embedding workflow
 
 Another common use case for Embedding is in the negative prompt, which can decrease the probability of certain special situations occurring, such as generating a palm with six fingers. The left image below is a hand I generated with DreamShaper, and you can see it's quite peculiar, with two hands merging together and a palm with six fingers.
 
