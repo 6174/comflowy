@@ -57,9 +57,10 @@ export function PageCard({pagesUnderRoute, selectedTag}){
 
   return (
     <div className="flex flex-wrap justify-start gap-4">
-      {pages.map((page) => {
+      {pages.map((page, index) => {
         return (
           <Cards 
+            key={index}
             image={page.frontMatter?.image} 
             title={page.meta?.title || page.frontMatter?.title || page.name} 
             href={page.route}
