@@ -9,6 +9,18 @@ import detailTweaker from 'public/model/lora/detail-tweaker.png';
 import dreamShaperInpainting from 'public/model/dream-shaper-inpainting/modelimg.png';
 import dreamShaperLcm from 'public/model/dream-shaper-lcm/banner.png';
 import dreamShaper from 'public/model/dream-shaper/banner.png';
+import dreamShaperXL from 'public/model/dream-shaper-xl/banner.png';
+import filmGirl from 'public/model/lora/filmgirl.png';
+import drehelloWorldsdxl from 'public/model/realistic/hello-world-sdxl.png';
+import juggernautXL from 'public/model/realistic/juggernaut-xl.png';
+import lcmAndTurbomix from 'public/model/lora/lcm-and-turbomix.png';
+import majicMIXRealisti from 'public/model/realistic/majicMIX-realistic.png';
+import meinaMix from 'public/model/anime/meina-mix.png';
+import moxin from 'public/model/lora/moxin.png';
+import pixelArtStyle from 'public/model/lora/pixel-art-style.png';
+import pixelArtXL from 'public/model/lora/pixel-art-xl.png';
+import realistic from 'public/model/realistic/realistic-version-banner.png';
+import realVisXL from 'public/model/realistic/realvisxl.png';
 
 
 const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
@@ -69,6 +81,90 @@ const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
         url: "https://www.comflowy.com/model/dream-shaper-v-8",
         tag: "Checkpoint",
         size: "1.99 GB"
+      },
+      {
+        image: dreamShaperXL.src,
+        title: "DreamShaper XL",
+        url: "https://www.comflowy.com/model/dream-shaper-xl",
+        tag: "Checkpoint",
+        size: "6.46 GB"
+      },
+      {
+        image: filmGirl.src,
+        title: "FilmGirl",
+        url: "https://www.comflowy.com/model/filmgirl",
+        tag: "LoRA",
+        size: "144.11 MB"
+      },
+      {
+        image: drehelloWorldsdxl.src,
+        title: "Hello World SDXL",
+        url: "https://www.comflowy.com/model/hello-world-sdxl",
+        tag: "Checkpoint",
+        size: "6.46 GB"
+      },
+      {
+        image: juggernautXL.src,
+        title: "Juggernaut XL",
+        url: "https://www.comflowy.com/model/juggernaut-xl",
+        tag: "Checkpoint",
+        size: "6.62 GB"
+      },
+      {
+        image: lcmAndTurbomix.src,
+        title: "LCM & TurboMix",
+        url: "https://www.comflowy.com/zh-CN/model/lcm-and-turbomix",
+        tag: "LoRA",
+        size: "12.36 MB"
+      },
+      {
+        image: majicMIXRealisti.src,
+        title: "MajicMIX Realistic",
+        url: "https://www.comflowy.com/model/majicMix-realistic",
+        tag: "Checkpoint",
+        size: "1.99 GB"
+      },
+      {
+        image: meinaMix.src,
+        title: "Meina Mix",
+        url: "https://www.comflowy.com/model/meina-mix",
+        tag: "Checkpoint",
+        size: "1.99 GB"
+      },
+      {
+        image: moxin.src,
+        title: "MoXin",
+        url: "https://www.comflowy.com/model/moxin",
+        tag: "LoRA",
+        size: "144.11 MB"
+      },
+      {
+        image: pixelArtStyle.src,
+        title: "Pixel Art Style",
+        url: "https://www.comflowy.com/model/pixel-art-style",
+        tag: "LoRA",
+        size: "144.11 MB"
+      },
+      {
+        image: pixelArtXL.src,
+        title: "Pixel Art XL",
+        url: "https://www.comflowy.com/model/pixel-art-xl",
+        tag: "LoRA",
+        size: "162.64 MB"
+      },
+      {
+        image: realistic.src,
+        title: "Realistic Vision V6.0",
+        url: "https://www.comflowy.com/model/realistic-vision-v-6",
+        tag: "Checkpoint",
+        size: "3.97 GB"
+      },
+      {
+        image: realVisXL.src,
+        title: "RealVisXL",
+        url: "https://www.comflowy.com/model/realvisxl",
+        tag: "Checkpoint",
+        size: "6.46 GB"
       },
 
     ];
