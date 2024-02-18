@@ -204,7 +204,7 @@ const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
         url: "https://www.comflowy.com/model/age-slider-negative",
         tag: "Embedding",
         size: "36.94 KB"
-      }
+      },
     ];
     
     // 将 JSON 数据作为响应返回
