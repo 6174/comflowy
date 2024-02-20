@@ -1,25 +1,27 @@
 ---
 date: February 20th, 2024
 image: /blog/generate-anime-characters/banner.png
-title: 如何使用ComfyUI将动漫人物生成真人?
+title: 如何使用 ComfyUI 将动漫人物生成真人？
 ---
 
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
+# 如何使用 ComfyUI 将动漫人物生成真人？
+
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/generate-anime-characters/banner.png">
-    <img src="/blog/generate-anime-characters/banner.png" alt="" />
+    <img src="/blog/generate-anime-characters/banner.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
-想象一下，如果我们能看到真人版的路飞，那将是多么酷的一件事啊！回想陪伴我们度过一整个童年的动漫角色，若猛然将这些形象拉入现实世界，会是一种怎样的体验呢？本期分享的工作流能够将这个想法变成现实，它实现的不仅仅是创造一个图像，而是要让这个图像充满生命力，仿佛路飞就站在你面前，随时准备出发寻找One Piece。
+想象一下，如果我们能看到真人版的路飞，那将是多么酷的一件事啊！回想陪伴我们度过一整个童年的动漫角色，若猛然将这些形象拉入现实世界，会是一种怎样的体验呢？本期分享的工作流能够将这个想法变成现实，它实现的不仅仅是创造一个图像，而是要让这个图像充满生命力，仿佛路飞就站在你面前，随时准备出发寻找 One Piece。
 
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/generate-anime-characters/001.png">
-    <img src="/blog/generate-anime-characters/001.png" alt="" />
+    <img src="/blog/generate-anime-characters/001.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -32,7 +34,7 @@ import Subscribe from "components/subscribtion";
   </PhotoView>
 </PhotoProvider>
 
-我将海贼王中的经典人物：索隆，娜美， 特拉法尔加·罗、香吉士等都进行了重新生成，不同人物的明显特征可以通过调整提示词让生成的图片更加准确，例如写出头发的颜色，服装特点等等。
+我将海贼王中的经典人物：索隆，娜美，特拉法尔加·罗、香吉士等都进行了重新生成，不同人物的明显特征可以通过调整提示词让生成的图片更加准确，例如写出头发的颜色，服装特点等等。
 
 <br/>
 <PhotoProvider>
@@ -50,48 +52,48 @@ import Subscribe from "components/subscribtion";
   </PhotoView>
 </PhotoProvider>
 
-最后，我发现路飞卡通形象能通过这个工作流生成手办质感，其生动度和立体感很强。如果你是手办爱好者或者是手办设计师，通过这个工作流可以将你的绘图草稿上传，生成图片，看到手办的最终效果。
+最后，我发现路飞卡通形象能通过这个工作流还能生成手办质感的图片，其生动度和立体感很强。如果你是手办爱好者或者是手办设计师，通过这个工作流可以将你的绘图草稿上传，生成图片，看到手办的最终效果。
 
-### 使用指南
+## 第一步
 
-#### 方法一：选择手动搭建。
-
-1.  [**下载 Checkpoint 模型：Photonium**](https://civitai.com/models/268578/photonium)
-
-针对照片级真实感进行了增强和训练
-- 适用场景：人物美化，摄影，照片写实
-- Base Model：Stable Diffusion v1.0
-- 许可协议： [**CreativeML Open RAIL++-M**](https://github.com/Stability-AI/generative-models/blob/main/model_licenses/LICENSE-SDXL1.0)
-- 是否可商用：是
+下载 Checkpoint 模型：[**Photonium**](https://civitai.com/models/268578/photonium)。这个模型针对照片级真实感进行了增强和训练，比较适合做人物美化，摄影，照片写实。
 
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/generate-anime-characters/005.png">
-    <img src="/blog/generate-anime-characters/005.png" alt="" />
+    <img src="/blog/generate-anime-characters/005.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
-2. **下载 ControlNet 的 canny 模型**
+## 第二步
 
-通过 Canny 边缘图来控制模型生成的图片。这种方法的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
+接着你需要下载 ControlNet 的 canny 模型。通过 Canny 边缘图来控制模型生成的图片。这种方法的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
 
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/generate-anime-characters/006.png">
-    <img src="/blog/generate-anime-characters/006.png" alt="" />
+    <img src="/blog/generate-anime-characters/006.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
-想要了解更多 ControlNet 的模型功能，可以查看：https://www.comflowy.com/zh-CN/advanced/controlnet
+想要了解更多 ControlNet 的相关知识，可以查看这份有关 ControlNet 的[教程](https://www.comflowy.com/zh-CN/advanced/controlnet)
+
+## 第三步
+
+我根据上面推荐的教程搭建了这样的工作流。不过我对还对其进行了改良。
+
+我并没有在工作流中添加 Empty Latent Image 节点，因为我为了让生成的图片，与我导入的图片大小一致，所以我直接将 Canny 后的图转为 Latent 图再接到 KSampler 节点里。
+
+对了，你可能发现，我上面的 workflow 截图 UI 界面跟 ComfyUI 不一样，那是因为我用的是一款 UI 体验更好的 ComfyUI 版本，你可以在这里[了解](../space.zh-CN.mdx)这款产品。同时这款产品还自带 Template 功能，你可以直接在产品里找到这个 workflow 的模板，并直接使用。
 
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/generate-anime-characters/007.png">
-    <img src="/blog/generate-anime-characters/007.png" alt="" />
+    <img src="/blog/generate-anime-characters/007.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
-- 在基础工作流中添加 canny 节点，功能是用来识别图片的边缘轮廓，通过调整 low / high threshould 参数来调整边缘识别的敏感度。如果你想增加细节，可以把参数值向下调整。canny识别的轮廓图越丰富，最后生成的效果与原图吻合度越高。以下是调整参数大小，canny 识别的对比图：
+另外，你可以通过调整 low / high threshould 参数来调整边缘识别的敏感度。如果你想增加细节，可以把参数值向下调整。Canny 识别的轮廓图越丰富，最后生成的效果与原图吻合度越高。以下是调整参数大小，Canny 识别的对比图：
 
 <br/>
 <PhotoProvider>
@@ -100,7 +102,7 @@ import Subscribe from "components/subscribtion";
   </PhotoView>
 </PhotoProvider>
 
-- 通过调整 ControNet Apply 权重值，数值最好设置在0.3~0.6之间，不要太大，会影响最后的生成效果。可以看到下图对比中，右图权重较大，生成的效果跟原图很相似，且质感不如左侧细腻。
+最后，根据我的实验，你还可以调整一下 ControNet Apply 权重值，数值最好设置在 0.3~0.6 之间，不要太大，这样会影响最后的生成效果。可以看到下图对比中，右图权重较大，生成的效果跟原图很相似，且质感不如左侧细腻。
 
 <br/>
 <PhotoProvider>
@@ -109,7 +111,11 @@ import Subscribe from "components/subscribtion";
   </PhotoView>
 </PhotoProvider>
 
-#### 方法二：我们也提供了完整 workflow，如果你想试用的话，可以直接下载
+<br/>
+
+<Subscribe />
+
+
 
 
 
