@@ -1,0 +1,123 @@
+---
+date: February 20th, 2024
+image: /blog/generate-anime-characters/banner.png
+title: 如何使用ComfyUI将动漫人物生成真人?
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/banner.png">
+    <img src="/blog/generate-anime-characters/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+想象一下，如果我们能看到真人版的路飞，那将是多么酷的一件事啊！回想陪伴我们度过一整个童年的动漫角色，若猛然将这些形象拉入现实世界，会是一种怎样的体验呢？本期分享的工作流能够将这个想法变成现实，它实现的不仅仅是创造一个图像，而是要让这个图像充满生命力，仿佛路飞就站在你面前，随时准备出发寻找One Piece。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/001.png">
+    <img src="/blog/generate-anime-characters/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+这个工作流主要是运用了 ControlNet 中的 Canny 模型，通过 Canny 边缘图来控制模型生成的图片的边缘，使生成内容的形态保持一致。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/002.png">
+    <img src="/blog/generate-anime-characters/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+我将海贼王中的经典人物：索隆，娜美， 特拉法尔加·罗、香吉士等都进行了重新生成，不同人物的明显特征可以通过调整提示词让生成的图片更加准确，例如写出头发的颜色，服装特点等等。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/003.png">
+    <img src="/blog/generate-anime-characters/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+生成时可以参考我的提示词：A portrait of a young man with blue eyes, wearing a yellow fez and red clothing., RAW photo, 4k, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic lifelike texture, dramatic lighting, unrealengine, trending on artstation, cinestill 800 tungsten, high quality, sharp focus,8k uhd, absurdres.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/004.png">
+    <img src="/blog/generate-anime-characters/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+最后，我发现路飞卡通形象能通过这个工作流生成手办质感，其生动度和立体感很强。如果你是手办爱好者或者是手办设计师，通过这个工作流可以将你的绘图草稿上传，生成图片，看到手办的最终效果。
+
+### 使用指南
+
+#### 方法一：选择手动搭建。
+
+1.  [**下载 Checkpoint 模型：Photonium**](https://civitai.com/models/268578/photonium)
+
+针对照片级真实感进行了增强和训练
+- 适用场景：人物美化，摄影，照片写实
+- Base Model：Stable Diffusion v1.0
+- 许可协议： [**CreativeML Open RAIL++-M**](https://github.com/Stability-AI/generative-models/blob/main/model_licenses/LICENSE-SDXL1.0)
+- 是否可商用：是
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/005.png">
+    <img src="/blog/generate-anime-characters/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+2. **下载 ControlNet 的 canny 模型**
+
+通过 Canny 边缘图来控制模型生成的图片。这种方法的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/006.png">
+    <img src="/blog/generate-anime-characters/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+想要了解更多 ControlNet 的模型功能，可以查看：https://www.comflowy.com/zh-CN/advanced/controlnet
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/007.png">
+    <img src="/blog/generate-anime-characters/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+- 在基础工作流中添加 canny 节点，功能是用来识别图片的边缘轮廓，通过调整 low / high threshould 参数来调整边缘识别的敏感度。如果你想增加细节，可以把参数值向下调整。canny识别的轮廓图越丰富，最后生成的效果与原图吻合度越高。以下是调整参数大小，canny 识别的对比图：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/008.png">
+    <img src="/blog/generate-anime-characters/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+- 通过调整 ControNet Apply 权重值，数值最好设置在0.3~0.6之间，不要太大，会影响最后的生成效果。可以看到下图对比中，右图权重较大，生成的效果跟原图很相似，且质感不如左侧细腻。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/009.png">
+    <img src="/blog/generate-anime-characters/009.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 方法二：我们也提供了完整 workflow，如果你想试用的话，可以直接下载
+
+
+
+
+
+
+
+
+
+
+
