@@ -20,7 +20,7 @@ export function Cards({image, title, href, tag, size}) {
   // const cardStyle = theme === 'dark' ? carddarkThemeStyle : cardlightThemeStyle;
 
   return (
-    <a href={href} className={`flex flex-col flex-grow w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 rounded-lg border border-[#373A4C] overflow-hidden block bg-[#252630] hover:bg-[#34374b]`}>
+    <a href={href} className={`flex flex-col flex-grow w-full rounded-lg border border-[#373A4C] overflow-hidden block bg-[#252630] hover:bg-[#34374b]`}>
       <img className="flex-col h-44 object-cover m-3 rounded-lg border border-[#31353A]" src={image} alt={title} />
       <div className={`mx-3 mt-1 mb-3`}>
         <h2 className="text-base font-bold">{title}</h2>
@@ -56,7 +56,7 @@ export function PageCard({pagesUnderRoute, selectedTag}){
     .filter(page => !selectedTag || page.frontMatter?.tag === selectedTag);
 
   return (
-    <div className="flex flex-wrap justify-start gap-4">
+    <>
       {pages.map((page, index) => {
         return (
           <Cards 
@@ -69,7 +69,7 @@ export function PageCard({pagesUnderRoute, selectedTag}){
           />
         );
       })}
-    </div>
+    </>
   );
 }
 
@@ -103,10 +103,12 @@ export default function ModelCards() {
           ))
         }
       </div>
-      <PageCard 
+      <div className="grid grid-cols-3 gap-4 ">
+        <PageCard 
         pagesUnderRoute={"/model"}
         selectedTag={selectedTag}
       />
+      </div>
     </div>
   );
 }
