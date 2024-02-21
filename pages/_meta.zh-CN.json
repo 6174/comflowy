@@ -21,15 +21,16 @@
     }
   },
   "model": {
-    "title": "📦 模型",
+    "title": "🤖 模型",
     "type": "page",
     "theme": {
       "sidebar": false,
+      "toc": true,
       "pagination": false
     }
   },
-  "special-thanks": {
-    "title": "🥰 感谢",
+  "change-log": {
+    "title": "📦 Changelog",
     "type": "page",
     "theme": {
       "toc": true

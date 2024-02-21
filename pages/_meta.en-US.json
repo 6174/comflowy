@@ -21,8 +21,17 @@
       "pagination": false
     }
   },
-  "special-thanks": {
-    "title": "🥰 Thanks",
+  "model": {
+    "title": "🤖 Model",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "toc": true,
+      "pagination": false
+    }
+  },
+  "change-log": {
+    "title": "📦 Changelog",
     "type": "page",
     "theme": {
       "toc": true

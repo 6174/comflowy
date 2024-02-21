@@ -1,0 +1,110 @@
+---
+date: February 13th, 2024
+image: /blog/ten-loras-worth-downloading/banner.png
+---
+
+import { Steps, Callout } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {Cards} from '../../components/model-cards';
+
+# 10 个值得下载的 LoRA 模型
+
+我在 LoRA 的教程中提到一个这样的类比：“LoRA 就像是拍照的滤镜一样”，这个类比虽然能帮助你更好地理解 LoRA 是什么。
+但是，LoRA 还不仅仅止于此，它还可以做更多事情。在这篇文章中，我将向你推荐 10 个我认为值得下载的 LoRA 模型，有一些是能帮助你生成特殊风格的图片（类似拍照的滤镜），还有一些是能帮助你升成更丰富细节的图片。
+
+## 特殊风格
+
+首先，推荐几个我认为能帮助你生成特殊风格的模型。首先第一个是最近很流行的 Pixel Art 风格，这两个模型分别是 SD 1.5 和 SDXL 1.0 版本的 Pixel Art 风格 LoRA 模型，各位可以按需选择一个。
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/lora/pixel-art-style.png"}
+      title={"Pixel Art Style"}
+      href={"/model/pixel-art-style"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/pixel-art-xl.png"}
+      title={"Pixel Art XL"}
+      href={"/model/pixel-art-xl"}
+      tag={"LoRA"}
+    />
+  </div>
+}
+
+然后要推荐的是我觉得画风比较特别的 LoRA 模型，它们分别是中国古代国画风格的 Moxin，以及 3D 风格的 3D Rendering Style，还有一个能让图片呈现胶片风格的 FilmGirl。
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/lora/moxin.png"}
+      title={"Moxin"}
+      href={"/model/moxin"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/3d-rendering-style.png"}
+      title={"3D Rendering Style"}
+      href={"/model/3d-rendering-style"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/filmgirl.png"}
+      title={"FilmGirl"}
+      href={"/model/filmgirl"}
+      tag={"LoRA"}
+    />
+  </div>
+}
+
+## 丰富图片细节
+
+第二类要推荐的 LoRA 是能让图片细节更丰富的 Detail LoRA。这类模型能帮助你让图片的细节更加丰富，比如能让人物的皮肤纹理更加清晰，细节更加丰富等等。甚至你还可以通过调整 LoRA 权重的方式，降低图片的细节。从而达到升成一些极简风格的图片。
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/lora/detail-tweaker.png"}
+      title={"Detail Tweaker"}
+      href={"/model/detail-tweaker"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/add-more-details.png"}
+      title={"Add More Details"}
+      href={"/model/add-more-details"}
+      tag={"LoRA"}
+    />
+  </div>
+}
+
+## 加快图片升成速度
+
+最后一种常用的 LoRA 是加快图片生成速度。我一般会在 SDXL 上使用，因为使用 SDXL 生成图片时间会更久一些，使用 LCM LoRA 能节省不少时间。
+
+你可能会问为何不用更快的 SDXL Turbo，最主要的原因是 SDXL Turbo 加快了图片生成的速度的同时，也降低了图片质量。使用 LCM 虽然没有 Turbo 那么快，但生成的图片质量更好。
+
+我推荐你使用 LCM 论文作者出的 LCM 模型，在我的 LoRA 教程中我有介绍该模型，同时我也介绍了如何搭建 LCM LoRA workflow。除了官方的 LCM 模型外，我还要推荐一个叫 TurboMix 的模型，它是基于 SDXL Turbo mix 出来的 LCM 模型，搭配该模型作者微调的 SDXL 模型一起使用，效果更佳。
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/comfyui-lora/cardbanner.png"}
+      title={"LoRA"}
+      href={"../basics/lora"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/model/lora/lcm-and-turbomix.png"}
+      title={"LCM&TurboMix"}
+      href={"/model/lcm-and-turbomix"}
+      tag={"LoRA"}
+    />
+  </div>
+}

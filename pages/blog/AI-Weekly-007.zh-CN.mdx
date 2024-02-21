@@ -1,0 +1,108 @@
+---
+date:  February 15th, 2024
+image: /blog/AI-weekly-007/banner.png
+---
+
+# AI Weekly #007
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 🆕 更新了什么？
+**产品更新：**
+- 为了更好地定位各种 bug，我们增加了一些日志记录功能。
+- 优化了搜索功能，现在可以搜索到插件的节点了。感谢 Discord 用户 Marlouis_ZXK 提出的建议。
+- 优化了 Conda 安装适配，感谢 Discord 用户 Kadir Nar 和 Github 用户 Tobe2d 协助我们测试并修复了此问题。
+
+**新增教程：**
+
+网站更新了 LoRA 模型相关的推荐，欢迎各位下载试用：
+- [10 个值得下载的 LoRA 模型](https://www.comflowy.com/zh-CN/blog/ten-lora-worth-downloading)
+
+## 🤩 每周 AI 精选
+
+### 📄 值得关注的论文 & 技术
+
+* [**Introducing Stable Cascade**](https://stability.ai/news/introducing-stable-cascade)
+
+本周最值得关注的论文应该就是 Stability AI 发布的 Stable Cascade，这个模型有几个特点：
+
+1. 训练成本更低：参数更大，速度更快，潜空间却更小，1024x1024 编码为 24x24（SD 是 128x128）且不牺牲质量，相比 SD1.5 训练成本降低 16 倍。
+2. 兼容性广：可以使用所有已知的技术，如微调、LoRA、ControlNet、IP Adapter、LCM 等。
+3. 性能突出：提示对齐和美学质量方面都表现优秀。
+
+另外，经过各大网友测试，文字生成有了很大的进步。生成较短的单词/词组正确率比较高，文字与画面的融合也非常好，直出简单的 logo 基本 OK。
+
+* [**ConsiStory**](https://consistory-paper.github.io/)
+
+如何让 AI 连续生成一样的内容，一直是令人头疼的问题，ConsiStory 提出了一种新的方法，它通过多个文本提示，让模型生成一致的内容的同时，还能保证内容的多元化。以下是论文中的例子，可以
+看到人物的形象在多张图中变化都不是很大，但背景和动作都发生了变化。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/001.png">
+    <img src="/blog/AI-weekly-007/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+
+### 🛠️ 值得尝试的产品
+
+* [**Gemini 1.5**](https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/#sundar-note)
+
+谷歌最新发布的 Gemini 1.5，最大支持 100 万个 token 上下文，应该是目前上下文最大的模型。并且在性能，以及处理复杂事项上都有了很大的提升：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/004.png">
+    <img src="/blog/AI-weekly-007/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+
+* [**NVIDIA Chat with RTX**](https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/)
+
+这是 NVIDIA 推出的本地 AI 生成聊天软件，它可以生成各种类型的文本，并且还支持联网功能，比如输入 Youtube 链接，让 AI 输出视频总结。
+。它的另一大特点是可以在本地运行，不需要联网。但目前仅支持 30 和 40 系，且显存大于 16GB 的显卡。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/002.png">
+    <img src="/blog/AI-weekly-007/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Memory and new controls for ChatGPT**](https://openai.com/blog/memory-and-new-controls-for-chatgpt)
+
+ChatGPT 上线了永久记忆功能，这些记忆的内容可以携带到多个聊天中，并且还能通过指令的方式让 ChatGPT 记住某几个信息，从而在后续的对话中使用。
+这样就能实现很多有意思的场景，比如当你让其推荐某本书时，ChatGPT 能记住你上一次看过的书籍，或者之前聊过的某些主题，从而让推荐更准确，且更个性化。
+
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/003.png">
+    <img src="/blog/AI-weekly-007/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+* [**Voice Changer**](https://elevenlabs.io/voice-changer)
+
+Elevenlabs 上线了其新的 AI 变声器，你可以上传你的录音，然后让 AI 生成不同的声音，比如将男声转为女声。我认为在游戏领域应该很有市场。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-007/005.png">
+    <img src="/blog/AI-weekly-007/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+
+
+
+
+
+
+

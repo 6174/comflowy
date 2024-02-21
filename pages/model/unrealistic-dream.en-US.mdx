@@ -1,0 +1,63 @@
+---
+title: Unrealistic Dream
+image: /model/embedding/unrealistic-dream.png
+tag: Embedding
+size: 111.85 KB
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Unrealistic Dream
+
+<ModelDetailCard 
+  Name={<span>Unrealistic Dream</span>}
+  Image={"/model/embedding//unrealistic-dream-modelimg.png"}
+  Uploaded={<span>May 22, 2023</span>}
+  Type={<span>Embedding</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>Portraits</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/77173?type=Model&format=PickleTensor"}
+  Size={"111.85 KB"}
+/>
+
+### Comflowy Review
+
+The embedding model for negative prompts, crafted by the DreamShaper author, can be used in conjunction with BadDream.
+
+### Best Practices
+Simply enter embedding:UnrealisticDream in the Negative Prompt to use it.
+
+If you want to adjust the weight, add it after the embedding, for example, embedding:UnrealisticDream:0.5.
+
+
+### Creator's sample images
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/embedding/002.png">
+    <img src="/model/embedding/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 
+```plaintext
+photography of caucasian man
+```
+* **Negative Prompt:** 
+```plaintext
+BadDream, (UnrealisticDream:1.2)
+```
+* **Batch Size:** 512x704
+* **KSampler:**
+  * Steps: 30
+  * Seed: 94858145
+  * Sampler: DPM++ SDE
+  * Scheduler: Karras
+  * CFG scale: 9
+  * Denoising: 0.4

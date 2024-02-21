@@ -1,0 +1,63 @@
+---
+title: Unrealistic Dream
+image: /model/embedding/unrealistic-dream.png
+tag: Embedding
+size: 111.85 KB
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Unrealistic Dream
+
+<ModelDetailCard 
+  Name={<span>Unrealistic Dream</span>}
+  Image={"/model/embedding//unrealistic-dream-modelimg.png"}
+  Uploaded={<span>May 22, 2023</span>}
+  Type={<span>Embedding</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>人像</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/77173?type=Model&format=PickleTensor"}
+  Size={"111.85 KB"}
+/>
+
+### 编辑评语
+
+DreamShaper 作者制作的负面 prompt 的 embedding，你可以配合 BadDream 一起使用。
+
+### 最佳实践
+
+直接在 Negative Prompt 中输入 embedding:UnrealisticDream 即可使用。
+
+如果想要调整权重则在后面加上权重，例如 embedding:UnrealisticDream:0.5。
+
+### 作者样张
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/embedding/002.png">
+    <img src="/model/embedding/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 
+```plaintext
+photography of caucasian man
+```
+* **Negative Prompt:** 
+```plaintext
+BadDream, (UnrealisticDream:1.2)
+```
+* **Batch Size:** 512x704
+* **KSampler:**
+  * Steps: 30
+  * Seed: 94858145
+  * Sampler: DPM++ SDE
+  * Scheduler: Karras
+  * CFG scale: 9
+  * Denoising: 0.4

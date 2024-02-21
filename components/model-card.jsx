@@ -1,14 +1,17 @@
-import { Cards } from 'nextra/components'
-import {PageCard}  from './blog-card'
+import {Cards} from './model-cards';
+import { useRouter } from "next/router";
+import matter from 'gray-matter';
 
-export default function ModelCards() {
+export default function ModelCard({ pageData }) {
   return (
-    <div>
-      <Cards className="mb-10">
-        <PageCard 
-          pagesUnderRoute={"/model"}
-        />
-      </Cards>
+    <div className="mt-4">
+      <Cards 
+        image={pageData.frontMatter?.image} 
+        title={pageData.meta?.title || pageData.frontMatter?.title || pageData.name} 
+        href={pageData.path}
+        tag={pageData.frontMatter?.tag}
+        size={pageData.frontMatter?.size || "Unknown"}
+      />
     </div>
   );
 }

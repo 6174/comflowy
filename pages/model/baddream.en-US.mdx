@@ -1,0 +1,63 @@
+---
+title: BadDream
+image: /model/embedding/baddream.png
+tag: Embedding
+size: 207.85 KB
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# BadDream
+
+<ModelDetailCard 
+  Name={<span>BadDream</span>}
+  Image={"/model/embedding/baddream-modelimg.png"}
+  Uploaded={<span>May 22, 2023</span>}
+  Type={<span>Embedding</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>Portraits</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/77169?type=Model&format=PickleTensor"}
+  Size={"207.85 KB"}
+/>
+
+### Comflowy Review
+
+The negative prompt embedding model created by the DreamShaper author can be used if you don't want to input a long list of negative prompts; simply use this embedding.
+
+### Best Practices
+
+Simply enter embedding:BadDream in the Negative Prompt to use it.
+
+If you want to adjust the weight, add it after the embedding, for example, embedding:BadDream:0.5.
+
+### Creator's sample images
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/embedding/001.png">
+    <img src="/model/embedding/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 
+```plaintext
+8k portrait of beautiful cyborg with brown hair, intricate, elegant, highly detailed, majestic, digital photography, art by artgerm and ruan jia and greg rutkowski surreal painting gold butterfly filigree, broken glass, (masterpiece, sidelighting, finely detailed beautiful eyes: 1.2), hdr,
+```
+* **Negative Prompt:** 
+```plaintext
+BadDream UnrealisticDream
+```
+* **Batch Size:** 512x704
+* **KSampler:**
+  * Steps: 25
+  * Seed: 132340231
+  * Sampler: DPM++ SDE
+  * Scheduler: Karras
+  * CFG scale: 7
+  * Denoising: 0.5

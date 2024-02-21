@@ -1,0 +1,108 @@
+---
+date: February 13th, 2024
+image: /blog/ten-loras-worth-downloading/banner.png
+---
+
+import { Steps, Callout } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {Cards} from '../../components/model-cards';
+
+# 10 LoRAs Worth Downloading
+
+In the tutorial for LoRA, I mentioned an analogy: "LoRA is like a camera filter for photographs." Although this helps you better understand what LoRA is, it doesn't end there. It can do much more. In this article, I will recommend 10 LoRA models that I think are worth downloading. Some can help you generate images with special styles (similar to photography filters), and others can help you create images with richer details.
+
+## Special Styles
+First, I recommend a few models that I believe can help you create images with special styles. The first one is the recently popular Pixel Art style. There are two models, one for SD 1.5 and the other for SDXL 1.0 versions of the Pixel Art style LoRA model. You can choose one according to your needs.
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/lora/pixel-art-style.png"}
+      title={"Pixel Art Style"}
+      href={"/model/pixel-art-style"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/pixel-art-xl.png"}
+      title={"Pixel Art XL"}
+      href={"/model/pixel-art-xl"}
+      tag={"LoRA"}
+    />
+  </div>
+}
+
+Next, I want to recommend some LoRA models that I find to have quite unique artistic styles. These include the Moxin, which features an ancient Chinese national painting style, the 3D Rendering Style for a 3D look, and FilmGirl, which can give your images a film-style appearance.
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/lora/moxin.png"}
+      title={"Moxin"}
+      href={"/model/moxin"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/3d-rendering-style.png"}
+      title={"3D Rendering Style"}
+      href={"/model/3d-rendering-style"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/filmgirl.png"}
+      title={"FilmGirl"}
+      href={"/model/filmgirl"}
+      tag={"LoRA"}
+    />
+  </div>
+}
+
+## Enriching Image Details
+
+The second category of LoRA models I want to recommend is those that enrich the details in images, the Detail LoRA. These models can help you add more detail to your images, such as making the skin texture of characters clearer and more intricate. You can even reduce the detail in images by adjusting the LoRA weights, allowing you to create images with a minimalist style.
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/lora/detail-tweaker.png"}
+      title={"Detail Tweaker"}
+      href={"/model/detail-tweaker"}
+      tag={"LoRA"}
+    />
+    <Cards 
+      image={"/model/lora/add-more-details.png"}
+      title={"Add More Details"}
+      href={"/model/add-more-details"}
+      tag={"LoRA"}
+    />
+  </div>
+}
+
+## Speeding Up Image Generation
+
+The last type of commonly used LoRA is the one that speeds up image generation. I typically use this on SDXL as it takes longer to generate images; using LCM LoRA can save quite a bit of time.
+
+You might ask why not use the faster SDXL Turbo. The main reason is that while SDXL Turbo speeds up the image generation process, it also reduces the image quality. LCM may not be as fast as Turbo, but it produces higher quality images.
+
+I recommend you use the LCM model released by the LCM paper's authors. I introduced this model in my LoRA tutorial, where I also explained how to build an LCM LoRA workflow. Beyond the official LCM model, I'd like to suggest another model called TurboMix, which is an LCM model based on a mix with SDXL Turbo. When used in conjunction with the fine-tuned SDXL model from the same author, the results are even better.
+
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/comfyui-lora/cardbanner.png"}
+      title={"LoRA"}
+      href={"../basics/lora"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/model/lora/lcm-and-turbomix.png"}
+      title={"LCM&TurboMix"}
+      href={"/model/lcm-and-turbomix"}
+      tag={"LoRA"}
+    />
+  </div>
+}

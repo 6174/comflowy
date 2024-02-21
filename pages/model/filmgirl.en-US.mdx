@@ -1,0 +1,60 @@
+---
+title: FilmGirl
+image: /model/lora/filmgirl.png
+tag: LoRA
+size: 144.11 MB
+---
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# FilmGirl
+
+<ModelDetailCard 
+  Name={<span>3FilmGirl</span>}
+  Image={"/model/lora/filmgirl-modelimg.png"}
+  Uploaded={<span>Jul 8, 2023</span>}
+  Type={<span>LoRA</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/LEOSAM">LEOSAM</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>Portrait-related content.</span>}
+  Score={"8"}
+  Downloadlink={"https://civitai.com/api/download/models/112969?type=Model&format=SafeTensor"}
+  Size={"144.11 MB"}
+/>
+
+### Comflowy Review
+This LoRA was created by LEOSAM, the author of the SDXL model Hello World SDXL that I recommended. However, this LoRA is not for SDXL but rather for SD 1.5 😂
+
+But you can use it together with the MajicMIX Realistic model that I recommend, and the film-like quality of the images produced together is very good.
+
+### Best Practices
+* LoRA weight: 0.5 ~ 0.7
+* CFG: 6 ~ 7
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/lora/007.png">
+    <img src="/model/lora/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 
+```plaintext
+<lora:FilmVelvia3:0.6>, 1girl, Textured garments, poised poise, dramatic angles, geometric shapes, contrasts of light and shadow, slick futurism, avant-garde styling, high-tech backdrop, crisp lines, ultra-high resolution
+```
+* **Negative Prompt:** 
+```plaintext
+((worst quality, low quality), bad_pictures, negative_hand-neg:1.2),
+```
+* **Batch Size:** 512x832
+* **KSampler:**
+  * Steps: 27
+  * Seed: 970000565
+  * Sampler: DPM++ 2M
+  * Scheduler: Karras
+  * CFG scale: 7
+  * Denoising: 0.4

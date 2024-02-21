@@ -1,0 +1,176 @@
+import { Steps, Callout } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {Cards} from '../../components/model-cards';
+
+# Getting Started with Comflowy
+
+This article will quickly introduce you to how to use Comflowy.
+
+## ① Installation
+
+First, you need to install Comflowy or ComfyUI. You can refer to the following sections to learn how to install Comflowy or ComfyUI:
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/install-comfyui-and-model/install-banner.png"}
+      title={"安装"}
+      href={"../preparation-for-study/install"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/blog/comflowy-faq/cardbanner.png"}
+      title={"Comflowy FAQ"}
+      href={"../blog/comflowy-faq"}
+      tag={"Tutorial"}
+    />
+  </div>
+}
+
+## ② Download the Model
+
+After completing the installation, you cannot use the product to generate images immediately. You need to download a model. Depending on your computer’s specifications, I will recommend different models.
+
+* If you have a Windows PC with less than 4GB of VRAM, or an M series MacBook with less than 16GB of memory, I recommend using Stable Diffusion v1.5 or a model fine-tuned based on it, such as DreamShaper V8.0.
+* If your computer has better specifications with more than 8GB of VRAM, or an M series MacBook with more than 16GB of memory, I would suggest using Stable Diffusion XL or a model fine-tuned based on it, such as DreamShaper XL.
+* Additionally, if you would like to learn in detail how to download and import models, you can view the tutorial in the following sections.
+
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/dream-shaper/banner.png"}
+      title={"DreamShaper V8.0"}
+      href={"/model/dream-shaper-v-8"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-xl/banner.png"}
+      title={"DreamShaper XL"}
+      href={"/model/dream-shaper-xl"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/install-comfyui-and-model/download-banner.png"}
+      title={"下载和导入模型"}
+      href={"../preparation-for-study/model"}
+      tag={"Tutorial"}
+    />
+  </div>
+}
+
+## ③ Importing the Model
+
+Once you have downloaded the model, you need to import it into a folder named 'checkpoint'. If you are using Comflowy, you can switch to the Models interface, then click on the 'Model Folder' button at the top right corner (indicated by ① in the image),
+After opening the folder, click to enter the 'checkpoint' folder inside and place the model you downloaded into it. Finally, click the 'Refresh' button (indicated by ② in the image).
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/023.png">
+      <img src="/install-comfyui-and-model/023.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## ④ Generating Your First Image
+
+After importing the model into the folder and refreshing the system, you can click on the My Workflow interface, then click the New Workflow button to enter the Workflow interface.
+Now you can select the model you downloaded earlier from the node dropdown menu on the far left (indicated by ① in the image), then click the Generate button below (indicated by ② in the image). After waiting patiently for a while, you'll see the generated image in the node on the far right (indicated by ③ in the image).
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-diffusion-foundation/009.png">
+      <img src="/stable-diffusion-foundation/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## ⑤ Advanced Learning
+
+Congratulations 🎉
+You have learned the most basic way to use Comflowy. Next, you can learn the corresponding chapters based on your own needs.
+
+However, I strongly suggest that you first learn the fundamentals of Stable Diffusion. This will give you a better understanding of the principles behind AI image generation, and you will be able to use Comflowy more effectively:
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/stable-diffusion-foundation/cardbanner.png"}
+      title={"Stable Diffusion 基础"}
+      href={"../basics/stable-diffusion-foundation"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/comfyui-foundation/cardbanner001.png"}
+      title={"Comflowy Basic ①"}
+      href={"../basics/comfyui-foundation"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/comfyui-foundation/cardbanner002.png"}
+      title={"Comflowy Basic ②"}
+      href={"../basics/basic-nodes"}
+      tag={"Tutorial"}
+    />
+  </div>
+}
+
+If you're interested in further learning about text-to-image generation techniques, you can check out the following sections:
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/stable-diffusion-prompt/cardbanner001.png"}
+      title={"SD Prompt 基础"}
+      href={"../basics/prompt"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/stable-diffusion-prompt/cardbanner002.png"}
+      title={"Embedding"}
+      href={"../basics/embedding"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/comfyui-lora/cardbanner.png"}
+      title={"LoRA"}
+      href={"../basics/lora"}
+      tag={"Tutorial"}
+    />
+  </div>
+}
+
+If you'd like to learn some image-to-image generation techniques, you can check out the following sections:
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/comfyui-img2img/cardbanner.png"}
+      title={"图生图基础"}
+      href={"../advanced/image-to-image"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/comfyui-upscale/cardbanner.png"}
+      title={"Upscale"}
+      href={"../advanced/upscale"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/comfyui-inoutpainting/banner.png"}
+      title={"In/Outpainting"}
+      href={"/advanced/in-out-painting"}
+      tag={"Tutorial"}
+    />
+    <Cards 
+      image={"/comfyui-controlnet/cardbanner.png"}
+      title={"ControlNet"}
+      href={"../advanced/controlnet"}
+      tag={"Tutorial"}
+    />
+  </div>
+}

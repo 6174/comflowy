@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import logo from '../public/logo.png'
+import { t } from 'nextra/dist/types-c8e621b7'
 
 const Vercel = ({ height = 20 }) => (
   <svg height={height} viewBox="0 0 283 64" fill="none">
@@ -44,7 +45,11 @@ export default {
     prev: true,
     next: true,
   },
-  darkMode: true,
+  darkMode: false,
+  nextThemes: {
+    defaultTheme: 'dark',
+    forcedTheme: 'dark',
+  },
   footer: {
     text: () => {
       return (
@@ -80,7 +85,7 @@ export default {
     const { locale } = useRouter()
     return (
       <div style={{position: "relative", left: -4, "display": "flex"}}>
-        <img src="/logo.png" width="26" height="26" />
+        <img src="/logo.png" width="28" height="28" />
         <span className="text-pretty text-xl max-[480px]:text-sm" style={{ marginLeft: '.4em', fontWeight: 800 }}>
           {TITLE[locale]}
         </span>

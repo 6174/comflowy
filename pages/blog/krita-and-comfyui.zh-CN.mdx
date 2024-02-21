@@ -1,0 +1,133 @@
+---
+date: January 31th, 2024
+image: /blog/krita-and-comfyui/banner.png
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何将 ComfyUI 应用于室内设计 ②
+上期，我们深入了剖析了 ComfyUI 在室内设计领域的创新应用，解锁设计的新可能。本期，我们将继续这一探索，聚焦于更适合室内设计的实时生图工具。
+
+在我们的 AI  Newsletter [AI Weekly 004](/blog/AI-Weekly-004) 中，我们介绍过 Krea 的实时渲染和视觉化功能，简单的笔刷操作便能生成令人惊叹的效果图，也能实现在特定的背景中增添素材，但它不是一个免费的产品，每月需要 24$。很多人在 ComfyUI 里实现过类似的效果，但其用户体验相对比较糟糕。
+
+本篇博客我将介绍一个免费，无需注册，且体验更好的方法—— Krita + ComfyUI。并且 Krita 还有更强大的画笔系统、高级图层管理功能，能方便地对图片进行二次处理。
+
+## 如何在 Krita 安装 ComfyUI？
+### 下载 Krita 插件
+1. 首先介绍下如何安装。第一步，你需要下载 Krita，登录官网 [Krita](https://krita.org/en/)，点击 GETKRITA NOW 下载 Krita，选择 Windows installer 64-bit。
+2. 安装好后，进入 Krita 的 [GitHub](https://github.com/Acly/krita-ai-diffusion?tab=readme-ov-file)，在 Generative AI for Krita 标题下点击 Download，下载 Download krita ai diffusion-1.13.1.zip。将 Download krita ai diffusion-1.13.1.zip 解压到 krita 下的 pykrita 目录中。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/001.png">
+      <img src="/blog/krita-and-comfyui/001.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+3. 打开 Krita，新建一个画布，在菜单栏找到设置，配置 Krita，下拉在最后一个选项中找到 Python 插件管理，点击勾选上 AI Image Diffusion 后点击确认。
+4. 再在设置中找到面板列表，勾选 AI Image Generation，可以看到 AI 插件就出现在右侧的窗口了。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/002.png">
+      <img src="/blog/krita-and-comfyui/002.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+5. 点击插件中的 Configure ,勾选 Connect to external Server 保存设置。
+6. 最后打开 ComfyUI，在运行面板中找到 URL 地址，例如：http://127.0.0.1:8188，在 Krita 连接时保持一致，写入：127.0.0.1:8188，便可连接成功。简单介绍下这里需要关注的点：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/003.png">
+      <img src="/blog/krita-and-comfyui/003.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+
+### 可能遇见的问题
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/005.png">
+      <img src="/blog/krita-and-comfyui/005.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+- ComfyUI 缺少插件：如果你缺少插件，在 Krita 输入 ComfyUI 的 URL 地址会提示报错。比如说，这里提示我缺少一个 tooling node 插件，同时给了一个下载链接，这时只需将链接复制到浏览器，下载插件并放到指定的文件夹就可以了。
+- ComfyUI 缺少模型：在解决完插件问题后，Krita 又提示我缺少模型，这时只需要复制这些模型的名称到浏览器，在 GitHub 上下载这些模型并放进指定文件夹，如果你的 ComfyUI 中缺少某个文件夹可以按指令新建，不影响运行。
+
+例如这条报错信息：
+> Error: Could not find Upscaler model 4x_NMKD-Superscale-SP_178000_G.pth, OmniSR_X2_DIV2K.safetensors, OmniSR_X3_DIV2K.safetensors, OmniSR_X4_DIV2K.safetensors. Make sure to download the model and place it in the ComfyUI/models/upscale_models folder.
+
+这里提示我缺少 4x_NMKD-Superscale-SP_178000_G.pth, OmniSR_X2_DIV2K.safetensors, OmniSR_X3_DIV2K.safetensors, OmniSR_X4_DIV2K.safetensors 这四个模型，我在浏览器上分别找到了它们的地址，下载之后放入 ComfyUl/models/upscale models 文件夹就可以了。如果你有遇到相似的问题，也可以这样解决。如果不知道怎样下载和导入模型，可以查看 Comflowy 的[下载导入教程](../preparation-for-study/model)。
+
+## 家具组合效果图
+如果你是室内设计师，平时肯定少不了与客户沟通装修的细节，但在设计之初，我们在跟客户沟通房子布局，风格，或家具选择上只能通过语言表达，或者给他们之前的效果图作为参考。可这对于不懂设计的客户来说，房子格局不同，陈设也不一定是自己喜欢的，很难将自己的房子代入进别人的效果图。如果有办法在初步沟通的时候，就能让客户看到自己房子大致的装修效果，会不会事半功倍呢？
+
+答案是肯定的，在传统设计流程中，设计师要经历画 CAD 草图，建模，渲染效果图等步骤，时间长，任务重，修改的成本也很高，耗时耗力。而 Krita 能帮助我们更加高效的完成这些工作，只需要将喜欢的家具拼贴进毛坯房，A 它就能帮你生成一张高质量的效果图。完美解决在设计之初客户“提前看效果图”的问题，如果在这个过程中，你想更换设计风格，也只需要添加自己的 LoRA 去调整，省时省力。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/006.png">
+      <img src="/blog/krita-and-comfyui/006.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+
+为了更直观的展示 Krita 的效果，我仅仅是复制了沙发的家具图片贴进毛坯房，就已经生成很和谐的效果图。
+
+**具体可以参考以下的步骤：**
+1. 首先在左侧拖入一张实体毛坯房，同时新建一个图层，按住 T 选中，同时 Ctrl 加 T 可以进行一些缩放的变换，右侧便有实时效果图在生成，通过改变权重来改变图片的生成效果，越往左侧拖跟我们输入的图像越接近，越往右侧，它的发散效果越强。
+2. 通过 Pinterest 等网站去找一些家具模型素材，截图复制粘贴，进行大小快速编辑，便可在右侧实时看到效果图。
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/007.png">
+      <img src="/blog/krita-and-comfyui/007.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+- 为了达到更好的效果，拼贴进工作框的图片需要将多余的部分抠掉，调整它符合空间透视，大小比例符合现实。你可以更改图片的透明度和图层，比如说窗帘可以把它变得更加清透，地毯、沙发、桌子的关系可以通过更改图层实现。
+- 拖拉 Strength 值或者更改 LoRA 模型，还可以在这个基础上进行二次创作。
+
+## 白板绘制
+如果你没有现场的资料图，又想生成设计效果图，Krita 能够实现在工作白板上绘制草图生成效果图，通过笔刷绘制一个空间，与客户沟通设计思路的同时，把这个空间里所需要陈设画出来，并写好提示词，生成的效果图有不满意的地方可以用橡皮擦工具局部修改，也能实现让客户“提前看效果图”的需要。
+
+如果想要固定的风格，还可以在 style 下添加 LoRA 模型，上期我们在[如何将 ComfyUI 应用于室内设计①](../blog/generate-interior-design-renderings)中介绍了几个适合室内设计的 LoRA 模型，可以尝试一下效果。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/banner.png">
+      <img src="/blog/krita-and-comfyui/banner.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+在这里，我输入提示词：室内设计，客厅，电视，沙发，窗户，温馨明亮等来告诉它我想生成的场景，并加入了一个奶油风的 LoRA 模型。在左侧面板上用画笔工具画了一个简单的客厅场景，可以看到 Krita 帮我生成了一个细节很丰富的效果图。
+
+**具体可以参考以下的步骤：**
+1. 面板左边绘制空间整体的草图，完成后点击右侧 Generate（图中 1）生成效果图，调整 Strength 值（图中 2）。
+2. 如果有局部不满意，可以橡皮擦（图中 3）擦除重绘，再生成。
+
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/009.png">
+      <img src="/blog/krita-and-comfyui/009.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+3. 除此以外，还可以将模式改为 Live，出现三角符号代表切换成功了，点击运行的三角符号，输入提示词，将模型改为 scribble，就可以开始绘制了。
+8. 点击右上角的骰子，可以刷新图片，点击骰子上面的齿轮，打开设置，在 style 里面可以设置默认的正负向提示词以及 LoRA，VAE 等，设置完这些便可开心的实时绘画了。
+
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/008.png">
+      <img src="/blog/krita-and-comfyui/008.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+在室内设计中，简单的直线表现室内空间，生成的窗户，电视，窗帘不管是材质还是真实度都很高，整体的颜色也很统一。同时也需要注意，在绘制家具的时候也要注意大小比例，这样生成的效果图更符合生活情景。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/010.png">
+      <img src="/blog/krita-and-comfyui/010.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+
+### 可能遇到的问题
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/krita-and-comfyui/011.png">
+      <img src="/blog/krita-and-comfyui/011.png" alt=""/>
+  </PhotoView>
+</PhotoProvider>
+1. 在绘制涂鸦的时候发现右侧生成的并不是效果图，这时需要将框选的部分选为 scribble，此时 Krita 提示没有 ControlNet 的模型。你只需要点击[这里](https://huggingface.co/lllyasviel/ControlNet/blob/main/models/control_sd15_scribble.pth)下载即可。最后放到 ComfyUI\models\controlnet 文件夹就可以了。
+2. 注意将下载的模型文件名重命名为 Krita 可以运行的名称：control_v11p_sd15_scribble，放入文件夹后重启 ComfyUI 和 Krita，这样 scribble 就可以在 Krita 里面使用了。
+## 总结
+ComfyUI 在室内设计领域的应用及其潜力绝不止如此，如果你也对它感兴趣的话，体验它是如何革新设计流程的，敬请访问 [Comflowy](https://www.comflowy.com) 。在那里，你将发现更多的应用案例，和详细的 ComfyUI 使用指南。
+
+<Subscribe />
+
+

@@ -4,7 +4,7 @@ import 'nextra-theme-docs/style.css'
 import "../styles/global.scss";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
-export default function Nextra({ Component, pageProps }: AppProps) {
+export default function App ({ Component, pageProps }) {
   return (
     <>
       <GoogleAnalytics strategy="lazyOnload" />
