@@ -46,7 +46,7 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
       },
       {
         image: animecharacters001.src,
-        title: "Anime Characters 001",
+        title: "Turn anime characters into real people",
         url: "https://www.comflowy.com/blog/generate-anime-characters",
         tag: "blog"
       },
