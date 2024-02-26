@@ -20,7 +20,7 @@ import controlnetadvanced from 'public/thumbnails-v2/controlnet-advanced.png';
 import swapFaces from 'public/thumbnails-v2/swap-faces.png';
 import interiorDesign from 'public/thumbnails-v2/interior-design.png';
 import generateAppLogo from 'public/thumbnails-v2/generate-app-logo.png';
-import anime-characters-001 from 'public/thumbnails-v2/anime-characters-001.png';
+import animecharacters001 from 'public/thumbnails-v2/anime-characters-001.png';
 
 
 const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
@@ -45,7 +45,7 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
         tag: "blog"
       },
       {
-        image: anime-characters-001.src,
+        image: animecharacters001.src,
         title: "Anime Characters 001",
         url: "https://www.comflowy.com/blog/generate-anime-characters",
         tag: "blog"
