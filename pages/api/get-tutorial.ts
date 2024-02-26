@@ -17,11 +17,39 @@ import inoutpainting from 'public/thumbnails-v2/in-out-painting.png';
 import controlnet from 'public/thumbnails-v2/controlnet.png';
 import stablediffusionadvanced from 'public/thumbnails-v2/stable-diffusion-advanced.png';
 import controlnetadvanced from 'public/thumbnails-v2/controlnet-advanced.png';
+import swapFaces from 'public/thumbnails-v2/swap-faces.png';
+import interiorDesign from 'public/thumbnails-v2/interior-design.png';
+import generateAppLogo from 'public/thumbnails-v2/generate-app-logo.png';
+import anime-characters-001 from 'public/thumbnails-v2/anime-characters-001.png';
 
 
 const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
   try {
     const data = [
+      {
+        image: swapFaces.src,
+        title: "Swap Faces",
+        url: "https://www.comflowy.com/blog/face-swap",
+        tag: "blog"
+      },
+      {
+        image: interiorDesign.src,
+        title: "Interior Design",
+        url: "https://www.comflowy.com/blog/generate-interior-design-renderings",
+        tag: "blog"
+      },
+      {
+        image: generateAppLogo.src,
+        title: "Generate App Logo",
+        url: "https://www.comflowy.com/blog/generate-app-logo",
+        tag: "blog"
+      },
+      {
+        image: anime-characters-001.src,
+        title: "Anime Characters 001",
+        url: "https://www.comflowy.com/blog/generate-anime-characters",
+        tag: "blog"
+      },
       {
         image: choosemodel.src,
         title: "How to choose the right model?",
