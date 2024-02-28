@@ -1,0 +1,123 @@
+---
+date: February 27th, 2024
+image: /blog/generate-anime-characters/banner.png
+title: 如何使用 ComfyUI 将动漫人物生成真人 ②
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何使用 ComfyUI 将动漫人物生成真人 ②
+
+上期我们分享了这个 workflow，介绍了“如何使用 ComfyUI 将动漫人物生成真人？”本期，我们继续使用这个 workflow 做些有意思的探索，看它能否带给我们一些其他惊喜。
+
+## Canny Workflow 
+
+上期我们分享了几张将海贼王人物转为漫画人物的图片。这些我们来尝试下火影忍者，一起来看看效果如何。
+
+Prompt:
+A portrait of a girl with orange eyes,yellow ponytail, wearing a green Japanese style clothes., RAW photo, 4k, highres,extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic lifelike texture, dramatic lighting,unrealengine, trending on artstation, cinestill 800 tungsten,high quality, sharp focus,8k uhd, absurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/010.png">
+    <img src="/blog/generate-anime-characters/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt:
+realistic texture, A portrait of a boy with black eyes, White jacket with green trim, Japanese style, blue inner layer, white hair, RAW photo, 4k, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real,extremely detailed, amazing, fine detail, rich colors,hyperrealistic lifelike texture, dramatic lighting, unrealengine, trending on artstation, cinestill 800 tungsten, high quality,sharp focus,8k uhd, absurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/011.png">
+    <img src="/blog/generate-anime-characters/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt:
+A portrait of a girl with green eyes, pink bangs parted in themiddle, Skin is very pale, dark red top, wearing red Highneck sleeveless blouse,Japanese style, RAW photo, 4k,highres, extremely intricate, photorealistic, selective focus,best quality, photo, real, extremely detailed, amazing, finedetail, rich colors, hyperrealistic lifelike texture, dramaticlighting, unrealengine, trending on artstation, cinestil 800 tungsten, high quality, sharp focus,8k uhd, absurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/012.png">
+    <img src="/blog/generate-anime-characters/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt:
+realistic texture, A portrait of a boy with black eyes, blue jacket, blue hair, blue and silver metal headband, RAWphoto, 4k, highres, extremely intricate, photorealistic,selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic lifelike texture,dramatic lighting, unrealengine, trending on artstation, cinestill 800 tungsten, high quality, sharp focus,8k uhdabsurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/013.png">
+    <img src="/blog/generate-anime-characters/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这个 workflow 除了能将动漫人物转成真人外，你还可以尝试切换 checkpoint 模型，或者加入 LoRA 节点，这样你就可以生成更不一样的图片了。
+比如，你可以将动漫人物生成 3D 质感的图片。我在试用多个生成 3D 的模型后，各个对比了下，认为 [3D Animation Diffusion](https://civitai.com/models/118086/3d-animation-diffusion) 模型生成的效果最好。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/014.png">
+    <img src="/blog/generate-anime-characters/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+以下是两张我尝试生成的 3D 图片，你可以看看效果如何：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/015.png">
+    <img src="/blog/generate-anime-characters/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/016.png">
+    <img src="/blog/generate-anime-characters/016.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## Canny + LoRA Workflow 
+
+另外，你也可以尝试将 Canny 和 LoRA 一起使用，这样你就可以升成更多风格的图片了。并且你还可以换个思路，尝试将真人换成动漫人物，看看效果如何。比如，可以使用 LineArt 效果的 LoRA
+将真人转换成铅笔画风格的动漫人物：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/017.jpeg">
+    <img src="/blog/generate-anime-characters/017.jpeg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+调整参数和 prompt 还能生成带主题颜色的图片：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/018.png">
+    <img src="/blog/generate-anime-characters/018.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+亦或者使用 [Niji Default style](https://civitai.com/models/95007/niji-default-style-niji) LoRA, 将真人生成明亮色彩风格的动漫人物：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/019.png">
+    <img src="/blog/generate-anime-characters/019.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+最后再推荐一个叫 [From Below | Low Angle Shot](https://civitai.com/models/287958/from-below-or-low-angle-shot?modelVersionId=323858) 的能生成低角度镜头的 LoRA，生成的图片人物和环境的融合很和谐，画面氛围感很足。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/020.png">
+    <img src="/blog/generate-anime-characters/020.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+

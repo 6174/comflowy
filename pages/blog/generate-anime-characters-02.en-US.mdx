@@ -1,0 +1,121 @@
+---
+date: February 27th, 2024
+image: /blog/generate-anime-characters/banner.png
+title: How to use ComfyUI to turn anime characters into real people ②
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# How to use ComfyUI to turn anime characters into real people ②
+
+In our last session, we shared this workflow and introduced "How to use ComfyUI to turn anime characters into real people?" In this issue, we continue to use this workflow for some interesting exploration to see if it can bring us some other surprises.
+
+## Canny Workflow 
+
+Last time, we shared a few pictures that transformed characters from One Piece into comic style. This time let's try with Naruto characters and see how effective it is together.
+
+Prompt:
+A portrait of a girl with orange eyes,yellow ponytail, wearing a green Japanese style clothes., RAW photo, 4k, highres,extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic lifelike texture, dramatic lighting,unrealengine, trending on artstation, cinestill 800 tungsten,high quality, sharp focus,8k uhd, absurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/010.png">
+    <img src="/blog/generate-anime-characters/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt:
+realistic texture, A portrait of a boy with black eyes, White jacket with green trim, Japanese style, blue inner layer, white hair, RAW photo, 4k, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real,extremely detailed, amazing, fine detail, rich colors,hyperrealistic lifelike texture, dramatic lighting, unrealengine, trending on artstation, cinestill 800 tungsten, high quality,sharp focus,8k uhd, absurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/011.png">
+    <img src="/blog/generate-anime-characters/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt:
+A portrait of a girl with green eyes, pink bangs parted in themiddle, Skin is very pale, dark red top, wearing red Highneck sleeveless blouse,Japanese style, RAW photo, 4k,highres, extremely intricate, photorealistic, selective focus,best quality, photo, real, extremely detailed, amazing, finedetail, rich colors, hyperrealistic lifelike texture, dramaticlighting, unrealengine, trending on artstation, cinestil 800 tungsten, high quality, sharp focus,8k uhd, absurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/012.png">
+    <img src="/blog/generate-anime-characters/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt:
+realistic texture, A portrait of a boy with black eyes, blue jacket, blue hair, blue and silver metal headband, RAWphoto, 4k, highres, extremely intricate, photorealistic,selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic lifelike texture,dramatic lighting, unrealengine, trending on artstation, cinestill 800 tungsten, high quality, sharp focus,8k uhdabsurdres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/013.png">
+    <img src="/blog/generate-anime-characters/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In addition to converting anime characters into real people, this workflow allows you to switch checkpoint models or add LoRA nodes, enabling you to generate even more unique images.
+
+For example, you can create images of anime characters with a 3D texture. After trying out several models for generating 3D images and comparing them, I believe that the [3D Animation Diffusion](https://civitai.com/models/118086/3d-animation-diffusion) model produces the best results.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/014.png">
+    <img src="/blog/generate-anime-characters/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Here are two 3D images I tried generating; you can see for yourself how effective they are:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/015.png">
+    <img src="/blog/generate-anime-characters/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/016.png">
+    <img src="/blog/generate-anime-characters/016.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## Canny + LoRA Workflow 
+
+Additionally, you can try using Canny and LoRA together, enabling you to generate images with even more styles. Moreover, you could reverse the approach and try converting real people into anime characters to see how it works. For instance, you can use the LineArt effect LoRA to transform real people into pencil-drawn anime characters:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/017.jpeg">
+    <img src="/blog/generate-anime-characters/017.jpeg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+By adjusting parameters and prompts, you can generate images with thematic colors:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/018.png">
+    <img src="/blog/generate-anime-characters/018.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Alternatively, you can use the [Niji Default style](https://civitai.com/models/95007/niji-default-style-niji) LoRA to create anime characters with bright color styles from real people:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/019.png">
+    <img src="/blog/generate-anime-characters/019.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Finally, I recommend another LoRA called [From Below | Low Angle Shot](https://civitai.com/models/287958/from-below-or-low-angle-shot?modelVersionId=323858), which can generate low-angle shots. The images created with this feature have a harmonious blend of characters and environments, with a strong sense of atmosphere in the scenes.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-anime-characters/020.png">
+    <img src="/blog/generate-anime-characters/020.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
