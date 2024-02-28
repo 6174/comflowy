@@ -9,6 +9,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 const createLog = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { message, type } = req.body;
+    if (message.trim() === "" || type.trim() === "") {
+      throw new Error("Message and type are required");
+    }
     const ret = await fetch(process.env.TEABLE_TABLE_URL, {
       method: "POST",
       headers: {
