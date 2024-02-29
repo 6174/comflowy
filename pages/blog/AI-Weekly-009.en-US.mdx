@@ -1,0 +1,126 @@
+---
+date: February 29th, 2024
+image: /blog/AI-weekly-009/banner.png
+title: AI Weekly 009
+---
+
+# AI Weekly #009
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 🆕 What's New?
+**Product Update:**
+- Notification Center: To facilitate the debugging of workflows for everyone, we have translated common error messages from the console into readable notifications. However, at present, we have only extracted the notifications and have not yet provided solutions. We will gradually improve this feature and welcome feedback on any errors encountered.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/006.png">
+    <img src="/space/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+- Added Node Panel: To improve the efficiency of adding nodes, we have introduced a Pin feature, allowing you to pin commonly used nodes for easy access next time. Thanks to the Discord user salissalissalis for the suggestion.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/007.png">
+    <img src="/space/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+- Fixed multiple installation compatibility issues. Also optimized the installation and product launch pages, adding corresponding prompt information.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/008.png">
+    <img src="/space/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- Fixed issues with multilingual adaptation. Thanks to Discord user andyr9337 for the feedback.
+
+**New tutorials added last week:**
+- [How to use ComfyUI to turn anime characters into real people②](https://www.comflowy.com/blog/generate-anime-characters-02)
+
+## 🤩  Weekly‘s AI highlights
+
+### 📄 Noteworthy papers and technic
+
+* [**OpenCodeInterpreter**](https://arxiv.org/abs/2402.14658)
+
+OpenCodeInterpreter is an innovative code interpreter that, compared to traditional interpreters, has the unique ability not only to generate code but also to learn and iteratively improve based on human feedback in order to produce code of higher quality that more closely meets user needs. A highlight of the OpenCodeInterpreter is its capability to execute the code it generates to verify if it runs as expected and to detect any potential errors or anomalies. Especially after the integration of GPT-4 and human feedback, OpenCodeInterpreter has displayed outstanding performance across multiple key performance benchmarks, rivaling GPT-4 and even surpassing it in terms of code accuracy and iterative refinement ability.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/001.png">
+    <img src="/blog/AI-weekly-009/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Differential Diffusion**](https://differential-diffusion.github.io/paper.pdf)
+
+Differential Diffusion is an innovative image editing framework that allows users to precisely control the degree of editing for every part of an image, achieving fine adjustments from regional to pixel level. This method not only enables the specification of areas and intensity of change but also opens up possibilities for demonstrating complex transformations (such as seasonal changes) within a single image. It greatly extends the capabilities of image editing, supporting smooth transitions, local feature enhancement or weakening, providing users with more complex and layered editing effects.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/002.png">
+    <img src="/blog/AI-weekly-009/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Aria**](https://www.projectaria.com/datasets/aea/)
+
+Aria is a multimodal open dataset developed by Meta based on the Project Aria AR glasses, containing 143 sequences of daily activities recorded across five geographical locations. These recordings include multimodal sensor data and machine perception data, such as 3D trajectories, point clouds, gaze vectors, and speech transcriptions, offering a rich source of perceptual information and data support for AI and AR research.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/003.png">
+    <img src="/blog/AI-weekly-009/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**UMI**]( https://umi-gripper.github.io/umi.pdf)
+
+UMI is a robotic learning framework developed by Stanford University that allows the collection of manipulation skills directly from human demonstration using a handheld gripper, thus teaching robots new tasks without the need for complex programming. The framework includes interfaces designed for strategy learning, such as inference time delay matching and relative trajectory action representation, allowing strategies to be deployed across robot platforms. UMI provides a portable, intuitive, and low-cost way, specifically designed to handle traditional remote-control challenges such as dynamic manipulation, precise control, bimanual tasks, and long-term perspectives.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/004.png">
+    <img src="/blog/AI-weekly-009/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**LongRoPE**](https://arxiv.org/abs/2402.13753)
+
+Microsoft's LongRoPE technology innovatively expands the context window of large language models to over two million tokens, enabling an efficient fine-tuning process that can be completed in a maximum of 1000 steps, from short to long contexts. This advancement not only reduces training costs and time but also maintains short-context performance while enhancing the capability to process long texts through non-uniform positional interpolation and a progressive expansion strategy. LongRoPE's dynamic adjustment strategy further ensures model performance across different text lengths, providing strong support for handling complex long-text tasks.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/005.png">
+    <img src="/blog/AI-weekly-009/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+* [**Stable Video**](https://www.stablevideo.com/)
+
+Stability AI recently launched its Stable Video official website, a platform that supports the creation of videos from uploaded images and text prompts. According to the demonstration video on the official website, the quality of the generated videos is very high and could become a strong competitor to Runway. This platform also allows users to control the video generation process through camera movements, adding to the flexibility and control of the creative process. Users receive 150 free credits daily, where image generation costs 10 credits and text generation costs 11 credits. Charging options include 500 credits for $10 to generate about 50 videos and 3000 credits for $50 to generate about 300 videos.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/006.png">
+    <img src="/blog/AI-weekly-009/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Ideogram 1.0**](https://about.ideogram.ai/1.0)
+
+Ideogram 1.0 is the latest launched text-to-image model on the market, with its most significant difference being its text rendering capability. It can produce complexly formatted text images, and the image quality is also very high. The product is now in development testing, and interested friends can apply for a trial on the official website.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/007.png">
+    <img src="/blog/AI-weekly-009/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**LTX Studio**](https://ltx.studio/)
+
+LTX Studio is a newly launched text-to-video product that, judging from the product introduction video, has very strong features. But to be honest, I think the concept is well-promoted, yet the actual use may not be as good as expected.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/008.png">
+    <img src="/blog/AI-weekly-009/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+<Subscribe />

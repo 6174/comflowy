@@ -1,0 +1,128 @@
+---
+date: February 29th, 2024
+image: /blog/AI-weekly-009/banner.png
+title: AI Weekly 009
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 009
+
+## 🆕 更新了什么？
+**产品更新：**
+- 通知中心：为了方便大家调试 workflow，我们将控制台中常见的错误信息转换成了可读的通知。不过目前仅将通知进行了抽取，还没有进一步给出解决方案，后续会逐步完善。也欢迎各位向我们反馈遇到的报错。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/006.png">
+    <img src="/space/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+- 添加节点面板：为了提到添加节点的效率，我们提供了 Pin 功能，你可以将常用的节点 Pin 住，方便下次使用。感谢 Discord 用户 salissalissalis 的建议。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/007.png">
+    <img src="/space/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+- 修复了多个安装适配问题。同时优化了安装和启动产品页面，并增加了对应的提示信息。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/008.png">
+    <img src="/space/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- 修复了多语言适配问题，感谢 Discord 用户 andyr9337 的反馈。
+
+**新增教程：**
+- [如何使用 ComfyUI 将漫画人物生成真人 ②](https://www.comflowy.com/blog/generate-anime-characters-02)
+
+## 🤩 每周 AI 精选
+
+### 📄 值得关注的论文 & 技术
+
+* [**OpenCodeInterpreter**](https://arxiv.org/abs/2402.14658)
+
+OpenCodeInterpreter 是一款创新的代码解释器，与传统解释器相比，它的独特之处在于能够不仅生成代码，还能基于人类反馈进行学习和循环改进，从而产出更高质量且更贴近用户需求的代码。它的一大亮点是能够执行所生成的代码，以验证代码是否能够按预期运行，同时检测任何可能的错误或异常。特别是在融入了 GPT-4 及人类反馈后，OpenCodeInterpreter 在多个关键性能基准测试中展现了卓越的性能，不仅匹敌 GPT-4，甚至在代码准确性和迭代细化能力方面超越了 GPT-4。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/001.png">
+    <img src="/blog/AI-weekly-009/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Differential Diffusion**](https://differential-diffusion.github.io/paper.pdf)
+
+Differential Diffusion 是一个创新的图像编辑框架，允许用户精确控制图像每一部分的编辑程度，实现从区域到像素级别的精细调整。这种方法不仅能指定变化区域和强度，还开启了在单张图中展示复杂变化（如四季变换）的可能性。它极大地扩展了图像编辑的能力，支持平滑过渡、局部特征强化或减弱，为用户提供了更复杂和层次化的编辑效果。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/002.png">
+    <img src="/blog/AI-weekly-009/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Aria**](https://www.projectaria.com/datasets/aea/)
+
+Aria 是 Meta 开发的基于 Project Aria AR 眼镜的多模态开放数据集，包含 143 个在五个地理位置记录的日常活动序列。这些记录包括多模态传感器和机器感知数据，如 3D 轨迹、点云、眼动向量和语音转写，为 AI 和 AR 研究提供了丰富的感知信息和数据支持。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/003.png">
+    <img src="/blog/AI-weekly-009/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+* [**UMI**]( https://umi-gripper.github.io/umi.pdf)
+
+UMI 是由斯坦福大学开发的机器人学习框架，它允许通过手持式夹持器直接从人类演示中收集操作技能，从而无需复杂编程即可教会机器人新任务。该框架包含了为策略学习设计的接口，如推理时延匹配和相对轨迹动作表示，使得策略可以跨机器人平台部署。UMI 提供了一个便携、直观且低成本的方式，专为处理如动态操作、精确控制、双手任务和长期视角等传统遥控难题而设计。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/004.png">
+    <img src="/blog/AI-weekly-009/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+* [**LongRoPE**](https://arxiv.org/abs/2402.13753)
+
+微软的 LongRoPE 技术创新地将大型语言模型的上下文窗口扩展至超过 200 万令牌，实现了高效的微调过程，仅需最多 1000 步即可完成从短至长上下文的转换。这一进展不仅降低了训练成本和时间，还通过非均匀位置插值和渐进式扩展策略，保持了短上下文性能，同时提高了处理长文本的能力。LongRoPE 的动态调整策略进一步保证了模型在不同文本长度下的性能，为处理复杂长文本任务提供了强大的支持。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/005.png">
+    <img src="/blog/AI-weekly-009/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+* [**Stable Video**](https://www.stablevideo.com/)
+
+Stability AI 最近推出了其 Stable Video 官方网站，这是一个支持用户上传图片和文字提示来生成视频的平台。根据官网的演示视频，生成的视频质量非常高，可能成为 Runway 的强劲竞争者。该平台还允许用户通过相机运动来控制视频的生成过程，增加了创作的灵活性和控制度。用户每日可获得 150 个免费积分，其中图片生成消耗 10 个积分，文本生成消耗 11 个积分。充值选项包括 500 积分售价 10 美元，可用于生成约 50 个视频；3000 积分售价 50 美元，可用于生成约 300 个视频。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/006.png">
+    <img src="/blog/AI-weekly-009/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**Ideogram 1.0**](https://about.ideogram.ai/1.0)
+
+这一款最新推出的文生图模型，与目前市面上的模型最大的不同是其文字绘制能力。能生成不少复杂排版的文字图像，而且生成的图像质量也非常高。产品现在已经开发测试，感兴趣的朋友可以去官网申请试用。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/007.png">
+    <img src="/blog/AI-weekly-009/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+* [**LTX Studio**](https://ltx.studio/)
+
+这是一款最新推出的文生视频产品，从产品介绍视频来看，产品功能非常强大。但坦率说来，我认为概念宣传很好，但真实使用可能效果不会像预期那样好。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-009/008.png">
+    <img src="/blog/AI-weekly-009/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+
+
+<Subscribe />
