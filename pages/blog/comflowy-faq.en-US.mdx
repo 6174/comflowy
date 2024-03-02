@@ -16,6 +16,8 @@ import Subscribe from "components/subscribtion";
 - Using
   - [Missing Model Files in Model Folder](#missing-model-files-in-model-folder)
   - [Multiple Different Base Models](#multiple-different-base-models)
+- Extension
+  - [Installation Failure](#installation-failure)
 
 ## Installation
 
@@ -106,3 +108,25 @@ This is a case of using model files from multiple different base models. In such
     <img src="/blog/comflowy-faq/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
+
+## Extension
+
+### Installation Failure
+
+The majority of issues related to extensions are due to installation failures. There are many reasons for installation failures, but the most common is the computer lacking some dependent libraries. Typically, you will see an error message that states "No module named":
+
+```bash
+Cannot import D:/Program/ComfyUI/custom_nodes/ComfyUI_InstantID module for custom nodes: No module named 'insightface'
+```
+
+In this case, you can try to manually install the missing dependent library. For example, in the case above, 'insightface' is missing. You can install it using `pip install insightface` or you could Google the installation method for insightface.
+
+After installing some dependencies, it might still fail to run, but the error message might change. For instance, the extension might display the following error:
+
+```bash
+Cannot import D:/Program/ComfyUI/custom_nodes/ComfyUI-OOTDiffusion module for custom nodes: Command '['where', 'cl']' returned non-zero exit status 1.
+```
+
+Under such circumstances, the best approach is to visit the GitHub repository for the extension to see if there's an installation tutorial or to check if others have encountered similar issues. For example, the OOTDiffusion extension issue mentioned above was resolved by following the tutorial in its [GitHub repository](https://github.com/AuroBit/ComfyUI-OOTDiffusion).
+
+If there isn't one available, you might try reaching out on our [Discord](https://discord.gg/xqB9VyEX) for feedback; we are more than happy to assist you 😎
