@@ -106,3 +106,25 @@ RuntimeError: linear(): input and weight.T shapes cannot be multiplied (154x2048
     <img src="/blog/comflowy-faq/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
+
+## 插件
+
+### 安装插件失败
+
+绝大多数与插件有关的问题都是安装失败。安装失败的情况有很多种，最常见的是电脑缺失一些依赖库。一般这种情况下，你会看到一段写明“No module named”的报错：
+
+```bash
+Cannot import D:/Program/ComfyUI/custom_nodes/ComfyUI_InstantID module for custom nodes: No module named 'insightface'
+```
+
+这种情况下，你可以尝试手动安装一下缺失的依赖库。比如上述的例子中，缺失的是 insightface。你可以通过 pip install insightface 来安装。亦或者 Google 搜索一下 insightface 的安装方法。
+
+当你安装完一些依赖后，可能又还是无法运行，但此时报错信息可能会有所不同，比如这个插件会显示如下报错：
+
+```bash
+Cannot import D:/Program/ComfyUI/custom_nodes/ComfyUI-OOTDiffusion module for custom nodes: Command '['where', 'cl']' returned non-zero exit status 1.
+```
+
+这种情况下，最好的方法是去到这个插件的 GitHub 仓库，看看有没有安装教程，或者看看有没有其他人遇到过类似的问题。比如上面的 OOTDiffusion 插件，我就是根据它的 [GitHub 仓库](https://github.com/AuroBit/ComfyUI-OOTDiffusion) 里的教程解决的。
+
+如果没有，你可以尝试去我们的 [Discord](https://discord.gg/xqB9VyEX) 反馈，我们很乐意为你解答 😎
