@@ -8,7 +8,16 @@ image: /blog/comflowy-faq/banner.png
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-## Potential Issues During Installation
+## Contents
+
+- Installation
+  - [Git Installation Failure](#git-installation-failure)
+  - [Conda Installation Failure](#conda-installation-failure)
+- Using
+  - [Missing Model Files in Model Folder](#missing-model-files-in-model-folder)
+  - [Multiple Different Base Models](#multiple-different-base-models)
+
+## Installation
 
 During the installation process, you may encounter some issues. Here are solutions for some common problems.
 
@@ -40,6 +49,7 @@ If you encounter a long wait time during the Install Conda step, this is normal 
 You can install it in one of the following two ways:
 1. Download the Installer and install it.
 2. Use command line for installation:
+
 ```bash
 mkdir -p ~/miniconda3
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
@@ -47,8 +57,34 @@ bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ```
 
-Usage
-Working with Multiple Different Base Models
+## Using
+
+### Missing Model Files in Model Folder
+
+It is common to download workflows created by others from the internet for use, but upon import and execution, you might encounter errors such as:
+
+```bash
+ERROR:root:* CheckpointLoaderSimple 4:
+ERROR:root:  - Value not in list: ckpt_name: 'v1-5-pruned-emaonly.ckpt' not in (list of length 24)
+ERROR:root: Output will be ignored
+```
+
+Alternatively, if there are prompts like "value not listed," it means that the model folder does not contain the models used in the workflow. You just need to switch to the model file you downloaded at the node mentioned in the prompt (like the CheckpointLoaderSimple in the example above).
+
+However, you might encounter these situations:
+
+1. You may have downloaded the model file specified in the workflow, but still receive such prompts when running the workflow. This could very well be because the model file name you have is different from the one used by the workflow creator. In this case, you can either manually rename the file or reselect the downloaded model file at the node.
+2. You downloaded the model file referred to in the workflow and want to reselect the model file at the node, but can't find the file. In this instance, you should refresh the model folder. This can be done on the models page by clicking the refresh button in the top-right corner. If the file still doesn't appear, you may try restarting Comflowy.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/004.png">
+    <img src="/blog/comflowy-faq/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Multiple Different Base Models
+
 When you run a certain workflow, you might encounter an issue where after clicking run, the workflow executes for a while and then stops. If you open the Console at this point, you might see the following error:
 
 ```bash

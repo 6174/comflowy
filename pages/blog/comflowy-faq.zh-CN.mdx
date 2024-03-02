@@ -14,6 +14,7 @@ import Subscribe from "components/subscribtion";
   * [Git 安装失败](#git-安装失败)
   * [Conda 安装失败](#conda-安装失败)
 * 使用
+  * [模型文件夹缺失模型文件](#模型文件夹缺失模型文件)
   * [使用多个不同基底模型](#使用多个不同基底模型)
 
 ## 安装
@@ -48,6 +49,7 @@ import Subscribe from "components/subscribtion";
 你可以通过以下两种方式安装：
 1. 下载 Installer 并安装。
 2. 使用命令行安装：
+
 ```bash
 mkdir -p ~/miniconda3
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
@@ -56,6 +58,30 @@ rm -rf ~/miniconda3/miniconda.sh
 ```
 
 ## 使用
+
+### 模型文件夹缺失模型文件
+
+大家常常会从网上下载一些别人做好的 workflow 使用，但导入并运行时会遇到这样的错误：
+
+```bash
+ERROR:root:* CheckpointLoaderSimple 4:
+ERROR:root:  - Value not in list: ckpt_name: 'v1-5-pruned-emaonly.ckpt' not in (list of length 24)
+ERROR:root: Output will be ignored
+```
+
+或者是其他 value not list 的提示，这都意味着你的模型文件夹里没有 workflow 里使用到的模型。你只需要在提示里提到的节点里（如上面的案例里的 CheckpointLoaderSimple），
+切换到你下载的模型文件即可。
+
+不过你还可能遇到这样的情况：
+1. 你可能下载了 workflow 里提到的模型文件。但运行 workflow 的时候，还是有这样的提示。那很可能是你的模型文件名称与 workflow 作者使用的模型文件名称不一样。这种情况，你可以手动修改文件名称，或者在节点那重新选择一下你下载的那个模型文件即可。
+2. 你下载了 workflow 里提到的模型文件，想在节点重新选择模型文件，但发现没有该文件。那此时你需要刷新下模型文件夹。你可以在模型页面，点击右上角的 refresh 按钮，刷新下模型文件夹。如果还是没有加载出来，可以尝试 restart Comflowy。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/004.png">
+    <img src="/blog/comflowy-faq/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
 
 ### 使用多个不同基底模型
 
