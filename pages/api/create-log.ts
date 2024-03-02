@@ -6,11 +6,20 @@ import { NextApiRequest, NextApiResponse } from "next";
  * @param req 
  * @param res 
  */
-const createLog = async (req: NextApiRequest, res: NextApiResponse) => {
+const createlog = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    if (req.method === 'OPTIONS') {
+      // Pre-flight request. Reply successfully:
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      res.statusCode = 204;
+      res.end();
+      return;
+    }
     const { message = "", type = "" } = req.body;
     if (message.trim() === "" || type.trim() === "") {
-      throw new Error("Message and type are required");
+      throw new Error("mssage and type are required");
     }
     console.log("log info", message, type, process.env.TEABLE_TABLE_URL, process.env.TEABLE_API_TOKEN)
     const ret = await fetch(process.env.TEABLE_TABLE_URL, {
@@ -45,4 +54,4 @@ const createLog = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default createLog;
+export default createlog;
