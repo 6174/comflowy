@@ -8,7 +8,15 @@ image: /blog/comflowy-faq/banner.png
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-## 安装时可能遇到的问题
+## 目录
+
+* 安装
+  * [Git 安装失败](#git-安装失败)
+  * [Conda 安装失败](#conda-安装失败)
+* 使用
+  * [使用多个不同基底模型](#使用多个不同基底模型)
+
+## 安装
 
 在安装的过程中，你有可能遇到一些问题。这里是一些常见问题的解决方案。
 
@@ -46,3 +54,27 @@ curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ```
+
+## 使用
+
+### 使用多个不同基底模型
+
+当你在运行某个 workflow 时，可能会遇到这样的问题，点击运行后，workflow 会运行一段时间，然后就停止了，如果此时你打开 Console，你会看到如下报错：
+
+```bash
+RuntimeError: linear(): input and weight.T shapes cannot be multiplied (154x2048 and 768x320)
+```
+
+这大概率意味着你在 workflow 中使用了多个不同基底模型的模型文件，你需要将模型文件都切换成同一基底模型的文件。这是一个很多新手都会遇到的常见错误。我以这个 workflow 为例，你可以细看下我左上角 Group 在一起的两个节点：
+
+* ControlNet Loader 我用的是 sd1.5 canny 的模型文件
+* Checkpoint Loader 我用的是 photonium 的模型文件，这是一个使用 sdxl finetune 的模型文件
+
+这就是我说的使用了多个不同基底模型文件的情况。遇到这种情况，你只需要将模型统一调整成一致的即可。比如这个案例，就是可以将 ControlNet Loader 的模型文件调整成 sdxl canny 的模型文件即可。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/003.png">
+    <img src="/blog/comflowy-faq/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>

@@ -46,3 +46,25 @@ curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ```
+
+Usage
+Working with Multiple Different Base Models
+When you run a certain workflow, you might encounter an issue where after clicking run, the workflow executes for a while and then stops. If you open the Console at this point, you might see the following error:
+
+```bash
+RuntimeError: linear(): input and weight.T shapes cannot be multiplied (154x2048 and 768x320)
+```
+
+This most likely means you are using model files from different base models in your workflow; you need to switch all the model files to those from the same base model.
+Taking this workflow as an example, you can look closely at the two nodes I have grouped together in the upper left corner:
+* For the ControlNet Loader, I'm using the sd1.5 canny model file.
+* For the Checkpoint Loader, I'm using the photonium model file, which is fine-tuned with sdxl.
+
+This is a case of using model files from multiple different base models. In such instances, you just need to standardize the models to be consistent. For instance, in this case, you can adjust the ControlNet Loader's model file to the sdxl canny model file.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/comflowy-faq/003.png">
+    <img src="/blog/comflowy-faq/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
