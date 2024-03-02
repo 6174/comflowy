@@ -71,6 +71,8 @@ ERROR:root: Output will be ignored
 
 Alternatively, if there are prompts like "value not listed," it means that the model folder does not contain the models used in the workflow. You just need to switch to the model file you downloaded at the node mentioned in the prompt (like the CheckpointLoaderSimple in the example above).
 
+If you haven't downloaded the model files, or you're unsure which model to download, you can check out our [Model Recommendations](../model). After downloading the model files, you need to place the model into the corresponding folder. For instance, with the CheckpointLoaderSimple issue mentioned above, you need to place the model files in the `~/comfyui/models/checkpoints` folder.
+
 However, you might encounter these situations:
 
 1. You may have downloaded the model file specified in the workflow, but still receive such prompts when running the workflow. This could very well be because the model file name you have is different from the one used by the workflow creator. In this case, you can either manually rename the file or reselect the downloaded model file at the node.

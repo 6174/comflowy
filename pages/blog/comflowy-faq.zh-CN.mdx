@@ -72,6 +72,8 @@ ERROR:root: Output will be ignored
 或者是其他 value not list 的提示，这都意味着你的模型文件夹里没有 workflow 里使用到的模型。你只需要在提示里提到的节点里（如上面的案例里的 CheckpointLoaderSimple），
 切换到你下载的模型文件即可。
 
+如果你没有下载模型文件，或者不知道下载什么模型，可以去看看我们的[模型推荐](../model). 下载好模型文件后，你需要将模型放到对应的文件夹里，比如上面的 CheckpointLoaderSimple 问题，你需要将模型文件放到 `~/comfyui/models/checkpoints` 文件夹里。
+
 不过你还可能遇到这样的情况：
 1. 你可能下载了 workflow 里提到的模型文件。但运行 workflow 的时候，还是有这样的提示。那很可能是你的模型文件名称与 workflow 作者使用的模型文件名称不一样。这种情况，你可以手动修改文件名称，或者在节点那重新选择一下你下载的那个模型文件即可。
 2. 你下载了 workflow 里提到的模型文件，想在节点重新选择模型文件，但发现没有该文件。那此时你需要刷新下模型文件夹。你可以在模型页面，点击右上角的 refresh 按钮，刷新下模型文件夹。如果还是没有加载出来，可以尝试 restart Comflowy。
