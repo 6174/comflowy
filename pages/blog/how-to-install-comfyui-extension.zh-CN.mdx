@@ -1,0 +1,181 @@
+---
+date:  March 5th, 2024
+image: /blog/extension/banner.png
+---
+
+# 如何安装 ComfyUI 插件？
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+
+ComfyUI 的插件功能非常强大，但安装起来却很复杂，甚至有可能会出现每个人的安装方法都不一样的情况。本文会教大家一些通用的解决方案，希望能给大家一些解决问题的思路。
+
+## 第一步，下载插件
+
+### Comflowy Space
+
+如果你是使用我们的 Comflowy，那你以及直接在 Comflowy 中点击左侧的 Extension Tab 然后通过搜索的方式找到你想要下载的插件。
+然后点击下载安装即可。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/blog/extension/001.png">
+      <img src="/blog/extension/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### ComfyUI
+
+如果你使用的是 ComfyUI，安装插件的方法有两种，一种是使用的 VS Code 或 Terminal 安装，另一种是手动导入安装。如果你对命令行工具比较熟悉，我会推荐你使用第一种方法。如果你不想使用命令行，可以考虑手动的方式。
+
+我以安装 [ComfyUI InstantID](https://github.com/cubiq/ComfyUI_InstantID) 这个插件为例，介绍这两种安装方法。
+
+<Tabs items={['VS Code/Terminal', '手动安装']}>
+  <Tabs.Tab>
+    <Steps>
+      ### 使用 VS Code / Terminal 打开 ComfyUI 项目
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          如果你有安装 Github Desktop，那你可以直接在应用里点击「Open in Visual Studio Code」按钮。如果没有则找到 ComfyUI 项目文件夹，然后将整个文件夹拖到 VS Code 里。
+        </Tabs.Tab>
+        <Tabs.Tab>
+          打开 Terminal 输入 cd，然后空格，接着黏贴 ComfyUI 的项目文件夹地址（如果你不知道如何找到这个地址，请查阅 [安装 ComfyUI](../install.mdx) 一章中的第三步）。以我为例的话，你要输入的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+        ```shell
+        cd /Users/jimmywang/Documents/GitHub/ComfyUI
+        ```
+        </Tabs.Tab>
+      </Tabs>
+      ### 输入命令
+      如果你用的是 VS Code 则点击 VS Code 右上角的第二个 icon，然后你会在软件底部看到一个类似你之前在 Terminal 里看到的命令输入界面。此时输入以下命令，并回车。如果你使用的是 Terminal，就直接输入以下命令：
+      ```shell copy
+      cd custom_nodes
+      ```
+      然后再输入：
+      ```shell copy
+      git clone https://github.com/cubiq/ComfyUI_InstantID.git
+      ```
+      <Callout type="info">
+        如果你要安装其他插件，只需要将上面的链接替换成你要安装的插件的 git 链接即可。
+      </Callout>
+      ### 启动 ComfyUI
+      此时需要启动 ComfyUI，需要注意你不能直接输入启动的命令，而是要先将 Terminal cd 到上一个目录（即 ComfyUI 的目录）。
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          最简单的方法就是点击 VS Code 里 Terminal 右上角的小垃圾桶。然后再点一下右上角的第二个 icon 此时就回到了 ComfyUI 的目录。
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          然后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          这个也很简单，你需要点击按一下键盘的上方向键，输入框里就会出现你上一步输入的命令，此时你需要回退到最开始的那一步。
+          以我为例的话，你看到的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          最后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Steps>
+      ### 下载 ComfyUI InstantID
+      在下载之前，我建议你先将 ComfyUI 服务关闭，然后再下载。
+
+      首先你需要下载 ComfyUI InstantID，你可以点击[这里](https://github.com/cubiq/ComfyUI_InstantID)下载，然后点击右上角的绿色按钮，选择 Download ZIP。 
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/blog/extension/002.png">
+            <img src="/blog/extension/002.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+      ### 解压
+      接着将下载好的文件解压，你会看到一个文件夹，文件夹名字是 ComfyUI_InstantID-main，为了方便后续分辨和管理，我建议你将这个文件夹重命名为 ComfyUI-InstantID。
+
+      ### 移动
+      然后，将 ComfyUI-InstantID 文件夹移动到 ComfyUI 项目的 custom_nodes 文件夹里。
+      
+      ### 启动 ComfyUI
+      最后，只需要启动 ComfyUI 即可。 
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          最简单的方法就是点击 VS Code 里 Terminal 右上角的小垃圾桶。然后再点一下右上角的第二个 icon 此时就回到了 ComfyUI 的目录。
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          然后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          这个也很简单，你需要点击按一下键盘的上方向键，输入框里就会出现你上一步输入的命令，此时你需要回退到最开始的那一步。
+          以我为例的话，你看到的代码大概是这样的（**注意不要复制我的代码，你的文件夹位置应该跟我不一样，我只是示意**）：
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          最后输入以下命令，启动 ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
+
+## 第二步，安装依赖
+
+一般情况下，你只需要下载好插件，并启动 ComfyUI 即可使用。但某些插件还需要安装一些依赖，这会导致即使你安装了插件，仍然没法使用。
+
+如果你是用 Comflowy 那会看到插件的节点会提示未安装，或者 ComfyUI 会将节点显示成红色的色块。此时就意味着你需要安装一些依赖才能运行这些插件，你可以在插件里的 README 里找到安装依赖的方法。但需要注意，即使你安装了插件 README 里介绍的依赖，你依然有可能没法使用。
+
+因为有可能你的电脑上缺少其他依赖。如果你使用的是 Comflowy 并需要查看缺少什么依赖，只需要点击下方工具栏的「Terminal」按钮（下图①），此时你可以通过这个 Terminal 界面输查看到一些报错信息。比如我当时安装 InstantID 时就有提示这样的一段话：
+
+```bash
+Cannot import D:\Program\ComfyUI\custom_nodes\ComfyUI_InstantID module for custom nodes: module 'cv2.gapi.wip.draw' has no attribute 'Text'
+```
+
+于是我就去到了 InstantID 的作者那[提问找方法](https://github.com/cubiq/ComfyUI_InstantID/issues/42)，以及 Google 了一下，最后发现是因为我缺少了 opencv-python 这个依赖，并且需要安装 4.7.0.72 版本。
+
+如果你使用的是 Comflowy，但需要安装依赖，你只需要点击 pip install（下图②），并输入相应的依赖包即可。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/extension/004.png">
+      <img src="/blog/extension/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+## 第三步，下载模型
+
+除了需要安装依赖外，还有一些插件需要你手动下载对应的模型才能使用。比如这个[ComfyUI IPAdapter plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus) 插件，除了安装依赖外，你还需要下载对应的模型才能使用。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/extension/005.png">
+      <img src="/blog/extension/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+一般在 Readme 都会罗列出模型的下载地址，以及需要将模型放到什么文件夹内：
+
+> The pre-trained models are available on huggingface, download and place them in the ComfyUI/models/ipadapter directory (create it if not present). You can also use any custom location setting an ipadapter entry in the extra_model_paths.yaml file.
+
+你只需要点击链接下载，或者通过搜索的方式搜索到模型，并将模型文件放到对应的文件夹即可。

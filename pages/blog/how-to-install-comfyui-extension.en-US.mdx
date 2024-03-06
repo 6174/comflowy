@@ -1,0 +1,178 @@
+---
+date:  March 5th, 2024
+image: /blog/extension/banner.png
+---
+
+# How to install ComfyUI extension?
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+
+ComfyUI's extension functionality is extremely powerful, but installation can be rather complex; it's even possible that everyone's installation method will be different. This article will teach everyone some common solutions, hoping to provide some ideas for problem-solving.
+
+## Step 1: Download extension
+
+### Comflowy Space
+
+If you are using our Comflowy, then you can directly click on the Extension Tab on the left side in Comflowy and find the plugin you want to download through a search.
+Then click to download and install it.
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/blog/extension/001.png">
+      <img src="/blog/extension/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### ComfyUI
+
+If you're using ComfyUI, there are two methods for installing plugins: one is through using VS Code or the Terminal, and the other is by manual import. If you're comfortable with command line tools, I recommend the first method. However, if you prefer not to use the command line, the manual method is also an option.
+
+Let's take the installation of the [ComfyUI InstantID](https://github.com/cubiq/ComfyUI_InstantID) plugin as an example to explain these two installation methods.
+
+<Tabs items={['VS Code/Terminal', 'Manual Installation']}>
+  <Tabs.Tab>
+    <Steps>
+      ### Open the ComfyUI Project in VS Code / Terminal
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          If you have installed GitHub Desktop, you can directly click the 'Open in Visual Studio Code' button in the app. If not, find the ComfyUI project folder and drag the entire folder into VS Code.
+        </Tabs.Tab>
+        <Tabs.Tab>
+          Open Terminal, type 'cd', followed by a space, and then paste the path to your ComfyUI project folder (if you do not know how to find this path, please refer to Step Three in the chapter on [Installing ComfyUI](../install.mdx)). For example, the command you should enter could look something like this (**do not copy my code, as your folder location is likely to be different, this is just for illustration**):
+        ```shell
+        cd /Users/jimmywang/Documents/GitHub/ComfyUI
+        ```
+        </Tabs.Tab>
+      </Tabs>
+      ### Enter Commands
+      If you're using VS Code, click the second icon in the top right corner of VS Code, and you will see a command input interface similar to what you saw in Terminal at the bottom of the software. Enter the following command and press enter. If you're using Terminal, enter the following command directly:
+      ```shell copy
+      cd custom_nodes
+      ```
+      Then enter:
+      ```shell copy
+      git clone https://github.com/cubiq/ComfyUI_InstantID.git
+      ```
+      <Callout type="info">
+        If you want to install a different plugin, simply replace the above link with the git link of the plugin you wish to install.
+      </Callout>
+      ### Launch ComfyUI
+      At this point, you need to start ComfyUI. Be aware that you cannot directly enter the command to launch; instead, you must first cd back to the previous directory (i.e., the ComfyUI directory).
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          The simplest method is to click the small trash can icon in the top right corner of Terminal in VS Code. Then click the second icon in the top right corner to return to the ComfyUI directory.
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          Next, enter the following command to launch ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          This step is also straightforward. You need to press the up arrow key on your keyboard, and the input box will display the command you entered in the previous step. At this point, you need to revert to the very first step. As an example, you will see a command that looks something like this (**do not copy my code, as your folder location is likely to be different, this is just for illustration**):
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          Finally, enter the following command to launch ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Steps>
+      ### Download ComfyUI InstantID
+      Before downloading, I recommend you to first shut down the ComfyUI service, then proceed with the download.
+
+      First, you need to download ComfyUI InstantID. You can click [here](https://github.com/cubiq/ComfyUI_InstantID) to download, then click the green button in the top right corner and choose 'Download ZIP'.
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/blog/extension/002.png">
+            <img src="/blog/extension/002.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+      ### Unzip
+      After downloading, unzip the file, and you will see a folder named 'ComfyUI_InstantID-main'. For ease of identification and management later on, I recommend you rename this folder to 'ComfyUI-InstantID'.
+
+      ### Move
+      Then, move the 'ComfyUI-InstantID' folder into the 'custom_nodes' folder in your ComfyUI project.
+      
+      ### Launch ComfyUI
+      Finally, you just need to start ComfyUI.
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          The simplest method is to click the small trash can icon in the top right corner of Terminal in VS Code. Then click the second icon in the top right corner to return to the ComfyUI directory.
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          Then enter the following command to launch ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          This step is also very simple. You need to press the up arrow key on your keyboard and the input box will show the command you entered in the previous step. At this point, you need to backtrack to the very first step. For example, you would see a command that looks something like this (**do not copy my code, as your folder location is likely to be different, this is just for illustration**):
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          Finally, enter the following command to start ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
+
+## Step Two, Install Dependencies
+
+Generally, after downloading a plugin and launching ComfyUI, you should be able to use it. However, some plugins may require additional dependencies to be installed, which means that even if you have installed the plugin, you still might not be able to use it.
+
+If you're using Comflowy, you will see that the nodes for the plugin may prompt that they are not installed, or ComfyUI might display the nodes as red blocks. This indicates that you need to install certain dependencies to run these plugins, which you can find in the README file of the plugin. But be aware, even after installing the dependencies listed in the README of the plugin, you may still be unable to use it.
+
+It is possible that your computer lacks other dependencies. If you're using Comflowy and need to check what dependencies are missing, you just need to click the 'Terminal' button in the lower toolbar (see image ① below), and through this Terminal interface, you may see some error messages. For example, when I installed InstantID, I got the following error message:
+
+```bash
+Cannot import D:\Program\ComfyUI\custom_nodes\ComfyUI_InstantID module for custom nodes: module 'cv2.gapi.wip.draw' has no attribute 'Text'
+```
+
+So, I went on to ask the author of InstantID for help [here](https://github.com/cubiq/ComfyUI_InstantID/issues/42) and also searched on Google. Eventually, I found out that I was missing the opencv-python dependency and had to install version 4.7.0.72.
+
+If you are using Comflowy but need to install dependencies, you just need to click pip install (see image ② below), and enter the required dependency packages to complete the installation.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/extension/004.png">
+      <img src="/blog/extension/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## Step Three, Download Models
+
+In addition to installing dependencies, some plugins also require you to manually download the corresponding models to use them. For instance, for the [ComfyUI IPAdapter plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus) plugin, besides installing dependencies, you need to download the related models to use it.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/extension/005.png">
+      <img src="/blog/extension/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Typically, the Readme will list the model's download address, as well as the directory where the models should be placed:
+
+> The pre-trained models are available on huggingface, download and place them in the ComfyUI/models/ipadapter directory (create it if not present). You can also use any custom location by setting an ipadapter entry in the extra_model_paths.yaml file.
+
+All you need to do is click the link to download, or search for the models, and then place the model files in the specified folder.
