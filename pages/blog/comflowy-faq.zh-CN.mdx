@@ -14,7 +14,8 @@ import Subscribe from "components/subscribtion";
   * [Git 安装失败](#git-安装失败)
   * [Conda 安装失败](#conda-安装失败)
 * 使用
-  * [模型文件夹缺失模型文件](#模型文件夹缺失模型文件)
+  * [Value not in list](#value-not-in-list)
+  * [Required input is missing](#required-input-is-missing)
   * [使用多个不同基底模型](#使用多个不同基底模型)
 * 插件
   * [安装插件失败](#安装插件失败)
@@ -61,7 +62,7 @@ rm -rf ~/miniconda3/miniconda.sh
 
 ## 使用
 
-### 模型文件夹缺失模型文件
+### Value not in list
 
 大家常常会从网上下载一些别人做好的 workflow 使用，但导入并运行时会遇到这样的错误：
 
@@ -86,6 +87,11 @@ ERROR:root: Output will be ignored
     <img src="/blog/comflowy-faq/004.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
+
+### Required input is missing
+
+这个错误是因为你没有给 workflow 里的某个节点连接输入节点。你需要检查下对应的节点，看看是否有输入节点没有连接。
+
 
 ### 使用多个不同基底模型
 

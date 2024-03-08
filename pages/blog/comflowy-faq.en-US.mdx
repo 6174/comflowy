@@ -14,7 +14,8 @@ import Subscribe from "components/subscribtion";
   - [Git Installation Failure](#git-installation-failure)
   - [Conda Installation Failure](#conda-installation-failure)
 - Using
-  - [Missing Model Files in Model Folder](#missing-model-files-in-model-folder)
+  - [Value not in list](#value-not-in-list)
+  - [Required input is missing](#required-input-is-missing)
   - [Multiple Different Base Models](#multiple-different-base-models)
 - Extension
   - [Installation Failure](#installation-failure)
@@ -61,7 +62,7 @@ rm -rf ~/miniconda3/miniconda.sh
 
 ## Using
 
-### Missing Model Files in Model Folder
+### Value not in list
 
 It is common to download workflows created by others from the internet for use, but upon import and execution, you might encounter errors such as:
 
@@ -86,6 +87,10 @@ However, you might encounter these situations:
     <img src="/blog/comflowy-faq/004.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
+
+### Required input is missing
+
+This error is due to a node in your workflow not being connected to an input node. You need to check the corresponding node to see if any input nodes are not connected.
 
 ### Multiple Different Base Models
 
