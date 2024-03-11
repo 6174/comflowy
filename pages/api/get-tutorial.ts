@@ -85,13 +85,13 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
       },
       {
         image: comfyuibasics1.src,
-        title: "ComfyUI Basics ➊",
+        title: "Text-to-image",
         url: "https://www.comflowy.com/basics/comfyui-foundation",
         tag: "SD Fundamentals"
       },
       {
         image: comfyuibasics2.src,
-        title: "ComfyUI Basics ➋",
+        title: "Basic operations",
         url: "https://www.comflowy.com/basics/basic-nodes",
         tag: "SD Fundamentals"
       },
@@ -140,12 +140,12 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
       {
         image: stablediffusionadvanced.src,
         title: "Stable Diffusion Advanced",
-        url: "https://www.comflowy.com/advanced/advanced-optional/stable-diffusion-advanced"
+        url: "https://www.comflowy.com/advanced/stable-diffusion-advanced"
       },
       {
         image: controlnetadvanced.src,
         title: "ControlNet Advanced",
-        url: "https://www.comflowy.com/advanced/advanced-optional/controlnet-advanced"
+        url: "https://www.comflowy.com/expert/controlnet-advanced"
       },
     ];
     
