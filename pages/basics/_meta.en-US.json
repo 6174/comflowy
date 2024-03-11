@@ -1,9 +1,8 @@
 {
   "stable-diffusion-foundation": "1. Stable Diffusion Basics",
-  "comfyui-foundation": "2. ComfyUI Basics ➀",
-  "basic-nodes": "3. ComfyUI Basics ➁",
+  "comfyui-foundation": "2. Text-to-image",
+  "basic-nodes": "3. Basic operations",
   "prompt": "4. SD Prompt Basics",
   "embedding": "5. Embedding",
-  "lora": "6. LoRA",
-  "basic-optional": "Basics Optional"
+  "lora": "6. LoRA"
 }

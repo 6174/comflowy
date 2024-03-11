@@ -89,6 +89,13 @@ import Subscribe from "components/subscribtion";
     **答案就是在 Empty Latent Image 的 batch_size。如果你将此参数设置成 4，就意味着每次生成 4 张图。**
 
     但你可能会想，生成的四张图在 ComfyUI 里有点小，如果我想单独看其中一张图应该怎么办呢？方法很简单：
+
+    <br/>
+      <PhotoProvider>
+        <PhotoView src="/stable-diffusion-prompt/003.png">
+          <img src="/stable-diffusion-prompt/003.png" alt="" />
+        </PhotoView>
+      </PhotoProvider>
     <Steps>
       ### 新增 Latent from Batch 节点
       首先右键 → Add Node → latent → batch → Latent from Batch，添加这个节点。
@@ -111,13 +118,6 @@ import Subscribe from "components/subscribtion";
       记得当你要切换 batch_index 之前，要：
       * 将 seed 数减 1。
       * 重新将 control_after_generate 设置为 fixed。
-
-      <br/>
-      <PhotoProvider>
-        <PhotoView src="/stable-diffusion-prompt/003.png">
-          <img src="/stable-diffusion-prompt/003.png" alt="" />
-        </PhotoView>
-      </PhotoProvider>
 
       <Callout emoji="💡">
         还有一个小技巧，你可以通过鼠标左键点击节点后，CTRL + M 来启用/禁用节点。在上面的示例中，你可以禁用 Latent From Batch 节点以及连接的 VAE Decode 和 Save Image，只有在遇到你感兴趣的图像时才重新启用它们。

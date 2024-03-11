@@ -1,5 +1,5 @@
 ---
-title: ComfyUI Basics ➀
+title: Text-to-image
 description: Discover the essentials of ComfyUI, a tool for AI-based image generation. This guide covers the basic operations of ComfyUI, the default workflow, and the core components of the Stable Diffusion model. Ideal for beginners and those looking to understand the process of image generation using ComfyUI.
 keywords: ["ComfyUI Basics", "AI Image Generation", "Default Workflow", "Stable Diffusion", "Image Generation Process", "CLIP Text Encode", "KSmapler", "Empty Latent Image", "VAE Decoder", "AI Learning", "AI Tutorial", "ComfyUI Operations"]
 ---
@@ -8,30 +8,54 @@ import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-# ComfyUI Basics ➀
+# Text-to-image
 
 In the last chapter, we introduced the basic principles of Stable Diffusion and how to use it to generate images. In this chapter, we will cover the basic operations of ComfyUI and how to use ComfyUI to generate images.
 
 <Callout type="warning" emoji="⚠️">
-  Please ensure that you have installed ComfyUI and downloaded the Stable Diffusion v1.5 or Stable Diffusion XL model before proceeding with this chapter.
+  Before starting this chapter, please make sure that you have completed the installation of ComfyUI or Comflowy Space, and have downloaded the Stable Diffusion v1.5 or Stable Diffusion XL model. Also, ensure that the model files are placed in the appropriate folder.
 </Callout>
 
 ## Default Workflow
 
-Upon installing and opening ComfyUI, you should see a screen looking like this (image can be clicked to enlarge👇):
+<Tabs items={['ComflowySpace', 'ComfyUI']}>
+  <Tabs.Tab>
+  If you are using Comflowy Space, when you open the application, you will be greeted with an interface like this one.
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-foundation/006.png">
+      <img src="/comfyui-foundation/006.png" alt="" className='rounded-lg'/>
+    </PhotoView>
+  </PhotoProvider>
+  Click on the "New workflow" button at the top, and you will see an interface like this:
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-foundation/007.png">
+      <img src="/comfyui-foundation/007.png" alt="" className='rounded-lg'/>
+    </PhotoView>
+  </PhotoProvider>
 
-<Callout type="info">
-  If you don't see this interface after opening ComfyUI, you can click the Load Default button on the right panel.
-</Callout>
+  You can click the "Run" button (the play button at the bottom panel) to operate AI text-to-image generation. Ultimately, you will see the generated image on the far right under "Save Image."
 
-<br/>
-<PhotoProvider>
-  <PhotoView src="/comfyui-foundation/001.png">
-    <img src="/comfyui-foundation/001.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Upon installing and opening ComfyUI, you should see a screen looking like this (image can be clicked to enlarge👇):
+    <Callout type="info">
+      If you don't see this interface after opening ComfyUI, you can click the Load Default button on the right panel.
+    </Callout>
 
-You might be wondering about the boxes and lines are all about.
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/comfyui-foundation/001.png">
+        <img src="/comfyui-foundation/001.png" alt="" />
+      </PhotoView>
+    </PhotoProvider>
+
+    You can generate images by clicking the Queue Prompt button on the right panel.
+  </Tabs.Tab>
+</Tabs>
+
+After trying the text-to-image generation, you might be wondering what all these blocks and lines represent.
 
 For easier explanation later, let me first briefly introduce the individual boxes. I will refer to these boxes as Nodes in the future, with the left end being the Input end and the right end being the Output end. There will also be some configuration items in the nodes, which I will refer to as Parameters:
 
@@ -63,9 +87,6 @@ Both ends also have items that were not mentioned in the last chapter:
 - Save Image: As the name suggests, this is to save the image after output.
 - Load Checkpoint: This can be understood as an image model loader. For example, Stable Diffusion has versions like 1.5, XL, XL-Turbo, etc. To switch or load different models, this node is necessary.
 
-After introducing the entire workflow, you can generate images by clicking the Queue Prompt button on the right panel.
-
-<Subscribe />
 
 ## Node Introduction
 
@@ -168,8 +189,8 @@ Among all the configuration items, besides the model affecting the results of th
       <td>6-8</td>
     </tr>
     <tr>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>Very concerned about image quality and diversity of generated content</td>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>SDXL refiner</td>
+      <td rowSpan={2}>Very concerned about image quality and diversity of generated content</td>
+      <td rowSpan={2}>SDXL refiner</td>
       <td>dpmpp_2m(some software will call it  dpm++2M)</td>
       <td>karras</td>
       <td>20-30</td>
@@ -182,8 +203,8 @@ Among all the configuration items, besides the model affecting the results of th
       <td>6-8</td>
     </tr>
     <tr>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>Concerned about image quality, not so much about diversity, but want to improve generation speed</td>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>SDXL refiner fp16</td>
+      <td rowSpan={2}>Concerned about image quality, not so much about diversity, but want to improve generation speed</td>
+      <td rowSpan={2}>SDXL refiner fp16</td>
       <td>dpmpp_sde</td>
       <td>karras</td>
       <td>10-15</td>
@@ -203,4 +224,29 @@ Among all the configuration items, besides the model affecting the results of th
 </Callout>
 
 I currently use SDXL Turbo quite often. What model to use also depends on your image creation needs. You need to consider your situation, and try different options.
+
+## Connection
+
+After understanding the basic settings, let's take a look at the connections and basic operations.
+
+Don't be troubled by these seemingly cumbersome lines, thinking they are hard to understand. It might even feel like defusing a bomb, unsure whether to cut the red wire or the yellow wire. 😂
+
+In fact, these nodes are like Lego blocks. They can be combined freely while following certain rules. Let's take KSampler, which has the most connection points in the diagram, as an example:
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/003.png">
+    <img src="/comfyui-foundation/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+If you look closely at these connections, you will find that these lines and connection points have corresponding colors, and there are also some text explanations. Here's a simple summary of the rules for making connections. Once you understand these rules, you will not have any problems making connections:
+
+- **Like Connects With Like**: Only the same types can connect with each other. For example, the "model" endpoint on the left side of KSampler can only connect with another "MODEL" output point. To put it more concretely, only endpoints of the same color can connect. If you try to connect the orange point on the right side of "CLIP Text Encode" to the purple "model" point on KSampler, it will not work because of different types. Orange points can only connect with orange points. A handy trick is that when you click on an endpoint and pull out a line, only those that can connect will be highlighted, and the ones that cannot connect will dim.
+
+- **Input on the Left, Output on the Right**: For instance, "model," "positive," "negative," and "latent_image" on the left side of KSampler are all input points, and the output point is "LATENT" on the right. You can understand this as a function where the left side inputs numbers and the right side is the output. This means that you cannot connect an output terminal on the right side of one node to an output terminal on the right side of another node.
+
+- **One Input, Multiple Outputs**: One input end can only connect with one output end from another node, and it cannot connect with multiple output nodes simultaneously. For instance, KSampler's "positive" endpoint can only connect with one "CLIP Text Encode", it cannot connect with multiple at the same time. However, one output end can connect with multiple input ends. Using the same example, one "CLIP Text Encode" can connect with multiple "KSamplers". It can connect with "KSampler A's" positive end and "KSampler B's" negative point at the same time, generating two images in the end.
+
+With these rules in mind, you will not be at a loss anymore. As I go through more examples later, you will become more and more familiar with these rules.
+
 <Subscribe />

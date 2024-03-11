@@ -1,5 +1,6 @@
 {
-  "install": "1. Installing ComfyUI",
+  "install": "1. Install ComfyUI",
   "model": "2. Download & Import",
-  "optional": "Optional"
+  "install-comfyui-manager": "3. Install ComfyUI Manager",
+  "install-cloud": "4. Cloud Installation"
 }

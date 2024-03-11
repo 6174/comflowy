@@ -34,7 +34,7 @@ When we input a prompt, such as "Cat, standing on the castle", Stable Diffusion 
 
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/001.png">
-      <img src="/stable-diffusion-foundation/001.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/stable-diffusion-foundation/001.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -49,9 +49,10 @@ If the above three steps are visualized, it would look like this:
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/002.png">
-    <img src="/stable-diffusion-foundation/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/002.png" alt="" />
   </PhotoView>
 </PhotoProvider>
+<br/>
 
 To sum up, in simple terms, the user inputs a Prompt command, and the machine will, according to this command, denoise a random image into a picture matching the command in a latent space.
 
@@ -70,8 +71,6 @@ All images exist in an image full of noise, and AI just removes the unnecessary 
   You may be curious why in the previous explanation, Stable Diffusion directly outputs images rather than doing it like Midjourney. In fact, in the second step, the machine denoises the image multiple times, but does not decode each result into an image using the Image Decoder. Instead, it only decodes the final result into a photo. Therefore, when you use Stable Diffusion, you don't see the generation process like Midjourney.
 </Callout>
 
-<Subscribe />
-
 ## Image Information Creator
 
 Since we're talking about denoising, let's expand on the whole 'denoising' process.
@@ -82,15 +81,15 @@ So what happens in Denoise? The following image is a visualization of the first 
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/004.png">
-    <img src="/stable-diffusion-foundation/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/004.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
 The previous image might look complex, but there's no need to fear. As long as we understand basic operations like addition, subtraction, multiplication, and division, we can understand this image.
-<br/>
+
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">
-    <img src="/stable-diffusion-foundation/005.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/005.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -124,7 +123,7 @@ Latent space, in the field of machine learning and deep learning, is the low-dim
 It seems complex, but in simple terms, the latent space encodes the image into a set of numbers and compresses these numbers. Let's visualize this process:
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/006.png">
-    <img src="/stable-diffusion-foundation/006.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/006.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -154,7 +153,7 @@ The currently popular Text Encoder used in Stable Diffusion is [OpenAI's open-so
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/007.png">
-    <img src="/stable-diffusion-foundation/007.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/007.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -165,7 +164,7 @@ OpenAI used 400 million sets of image-text pairs to train this model. The final 
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/008.png">
-    <img src="/stable-diffusion-foundation/008.png" alt="" width="90%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/008.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 

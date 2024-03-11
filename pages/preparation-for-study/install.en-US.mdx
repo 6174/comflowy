@@ -10,19 +10,20 @@ import Subscribe from 'components/subscribtion'
 
 # Installing ComfyUI
 
-The source code for ComfyUI can be found [here](https://github.com/comfyanonymous/ComfyUI), and the installation method is in the Readme. The author has written very detailed instructions, and you can also follow the Readme document for operations.
+There are currently two methods for installing ComfyUI; you can choose one based on your needs:
 
-We will introduce two ways to install ComfyUI, and you can choose one based on your needs:
 * Install on local: Install ComfyUI on your own computer, so you can run ComfyUI locally. This way is almost cost-free. But if your computer's GPU configuration is relatively poor, the speed of generating images can be slower.
 * Install in the cloud: Install ComfyUI in the cloud. The advantage of this is that the cloud configuration is relatively high, the speed of image generation will be faster, but it requires a certain cost.
 
-This section will primarily discuss how to install ComfyUI locally. If you want to install in the cloud, you can jump to [cloud installation](./optional/install-cloud).
+This section will primarily discuss how to install ComfyUI locally. If you want to install in the cloud, you can jump to [cloud installation](./install-cloud).
 
-## Local installation method.
+## Local installation method
 
 ### Command Line Installation
 
-There are two ways to install locally. The first method is the most universally applicable method, and the probability of encountering problems after installation is the lowest. But for users unfamiliar with command lines and coding, there can be some threshold. So this tutorial mainly introduces this method. If you encounter problems during installation, please join our [Discord](https://discord.gg/cj623WvcVx) group, we will do our best to help you.
+There are two methods for local installation. The first method is the most universal — command line installation, which also tends to have a lower probability of issues upon subsequent use. However, there may be a certain threshold for users not familiar with command lines and code. Therefore, this tutorial mainly introduces this method. If you encounter any problems during the installation, you are welcome to join our [Discord](https://discord.gg/cj623WvcVx) group for a discussion, where we will try our best to help you.
+
+Additionally, the source code for ComfyUI can be found [here](https://github.com/comfyanonymous/ComfyUI), and the installation instructions are included in the Readme. You can also operate according to the Readme document, and it's not mandatory to follow my tutorial.
 
 ### Package Installation
 
@@ -47,6 +48,9 @@ Welcome everyone to download and use it. The download link is [here](https://git
 ## Command line installation steps
 
 ### Step one, install Pytorch
+<Callout type="info">
+  If you have already installed SD WebUI, then you can skip to the second step.
+</Callout>
 
 First, you need to open the system Terminal, which can
 generally be found through a system search.

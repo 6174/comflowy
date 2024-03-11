@@ -8,7 +8,7 @@ import Subscribe from "components/subscribtion";
 
 # Stable Diffusion 基础
 
-**学习 ComfyUI 应该先从理论学起。**
+**我认为学习 ComfyUI 应该先从理论学起。**
 
 AI 绘图工具与传统的绘图工具（如 Photoshop 或者 Figma）相比，最大的区别在于，它的很多配置或操作是不可视化的，且结果随机。前者意味着你改了某个配置，界面上也不一定会有什么反应，这就导致了学习它很难像学习 Figma 那样能自主探索，而后者则会更让你产生挫败感，因为你即使跟着别人的教程操作一遍，也不一定能得到一样的结果。
 
@@ -32,7 +32,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/001.png">
-      <img src="/stable-diffusion-foundation/001.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/stable-diffusion-foundation/001.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -44,12 +44,16 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 3. 最后，这个中间产物会被 <mark>Image Decoder（图片解码器）</mark>解码成一张真正的图片。
 
 如果将以上的三大步骤可视化的话，会是这样：
+
 <br/>
+
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/002.png">
-    <img src="/stable-diffusion-foundation/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/002.png" alt="" />
   </PhotoView>
 </PhotoProvider>
+
+<br/>
 
 总结一下，简单理解，就是用户输入了一段 Prompt 指令，机器会按照这个指令，在一个潜空间里，将一张随机图降噪为一张符合指令的图片。
 
@@ -68,7 +72,6 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
   你可能好奇，为何前面的解释里，Stable Diffusion 最后是直接出图，而不像 Midjourney 那样？实际上，在第二步中，机器会分多次对图进行「降噪」，只是没有将每一次的结果用 Image Decoder 解码成图片，而是只将最后一次结果解码成照片。所以你使用 Stable Diffusion 的时候才不会像 Midjourney 那样看到生成的过程。
 </Callout>
 
-<Subscribe />
 
 ## Image Information Creator
 
@@ -80,15 +83,15 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/004.png">
-    <img src="/stable-diffusion-foundation/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/004.png" alt=""/>
   </PhotoView>
 </PhotoProvider>
 
 上图看上去很复杂，但不要恐惧，我们只要懂加减乘除就能理解这张图：
-<br/>
+
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">
-    <img src="/stable-diffusion-foundation/005.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/005.png" alt=""/>
   </PhotoView>
 </PhotoProvider>
 
@@ -119,9 +122,10 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 潜在空间是指在机器学习和深度学习中，用于表示数据的低维空间。它是通过对原始数据进行编码和降维得到的一组潜在变量。潜在空间的维度通常比原始数据的维度低，因此可以提取出数据中最重要的特征和结构。
 
 看上去很复杂，简单理解就是潜空间会将图片编码成一堆数字，同时对这些数字进行压缩。让我们通过可视化的方式看看这个过程：
+
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/006.png">
-    <img src="/stable-diffusion-foundation/006.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/006.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -152,7 +156,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/007.png">
-    <img src="/stable-diffusion-foundation/007.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/007.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
@@ -162,7 +166,7 @@ OpenAI 使用了 4 亿组图片文本对，对此模型进行了训练，最后�
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/008.png">
-    <img src="/stable-diffusion-foundation/008.png" alt="" width="90%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/008.png" alt=""/>
   </PhotoView>
 </PhotoProvider>
 

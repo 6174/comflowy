@@ -94,6 +94,13 @@ Let's recall how we can generate multiple images?
     **The answer is the batch_size in Empty Latent Image. If you set this parameter to 4, it means you generate 4 images each time.**
 
     But you may also wonder, the four images generated in ComfyUI are a bit small, what should I do if I want to see one of them individually? The method is simple:
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/stable-diffusion-prompt/003.png">
+        <img src="/stable-diffusion-prompt/003.png" alt="" />
+      </PhotoView>
+    </PhotoProvider>
+
     <Steps>
       ### Add a Latent from Batch node
       First, right-click → Add Node → latent → batch → Latent from Batch to add this node.
@@ -116,13 +123,6 @@ Let's recall how we can generate multiple images?
       Remember before you switch batch_index, you have to:
       * Cut the seed number by 1.
       * Reset the control_after_generate to fixed.
-
-      <br/>
-      <PhotoProvider>
-        <PhotoView src="/stable-diffusion-prompt/003.png">
-          <img src="/stable-diffusion-prompt/003.png" alt="" />
-        </PhotoView>
-      </PhotoProvider>
 
       <Callout emoji="💡">
         Another small tip is that you can enable/disable a node by left-clicking on it and pressing CTRL + M. In the above example, you can disable the Latent From Batch node as well as the connected VAE Decode and Save Image, and only re-enable them when you encounter an image you are interested in.

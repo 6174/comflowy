@@ -1,5 +1,5 @@
 ---
-title: ComfyUI Basics ➁
+title: Basic operations
 description: Dive into the basics of ComfyUI, a powerful tool for AI-based image generation. Learn about node connections, basic operations, and handy shortcuts. This guide demystifies the process of setting up and using ComfyUI, making it an essential read for anyone looking to harness the power of AI for image generation.
 keywords: ["ComfyUI Basics", "AI Image Generation", "Node Connections", "Basic Operations", "Shortcuts", "KSampler", "CLIP Text Encode", "AI Workflow", "AI Learning", "AI Tutorial", "Image Generation Shortcuts", "ComfyUI Operations"]
 ---
@@ -9,72 +9,62 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 import {FAQBox} from "components/FAQ";
 
-# ComfyUI Basics ➁
+# Basic operations
 
-After understanding the basic settings, let's take a look at the connections and basic operations.
+## Common operations & shortcuts
 
-## Connection
+Next, let's introduce the common operations and shortcuts for ComflowySpace and ComfyUI.
+<Tabs items={['ComflowySpace', 'ComfyUI']}>
+  <Tabs.Tab>
+    ComflowySpace and ComfyUI operate essentially the same way; however, we have made some optimizations. Firstly, you can double-click on an empty space to open the add node menu. You can find the node you need by searching or scrolling through the list. Additionally, you can pin frequently used nodes to the top for quick access next time.
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/comfyui-foundation/008.png">
+        <img src="/comfyui-foundation/008.png" alt="" className='rounded-lg'/>
+      </PhotoView>
+    </PhotoProvider>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Finally, let's introduce the common operations and shortcuts in ComfyUI. I've compiled a complete list of ComfyUI shortcuts. Some of the most commonly used ones include:
+    - **Right-click**: This pops up a menu where you can find the node you want to add.
+    - **Double-click**: This opens a node search box where you can search for the node you want to add. Use the arrow keys to select the node and press Enter to add it to the canvas.
+    - **Ctrl + Enter**: This has the same effect as clicking the "Queue Prompt" button on the right-side panel.
+    - **Ctrl + D**: This has the same effect as clicking the "Default Workflow" button on the right-side panel. Sometimes, you may need to rebuild your workflow. I generally suggest starting with the Default Workflow.
+    - **H**: This hides or shows the history panel. This panel will record your operation history. You can find your previous operations here and click to revert to a previous state.
 
-Don't be troubled by these seemingly cumbersome lines, thinking they are hard to understand. It might even feel like defusing a bomb, unsure whether to cut the red wire or the yellow wire. 😂
+    Additionally, there's a common operation that requires multiple shortcuts. When you need to move multiple nodes, you need to:
+    - **Ctrl/Shift + Click**: Select multiple nodes.
+    - **Shift + Drag**: Then, when dragging, you need to hold down Shift while dragging.
 
-In fact, these nodes are like Lego blocks. They can be combined freely while following certain rules. Let's take KSampler, which has the most connection points in the diagram, as an example:
-<br/>
-<PhotoProvider>
-  <PhotoView src="/comfyui-foundation/003.png">
-    <img src="/comfyui-foundation/003.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
+    Below is the complete shortcut list:
 
-If you look closely at these connections, you will find that these lines and connection points have corresponding colors, and there are also some text explanations. Here's a simple summary of the rules for making connections. Once you understand these rules, you will not have any problems making connections:
+    | Keybind                   | Explanation                                                                                                        |
+    |---------------------------|--------------------------------------------------------------------------------------------------------------------|
+    | Ctrl + Enter              | Queue up current graph for generation                                                                              |
+    | Ctrl + Shift + Enter      | Queue up current graph as first for generation                                                                     |
+    | Ctrl + Z/Ctrl + Y         | Undo/Redo                                                                                                          |
+    | Ctrl + S                  | Save workflow                                                                                                      |
+    | Ctrl + O                  | Load workflow                                                                                                      |
+    | Ctrl + A                  | Select all nodes                                                                                                   |
+    | Alt + C                   | Collapse/uncollapse selected nodes                                                                                 |
+    | Ctrl + M                  | Mute/unmute selected nodes                                                                                         |
+    | Ctrl + B                  | Bypass selected nodes (acts like the node was removed from the graph and the wires reconnected through)            |
+    | Delete/Backspace          | Delete selected nodes                                                                                              |
+    | Ctrl + Delete/Backspace   | Delete the current graph                                                                                           |
+    | Space                     | Move the canvas around when held and moving the cursor                                                             |
+    | Ctrl/Shift + Click        | Add clicked node to selection                                                                                      |
+    | Ctrl + C/Ctrl + V         | Copy and paste selected nodes (without maintaining connections to outputs of unselected nodes)                     |
+    | Ctrl + C/Ctrl + Shift + V | Copy and paste selected nodes (maintaining connections from outputs of unselected nodes to inputs of pasted nodes) |
+    | Shift + Drag              | Move multiple selected nodes at the same time                                                                      |
+    | Ctrl + D                  | Load default graph                                                                                                 |
+    | Q                         | Toggle visibility of the queue                                                                                     |
+    | H                         | Toggle visibility of history                                                                                       |
+    | R                         | Refresh graph                                                                                                      |
+    | Double-Click LMB          | Open node quick search palette                                                                                     |
+  </Tabs.Tab>
+</Tabs>
 
-- **Like Connects With Like**: Only the same types can connect with each other. For example, the "model" endpoint on the left side of KSampler can only connect with another "MODEL" output point. To put it more concretely, only endpoints of the same color can connect. If you try to connect the orange point on the right side of "CLIP Text Encode" to the purple "model" point on KSampler, it will not work because of different types. Orange points can only connect with orange points. A handy trick is that when you click on an endpoint and pull out a line, only those that can connect will be highlighted, and the ones that cannot connect will dim.
 
-- **Input on the Left, Output on the Right**: For instance, "model," "positive," "negative," and "latent_image" on the left side of KSampler are all input points, and the output point is "LATENT" on the right. You can understand this as a function where the left side inputs numbers and the right side is the output. This means that you cannot connect an output terminal on the right side of one node to an output terminal on the right side of another node.
-
-- **One Input, Multiple Outputs**: One input end can only connect with one output end from another node, and it cannot connect with multiple output nodes simultaneously. For instance, KSampler's "positive" endpoint can only connect with one "CLIP Text Encode", it cannot connect with multiple at the same time. However, one output end can connect with multiple input ends. Using the same example, one "CLIP Text Encode" can connect with multiple "KSamplers". It can connect with "KSampler A's" positive end and "KSampler B's" negative point at the same time, generating two images in the end.
-
-With these rules in mind, you will not be at a loss anymore. As I go through more examples later, you will become more and more familiar with these rules.
-
-<Subscribe />
-
-## Basic Operations & Shortcuts
-
-Finally, let's introduce the common operations and shortcuts in ComfyUI. I've compiled a complete list of ComfyUI shortcuts. Some of the most commonly used ones include:
-- **Right-click**: This pops up a menu where you can find the node you want to add.
-- **Double-click**: This opens a node search box where you can search for the node you want to add. Use the arrow keys to select the node and press Enter to add it to the canvas.
-- **Ctrl + Enter**: This has the same effect as clicking the "Queue Prompt" button on the right-side panel.
-- **Ctrl + D**: This has the same effect as clicking the "Default Workflow" button on the right-side panel. Sometimes, you may need to rebuild your workflow. I generally suggest starting with the Default Workflow.
-- **H**: This hides or shows the history panel. This panel will record your operation history. You can find your previous operations here and click to revert to a previous state.
-
-Additionally, there's a common operation that requires multiple shortcuts. When you need to move multiple nodes, you need to:
-- **Ctrl/Shift + Click**: Select multiple nodes.
-- **Shift + Drag**: Then, when dragging, you need to hold down Shift while dragging.
-
-Below is the complete shortcut list:
-
-| Keybind                   | Explanation                                                                                                        |
-|---------------------------|--------------------------------------------------------------------------------------------------------------------|
-| Ctrl + Enter              | Queue up current graph for generation                                                                              |
-| Ctrl + Shift + Enter      | Queue up current graph as first for generation                                                                     |
-| Ctrl + Z/Ctrl + Y         | Undo/Redo                                                                                                          |
-| Ctrl + S                  | Save workflow                                                                                                      |
-| Ctrl + O                  | Load workflow                                                                                                      |
-| Ctrl + A                  | Select all nodes                                                                                                   |
-| Alt + C                   | Collapse/uncollapse selected nodes                                                                                 |
-| Ctrl + M                  | Mute/unmute selected nodes                                                                                         |
-| Ctrl + B                  | Bypass selected nodes (acts like the node was removed from the graph and the wires reconnected through)            |
-| Delete/Backspace          | Delete selected nodes                                                                                              |
-| Ctrl + Delete/Backspace   | Delete the current graph                                                                                           |
-| Space                     | Move the canvas around when held and moving the cursor                                                             |
-| Ctrl/Shift + Click        | Add clicked node to selection                                                                                      |
-| Ctrl + C/Ctrl + V         | Copy and paste selected nodes (without maintaining connections to outputs of unselected nodes)                     |
-| Ctrl + C/Ctrl + Shift + V | Copy and paste selected nodes (maintaining connections from outputs of unselected nodes to inputs of pasted nodes) |
-| Shift + Drag              | Move multiple selected nodes at the same time                                                                      |
-| Ctrl + D                  | Load default graph                                                                                                 |
-| Q                         | Toggle visibility of the queue                                                                                     |
-| H                         | Toggle visibility of history                                                                                       |
-| R                         | Refresh graph                                                                                                      |
-| Double-Click LMB          | Open node quick search palette                                                                                     |
 
 ## Practice
 
@@ -91,7 +81,7 @@ Then, starting from scratch, accomplish the following objective: **Convert an Em
   <Tabs.Tab>
     <PhotoProvider>
       <PhotoView src="/comfyui-foundation/004.png">
-        <img src="/comfyui-foundation/004.png" alt="" />
+        <img src="/comfyui-foundation/004.png" alt="" className='rounded-lg'/>
       </PhotoView>
     </PhotoProvider>
     <Steps>
@@ -107,44 +97,7 @@ Then, starting from scratch, accomplish the following objective: **Convert an Em
   </Tabs.Tab>
 </Tabs>
 
-## Side Panel 🚧
-
-Having discussed the key nodes, let's now talk about the panel on the side. From top to bottom, the panel includes:
-
-* Queue Prompt:
-* Extra Options:
-  * Batch count:
-  * Auto Queue:
-* Queue Front:
-* View Queue:
-* View History:
-* Save：
-* Load：
-* Refresh：
-* Clipspace：
-* Clear：
-* Load Default:
-
-You can move the panel by holding down the top left corner, and the top right corner is the settings button:
-
-* Require confirmation when clearing workflow
-* Prompt for filename when saving workflow
-* When displaying a preview in the image widget, convert it to a lightweight image, e.g. webp, jpeg, webp;50, etc.
-* Disable sliders.
-* Disable rounding floats (requires page reload).	
-* Decimal places [0 = auto] (requires page reload).
-* Enable Dev mode Options
-* Save menu position
-* Logging
-* Enable DOM element clipping (enabling may reduce performance)
-* Number of nodes suggestions
-* Grid Size
-* Ctrl+up/down precision
-* Invert Menu Scrolling
-* Color palette	
-* Link Render Mode
-
-## Q&a
+## Q&A
 <FAQBox title="What to do when an error occurs while running the basic workflow in KSampler?">
   > Complete error message: Error occurred when executing KSampler: module 'torch' has no attribute 'mps'
   This issue is from Discord user **123321123**.

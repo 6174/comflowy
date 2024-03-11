@@ -2,13 +2,17 @@ import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-# 安装插件
+# 安装 ComfyUI Manager
 
-安装完模型后，你其实就可以进入基础篇的学习，但我还想教大家如何安装插件。ComfyUI 有不少好用的插件可以显著提升你的使用效率。本章我会以 ComfyUI Manager 为例，教大家如何安装插件。
+安装完模型后，你其实就可以进入基础篇的学习，但我还想推荐大家安装一个插件，此插件可以显著提升你的使用效率。
 
-如果你对技术比较熟悉，可以直接查看 ComfyUI Manager 的[官方文档](https://github.com/ltdrdata/ComfyUI-Manager)。
+如果你对技术比较熟悉，可以直接查看 ComfyUI Manager 的[官方文档](https://github.com/ltdrdata/ComfyUI-Manager) 自行安装。
 
-## 安装 ComfyUI Manager
+<Callout type="warning" emoji="⚠️">
+  如果你使用的是我们的 Comflowy Space，则无需下载安装这个插件。产品内已经内置了这个插件的核心功能。
+</Callout>
+
+## 安装
 
 安装方法有两种，一种是你之前使用的 VS Code 或 Terminal 安装，另一种是手动导入安装。如果你对命令行工具比较熟悉，我会推荐你使用第一种方法。如果你不想使用命令行，可以考虑手动的方式。
 <Tabs items={['VS Code/Terminal', '手动安装']}>
@@ -181,7 +185,7 @@ pip install torchvision
   如果是已安装状态，那就尝试刷新浏览器页面，或者关闭浏览器页面再重新打开，然后再搜索看看是否能搜索到。
 </Callout>
 
-### 补全 nodes
+### 补全缺失 Nodes
 ComfyUI 右侧的面板中有个 Load 按钮，点击该按钮，可以将别人制作好的 workflow 导入到 ComfyUI 里，但有的时候，你导入的 workflow 用了一些你没有安装过的插件。此时 ComfyUI 就会弹出提示告知没有安装某些节点。
 
 此时就可以用到 ComfyUI Manager 的另一个常用功能是 Install Missing Custom Nodes。

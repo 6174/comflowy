@@ -2,37 +2,61 @@ import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-# ComfyUI 基础 ➀
+# 文生图
 
-上一章，我们介绍了 Stable Diffusion 的基本原理，以及如何使用它生成图片。这一章，我们来介绍 ComfyUI 的基本操作，以及如何使用 ComfyUI 生成图片。
+上一章，我们介绍了 Stable Diffusion 的基本原理，以及如何使用它生成图片。这一章，我们来介绍 ComfyUI 和 ComflowySpace 的基本操作，以及如何使用 AI 生成图片。
 
 <Callout type="warning" emoji="⚠️">
-  学习本章前，请确保你已经完成 ComfyUI 的安装，并且下载好了 Stable Diffusion v1.5 或 Stable Diffusion XL 模型。
+  学习本章前，请确保你已经完成 ComfyUI 或者 ComflowySpace 的安装，并且下载好了 Stable Diffusion v1.5 或 Stable Diffusion XL 模型。并将模型文件放到对应的文件夹内。
 </Callout>
 
 ## 默认 Workflow
 
-安装并打开 ComfyUI 后，你会看到一个这样的界面（图片可以点击放大 👇）：
+<Tabs items={['ComflowySpace', 'ComfyUI']}>
+  <Tabs.Tab>
+  如果你使用的是 ComflowySpace，打开应用后，你会看到这样的一个界面。
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-foundation/006.png">
+      <img src="/comfyui-foundation/006.png" alt="" className='rounded-lg'/>
+    </PhotoView>
+  </PhotoProvider>
+  点击顶部的 New workflow（新建工作流）按钮，你会看到这样的一个界面：
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/comfyui-foundation/007.png">
+      <img src="/comfyui-foundation/007.png" alt="" className='rounded-lg'/>
+    </PhotoView>
+  </PhotoProvider>
 
-<Callout type="info">
-  如果你打开 ComfyUI 后没有看到这个界面，可以点击右侧面板里的 Load Default 按钮。
-</Callout>
+  你可以点击下方面板的那个 Run 按钮（下方那个播放按钮）既可以运行 AI 文生图。最终你会在最右侧的 Save Image 看到生成的图片。
 
-<br/>
-<PhotoProvider>
-  <PhotoView src="/comfyui-foundation/001.png">
-    <img src="/comfyui-foundation/001.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    打开 ComfyUI 后，你会看到一个这样的界面（图片可以点击放大 👇）：
+    <Callout type="info">
+      如果你打开 ComfyUI 后没有看到这个界面，可以点击右侧面板里的 Load Default 按钮。
+    </Callout>
 
-你可能会很疑惑，这些方块和线都代表什么？
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/comfyui-foundation/001.png">
+        <img src="/comfyui-foundation/001.png" alt="" />
+      </PhotoView>
+    </PhotoProvider>
+
+    你可以点击右侧面板上的 Queue Prompt 按钮，就可以生成图片了。
+  </Tabs.Tab>
+</Tabs>
+
+尝试完文生图后，你可能会很疑惑，这些方块和线都代表什么？
 
 为了方便后续的介绍，我先简单介绍下里面的一个个方块。这个方块我在后续会称其为 Node（节点），其左侧端点是 Input（输入）端，右侧是 Output（输出）端，节点里还会有一些配置项，这些配置项我会称其为 Parameter（参数）：
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/comfyui-foundation/005.jpg">
-    <img src="/comfyui-foundation/005.jpg" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+  <PhotoView src="/comfyui-foundation/005.png">
+    <img src="/comfyui-foundation/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
   </PhotoView>
 </PhotoProvider>
 
@@ -46,7 +70,7 @@ import Subscribe from "components/subscribtion";
 
 现在再看看，这些方块是不是变得似曾相识了？初始 Workflow 上的这些块块（后续我会用「节点」来称呼这些块块），其实就是前面一章中提到的 Stable Diffusion 包含的三大组件，只是这些组件在 ComfyUI 里名字不太一样而已：
 
-| ComfyUI 上的节点名称        | 在 SD 模型里对应的名称         | 解释                                                       |
+| 节点名称        | 在 SD 模型里对应的名称         | 解释                                                       |
 | :------------------------ | :-------------------------- | :-------------------------------------------------------- |
 | CLIP Text Encode          | Text Encoder                | 还记得上一章我们提到过 Stable Diffusion 的 Text Encoder 用的是 CLIP 里的 Text Encoder 吗？其实这个组件和上一章提到的 Text Encoder 是一个东西。只是说这里有两个，但如果你沿着输出端的连线往下看，你会看到两个节点分别连接 positive 和 negative 端，这就意味着它们一个是正向 prompt 一个代表负向 prompt。|
 | KSmapler                  | Image Information Creator   | 这个对应的就是我们的最核心的模型生成图片的部分，在 ComfyUI 里名字差异比较大，且配置项很多，在后续章节我会详细讲解。                                  |
@@ -57,12 +81,8 @@ import Subscribe from "components/subscribtion";
 然后两端各有两个上一章没有提到的东西：
 
 - Save Image：顾名思义，就是保存输出后的图片。
-
 - Load Checkpoint：这个你可以理解为图片模型加载器。比如 Stable Diffusion 就有 1.5、XL、XL-Turbo 等版本，要切换或载入不同的模型，就需要用到这个节点。
 
-介绍完整个 Workflow 之后，你可以点击右侧面板上的 Queue Prompt 按钮，就可以生成图片了。
-
-<Subscribe />
 
 ## 节点介绍
 
@@ -175,8 +195,8 @@ import Subscribe from "components/subscribtion";
       <td>6-8</td>
     </tr>
     <tr>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>非常在意图像质量，同时在意生成图片内容多样行</td>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>SDXL refiner</td>
+      <td rowSpan={2} >非常在意图像质量，同时在意生成图片内容多样行</td>
+      <td rowSpan={2} >SDXL refiner</td>
       <td>dpmpp_2m（有些软件会叫它 dpm++2M）</td>
       <td>karras</td>
       <td>20-30</td>
@@ -189,8 +209,8 @@ import Subscribe from "components/subscribtion";
       <td>1-2</td>
     </tr>
     <tr>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>在意图像质量，不太在意多样性，但想提高生成速度</td>
-      <td rowSpan={2} style={{ backgroundColor: "white" }}>SDXL refiner fp16</td>
+      <td rowSpan={2} >在意图像质量，不太在意多样性，但想提高生成速度</td>
+      <td rowSpan={2} >SDXL refiner fp16</td>
       <td>dpmpp_sde</td>
       <td>karras</td>
       <td>10-15</td>
@@ -210,5 +230,30 @@ import Subscribe from "components/subscribtion";
 </Callout>
 
 我目前比较常用的是 SDXL Turbo，另外使用什么模型还取决于你的做图需求，各位需要根据场景自行斟酌，并且多尝试。
+
+## 连线
+
+最后，了解完基本的配置后，我们再来看看连线和基本操作。
+
+千万不要被这些看似繁琐的连线所困扰，觉得这很难懂。甚至有种拆炸弹的感觉，不知道应该剪红线，还是剪黄线 😂
+
+其实这些节点就像是一个个乐高一样，能自由组合的同时，还有一定的规则，我们拿图中连线点最多的 KSampler 为例：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/003.png">
+    <img src="/comfyui-foundation/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+如果你细看这些连线，会发现这些线和连接点都有对应的颜色，并且还有一些文字说明。简单总结一下连线的规则，懂了这些规则后，连起来基本上不会有问题：
+
+- **同类相连**：只有同类才能相互连接起来，比如 KSampler 左侧的 model 端点，就只能跟另一个 MODEL 输出点相连。或者跟具象点说，只有同颜色的端点能相连，如果你将 CLIP Text Encode 右边橙色的点，连到 KSampler 的紫色点 model 上是不可能的。因为他们类型不一样。橙色点只能跟橙色点连。另外，还有一个技巧，当你点击端点并拉出一条线的时候，只有那些能连接的线会高亮出来，不能连的会变暗。
+
+- **左进右出**：比如 KSampler 左边的 model、positive、negative、latent_image 都是是输入端，输出端是右边的 LATENT。你可以将其理解为一个函数，左边输入数字，右边是输出。那也就意味着你不能将一个节点右边的输出端，连到另一节点右边的输出端。
+
+- **一进多出**：一个输入端只能和另一个节点的输出端相连，没法和多个输出端相连。比如上图中的 KSampler 的 positive 端点，只能和一个 CLIP Text Encode 相连，没法同时连多个。但一个输出端，能和多个输入端相连。还是上面那个例子，一个 CLIP Text Encode 可以和多个 KSampler 相连，比如可以和 KSampler A 的 positive 端连，也可以和 KSampler B 的 negative 点连，最后出两张图。
+
+了解这些规则后，你基本上就不会不知所措了。后面我会介绍更多的案例，你会越来越熟悉这些规则。
+
 
 <Subscribe />

@@ -3,5 +3,7 @@
   "upscale": "2. Upscale",
   "in-out-painting": "3. In/Outpainting",
   "controlnet": "4. ControlNet",
-  "advanced-optional": "Advanced Optional"
+  "how-to-install-comfyui-extension": "5. Install extension",
+  "stable-diffusion-advanced": "6. SD Advanced",
+  "prompt-advanced": "7. Prompt Advanced"
 }

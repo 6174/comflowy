@@ -8,13 +8,17 @@ import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-# Installing Plugins
+# Installing ComfyUI Manager
 
 Once the model is installed, you can actually start learning the basics, but I also want to teach you how to install plugins. ComfyUI has a number of useful plugins that can significantly increase your efficiency. In this chapter, I will use ComfyUI Manager as an example to show you how to install plugins.
 
 If you are technically proficient, you can directly view the [official documentation](https://github.com/ltdrdata/ComfyUI-Manager) of ComfyUI Manager.
 
-## Installation of ComfyUI Manager
+<Callout type="warning" emoji="⚠️">
+  If you are using our Comflowy Space, there is no need to download and install this plugin, as its core functions are already integrated within the product.
+</Callout>
+
+## Installation
 
 There are two installation methods. One is using VS Code or Terminal for installation, and the other is manual import. If you're familiar with command-line tools, I would recommend the first method. If you don't want to use the command line, consider the manual way.
 <Tabs items={['VS Code/Terminal', 'Manual']}>
@@ -184,7 +188,7 @@ You can use the search function at the top right to look for the desired plugin.
   Please note that after restarting ComfyUI, you can double-click on the blank space and enter the nodes' name from the plugin. If the search yields results, it means the installation has been successful. If you can't find it, return to the Install Custom Nodes list in the ComfyUI Manager, search for the plugin, and check if its status is installed. If it is marked as installed, try refreshing the browser page, or close and reopen the browser page, and then search again.
 </Callout>
 
-### Complete Nodes
+### Complete Missing Nodes
 There is a Load button on the right panel of ComfyUI. By clicking this button, you can import other people's workflows into ComfyUI, but sometimes, the workflow you import uses some plugins that you haven't installed. In this case, ComfyUI will pop up a prompt to tell you that some nodes are not installed.
 
 This is when you can use another common function of the ComfyUI Manager, Install Missing Custom Nodes.
