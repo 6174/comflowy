@@ -1,0 +1,148 @@
+---
+date: March 12th, 2024
+image: /blog/generate-Images-without-backgrounds/banner.png
+title: Struggling with clipping paths? Try Layer Diffusion for one-click transparent background creation.
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## Struggling with clipping paths? Try Layer Diffusion for one-click transparent background creation.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/banner.png">
+    <img src="/blog/generate-Images-without-backgrounds/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+In the past, creating an image with a transparent background required hours of meticulous work in Photoshop. Even then, a minor mistake could lead to results far below expectations, bringing great frustration. Although artificial intelligence excels in removing backgrounds, with some complex images, AI background removal technology might still be unable to perfectly eliminate all parts, meaning we inevitably face challenges when processing these pictures. However, the advent of LayerDiffusion has completely changed all that. With just a few simple commands, it can quickly generate images with transparent backgrounds that meet our expectations, sweeping away previous troubles.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/001.png">
+    <img src="/blog/generate-Images-without-backgrounds/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+This tool is the latest masterpiece brought to us by the creators of ControlNet. But how exactly does LayerDiffusion achieve all this?
+ How can we effectively utilize LayerDiffusion? Let's delve into it.
+
+
+## 1. Technical Principles
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/002.png">
+    <img src="/blog/generate-Images-without-backgrounds/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+The feature of LayerDiffusion is its ability to precisely identify the transparency information within an image while maintaining the overall appearance of the image intact. Compared to traditional clipping techniques that rely on training with pixel colors, this latent diffusion model makes the clipping process easier and more accurate.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/003.png">
+    <img src="/blog/generate-Images-without-backgrounds/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+This tool utilizes visualization techniques to train a foundational model for generating transparent images and is capable of training multi-layer models to generate multiple layers at the same time. When training the basic diffusion model (Scenario a), the weights of all models can be trained. However, when training multi-layer models (Scenario b), only two LoRAs (foreground LoRA and background LoRA) are trainable.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/004.png">
+    <img src="/blog/generate-Images-without-backgrounds/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 2. Installation
+
+-Download the GitHub files  [**GitHub**](https://github.com/huchenlei/ComfyUI-layerdiffuse)and extract them into the custom_nodes folder within the ComfyUI installation directory. If you're not sure how to install, you can refer to this tutorial: [**Comflowy**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
+
+- You can also download the workflows you want to try on GitHub, and click on import at the comflowy homepage to load and install missing nodes with one click.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/005.png">
+    <img src="/blog/generate-Images-without-backgrounds/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- Layer Diffusion supports XL and 1.5 base models. The Checkpoint model I downloaded is  [**DreamShaper XL**](https://www.comflowy.com/model/dream-shaper-xl)
+
+- If you want to try more high-quality models, you can find and download them on the Model page.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/006.png">
+    <img src="/blog/generate-Images-without-backgrounds/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3. Effect Demonstration
+
+This is a workflow for generating transparent materials, where I used simple prompts to generate a dog. The final clipped dog's outline is very precise, even accurately recognizing the edge reflections.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/007.png">
+    <img src="/blog/generate-Images-without-backgrounds/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Of course, you can also download your favorite Lora model to control the final generation style. I used a Lora model that generates anime sticker-style images. As you can see, the final generated puppy is very cute and has a cartoon sticker feel to it.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/008.png">
+    <img src="/blog/generate-Images-without-backgrounds/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+The Lora model I used here is [**Stickers.Redmond - Stickers Lora for SD XL**](https://civitai.com/models/144142/stickersredmond-stickers-lora-for-sd-xl) It generates sticker images with great color and texture. If you're interested, you might want to try it out.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/009.png">
+    <img src="/blog/generate-Images-without-backgrounds/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In our previous issue  [**AI-Weekly-010**](https://www.comflowy.com/zh-CN/blog/AI-Weekly-010), we introduced the Face-to-sticker tool that converts face photos into stickers online. Now, you can achieve this effect through this workflow.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/010.png">
+    <img src="/blog/generate-Images-without-backgrounds/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: Taylor Swift,portrait, sticker, 8k, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/011.png">
+    <img src="/blog/generate-Images-without-backgrounds/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Justin bieber,portrait, sticker, 8k, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/012.png">
+    <img src="/blog/generate-Images-without-backgrounds/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Anne Hathaway,portrait, sticker, 8k, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/013.png">
+    <img src="/blog/generate-Images-without-backgrounds/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+

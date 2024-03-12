@@ -1,0 +1,147 @@
+---
+date: March 12th, 2024
+image: /blog/generate-Images-without-backgrounds/banner.png
+title: 抠图崩溃？试试 Layer Diffusion，一键生成透明背景
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+## 抠图崩溃？试试 Layer Diffusion，一键生成透明背景
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/banner.png">
+    <img src="/blog/generate-Images-without-backgrounds/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+以往，要创建一张透明背景的图片，我们需要在 Photoshop 中投入数小时的精细工作。即便这样，一点小小的错误也可能导致成果远远低于预期，带来极大的挫败感。尽管人工智能在移除背景方面表现出色，对于一些复杂的图像，AI去背景技术仍然可能无法完美去除所有部分，这意味着在处理这些图片时，我们不可避免地会面临挑战。然而，LayerDiffusion 的问世彻底改变了这一切。通过简单几个指令，它能迅速生成符合我们预期的透明背景图片，将之前的烦恼一扫而空。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/001.png">
+    <img src="/blog/generate-Images-without-backgrounds/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这个工具是由 ControlNet 的创作者带来的最新杰作。但 LayerDiffusion 究竟是如何实现这一切的呢？
+要怎样才能有效利用 LayerDiffusion 呢？让我们一探究竟。
+
+## 1. 技术原理 
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/002.png">
+    <img src="/blog/generate-Images-without-backgrounds/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+LayerDiffusion 的特点是其能够精准地辨识出图像内的透明度信息，同时保持图像整体外观不受损坏。相对于传统抠图技术依赖于像素颜色的训练，这个潜在扩散模型（Latent Diffusion Model）让抠图流程变得更为轻松和准确。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/003.png">
+    <img src="/blog/generate-Images-without-backgrounds/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+该工具利用了可视化技术来训练基础模型，以生成透明图像，并且能够训练多层模型以便同时生成多个图层。在训练基础扩散模型时（情景a），所有模型的权重均可进行训练。而在训练多层模型时（情景b），仅有两个 LoRA（前景LoRA和背景LoRA）是可训练的。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/004.png">
+    <img src="/blog/generate-Images-without-backgrounds/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 2. 安装 
+
+-下载 *[**GitHub**](https://github.com/huchenlei/ComfyUI-layerdiffuse) 文件并将其解压到 ComfyUI 安装目录中的 custom_nodes 文件夹中。如果你不清楚具体应该如何安装，可以参考这篇教程：*[**Comflowy**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
+
+-- 也可以在 GitHub 上下载你想尝试工作流，在 comflowy 首页点击 import 加载，一键安装缺失节点。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/005.png">
+    <img src="/blog/generate-Images-without-backgrounds/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- Layer Diffusion 支持 XL 和 1.5 的 base model，这里我下载的 Checkpoint 模型是 [**DreamShaper XL**](https://www.comflowy.com/model/dream-shaper-xl)
+
+- 如果你想试用更多高质量的模型，可以在 Model 页面寻找下载。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/006.png">
+    <img src="/blog/generate-Images-without-backgrounds/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3. 效果演示
+
+这是一个生成透明素材的工作流，我用简单的提示词生成了一只狗。最后抠图后的狗的轮廓形很精准，甚至完整识别到了边缘反光。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/007.png">
+    <img src="/blog/generate-Images-without-backgrounds/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+当然，你也可以下载自己喜欢的 Lora 模型来控制最后的生成风格，我使用了一个生成动漫贴画风格的 Lora ，可以看到最后生成的小狗非常可爱，很有卡通贴纸的味道。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/008.png">
+    <img src="/blog/generate-Images-without-backgrounds/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这里我使用的 Lora 模型是 [**Stickers.Redmond - Stickers Lora for SD XL**](https://civitai.com/models/144142/stickersredmond-stickers-lora-for-sd-xl) 它生成的贴纸图像颜色和质感很棒，如果你也感兴趣的话，可以尝试。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/009.png">
+    <img src="/blog/generate-Images-without-backgrounds/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在上期 [**AI-Weekly-010**](https://www.comflowy.com/zh-CN/blog/AI-Weekly-010) 中我们曾介绍过 Face-to-sticke 这个在线将人脸照片转换为贴纸工具。现在，你可以通过这个工作流来实现这个效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/010.png">
+    <img src="/blog/generate-Images-without-backgrounds/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：Taylor Swift,portrait, sticker, 8k, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/011.png">
+    <img src="/blog/generate-Images-without-backgrounds/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：Justin bieber,portrait, sticker, 8k, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/012.png">
+    <img src="/blog/generate-Images-without-backgrounds/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：Anne Hathaway,portrait, sticker, 8k, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/013.png">
+    <img src="/blog/generate-Images-without-backgrounds/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
