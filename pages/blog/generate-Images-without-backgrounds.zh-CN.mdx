@@ -7,21 +7,21 @@ title: 抠图崩溃？试试 Layer Diffusion，一键生成透明背景
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-## 抠图崩溃？试试 Layer Diffusion，一键生成透明背景
+# 抠图崩溃？试试这个免费的 AI 解决方案
 
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/generate-Images-without-backgrounds/banner.png">
-    <img src="/blog/generate-Images-without-backgrounds/banner.png" alt="" />
+    <img src="/blog/generate-Images-without-backgrounds/banner.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
-以往，要创建一张透明背景的图片，我们需要在 Photoshop 中投入数小时的精细工作。即便这样，一点小小的错误也可能导致成果远远低于预期，带来极大的挫败感。尽管人工智能在移除背景方面表现出色，对于一些复杂的图像，AI去背景技术仍然可能无法完美去除所有部分，这意味着在处理这些图片时，我们不可避免地会面临挑战。然而，LayerDiffusion 的问世彻底改变了这一切。通过简单几个指令，它能迅速生成符合我们预期的透明背景图片，将之前的烦恼一扫而空。
+以往，要创建一张透明背景的图片，我们需要在 Photoshop 中投入数小时的精细工作。即便这样，一点小小的错误也可能导致成果远远低于预期，带来极大的挫败感。尽管人工智能在移除背景方面表现出色，对于一些复杂的图像，AI 去背景技术仍然可能无法完美去除所有部分。然而，最新的 AI 技术 LayerDiffusion 的问世彻底改变了这一切。你只需要通过简单的几个指令，它就能迅速生成符合我们预期的透明背景图片，将之前的烦恼一扫而空。
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Images-without-backgrounds/001.png">
-    <img src="/blog/generate-Images-without-backgrounds/001.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/014.png">
+    <img src="/blog/generate-Images-without-backgrounds/014.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -46,7 +46,7 @@ LayerDiffusion 的特点是其能够精准地辨识出图像内的透明度信�
   </PhotoView>
 </PhotoProvider>
 
-该工具利用了可视化技术来训练基础模型，以生成透明图像，并且能够训练多层模型以便同时生成多个图层。在训练基础扩散模型时（情景a），所有模型的权重均可进行训练。而在训练多层模型时（情景b），仅有两个 LoRA（前景LoRA和背景LoRA）是可训练的。
+该工具利用了可视化技术来训练基础模型，以生成透明图像，并且能够训练多层模型以便同时生成多个图层。在训练基础扩散模型时（情景 a），所有模型的权重均可进行训练。而在训练多层模型时（情景 b），仅有两个 LoRA（前景 LoRA 和背景 LoRA）是可训练的。
 
 <br/>
 <PhotoProvider>
@@ -57,25 +57,24 @@ LayerDiffusion 的特点是其能够精准地辨识出图像内的透明度信�
 
 ## 2. 安装 
 
--下载 *[**GitHub**](https://github.com/huchenlei/ComfyUI-layerdiffuse) 文件并将其解压到 ComfyUI 安装目录中的 custom_nodes 文件夹中。如果你不清楚具体应该如何安装，可以参考这篇教程：*[**Comflowy**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
+首先，你需要下载 ComfyUI [LayerDiffuse 插件](https://github.com/huchenlei/ComfyUI-layerdiffuse) 。如果你不清楚具体应该如何安装，可以参考这篇教程：[如何安装 ComfyUI 插件？](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
 
--- 也可以在 GitHub 上下载你想尝试工作流，在 comflowy 首页点击 import 加载，一键安装缺失节点。
+另外，你也可以在 GitHub 上下载插件作者做好的 workflow，然后将其导入到 ComfyUI 或者 Comflowy 里面。将 workflow 导入到 Comflowy 后，你会看到缺失插件的引导，点击安装按钮，即可一键安装缺失插件：
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Images-without-backgrounds/005.png">
-    <img src="/blog/generate-Images-without-backgrounds/005.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/015.png">
+    <img src="/blog/generate-Images-without-backgrounds/015.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
-- Layer Diffusion 支持 XL 和 1.5 的 base model，这里我下载的 Checkpoint 模型是 [**DreamShaper XL**](https://www.comflowy.com/model/dream-shaper-xl)
-
-- 如果你想试用更多高质量的模型，可以在 Model 页面寻找下载。
+Layer Diffusion 支持 XL 和 1.5 的 base model，这里我下载的 Checkpoint 模型是 [DreamShaper XL](https://www.comflowy.com/model/dream-shaper-xl)。
+如果你想试用更多高质量的模型，可以在 [Model 页面](https://www.comflowy.com/model) 寻找下载。
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Images-without-backgrounds/006.png">
-    <img src="/blog/generate-Images-without-backgrounds/006.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/016.png">
+    <img src="/blog/generate-Images-without-backgrounds/016.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -85,17 +84,17 @@ LayerDiffusion 的特点是其能够精准地辨识出图像内的透明度信�
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Images-without-backgrounds/007.png">
-    <img src="/blog/generate-Images-without-backgrounds/007.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/017.png">
+    <img src="/blog/generate-Images-without-backgrounds/017.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
-当然，你也可以下载自己喜欢的 Lora 模型来控制最后的生成风格，我使用了一个生成动漫贴画风格的 Lora ，可以看到最后生成的小狗非常可爱，很有卡通贴纸的味道。
+当然，你也可以下载自己喜欢的 Lora 模型来控制最后的生成风格，我使用了一个生成动漫贴画风格的 Lora，可以看到最后生成的小狗非常可爱，很有卡通贴纸的味道。
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Images-without-backgrounds/008.png">
-    <img src="/blog/generate-Images-without-backgrounds/008.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/018.png">
+    <img src="/blog/generate-Images-without-backgrounds/018.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -103,8 +102,8 @@ LayerDiffusion 的特点是其能够精准地辨识出图像内的透明度信�
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Images-without-backgrounds/009.png">
-    <img src="/blog/generate-Images-without-backgrounds/009.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/019.png">
+    <img src="/blog/generate-Images-without-backgrounds/019.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -112,8 +111,8 @@ LayerDiffusion 的特点是其能够精准地辨识出图像内的透明度信�
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/blog/generate-Images-without-backgrounds/010.png">
-    <img src="/blog/generate-Images-without-backgrounds/010.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/blog/generate-Images-without-backgrounds/020.png">
+    <img src="/blog/generate-Images-without-backgrounds/020.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
