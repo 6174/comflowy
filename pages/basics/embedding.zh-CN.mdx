@@ -48,7 +48,7 @@ import Subscribe from "components/subscribtion";
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-prompt/004.jpg">
-    <img src="/stable-diffusion-prompt/004.jpg" alt="" />
+    <img src="/stable-diffusion-prompt/004.jpg" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -60,17 +60,17 @@ import Subscribe from "components/subscribtion";
   ### 在 Positive Prompt 里使用 Embedding
   点击右侧面板的 load default 按钮。加载完成后，在 positive prompt 里输入以下 prompt：
   ``` shell
-  embedding:ToCru69
+  embedding:tocru69
   ```
   <Callout type="warning" emoji="⚠️">
     需要注意：
-    * 第一步导入完之后，最好点一下右侧面板的 refresh 按钮，这样可以确保模型已经加载成功。
-    * 另外，Embedding 应该如何写，一般你在下载 Embedding 模型的时候，会有一个说明文档，里面会告诉你应该如何写 Embedding。比如这个 Tom Cruise embedding 的说明文档里就写要使用 embedding:ToCru69 这样的格式。
+    * 第一步导入完之后，最好点一下 refresh 按钮，这样可以确保模型已经加载成功。
+    * 另外，Embedding 后应该输入的是 Embedding 文件的名称，比如下图中我这里就将 embedding 文件重命名为 tom-cruise，所以这里输入就不是 embedding:tocru69 而是 embedding:tom-cruise。
   </Callout>
   <br/>
   <PhotoProvider>
     <PhotoView src="/stable-diffusion-prompt/005.png">
-      <img src="/stable-diffusion-prompt/005.png" alt="" />
+      <img src="/stable-diffusion-prompt/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -88,7 +88,7 @@ import Subscribe from "components/subscribtion";
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-prompt/006.jpg">
-    <img src="/stable-diffusion-prompt/006.jpg" alt="" />
+    <img src="/stable-diffusion-prompt/006.jpg" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 

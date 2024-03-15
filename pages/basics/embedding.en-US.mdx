@@ -54,7 +54,7 @@ Suppose we want to generate a picture of Tom Cruise. We can directly input "Tom 
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-prompt/004.jpg">
-    <img src="/stable-diffusion-prompt/004.jpg" alt="" />
+    <img src="/stable-diffusion-prompt/004.jpg" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -66,15 +66,17 @@ So how do you use Embedding in ComfyUI?
   ### Use Embedding in Positive Prompt
   Click the 'load default' button on the right panel. Once loaded, enter the following prompt into the positive prompt: 
   ``` shell
-  embedding:ToCru69
+  embedding:tocru69
   ```
   <Callout type="warning" emoji="⚠️">
-    Please note that after the first step of importing, it is recommended to click the 'refresh' button on the right panel to ensure that the model has been successfully loaded. Secondly, how to write the Embedding is typically explained in a document which comes with the downloaded Embedding model. This document will tell you how to write the Embedding. For instance, the instructions for the Tom Cruise embedding specify to use the format 'embedding:ToCru69'.
+    Please note:
+    * After the first step of import is complete, it's best to click the refresh button to ensure the model has been loaded successfully.
+    * Furthermore, after Embedding, you should enter the name of the Embedding file. For example, in the image below, I have renamed the embedding file to tom-cruise, so the input here should not be embedding:tocru69 but rather embedding:tom-cruise.
   </Callout>
   <br/>
   <PhotoProvider>
     <PhotoView src="/stable-diffusion-prompt/005.png">
-      <img src="/stable-diffusion-prompt/005.png" alt="" />
+      <img src="/stable-diffusion-prompt/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -93,7 +95,7 @@ Then, after adding the Embedding of BadDream and UnrealisticDream in the negativ
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-prompt/006.jpg">
-    <img src="/stable-diffusion-prompt/006.jpg" alt="" />
+    <img src="/stable-diffusion-prompt/006.jpg" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
