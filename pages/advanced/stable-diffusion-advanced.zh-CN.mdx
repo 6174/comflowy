@@ -72,10 +72,8 @@ Ok，言归正传。首先你需要下载 SDXL 的模型：
   
   但这样的话，每次修改 prompt 都需要你手动输入两次，这样就会很麻烦。所以，我这里介绍一个更简单的方法。我们只需要搞一组 Prompt 输入框即可。
   
-  首先，双击空白处，搜索 Text Box，将其添加到 workflow 中。接着右键点击其中一个 CLIP Text Encode 节点，选择 Convert text to widget，然后 CLIP Text Encode 节点的输入框会消失，并且输入端会多一个 Text input。此时我们将这个 Text input 与我们刚刚添加的 Text Box 连起来。
-  你需要重复上面的步骤，最后的样子应该类似这样：
-  
-  接着再添加两个 CLIP Text Encode 节点，然后与第二个 KSampler 相连，并跟之前添加的 Text Box 相连。最后的样子应该类似这样：
+  首先，双击空白处，搜索 string，将 Primitive STRING 添加到 workflow 中。接着右键点击其中一个 CLIP Text Encode 节点，选择 Convert text to widget，然后 CLIP Text Encode 节点的输入框会消失，并且输入端会多一个 Text input。此时我们将这个 Text input 与我们刚刚添加的 Primitive STRING 连起来。
+  你需要重复上面的步骤，接着再添加两个 CLIP Text Encode 节点，然后与第二个 KSampler 相连，并跟之前添加的 Primitive STRING 相连。最后的样子应该类似这样：
   <br/>
   <PhotoProvider>
     <PhotoView src="/stable-diffusion-advanced/004.png">

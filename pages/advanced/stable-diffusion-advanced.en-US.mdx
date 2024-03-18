@@ -70,11 +70,9 @@ After downloading, open ComfyUI, load the Default workflow, and then we will bui
 
   However, this means that every time you modify the prompt, you have to manually input it twice, which can be quite cumbersome. So, here's a simpler method. We only need one set of Prompt input box.
 
-  First, double-click the blank space, search for Text Box, and add it to the workflow. Then right-click on one of the CLIP Text Encode nodes, select Convert text to widget, and the input box of the CLIP Text Encode node will disappear, and an extra Text input will be added to the input end. At this point, connect this Text input to the Text Box we just added. 
+  First, double-click the blank space, search for Primitive STRING, and add it to the workflow. Then right-click on one of the CLIP Text Encode nodes, select Convert text to widget, and the input box of the CLIP Text Encode node will disappear, and an extra Text input will be added to the input end. At this point, connect this Text input to the Primitive STRING we just added. 
 
-  You need to repeat the above steps. The result should look like this:
-
-  Then add two more CLIP Text Encode nodes, connect them to the second KSampler, and connect them to the previously added Text Box. The final situation should look similar to this:
+  You need to repeat the above steps. Then add two more CLIP Text Encode nodes, connect them to the second KSampler, and connect them to the previously added Primitive STRING. The final situation should look similar to this:
 
   <br/>
   <PhotoProvider>
