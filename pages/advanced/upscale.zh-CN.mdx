@@ -185,7 +185,7 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
   <Tabs.Tab>
     <Steps>
       ### 添加 VAE Encode 节点
-      基本流程其实跟前面的一致，只是将 Upscale pixel by model workflow 的尾端与 Hi-res fix latent upscale workflow 相连，因为 Upscale pixel by model 生成是图片，所以需要用 VAE Enocde 节点，先将像素图片转为潜空间图片。
+      基本流程其实跟前面的一致，只是将 Upscale pixel by model workflow 的尾端与 Hi-res fix latent upscale workflow 相连，因为 Upscale pixel by model 生成是图片，所以需要用 VAE Encode 节点，先将像素图片转为潜空间图片。
 
       ### 配置参数
       正如我在 Hint 里提到的那样，可以先将图片放到 4 倍，然后再缩小 1/2，这样最终图片就会变成原来的 2 倍。所以：
