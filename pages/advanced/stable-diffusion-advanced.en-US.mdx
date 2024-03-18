@@ -82,6 +82,10 @@ After downloading, open ComfyUI, load the Default workflow, and then we will bui
   </PhotoProvider>
 
   ### Adjust KSampler Nodes
+  <Callout type="warning" emoji="⚠️">
+    Comflowy is currently adapting to Primitive nodes, so if you want to use this workflow, you might need to manually adjust it multiple times yourself. Alternatively, you could switch to using ComfyUI.
+  </Callout>
+
   In addition to the Prompt being repeated, there are quite a few parameters on the KSampler that require frequent adjustment. Similar to the CLIP Text Encode situation, adjusting one means adjusting both together, which is quite cumbersome. So we can use a similar approach to put the common parameters together.
 
   First, let's set the most commonly adjusted steps. Right-click on KSampler, then select Convert steps to widget. Next, double-click the blank area, search for Primitive, then connect this Primitive to the steps of the two KSamplers. Once you connect the Primitive to the KSampler, the Primitive node will change. This is normal. For convenience in later use, you can rename this Primitive node to Total Steps. Right-click on the Primitive node, then click Title to rename.

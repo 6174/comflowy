@@ -82,6 +82,9 @@ Ok，言归正传。首先你需要下载 SDXL 的模型：
   </PhotoProvider>
   
   ### 调整 KSampler 节点
+  <Callout type="warning" emoji="⚠️">
+    目前 Comflowy 还在适配 Primitive 节点，所以如果你要用这个 workflow，可能需要你自己手动多次调整。或者转去使用 ComfyUI。
+  </Callout>
   除了 Prompt 会重复外，KSampler 上还有不少参数是调整比较频繁的。跟 CLIP Text Encode 的情况类似，调整一次就要两个一起调整，比较麻烦，所以我们可以采用类似的做法将共用的参数放到一起。
 
   首先，我们来配置下最常调整的 steps。右键点击 KSampler，然后选择 Convert steps to widget。接着双击空白处，搜索 Primitive，然后将这个 Primitive 与两个 KSampler 的 steps 相连。当你将 Primitive 连上 KSampler 后，Primitive 节点会发生变化，这是正常现象。为了方便后续使用，你可以将这个 Primitive 节点名称改成 Total Steps。右键 Primitive 节点，然后点击 Title 即可改名。
