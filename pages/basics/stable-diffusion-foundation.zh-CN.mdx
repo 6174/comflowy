@@ -80,7 +80,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 首先整个降噪的过程会在一个 Latent Space（潜空间）里进行，然后会进行多 <mark>Steps（步）</mark>的降噪，你可以对这个 Steps 进行调整，一般越多图片质量也会好，但时间也会越久。当然这个也跟模型有关，Stable Diffusion XL Turbo 就能 1 步出图，耗时不到 1 秒，而且生成的图片质量还很不错。如果我们将这一步过程可视化，类似是这样的（为了更好地解释，我将下方黑色的块都描述成图，本质上它不是图，只是一堆与图像相关的数据）：
 
 那 Denoise 里又发生了什么呢？下图是第一个 Denoise 过程的可视化：
-<br/>
+
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/004.png">
     <img src="/stable-diffusion-foundation/004.png" alt=""/>
@@ -88,7 +88,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 </PhotoProvider>
 
 上图看上去很复杂，但不要恐惧，我们只要懂加减乘除就能理解这张图：
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">
     <img src="/stable-diffusion-foundation/005.png" alt=""/>
@@ -96,7 +96,7 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 </PhotoProvider>
 
 * 首先，在 Denoise 里有一个 Noise Predictor（噪音预测器），顾名思义，它就是能预测出随机图里包含什么噪音的模型。除了输入随机图和 Prompt 的词特征向量外，还需要输入当前的 Step 数。虽然在上面的可视化流程中，你会看到很多个 Denoise，但实际程序运行的是同一个 Denoise，所以需要将 Step 告知 Noise Predictor 让其知道正在进行哪一步的预测。
-* 然后，我们先来看橙色的线，Noise Predictor 会使用随机图（比如一张<mark> 4 X 4 </mark>的图）和 Prompt 的词特征向量预测出一张噪声图 B。注意，这里不是根据预测输出实际的图，而是一张噪声图。换句话来说，Noise Predictor 是根据词向量预测这张随机图里有哪些不需要的噪声。如果拿前面的雕刻的例子来类比，它输出的是雕刻雕像所不需要的废料。于此同时，Noise Predictor 还会不使用 Prompt 的词特征向量预测出一张噪音图 C（也就是图中的蓝色线）。
+* 然后，我们先来看橙色的线，Noise Predictor 会使用随机图（比如一张<mark> 4 X 4 </mark>的图）和 Prompt 的词特征向量预测出一张噪声图 B。注意，这里不是根据预测输出实际的图，而是一张噪声图。换句话来说，Noise Predictor 是根据词向量预测这张随机图里有哪些不需要的噪声。如果拿前面的雕刻的例子来类比，它输出的是雕刻雕像所不需要的废料。于此同时，Noise Predictor 还会使用不包含 Prompt 的词特征向量预测出一张噪音图 C（也就是图中的蓝色线）。
 <Callout emoji="💡">
   你可能好奇，为何我要高亮 4 X 4？回看完整的 Denoise 的流程，你会发现，开始的时候，随机图是 4 X 4，结果也是 4 X 4，这就意味着如果你想要改变最终生成图像的比例，或者是大小，你需要修改这个随机图的比例或大小，而不是通过 Prompt 下达调整的指令。用雕刻来类比，会很好理解，用 1 立方米的石头进行雕刻，不管雕刻师技艺有多好，都没法雕刻出一个高 10 米的雕像。它最多只能雕刻一个高 1 米的雕像。
 </Callout>

@@ -78,7 +78,7 @@ Since we're talking about denoising, let's expand on the whole 'denoising' proce
 First, the entire denoising process will take place in a Latent Space, and there will be multiple <mark>Steps</mark> of denoising. You can adjust these Steps; generally, the more there are, the better the image quality, but the longer it will take. Of course, this also depends on the model. Stable Diffusion XL Turbo can generate an image in one step, taking less than 1 second, and the image quality is quite good. If we visualize this step, it's something like this (to better explain, I've described the black blocks below as images, but essentially they're not images, just a bunch of image-related data):
 
 So what happens in Denoise? The following image is a visualization of the first Denoise process:
-<br/>
+
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/004.png">
     <img src="/stable-diffusion-foundation/004.png" alt="" />
@@ -86,7 +86,7 @@ So what happens in Denoise? The following image is a visualization of the first 
 </PhotoProvider>
 
 The previous image might look complex, but there's no need to fear. As long as we understand basic operations like addition, subtraction, multiplication, and division, we can understand this image.
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">
     <img src="/stable-diffusion-foundation/005.png" alt="" />
