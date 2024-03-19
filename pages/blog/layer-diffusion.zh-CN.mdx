@@ -11,21 +11,14 @@ import Subscribe from "components/subscribtion";
 
 在上一期的分享中，我们深入探讨了 Layer Diffusion 技术，展示了如何仅通过简单的操作，便能够实现透明背景的一键生成 [**抠图崩溃？试试这个免费的 AI 解决方案**](https://www.comflowy.com/blog/generate-Images-without-backgrounds) 。本期，我们将继续沿着这一主题深入前行，深挖 Layer Diffusion 的更多奇妙用途，期待它给我们带来更加丰富和多样化的视觉体验。
 
-<br/>
-<PhotoProvider>
-  <PhotoView src="/blog/layer-diffusion/001.png">
-    <img src="/blog/layer-diffusion/001.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
-
-## 1. 技术原理 
+## 1. 能力介绍
 
 LayerDiffusion 不仅能够生成单个透明图像，还可以生成多层图像，从而分离图像的前景和背景。此外，它还可用于条件生成，例如下图，利用透明的前景图像生成背景图像，或者基于背景图像生成透明的前景图像。
 
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/002.png">
-    <img src="/blog/layer-diffusion/002.png" alt="" />
+    <img src="/blog/layer-diffusion/002.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -36,7 +29,7 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/003.png">
-    <img src="/blog/layer-diffusion/003.png" alt="" />
+    <img src="/blog/layer-diffusion/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -45,20 +38,20 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/004.png">
-    <img src="/blog/layer-diffusion/004.png" alt="" />
+    <img src="/blog/layer-diffusion/004.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
 ## 3. 人物替换背景
 
-上期 [**抠图崩溃？试试这个免费的 AI 解决方案**](https://www.comflowy.com/zh-CN/blog/generate-Images-without-backgrounds) 中我们主要展示了生成抠图人物的 workflow ，如果你想给人物加一个新的背景，可以使用这个 workflow 。这里需要上传抠完图的照片，它会根据人物的颜色生成一个大致的色调，最后的效果与这个色调是一致的。
+上期 [**抠图崩溃？试试这个免费的 AI 解决方案**](https://www.comflowy.com/zh-CN/blog/generate-Images-without-backgrounds) 中我们主要展示了生成抠图人物的 workflow，如果你想给人物加一个新的背景，可以使用这个 workflow。这里需要上传抠完图的照片，它会根据人物的颜色生成一个大致的色调，最后的效果与这个色调是一致的。
 
-举例我的提示词是: an old man sitting, high quality, 便帮我生成了一个砖瓦背景，色调统一的背景，不管是比例、场景，材质、还是画面关系，都表现得很出色。
+举例我的提示词是：an old man sitting, high quality, 便帮我生成了一个砖瓦背景，色调统一的背景，不管是比例、场景，材质、还是画面关系，都表现得很出色。
 
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/005.png">
-    <img src="/blog/layer-diffusion/005.png" alt="" />
+    <img src="/blog/layer-diffusion/005.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -67,7 +60,7 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/006.png">
-    <img src="/blog/layer-diffusion/006.png" alt="" />
+    <img src="/blog/layer-diffusion/006.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -76,7 +69,7 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/007.png">
-    <img src="/blog/layer-diffusion/007.png" alt="" />
+    <img src="/blog/layer-diffusion/007.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -88,7 +81,7 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/008.png">
-    <img src="/blog/layer-diffusion/008.png" alt="" />
+    <img src="/blog/layer-diffusion/008.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -99,7 +92,7 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/009.png">
-    <img src="/blog/layer-diffusion/009.png" alt="" />
+    <img src="/blog/layer-diffusion/009.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -112,7 +105,16 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/010.png">
-    <img src="/blog/layer-diffusion/010.png" alt="" />
+    <img src="/blog/layer-diffusion/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：1 boy,masterpiece,best quality,8k,1boy,:1.5,3d,unreal engine,looking at viewer,avatar,white skin,bright,perfect light, black hair,high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/012.png">
+    <img src="/blog/layer-diffusion/012.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -121,16 +123,7 @@ Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中�
 <br/>
 <PhotoProvider>
   <PhotoView src="/blog/layer-diffusion/011.png">
-    <img src="/blog/layer-diffusion/011.png" alt="" />
-  </PhotoView>
-</PhotoProvider>
-
-提示词: 1 boy,masterpiece,best quality,8k,1boy,:1.5,3d,unreal engine,looking at viewer,avatar,white skin,bright,perfect light, black hair,high quality
-
-<br/>
-<PhotoProvider>
-  <PhotoView src="/blog/layer-diffusion/012.png">
-    <img src="/blog/layer-diffusion/012.png" alt="" />
+    <img src="/blog/layer-diffusion/011.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
