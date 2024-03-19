@@ -1,0 +1,155 @@
+---
+date: March 19th, 2024
+image: /blog/layer-diffution/banner.png
+title: Having trouble with image cutouts? Try this free AI solution②
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Having trouble with image cutouts? Try this free AI solution②
+
+In the previous session, we deeply explored the Layer Diffusion technology, showing how simple operations can easily achieve one-click generation of transparent backgrounds with the tagline [**Having trouble with image cutouts? Try this free AI solution**](https://www.comflowy.com/blog/generate-Images-without-backgrounds).In this issue, we will continue to delve into this theme, further investigating the myriad of intriguing applications of Layer Diffusion, eagerly anticipating the richer and more diverse visual experiences it will bring us.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/001.png">
+    <img src="/blog/layer-diffusion/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 1. Technical principle 
+
+LayerDiffusion is not only capable of generating single transparent images but also able to produce multi-layer images, thereby separating an image's foreground from its background. Additionally, it can be used for conditional generation. For example, as shown in the following figure, it can generate background images using transparent foreground images, or generate transparent foreground images based on background images.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/002.png">
+    <img src="/blog/layer-diffusion/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 2. Generating characters from a background 
+
+In addition to one-click image cutouts, Layer Diffusion can also help us generate portraits in specific backgrounds. For example, using a park bench as the background, it can generate an image of an elderly person sitting on the bench. The generated character's proportion, posture, and integration with the background are all very natural.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/003.png">
+    <img src="/blog/layer-diffusion/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Of course, besides generating characters, you can also use it to create other subjects or props, such as dogs, kites, and so on.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/004.png">
+    <img src="/blog/layer-diffusion/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 3. 人物替换背景
+
+In the previous issue titled [**Having trouble with image cutouts? Try this free AI solution**](https://www.comflowy.com/blog/generate-Images-without-backgrounds) we primarily showcased a workflow for generating cutout characters. If you want to add a new background to a character, you can use this workflow. It requires uploading the cutout photo, and it will generate a general color tone based on the colors of the character. The final effect will be consistent with this color tone.
+
+For example, my prompt was: "an old man sitting, high quality, " and it helped me generate a background with brick and tile, uniform color tone, and whether it's the proportion, scene, material, or the relationship within the picture, it all performed exceptionally well.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/005.png">
+    <img src="/blog/layer-diffusion/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Additionally, I tried generating an elderly person with a dark color scheme. You can see that the color tone of the generated scene matches the colors on the elderly person, showing a unified palette.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/006.png">
+    <img src="/blog/layer-diffusion/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Lastly, I attempted to generate a scene of Taylor Swift at a concert. This technology can extract colors from her dress, and you can see in the final effect that it is surrounded by romantic purple-toned lighting.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/007.png">
+    <img src="/blog/layer-diffusion/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 4. Application in daily life scenarios
+### Product image background replacement
+
+The visual presentation of a product is extremely crucial as it not only attracts the attention of potential customers but also significantly enhances the product's appeal and recognition. Through this workflow, users can easily change the background of their products, as shown in the image below where I changed the background for a bottle of perfume. Brands and creators can utilize this method to place their products against diverse and appealing backgrounds, whether they aim to showcase the product in real-life usage scenarios or wish to create visual effects that align with specific marketing campaigns.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/008.png">
+    <img src="/blog/layer-diffusion/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### Model scene replacement
+
+Similarly, the background replacement feature can also be applied to photos of fashion models, offering users a more diverse range of scene references. Brands can easily place their models in various backgrounds, whether it be urban streets, natural landscapes, or professional photo studio settings, all with a single click.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/009.png">
+    <img src="/blog/layer-diffusion/009.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### Making a cover
+
+Of course, creating covers with it is a piece of cake. If you have specific materials you want to use, you can generate them using this workflow and automatically cut them out. This way, you can place the cut-out materials anywhere you want. In the image below, I inserted the cut-out material into a poster.
+
+Prompt:masterpiece,best quality,8k,1girl,3d,unreal engine,looking at viewer,avatar,white skin,bright,perfect light, Purple clothes with wavy and curly hair,high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/010.png">
+    <img src="/blog/layer-diffusion/010.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Activate LayerDiffusion. Choose the Conv Injection option, as it yields the best results for creating transparent background images based on practical testing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/011.png">
+    <img src="/blog/layer-diffusion/011.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: 1 boy,masterpiece,best quality,8k,1boy,:1.5,3d,unreal engine,looking at viewer,avatar,white skin,bright,perfect light, black hair,high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/012.png">
+    <img src="/blog/layer-diffusion/012.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

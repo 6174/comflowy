@@ -1,0 +1,139 @@
+---
+date: March 19th, 2024
+image: /blog/layer-diffusion/banner.png
+title: 抠图崩溃？试试这个免费的 AI 解决方案②
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 抠图崩溃？试试这个免费的 AI 解决方案②
+
+在上一期的分享中，我们深入探讨了 Layer Diffusion 技术，展示了如何仅通过简单的操作，便能够实现透明背景的一键生成 [**抠图崩溃？试试这个免费的 AI 解决方案**](https://www.comflowy.com/blog/generate-Images-without-backgrounds) 。本期，我们将继续沿着这一主题深入前行，深挖 Layer Diffusion 的更多奇妙用途，期待它给我们带来更加丰富和多样化的视觉体验。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/001.png">
+    <img src="/blog/layer-diffusion/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 1. 技术原理 
+
+LayerDiffusion 不仅能够生成单个透明图像，还可以生成多层图像，从而分离图像的前景和背景。此外，它还可用于条件生成，例如下图，利用透明的前景图像生成背景图像，或者基于背景图像生成透明的前景图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/002.png">
+    <img src="/blog/layer-diffusion/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 2. 背景生成人物 
+
+Layer Diffusion 除了一键抠图外，它还可以帮我们在特定背景中生成人像。例如，我以一个公园长椅为背景，让他帮我生成一个坐在椅子上的老人，可以看到生成的人物比例、姿势、和背景的融合度都很舒服。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/003.png">
+    <img src="/blog/layer-diffusion/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+当然，除了能生成人物之外，你还可以用它生成其他主体物或者道具，例如小狗，风筝等。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/004.png">
+    <img src="/blog/layer-diffusion/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 3. 人物替换背景
+
+上期 [**抠图崩溃？试试这个免费的 AI 解决方案**](https://www.comflowy.com/zh-CN/blog/generate-Images-without-backgrounds) 中我们主要展示了生成抠图人物的 workflow ，如果你想给人物加一个新的背景，可以使用这个 workflow 。这里需要上传抠完图的照片，它会根据人物的颜色生成一个大致的色调，最后的效果与这个色调是一致的。
+
+举例我的提示词是: an old man sitting, high quality, 便帮我生成了一个砖瓦背景，色调统一的背景，不管是比例、场景，材质、还是画面关系，都表现得很出色。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/005.png">
+    <img src="/blog/layer-diffusion/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+同时，我又尝试生成了一个暗色系的老人，可以看到生成的场景色调跟老人身上的颜色是统一的。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/006.png">
+    <img src="/blog/layer-diffusion/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+最后，我尝试生成了泰勒·斯威夫特在演唱会上的场景，这个技术能从她的裙子吸取颜色，可以看到最后的效果图，周围环绕着浪漫的紫色调光影。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/007.png">
+    <img src="/blog/layer-diffusion/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## 4. 生活场景应用 
+### 商品图替换背景
+
+产品的视觉呈现极为关键，它不仅能吸引潜在顾客的目光，还能显著增强产品的吸引力和辨识度。通过这个工作流程，用户可以轻松地更换产品背景，正如下面图，我为一瓶香水更换了不同的背景。品牌和创作者可以利用这种方式将产品置于多样且吸引人的背景中，无论是想展示产品在实际使用场景中的外观，还是希望创造出符合特定营销活动的视觉效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/008.png">
+    <img src="/blog/layer-diffusion/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### 模特替换场景
+
+同样地，替换背景功能还可应用于服装模特的照片，为用户提供更加多样化的场景参考。品牌可以轻松地将服装模特置于不同的背景中，无论是城市街头、自然风光、还是专业摄影棚的环境，都能够一键实现。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/009.png">
+    <img src="/blog/layer-diffusion/009.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### 制作封面
+
+当然，用它制作封面更是不在话下。如果你有特定想要使用的素材，可以用这个 workflow 进行生成，并自动抠图，这样你就可以把抠取的素材放入任何地方，下图我将抠出的素材放入了海报中。
+
+提示词:masterpiece,best quality,8k,1girl,3d,unreal engine,looking at viewer,avatar,white skin,bright,perfect light, Purple clothes with wavy and curly hair,high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/010.png">
+    <img src="/blog/layer-diffusion/010.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+开启 Layerdiffusion ,选择 Conv Injection 选项，这个做透明背景图，实测效果最好。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/011.png">
+    <img src="/blog/layer-diffusion/011.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+提示词: 1 boy,masterpiece,best quality,8k,1boy,:1.5,3d,unreal engine,looking at viewer,avatar,white skin,bright,perfect light, black hair,high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/layer-diffusion/012.png">
+    <img src="/blog/layer-diffusion/012.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
