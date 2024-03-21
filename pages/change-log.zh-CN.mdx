@@ -2,6 +2,28 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # 📦 Changelog
 
+## 2024-03-21
+### 🎉 ComflowySpace v0.1.2-alpha Release
+**产品更新：**
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/010.png">
+    <img src="/space/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- 节点以及 Group 节点支持折叠。
+- Group 节点支持拖拽。
+- 优化了连线体验，连线与节点端点增加自动吸附能力。
+- 支持设置启动方式，可以手动控制浮点精度和 VAE 精度。如果出现出图模糊或者黑图的情况，可以尝试将浮点精度或 VAE 精度设置成 FP32。
+- 修复了一些已知的 bug：
+  - 修复了 Win 系统通知的适配问题。
+  - 修复了 Terminal 在 Win 系统下部分功能无法使用的问题。
+  - 导入特殊 Workflow 报错问题。
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
 ## 2024-03-12
 ### 🎉 ComflowySpace v0.1.1-alpha Release
 **产品更新：**
