@@ -1,0 +1,153 @@
+---
+date: March 28th, 2024
+image: /blog/face-detailer/banner.png
+title: How to implement facial restoration using ComfyUI? 
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# How to implement facial restoration using ComfyUI? 
+
+Have you ever used AI to generate photos with distorted faces? Looking at those blurred, speckled faces, the first instinct might be to regenerate them. But it's also possible to encounter situations where, even after multiple regenerations, you're still not satisfied. Now, you can easily repair these facial generation errors by using the FaceDetailer plugin. It effectively improves the quality of faces in small-sized images, making the repaired images clearer and more vivid.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/banner.png">
+    <img src="/blog/face-detailer/banner.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 1. Download and Installation
+
+First, you need to download and install the missing nodes and models.
+
+### Method 1：
+
+Download the missing nodes from GitHub: Navigate to the [**ComfyUl-lmpact-Pack**](https://github.com/ltdrdata/ComfyUI-Impact-Pack) and find them in the ComfyUI\custom_nodes directory.
+
+### Method 2：
+
+If you are using our Comflowy, then you can directly click on the Extension Tab on the left side in Comflowy and find the plugin you want to download by searching. Then click to download and install it. For specific installation steps, refer to: [**How to install ComfyUI extension?**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/001.png">
+    <img src="/blog/face-detailer/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Model Download:
+
+- [**face_yolov8m.pt**](https://huggingface.co/Bingsu/adetailer/blob/main/face_yolov8m.pt)：This is a facial detection model used to identify facial regions in images. It's a critical step because it needs to accurately locate the position and range of the face.
+- [**sam_vit_b_01ec64.pth**](https://huggingface.co/spaces/jbrinkma/segment-anything/blob/main/sam_vit_b_01ec64.pth)：Once a face is detected, the plugin crops out the facial part and enlarges it to a higher resolution. At this higher resolution, the plugin can repair the facial details more meticulously, thus overcoming the issues caused by the original image's resolution limitations.
+- [**vae-ft-mse-840000-ema-pruned.ckpt**](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.ckpt)：Plays a role in image generation, data augmentation, or other generative tasks.
+
+**Node**：The bbox (bounding box) is used for locating the approximate positions of objects within the image. The segm (segmentation) is utilized to capture the precise boundaries of objects, including complex shapes and contours. If bbox is chosen, it is necessary to enable the bbox button in the subsequent FaceDetailerPipe node.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/002.png">
+    <img src="/blog/face-detailer/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In the FaceDetailer module, users can flexibly adjust the noise reduction intensity settings, thereby precisely controlling the degree of facial detail repair. As the noise reduction value increases, the adjustment amplitude of facial features also increases accordingly, providing users with a richer array of personalized repair options.
+
+The repaired facial images will be repositioned back to their corresponding locations in the original image. This step requires ensuring that the repaired faces naturally transition with the rest of the original image in terms of color, lighting, and texture, to maintain overall coherence and realism.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/003.png">
+    <img src="/blog/face-detailer/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In the end, you will have constructed a workflow like this:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/004.png">
+    <img src="/blog/face-detailer/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 2. Case Sharing
+
+After setting up the workflow, all you need to do is upload a generated image that you're not quite satisfied with and write your requirements in the prompt. For my image, the facial features of the person are completely distorted. I want to repair the facial features while enhancing the skin texture. The prompt written here is: 1 girl, smile, Profound facial features, Clean neck, Delicate skin, clear facial features, smooth facial contour. During the operation, it will automatically detect the face, perform cropping and repairing operations. The repaired face will then be merged back with the original image to achieve an optimized effect.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/005.png">
+    <img src="/blog/face-detailer/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+This process aims not only for clarity but also for better expressing individuality and beauty while maintaining naturalness and authenticity. It offers a simple, efficient, and cost-effective solution that can easily achieve delicate skin textures, clear facial features, and natural facial contour repairs, regardless of whether it’s the fine texture of the skin, the clarity of the features, or the natural repair of the facial contours.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/006.png">
+    <img src="/blog/face-detailer/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3. Character Expression Transformation
+
+Besides repairing distorted facial images, FaceDetailer can also effortlessly transform a static facial photo into an image with different emotional expressions. For instance, I generated two facial photos of Anne Hathaway, one where she is smiling and looks joyful, and another where she appears sad with a melancholic gaze. FaceDetailer can assist me in seamlessly switching between these expressions.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/007.png">
+    <img src="/blog/face-detailer/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: 1 girl, Toothy smile, Anne Hathaway, Joyful mood, natural，smooth facial expressions
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/008.png">
+    <img src="/blog/face-detailer/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: 1 girl, Anne Hathaway, Sad expression, cry
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/009.png">
+    <img src="/blog/face-detailer/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 4. Portrait Oil Painting Facial Restoration
+
+I used this workflow to meticulously regenerate the facial area of a classical portrait oil painting. This process not only demonstrated its potential application in the field of art restoration but also provided us with a new method to restore and appreciate these artworks that have withstood the test of time.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/010.png">
+    <img src="/blog/face-detailer/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+During the facial reshaping process, FaceDetailer accurately identifies and locates the facial contours of the characters in oil paintings through deep learning technology. With the help of the Stable Diffusion model, it further intelligently enhances facial details, meticulously reconstructing skin textures, the shine in the eyes, lip shapes, and other features, while ensuring harmony and unity with the original painting style and colors. This innovative method not only enriches the detail expression of the portrait but also cleverly maintains the overall aesthetic of the artwork, making the repaired face lifelike, natural, and realistic, as if recreated by the artist's own hand.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/011.png">
+    <img src="/blog/face-detailer/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Through the regeneration by FaceDetailer, we not only preserve the historical value of the artworks but also breathe new life into them. This process is not just a tribute to classical art but also a profound demonstration of the potential of modern technology. In the digital age, FaceDetailer offers us a unique way to engage in a dialogue with the great artists of the past, jointly creating masterpieces that span centuries.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/012.png">
+    <img src="/blog/face-detailer/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
