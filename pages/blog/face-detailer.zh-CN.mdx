@@ -1,0 +1,155 @@
+---
+date: March 28th, 2024
+image: /blog/face-detailer/banner.png
+title: 如何使用 ComfyUI 实现人脸修复？
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何使用 ComfyUI 实现人脸修复？
+ 
+你有没有使用 AI 生成过面部被崩坏的照片？看着那些模糊、斑驳的人脸，可能第一反应是重新生成。但也有可能会遇到重复生成多次，依然不满意的情况。现在你可以通过使用 FaceDetailer  插件，轻松修复这些面部生成错误，它有效地提升小尺寸图像中人脸的质量，使得修复后的图像更加清晰和生动。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/banner.png">
+    <img src="/blog/face-detailer/banner.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 1. 下载与安装
+
+首先，你需要下载并安装缺失节点和模型。
+
+### 方法一：
+
+通过 GitHub 下载缺失节点：将 [**ComfyUl-lmpact-Pack**](https://github.com/ltdrdata/ComfyUI-Impact-Pack) 下载并放至 ComfyUI\custom_nodes 中。
+
+### 方法二：
+
+如果你是使用我们的 Comflowy，那你以及直接在 Comflowy 中点击左侧的 Extension Tab 然后通过搜索的方式找到你想要下载的插件。然后点击下载安装即可。具体的安装步骤可参考：[**如何安装 ComfyUI 插件？**](https://www.comflowy.com/zh-CN/advanced/how-to-install-comfyui-extension)
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/001.png">
+    <img src="/blog/face-detailer/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+接着你还需要下载以下模型，并将模型放到对应文件夹里：
+
+- [**face_yolov8m.pt**](https://huggingface.co/Bingsu/adetailer/blob/main/face_yolov8m.pt)：这是一个面部检测模型，用来识别图像中的人脸区域。这是一个关键步骤，因为它需要准确地定位到人脸的位置和范围。
+- [**sam_vit_b_01ec64.pth**](https://huggingface.co/spaces/jbrinkma/segment-anything/blob/main/sam_vit_b_01ec64.pth)：一旦人脸被检测到，插件会将人脸部分裁剪出来，并将其放大到更高的分辨率。在这个更高的分辨率下，插件可以更细致地修复面部的细节，从而克服原始图像分辨率限制带来的问题。
+- [**vae-ft-mse-840000-ema-pruned.ckpt**](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.ckpt)：在图像生成、数据增强或其他生成任务中发挥作用。
+
+**注**：bbox 矩形分割，用于定位图像中对象的大致位置。segm 用来捕捉对象的精确边界，包括复杂的形状和轮廓。若选择了 bbox，需要在后面 FaceDetailerPipe 节点中打开 bbox 按钮。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/002.png">
+    <img src="/blog/face-detailer/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在 FaceDetailer 模块中，用户可以灵活调整降噪强度的设置，从而对脸部细节的修复程度进行精确控制。随着降噪值的增加，面部特征的调整幅度也相应加大，赋予用户更为丰富的个性化修复选项。
+
+修复后的人脸图像会被重新放回到原始图像的对应位置上。这一步骤需要确保修复后的人脸与原始图像的其他部分在色彩、光线和纹理上自然过渡，以保持整体的协调性和真实感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/003.png">
+    <img src="/blog/face-detailer/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+最后，你会搭建出这样的工作流：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/004.png">
+    <img src="/blog/face-detailer/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 2. 案例分享
+
+### 2.1 人物五官修复
+
+搭建完工作流后，你只需要上传一张生成的不太满意的图片，在提示词中写入你的需求。我这张图的人物五官是完全扭曲的，我想修复面部特征的同时增强皮肤质感，这里的提示词写的是：1 girl，smile，Profound facial features,Clean neck，Delicate skin, clear facial features, smooth facial contour. 在运行过程中，它将自动检测人脸，执行裁剪和修复操作，修复后的面部将再次与原图中的人物融合，以达到优化的效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/005.png">
+    <img src="/blog/face-detailer/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这个流程追求的不仅仅是清晰度，还有如何更好地表达个性和美感，同时保持自然和真实性，提供一个简便、高效且成本可控的解决方案，无论是细腻的皮肤质感，清晰的五官，还是自然的脸型轮廓修复，都能轻松实现。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/006.png">
+    <img src="/blog/face-detailer/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.2 人物表情转换
+
+FaceDetailer 除了可以修复崩坏的面部图片，还可以轻松地将一张静态的面部照片转换成具有不同情感表达的图像。比如我分别生成了安妮海瑟薇有安妮·海瑟薇的两张面部照片，一张是她面带笑容、神情愉快的状态，另一张则是她神情悲伤、眼神忧郁的样子，FaceDetailer 可以帮助我进行表情的无缝切换。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/007.png">
+    <img src="/blog/face-detailer/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：1 girl, Toothy smile, Anne Hathaway, Joyful mood, natural，smooth facial expressions
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/008.png">
+    <img src="/blog/face-detailer/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：1 girl, Anne Hathaway, Sad expression, cry
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/009.png">
+    <img src="/blog/face-detailer/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.3 肖像油画面部修复
+
+我用这个工作流对一幅古典肖像油画的面部进行了细致的重新生成。这一过程不仅展示了其在艺术修复领域的应用潜力，也为我们提供了一种全新的方式，来恢复和欣赏这些历经岁月洗礼的艺术品。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/010.png">
+    <img src="/blog/face-detailer/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在面部重塑过程中，FaceDetailer 通过深度学习技术精准识别并定位油画人物的面部轮廓。借助 Stable Diffusion 模型，它进一步对面部细节进行智能增强，细致重建肌肤纹理、眼眸光泽及唇形等特征，同时确保与原画风格和色彩的和谐统一。这一创新方法不仅丰富了肖像的细节表现，还巧妙地维持了作品的整体美感，让修复后的面部栩栩如生，既自然又真实，宛若艺术家亲笔再创。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/011.png">
+    <img src="/blog/face-detailer/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+通过 FaceDetailer 的重新生成，我们不仅保留了艺术作品的历史价值，还赋予了它们新的生命。这一过程不仅是对古典艺术的致敬，也是对现代技术潜力的一次深刻展示。在数字时代，FaceDetailer  为我们提供了一种独特的方式，让我们能够与过去的伟大艺术家们进行对话，共同创造出跨越世纪的艺术佳作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/face-detailer/012.png">
+    <img src="/blog/face-detailer/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
