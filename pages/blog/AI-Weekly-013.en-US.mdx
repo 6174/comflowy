@@ -1,0 +1,149 @@
+---
+date: March 28th, 2024
+image: /blog/AI-weekly-013/banner.png
+title: AI Weekly 013
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 013
+
+## 🆕 What's New?
+**Product Update:**
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/012.png">
+    <img src="/space/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- Batch layout functionality is supported; you can organize your workflows en masse via the settings button in the top right corner.
+- Supports nodes in Simplified Chinese, Traditional Chinese, Japanese, and Korean. To use this feature, you need to install the [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) plugin first, which you can easily find and install in the plugins tab. Also, a special thanks to the developers of this plugin.
+- Fixed the issue where workflows were not displaying on the My workflows page.
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## Weekly‘s AI highlights
+
+### 🏗️ Plugins worth trying
+
+* [**ComfyUI StableZero123 Custom Node**](https://github.com/deroberon/StableZero123-comfyui)
+
+The ComfyUI StableZero123 Custom Node is a custom node for ComfyUI, developed by deroberon. It utilizes the Zero123plus model to generate three-dimensional views from a single image, simplifying the conversion process from 2D to 3D. This provides designers and developers with powerful visual creation capabilities.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/002.png">
+    <img src="/blog/AI-weekly-013/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI-PixelArt-Detector**](https://github.com/dimtoneff/ComfyUI-PixelArt-Detector)
+
+The ComfyUI-PixelArt-Detector, through its image2image function, allows users to convert simple hand-drawn sketches into retro 8-bit style pixel art images. This toolkit supports image generation, size adjustment, palette change, and image restoration, making it particularly suitable for users who enjoy pixel art and the aesthetic of retro games.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/003.png">
+    <img src="/blog/AI-weekly-013/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI-Whisper**](https://github.com/yuvraj108c/ComfyUI-Whisper)
+
+ComfyUI-Whisper is an open-source project developed by yuvraj108c, aimed at integrating Whisper speech recognition technology into ComfyUI. Whisper is an advanced Automatic Speech Recognition (ASR) system capable of converting audio into text. With this integration, users can directly add subtitles to videos on the ComfyUI platform, enhancing the accessibility and user experience of video content.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/004.png">
+    <img src="/blog/AI-weekly-013/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+* [**Gatekeep**](https://discord.com/channels/1133151667618066562/1133152316439138344)
+
+Gatekeep is an innovative text-to-video AI tool, specifically designed for educational scenarios, capable of automatically converting mathematical and physical problems into video content that includes diagrams, illustrations, and animations. It aims to help students understand complex mathematical concepts through intuitive visual presentations, enhancing learning efficiency. Currently, it can be experienced in Discord channels.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/005.png">
+    <img src="/blog/AI-weekly-013/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StreamingT2V**](https://arxiv.org/abs/2403.14773)
+
+StreamingT2V is an advanced text-to-video generation technology that achieves seamless conversion from text descriptions to long video content through an autoregressive approach. This technology utilizes short-term and long-term memory modules to ensure that videos maintain temporal consistency while generating long video sequences with rich dynamics and high frame quality, unrestricted by video length. This significantly enhances the effect and user experience of long video generation.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/006.png">
+    <img src="/blog/AI-weekly-013/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StreamMultiDiffusion**](https://arxiv.org/abs/2403.09055)
+
+StreamMultiDiffusion is an image generation technology that enables real-time interaction between users and the image generation process through deep learning. Users can create content in specific areas of an image with precision through text prompts, allowing for personalized creation. This technology also introduces a semantic palette, enabling users to paint with semantic concepts, such as directly drawing "blue sky" or "green grass," thereby enriching the expressive layers of the artwork.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/007.png">
+    <img src="/blog/AI-weekly-013/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+* [**AnyV2V**](https://tiger-ai-lab.github.io/AnyV2V/)
+
+AnyV2V is an innovative plug-and-play video editing framework that simplifies the video editing process by combining existing image editing tools with image-to-video generation models. It allows users to easily perform deep modifications and style transformations on videos while maintaining consistency in appearance and motion with the original video, greatly expanding the scope and flexibility of video editing applications.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/008.png">
+    <img src="/blog/AI-weekly-013/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StyleSketch**](https://kwanyun.github.io/stylesketch_project/)
+
+StyleSketch is an efficient facial sketch generation technology that, by leveraging the deep features of StyleGAN and a small amount of training samples, quickly produces high-resolution and stylized facial sketches. It surpasses the extraction quality and efficiency of existing technologies.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/009.png">
+    <img src="/blog/AI-weekly-013/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Suno v3**](https://www.suno.ai/blog/v3)
+
+Suno v3 has been released as a powerful music composition AI that can quickly generate broadcast-quality music tracks up to 2 minutes long based on textual prompts. It supports multilingual input, including Chinese, and offers high-quality audio output, enriching the selection of music styles and genres. Additionally, Suno v3 has improved command response and reduced hallucination phenomena to ensure a more natural ending to the songs. To protect originality and prevent misuse, v3 has also introduced proprietary inaudible watermarking technology, ensuring the uniqueness and security of the songs.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/010.png">
+    <img src="/blog/AI-weekly-013/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Manga-image-Translator**](https://github.com/zyddnys/manga-image-translator)
+
+Manga-image-Translator is an open-source tool capable of translating text in manga or images with a single click, supporting multiple languages. It combines OCR and AI technology for text recognition and translation while also featuring text repair, coloring, and style-matching rendering functions. It offers both command-line and web interface operations, enabling efficient and visually appealing image translation processing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/011.png">
+    <img src="/blog/AI-weekly-013/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
