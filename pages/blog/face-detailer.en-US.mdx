@@ -22,11 +22,11 @@ Have you ever used AI to generate photos with distorted faces? Looking at those 
 
 First, you need to download and install the missing nodes and models.
 
-### Method 1：
+### Method 1:
 
 Download the missing nodes from GitHub: Navigate to the [**ComfyUl-lmpact-Pack**](https://github.com/ltdrdata/ComfyUI-Impact-Pack) and find them in the ComfyUI\custom_nodes directory.
 
-### Method 2：
+### Method 2:
 
 If you are using our Comflowy, then you can directly click on the Extension Tab on the left side in Comflowy and find the plugin you want to download by searching. Then click to download and install it. For specific installation steps, refer to: [**How to install ComfyUI extension?**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
 
@@ -37,7 +37,7 @@ If you are using our Comflowy, then you can directly click on the Extension Tab 
   </PhotoView>
 </PhotoProvider>
 
-### Model Download:
+Next, you need to download the following models and place them in the corresponding folders:
 
 - [**face_yolov8m.pt**](https://huggingface.co/Bingsu/adetailer/blob/main/face_yolov8m.pt)：This is a facial detection model used to identify facial regions in images. It's a critical step because it needs to accurately locate the position and range of the face.
 - [**sam_vit_b_01ec64.pth**](https://huggingface.co/spaces/jbrinkma/segment-anything/blob/main/sam_vit_b_01ec64.pth)：Once a face is detected, the plugin crops out the facial part and enlarges it to a higher resolution. At this higher resolution, the plugin can repair the facial details more meticulously, thus overcoming the issues caused by the original image's resolution limitations.
@@ -74,6 +74,8 @@ In the end, you will have constructed a workflow like this:
 
 ## 2. Case Sharing
 
+### 2.1 Facial Detail Repair
+
 After setting up the workflow, all you need to do is upload a generated image that you're not quite satisfied with and write your requirements in the prompt. For my image, the facial features of the person are completely distorted. I want to repair the facial features while enhancing the skin texture. The prompt written here is: 1 girl, smile, Profound facial features, Clean neck, Delicate skin, clear facial features, smooth facial contour. During the operation, it will automatically detect the face, perform cropping and repairing operations. The repaired face will then be merged back with the original image to achieve an optimized effect.
 
 <br/>
@@ -92,7 +94,7 @@ This process aims not only for clarity but also for better expressing individual
   </PhotoView>
 </PhotoProvider>
 
-## 3. Character Expression Transformation
+### 2.2 Character Expression Transformation
 
 Besides repairing distorted facial images, FaceDetailer can also effortlessly transform a static facial photo into an image with different emotional expressions. For instance, I generated two facial photos of Anne Hathaway, one where she is smiling and looks joyful, and another where she appears sad with a melancholic gaze. FaceDetailer can assist me in seamlessly switching between these expressions.
 
@@ -103,7 +105,7 @@ Besides repairing distorted facial images, FaceDetailer can also effortlessly tr
   </PhotoView>
 </PhotoProvider>
 
-Prompt: 1 girl, Toothy smile, Anne Hathaway, Joyful mood, natural，smooth facial expressions
+Prompt: 1 girl, Toothy smile, Anne Hathaway, Joyful mood, natural, smooth facial expressions
 
 <br/>
 <PhotoProvider>
@@ -121,7 +123,7 @@ Prompt: 1 girl, Anne Hathaway, Sad expression, cry
   </PhotoView>
 </PhotoProvider>
 
-## 4. Portrait Oil Painting Facial Restoration
+### 2.3 Portrait Oil Painting Facial Restoration
 
 I used this workflow to meticulously regenerate the facial area of a classical portrait oil painting. This process not only demonstrated its potential application in the field of art restoration but also provided us with a new method to restore and appreciate these artworks that have withstood the test of time.
 
