@@ -20,7 +20,17 @@ import Subscribe from "components/subscribtion";
 
 - Batch layout functionality is supported; you can organize your workflows en masse via the settings button in the top right corner.
 - Supports nodes in Simplified Chinese, Traditional Chinese, Japanese, and Korean. To use this feature, you need to install the [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) plugin first, which you can easily find and install in the plugins tab. Also, a special thanks to the developers of this plugin.
-- Fixed the issue where workflows were not displaying on the My workflows page.
+- Reroute nodes are supported.
+- COMBO primitive nodes are supported.
+- Disable nodes functionality is supported.
+- Added support for straight and polyline connection styles.
+- Improved the Group functionality experience.
+- Optimized the node UI for more efficient information display.
+- Fixed some known compatibility issues and bugs:
+  - Fixed the issue of missing plugin nodes.
+  - Fixed the misalignment of node values after importing a workflow.
+  - Resolved the UI display chaos issue with some plugin nodes.
+  - Fixed the issue where workflows were not displaying on the My workflows page.
 
 Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
@@ -41,7 +51,7 @@ The ComfyUI StableZero123 Custom Node is a custom node for ComfyUI, developed by
 
 * [**ComfyUI-PixelArt-Detector**](https://github.com/dimtoneff/ComfyUI-PixelArt-Detector)
 
-The ComfyUI-PixelArt-Detector, through its image2image function, allows users to convert simple hand-drawn sketches into retro 8-bit style pixel art images. This toolkit supports image generation, size adjustment, palette change, and image restoration, making it particularly suitable for users who enjoy pixel art and the aesthetic of retro games.
+If you enjoy 8-bit style images, I'd recommend the ComfyUI-PixelArt-Detector plugin. It supports a variety of output methods, and my favorite is its image2image function. You simply need to import a hand-drawn sketch to convert it into a retro-style 8-bit pixel art image.
 
 <br/>
 <PhotoProvider>
@@ -52,7 +62,7 @@ The ComfyUI-PixelArt-Detector, through its image2image function, allows users to
 
 * [**ComfyUI-Whisper**](https://github.com/yuvraj108c/ComfyUI-Whisper)
 
-ComfyUI-Whisper is an open-source project developed by yuvraj108c, aimed at integrating Whisper speech recognition technology into ComfyUI. Whisper is an advanced Automatic Speech Recognition (ASR) system capable of converting audio into text. With this integration, users can directly add subtitles to videos on the ComfyUI platform, enhancing the accessibility and user experience of video content.
+The ComfyUI-Whisper plugin integrates the Whisper speech recognition model into ComfyUI. The Whisper model can convert audio to text. With this plugin, you can directly add subtitles to videos on the ComfyUI platform.
 
 <br/>
 <PhotoProvider>
@@ -65,7 +75,7 @@ ComfyUI-Whisper is an open-source project developed by yuvraj108c, aimed at inte
 
 * [**Gatekeep**](https://discord.com/channels/1133151667618066562/1133152316439138344)
 
-Gatekeep is an innovative text-to-video AI tool, specifically designed for educational scenarios, capable of automatically converting mathematical and physical problems into video content that includes diagrams, illustrations, and animations. It aims to help students understand complex mathematical concepts through intuitive visual presentations, enhancing learning efficiency. Currently, it can be experienced in Discord channels.
+Gatekeep is an innovative AI tool designed specifically for the educational field, capable of automatically converting math and physics problems into video content that includes elements like graphs, diagrams, and animations. The goal of this tool is to help students better understand complex mathematical concepts through intuitive visual representation, thereby improving learning efficiency. Nowadays, the tool is available for experience on Discord channels.
 
 <br/>
 <PhotoProvider>
@@ -76,7 +86,7 @@ Gatekeep is an innovative text-to-video AI tool, specifically designed for educa
 
 * [**StreamingT2V**](https://arxiv.org/abs/2403.14773)
 
-StreamingT2V is an advanced text-to-video generation technology that achieves seamless conversion from text descriptions to long video content through an autoregressive approach. This technology utilizes short-term and long-term memory modules to ensure that videos maintain temporal consistency while generating long video sequences with rich dynamics and high frame quality, unrestricted by video length. This significantly enhances the effect and user experience of long video generation.
+StreamingT2V is an advanced text-to-video generation technology that seamlessly transforms text descriptions into long video content using an autoregressive method. It employs short-term and long-term memory modules to ensure that the resulting videos maintain temporal continuity while also generating rich dynamic effects and high-quality long video sequences. Moreover, this technology is not limited by video length, significantly enhancing the quality of long video creation and user experience.
 
 <br/>
 <PhotoProvider>
@@ -87,7 +97,7 @@ StreamingT2V is an advanced text-to-video generation technology that achieves se
 
 * [**StreamMultiDiffusion**](https://arxiv.org/abs/2403.09055)
 
-StreamMultiDiffusion is an image generation technology that enables real-time interaction between users and the image generation process through deep learning. Users can create content in specific areas of an image with precision through text prompts, allowing for personalized creation. This technology also introduces a semantic palette, enabling users to paint with semantic concepts, such as directly drawing "blue sky" or "green grass," thereby enriching the expressive layers of the artwork.
+StreamMultiDiffusion is an image generation technology realized through deep learning that allows users to interact with the image generation process in real time. Users can create precise content in specific areas of an image by providing text prompts, enabling personalized creativity. Additionally, this technology introduces a semantic color palette feature, which allows users to use semantic concepts for painting, such as directly depicting "blue sky" or "green grass," thus enhancing the expressive depth and layering of their artwork.
 
 <br/>
 <PhotoProvider>
@@ -100,7 +110,7 @@ StreamMultiDiffusion is an image generation technology that enables real-time in
 
 * [**AnyV2V**](https://tiger-ai-lab.github.io/AnyV2V/)
 
-AnyV2V is an innovative plug-and-play video editing framework that simplifies the video editing process by combining existing image editing tools with image-to-video generation models. It allows users to easily perform deep modifications and style transformations on videos while maintaining consistency in appearance and motion with the original video, greatly expanding the scope and flexibility of video editing applications.
+AnyV2V is an innovative plug-and-play video editing framework that combines image editing tools with an image-to-video generation model, greatly simplifying the editing process. It allows users to easily perform deep editing and transform video styles while maintaining consistency with the original video's visual appearance and motion. This framework significantly broadens the applicability and flexibility of video editing.
 
 <br/>
 <PhotoProvider>
@@ -111,7 +121,7 @@ AnyV2V is an innovative plug-and-play video editing framework that simplifies th
 
 * [**StyleSketch**](https://kwanyun.github.io/stylesketch_project/)
 
-StyleSketch is an efficient facial sketch generation technology that, by leveraging the deep features of StyleGAN and a small amount of training samples, quickly produces high-resolution and stylized facial sketches. It surpasses the extraction quality and efficiency of existing technologies.
+StyleSketch is an efficient facial sketch generation technology that rapidly produces high-resolution and stylized face sketches by utilizing the deep features of StyleGAN and a small set of training samples. Its generation quality and efficiency surpass existing technologies.
 
 <br/>
 <PhotoProvider>
@@ -122,7 +132,7 @@ StyleSketch is an efficient facial sketch generation technology that, by leverag
 
 * [**Suno v3**](https://www.suno.ai/blog/v3)
 
-Suno v3 has been released as a powerful music composition AI that can quickly generate broadcast-quality music tracks up to 2 minutes long based on textual prompts. It supports multilingual input, including Chinese, and offers high-quality audio output, enriching the selection of music styles and genres. Additionally, Suno v3 has improved command response and reduced hallucination phenomena to ensure a more natural ending to the songs. To protect originality and prevent misuse, v3 has also introduced proprietary inaudible watermarking technology, ensuring the uniqueness and security of the songs.
+Suno is a powerful AI music composition tool capable of quickly generating broadcast-quality songs up to two minutes long based on user text prompts. The tool supports multilanguage input, including Chinese, and provides high-quality music output while expanding the range of music styles and genres available. Suno has recently released its v3 version, which improves its responsiveness to commands, reduces the likelihood of producing hallucinatory effects, and ensures a more natural song ending. To protect originality and prevent misuse, Suno v3 has also introduced a specialized, inaudible watermarking technique to ensure the uniqueness and security of the songs.
 
 <br/>
 <PhotoProvider>
@@ -133,7 +143,7 @@ Suno v3 has been released as a powerful music composition AI that can quickly ge
 
 * [**Manga-image-Translator**](https://github.com/zyddnys/manga-image-translator)
 
-Manga-image-Translator is an open-source tool capable of translating text in manga or images with a single click, supporting multiple languages. It combines OCR and AI technology for text recognition and translation while also featuring text repair, coloring, and style-matching rendering functions. It offers both command-line and web interface operations, enabling efficient and visually appealing image translation processing.
+Manga-image-Translator is an open-source tool capable of translating text within comics or images with a single click, supporting multiple languages. This tool combines OCR and AI technology for text recognition and translation and features text repair, coloring, and style-matching rendering capabilities. It can be operated via command line or web interface, enabling efficient and visually appealing image translation processing.
 
 <br/>
 <PhotoProvider>
