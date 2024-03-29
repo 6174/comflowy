@@ -1,0 +1,159 @@
+---
+date: March 28th, 2024
+image: /blog/AI-weekly-013/banner.png
+title: AI Weekly 013
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 013
+
+## 🆕 更新了什么？
+**产品更新：**
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/012.png">
+    <img src="/space/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- 支持批量布局功能，你可以通过右上角的设置按钮，对 workflow 进行批量布局。
+- 节点支持简体中文、繁体中文、日文、韩文。但使用此功能，需要先安装 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 插件，你只需要在插件 Tab 搜索并安装即可。另外，在此也非常感谢这个插件的开发者们。
+- 支持 Reroute 节点。
+- 支持 COMBO primitive 节点。
+- 支持 Disable 节点功能。
+- 连接额外支持直线与折线样式。
+- 优化了 Group 功能的体验。
+- 优化了节点的 UI，显示信息更高效。
+- 修复了一些已知的兼容问题与 bug：
+  - 修复了部分插件节点缺失问题。
+  - 修复了导入 workflow 后，节点数值错位的问题。
+  - 修复了部分插件节点 UI 显示错乱问题。
+  - 修复了 My workflows 页面无法显示 workflow 的问题。
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## 🤩 每周 AI 精选
+
+### 🏗️ 值得尝试的插件
+
+* [**ComfyUI StableZero123 Custom Node**](https://github.com/deroberon/StableZero123-comfyui)
+
+ComfyUI StableZero123 Custom Node 是 ComfyUI 的一个自定义节点，由 deroberon 开发，它利用 Zero123plus 模型通过单张图片生成三维视图，简化了从 2D 到 3D 的转换过程，为设计师和开发者提供了强大的视觉创作能力。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/002.png">
+    <img src="/blog/AI-weekly-013/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI-PixelArt-Detector**](https://github.com/dimtoneff/ComfyUI-PixelArt-Detector)
+
+如果你喜欢 8-bit 风格的图片，我会推荐这款 ComfyUI-PixelArt-Detector 插件。它支持多种输出方式，其中我最喜欢的是它的 image2image 功能，你只需要将手绘草图导入，即可转换为具有复古 8-bit 风格的像素艺术图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/003.png">
+    <img src="/blog/AI-weekly-013/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI-Whisper**](https://github.com/yuvraj108c/ComfyUI-Whisper)
+
+ComfyUI-Whisper 这款插件将 Whisper 语音识别模型集成到 ComfyUI 中。Whisper 模型能能够将音频转换为文本。通过这个插件，你可以在 ComfyUI 平台上直接为视频添加字幕。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/004.png">
+    <img src="/blog/AI-weekly-013/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+* [**Gatekeep**](https://discord.com/channels/1133151667618066562/1133152316439138344)
+
+Gatekeep 是一款专为教育领域设计的创新 AI 工具，能将数学和物理问题自动转换为包含图表、图解和动画等元素的视频内容。这款工具的目标是通过直观的视觉展现，帮助学生更好地理解复杂的数学概念，从而提高学习效率。如今，该工具可以在 Discord 频道上进行体验。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/005.png">
+    <img src="/blog/AI-weekly-013/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StreamingT2V**](https://arxiv.org/abs/2403.14773)
+
+StreamingT2V 是一种先进的文本转视频生成技术，通过使用自回归方式，实现了文本描述直接转化为长视频内容的无缝连接。它运用了短期和长期记忆模块，保证产生的视频在保持时间连续性同时，也能生成丰富的动态效果和高画质的长视频序列。而且，该技术不受视频长度的限制，大大提高了长视频生成的质量和用户体验。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/006.png">
+    <img src="/blog/AI-weekly-013/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StreamMultiDiffusion**](https://arxiv.org/abs/2403.09055)
+
+StreamMultiDiffusion 是一种借助深度学习实现的图像生成技术，它允许用户实时地与图像生成过程互动。用户可以通过给出文本提示，在图片的特定区域进行精确的内容创建，实现个性化的创作。此外，这项技术还引入了语义色彩板功能，使用户可以利用语义概念进行绘画，如直接绘制“蓝天”或“绿草”，从而提升作品的表达深度和层次感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/007.png">
+    <img src="/blog/AI-weekly-013/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+* [**AnyV2V**](https://tiger-ai-lab.github.io/AnyV2V/)
+
+AnyV2V 是一个创新的即插即用视频编辑框架，该框架结合了图像编辑工具和图像到视频生成模型，大大简化了编辑流程。它能让用户轻松地深度编辑并转换视频风格，同时保持与原视频的视觉外观和动作一致。这一框架极大地拓宽了视频编辑的适用范围和灵活性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/008.png">
+    <img src="/blog/AI-weekly-013/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StyleSketch**](https://kwanyun.github.io/stylesketch_project/)
+
+StyleSketch 是一种高效的面部草图生成技术，它通过运用 StyleGAN 的深度特征和少量训练样本，能够迅速产生高分辨率并且有风格化的人脸草图，其生成质量和效率均超过了现有的技术。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/009.png">
+    <img src="/blog/AI-weekly-013/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Suno v3**](https://www.suno.ai/blog/v3)
+
+Suno 是一款强大的 AI 音乐创作工具，它可以根据用户的文字提示，快速地生成长达两分钟的广播级别的歌曲。该工具支持多种语言输入，包括中文，并且能够提供高质量的音乐输出。同时，它扩大了音乐风格和流派的选择范围。Suno 最近发布了其 v3 版本，改进了对指令的响应，减少了产生幻觉的可能性，并确保歌曲的结尾更为自然。为了保护原创性和防止被滥用，Suno v3 还引入了专门的无法听见的水印技术，来确保歌曲的独特性和安全性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/010.png">
+    <img src="/blog/AI-weekly-013/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Manga-image-Translator**](https://github.com/zyddnys/manga-image-translator)
+
+Manga-image-Translator 是一款能够一键翻译漫画或者图片中文字的开源工具，支持多种语言。这个工具结合了 OCR 和 AI 技术来进行文字识别和翻译，并且具有文本修复、上色和风格匹配的渲染功能，可通过命令行或者 Web 界面操作，实现高效和美观的图像翻译处理。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/011.png">
+    <img src="/blog/AI-weekly-013/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+

@@ -1,0 +1,159 @@
+---
+date: March 28th, 2024
+image: /blog/AI-weekly-013/banner.png
+title: AI Weekly 013
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 013
+
+## 🆕 What's New?
+**Product Update:**
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/012.png">
+    <img src="/space/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- Batch layout functionality is supported; you can organize your workflows en masse via the settings button in the top right corner.
+- Supports nodes in Simplified Chinese, Traditional Chinese, Japanese, and Korean. To use this feature, you need to install the [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) plugin first, which you can easily find and install in the plugins tab. Also, a special thanks to the developers of this plugin.
+- Reroute nodes are supported.
+- COMBO primitive nodes are supported.
+- Disable nodes functionality is supported.
+- Added support for straight and polyline connection styles.
+- Improved the Group functionality experience.
+- Optimized the node UI for more efficient information display.
+- Fixed some known compatibility issues and bugs:
+  - Fixed the issue of missing plugin nodes.
+  - Fixed the misalignment of node values after importing a workflow.
+  - Resolved the UI display chaos issue with some plugin nodes.
+  - Fixed the issue where workflows were not displaying on the My workflows page.
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## Weekly‘s AI highlights
+
+### 🏗️ Plugins worth trying
+
+* [**ComfyUI StableZero123 Custom Node**](https://github.com/deroberon/StableZero123-comfyui)
+
+The ComfyUI StableZero123 Custom Node is a custom node for ComfyUI, developed by deroberon. It utilizes the Zero123plus model to generate three-dimensional views from a single image, simplifying the conversion process from 2D to 3D. This provides designers and developers with powerful visual creation capabilities.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/002.png">
+    <img src="/blog/AI-weekly-013/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI-PixelArt-Detector**](https://github.com/dimtoneff/ComfyUI-PixelArt-Detector)
+
+If you enjoy 8-bit style images, I'd recommend the ComfyUI-PixelArt-Detector plugin. It supports a variety of output methods, and my favorite is its image2image function. You simply need to import a hand-drawn sketch to convert it into a retro-style 8-bit pixel art image.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/003.png">
+    <img src="/blog/AI-weekly-013/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI-Whisper**](https://github.com/yuvraj108c/ComfyUI-Whisper)
+
+The ComfyUI-Whisper plugin integrates the Whisper speech recognition model into ComfyUI. The Whisper model can convert audio to text. With this plugin, you can directly add subtitles to videos on the ComfyUI platform.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/004.png">
+    <img src="/blog/AI-weekly-013/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+* [**Gatekeep**](https://discord.com/channels/1133151667618066562/1133152316439138344)
+
+Gatekeep is an innovative AI tool designed specifically for the educational field, capable of automatically converting math and physics problems into video content that includes elements like graphs, diagrams, and animations. The goal of this tool is to help students better understand complex mathematical concepts through intuitive visual representation, thereby improving learning efficiency. Nowadays, the tool is available for experience on Discord channels.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/005.png">
+    <img src="/blog/AI-weekly-013/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StreamingT2V**](https://arxiv.org/abs/2403.14773)
+
+StreamingT2V is an advanced text-to-video generation technology that seamlessly transforms text descriptions into long video content using an autoregressive method. It employs short-term and long-term memory modules to ensure that the resulting videos maintain temporal continuity while also generating rich dynamic effects and high-quality long video sequences. Moreover, this technology is not limited by video length, significantly enhancing the quality of long video creation and user experience.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/006.png">
+    <img src="/blog/AI-weekly-013/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StreamMultiDiffusion**](https://arxiv.org/abs/2403.09055)
+
+StreamMultiDiffusion is an image generation technology realized through deep learning that allows users to interact with the image generation process in real time. Users can create precise content in specific areas of an image by providing text prompts, enabling personalized creativity. Additionally, this technology introduces a semantic color palette feature, which allows users to use semantic concepts for painting, such as directly depicting "blue sky" or "green grass," thus enhancing the expressive depth and layering of their artwork.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/007.png">
+    <img src="/blog/AI-weekly-013/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+* [**AnyV2V**](https://tiger-ai-lab.github.io/AnyV2V/)
+
+AnyV2V is an innovative plug-and-play video editing framework that combines image editing tools with an image-to-video generation model, greatly simplifying the editing process. It allows users to easily perform deep editing and transform video styles while maintaining consistency with the original video's visual appearance and motion. This framework significantly broadens the applicability and flexibility of video editing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/008.png">
+    <img src="/blog/AI-weekly-013/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**StyleSketch**](https://kwanyun.github.io/stylesketch_project/)
+
+StyleSketch is an efficient facial sketch generation technology that rapidly produces high-resolution and stylized face sketches by utilizing the deep features of StyleGAN and a small set of training samples. Its generation quality and efficiency surpass existing technologies.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/009.png">
+    <img src="/blog/AI-weekly-013/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Suno v3**](https://www.suno.ai/blog/v3)
+
+Suno is a powerful AI music composition tool capable of quickly generating broadcast-quality songs up to two minutes long based on user text prompts. The tool supports multilanguage input, including Chinese, and provides high-quality music output while expanding the range of music styles and genres available. Suno has recently released its v3 version, which improves its responsiveness to commands, reduces the likelihood of producing hallucinatory effects, and ensures a more natural song ending. To protect originality and prevent misuse, Suno v3 has also introduced a specialized, inaudible watermarking technique to ensure the uniqueness and security of the songs.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/010.png">
+    <img src="/blog/AI-weekly-013/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Manga-image-Translator**](https://github.com/zyddnys/manga-image-translator)
+
+Manga-image-Translator is an open-source tool capable of translating text within comics or images with a single click, supporting multiple languages. This tool combines OCR and AI technology for text recognition and translation and features text repair, coloring, and style-matching rendering capabilities. It can be operated via command line or web interface, enabling efficient and visually appealing image translation processing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-013/011.png">
+    <img src="/blog/AI-weekly-013/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
