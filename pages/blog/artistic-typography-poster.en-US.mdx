@@ -1,0 +1,221 @@
+---
+date: April 3th, 2024
+image: /blog/artistic-typography-poster/banner.png
+title: How to generate artistic typography posters using ComfyUI?
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# How to generate artistic typography posters using ComfyUI?
+
+Speaking of artistic typography posters, most people are probably familiar with them, but creating a high-quality poster with a variety of styles requires a lot of time and effort. The technique shared today can not only easily integrate text or logos into scenes but also generate high-quality art pieces with a single click, saving you a lot of time.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/001.png">
+    <img src="/blog/artistic-typography-poster/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+From a distance, this type of poster displays textual information, but upon closer inspection, you'll find that the lines of the text cleverly blend into the other content of the poster. You might not even be able to distinguish that the image contains these texts.
+
+## 1. Download and Install
+
+First, you need to download and install the plugins and models. This workflow primarily uses [**ControlNet**](https://github.com/lllyasviel/ControlNet) to control the edges of the input graphics, making them blend better with the generated scene. You need to install the [**comfyui_controlnet_aux**](https://github.com/Fannovel16/comfyui_controlnet_aux) . If you're using it in Comflowy, you can refer to the previous installation tutorial:[**How to implement facial restoration using ComfyUI?**](https://www.comflowy.com/blog/face-detailer)
+
+**Model Download**：
+- [**control v1p_sd15_qrcode_monster.safetensors**](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster/blob/main/control_v1p_sd15_qrcode_monster.safetensors)： This model can not only generate QR codes but also performs well in creating fancy text scenes. It can better use the ControlNet images as the main subject in the image, allowing it to blend more seamlessly with the generated image.
+
+In the end, you can set up a workflow like this:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/002.png">
+    <img src="/blog/artistic-typography-poster/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 2. 2. Demonstrating the Effect
+
+### 2.1  Artistic Typography Poster
+
+The most crucial plugin used in this workflow is ControlNet. By selecting different models, it can better understand user commands and precisely control image generation. Here, we will use this plugin to recognize the main contours in the picture.
+
+If you want to learn more about the ControlNet model, you can refer to: [**ControlNet**](https://www.comflowy.com/advanced/controlnet)，It's commonly used in workflows, and you can download it from the [**ControlNet**](https://github.com/lllyasviel/ControlNet) 。
+
+#### Workflow
+
+I've set up a basic workflow to generate posters, where you can input any letters you want to use. In this case, I used "Lisa".
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/003.png">
+    <img src="/blog/artistic-typography-poster/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Add Scene Description: In the snow all over the sky, a girl walking alone in the snow, wearing red thin trench coat, with a white scarf, Bare legs, bare feet, Holding her body tightly,her head bowed, her eyes closed, her mouth pressed together, and she was about to cry, Long white hair blows in the wind, The detailed and beautiful face was depressed,Step by step, behind is a series of footprints, the snow is very big, the biting wind blowing her scarf, the distance is unbroken snow mountains, in this evening, helpless forward.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/004.png">
+    <img src="/blog/artistic-typography-poster/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+#### FaceDetailer
+
+Based on the generated image, the overall atmosphere and character scene effects are quite good, but the facial generation effect is very blurry. At this point, you can use the FaceDetailer facial repair plugin introduced in the previous tutorial on [**How to implement facial restoration using ComfyUI?**](https://www.comflowy.com/blog/face-detailer)This plugin can help improve this issue.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/005.png">
+    <img src="/blog/artistic-typography-poster/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+**Model Download:**：
+- [**sam_vit b_01ec64.pth**](https://huggingface.co/spaces/ASAM-Team/ASAM/blob/main/sam_vit_b_01ec64.pth) ：Place the model in the ComfyUI\models\sams folder. It can enhance the resolution of detected faces, allowing the plugin to more finely repair facial details.
+- [**bbox/face_yolov8m.pt**](https://huggingface.co/Bingsu/adetailer/blob/main/face_yolov8m.pt) ：This model needs to be placed in the ComfyUI\models\ultralytics\bbox folder. It is a facial detection model capable of identifying the position and range of faces in images.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/006.png">
+    <img src="/blog/artistic-typography-poster/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+After the repair, the skin texture of the face becomes more delicate, the features clearer, and the facial contours more naturally restored.
+
+#### Lora Model
+
+In addition to changing the scene described in the prompt, you can also choose to add the Lora model to help generate images more in line with your preferences.
+
+Here, I chose the [**Niji Default**](https://civitai.com/images/1273940)  Default bright anime style and [**MoXin**](https://civitai.com/models/12597/moxin) expressive illustration style to help me generate cartoon characters. Besides these two, you can also refer to this article to choose your preferred Lora model: [**10 LoRAs Worth Downloading**](https://www.comflowy.com/blog/ten-lora-worth-downloading)
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/007.png">
+    <img src="/blog/artistic-typography-poster/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt ：Under the starry night sky, a young man walks alone in the quiet countryside. He is dressed in a dark hoodie, with a gray scarf casually draped around his neck. His hands are stuffed in his pockets, his head bowed, his brows furrowed, and his lips pursed, seemingly deep in thought, with a glint of determination and confusion in his eyes.His short hair gently flutters in the night breeze, and his delicate face reveals an imperceptible trace of melancholy. He walks steadily forward step by step, leaving a trail of footprints of varying depths behind him. The stars in the night sky seem to guide his direction, while the distant undulating mountains appear especially mysterious in the night.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/008.png">
+    <img src="/blog/artistic-typography-poster/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Here, to make the generated images more three-dimensional and with stronger textures, I changed the Lora models. They are:[**Anime Impasto Style**](https://civitai.com/models/96501/anime-impasto-style) and [**3D cartoon avatar**](https://civitai.com/models/75985/3d-cartoon-avatar) 。
+
+Prompt ：In the soft light of a summer evening, a lady strolls leisurely by the West Lake. She wears a pale blue dress and simple sandals on her feet, adorned with a pair of exquisite pearl earrings, and holds a book in her hand. The lotus flowers on the lake exude a subtle fragrance, perfectly blending with the tranquil ambiance of a summer dusk.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/009.png">
+    <img src="/blog/artistic-typography-poster/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt ：A painter sits on a flat rock, with an easel and a palette of vibrant colors arrayed before him. Dressed in a loose linen shirt and wearing an old straw hat, he is completely absorbed in his artistic creation. In the tranquil valley, a meandering stream gently winds through the lush grassland. The water is crystal clear, with a few fallen leaves drifting on the surface, swaying softly with the current. Surrounding the valley are undulating mountains, dotted with quaint cottages on the hillsides, where smoke from cooking fires rises and intertwines with the distant blue sky and white clouds.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/010.png">
+    <img src="/blog/artistic-typography-poster/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.2 Generating the Scene
+
+Using this workflow, in addition to integrating the input text into characters, you can also place it within landscapes. In the image below, I used the Lora model called [**Stygia**](https://civitai.com/models/337587/stygia?modelVersionId=377987), designed for creating desert, town, and landscape scenes, to help me generate a "fantastic desert" scene.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/011.png">
+    <img src="/blog/artistic-typography-poster/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：(masterpiece:1.2), (best quality,:1.2), 8k, HDR, ultra detailed, ((photorealistic)), professional light, cinematic lighting,ambient lighting, a small town in ancient Egypt, by a river with a boat in the water and palm trees in the foreground and a building with a tower, Stygia,  epiCPhoto
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/012.png">
+    <img src="/blog/artistic-typography-poster/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：(masterpiece:1.2), (best quality,:1.2), 8k, HDR, ultra detailed, ((photorealistic)), professional light, cinematic lighting,ambient lighting, the mysterious entrance to a dark and sinister burial cave in the mountains in Stygia,  epiCPhoto
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/013.png">
+    <img src="/blog/artistic-typography-poster/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.3 Generating Logo 
+
+In addition to inputting text, I also tried inputting a logo icon to generate landscapes using the basic workflow. If you want better effects and styles, you can incorporate models based on this foundation.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/014.png">
+    <img src="/blog/artistic-typography-poster/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Beside a serene lake, surrounded by a ring of mountains, lies a lush green meadow speckled with vibrant wildflowers in a kaleidoscope of colors. Small birds flit across the water's surface, their delicate wings skimming the ripples as they add a dynamic touch to the scene.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/015.png">
+    <img src="/blog/artistic-typography-poster/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Inside the forest, towering trees form a dense green canopy, with sunlight filtering through the gaps to cast mottled patterns of light and shadow. The ground, covered in moss, is carpeted with fallen leaves and pine needles, creating a soft layer that makes a faint crunching sound underfoot. The tree trunks are robust, some covered with a layer of moss, while others are tightly entwined with vines. A small forest stream flows quietly, with a few leaves floating on the surface, and the banks are lined with various wildflowers and shrubs. In the distance, several large boulders are scattered haphazardly in the forest clearing, covered with moss and weeds, exuding an ancient and natural charm.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/016.png">
+    <img src="/blog/artistic-typography-poster/016.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Note: For logos with a lot of details, try to choose richer scenes when describing the prompt words. This way, the generated effect can be more natural. Like in the image below, when I generated a seaside sunset scene, the effect was somewhat disjointed, whereas in the second image, the logo was cleverly integrated into the scene.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/artistic-typography-poster/017.png">
+    <img src="/blog/artistic-typography-poster/017.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
