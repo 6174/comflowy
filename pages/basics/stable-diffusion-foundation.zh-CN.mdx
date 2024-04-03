@@ -61,10 +61,9 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 
 所有图片都存在了一张充满噪点的图片里，AI 只是把不要的部分去掉了。所以如果你用同样是 Diffusion Model 搭建的 Midjourney 话，你会看到如下的过程，首先是一张模糊甚至黑色的图片，然后图片会一步步变得越来越清晰，这就是我前面所说的「降噪」或者「雕刻」的过程：
 
-<br/>
 <PhotoProvider>
-  <PhotoView src="/stable-diffusion-foundation/003.png">
-    <img src="/stable-diffusion-foundation/003.png" alt="" />
+  <PhotoView src="/stable-diffusion-foundation/004.png">
+    <img src="/stable-diffusion-foundation/004.png" alt=""/>
   </PhotoView>
 </PhotoProvider>
 
@@ -80,14 +79,15 @@ Stable Diffusion（稳定扩散）严格说来它是一个由几个组件（模�
 首先整个降噪的过程会在一个 Latent Space（潜空间）里进行，然后会进行多 <mark>Steps（步）</mark>的降噪，你可以对这个 Steps 进行调整，一般越多图片质量也会好，但时间也会越久。当然这个也跟模型有关，Stable Diffusion XL Turbo 就能 1 步出图，耗时不到 1 秒，而且生成的图片质量还很不错。如果我们将这一步过程可视化，类似是这样的（为了更好地解释，我将下方黑色的块都描述成图，本质上它不是图，只是一堆与图像相关的数据）：
 
 那 Denoise 里又发生了什么呢？下图是第一个 Denoise 过程的可视化：
-
+<br/>
 <PhotoProvider>
-  <PhotoView src="/stable-diffusion-foundation/004.png">
-    <img src="/stable-diffusion-foundation/004.png" alt=""/>
+  <PhotoView src="/stable-diffusion-foundation/003.png">
+    <img src="/stable-diffusion-foundation/003.png" alt="" />
   </PhotoView>
 </PhotoProvider>
 
-上图看上去很复杂，但不要恐惧，我们只要懂加减乘除就能理解这张图：
+
+上图看上去很复杂，但不要恐惧，我们只要懂加减乘除就能理解每个 Denoise：
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">

@@ -2,6 +2,28 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # 📦 Changelog
 
+## 2024-04-03
+### 🎉 ComflowySpace v0.1.5-alpha Release
+**产品更新：**
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/013.png">
+    <img src="/space/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- KSampler 节点支持预览功能。但需要使用此功能，需要先安装 [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager)。
+- 启动设置支持：
+  - 关闭 Python Checking 功能，关闭后启动应用的速度会更快。
+  - 支持手工输入额外的 ComfyUI 启动命令。
+- 修复了一些已知的 bug：
+  - 修复了 Reroute 节点无法使用的问题。
+  - 修复了 Primitive 节点无法使用的问题。
+  - 修复了 Websocket 断联问题。
+  - 修复了 workflow 运行暂停，但状态仍然是运行的问题。
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
 ## 2024-03-28
 ### 🎉 ComflowySpace v0.1.4-alpha Release
 **产品更新：**

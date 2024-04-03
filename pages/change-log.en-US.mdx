@@ -2,6 +2,28 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # 📦 Changelog
 
+## 2024-04-03
+### 🎉 ComflowySpace v0.1.5-alpha Release
+**Product Update:**
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/013.png">
+    <img src="/space/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- The KSampler node supports a preview function. However, to use this feature, you must first install [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager).
+- Startup settings support:
+  - Disabling the Python Checking feature, which will speed up application launch after it's turned off.
+  - Supporting manual entry of additional ComfyUI startup commands.
+- Fixed several known bugs:
+  - Resolved an issue where the Reroute node could not be used.
+  - Fixed the problem with the Primitive node being inoperable.
+  - Addressed the WebSocket disconnection issue.
+  - Corrected the workflow running pause issue, where the status remained as running.
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
 ## 2024-03-28
 ### 🎉 ComflowySpace v0.1.4-alpha Release
 **Product Update:**
