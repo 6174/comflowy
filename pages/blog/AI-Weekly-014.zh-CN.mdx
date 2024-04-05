@@ -1,0 +1,164 @@
+---
+date: April 4th, 2024
+image: /blog/AI-weekly-014/banner.png
+title: AI Weekly 014
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 014
+
+## 🆕 更新了什么？
+**产品更新：**
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/013.png">
+    <img src="/space/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- KSampler 节点支持预览功能。但需要使用此功能，需要先安装 [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager)。
+- 启动设置支持：
+  - 关闭 Python Checking 功能，关闭后启动应用的速度会更快。
+  - 支持手工输入额外的 ComfyUI 启动命令。
+- 修复了一些已知的 bug：
+  - 修复了 Reroute 节点无法使用的问题。
+  - 修复了 Primitive 节点无法使用的问题。
+  - 修复了 Websocket 断联问题。
+  - 修复了 workflow 运行暂停，但状态仍然是运行的问题。
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## 🤩 每周 AI 精选
+
+### 🏗️ 值得尝试的插件
+
+* [**ComfyUI-SuperBeasts**](https://github.com/SuperBeastsAI/ComfyUI-SuperBeasts)
+
+HDR Effects 是一种图像处理应用程序，可增强输入图像的动态范围和视觉吸引力。它提供了一组可调参数，可以根据用户喜好微调 HDR 效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/001.png">
+    <img src="/blog/AI-weekly-014/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI_ColorMod**](https://github.com/city96/ComfyUI_ColorMod)
+
+这个插件能够调整图像的亮度/对比度、编辑色调、支持 HDR 图像，同时可以将图像保存为 16 位 PNG 文件。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/002.png">
+    <img src="/blog/AI-weekly-014/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**human-parser-comfyui-node**](https://github.com/cozymantis/human-parser-comfyui-node)
+
+这个 ComfyUI 节点，可以自动提取身体区域和服装/时尚物品的蒙版。例如下图中提取的是 upper clothes、left arm、right arm。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/003.png">
+    <img src="/blog/AI-weekly-014/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+* [**GRM**](https://justimyhxu.github.io/projects/grm/)
+
+GRM 是一个用于 3D 重建和生成的大型高斯重建模型。通过有效整合多视角信息，GRM能够在短时间内（大约0.1秒）重建出精确的3D模型，同时它也支持将文本或图像直接转换成3D模型。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/004.png">
+    <img src="/blog/AI-weekly-014/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Polaris**](https://arxiv.org/abs/2403.18814)
+
+Polaris 是由 Hippocratic Al 开发的一款高度专注于安全、用于医疗保健的大语言模型(LLM)系统，目的是创建一个既能够安全有效地与患者进行长时间、多轮次的语音对话，又能提供专业准确医疗建议的 AI 系统。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/005.png">
+    <img src="/blog/AI-weekly-014/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**VIDIM**](https://arxiv.org/pdf/2404.01203.pdf)
+
+ VIDIM 是一种视频插帧生成模型，该模型的目标是在给定起始和结束帧的情况下创建短视频。为了实现高保真度并生成在输入数据中未见过的动态，VIDIM 采用了级联扩散模型，首先在低分辨率下生成目标视频，然后在此基础上生成高分辨率视频。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/006.png">
+    <img src="/blog/AI-weekly-014/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+* [**Stable Audio 2.0**](https://stableaudio.com/)
+
+Stable Audio 2.0 是 Stability Al 推出的一个新型模型，它能将单一的自然语言提示生成高质量、具有连贯音乐结构的完整音轨，最长可达三分钟，音质为44.1kHz立体声。与之前的版本相比，Stable Audio 2.0 不仅支持文本到音频的转换，还新增了音频到音频的功能，允许用户上传音频样本并将其转换为各种声音。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/007.png">
+    <img src="/blog/AI-weekly-014/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ACE Studio**](https://www.acestudio.ai/)
+
+ACE Studio 是一个先进的 AI 人声合成引擎，它能模拟真实人声的音色和情感表达，支持多种语言，同时提供免费的商业使用权，且允许用户通过调整参数来精确表达歌曲情感，目的是为了制作听起来像真人一样自然和充满感情的歌声。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/008.png">
+    <img src="/blog/AI-weekly-014/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Aqua Voice**](https://withaqua.com/)
+
+Aqua Voice 是一款通过语音来输入和编辑文档的工具，能够根据用户的指令，进行文本编辑和风格规范化等。本质上，它是智能的听写器，就像一个人类秘书一样，能理解你到底想通过语音写下来什么，而不仅仅是简单的语音到文字的转录。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/009.png">
+    <img src="/blog/AI-weekly-014/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**coframe**](https://coframe.ai/)
+
+这个工具只需要你输入网址，它会为你自动优化网站上的图片，使其更吸引人，促进用户点击、购买或注册。它不仅能自动帮你生成新的图片，还会对新图片进行A/B测试，对不同用户展示不同的图像，测试哪个效果更好。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/010.png">
+    <img src="/blog/AI-weekly-014/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+

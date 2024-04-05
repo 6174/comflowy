@@ -1,0 +1,160 @@
+---
+date: April 4th, 2024
+image: /blog/AI-weekly-014/banner.png
+title: AI Weekly 014
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 014
+
+## 🆕 What's New?
+**Product Update:**
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/013.png">
+    <img src="/space/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- The KSampler node supports a preview function. However, to use this feature, you must first install [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager).
+- Startup settings support:
+  - Disabling the Python Checking feature, which will speed up application launch after it's turned off.
+  - Supporting manual entry of additional ComfyUI startup commands.
+- Fixed several known bugs:
+  - Resolved an issue where the Reroute node could not be used.
+  - Fixed the problem with the Primitive node being inoperable.
+  - Addressed the WebSocket disconnection issue.
+  - Corrected the workflow running pause issue, where the status remained as running.
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## Weekly‘s AI highlights
+
+### 🏗️ Plugins worth trying
+
+* [**ComfyUI-SuperBeasts**](https://github.com/SuperBeastsAI/ComfyUI-SuperBeasts)
+
+HDR Effects is an image processing application that enhances the dynamic range and visual appeal of input images. It offers a set of adjustable parameters that allow users to fine-tune the HDR effect according to their preferences.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/001.png">
+    <img src="/blog/AI-weekly-014/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ComfyUI_ColorMod**](https://github.com/city96/ComfyUI_ColorMod)
+
+This plugin can adjust the brightness/contrast of images, edit hues, support HDR images, and also save images as 16-bit PNG files.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/002.png">
+    <img src="/blog/AI-weekly-014/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**human-parser-comfyui-node**](https://github.com/cozymantis/human-parser-comfyui-node)
+
+The ComfyUI node can automatically extract masks for body regions and clothing/fashion items. For instance, in the image below, it extracts masks for upper clothes, left arm, and right arm.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/003.png">
+    <img src="/blog/AI-weekly-014/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+* [**GRM**](https://justimyhxu.github.io/projects/grm/)
+
+GRM is a large Gaussian Reconstruction Model used for 3D reconstruction and generation. By efficiently integrating multi-view information, GRM can reconstruct accurate 3D models in a short time (about 0.1 seconds). It also supports converting text or images directly into 3D models.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/004.png">
+    <img src="/blog/AI-weekly-014/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Polaris**](https://arxiv.org/abs/2403.18814)
+
+Polaris is a highly secure, healthcare-focused Large Language Model (LLM) system developed by Hippocratic AI. Its goal is to create an AI system capable of safely and effectively engaging in long, multi-turn voice conversations with patients while providing professional and accurate medical advice.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/005.png">
+    <img src="/blog/AI-weekly-014/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**VIDIM**](https://arxiv.org/pdf/2404.01203.pdf)
+
+VIDIM is a video frame interpolation generation model designed to create short videos from given starting and ending frames. To ensure high fidelity and generate unseen dynamics within the input data, VIDIM utilizes a cascaded diffusion model. It first generates the target video at a lower resolution, then builds upon this to produce a high-resolution video.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/006.png">
+    <img src="/blog/AI-weekly-014/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+* [**Stable Audio 2.0**](https://stableaudio.com/)
+
+Stable Audio 2.0 is a new model launched by Stability AI, capable of generating high-quality, full-length tracks with coherent musical structure from a single natural language prompt. Tracks can be up to three minutes long, with a sound quality of 44.1kHz stereo. Compared to its predecessors, Stable Audio 2.0 not only supports text-to-audio conversion but also introduces an audio-to-audio feature, allowing users to upload audio samples and convert them into various sounds.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/007.png">
+    <img src="/blog/AI-weekly-014/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**ACE Studio**](https://www.acestudio.ai/)
+
+ACE Studio is an advanced AI voice synthesis engine capable of simulating the timbre and emotional expression of real human voices. It supports multiple languages and offers free commercial usage rights. Additionally, it allows users to precisely convey song emotions by adjusting parameters. The aim is to produce singing voices that sound as natural and emotionally rich as real humans.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/008.png">
+    <img src="/blog/AI-weekly-014/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**Aqua Voice**](https://withaqua.com/)
+
+Aqua Voice is a tool for inputting and editing documents through voice commands, capable of text editing and style standardization based on user instructions. Essentially, it functions as an intelligent dictation device, acting like a human secretary that understands what you truly intend to write through voice, rather than merely transcribing speech to text.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/009.png">
+    <img src="/blog/AI-weekly-014/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* [**coframe**](https://coframe.ai/)
+
+This tool only requires you to input a website URL, and it will automatically optimize the images on the site to make them more appealing, thereby encouraging clicks, purchases, or sign-ups. It can not only automatically generate new images for you but also conduct A/B testing on these images, showing different images to different users to test which one performs better.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-014/010.png">
+    <img src="/blog/AI-weekly-014/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
