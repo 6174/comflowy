@@ -124,7 +124,7 @@ const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
       {
         image: majicMIXRealisti.src,
         title: "MajicMIX Realistic",
-        url: "https://www.comflowy.com/model/majicMix-realistic",
+        url: "https://www.comflowy.com/model/majicMIX-realistic",
         tag: "Checkpoint",
         size: "1.99 GB"
       },
