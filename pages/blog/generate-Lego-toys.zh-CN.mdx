@@ -1,0 +1,187 @@
+---
+date: April 9th, 2024
+image: /blog/generate-Lego-toys/001.png
+title: 如何用 ComfyUI 生成 Lego 玩具？
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何用 ComfyUI 生成 Lego 玩具？
+
+乐高，这个我们从小就熟悉的玩具，它的无限组合可能性一直是激发创造力的象征。现在，我们可以将这种创造力应用到图像处理上，让每一张照片都充满了玩乐和艺术的气息。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/001.png">
+    <img src="/blog/generate-Lego-toys/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 1. 下载与安装
+
+首先，你需要下载并安装插件和模型。你可以在 GitHub 上分别下载 [**ComfyUI_Noise-master**](https://github.com/BlenderNeko/ComfyUI_Noise) 和 [**comfy-image-saver-main**](https://github.com/giriss/comfy-image-saver) ，并将它们放入ComfyUI\custom_nodes，如果你是在 Comflowy 中使用，可以参考之前的安装教程：[**如何使用 ComfyUI 实现人脸修复？**](https://www.comflowy.com/zh-CN/blog/face-detailer)
+
+### 节点介绍：
+
+1 . **end_at_step** : 在使用 ComfyUI 将图片转换为乐高风格时，这个过程通常包含一系列步骤，例如调整颜色、识别边缘或增加噪声等。通过设置 end_at_step 节点，我们可以指定在哪个步骤之后终止转换流程。这样的设定可能是为了在达到理想效果时停止，或是在特定环节保留图像的某些原始特征。利用这个功能，我们能够更细致地控制最终图像的呈现，确保它与我们的创意构想相匹配。
+
+2 . **Image scale to side** : 这个节点的作用是调整图像的尺寸，使其适应特定的宽度或高度。它允许用户根据需要对图像进行缩放，以确保图像在不同的显示设备或设计布局中保持合适的比例和大小。
+
+3 . **Unsampler** : 这个节点的作用是进行图像的降采样处理，也就是减少图像中的像素数量。这个过程通常用于降低图像的分辨率，同时尽可能地保持图像的视觉质量。
+
+### 模型下载：
+
+[**3D_Mix_Character**](https://civitai.com/models/94726/3dmixcharacter) ：这是个 CheckPiont 模型，需要将它放入 ComfyUI\models\checkpoints 。
+
+[**LegoAI - konyconi**](https://civitai.com/models/95236/legoai-konyconi)：这是个可以转换成 Lego 风格的 Lora 模型，我试用比较下来这个模型发挥的更为稳定，下载放入 ComfyUI\models\loras 中。
+
+最后你能搭出这样的工作流：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/002.png">
+    <img src="/blog/generate-Lego-toys/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 2. 影响效果的要素解码
+
+### 2.1  end_at_step
+
+在探索 end_at_step 对图像识别效果的影响时，我进行了一系列的实验，通过调整参数的不同数值来观察其对识别能力的具体影响。当 end_at_step 的参数设置为5时，模型的识别能力并不理想，对图片中物体的识别准确度和特征抓取能力都显得相对较弱。可能是由于参数值过低，导致模型在处理图像时未能充分学习到足够的特征信息，从而影响了最终的识别效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/003.png">
+    <img src="/blog/generate-Lego-toys/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+相对地，当我将 end_at_step 的参数值提高到12时，模型的物体识别能力有了显著的提升。在这一参数设置下，模型不仅能够更准确地识别出图片中的物体，还能够捕捉到更为细致的特征信息。所以，适当的增加参数值有助于模型更深入地挖掘和学习图像数据，从而提高识别的准确度和可靠性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/004.png">
+    <img src="/blog/generate-Lego-toys/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+综合考虑，我推荐将 end_at_step 的参数值设定在10到15的范围内。这个区间内的参数值能够有效地平衡模型的学习深度和计算效率，既能够确保模型充分学习图像特征，又不至于导致过度计算或资源浪费。通过这样的参数调整，我们能够在保障识别效果的同时，也兼顾到模型运行的性能和实用性。
+
+### 2.2 Unsampler 
+
+当我们需要对图像进行处理时，Unsampler 可以用于增加图像的分辨率。cfg 可以设置节点处理数据的采样率。这允许用户根据需要对输入信号进行降采样（减少采样率）或上采样（增加采样率）。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/005.png">
+    <img src="/blog/generate-Lego-toys/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在实验中，我发现当设置较低的采样率时，如1倍，图像的细节会大量丢失，导致识别和处理的效果不佳。然而，当我们将采样率提高到5倍或更高时，图像的清晰度和细节得到了显著的提升，使得后续的图像识别和分析工作更加准确和有效。
+
+推荐参数：
+
+- step : 30
+- cfg : 5-9
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/006.png">
+    <img src="/blog/generate-Lego-toys/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3. 效果展示
+
+### 3.1 乐高人物
+
+我首先尝试了它在人物生成方面的能力，猜测在画作和照片的识别会不会有不同。所以先是将经典油画中的蒙娜丽莎和戴珍珠耳环的少女，导入这个工作流并生成乐高效果，可以看到这些画作被赋予了乐高积木的鲜明色彩和独特质感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/007.png">
+    <img src="/blog/generate-Lego-toys/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这样转换的作品色彩感很强，还增添了一份现代感和互动性，让这些历史名画以一种全新的方式呈现在我们面前。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/008.png">
+    <img src="/blog/generate-Lego-toys/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在处理真人照片时，可以发现每一张照片都经过精心的分析和处理，确保在转换成乐高风格的同时，保留人物的关键特征和表情。乐高积木的几何形状和鲜艳色彩为人物肖像增添了一种独特的视觉风格，让每个细节都充满了活力和个性。这样的图像转换不仅仅是一种技术上的实现，更是一种艺术上的再创作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/009.png">
+    <img src="/blog/generate-Lego-toys/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+通过 ComfyUI 生图，我们可以将日常生活中的简单瞬间，如家庭聚会、毕业典礼或旅行留影，转化为具有乐高特色的纪念品。这些乐高风格的图像不仅能够作为独特的装饰，还能成为分享和回忆的美好载体。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/010.png">
+    <img src="/blog/generate-Lego-toys/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3.2 乐高物品
+
+其次，我还将日常生活中的物品——相机、汽车、咖啡机等用这个工作流，转化为独具匠心的乐高风格图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/011.png">
+    <img src="/blog/generate-Lego-toys/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在生成的过程中，它不仅捕捉了物品的形状和细节，还赋予了它们乐高积木的色彩和质感。乐高积木的鲜明色彩和模块化设计，为这些物品带来了一种独特的视觉冲击力，让它们仿佛变成了可以拿起、拼搭的玩具，充满了互动性和趣味性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/012.png">
+    <img src="/blog/generate-Lego-toys/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这样的图像转换，让每一件物品都不再是静态的展示，而是变成了一个可以代入拼搭的玩具，激发观者的想象力和探索欲望。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/013.png">
+    <img src="/blog/generate-Lego-toys/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+对于形态比较灵动，边缘不是很规则的花卉，它也有不错的表现。每一朵花，每一片叶，都经过精心的转换，变成了由多彩乐高积木块组成的立体图像，让花卉的优雅与乐高积木的创意完美结合。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/014.png">
+    <img src="/blog/generate-Lego-toys/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这一过程不仅捕捉了花卉的自然之美，还赋予了它们一种独特的构造艺术感。在这些乐高风格的花卉图像中，色彩的搭配和形状的构建都被重新想象和设计，不仅展示了花卉的细腻和精致，还通过乐高积木的形式，为观者带来了一种全新的欣赏角度。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/generate-Lego-toys/015.png">
+    <img src="/blog/generate-Lego-toys/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
