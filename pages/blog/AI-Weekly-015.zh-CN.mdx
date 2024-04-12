@@ -1,0 +1,143 @@
+---
+date: April 12th, 2024
+image: /blog/AI-weekly-015/banner.png
+title: AI Weekly 015
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 015
+
+## 🆕 更新了什么？
+**产品更新：**
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## 🤩 每周 AI 精选
+
+### 🏗️ 值得尝试的插件
+
+[**comfyui-portrait-master**](https://github.com/florestefano1975/comfyui-portrait-master)
+
+这个节点可以帮助 AI 图像创作者生成人物肖像，你能更好的精细控制生成的肖像特征，比如体重、五官、表情、发型、皮肤等细节。它还能控制光线类型和方向，改进照片真实感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/001.png">
+    <img src="/blog/AI-weekly-015/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-VideoHelperSuite**](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
+
+这是一个与视频工作流程相关的节点，提供视频编辑的功能，如通过调整强制帧速率分部分处理较长的输入视频，视频合并、加载音频等，帮助用户更高效地完成视频制作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/002.png">
+    <img src="/blog/AI-weekly-015/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**comfy_mtb**](https://github.com/melMass/comfy_mtb)
+
+这个节点包增强了用户在处理图像和动画时的体验，它可以实现图像的动态虚假变形，裁剪图像、色彩校正，背景去除、颜色调整和纹理生成等功能，以及一些可选的高级节点，如面部检测和图像插值。如果你想要实现高级图像处理和动画效果，这个节点包能让你的工作更加高效和专业。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/003.png">
+    <img src="/blog/AI-weekly-015/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+[**MagicTime**](https://arxiv.org/abs/2404.05014)
+
+MagicTime 是一个变质延时视频生成模型，它能从延时视频中学习现实世界的物理知识并实现变质生成，使其能够生成一系列风格各异、文本同步且画面连贯的高质量变质视频。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/004.png">
+    <img src="/blog/AI-weekly-015/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Ferret-UI**](https://arxiv.org/abs/2404.05719)
+
+Ferret-UI 是苹果公司打造的多模态大语言模型，能够深度理解和精准交互移动用户界面。该模型通过“任意分辨率”技术适应不同屏幕，优化细节识别，并增强了模型的推理能力，在基础 UI 任务上声称超越了 GPT-4V 等模型。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/005.png">
+    <img src="/blog/AI-weekly-015/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Octopus-v2**](https://arxiv.org/abs/2404.01744)
+
+Octopus-v2 是斯坦福大学 Nexa AI 团队专为优化 Android API 功能调用而设计的模型。该模型摒弃了传统的检索增强生成（RAG）方法，转而采用创新的功能标记策略，显著提升了推理速度和性能。它能够在移动设备上直接运行，特别适合需要高性能和精确功能调用的场景，如智能家居控制、移动应用开发等。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/006.png">
+    <img src="/blog/AI-weekly-015/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Transformer-Lite**](https://arxiv.org/abs/2403.20041)
+
+Transformer-Lite 是一款由 OPPO AI Center 研发的移动端推理引擎，专为在智能手机 GPU 上高效运行大型语言模型而设计。它通过动态形状推理、操作优化、FP4 量化等技术，显著提高了模型的推理速度，减少了手机延迟。这款引擎兼容主流处理器，相较于其他解决方案，它在预填充和解码速度上实现了显著提升（下图为 Transformer-Lite 基于不同处理器的预填充和解码速度对比），为用户提供了更快捷的智能助手、文本翻译和多模态交互等 AI 服务。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/007.png">
+    <img src="/blog/AI-weekly-015/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+[**Facet AI**](https://facet.ai/)
+
+Facet AI 专注于实时图像生成和编辑，通过区域提示词精确控制图像元素和个性化定制的能力，简化了复杂提示的编写，适合广告和专业图像制作。与 ComfyUI 需要更加多样化的节点包相比， Facet AI 简化了图像处理的方式，唯一美中不足的是作为基础的大模型训练程度不够，对细节的呈现质量还比较低，生成的图片可以用作其它 AIGC 的垫图。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/008.png">
+    <img src="/blog/AI-weekly-015/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Hand Talk**](https://www.handtalk.me/en/)
+
+Hand Talk 能够将语音或文本转换为美国手语（ASL）或巴西手语（Libras），促进了听障人士与社会的沟通。这款应用荣获联合国认可的“最佳社交应用”。目前，这个平台拥有的用户已累计翻译了近20亿个单词，提供了一个互动学习平台帮助用户掌握手语技能。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/009.png">
+    <img src="/blog/AI-weekly-015/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Lixel CyberColor**](https://xgrids.com/lcc)
+
+Lixel CyberColor (LCC) 能够自动生成电影级别的3D场景。它利用 Multi-SLAM 和高斯溅射技术精确捕捉并复现真实世界的细节。为用户提供无限广阔的创作空间，能够成为虚拟现实、游戏开发、电影制作或视觉媒体等制作者的理想选择。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/010.png">
+    <img src="/blog/AI-weekly-015/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
