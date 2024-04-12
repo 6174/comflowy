@@ -1,0 +1,154 @@
+---
+date: April 12th, 2024
+image: /blog/AI-weekly-015/banner.png
+title: AI Weekly 015
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 015
+
+## 🆕 What's New?
+**Product Update:**
+
+- Workflows can now be imported by directly dragging the workflow files to the Home page.
+- Enhanced display of error messages.
+- Optimized certain UI elements and internationalized texts.
+- Fixed some known bugs:
+  - Fixed the issue where the Windows version couldn't read the system's Proxy settings.
+  - Fixed a bug where there was a chance that the Windows version could not restart ComfyUI after installing plugins.
+  - Fixed an issue where the cancel button might not appear after clicking the run button.
+  - Fixed a problem causing a white screen in the app after importing workflow files.
+  - Fixed some compatibility issues with imported workflows.
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## Weekly‘s AI highlights
+
+### 🏗️ Plugins worth trying
+
+[**comfyui-portrait-master**](https://github.com/florestefano1975/comfyui-portrait-master)
+
+This node can assist AI image creators in generating character portraits, allowing you to more precisely control the features of the generated portraits, such as weight, facial features, expressions, hairstyles, skin, and other details. It can also control the type and direction of lighting to enhance the realism of the photos.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/001.png">
+    <img src="/blog/AI-weekly-015/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-VideoHelperSuite**](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
+
+This is a node related to video workflows, offering video editing functionalities such as processing longer input videos in sections by adjusting the frame rate, merging videos, loading audio, etc., helping users complete video production more efficiently.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/002.png">
+    <img src="/blog/AI-weekly-015/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**comfy_mtb**](https://github.com/melMass/comfy_mtb)
+
+This node enhances the user experience in handling images and animations. It enables dynamic fake deformation of images, cropping, color correction, background removal, color adjustment, and texture generation, among other features. Additionally, it includes optional advanced nodes such as facial detection and image interpolation. If you are looking to achieve advanced image processing and animation effects, this node package can make your work more efficient and professional.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/003.png">
+    <img src="/blog/AI-weekly-015/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+[**MagicTime**](https://arxiv.org/abs/2404.05014)
+
+MagicTime is a metamorphic time-lapse video generation model. It can learn physical knowledge from time-lapse videos and perform metamorphic generation, enabling it to create a series of high-quality metamorphic videos that are diverse in style, synchronized with text, and visually coherent.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/004.png">
+    <img src="/blog/AI-weekly-015/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Ferret-UI**](https://arxiv.org/abs/2404.05719)
+
+Ferret-UI is a multimodal large language model developed by Apple, designed to deeply understand and precisely interact with mobile user interfaces. The model adapts to different screen sizes through "any resolution" technology, optimizes detail recognition, and enhances its inference capabilities. It claims to surpass models like GPT-4V in basic UI tasks.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/005.png">
+    <img src="/blog/AI-weekly-015/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Octopus-v2**](https://arxiv.org/abs/2404.01744)
+
+Octopus-v2 is a model designed by Stanford University's Nexa AI team specifically to optimize Android API function calls. The model abandons the traditional Retrieval-Augmented Generation (RAG) approach and adopts an innovative feature tagging strategy, significantly improving inference speed and performance. It can operate directly on mobile devices, making it particularly suitable for scenarios requiring high performance and precise function calls, such as smart home control and mobile app development.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/006.png">
+    <img src="/blog/AI-weekly-015/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Transformer-Lite**](https://arxiv.org/abs/2403.20041)
+
+Transformer-Lite is a mobile inference engine developed by OPPO AI Center, specifically designed to efficiently run large language models on smartphone GPUs. It significantly enhances model inference speed and reduces mobile latency through technologies like dynamic shape inference, operation optimization, and FP4 quantization. This engine is compatible with mainstream processors and offers significant improvements in pre-filling and decoding speeds compared to other solutions. Transformer-Lite provides users with faster AI services such as intelligent assistants, text translation, and multimodal interactions.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/007.png">
+    <img src="/blog/AI-weekly-015/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+[**Facet AI**](https://facet.ai/)
+
+Facet AI specializes in real-time image generation and editing, enabling precise control over image elements and personalized customization through area-specific prompts. This simplifies the creation of complex prompts, making it suitable for advertising and professional image production. Compared to ComfyUI, which requires a more diverse package of nodes, Facet AI simplifies the image processing approach. However, its main limitation is the insufficient training of the underlying large model, resulting in lower quality in detail representation. The images generated can be used as base images for other AIGC applications.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/008.png">
+    <img src="/blog/AI-weekly-015/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Hand Talk**](https://www.handtalk.me/en/)
+
+Hand Talk is an application that converts speech or text into American Sign Language (ASL) or Brazilian Sign Language (Libras), enhancing communication between the hearing impaired and society. This app has earned recognition as the "Best Social App" by the United Nations. Currently, users on the platform have collectively translated nearly 2 billion words. It also offers an interactive learning platform to help users acquire sign language skills.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/009.png">
+    <img src="/blog/AI-weekly-015/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Lixel CyberColor**](https://xgrids.com/lcc)
+
+Lixel CyberColor (LCC) is capable of automatically generating cinema-quality 3D scenes. It uses Multi-SLAM and Gaussian splatter technologies to precisely capture and reproduce the details of the real world. This provides users with vast creative possibilities, making it an ideal choice for creators in virtual reality, game development, film production, or visual media.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-015/010.png">
+    <img src="/blog/AI-weekly-015/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<br/>
+
+<Subscribe />
+
+
+
+
+
+
+
+
