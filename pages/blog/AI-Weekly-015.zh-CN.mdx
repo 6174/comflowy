@@ -12,6 +12,16 @@ import Subscribe from "components/subscribtion";
 ## 🆕 更新了什么？
 **产品更新：**
 
+- 现在可以通过直接将 workflow 文件拖拽到 Home 页面的方式进行导入 workflow。
+- 支持显示更多报错信息。
+- 优化了部分 UI 以及国际化文案。
+- 修复了一些已知的 bug：
+  - 修复 Win 版本无法读取系统 Proxy 的问题。
+  - 修复了 Win 版本安装插件时有概率无法重启 ComfyUI 的问题。
+  - 修复点击 run 按钮后，cancel 按钮有概率不出现的问题。
+  - 修复了导入 workflow 文件后，应用白屏的问题。
+  - 修复了部分导入的兼容性问题。
+
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 🤩 每周 AI 精选
@@ -31,7 +41,7 @@ import Subscribe from "components/subscribtion";
 
 [**ComfyUI-VideoHelperSuite**](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-这是一个与视频工作流程相关的节点，提供视频编辑的功能，如通过调整强制帧速率分部分处理较长的输入视频，视频合并、加载音频等，帮助用户更高效地完成视频制作。
+这是一个与视频工作流程相关的插件，它提供了一些视频编辑的节点，如通将多个视频进行合并，给视频加载音频等，帮助用户更高效地完成视频制作。如果你想用 ComfyUI 生成视频，这个插件是一个不错的选择。
 
 <br/>
 <PhotoProvider>
@@ -42,7 +52,7 @@ import Subscribe from "components/subscribtion";
 
 [**comfy_mtb**](https://github.com/melMass/comfy_mtb)
 
-这个节点包增强了用户在处理图像和动画时的体验，它可以实现图像的动态虚假变形，裁剪图像、色彩校正，背景去除、颜色调整和纹理生成等功能，以及一些可选的高级节点，如面部检测和图像插值。如果你想要实现高级图像处理和动画效果，这个节点包能让你的工作更加高效和专业。
+这个插件可以实现图像的动态虚假变形，裁剪图像、色彩校正，背景去除、颜色调整和纹理生成等功能，以及一些可选的高级节点，如面部检测和图像插值。如果你想要实现高级图像处理和动画效果，这个节点包能让你的工作更加高效和专业。
 
 <br/>
 <PhotoProvider>
@@ -101,7 +111,7 @@ Transformer-Lite 是一款由 OPPO AI Center 研发的移动端推理引擎，�
 
 [**Facet AI**](https://facet.ai/)
 
-Facet AI 专注于实时图像生成和编辑，通过区域提示词精确控制图像元素和个性化定制的能力，简化了复杂提示的编写，适合广告和专业图像制作。与 ComfyUI 需要更加多样化的节点包相比， Facet AI 简化了图像处理的方式，唯一美中不足的是作为基础的大模型训练程度不够，对细节的呈现质量还比较低，生成的图片可以用作其它 AIGC 的垫图。
+Facet AI 专注于实时图像生成和编辑，通过区域提示词精确控制图像元素和个性化定制的能力，简化了复杂提示的编写，适合广告和专业图像制作。与 ComfyUI 需要更加多样化的节点包相比，Facet AI 简化了图像处理的方式，唯一美中不足的是作为基础的大模型训练程度不够，对细节的呈现质量还比较低，生成的图片可以用作其它 AIGC 的垫图。
 
 <br/>
 <PhotoProvider>
@@ -112,7 +122,7 @@ Facet AI 专注于实时图像生成和编辑，通过区域提示词精确控�
 
 [**Hand Talk**](https://www.handtalk.me/en/)
 
-Hand Talk 能够将语音或文本转换为美国手语（ASL）或巴西手语（Libras），促进了听障人士与社会的沟通。这款应用荣获联合国认可的“最佳社交应用”。目前，这个平台拥有的用户已累计翻译了近20亿个单词，提供了一个互动学习平台帮助用户掌握手语技能。
+Hand Talk 能够将语音或文本转换为美国手语（ASL）或巴西手语（Libras），促进了听障人士与社会的沟通。这款应用荣获联合国认可的“最佳社交应用”。目前，这个平台拥有的用户已累计翻译了近 20 亿个单词，并且还提供了一个互动学习平台帮助用户掌握手语技能。
 
 <br/>
 <PhotoProvider>
@@ -123,7 +133,7 @@ Hand Talk 能够将语音或文本转换为美国手语（ASL）或巴西手语�
 
 [**Lixel CyberColor**](https://xgrids.com/lcc)
 
-Lixel CyberColor (LCC) 能够自动生成电影级别的3D场景。它利用 Multi-SLAM 和高斯溅射技术精确捕捉并复现真实世界的细节。为用户提供无限广阔的创作空间，能够成为虚拟现实、游戏开发、电影制作或视觉媒体等制作者的理想选择。
+Lixel CyberColor (LCC) 能够自动生成电影级别的 3D 场景。它利用 Multi-SLAM 和高斯溅射技术精确捕捉并复现真实世界的细节。为用户提供无限广阔的创作空间，能够成为虚拟现实、游戏开发、电影制作或视觉媒体等制作者的理想选择。
 
 <br/>
 <PhotoProvider>
@@ -131,6 +141,8 @@ Lixel CyberColor (LCC) 能够自动生成电影级别的3D场景。它利用 Mul
     <img src="/blog/AI-weekly-015/010.png" alt="" className="rounded-lg"/>
   </PhotoView>
 </PhotoProvider>
+
+<br/>
 
 <Subscribe />
 
