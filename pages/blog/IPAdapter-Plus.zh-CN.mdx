@@ -1,0 +1,220 @@
+---
+date: April 18th, 2024
+image: /blog/IPAdapter-Plus/banner.png
+title: 如何在 ComfyUI 中使用 IPAdapter  Plus 进行风格迁移？
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何在 ComfyUI 中使用 IPAdapter  Plus 进行风格迁移？
+
+以往，我们想要生成特定风格的图片，必须借助 LoRA 模型和提示词来实现，但有时候，要不就是没有想要的 LoRA，要不就是某些风格很难通过提示描述。现在，你只需要找一张自己满意的照片便可实现类似 LoRA +提示词描述的效果，并且再也不需要为找寻 LoRA 和构思提示词而苦恼。这一切，都得益于 IPAdapter  Plus 这个插件，你能通过输入参考图像的方式，生成与参考图类似风格的图像， 实现类似这样的效果：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/banner.png">
+    <img src="/blog/IPAdapter-Plus/banner.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 一、 下载与安装
+
+### 第一步：安装插件
+
+**方法一：** 
+
+首先需要确保你的计算机上已经安装了最新版本的 ComfyUI ，访问 IPAdapter 插件的 [**GitHub**](https://github.com/cubiq/ComfyUI_IPAdapter_plus) 页面，下载或通过 git 克隆该仓库到你的本地计算机上，并将下载的插件文件放置到 ComfyUI 的custom_nodes/目录下，也可以使用 ComfyUI 的 Manager 来安装此插件。如果不知道如何安装插件，可以查看这篇教程：[**如何安装 ComfyUI 插件？**](https://www.comflowy.com/zh-CN/advanced/how-to-install-comfyui-extension)
+
+**方法二：** 
+
+如果你使用的是 Comflowy ，可以在左侧 Extensions 页面中搜索 ComfyUI_IPAdapter_plus 下载。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/001.png">
+    <img src="/blog/IPAdapter-Plus/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+除此以外，你还需要安装 insightface 依赖，如果不知道该怎么装，可以看这个教程中插入的视频： [**Comflowy FAQ**](https://www.comflowy.com/zh-CN/blog/comflowy-faq)。
+
+### 第二步：下载模型
+
+IPAdapter 节点支持多种不同的模型，如 SD1.5 、SDXL 等，每种模型都有其特定的强度和适用场景。
+
+模型下载地址：[**ComfyUI_IPAdapter_plus**](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
+
+例如：
+  - ip-adapter_sd15 : 它是一个基础模型，迁移风格强度比较平均。
+  - ip-adapter_sd15_light_v11.bin : 轻量级影响模型。如果你想要其风格迁移程度没有那么强，可以使用这个模型。
+
+在 IPAdapter 模型库中，比较推荐你下载：
+
+- [**ip-adapter-plus_sd15.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors), 这个是 IPAdapter 的 Plus 模型，比ip-adapter_sd15.safetensors 更加强大，如果你想要使用 SD 1.5的模型，用它足够满足生图需求。
+- [**ip-adapter-plus-face_sd15.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors), 这个是 IPAdapter 的脸部模型，专门用来处理肖像问题，如果你主要是想处理面部问题，它会是更好的选择。
+
+如果你使用的是 SDXL 模型，那推荐你下载：
+- [**ip-adapter-plus_sdxl_vit-h.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors)
+- [**ip-adapter-plus-face_sdxl_vit-h.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/002.png">
+    <img src="/blog/IPAdapter-Plus/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+另外，IPAdapter Plus 在人物的风格迁移上，还专门支持了相应的 FaceID 模型。你可以通过它控制人物面部五官，确保她与原图的一致性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/003.png">
+    <img src="/blog/IPAdapter-Plus/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+模型推荐下载：
+- SDXL：[**ip-adapter-faceid-portrait_sdxl.bin**](https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl.bin)
+- SD 1.5：[**ip-adapter-faceid-plusv2_sd15.bin**](https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin)
+
+需要注意,大多数 FaceID 模型还需要搭配 Lora 使用。
+
+## 二、 效果展示
+
+### 2.1 IPAdapter 风格迁移
+
+我利用 IPAdapter 风格迁移帮我将女孩的照片换成插画风格，最后呈现出来的效果是两个图片融合的结果，别具特色。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/004.png">
+    <img src="/blog/IPAdapter-Plus/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+我又尝试不同的人物头像和插画风格生成一个新的图片，最终的效果图结合了两张输入图的特点，帮我生成了一个新的人物，这个功能能为插画师节省大量的时间精力，再也不用从头开始绘制，便可得到一张全新的作品。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/005.png">
+    <img src="/blog/IPAdapter-Plus/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：A girl, short hair flowing in the wind, clear eyes，high quality, detailed
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/006.png">
+    <img src="/blog/IPAdapter-Plus/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.1 生成 NFT 头像
+
+除了生成人物插画风图像，我们还可以利用它生成 NFT 头像。在 Web3 世界中，NFT 头像作为数字身份的象征，不仅提供了一种独特且可验证的个人标识，还带来了社区归属感和社交优势。NFT 头像的交易流动性高，可以在多个平台上自由买卖，为创作者和收藏家提供了投资和收益的机会。如果你可以运行这个工作流，就轻而易举地拥有了无限次生成 NFT 头像的机会。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/007.png">
+    <img src="/blog/IPAdapter-Plus/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+我首先选择了一张真人头像，并和自己喜欢的 NFT 头像相结合，生成了一张全新的图片，仅仅几秒钟，就得到了一张全新的 NFT 头像。当然，你也可以选择生成不同的风格，例如：像素风、无聊猿、赛博朋克、3D数字人、奇葩另类等等。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/008.png">
+    <img src="/blog/IPAdapter-Plus/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+像素风，提示词：strong Pixel style，NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/009.png">
+    <img src="/blog/IPAdapter-Plus/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+赛博朋克风格的无聊猿 NFT 头像，提示词：Cyberpunk, technological vibe，NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/010.png">
+    <img src="/blog/IPAdapter-Plus/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+哥布林风格，这个主题的图像视觉效果很怪诞，但并不妨碍它在 NFT 市场中大火。这类挑战人们审美的画风，NFT 交易量达到了市场交易前三。如果你也想要尝试类似的效果，也可以找一些另类的参考图生成。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/011.png">
+    <img src="/blog/IPAdapter-Plus/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+上文中，我们利用 IPAdapter 风格迁移的灵活性，进行了很多的的尝试，不管是生成 NFT 头像或者其他你想要合成效果的图片，都展现出很出彩的能力。但如果你想要让最终效果图的主体与输入图的相关性更强，仅用上面这个工作流是不够的。这时，推荐你添加 ControlNet 节点来控制主体轮廓的同时进行风格迁移。
+
+### 2.3 Controlnet+IPAdapter
+
+我在基础的风格迁移基础上加入了 Controlnet 的 lineart 节点来控制线稿，确保最后生成的轮廓与上传的一致。你只需要选择你喜欢的参考图上传，就可以将参考图的色调和质感迁移到线稿图中，通过调整 steps 和 cfg 来生成你想要的效果，这里我设置的 steps 为30，cfg 为8。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/012.png">
+    <img src="/blog/IPAdapter-Plus/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：A girl riding a motorcycle on the road,Laugh， blue sky with white clouds, on the green grassland, by the seaside.Signboard，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/banner.png">
+    <img src="/blog/IPAdapter-Plus/banner.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：Temple of Heaven, Great Wall, Peony，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/013.png">
+    <img src="/blog/IPAdapter-Plus/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：Classical beauty, headdress, exquisite features，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/014.png">
+    <img src="/blog/IPAdapter-Plus/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+提示词：illustration of a beautiful blond woman with leaves on the hair, closedeyes, peaceful, detailed, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/015.png">
+    <img src="/blog/IPAdapter-Plus/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+

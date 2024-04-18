@@ -1,0 +1,234 @@
+---
+date: April 18th, 2024
+image: /blog/IPAdapter-Plus/banner.png
+title: How to perform style transfer using IPAdapter Plus in ComfyUI?
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# How to perform style transfer using IPAdapter Plus in ComfyUI?
+
+In the past, if we wanted to generate images in a specific style, we had to rely on LoRA models and prompts. However, sometimes there were no suitable LoRA models available, or some styles were difficult to describe through prompts. Now, you only need a satisfactory photo to achieve effects similar to those of LoRA + prompt descriptions, and you no longer need to struggle to find LoRA or devise prompts. All this is thanks to the IPAdapter Plus plugin, which allows you to generate images in styles similar to a reference image by inputting it, achieving effects like this:
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/banner.png">
+    <img src="/blog/IPAdapter-Plus/banner.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 一、 Download and Install
+
+### Step One: Install the Plugin
+
+**Method One：** 
+
+First, ensure that the latest version of ComfyUI is installed on your computer. Visit the [**GitHub**](https://github.com/cubiq/ComfyUI_IPAdapter_plus) page for the IPAdapter plugin, download it or clone the repository to your local machine via git, and place the downloaded plugin files into the custom_nodes/ directory of ComfyUI. You can also use ComfyUI's Manager to install this plugin. If you are unsure how to install the plugin, you can check out this tutorial:[**How to install ComfyUI extension?**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
+
+**Method Two:** 
+
+If you are using Comflowy, you can search for ComfyUI_IPAdapter_plus in the Extensions page on the left side and download it.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/001.png">
+    <img src="/blog/IPAdapter-Plus/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In addition to the plugin, you also need to install the 'insightface' dependency. If you are unsure how to do this, you can watch the video tutorial embedded in the [**Comflowy FAQ**](https://www.comflowy.com/zh-CN/blog/comflowy-faq).
+
+### Step Two: Download Models
+
+The IPAdapter node supports various models such as SD1.5, SDXL, etc., each model having specific strengths and use cases.
+
+Model download link: [**ComfyUI_IPAdapter_plus**](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
+
+For example:
+- ip-adapter_sd15: This is a base model with moderate style transfer intensity.
+- ip-adapter_sd15_light_v11.bin: This is a lightweight model. If you prefer a less intense style transfer, you can use this model.
+
+In the IPAdapter model library, it is recommended to download:
+
+- [**ip-adapter-plus_sd15.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors),which is a more powerful version of the IPAdapter Plus model. If you want to use an SD 1.5 model, this will sufficiently meet your needs for generating images.
+- [**ip-adapter-plus-face_sd15.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors), which is the face model of IPAdapter, specifically designed for handling portrait issues. If your main focus is on face issues, it would be a better choice.
+
+If you are using the SDXL model, it is recommended to download:
+- [**ip-adapter-plus_sdxl_vit-h.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors)
+- [**ip-adapter-plus-face_sdxl_vit-h.safetensors**](https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/002.png">
+    <img src="/blog/IPAdapter-Plus/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Additionally, IPAdapter Plus specifically supports the FaceID model for style transfer involving human figures. This model allows you to control facial features to ensure consistency with the original image.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/003.png">
+    <img src="/blog/IPAdapter-Plus/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Model recommendations for download:
+- For SDXL :  ip-adapter-faceid-portrait_sdxl.bin
+- For SD 1.5 :  ip-adapter-faceid-plusv2_sd15.bin
+
+It is important to note that most FaceID models also need to be used in conjunction with Lora.
+
+## 二、Effect Demonstration
+
+### 2.1 IPAdapter Style Transfer
+
+I used the IPAdapter style transfer to transform a photo of a girl into an illustration style. The final result is a unique blend of the two images, showcasing distinct characteristics.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/004.png">
+    <img src="/blog/IPAdapter-Plus/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+I also tried different character portraits and illustration styles to create a new image. The final result combines the features of the two input images and generated a new character for me. This function can save illustrators a great deal of time and effort. They no longer need to start from scratch to produce a brand-new artwork.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/005.png">
+    <img src="/blog/IPAdapter-Plus/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：A girl, short hair flowing in the wind, clear eyes，high quality, detailed
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/006.png">
+    <img src="/blog/IPAdapter-Plus/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.1 Generating NFT Avatars
+
+Besides creating character illustration-style images, we can also use it to generate NFT avatars. In the Web3 world, NFT avatars serve as symbols of digital identity, providing not only a unique and verifiable personal identifier but also a sense of community belonging and social advantages. NFT avatars have high liquidity in transactions and can be freely bought and sold across multiple platforms, offering creators and collectors opportunities for investment and profit. If you can run this workflow, you will easily have the opportunity to generate NFT avatars indefinitely.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/007.png">
+    <img src="/blog/IPAdapter-Plus/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+First,I selected a real person's portrait and combined it with an NFT avatar that I liked, creating a brand new image. In just a few seconds, I obtained a brand new NFT avatar. Of course, you can also choose to generate different styles, such as pixel art, Bored Ape, cyberpunk, 3D digital human, quirky alternative, and so on.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/008.png">
+    <img src="/blog/IPAdapter-Plus/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Pixel art, prompt words: strong Pixel style，NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/009.png">
+    <img src="/blog/IPAdapter-Plus/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Cyberpunk style Bored Ape NFT avatar, prompt words: Cyberpunk, technological vibe，NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/010.png">
+    <img src="/blog/IPAdapter-Plus/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Goblin style, the visual effects of this theme are bizarre but do not hinder its popularity in the NFT market. Such styles, which challenge conventional aesthetics, have reached the top three in NFT trading volume. If you also want to try similar effects, you can find some alternative reference images to generate.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/011.png">
+    <img src="/blog/IPAdapter-Plus/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In the text above, we utilized the flexibility of IPAdapter style transfer for numerous experiments, showcasing impressive capabilities whether in generating NFT avatars or other desired composite images. However, if you want the main subject of the final image to have a stronger correlation with the input image, the workflow mentioned above is not sufficient. At this point, I recommend adding a ControlNet node to control the main contour while conducting style transfer.
+
+### 2.3 Controlnet+IPAdapter
+
+I added a ControlNet lineart node to control the line drawing on top of the basic style transfer, ensuring that the final contours match the uploaded ones. You just need to upload your preferred reference image, and you can transfer the tone and texture of the reference image into the line drawing. Adjust the steps and cfg to produce the desired effect. Here, I set the steps to 30 and cfg to 8.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/012.png">
+    <img src="/blog/IPAdapter-Plus/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt ：A girl riding a motorcycle on the road,Laugh， blue sky with white clouds, on the green grassland, by the seaside.Signboard，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/banner.png">
+    <img src="/blog/IPAdapter-Plus/banner.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt ：Temple of Heaven, Great Wall, Peony，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/013.png">
+    <img src="/blog/IPAdapter-Plus/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt ：Classical beauty, headdress, exquisite features，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/014.png">
+    <img src="/blog/IPAdapter-Plus/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt ：illustration of a beautiful blond woman with leaves on the hair, closedeyes, peaceful, detailed, high quality
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Plus/015.png">
+    <img src="/blog/IPAdapter-Plus/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
