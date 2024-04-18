@@ -18,11 +18,11 @@ In the past, if we wanted to generate images in a specific style, we had to rely
   </PhotoView>
 </PhotoProvider>
 
-## 一、 Download and Install
+## 1. Download and Install
 
 ### Step One: Install the Plugin
 
-**Method One：** 
+**Method One:** 
 
 First, ensure that the latest version of ComfyUI is installed on your computer. Visit the [**GitHub**](https://github.com/cubiq/ComfyUI_IPAdapter_plus) page for the IPAdapter plugin, download it or clone the repository to your local machine via git, and place the downloaded plugin files into the custom_nodes/ directory of ComfyUI. You can also use ComfyUI's Manager to install this plugin. If you are unsure how to install the plugin, you can check out this tutorial:[**How to install ComfyUI extension?**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
 
@@ -37,7 +37,7 @@ If you are using Comflowy, you can search for ComfyUI_IPAdapter_plus in the Exte
   </PhotoView>
 </PhotoProvider>
 
-In addition to the plugin, you also need to install the 'insightface' dependency. If you are unsure how to do this, you can watch the video tutorial embedded in the [**Comflowy FAQ**](https://www.comflowy.com/zh-CN/blog/comflowy-faq).
+In addition to the plugin, you also need to install the 'insightface' dependency. If you are unsure how to do this, you can watch the video tutorial embedded in the [**Comflowy FAQ**](https://www.comflowy.com/blog/comflowy-faq).
 
 ### Step Two: Download Models
 
@@ -80,7 +80,7 @@ Model recommendations for download:
 
 It is important to note that most FaceID models also need to be used in conjunction with Lora.
 
-## 二、Effect Demonstration
+## 2. Effect Demonstration
 
 ### 2.1 IPAdapter Style Transfer
 
@@ -93,7 +93,7 @@ I used the IPAdapter style transfer to transform a photo of a girl into an illus
   </PhotoView>
 </PhotoProvider>
 
-I also tried different character portraits and illustration styles to create a new image. The final result combines the features of the two input images and generated a new character for me. This function can save illustrators a great deal of time and effort. They no longer need to start from scratch to produce a brand-new artwork.
+I also tried different character portraits and illustration styles to create a new image. The final result combines the features of the two input images and generated a new character for me. 
 
 <br/>
 <PhotoProvider>
@@ -102,7 +102,7 @@ I also tried different character portraits and illustration styles to create a n
   </PhotoView>
 </PhotoProvider>
 
-Prompt：A girl, short hair flowing in the wind, clear eyes，high quality, detailed
+Prompt: A girl, short hair flowing in the wind, clear eyes, high quality, detailed
 
 <br/>
 <PhotoProvider>
@@ -111,9 +111,7 @@ Prompt：A girl, short hair flowing in the wind, clear eyes，high quality, deta
   </PhotoView>
 </PhotoProvider>
 
-### 2.1 Generating NFT Avatars
-
-Besides creating character illustration-style images, we can also use it to generate NFT avatars. In the Web3 world, NFT avatars serve as symbols of digital identity, providing not only a unique and verifiable personal identifier but also a sense of community belonging and social advantages. NFT avatars have high liquidity in transactions and can be freely bought and sold across multiple platforms, offering creators and collectors opportunities for investment and profit. If you can run this workflow, you will easily have the opportunity to generate NFT avatars indefinitely.
+And we can also use it to generate NFT avatars. In the Web3 world, NFT avatars serve as symbols of digital identity, providing not only a unique and verifiable personal identifier but also a sense of community belonging and social advantages. NFT avatars have high liquidity in transactions and can be freely bought and sold across multiple platforms, offering creators and collectors opportunities for investment and profit. If you can run this workflow, you will easily have the opportunity to generate NFT avatars indefinitely.
 
 <br/>
 <PhotoProvider>
@@ -131,7 +129,7 @@ First,I selected a real person's portrait and combined it with an NFT avatar tha
   </PhotoView>
 </PhotoProvider>
 
-Pixel art, prompt words: strong Pixel style，NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
+Pixel art, prompt words: strong Pixel style, NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
 
 <br/>
 <PhotoProvider>
@@ -140,7 +138,7 @@ Pixel art, prompt words: strong Pixel style，NFT avatar.,high quality, detailed
   </PhotoView>
 </PhotoProvider>
 
-Cyberpunk style Bored Ape NFT avatar, prompt words: Cyberpunk, technological vibe，NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
+Cyberpunk style Bored Ape NFT avatar, prompt words: Cyberpunk, technological vibe, NFT avatar.,high quality, detailed,Illustration, minimalist avatar,colorful
 
 <br/>
 <PhotoProvider>
@@ -158,9 +156,9 @@ Goblin style, the visual effects of this theme are bizarre but do not hinder its
   </PhotoView>
 </PhotoProvider>
 
-In the text above, we utilized the flexibility of IPAdapter style transfer for numerous experiments, showcasing impressive capabilities whether in generating NFT avatars or other desired composite images. However, if you want the main subject of the final image to have a stronger correlation with the input image, the workflow mentioned above is not sufficient. At this point, I recommend adding a ControlNet node to control the main contour while conducting style transfer.
+### 2.2 Controlnet+IPAdapter
 
-### 2.3 Controlnet+IPAdapter
+In the text above, we utilized the flexibility of IPAdapter style transfer for numerous experiments, showcasing impressive capabilities whether in generating NFT avatars or other desired composite images. However, if you want the main subject of the final image to have a stronger correlation with the input image, the workflow mentioned above is not sufficient. At this point, I recommend adding a ControlNet node to control the main contour while conducting style transfer.
 
 I added a ControlNet lineart node to control the line drawing on top of the basic style transfer, ensuring that the final contours match the uploaded ones. You just need to upload your preferred reference image, and you can transfer the tone and texture of the reference image into the line drawing. Adjust the steps and cfg to produce the desired effect. Here, I set the steps to 30 and cfg to 8.
 
@@ -171,7 +169,7 @@ I added a ControlNet lineart node to control the line drawing on top of the basi
   </PhotoView>
 </PhotoProvider>
 
-Prompt ：A girl riding a motorcycle on the road,Laugh， blue sky with white clouds, on the green grassland, by the seaside.Signboard，peaceful, detailed, high quality，colorful
+Prompt : A girl riding a motorcycle on the road,Laugh, blue sky with white clouds, on the green grassland, by the seaside.Signboard, peaceful, detailed, high quality, colorful
 
 <br/>
 <PhotoProvider>
@@ -180,7 +178,7 @@ Prompt ：A girl riding a motorcycle on the road,Laugh， blue sky with white cl
   </PhotoView>
 </PhotoProvider>
 
-Prompt ：Temple of Heaven, Great Wall, Peony，peaceful, detailed, high quality，colorful
+Prompt : Temple of Heaven, Great Wall, Peony, peaceful, detailed, high quality, colorful
 
 <br/>
 <PhotoProvider>
@@ -189,7 +187,7 @@ Prompt ：Temple of Heaven, Great Wall, Peony，peaceful, detailed, high quality
   </PhotoView>
 </PhotoProvider>
 
-Prompt ：Classical beauty, headdress, exquisite features，peaceful, detailed, high quality，colorful
+Prompt : Classical beauty, headdress, exquisite features, peaceful, detailed, high quality, colorful
 
 <br/>
 <PhotoProvider>
@@ -198,7 +196,7 @@ Prompt ：Classical beauty, headdress, exquisite features，peaceful, detailed, 
   </PhotoView>
 </PhotoProvider>
 
-Prompt ：illustration of a beautiful blond woman with leaves on the hair, closedeyes, peaceful, detailed, high quality
+Prompt : illustration of a beautiful blond woman with leaves on the hair, closedeyes, peaceful, detailed, high quality
 
 <br/>
 <PhotoProvider>
