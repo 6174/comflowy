@@ -12,11 +12,11 @@ import Subscribe from "components/subscribtion";
 
 **Learning ComfyUI should start with theory first.**
 
-The biggest difference between AI drawing tools and traditional drawing tools (such as Photoshop or Figma) is that many of its configurations or operations are not visual, and the results are random. The former means that if you change a certain configuration, there may not necessarily be a reaction on the interface. This makes it difficult to learn it as you can explore Figma on your own. The latter can make you feel frustrated because even if you follow someone else's tutorial, you might not get the same result.
+The biggest difference between AI drawing tools and traditional drawing tools (such as Photoshop or Figma) is that many of its configurations or operations are not visual, and the results are random. The former means that if you change a certain configuration, there may not necessarily be a reaction on the interface. This makes it difficult to learn it; unlike Figma it's difficult to explore on your own. The latter can make you feel frustrated because even if you follow someone else's tutorial, you might not get the same result.
 
 Is there any solution to this?
 
-I believe the first step to learning such tools is not learning how to use them, but starting with the theory related to AI. After understanding these related knowledge, you will know what these configurations on the drawing tools are used for, and even can extrapolate from one example to get more usage methods.
+I believe the first step to learning such tools is not learning how to use them, but starting with the theory related to AI. After understanding the theory, you will know what the configuration options on the drawing tools are used for, and even can extrapolate from one example to get more usage methods.
 
 So, this tutorial series will start with the basics of Stable Diffusion. After understanding the basic concepts of Stable Diffusion, I will introduce how to use ComfyUI, and then you will be able to understand both the appearance and the essence.
 
@@ -28,7 +28,7 @@ So, this tutorial series will start with the basics of Stable Diffusion. After u
 
 Strictly speaking, Stable Diffusion is a system composed of several components (models) rather than a single model.
 
-I will use the most common text to image as an example to explain the overall architecture and working principle of Stable Diffusion.
+I will use the most common text to image workflow as an example to explain the overall architecture and working principle of Stable Diffusion.
 
 When we input a prompt, such as "Cat, standing on the castle", Stable Diffusion will generate a picture of a cat standing on a castle. It seems to take only one step:
 
@@ -42,7 +42,7 @@ In reality, the entire generation process goes through three major steps. I will
 
 
 1. First, the user-input Prompt will be compiled into individual word feature vectors by something called a <mark>Text Encoder</mark>. This step will output 77 equally long vectors, each containing 768 dimensions. I will further explain the role of these vectors later on, but for now, you can simply understand it as 'converting text into groups of numbers that machines can recognize'.
-2. Then, these feature vectors and a random image (which you can simply understand as an image full of electronic snowflakes, or full of information noise), are placed in the Image Information Creator. In this step, the machine will first convert these feature vectors and random image into a <mark>Latent Space</mark>, and then 'denoise' the random image into an 'intermediate product' based on these feature vectors. You can simply understand that the 'intermediate product' at this moment is an 'image' that humans cannot understand, a bunch of numbers, but the information presented by this intermediate product at this moment is already a cat standing on a castle.
+2. Then, these feature vectors and a random image (which you can simply understand as an image full of static, or full of information noise), are placed in the Image Information Creator. In this step, the machine will first convert these feature vectors and random image into a <mark>Latent Space</mark>, and then 'denoise' the random image into an 'intermediate product' based on these feature vectors. Basically, the 'intermediate product' at this moment is an 'image' that humans cannot understand, a bunch of numbers, but the information presented by this intermediate product at this moment is already a cat standing on a castle.
 3. Finally, this intermediate product is decoded into a real image by the <mark>Image Decoder</mark>.
 
 If the above three steps are visualized, it would look like this:
@@ -102,7 +102,7 @@ The previous image might look complex, but there's no need to fear. As long as w
 </Callout>
 
 * Then, Denoise subtracts noise map C from noise map B to produce map D. Let's simplify this with a mathematical interpretation. Map B is the predicted noise from the Prompt and random image, containing both "noise predicted based on the Prompt" and "noise predicted based on the random image". C represents "noise predicted based on the random image". Therefore, B minus C equals "noise predicted based on the Prompt".
-* Next, Denoise magnifies the noise of C, usually by multiplying it by a coefficient. This coefficient is often represented as <mark> CFG, CFG Scale, or Guidance Scale </mark> in some Stable Diffusion. Then it adds this magnified image to noise image C to form image E. The reason for this is to increase the accuracy of image generation. Thus the "noise predicted based on the Prompt" is deliberately emphasized by multiplying by a factor. Without this step, the generated image would not be so related to the Prompt. This method is also known as Classifier Free Guidance.
+* Next, Denoise magnifies the noise of C, usually by multiplying it by a coefficient. This coefficient is often represented as <mark> CFG, CFG Scale, or Guidance Scale </mark> in some Stable Diffusion implementations. Then it adds this magnified image to noise image C to form image E. The reason for this is to increase the accuracy of image generation. Thus the "noise predicted based on the Prompt" is deliberately emphasized by multiplying by a factor. Without this step, the generated image would not be so related to the Prompt. This method is also known as Classifier Free Guidance.
 * Finally, Denoise subtracts image E from image A to derive a new image. This refers to the 'carving' process mentioned earlier, where unnecessary noise is eliminated.
 
 <Callout emoji="💡">
@@ -142,7 +142,7 @@ Disadvantages:
 * Encoding and then restoring data will result in some data loss. Plus, because the dimensions of the latent space are lower, it may not fully capture all the details and features of the original data. This can ultimately lead to the restored image looking a bit odd.
 
 <Callout emoji="💡">
-  Why are the texts in the images generated by Stable Diffusion often strange? This is because, on one hand, some detail features of the text are lost during the process. On the other hand, when predicting noise, text prediction is not as coherent as image prediction. For instance, predicting cat features are relatively simple as cats likely have two eyes, and beneath the eyes is the nose, it's coherent. But the English word "Cat" and Chinese character "猫" are quite different and hard to predict. For example, Chinese characters are likely composed of horizontal, vertical, hook, slash, and squiggle strokes, but what comes after the slash?
+  Why is text in the images generated by Stable Diffusion often strange? This is because, on one hand, some detail features of the text are lost during the process. On the other hand, when predicting noise, text prediction is not as coherent as image prediction. For instance, predicting cat features are relatively simple as cats likely have two eyes, and beneath the eyes is the nose, it's coherent. But the English word "Cat" and Chinese character "猫" are quite different and hard to predict. For example, Chinese characters are likely composed of horizontal, vertical, hook, slash, and squiggle strokes, but what comes after the slash?
 </Callout>
 
 ## Text Encoder
