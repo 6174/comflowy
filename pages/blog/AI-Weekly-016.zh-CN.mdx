@@ -1,0 +1,166 @@
+---
+date: April 19th, 2024
+image: /blog/AI-weekly-016/banner.png
+title: AI Weekly 016
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 016
+
+## 🆕 更新了什么？
+**产品更新：**
+
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## 🤩 每周 AI 精选
+
+### 🏗️ 值得尝试的插件
+
+[**comfyui-mixlab-nodes**](https://github.com/shadowcz007/comfyui-mixlab-nodes)
+
+comfyui-mixlab-nodes 这个插件允许用户将工作流程转换为 Web 应用，另外还支持屏幕共享和视频捕获，同时集成语音识别与合成功能，还支持与多个 GPT 模型进行交互。此外，还提供图层分离功能、图像批量处理等功能。这个项目特别适合需要快速构建复杂交互应用的开发者和设计师，有很强的易用性和灵活性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/001.png">
+    <img src="/blog/AI-weekly-016/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**sd-dynamic-thresholding**](https://github.com/mcmonkeyprojects/sd-dynamic-thresholding)
+
+使用这个插件可以通过限制潜空间变量的值，解决在高 CFG 下可能会出现的颜色偏移问题，从而提高 SD 模型的生成质量。如果觉得模型生成的图像不满意，可以尝试使用这个插件。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/002.png">
+    <img src="/blog/AI-weekly-016/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-BlenderAI-node**](https://github.com/AIGODLIKE/ComfyUI-BlenderAI-node)
+
+ComfyUI-BlenderAI-node 是一个 Blender 插件。安装这个插件后，用户可以在 Blender 内部无缝使用 ComfyUI，包括模型预览、参数编辑、遮罩创建和图像处理，无需再频繁切换工具。插件支持多样的节点类型，如相机输入和 Grease Pencil 遮罩，同时提供节点组和批量处理功能，且允许用户直接在 Blender 中替换 3D 模型，并输出控制网图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/003.png">
+    <img src="/blog/AI-weekly-016/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+[**ScreenAl**](https://arxiv.org/abs/2402.04615)
+
+ScreenAI 是一个由 Google Research 团队开发的视觉语言模型，专门用来理解和处理用户界面和信息图表。它通过执行屏幕注释任务来识别 UI 元素的类型和位置，并用这些注释来描述屏幕内容。
+
+它的独特之处在于能处理各种分辨率和宽高比的屏幕图像，并通过自我监督学习和模型生成的注释来自动创建训练数据。相比之前我们推荐的 Ferret-UI，ScreenAI 主要用来提升我们对屏幕上的UI和信息图表的理解。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/004.png">
+    <img src="/blog/AI-weekly-016/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**SceneScript**](https://arxiv.org/abs/2403.13064)
+
+SceneScript 是一个 3D 场景重建技术，它运用自回归结构化语言模型来生成和表达物理空间布局。该方法最大的的特点是能够从视频流中直接推断出房间的几何形状，并将其转换为文本，比如“门：size-y = 1.9 ”。
+
+使用这个技术就能很方便地通过视频拍摄的方式，对建筑进行建模，无需再通过手动测量的方式录入数据。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/005.png">
+    <img src="/blog/AI-weekly-016/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Infini-attention**](https://arxiv.org/abs/2404.07143)
+
+Infini-attention 是一个新型注意力技术，它通过整合压缩记忆，显著增强了基于 Transformer 的大型语言模型（LLMs）处理超长输入序列的能力，同时有效控制了内存和计算资源的使用。这项技术在一个 Transformer 模块内融合了局部掩蔽注意力与长期线性注意力，不仅提升了模型在长文本语言建模、长文本检索和书籍摘要等任务上的性能，还显著降低了内存占用，为长文本理解和处理提供了一种高效且实用的解决方案。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/006.png">
+    <img src="/blog/AI-weekly-016/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Making an Invisibility Cloak**](https://arxiv.org/abs/1910.14667)
+
+这篇论文探讨了：如何通过对目标检测器进行精心设计的对抗性攻击，实现在现实世界中对物体的“隐形”。团队开发了一种可以物理地覆盖在物体上的特殊图案，从而误导机器，使其无法正确识别或定位物体。研究的核心目标是揭示检测器的安全漏洞，并针对如何让数字世界中的对抗性攻击转移到现实世界的问题提出解决方案。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/007.png">
+    <img src="/blog/AI-weekly-016/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+[**FireCrawl**](https://www.firecrawl.dev/)
+
+FireCrawl 是由 Mendable.ai 开发的一个产品，它能够通过无需依赖站点地图的方式，抓取任何网站的所有可访问子页面，并将这些内容转换为干净的 Markdown 格式。这使得网站内容更易于被大型语言模型(LLM)使用和处理。此外，它还具备缓存功能，从而减少重复爬取的时间，并内置了如代理、缓存和速率限制功能等。值得推荐的原因在于 FireCrawl 为需要大量网络数据的专业人士提供了一个高效、可靠的解决方案，尤其适合那些进行机器学习模型训练、市场研究的个人或团队。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/008.png">
+    <img src="/blog/AI-weekly-016/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**AI 3D Generation**](https://spline.design/ai-generate)
+
+Spline 最近上线了其最新的 AI 3D Generation 功能，支持用户通过文本描述，或导入 2D 图像的方式生成 3D 模型，值得推荐的原因在于它极大地简化了 3D 模型的创作过程，使得没有深厚3D建模技术的用户也能够实现其 3D 设计想法，特别适合需要快速迭代的原型制作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/009.png">
+    <img src="/blog/AI-weekly-016/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**2txt**](https://2txt.vercel.app/?ref=top.aibase.com)
+
+2txt 是一个图像转文字工具，能够将图像中的文字识别出来并转换成可编辑的文本格式。与传统 OCR 技术相比，2txt 在识别过程中会分析图片内容并进行整理，以确保转换过程既快速又准确。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/010.png">
+    <img src="/blog/AI-weekly-016/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Supermemory**](https://github.com/Dhravya/supermemory)
+
+Supermemory 是一个旨在帮助用户构建“第二大脑”的 Chrome 扩展工具。它允许用户保存互联网上发现的有价值内容，并将这些内容转换成可搜索和可交互的格式。通过类似 ChatGPT 的聊天界面，用户可以与自己收藏的网页内容进行互动，从而简化了信息的保存、导入、搜索和回顾过程。这不仅提高了用户存储信息的效率，还提高了定位信息的速度，显著提升了信息利用率和生产力。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/011.png">
+    <img src="/blog/AI-weekly-016/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
