@@ -1,0 +1,190 @@
+---
+date: April 19th, 2024
+image: /blog/AI-weekly-016/banner.png
+title: AI Weekly 016
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 015
+
+## 🆕 What's New?
+**Product Update:**
+
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## Weekly‘s AI highlights
+
+### 🏗️ Plugins worth trying
+
+[**comfyui-mixlab-nodes**](https://github.com/shadowcz007/comfyui-mixlab-nodes)
+
+The ComfyUI-MixLab-Nodes plugin allows users to convert workflows into web applications. It also supports screen sharing and video capture, integrates speech recognition and synthesis capabilities, and allows interaction with multiple GPT models. Additionally, it offers layer separation, batch image processing, and more. This project is particularly suitable for developers and designers who need to quickly build complex interactive applications, offering high usability and flexibility.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/001.png">
+    <img src="/blog/AI-weekly-016/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**sd-dynamic-thresholding**](https://github.com/mcmonkeyprojects/sd-dynamic-thresholding)
+
+Using this plugin, you can solve the color shift issues that might occur under high CFG settings by restricting the values of the latent space variables, thereby enhancing the generation quality of the SD model. If you are unsatisfied with the images produced by the model, you might consider trying this plugin.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/002.png">
+    <img src="/blog/AI-weekly-016/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-BlenderAI-node**](https://github.com/AIGODLIKE/ComfyUI-BlenderAI-node)
+
+The ComfyUI-BlenderAI-node is a Blender plugin. Once installed, it allows users to seamlessly utilize ComfyUI within Blender, including model previews, parameter editing, mask creation, and image processing, eliminating the need for frequent tool switching. The plugin supports various node types, such as camera input and Grease Pencil masks, and offers node groups and batch processing capabilities. It also enables users to replace 3D models directly within Blender and export control mesh images.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/003.png">
+    <img src="/blog/AI-weekly-016/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+[**ScreenAl**](https://arxiv.org/abs/2402.04615)
+
+ScreenAI is a visual language model developed by the Google Research team, specifically designed for understanding and processing user interfaces and infographics. It identifies the type and location of UI elements through screen annotation tasks, using these annotations to describe screen content. 
+
+What sets ScreenAI apart is its ability to handle screen images of various resolutions and aspect ratios. It automatically creates training data through self-supervised learning and model-generated annotations. Compared to the previously recommended Ferret-UI, ScreenAI is primarily used to enhance our understanding of UI and infographics displayed on screens.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/004.png">
+    <img src="/blog/AI-weekly-016/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**SceneScript**](https://arxiv.org/abs/2403.13064)
+
+SceneScript is a 3D scene reconstruction technology that uses an autoregressive structured language model to generate and express physical space layouts. Its most notable feature is the ability to directly infer the geometric shape of a room from a video stream and convert this information into text, such as "door: size-y = 1.9."
+
+This technology allows for convenient architectural modeling via video capture, eliminating the need for manual data entry through measurements.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/005.png">
+    <img src="/blog/AI-weekly-016/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Infini-attention**](https://arxiv.org/abs/2404.07143)
+
+Infini-attention is an innovative attention mechanism that enhances the capability of Transformer-based large language models (LLMs) to process extremely long input sequences by integrating compressed memory. This approach efficiently controls the use of memory and computational resources. The technique merges local masked attention with long-term linear attention within a single Transformer module. This not only improves the model's performance in tasks such as long text language modeling, long text retrieval, and book summarization but also significantly reduces memory usage. Infini-attention provides an efficient and practical solution for understanding and processing lengthy texts.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/006.png">
+    <img src="/blog/AI-weekly-016/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Making an Invisibility Cloak**](https://arxiv.org/abs/1910.14667)
+
+The paper discusses how carefully designed adversarial attacks can be employed to render objects "invisible" in the real world to target detectors. The team developed a special pattern that can be physically applied over objects to mislead machines, making them unable to correctly recognize or locate the objects. The core objective of the research is to reveal vulnerabilities in detection systems and to propose solutions for transferring adversarial attacks from the digital realm to the physical world. This exploration not only underscores the security gaps in current detection technologies but also advances the discussion on the practical implications of adversarial machine learning.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/007.png">
+    <img src="/blog/AI-weekly-016/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+[**FireCrawl**](https://www.firecrawl.dev/)
+
+FireCrawl, developed by Mendable.ai, is a product that enables the crawling of any website's accessible subpages without relying on site maps, converting the content into clean Markdown format. This makes website content more easily usable and processable by large language models (LLMs). Additionally, FireCrawl features caching capabilities to reduce the time spent on repeated crawls and includes built-in functionalities such as proxies, cache management, and rate limiting. It is particularly recommended because FireCrawl offers an efficient and reliable solution for professionals who need substantial amounts of web data, making it ideal for individuals or teams engaged in machine learning model training and market research.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/008.png">
+    <img src="/blog/AI-weekly-016/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**AI 3D Generation**](https://spline.design/ai-generate)
+
+Spline has recently launched its latest AI 3D Generation feature, which allows users to generate 3D models through textual descriptions or by importing 2D images. This feature is highly recommended because it significantly simplifies the 3D modeling process, enabling users without extensive 3D modeling skills to realize their 3D design ideas. It is particularly suitable for those who need rapid iteration in prototype production, making 3D design more accessible and streamlining the creation workflow for a wide range of applications.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/009.png">
+    <img src="/blog/AI-weekly-016/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**2txt**](https://2txt.vercel.app/?ref=top.aibase.com)
+
+2txt is an image-to-text tool that can recognize text within images and convert it into an editable text format. Unlike traditional OCR technologies, 2txt analyzes the content of the images and organizes it during the recognition process, ensuring that the conversion is both fast and accurate. This tool is particularly useful for quickly digitizing printed or handwritten documents into a format that can be edited, searched, and stored more efficiently.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/010.png">
+    <img src="/blog/AI-weekly-016/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Supermemory**](https://github.com/Dhravya/supermemory)
+
+Supermemory is a Chrome extension designed to help users build a "second brain." It allows users to save valuable content discovered on the internet and convert it into a searchable and interactive format. Through a chat interface similar to ChatGPT, users can interact with their collected web content, simplifying the processes of saving, importing, searching, and reviewing information. This not only enhances the efficiency of storing information but also speeds up information retrieval, significantly boosting information utilization and productivity. This tool is especially beneficial for researchers, students, and professionals who need to manage large amounts of information effectively.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-016/011.png">
+    <img src="/blog/AI-weekly-016/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
