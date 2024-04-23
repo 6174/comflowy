@@ -1,0 +1,222 @@
+---
+date: April 23th, 2024
+image: /blog/IPAdapter-Tutorial/001.png
+title: IPAdapter Tutorial
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# IPAdapter Tutorial
+
+## 1. 开篇语
+
+ComfyUI IPAdapter 插件是一个能够轻松实现图生图的工具。它就像是一种单图像的 Lora 技术，能够将一张参考图像的风格或主题应用到另一张图像上，通过这种图像到图像的条件转换，轻松实现风格迁移和主题转换。与文生图相比，现有的文本到图像扩散模型虽然能够生成高保真度的图像，但仅使用文本提示生成所需图像往往需要复杂的提示工程。图像提示作为一种替代方案，能够表达比文本更多的内容和细节。
+
+## 2. 安装步骤
+
+1. 想要使用 IPAdapter 插件需要确保电脑安装的是最新的 ComfyUI 和插件。
+
+2. 要安装 insightface 依赖，如果不知道怎么装依赖，可以查看视频：[**Comflowy FAQ**](https://www.comflowy.com/zh-CN/blog/comflowy-faq) 。
+
+3. IPAdapter 节点支持多种不同的模型，如 SD1.5 、SDXL 等，每种模型都有其特定的强度和适用场景。另外，IPAdapter Plus 在人物的风格迁移上，还专门支持了相应的 FaceID 模型。你可以通过它控制人物面部五官，确保她与原图的一致性。
+
+可以在这篇文章中查看安装的详细步骤和模型区别：[**如何在 ComfyUI 中使用 IPAdapter Plus 进行风格迁移？**](https://www.comflowy.com/zh-CN/blog/IPAdapter-Plus)
+
+## 3. 技术原理
+
+IPAdapter 的核心技术在于其创新的解耦交叉注意力机制。在标准的文本到图像扩散模型中，交叉注意力层主要针对文本特征进行优化，这限制了模型对图像特征的精细处理能力。为了克服这一局限，IPAdapter 引入了专门的图像特征交叉注意力层，与原有的文本特征交叉注意力层并行工作，捕捉和整合图像特征，确保图像的详细信息得到充分保留和利用。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/001.png">
+    <img src="/blog/IPAdapter-Tutorial/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+此外，ControlNet Reference-only 还能通过简单的特征注入无需训练即可在 SD 模型上实现图像变体。Uni-ControlNet 的全局控制适配器能通过小型网络，将来自 CLIP 图像编码器的图像嵌入投影为条件嵌入，并将它们与原始文本嵌入连接起来，并用于指导参考图像的风格和内容的生成。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/002.png">
+    <img src="/blog/IPAdapter-Tutorial/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+如果你想细致认识 IPAdapter，可参考论文：[**IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models**](https://arxiv.org/abs/2308.06721)
+
+## 4. 节点介绍
+
+### 4.1 IPAdapterEncoder
+
+IPAdapterEncoder 节点主要的功能是编码输入的图像或图像特征。它接收原始图像，并捕获图像的重要特征和信息，这些特征能够在之后用于图片到图片的转换、风格迁移或其他更复杂的图像处理任务。在这个场景中，我们将这个节点同时连接到了原始图像和参考图像中，原始图像的权重为1，而参考图像的权重为1.5。这样，我们对参考图像的控制力度就会更大一些，使得在后续的过程中可以生成与参考图像有着相同姿势和风格特征的图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/003.png">
+    <img src="/blog/IPAdapter-Tutorial/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 4.2 IPAdapterUnifiedLoader
+
+IPAdapterUnifiedLoader 节点负责加载预训练的 IPAdapter 模型。这个节点提供了一个统一的接口来加载不同的 IPAdapter 模型，包括基本模型、加强模型、面部模型等。通过这个节点，用户可以轻松地选择和加载所需的模型，而无需手动下载和配置文件。我这里选择的是 PLus (high strength)。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/004.png">
+    <img src="/blog/IPAdapter-Tutorial/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 4.3 IPAdapterCombineEmbeds:
+
+IPAdapterCombineEmbeds 节点的功能是将多个编码后的图像嵌入（embeddings）合并为一个单一的嵌入表示。在图像到图像的转换任务中，这可以用于结合不同图像的特征，例如将风格和内容从不同的图像中提取出来，并将它们合并到生成的图像中。这种组合可以产生新的视觉效果，同时保留原始图像的重要视觉元素。
+
+### 4.4 IPAdapterEmbeds:
+
+IPAdapterEmbeds 节点用于生成图像嵌入。它接收编码后的图像数据，并输出一个嵌入向量，该向量捕获了图像的关键特征。可以用于后续的图像生成或编辑任务，例如通过调整嵌入向量的某些维度来改变生成图像的风格或内容。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/005.png">
+    <img src="/blog/IPAdapter-Tutorial/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 5. IPAdapter 插件功能和用途
+
+### 5.1 风格迁移：
+
+IPAdapter 可以捕捉参考图像的风格和主题，并将其应用到新生成的图像上。这使得用户能够可以通过调整节点的权重参数来控制风格迁移的程度，创造出与参考图像在视觉风格上保持一致的图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/006.png">
+    <img src="/blog/IPAdapter-Tutorial/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+你可以通过调整权重参数控制风格或内容转换的强度。不同的权重值产生不同的转换效果，满足不同的创作需求。也可以增加迭代次数可以提高图像质量，但也会增加计算时间，可以根据需要进行调整。
+
+### 5.2 内容转换：
+
+除了风格，IPAdapter 节点还可以处理图像的内容转换或者融合，比如：它可以识别和分析面部特征，并将这些特征应用到其他图像上，生成具有相似面部特征的新图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/007.png">
+    <img src="/blog/IPAdapter-Tutorial/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这种面部特征的转换在创作肖像画、角色设计、人脸合成等领域显示出其独特的价值。通过这种方式，无需从头开始绘制或设计，就可以创造出具有高度一致性和个性化特征的图像。
+
+### 5.3 条件生成
+
+IPAdapter 允许用户根据特定的输入条件生成新的图像。这些条件可以是文本描述、另一幅图像，或者是这两者的结合。通过这种条件生成的能力，用户可以创造出与所提供条件相匹配的定制化图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/008.png">
+    <img src="/blog/IPAdapter-Tutorial/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+1. **文本描述**：你可以输入文本描述，插件会解析这些描述，并根据描述中的内容生成图像。这对于根据文字描述创造视觉内容特别有用，例如，从描述中创造出一个场景或角色。
+
+2. **图像条件**：你也可以提供一幅参考图像作为条件，插件会分析这幅图像的内容和风格，并生成与之相似的新图像。这在需要基于现有图像创作变体或扩展时非常有用。
+
+3. **文本和图像结合**：更高级的用法是结合文本描述和参考图像。在这种情况下，插件会同时考虑文本描述的内容和参考图像的风格，生成既符合描述又具有参考图像风格的新图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/009.png">
+    <img src="/blog/IPAdapter-Tutorial/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 5.4 动画支持：
+
+IPAdapter 插件支持动画的创建，通过添加预定权重的功能，极大地简化了动态图像序列的创作过程。用户可以通过精细调整帧间权重，实现动画的流畅过渡和连贯性，同时独立控制每一帧的风格和内容，确保动画的每个细节都符合预期。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/010.png">
+    <img src="/blog/IPAdapter-Tutorial/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+插件的平滑过渡功能确保了即使在权重变化显著的情况下，动画也能保持自然流畅，而循环动画选项则允许创作无缝循环的视觉效果。实时预览和调整功能提高了动画制作的效率，让用户能够快速迭代和完善作品。此外，IPAdapter 插件支持多种模型，包括面部和 SDXL 模型，为用户提供了广泛的创作选择，以生成高质量的动画帧。
+
+## 6. Workflow 介绍
+
+### 6.1 风格迁移
+
+这个 workflow 能够完全支持你完成风格迁移，你可以从 Github 的节点包的 example 文件中找到它，也可以参考图片示例自己搭建。
+
+注：两个 IPAdapterEmbeds 节点分别控制着输入图和参考图，你可以通过增加 weight 值来控制最终风格更偏向于哪一张。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/011.png">
+    <img src="/blog/IPAdapter-Tutorial/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 6.2 面部 FaceID
+
+FaceID 对于处理面部细节有更加强大的功能，你需要添加 IPAdapterUnifiedLoaderFacelD 和 IPAdapterFacelD 节点使用，并在 IPAdapterUnifiedLoaderFacelD 中选择你下载好的 Face 模型。
+
+最后，记得切换 IPAdapterUnifiedLoader 中的模型我这里使用的是 PLUS FACE (portraits)。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/012.png">
+    <img src="/blog/IPAdapter-Tutorial/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 7. ContorlNet
+
+如果你想要让最终效果图的主体与输入图的相关性更强，仅用上面这个工作流是不够的。这时，我推荐你添加 ControlNet 节点来控制主体轮廓的同时进行风格迁移。
+
+例如添加 Controlnet 的 lineart 节点来控制线稿，确保最后生成的轮廓与上传的一致。你只需要选择你喜欢的参考图上传，就可以将参考图的色调和质感迁移到线稿图中，通过调整 steps 和 cfg 来生成你想要的效果，这里我设置的 steps 为30，cfg 为8。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/013.png">
+    <img src="/blog/IPAdapter-Tutorial/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+除此之外，你还可以通过输入参考图识别生成特定的姿势。你可能会用到 controlnet 的 openpose 模型。官方给出的原理如下图，你可以将输入的人物图片改成任何你想要的姿势。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-Tutorial/014.png">
+    <img src="/blog/IPAdapter-Tutorial/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
