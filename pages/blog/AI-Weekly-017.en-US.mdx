@@ -1,0 +1,191 @@
+---
+date: April 25th, 2024
+image: /blog/AI-weekly-017/banner.png
+title: AI Weekly 017
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 017
+
+## 🆕 What's New?
+**Product Update:**
+
+- Clicking on a node highlights the connecting lines.
+- The Gallery now supports image deletion.
+- The plugin Tab displays plugins that need updates and supports one-click plugin updates.
+- The experience and display of adding nodes panel have been optimized.
+- The following bugs have been fixed:
+  - Fixed the issue where the Mac version of ComfyUI could not start due to the inability to install certain dependencies.
+  - Fixed the problem with importing workflows.
+  - Fixed the incomplete display of images in the Image node.
+  - Fixed the issue with LoRA node model filenames not being fully displayed.
+  - Fixed the problem where the install button was not displayed for some plugin nodes.
+  - Fixed the issue where the SD WebUI path was not being saved.
+  - Fixed the inoperability caused by server disconnection.
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## Weekly‘s AI highlights
+
+### 🏗️ Plugins worth trying
+
+[**ComfyTextures**](https://github.com/AlexanderDzhoganov/ComfyTextures)
+
+Comfy Textures is an Unreal Engine plugin that allows you to integrate Unreal with ComfyUI. It enables you to generate scenes or textures directly in Unreal by entering prompts and similar methods.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/001.png">
+    <img src="/blog/AI-weekly-017/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-MagicAnimate**](https://github.com/thecooltechguy/ComfyUI-MagicAnimate)
+
+The ComfyUI-MagicAnimate plugin is simpler to use compared to other Animate plugins, as it can animate character images with just a few nodes. This plugin also integrates with DeepPose to generate dynamic videos, making it particularly suitable for creators who need to transform static character images into animated videos.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/002.png">
+    <img src="/blog/AI-weekly-017/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**canvas_tab**](https://github.com/Lerc/canvas_tab)
+
+The reason the plugin is called canvas_tab is because it allows you to connect multiple workflows together. For example, if you run workflow A in browser tab A and generate image A, you can use this plugin to transfer image A to workflow B in browser tab B.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/003.png">
+    <img src="/blog/AI-weekly-017/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+[**Imagine Flash**](https://ai.meta.com/research/publications/imagine-flash-accelerating-emu-diffusion-models-with-backward-distillation/)
+
+Imagine Flash is an innovative accelerated diffusion model framework that can rapidly and efficiently generate high-fidelity images in just 1 to 3 steps using reverse distillation technology. In contrast, the LCM model utilizes a Latent Consistency Model and LoRA parameters, optimizing the process for rapid fine-tuning and deployment. Meanwhile, SDXL-turbo employs adversarial diffusion distillation technology to produce high-quality images within 1 to 4 steps, focusing on maintaining image quality during low-step sampling. Imagine Flash offers a significant breakthrough in both the speed and quality of image generation.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/004.png">
+    <img src="/blog/AI-weekly-017/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**VideoGigaGAN**](https://arxiv.org/abs/2404.12388)
+
+VideoGigaGAN is a video super-resolution model that optimizes video details through flow-guided feature propagation and high-frequency shuttling techniques. It upgrades low-resolution videos to 8 times higher resolution. The model is highly recommended because it not only enhances the resolution but also effectively improves the visual quality while maintaining temporal coherence. It is suitable for scenarios such as video quality enhancement and post-production in filmmaking.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/005.png">
+    <img src="/blog/AI-weekly-017/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**SwapAnything**](https://arxiv.org/abs/2404.05717)
+
+SwapAnything is an image editing framework that allows users to precisely replace any object within an image while keeping the surrounding context unchanged. This technology can be used for applications such as face swapping or altering patterns on a model's clothing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/006.png">
+    <img src="/blog/AI-weekly-017/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+[**Synthesia**](https://www.synthesia.io/)
+
+Synthesia's Expressive-1 AI Avatars feature virtual digital humans that differ from others on the market by focusing more on the expressiveness of the avatars, making them appear more lifelike.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/007.png">
+    <img src="/blog/AI-weekly-017/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**Video-Subtitle-Remover**](https://github.com/YaoFANGUK/video-subtitle-remover)
+
+Video-subtitle-remover (VSR) is an open-source AI tool designed to remove watermarks, and it also supports the removal of subtitles from videos or images while maintaining the original resolution without any loss of quality.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/008.png">
+    <img src="/blog/AI-weekly-017/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**Twitter-Insight-LLM**](https://github.com/AlexZhangji/Twitter-Insight-LLM)
+
+Twitter-Insight-LLM is an open-source project that helps users fetch data from Twitter and perform tasks such as data analysis and generating image descriptions. Its distinctive feature lies in its embedded image search technology, which allows users to search for untagged images using natural language descriptions and supports multiple languages. For instance, the image below shows the results for a search for 'black cat', but you can also search for more abstract concepts like 'sadness'.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/009.png">
+    <img src="/blog/AI-weekly-017/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**Hume Al**](https://demo.hume.ai/)
+
+Hume AI recently launched their EVI API, which developers can integrate into applications to implement features like voice-based intelligent customer service. Unlike other AI models, Hume AI excels at emotional expression. It analyzes the emotional tone in speech and generates corresponding emotional responses, providing a more personalized and empathetic user experience.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/010.png">
+    <img src="/blog/AI-weekly-017/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
