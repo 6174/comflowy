@@ -1,0 +1,172 @@
+---
+date: April 25th, 2024
+image: /blog/AI-weekly-017/banner.png
+title: AI Weekly 017
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 017
+
+## 🆕 更新了什么？
+**产品更新：**
+
+- 点击节点会高亮连接线。
+- Gallery 里的图片支持删除。
+- 插件 Tab 支持显示需要更新的插件，同时支持一件更新插件。
+- 优化了添加节点面板的显示与体验。
+- 修复了以下 bug：
+  - 修复了 Mac 版本因无法安装部分依赖而无法启动 ComfyUI 的问题。
+  - 修复了无法导入 workflow 的问题。
+  - 修复了 Image 节点显示图片不完整的问题。
+  - 修复了 LoRA 节点 LoRA 模型文件名显示不全的问题。
+  - 修复了部分插件节点不显示安装按钮的问题。
+  - 修复了读取 SD WebUI 路径不保存的问题。
+  - 修复了因为服务器断连而导致无法使用的问题。
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+
+## 🤩 每周 AI 精选
+
+### 🏗️ 值得尝试的插件
+
+[**ComfyTextures**](https://github.com/AlexanderDzhoganov/ComfyTextures)
+
+Comfy Textures 是一个 Unreal (虚幻引擎) 插件，你能通过它将 Unreal 和 ComfyUI 集成在一起。它允许你在 Unreal 里直接通过输入 Prompt 等方式生成场景或纹理。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/001.png">
+    <img src="/blog/AI-weekly-017/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-MagicAnimate**](https://github.com/thecooltechguy/ComfyUI-MagicAnimate)
+
+ComfyUI-MagicAnimate 插件相对其他 Animate 插件来说 使用更简单，只需要几个节点即可将人物图像动画化。该插件还能结合 DeepPose，生成动态视频，特别适合需要将静态人物图像转化为动画视频的创作者使用。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/002.png">
+    <img src="/blog/AI-weekly-017/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**canvas_tab**](https://github.com/Lerc/canvas_tab)
+
+canvas_tab 这个插件之所以叫 tab 是因为你可以通过它将多个 workflow 连接在一起。比如你在浏览器 A tab 里运行了 A workflow 并生成了 A 图，你可以通过通过这个插件将 A 图传输到 B tab 里的 B workflow 里。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/003.png">
+    <img src="/blog/AI-weekly-017/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+[**Imagine Flash**](https://ai.meta.com/research/publications/imagine-flash-accelerating-emu-diffusion-models-with-backward-distillation/)
+
+Imagine Flash 是一种创新加速扩散模型框架，它通过反向蒸馏技术能够在 1 至 3 步内快速且高效地生成高保真图像。相比之下，LCM 模型采用潜在一致性模型和 LoRA 参数，优化了快速微调和部署流程。而 SDXL-turbo 则通过对抗扩散蒸馏技术，在 1 到 4 步内生成高质量图像，注重在低步骤采样中维持图像质量。Imagine Flash 在图像生成的速度与质量上提供了显著的突破。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/004.png">
+    <img src="/blog/AI-weekly-017/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**VideoGigaGAN**](https://arxiv.org/abs/2404.12388)
+
+VideoGigaGAN 是一种视频超分辨率模型，能够通过流引导特征传播和高频穿梭技术优化视频细节，将低分辨率视频升级为 8 倍高分辨率，值得推荐的原因在于其在提高视频分辨率的同时，有效提高了视觉质量并保持了时间连贯性，适用于视频质量提升和电影后期制作等场景。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/005.png">
+    <img src="/blog/AI-weekly-017/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**SwapAnything**](https://arxiv.org/abs/2404.05717)
+
+SwapAnything 是一个图像编辑框架，通过这个技术用户可以对图像进行任意对象的精确替换，同时保持周围上下文不变。比如换脸，或者是更换模特衣服上的图案。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/006.png">
+    <img src="/blog/AI-weekly-017/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+[**Synthesia**](https://www.synthesia.io/)
+
+Synthesia 公司推出的 Expressive-1 AI Avatars 是一个虚拟数字人功能，与市面上的数字人不同的是，它更注重虚拟数字人的表情展现，使其看起来更像真人。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/007.png">
+    <img src="/blog/AI-weekly-017/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**Video-Subtitle-Remover**](https://github.com/YaoFANGUK/video-subtitle-remover)
+
+Video-subtitle-remover (VSR)  是一个开源的 AI 消除水印工具，并且还支持去除视频或图片中的字幕功能，同时保持原始分辨率无损。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/008.png">
+    <img src="/blog/AI-weekly-017/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**Twitter-Insight-LLM**](https://github.com/AlexZhangji/Twitter-Insight-LLM)
+
+Twitter-Insight-LLM 是一个开源项目，它可以帮助用户从 Twitter 上抓取数据，并进行数据分析、生成图像描述等。它主要差异化在于其基于嵌入的图像搜索技术，允许用户用自然语言描述来搜索未标注的图像，并且支持多语言。例如下图是搜索“黑猫”的结果，你也可搜索其他比较抽象的概念，例如“悲伤”。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/009.png">
+    <img src="/blog/AI-weekly-017/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+[**Hume Al**](https://demo.hume.ai/)
+
+Hume AI 最近推出了他们的 EVI API，开发者可以在应用中接入该 API，以实现类似语音智能客服等功能。与其他 AI 模型不同的是，Hume AI 更善于情感表达。它能通过分析语音中的情感色彩，并生成相应的情感化回复，提供更加个性化和富有同理心的用户体验。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-017/010.png">
+    <img src="/blog/AI-weekly-017/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
