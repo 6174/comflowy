@@ -5,33 +5,95 @@ import {FAQBox} from "components/FAQ";
 
 # 基本操作
 
-## 常用操作 & 快捷键
+## 关于 ComfyUI 的一些 Tips
 
-接着我们再来介绍下 ComflowySpace 和 ComfyUI 的常用操作和快捷键。
-<Tabs items={['ComflowySpace', 'ComfyUI']}>
-  <Tabs.Tab>
-    ComflowySpace 与 ComfyUI 的操作基本一致。但我们也对其进行了一些优化。首先你可以双击空白处打开添加节点菜单。
-    你可以通过搜素，或者滚动列表的方式找到你需要的节点。另外，你还可以将常用节点 pin 到最上方，下次使用的时候，能快速找到。
-    <br/>
-    <PhotoProvider>
-      <PhotoView src="/comfyui-foundation/008.png">
-        <img src="/comfyui-foundation/008.png" alt="" className='rounded-lg'/>
-      </PhotoView>
-    </PhotoProvider>
-  </Tabs.Tab>
-  <Tabs.Tab>
-    我罗列了 ComfyUI 的完整快捷键列表。里面比较常用的有：
-    * **点击鼠标右键**：会弹出一个菜单，你可以在里面找到需要添加的节点。
-    * **双击鼠标左键**：会打开节点搜索框，你可以在里面搜索你想要的节点，然后方向键上下选择节点，然后点击回车就能添加到画布上。
-    * **Ctrl + Enter**：效果等同于点击右侧面板上的 Queue Prompt 按钮。
-    * **Ctrl + D**: 效果等同于点击右侧面板上的 Default Workflow 按钮。有的时候你可能需要重新搭建 workflow，我一般都会建议从 Default Workflow 开始。
-    * **H**：隐藏/显示历史记录面板。这个面板会记录你的操作历史，你可以在里面找到之前的操作，然后点击回退到之前的状态。
+最近有不少朋友问我：“你会给刚上手 ComfyUI 的朋友什么建议或者 Tips 呢？”，我想了想，整理了以下几个点是比较重要的。
 
-    另外，还有一个常用操作，需要用到多个快捷键。当你需要移动多个节点时，需要：
-    * **Ctrl/Shift + 点击**：选中多个节点。
-    * **Shift + 拖动**：然后拖动的时候，需要按住 Shift 再拖动。
+### ① 将 ComfyUI 安装在移动硬盘里
 
-    完整的快捷键列表如下：
+第一条建议：你可以将 ComfyUI 安装在移动硬盘。
+
+AI 生图模型的文件普遍比较大，即使是小的 SD 1.5 模型都有 2～3 个 G 那么大，下载多几个模型可能就有几十个 G 甚至上百 G 大小，保存在电脑的硬盘里，会比较占空间，安装在移动硬盘里能节省不少电脑的空间。
+另外如果你想在公司和家里同时用 ComfyUI，那最好的方法就是将其安装在移动硬盘里，下班将移动硬盘拔下来，回到家插上就能继续使用了。
+
+如果你是通过 Git 的方式在本机安装了 ComfyUI，那你可以将 ComfyUI 文件夹整个拷贝到移动盘里，然后在 Terminal cd 到对应的文件夹再打开 ComfyUI 就行了。
+
+### ② ComfyUI 可以从 SD WebUI 那读取模型文件
+
+第二个，如果你之前有用过 SD WebUI 的话，应该下载过不少模型文件，其实这些模型文件也能在 ComfyUI 里使用，无需重复下载。详细的方法可以参考 [下载 & 导入模型](../preparation-for-study/model.zh-CN.mdx) 这篇教程。
+
+### ③ ComfyUI 也可以像 Midjourney 那样看到生成预览图
+
+第三个，mj 在出图的时候能看到生图的过程，comfyui 其实也能做到。首先你需要安装 ComfyUI Manager，然后在设置里的 Preview Method 设置为 Latent2RGB 即可（这个生成速度会比较快）：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/010.png">
+    <img src="/comfyui-foundation/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+设置好后，你再进行生图，就能在生图的过程中，在 KSampler 节点看到预览图了：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/009.png">
+    <img src="/comfyui-foundation/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### ④ 善用 Bypass 和 Mute 功能
+
+第四个 Tips，我觉得是要用好 Bypass 和 Mute 功能。刚用 ComfyUI 的朋友可能自己探索的时候，会混淆这两个功能，认为他们两个功能是一样的。但他们两者区别还挺大的。
+
+简单来说，Mute 更像是将 workflow 暂停，如果你 Mute 的了某个节点，点击运行 workflow 后，程序运行到 Mute 的节点时就会暂停运行，不会往下走了。而对于设置了 Bypass 的节点，程序并不会暂停运行，而是越过这个节点，继续运行。如果你懂一些代码知识，那 Mute 功能就像是你在调试程序时打的断点，而 Bypass 则是将某段代码注释掉。
+
+这两个功能在调试的时候就会比较好用。
+
+比如你在 Workflow 上加了一个 LoRA 节点，运行完之后，你觉得不再需要这个节点了，普通的做法是直接将 LoRA 删除掉，然后重新连线。但更高效率的方法是你可以将 LoRA 节点设置成 Bypass，这样你就不需要将节点删除重连，节省不少时间，并且你后续想要再把 LoRA 节点加回来就只需要取消 Bypass 就行了。
+
+与 Bypass 这种“跳过某个节点让后续的节点继续运行”不同，Mute 则是“让某个节点及其以后的节点”都不运行。比如以下这个 workflow 里有个图片放大的节点（绿色箭头所示），它后面连接的节点都是与放大有关的节点。因为放大节点运行比较耗时，如果你不想每张图都放大，那几可以将放大节点设置为 Mute，这样程序就不会继续往下走了。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/011.png">
+    <img src="/comfyui-foundation/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### ⑤ 连续出图
+第五个 Tips 跟连续出图有关。目前 ComfyUI 连续出图的方法有三种，一个是设置 Batch（下图中的①），比如我将其设置为 4 那我就能实现类似 Midjourney 那样一次生成 4 张图（下图中的②）。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/012.png">
+    <img src="/comfyui-foundation/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+另外一种则是 Auto Queue。首先你需要勾选上 Extra Options（下图中的①），然后勾选上 Auto Queue（下图中的②），然后再点击 Queue Prompt（下图中的③），这样 workflow 在完成运行后，马上会再次运行，直到你将 Auto Queue 取消勾选。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/013.png">
+    <img src="/comfyui-foundation/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+最后一种则是最纯朴的方法，手动多点几次实现连续出图。但这种方式也不是说没有使用场景，如果你是像测试某个参数配置，那你可以使用这方法。比如，你可以先将 KSampler 里的 Steps 设置为 20，然后点击 Queue Prompt，此时程序会运行一个 20 Steps 的生图任务。
+此时你可以在 workflow 还在运行的情况下，更改 Steps 参数，比如 15，再点击一次 Queue Prompt，当 20 Steps 的任务跑完后，下一次运行会按照 15 Steps 运行，这种连续出图的方式就比较适合测试场景。
+
+### ⑥ 常用快捷键
+
+最后是一些常见快捷键操作：
+
+* 双击空白处，可以唤起搜索框。
+* 按住空格键，移动鼠标可以上下左右移动。
+* 如果你想要多选节点，可以 shift 点选节点。
+* 移动 Group 节点是会同时移动 Group 包裹的节点。如果你想要只移动 Group  节，只需要 Group 按住标题，然后按住 control 按钮就能只移动 Group 了，一定要记住是先按住标题移动，再按住 control 键，顺序反过来是不生效的。
+* 如果你嫌节点占空间，可以点击节点左上角快速缩小缩小节点。
+* Prompt 输入框输入 Embedding 会有提示。如果你安装了 [ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts) 插件的话，还可以显示 LoRA 提示。
+
+## 其余快捷键
+
+完整的快捷键列表如下：
 
     | Keybind                   | Explanation                                                                                                        |
     |---------------------------|--------------------------------------------------------------------------------------------------------------------|
@@ -55,48 +117,6 @@ import {FAQBox} from "components/FAQ";
     | Q                         | Toggle visibility of the queue                                                                                     |
     | H                         | Toggle visibility of history                                                                                       |
     | R                         | Refresh graph                                                                                                      |
-    | Double-Click LMB          | Open node quick search palette                                                                                     |
-  </Tabs.Tab>
-</Tabs>
-
-
-## 练习
-
-简单介绍完基本的连线操作后，我们来完成一个小练习，让你能将这两章的内容融会贯通。
-
-首先，点击右边的 Clear 按钮，将 Default Workflow 都清除。
-
-然后从零完成以下目标：**将 Empty Latent Image 转为人能看的图片**。
-
-<Tabs items={['提示', '答案']}>
-  <Tabs.Tab>
-    如果你找不到你想要的节点时，点击右键 → Add Node → loader 里看看。应该能找到。
-  </Tabs.Tab>
-  <Tabs.Tab>
-    <PhotoProvider>
-      <PhotoView src="/comfyui-foundation/004.png">
-        <img src="/comfyui-foundation/004.png" alt="" className='rounded-lg'/>
-      </PhotoView>
-    </PhotoProvider>
-    <Steps>
-      ### 新增 Empty Latent Image 节点
-      要将 Empty Latent Image 转成人能看的图片，首先右键新增一个 Empty Latent Image 节点。回忆下上一章的内容，要将一个 Latent Image 转成一个肉眼可见的图。只需要将这个图传给 Decoder 就行了，Decoder 会将其转化为人能看到的图。右键 → Add Node → latent → VAE Decode，然后将 Empty Latent Image 与其相连。
-      ### 新增 Image 节点
-      然后我们会看到 VAE Decode 右边输出端是 IMAGE，我们点击右键 → Add Node → image → Save Image（或者 Preview Image），添加完后，将 VAE Decode 连在上面。
-      ### 新增 VAE 节点
-      最后，你 VAE Decode 还有一个输入端没有连，练习中的 Hint 提到在 loader 找找，你就能找到一个叫 VAE loader 的东西，添加这个 loader 然后和 VAE Decode 相连，就完成了。
-    </Steps>
-  </Tabs.Tab>
-</Tabs>
-
-## Q&A 
-
-<FAQBox title="运行基础 workflow 时，KSampler 报错该怎么办？">
-  > 完整报错信息：Error occurred when executing KSampler: module 'torch' has no attribute 'mps'
-  This issue is from Discord user **123321123**.
-
-  **Answer from Jimmy:**
-  看这个报错应该是没有安装最新 pytorch 导致的。更新下电脑的 pytorch 版本即可。
-</FAQBox>
+    | Double-Click LMB          | Open node quick search palette  
 
 <Subscribe />
