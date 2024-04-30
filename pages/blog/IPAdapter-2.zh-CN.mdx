@@ -1,0 +1,193 @@
+---
+date: April 30th, 2024
+image: /blog/IPAdapter-2/banner.png
+title: 如何在 ComfyUI 中使用 IPAdapter Plus 进行内容转换和融合？
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何在 ComfyUI 中使用 IPAdapter Plus 进行内容转换和融合？
+
+上期，我们介绍了 IPAdapter 在风格迁移中的功能，本期我们继续延续这个话题，除了风格迁移，IPAdapter 节点还可以实现图像内容转换和融合。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/001.png">
+    <img src="/blog/IPAdapter-2/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 效果展示 
+
+IPAdapter 模型能够将参考图像的风格或主题轻松地应用到生成的图像上，提供了一种类似于单图像 LoRA 的效果。你可以通过调整权重的数值来控制两张图片的影响程度，我用这个工作流做了下面头像和海报的尝试。可以看到，通过融合图像特征的方式，你只需选择两张自己喜欢的图片，无需从头开始绘制或设计，就可以创造出个性化原创图像。
+
+### 1. 吉卜力风格头像
+
+在现代数字世界中，个人形象的展现越来越多样化，其中，原创头像成为了个人表达和社交互动的重要元素，一个吸引人的原创头像可以增加用户的社交优势。吉卜力动画以其温馨、富有想象力的故事和深刻的主题闻名，使用这种风格的头像更容易增强社交互动的情感深度，所以我尝试使用 IPAdapter 制作了吉卜力风格的原创头像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/002.png">
+    <img src="/blog/IPAdapter-2/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+方法很简单，你只需要任意选择一张吉卜力风的参考图和自己的照片相结合，这样生成的头像既具有个人形象特征，又保护了个人隐私的同时，提供一种安全的网络身份标识。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/003.png">
+    <img src="/blog/IPAdapter-2/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Ghibli style, illustration, anime, hand-drawn,Vivid colors， colorful, high quality, wallpaper, high definition, rich details, delicate portrait，Cartoon, portrait, cute.Hand-drawn.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/004.png">
+    <img src="/blog/IPAdapter-2/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在选择参考图时，我有意选择了与真人照片姿势、角度、道具相似的图片，你可以通过调整权重，来控制最终效果，我希望最终效果能在保留人物特征的同时变换风格的强度保持均衡，所以下图权重都设置为了2.5。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/005.png">
+    <img src="/blog/IPAdapter-2/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+如果你想让所生成的头像面部特征更像自己，可以将 IPAdapter Unified Loader 这个节点下的模型更改为 face 模型，普通 IPAdapter 模型和 face 模型的区别可以参考：[**如何在 ComfyUI 中使用 IPAdapter Plus 进行风格迁移?**](https://www.comflowy.com/zh-CN/blog/IPAdapter-Plus)中模型下载的部分。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/006.png">
+    <img src="/blog/IPAdapter-2/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2. 假如像现代人一样生活系列
+
+除了制作头像，我还尝试用这个工作流制作颇有“穿越”感的图片，这个假如系列开脑洞的创作，以幽默的方式将古代人物与现代生活方式相结合，是否能让你在忙碌的现代生活中找到一丝轻松和乐趣。
+
+#### 假如古人上太空
+
+Prompt：Astronaut, Space, Ancient-style Beauty，Oxygen mask，National Style，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，，Ultimate Composition ，Exquisite features, rich details，Chinese traditional clothing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/007.png">
+    <img src="/blog/IPAdapter-2/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+#### 假如皇帝骑摩托
+
+Prompt：Chinese Emperor, Riding a Motorcycle, Head ornament ，National Style，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，Ultimate Composition ，Exquisite features, rich details，Chinese traditional clothing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/008.png">
+    <img src="/blog/IPAdapter-2/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+#### 假如古人挤地铁
+
+Prompt：Beautiful portrait.，Ancient People ， Court Lady，Subway Car or Metro Car，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，Ancient People on the Subway ，Ultimate Composition ，Exquisite features, rich details，Song Dynasty Aesthetics，Hanfu，Chinese traditional clothing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/009.png">
+    <img src="/blog/IPAdapter-2/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+#### 假如皮影挤地铁
+
+Prompt：1 girl，Shadow Puppet，Subway Car or Metro Car，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，Shadow Puppet Riding the Subway ，Ultimate Composition ，Exquisite features, rich details.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/010.png">
+    <img src="/blog/IPAdapter-2/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 3. 蒙德里安混搭海报
+
+当蒙德里安几何抽象派遇上中国传统写意山水会碰撞出什么火花呢？我用蒙德里安的经典作品《红、黄、蓝的构成》作为参考图片，看它与山水写意融合最后会是什么效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/011.png">
+    <img src="/blog/IPAdapter-2/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+《红、黄、蓝的构成》作品作为风格参考图，将鲜亮的对比色和强有力的线条融入山水，通过简单的色块表现体积，颜色融合也符合近实远虚，空间感和体积感用颜色和线条的虚实表现得和谐。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/012.png">
+    <img src="/blog/IPAdapter-2/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Mondrian ，Mondrian-style Landscape，National Style (often refers to traditional Chinese elements or style in art and design）， Illustration，High Quality，，Ultimate Composition ，Exquisite features, rich details，
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/013.png">
+    <img src="/blog/IPAdapter-2/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 4. 赛博朋克风格
+
+赛博朋克风格常常使用明亮的霓虹灯色彩与黑暗的背景形成对比，营造出一种未来都市的夜色氛围。这一风格经常展现高科技与日常生活的冲突，图片中可能会出现先进的科技产品与破败的城市环境并存，例如：密集的摩天大楼、错综复杂的道路和桥梁，以及充满未来感的城市基础设施。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/014.png">
+    <img src="/blog/IPAdapter-2/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+使用 ComfyUI IPAdapter plus 工作流，不管是街景还是人物创作，我们都可以轻松地将这些元素融合进图片中，创造出具有强烈赛博朋克感的视觉作品。通过 IPAdapter 的辅助，这一过程变得更加高效和多元，允许创作者探索和实验不同的设计概念，生成令人印象深刻的赛博朋克风格图片。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/015.png">
+    <img src="/blog/IPAdapter-2/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+通过最终效果可以看到，不管是街景，人物、还是冰冷的石膏，这个工作流都能让它们具有赛博感，如果也感兴趣的话，可以尝试制作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/016.png">
+    <img src="/blog/IPAdapter-2/016.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Cyberpunk，Bioluminescence， Studio Lighting，Transparent Glass Texture，Refraction of Light，UHD (Ultra High Definition) Image， Movie Poster，Layered Print Poster Composition， Ultra Clear or High Definition，Ultimate Composition
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/017.png">
+    <img src="/blog/IPAdapter-2/017.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+<Subscribe />
+
+
+
+
+
