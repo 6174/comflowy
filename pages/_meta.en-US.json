@@ -6,6 +6,16 @@
   "basics": "🏎️｜Basics",
   "advanced": "🛩️｜Advanced",
   "expert": "🚀｜Expert",
+  "privacy-policy": {
+    "title": "Privacy Policy",
+    "type": "page",
+    "display": "hidden"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "type": "page",
+    "display": "hidden"
+  },
   "space": {
     "title": "💻 Product",
     "type": "page",
