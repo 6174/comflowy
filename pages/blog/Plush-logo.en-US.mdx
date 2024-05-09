@@ -1,0 +1,183 @@
+---
+date: May 9th, 2024
+image: /blog/plush-logo/banner.png
+title: Warming Up Your Logo:How to Create a Plush Texture with ComfyUI?
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Warming Up Your Logo: How to Create a Plush Texture with ComfyUI?
+
+In brand visual communication, the logo often carries the soul of the company. A unique and creative logo design not only attracts the eyes of customers but also subtly conveys the warmth and personality of the brand. This workflow can give your logo a novel and cozy fluffy texture, making the brand image more vivid and attractive. Now, let us put a fluffy 'coat' on your logo in the simplest and most intuitive way.
+
+## 一、Download and Install
+
+### Workflow Reference Address：
+
+[**fluffy icon - V3**](https://openart.ai/workflows/bat_jumbo_66/fluffy-icon/omNuvOmFN7hxLNOhMS1G)
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/001.png">
+    <img src="/blog/plush-logo/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Step One : Install the Plugin
+
+**Method One :**
+
+Download and unzip [**ComfyUI_Comfyroll_CustomNodes**](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)、[**ComfyUI-Advanced-ControlNet**](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet) 、[**comfyui_controlnet_aux**](https://github.com/Fannovel16/comfyui_controlnet_aux)  、[**ComfyUI-Custom-Scripts**](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)  into the ComfyUI\custom_nodes directory, or use ComfyUI's Manager to install this plugin. If you do not know how to install the plugin, you can refer to this tutorial : [**how to install comfyui extension?**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
+
+**Method two :**
+
+If you are using Comflowy, you can search for and download ComfyUI-Advanced-ControlNet on the Extensions page on the left, or drag it into the workflow for one-click installation.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/002.png">
+    <img src="/blog/plush-logo/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Step Two : Download the Model
+
+**Controlnet model ：**
+
+- [**control_v11f1e_sd15_tile.pth**](https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11f1e_sd15_tile.pth): The core function of this model is to complete details. It can ignore defects in the original image and supplement it with new details, thereby enhancing the quality of the image.
+
+- [**control_v11p_sd15_lineart_fp16.safetensors**](https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_lineart_fp16.safetensors)：This model is specifically used for processing line art or similar image processing tasks. In this workflow, it can extract line drawings from the original image, facilitating subsequent coloring of the line art.
+
+- [**t2iadapter_color_sd14v1.pth**](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/t2iadapter_color_sd14v1.pth)：This is a workflow that can generate cool ice-style icons, suitable for gradient, single subject, solid color logos.
+
+**Lora model ：**
+
+- [**fur coat set**](https://civitai.com/models/283484/fur-coat-set)：This is a very cute fuzzy ball style LoRA, recommended to be paired with VAE: vae-ft-mse-840000-ema-pruned. Recommended weights: 0.8 to 1, recommended steps: 20 to 30.
+
+- [**abel万物冻结（冰）**](https://www.liblib.art/modelinfo/3a78d5fdfa9b48e087d0a9a838661641)：This is a workflow that can generate cool ice-style icons, suitable for gradient, single subject, solid color logos.（Source：[**liblib.art**](https://www.liblib.art/modelinfo/3a78d5fdfa9b48e087d0a9a838661641) ）
+
+## 二、Demonstration of Effects
+
+When a logo transcends traditional flat graphics and is no longer a cold, rigid figure, but instead presents a warm, soft, and tactile fluffy appearance, it not only captures the attention of customers visually, but also resonates with them on an emotional level.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/003.png">
+    <img src="/blog/plush-logo/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt : masterpiece, Bright color, colorful, best quality, top view,(red, fluffy:1.4, plush hair), solo,(pure white backsround:1.3),close up, depth of field, minimalisn, Bright color
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/004.png">
+    <img src="/blog/plush-logo/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Thanks to the  [**control_v11p_sd15_lineart_fp16.safetensors**](https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_lineart_fp16.safetensors) model's extraction of line drawings from the original image, when text appears in the image, it can also be accurately identified, making it easier to apply texture.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/005.png">
+    <img src="/blog/plush-logo/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+When I upload images with bright colors, the [**t2iadapter_color_sd14v1.pth**](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/t2iadapter_color_sd14v1.pth) color rendering model can render the generated images with the color effects of the original image.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/006.png">
+    <img src="/blog/plush-logo/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 三、Plush toy
+
+I also found that it does a good job of transforming flat cartoon characters into a plush toy texture. When cartoon characters leap off the screen and become a tactile, cozy plush toy, this not only attracts children's attention but also awakens the childlike heart in adults.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/007.png">
+    <img src="/blog/plush-logo/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+This plush texture generation tool, while retaining the original fun, adds an irresistible cozy touch. Whether used for children's toys, home decor, or personalized gifts, it is an excellent choice.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/008.png">
+    <img src="/blog/plush-logo/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: masterpiece, Bright color, colorful, best quality, top view,(red, fluffy:1.4, plush hair), solo,(pure white backsround:1.3),close up, depth of field, minimalisn, Bright color
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/009.png">
+    <img src="/blog/plush-logo/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+To better match the colors of the original image, I described the character's clothing and colors in the prompt words. I recommend that the best effects are achieved at a step value of 30 and a cfg of 8.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/010.png">
+    <img src="/blog/plush-logo/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## 四、Frozen style
+
+In addition to generating fluffy textured logos, this workflow allows for more amazing transformations by switching the LoRA model. For example, I used a LoRA that can generate a cool ice style ： [**abel万物冻结（冰）**](https://www.liblib.art/modelinfo/3a78d5fdfa9b48e087d0a9a838661641) , which finally produced an effect like it was frozen and cracked.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/011.png">
+    <img src="/blog/plush-logo/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: no humans,glass,reflection,Logo，broken glass,white background,simple background,backpack,still life,traditional medi,no humans,scenery,ice,english text,water,frozen,blue themea,
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/012.png">
+    <img src="/blog/plush-logo/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Negative Prompt：White clothes,paintings,sketches,(worst quality:2),(low quality:2),(normal quality:2),dot,mole,lowres,normal quality,monochrome,grayscale,lowres,text,error,cropped,worst quality,low quality,jpeg artifacts,ugly,duplicate,morbid,mutilated,out of frame,extra fingers,mutated hands,poorly drawn hands,poorly drawn face,mutation,deformed,blurry,dehydrated,bad anatomy,bad proportions,extra limbs,cloned face, disfigured, gross proportions,malformed limbs,missing arms,missing legs,extra arms,extra legs,fused fingers,too many fingers,long neck,username,watermark,signature,(mole:1.4),NSFW,watermark,
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/013.png">
+    <img src="/blog/plush-logo/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Additionally, I also tried logos with gradient styles. It can be seen that when the background is white or another solid color, the color of the logo does not have a significant impact on the final effect.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/014.png">
+    <img src="/blog/plush-logo/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+This LoRA model can essentially freeze most things, such as bags, cosmetics, food, animals, and more. I look forward to you discovering more interesting experiments.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/plush-logo/015.png">
+    <img src="/blog/plush-logo/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
