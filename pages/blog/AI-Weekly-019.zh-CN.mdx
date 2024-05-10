@@ -1,0 +1,168 @@
+---
+date: May 9th, 2024
+image: /blog/AI-weekly-019/banner.png
+title: AI Weekly 019
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 019
+
+## 🆕 更新了什么？
+
+**新增教程：**
+1. [让 Logo 暖起来：如何用 ComfyUI 生成毛绒绒的质感？](./Plush-logo)
+
+## 🤩 每周 AI 精选
+
+### 🪐值得尝试的 Workflow
+
+[**IMAGE TO CLAY STYLE**](https://openart.ai/workflows/xiongmu/image-to-clay-style/KRjSiOFyPSHO5QCQ4raV)
+
+你只需上传任意人物图像到这个 workflow，它能帮你生成粘土艺术风格的图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/001.png">
+    <img src="/blog/AI-weekly-019/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**cool Ice style logo v0.3**](https://openart.ai/workflows/kejun/cool-ice-style-logo-v03/IKmFgizJkMHR44uy5485)
+
+这是一个能生成酷冰风格图标的 workflow，适合渐变色、单一主体、纯色的 Logo，如果主体是蓝色或者白色的，那么大概率是透明质感的，上传一张图片只需要 10 steps 即可快速生成。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/002.png">
+    <img src="/blog/AI-weekly-019/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+你可以订阅我们的 [**newsletter**](https://comflowy.substack.com/) 以及公众号，或者加入 [**Discord**](https://discord.gg/cj623WvcVx)，以获取最新的教程。
+
+### 🏗️ 值得尝试的插件 
+
+[**ComfyUI_VisualStylePrompting**](https://github.com/ExponentialML/ComfyUI_VisualStylePrompting)
+
+这个插件是一个图像生成和风格转换的插件，用户可以通过导入图像的方式，让 AI 生成一张与导入图像风格类似的内容。例如下图导入了一张折纸兔子的图片，最后，AI 根据该图片生成了一个橙色折纸风格的狐狸。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/003.png">
+    <img src="/blog/AI-weekly-019/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-post-processing-nodes**](https://github.com/EllangoK/ComfyUI-post-processing-nodes)
+
+ComfyUI-post-processing-nodes 这个插件是一个风格干预插件，你可以通过这个插件让 AI 生成特定视觉风格的图片，比如运动模糊、毛玻璃效果等，以提升图像的视觉质量和艺术表现力。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/004.png">
+    <img src="/blog/AI-weekly-019/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+[**StoryDiffusion**](https://storydiffusion.github.io/)
+
+StoryDiffusion 是一个能够进行长距离图像和视频生成的平台，它通过一致性自注意力机制（Consistent Self-Attention），能够生成风格统一且连贯的漫画和卡通角色，并保持人物风格和服饰的一致性，以实现连贯的故事叙述，适用于创建长篇叙事内容。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/005.png">
+    <img src="/blog/AI-weekly-019/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**MaPa**](https://zhanghe3z.github.io/MaPa/)
+
+MaPa 可以根据你给的文字描述，自动为 3D 模型设计出逼真的材质效果。它不用传统的方法去贴图，而是用一种程序化的方式来生成材质，这样不仅看起来更真实，还能让你随心所欲地调整材质的细节。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/006.png">
+    <img src="/blog/AI-weekly-019/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**B-LoRA**](https://arxiv.org/abs/2403.14572)
+
+本论文主要介绍了一个叫 B-LoRA 的方法，该方法利用 LoRA（低秩适应）技术隐式地分离单张图片中的风格和内容。这样做可以显著改善风格操控，并克服模型微调常见的过拟合问题。一旦训练完成，这两个 B-LoRAs 可以作为独立组件使用，以执行包括图像风格转换、基于文本的图像风格化、一致风格生成和风格 - 内容混合等多种图像风格化任务。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/007.png">
+    <img src="/blog/AI-weekly-019/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**MagicDance**](https://huggingface.co/papers/2311.12052)
+
+本文提出了一种名为 MagicPose 的基于扩散模型的人体姿势和面部表情重定向技术。该技术旨在通过控制人物的姿势和面部表情来生成新的图像，同时保持姿势不变。如下图所示，输入左上角的人物姿势图，再导入相应的参考图（第一排图片），AI 能生成与参考图风格一致的，且姿势与姿势图一样的图片（第二排图片）。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/008.png">
+    <img src="/blog/AI-weekly-019/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Visual Fact Checker**](https://arxiv.org/abs/2404.19752)
+
+VisualFactChecker 是 Nvidia 推出的一个视觉模型，能读取 2D 或 3D 图像，从而生成详细的图像描述。并且相较于市面上的 GPT-4V 和 Cap3D，其生成的文字描述更为精准。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/009.png">
+    <img src="/blog/AI-weekly-019/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Capabilities of Gemini Models in Medicine**](https://arxiv.org/abs//2404.18416)
+
+Med-Gemini 是基于 Gemini 构建的一款专门针对医学领域的多模态人工智能模型。其通过自我训练和网络搜索集成，以及定制化的编码器，优化了文本、多模态和长文本上下文应用中的性能。此外，Med-Gemini 还能够实现医学问答，分析如 X 光等图像，支持手术视频、基因组学、超长健康记录、心电图等，以便辅助医生进行诊断。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/010.png">
+    <img src="/blog/AI-weekly-019/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+[**Amazon Q**](https://www.aboutamazon.com/news/aws/amazon-q-generative-ai-assistant-aws)
+
+Amazon Q 是一款高性能的生成式人工智能（AI）助手，它能够生成高度准确的代码，并具备测试、调试以及多步骤规划和推理能力。通过连接企业数据仓库，Amazon Q 能够帮助员工逻辑化地总结数据、分析趋势，并就数据进行对话，简化了对公司政策、产品信息、业务成果、代码库、员工等主题的查询。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/011.png">
+    <img src="/blog/AI-weekly-019/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Logo Diffusion**](https://logodiffusion.com/)
+
+Logo Diffusion 是一个可以创建独特、定制化 Logo 的平台。用户可以通过简单的文本提示来生成原创设计，也支持从简单草图到详细的 Logo 设计，甚至可以将 2D 图像或 Logo 转换成 3D 插图。Logo Diffusion 提供了一系列工具，如 AI 到矢量文件的转换，背景移除，以及一个内置的浏览器编辑器，让你无需再使用 Photoshop 或 Illustrator。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/012.png">
+    <img src="/blog/AI-weekly-019/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+

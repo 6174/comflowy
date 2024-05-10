@@ -1,0 +1,168 @@
+---
+date: May 9th, 2024
+image: /blog/AI-weekly-019/banner.png
+title: AI Weekly 019
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 019
+
+## 🆕 What's New?
+
+**New tutorials:**
+1. [Warming Up Your Logo:How to Create a Plush Texture with ComfyUI?](./Plush-logo)
+
+## Weekly‘s AI highlights
+
+### 🪐Workflow worth trying
+
+[**IMAGE TO CLAY STYLE**](https://openart.ai/workflows/xiongmu/image-to-clay-style/KRjSiOFyPSHO5QCQ4raV)
+
+You only need to upload any character image to this workflow, and it can help you generate images in clay art style.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/001.png">
+    <img src="/blog/AI-weekly-019/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**cool Ice style logo v0.3**](https://openart.ai/workflows/kejun/cool-ice-style-logo-v03/IKmFgizJkMHR44uy5485)
+
+This is a workflow that can generate cool ice-style icons, suitable for gradient, single subject, solid color logos. If the main subject is blue or white, there is a high probability that it will have a transparent texture. Uploading an image only requires 10 steps to quickly generate.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/002.png">
+    <img src="/blog/AI-weekly-019/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+You can subscribe to our [**newsletter**](https://comflowy.substack.com/), or join our [**Discord**](https://discord.gg/cj623WvcVx) to get the latest tutorials.
+
+### 🏗️ Plugins worth trying
+
+[**ComfyUI_VisualStylePrompting**](https://github.com/ExponentialML/ComfyUI_VisualStylePrompting)
+
+This plugin is an image generation and style transformation tool, allowing users to import an image and have the AI generate content similar to the style of the imported image. For example, as shown below, a picture of an origami rabbit was imported, and finally, the AI generated an orange origami-style fox based on that picture.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/003.png">
+    <img src="/blog/AI-weekly-019/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-post-processing-nodes**](https://github.com/EllangoK/ComfyUI-post-processing-nodes)
+
+The ComfyUI-post-processing-nodes plugin is a style intervention plugin that allows you to use the plugin to have AI generate images with specific visual styles, such as motion blur, frosted glass effects, etc., to enhance the visual quality and artistic expressiveness of the images.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/004.png">
+    <img src="/blog/AI-weekly-019/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+[**StoryDiffusion**](https://storydiffusion.github.io/)
+
+StoryDiffusion is a platform capable of generating long-range images and videos. Through a consistent self-attention mechanism, it can produce unified and coherent comic and cartoon characters, maintaining consistency in character style and clothing, to achieve coherent story narration. It is suitable for creating long narrative content.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/005.png">
+    <img src="/blog/AI-weekly-019/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**MaPa**](https://zhanghe3z.github.io/MaPa/)
+
+MaPa can automatically design realistic material effects for 3D models based on your text descriptions. Instead of using traditional methods for texturing, it employs a procedural approach to generate materials. This not only looks more realistic, but also allows you to freely adjust the details of the materials.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/006.png">
+    <img src="/blog/AI-weekly-019/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**B-LoRA**](https://arxiv.org/abs/2403.14572)
+
+This paper mainly introduces a method called B-LoRA, which utilizes LoRA (Low-Rank Adaptation) technology to implicitly separate style and content in a single image. This approach can significantly improve style manipulation and overcome the common overfitting issues associated with model fine-tuning. Once trained, these two B-LoRAs can be used as independent components to perform various image stylization tasks, including image style transfer, text-based image stylization, consistent style generation, and style-content mixing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/007.png">
+    <img src="/blog/AI-weekly-019/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**MagicDance**](https://huggingface.co/papers/2311.12052)
+
+This paper proposes a diffusion model-based technique called MagicPose for human pose and facial expression redirection. This technique aims to generate new images by manipulating the pose and facial expressions of characters, while keeping the pose consistent. As shown in the diagram below, by inputting the character's pose image in the upper left corner and importing the corresponding reference images (first row), the AI can generate images consistent with the style of the reference images, and with the same pose as in the pose image (second row).
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/008.png">
+    <img src="/blog/AI-weekly-019/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Visual Fact Checker**](https://arxiv.org/abs/2404.19752)
+
+VisualFactChecker is a visual model launched by Nvidia that can read 2D or 3D images, thereby generating detailed image descriptions. Moreover, compared to other models available in the market like GPT-4V and Cap3D, its generated text descriptions are more precise.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/009.png">
+    <img src="/blog/AI-weekly-019/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Capabilities of Gemini Models in Medicine**](https://arxiv.org/abs//2404.18416)
+
+Med-Gemini is a multimodal artificial intelligence model specifically designed for the medical field, built on the Gemini architecture. It enhances performance in applications involving text, multimodality, and long-text contexts through self-training, integrated web search, and customized encoders. Additionally, Med-Gemini can perform medical question answering, analyze images such as X-rays, and support surgical videos, genomics, extensive health records, electrocardiograms, etc., to assist doctors in diagnosis.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/010.png">
+    <img src="/blog/AI-weekly-019/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+[**Amazon Q**](https://www.aboutamazon.com/news/aws/amazon-q-generative-ai-assistant-aws)
+
+Amazon Q is a high-performance generative artificial intelligence (AI) assistant capable of generating highly accurate code, and it has testing, debugging, multi-step planning, and reasoning capabilities. By connecting to corporate data warehouses, Amazon Q can help employees logically summarize data, analyze trends, and engage in dialogue about data, simplifying queries about company policies, product information, business outcomes, code repositories, employees, and other topics.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/011.png">
+    <img src="/blog/AI-weekly-019/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Logo Diffusion**](https://logodiffusion.com/)
+
+Logo Diffusion is a platform that creates unique, customized logos. Users can generate original designs through simple text prompts, ranging from basic sketches to detailed logo designs, and can even convert 2D images or logos into 3D illustrations. Logo Diffusion offers a range of tools, such as AI-to-vector file conversion, background removal, and an integrated browser editor, eliminating the need for Photoshop or Illustrator.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-019/012.png">
+    <img src="/blog/AI-weekly-019/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
