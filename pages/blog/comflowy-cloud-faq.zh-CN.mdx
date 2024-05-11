@@ -1,0 +1,231 @@
+---
+date: May 11th, 2024
+image: /blog/comflowy-cloud-faq/banner.png
+title: Comflowy Cloud FAQ
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Comflowy Cloud FAQ
+
+## 目录
+
+* [Q1：云端版本和本地版本有何区别？](#q1云端版本和本地版本有何区别)
+* [Q2：我应该使用哪个版本？](#q2我应该使用哪个版本)
+* [Q3：云端版本相对于 Kaggle 或 Colab 有何优势？](#q3云端版本相对于-kaggle-或-colab-有何优势)
+* [Q4：云端版本出图速度如何？](#q4云端版本出图速度如何)
+* [Q5：为何更高配置的 GPU 生图速度并不快？](#q5为何更高配置的-gpu-生图速度并不快)
+
+## Q1：云端版本和本地版本有何区别？
+
+目前，在线版本和开源离线版本提供相同的功能。主要区别是：
+1. 使用开源离线版本需要自行解决各种安装问题。而在线版本则可以直接使用。
+2. 在线版本使用的是我们的高性能 GPU，生图速度更快，但需要付费。离线开源版本因为使用的是你的计算机的 GPU，所以是免费的。
+
+## Q2：我应该使用哪个版本？
+
+如果你的电脑配置比较差，或者不想折腾，那么我们的云端版本可能会更适合你。
+你可以使用你的电脑下载安装我们免费的[离线版本](https://github.com/6174/comflowyspace/releases)，并运行默认的工作流，看看生成图片的速度。并与我们的[云端版本的速度](#q4云端版本出图速度如何)进行对比，如果本地生图速度更快，那就没有必要使用我们的云端版本。
+
+## Q3：云端版本相对于 Kaggle 或 Colab 有何优势？
+
+主要优势有：
+1. 费用更少。
+2. 开箱即用，无需懂代码。
+
+如果你使用云服务器（如 Google 的 Colab）运行 ComfyUI。首先，你会发现，即使是在搭建工作流，也会消耗 GPU 使用量。
+这是因为这些云服务器是按照 GPU 使用时间计费的。并且常常需要你手动暂停服务，如果忘记暂停将会浪费大量的 GPU 使用时间，并产生高昂的账单。
+
+**而我们的计费方式则是按照实际使用 GPU 计费。只有运行工作流后，才会开始计费，这样你就不会因为搭建工作流而产生额外的费用。**
+
+但是，这种方式也并不是没有缺陷的。每次运行工作流的时候，我们需要启动 GPU 服务器，并运行后端程序，这样会额外产生一定的 GPU 费用，并且生图的时间也会相对长一些。但相较于调整工作流动则几分钟，甚至十几分钟比起来，这个时间要短很多很多，且费用也会少不少。另外，我们团队也一直在尝试优化程序，让这个时间更短一些。
+同时，未来我们也会考虑推出独占 GPU 的模式，这样对于有连续出图的用户会更加友好一些。
+
+其次，在使用 Kaggle 或 Colab 的时候，你需要懂一定的代码知识，像更换模型，安装插件等都需要通过代码实现。而使用我们的云端版本则不需要任何代码知识，并且我们还预装了流行的模型以及插件，开箱即用。
+
+## Q4：云端版本出图速度如何？
+
+正如我前面提到的，我们为了实现仅在工作流运行的时候才启动 GPU 服务器这一功能，云端版本生图所需要的时间，除了运行生图所需要的时间外，还包含 GPU 服务器启动时间，以及后端程序启动时间。这样会导致云端版本生图的时间相对长一些。
+但这并不意味着云端 GPU 生图速度就一定比本地慢，以下是我们测试的结果。各位也可以根据自己电脑的配置运行一下 ComfyUI，对比判断一下我们的服务是否适合你。
+
+SD 1.5 模型，使用默认的工作流，我们分别用 Mac 和 Win 电脑，以及云端 GPU 都生成一张 512x512 的图片。比较下云端生图和本地生图速度差距（注意以下时间是平均时间，实际会有些许波动）：
+
+{<table>
+  <thead>
+    <tr>
+      <th style={{ width: "60%" }}>模型</th>
+      <th style={{ width: "40%" }}>GPU/电脑型号</th>
+      <th style={{ width: "60%" }}>时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={6} >SD1.5 Pured</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>17.38s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>11.81s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>29.6s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>33.5s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>22.8s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>26.3s</td>
+    </tr>
+    <tr>
+      <td rowSpan={6}>Dreamshaper 8</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>15.05s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>10.91s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>30.9s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>30.7s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>20.2s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>32.6s</td>
+    </tr>
+  </tbody>
+</table>}
+
+SDXL 模型，我们分别用 Mac 和 Win 电脑，以及云端 GPU 都生成一张 512x512 的图片。比较下云端生图和本地生图速度差距（注意以下时间是平均时间，实际会有些许波动）：
+
+{<table>
+  <thead>
+    <tr>
+      <th style={{ width: "60%" }}>模型</th>
+      <th style={{ width: "40%" }}>GPU/电脑型号</th>
+      <th style={{ width: "60%" }}>时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={6} >SDXL base (steps 20, cfg 8)</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>81.29s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>21.69s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>63.7s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>54s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>44.8s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>43s</td>
+    </tr>
+    <tr>
+      <td rowSpan={6}>DreamshaperXL-V21-Turbo (steps 8, cfg 2)</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>68.5s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>37.02s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>65.3s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>52.5s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>46s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>42.5s</td>
+    </tr>
+  </tbody>
+</table>}
+
+SDXL 模型使用[此工作流](https://comfyanonymous.github.io/ComfyUI_examples/video/)生成视频，比较下云端生图和本地生图速度差距（注意以下时间是平均时间，实际会有些许波动）：
+
+{<table>
+  <thead>
+    <tr>
+      <th style={{ width: "60%" }}>模型</th>
+      <th style={{ width: "40%" }}>GPU/电脑型号</th>
+      <th style={{ width: "60%" }}>时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={6} >SVD XT 1.1 </td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>无法运行</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>81.38s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>323.3s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>200.08s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>135.3s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>52.8s</td>
+    </tr>
+  </tbody>
+</table>}
+
+从测试结果来看，云端 GPU 比较适合运行更大型的模型，以及复杂的工作流。如果你的电脑配置较低，或者需要运行更大型的模型，我们的云端 GPU 服务可能会更适合你。如果你的 GPU 很好，比如 RTX 4090，那么本地生图可能会更快，那你没有必要使用我们的云端版本。
+
+## Q5：为何更高配置的 GPU 生图速度并不快？
+
+如果细看上面的表格，你会发现，使用 A100 生成 SD1.5 的图片速度比 A10G 还慢，这是因为启动 GPU 服务器速度有差异，A100 做为比较受欢迎的 GPU，有可能需要排队等待，所以启动时间会比较长。而生成 SD1.5 图片并不能发挥所有 A100 的性能，所以最终生图速度并不快。
+
+但如果你运行的是文生视频工作流，A100 的速度就会比 A10G 快很多，因为文生视频工作流需要更多的 GPU 计算资源，这时候 A100 的性能就能发挥出来。其运行速度甚至能比本地 RTX 4090 还要快。
+
+所以经过我们的测试我们的建议是：
+1. 如果使用 SD1.5 模型或者相对简单的工作流，使用 T4 就足够了。
+2. 如果使用 SDXL 模型或者复杂的工作流，使用 A10G。
+3. 如果要生成视频，建议使用 A100。
+
