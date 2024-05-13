@@ -2,6 +2,10 @@
   width: 100%;
   overflow: hidden;
   :global {
+    .flex {
+      display: flex;
+      overflow: initial !important;
+    }
     .bg {
       width: 100vw;
       height: 100vh;

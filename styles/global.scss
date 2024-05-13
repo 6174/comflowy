@@ -34,4 +34,9 @@ html[data-page="/index"] {
     background-color: transparent !important;
     visibility: hidden;
   }
+  article {
+    div.nx-block {
+      visibility: hidden;
+    }
+  }
 }
