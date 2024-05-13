@@ -1,6 +1,6 @@
 
 {
-  "index": "Comflowy", 
+  "docs": "Comflowy",
   "introduction": "📖｜Introduction",
   "preparation-for-study": "⏳｜Download and Install",
   "basics": "🏎️｜Basics",
@@ -45,6 +45,16 @@
     "type": "page",
     "theme": {
       "toc": true
+    }
+  },
+  "index": {
+    "title": "🏠 Home",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "layout": "full",
+      "pagination": false
     }
   }
 }

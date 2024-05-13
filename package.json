@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Nextra docs template",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 2000",
     "build": "next build",
     "postbuild": "next-sitemap --config sitemap.config.js",
     "start": "next start"

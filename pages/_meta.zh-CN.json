@@ -1,5 +1,5 @@
 {
-  "index": "Comflowy 介绍",
+  "docs": "Comflowy 介绍",
   "introduction": "📖｜介绍",
   "preparation-for-study": "⏳｜下载与安装",
   "basics": "🏎️｜基础篇",
@@ -36,6 +36,16 @@
     "theme": {
       "sidebar": false,
       "toc": true,
+      "pagination": false
+    }
+  },
+  "index": {
+    "title": "🏠 首页",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "layout": "full",
       "pagination": false
     }
   },
