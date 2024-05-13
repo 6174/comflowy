@@ -21,3 +21,17 @@
     line-height: 1.4;
   }
 }
+
+html[data-page="/index"] {
+  body {
+    background-color: #121215;
+  }
+  footer {
+    background-color: #121215 !important;
+    border-top: none !important;
+  }
+  .nextra-nav-container>div {
+    background-color: transparent !important;
+    visibility: hidden;
+  }
+}

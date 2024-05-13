@@ -1,8 +1,26 @@
 .homepage{
-  background-color: red;
+  width: 100%;
+  overflow: hidden;
   :global {
+    .bg {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      .content {
+        margin: 0 10vw;
+        width: 80vw;
+        height: 100%;
+        background-size: 160px 160px;
+        background-image: repeating-linear-gradient(to right, #2A2A2C, #2A2A2C 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0));
+      }
+    }
     .title {
-      color: blue;
+      // color: blue;
     }
   }
 }
