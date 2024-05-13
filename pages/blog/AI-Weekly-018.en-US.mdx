@@ -1,0 +1,183 @@
+---
+date: April 30th, 2024
+image: /blog/AI-weekly-018/banner.png
+title: AI Weekly 018
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 018
+
+## 🆕 What's New?
+**Product Update:**
+
+This week, our team is still busy with the development of the cloud version, so this update mainly focuses on optimization and fixes:
+- Adapted the VHS extension, you can now use this extension in Comflowy.
+- Adapted the --listen mode for ComfyUI.
+- Fixed the following bugs:
+  - Fixed the issue where pip installation would force a pop-up.
+  - Fixed the issue where the Gallery and Home pages did not display webp files saved by the save_animatedwebp node, causing the app to white screen.
+  - Fixed the issue where the load_image node would still report a missing image even when an image was present.
+  - Fixed the issue where the load_image node would still show an error after selecting an image.
+  - Fixed the issue where after moving model files to the model folder and refreshing, the nodes still did not display the model files.
+
+Download link: [Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## Weekly‘s AI highlights
+
+### 🪐Workflow worth trying
+
+[**fluffy icon - V3**](https://openart.ai/workflows/bat_jumbo_66/fluffy-icon/omNuvOmFN7hxLNOhMS1G)
+
+This workflow can give the logos of our commonly used software a fluffy texture. In the latest update, it has changed 'controlnet' to 'lineart', making the edges of the logo softer, while also adding 'controlnet color' to control the image color.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/0001.png">
+    <img src="/blog/AI-weekly-018/0001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**sketch2manga**](https://github.com/dmMaze/sketch2manga)
+
+Sketch2Manga supports users in automatically converting line drawings or colored illustrations into manga style. During use, you can drag images from the official website into ComfyUI to access the workflow.
+
+Prompt：masterpiece, best quality, illustration, simple background, 1girl, hakurei_reimu
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/002.png">
+    <img src="/blog/AI-weekly-018/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+You can subscribe to our [**newsletter**](https://comflowy.substack.com/), or join our [**Discord**](https://discord.gg/cj623WvcVx) to get the latest tutorials.
+
+### 🏗️ Plugins worth trying
+
+[**ComfyUI-Flowty-CRM**](https://github.com/flowtyone/ComfyUI-Flowty-CRM/blob/master/workflow_rembg_crm_cuda.json)
+
+CRM is a high-fidelity single-image to 3D generation model. This tool has greatly enhanced usability through various improvements, such as CPU support, simplified dependencies, automatic image processing, and efficient output formats.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/003.png">
+    <img src="/blog/AI-weekly-018/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**comfyui-workspace-manager**](https://github.com/11cafe/comfyui-workspace-manager)
+
+This plugin allows you to organize and manage all your workflows and models within ComfyUI, supporting seamless switching between workflows. For example, it enables importing and exporting workflows, reusing sub-workflows, installing models, or browsing models in a single workspace.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/004.png">
+    <img src="/blog/AI-weekly-018/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI_LayerStyle**](https://github.com/chflame163/ComfyUI_LayerStyle)
+
+This plugin implements many Photoshop features within ComfyUI, such as layer compositing and masking, allowing users to complete complex image processing tasks on a single platform without the need to frequently switch between different software.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/005.png">
+    <img src="/blog/AI-weekly-018/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 Noteworthy papers and technic
+
+[**Pegasus-1**](https://www.twelvelabs.io/blog/upgrading-pegasus-1)
+
+Pegasus-1 is a multimodal model for analyzing videos. It can understand and generate language text related to video content, such as generating titles, themes, or summaries for videos. It can also accurately answer questions related to the video content, claiming to have superior video interpretation capabilities compared to Gemini Pro 1.5. Currently, it is not open-sourced, but you can use it via an API.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/006.png">
+    <img src="/blog/AI-weekly-018/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Phi-3-mini**](https://arxiv.org/abs/2404.14219)
+
+Microsoft has launched a new language model called phi-3-mini, which has only 380 million parameters but can run efficiently on mobile devices. Its performance is comparable to larger models such as GPT-3.5. This achievement is attributed to its training data, which has been meticulously curated and optimized, encompassing a wide range of online information and customized data.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/007.png">
+    <img src="/blog/AI-weekly-018/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**OpenCRISPR-1**](https://www.biorxiv.org/content/10.1101/2024.04.22.590591v1)
+
+OpenCRISPR-1 is a new type of CRISPR gene editing tool designed using AI and LLM technologies. By analyzing over a million CRISPR sequences, this tool has demonstrated higher precision and efficiency in editing human genes. This achievement highlights the potential of AI applications in biotechnology and provides a new tool for addressing gene editing challenges in agriculture, biotechnology, and human health in the future.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/008.png">
+    <img src="/blog/AI-weekly-018/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ Products you should try
+
+[**MenteeBot**](https://www.menteebot.com/)
+
+MenteeBot is a multifunctional robot designed for use in both home and warehouse environments to perform various tasks. This robot can understand human commands and quickly learn new tasks through visual imitation, equipped with advanced perception systems and human-machine interaction technologies.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/009.png">
+    <img src="/blog/AI-weekly-018/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Reka Core**](https://www.reka.ai/)
+
+Reka Al recently launched several multimodal language models, including Reka Core, Flash, and Edge. These models can handle inputs of text, images, video, and audio, and they claim that their performance is comparable to GPT-4.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/010.png">
+    <img src="/blog/AI-weekly-018/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**DreamWorld Al**](https://www.dream-world.ai/)
+
+This AI product claims that it can capture full-body movements and generate dynamic digital humans using just one camera, without the need for any wearable gear. It can accurately capture facial expressions and allows users to control virtual characters in real time, making it suitable for animation production and live performances. The product is currently in beta testing, and interested parties can register to try it out.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/011.png">
+    <img src="/blog/AI-weekly-018/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Humanify**](https://blendermarket.com/products/humanify---one-click-realism)
+
+Humanify is a one-click skin shader plugin specifically designed for Blender. It helps users generate realistic human skin effects with a single click, making it ideal for artists and designers who create lifelike characters in 3D modeling and animation production.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/012.png">
+    <img src="/blog/AI-weekly-018/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+<Subscribe />
+
+
+
+
+
+
+
+
+

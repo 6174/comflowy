@@ -53,16 +53,19 @@ export default {
   footer: {
     text: () => {
       return (
-        <a
-          href="https://vercel.com/?utm_source=swr"
-          target="_blank"
-          rel="noopener"
-        >
-          <span>Powered by: </span>
+        <div className="flex w-full flex-col items-center sm:items-start">
           <span>
-              <b>Vercel</b> & <b>Nextra</b>
+            <a href='./terms'>Terms of Service</a>
+            {' · '}
+            <a href='./privacy-policy'>Privacy Policy</a>
           </span>
-        </a>
+          <span>
+            {new Date().getFullYear()} ©{' '}
+            <a>
+              Comflowy
+            </a>
+          </span>
+        </div>
       )
     },
   },

@@ -7,6 +7,7 @@ keywords: ["ComfyUI Basics", "AI Image Generation", "Default Workflow", "Stable 
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
 
 # Text-to-image
 
@@ -248,5 +249,45 @@ If you look closely at these connections, you will find that these lines and con
 - **One Input, Multiple Outputs**: One input end can only connect with one output end from another node, and it cannot connect with multiple output nodes simultaneously. For instance, KSampler's "positive" endpoint can only connect with one "CLIP Text Encode", it cannot connect with multiple at the same time. However, one output end can connect with multiple input ends. Using the same example, one "CLIP Text Encode" can connect with multiple "KSamplers". It can connect with "KSampler A's" positive end and "KSampler B's" negative point at the same time, generating two images in the end.
 
 With these rules in mind, you will not be at a loss anymore. As I go through more examples later, you will become more and more familiar with these rules.
+
+## Practice
+
+After briefly introducing the basic connection operations, let's do a small exercise to help you integrate the contents of the two chapters.
+
+First, click on the "Clear" button on the right side to clear all Default Workflows.
+
+Then, starting from scratch, accomplish the following objective: **Convert an Empty Latent Image into a viewable picture**.
+
+<Tabs items={['Hint', 'Answer']}>
+  <Tabs.Tab>
+    If you cannot find the node you want, you can try right-clicking → Add Node → Loader to see if you can find it.
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <PhotoProvider>
+      <PhotoView src="/comfyui-foundation/004.png">
+        <img src="/comfyui-foundation/004.png" alt="" className='rounded-lg'/>
+      </PhotoView>
+    </PhotoProvider>
+    <Steps>
+      ### Add an Empty Latent Image Node.
+      To convert an empty latent image into a viewable picture, right-click and add an "Empty Latent Image" node first. Recall the content from the previous chapter, to convert a Latent Image into a visible image, all you have to do is pass that image to a Decoder. The Decoder will then convert it into a visible image. Right-click → Add Node → Latent → VAE Decode and then connect the "Empty Latent Image" to it.
+      
+      ### Add an Image Node
+      Next, you will find that the output port on the right side of the VAE Decode is IMAGE. Right-click → Add Node → Image → Save Image (or Preview Image), after adding it, connect the VAE Decode to it.
+      
+      ### Add a VAE Node
+      Finally, there is one more input point for the VAE Decode that has not been connected. The hint in the exercise mentioned looking in the loader. There, you should find something called "VAE Loader." Add this loader and connect it to the VAE Decode to complete the task.
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
+
+## Q&A
+<FAQBox title="What to do when an error occurs while running the basic workflow in KSampler?">
+  > Complete error message: Error occurred when executing KSampler: module 'torch' has no attribute 'mps'
+  This issue is from Discord user **123321123**.
+
+  **Answer from Jimmy:**
+  This error is likely due to not having the latest version of PyTorch installed. Update the PyTorch version on the computer to resolve this.
+</FAQBox>
 
 <Subscribe />

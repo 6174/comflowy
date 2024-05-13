@@ -1,0 +1,231 @@
+---
+date: May 11th, 2024
+image: /blog/comflowy-cloud-faq/banner.png
+title: Comflowy Cloud FAQ
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Comflowy Cloud FAQ
+
+## Table of Contents
+
+* [Q1: What's the difference between the cloud version and the local version?](#q1-what's-the-difference-between-the-cloud-version-and-the-local-version)
+* [Q2: Which version should I use?](#q2-which-version-should-i-use)
+* [Q3: What are the advantages of the cloud version compared to Kaggle or Colab?](#q3-what-are-the-advantages-of-the-cloud-version-compared-to-kaggle-or-colab)
+* [Q4: How fast is image production in the cloud version?](#q4-how-fast-is-image-production-in-the-cloud-version)
+* [Q5: Why is image generation with higher-spec GPUs not faster?](#q5-why-is-image-generation-with-higher-spec-gpus-not-faster)
+
+
+## Q1: What's the difference between the cloud version and the local version?
+
+Currently, the online version and the open-source offline version provide the same functionality. The primary differences are:
+1. Users must handle various installation issues themselves when using the open-source offline version. In contrast, the online version is ready to use immediately.
+2. The online version uses our high-performance GPUs, offering faster image generation but at a cost. The offline open-source version is free because it uses your computer's GPU.
+
+## Q2: Which version should I use?
+
+If your computer has low specifications, or you prefer not to deal with technical difficulties, then our cloud version might be more suitable for you.
+You can download and install our free [offline version](https://github.com/6174/comflowyspace/releases) on your computer and run the default workflow to see the speed of image generation. Compare it with the speed of our [cloud version](#q4-how-fast-is-image-production-in-the-cloud-version). If local image generation is faster, then there's no need to use our cloud version.
+
+## Q3: What are the advantages of the cloud version compared to Kaggle or Colab?
+
+The main advantages are:
+1. Lower cost.
+2. Ready to use out of the box, no coding knowledge needed.
+
+If you're running ComfyUI on a cloud server like Google's Colab, you'll find that even setting up the workflow consumes GPU usage.
+That's because these cloud servers charge based on GPU usage time. Often, you need to manually pause the service, and forgetting to do so can waste a lot of GPU time and result in a hefty bill.
+
+**Our billing, however, is based on actual GPU use. You're only charged once the workflow is running, so you won't incur extra costs for setting up the workflow.**
+
+However, this method has its downsides. Every time a workflow runs, we need to start the GPU server and backend program, which incurs additional GPU costs, and the image generation takes a bit longer. But compared to the several or even tens of minutes it takes to adjust the workflow, this is much shorter and costs significantly less. Additionally, our team is continuously working to optimize the program and shorten this time even more.
+In the future, we're also considering introducing an exclusive GPU mode for users who need continuous image output, which will be more user-friendly.
+
+Secondly, when using services like Kaggle or Colab, some coding knowledge is required for actions like switching models or installing plugins, which must be done through code. Our cloud version doesn't require any coding expertise, and we have pre-installed popular models and plugins for immediate use.
+
+## Q4: How fast is image production in the cloud version?
+
+As I mentioned earlier, in addition to the actual image generation time, the cloud version's image production includes GPU server startup time and backend program startup time because of our decision to only start the GPU server during workflow operations. This can make image generation in the cloud version a bit longer.
+But this doesn't necessarily mean that cloud GPU image generation is always slower than local generation. Here are our test results. You can also run ComfyUI on your own computer, based on your specs, and see if our service is right for you.
+
+For the SD 1.5 model using the default workflow, we generated a 512x512 image on both Mac and Windows computers, as well as with a cloud GPU. Here's a comparison of cloud and local image generation speeds (note these times are averages and may vary slightly):
+
+{<table>
+  <thead>
+    <tr>
+      <th style={{ width: "60%" }}>Model</th>
+      <th style={{ width: "40%" }}>GPU/Computer version</th>
+      <th style={{ width: "60%" }}>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={6} >SD1.5 Pured</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>17.38s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>11.81s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>29.6s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>33.5s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>22.8s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>26.3s</td>
+    </tr>
+    <tr>
+      <td rowSpan={6}>Dreamshaper 8</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>15.05s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>10.91s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>30.9s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>30.7s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>20.2s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>32.6s</td>
+    </tr>
+  </tbody>
+</table>}
+
+For the SDXL model, generating a 512x512 image on Mac and Windows computers, as well as using a cloud GPU, we've compiled average speed comparisons for image generation locally and within the cloud. Keep in mind that these times are averages and may fluctuate slightly due to various factors:
+
+{<table>
+  <thead>
+    <tr>
+      <th style={{ width: "60%" }}>Model</th>
+      <th style={{ width: "40%" }}>GPU/Computer version</th>
+      <th style={{ width: "60%" }}>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={6} >SDXL base (steps 20, cfg 8)</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>81.29s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>21.69s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>63.7s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>54s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>44.8s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>43s</td>
+    </tr>
+    <tr>
+      <td rowSpan={6}>DreamshaperXL-V21-Turbo (steps 8, cfg 2)</td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>68.5s</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>37.02s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>65.3s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>52.5s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>46s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>42.5s</td>
+    </tr>
+  </tbody>
+</table>}
+
+Using the SDXL model and this workflow to generate videos, the speed comparison between cloud and local image generation follows the same logic:
+
+{<table>
+  <thead>
+    <tr>
+      <th style={{ width: "60%" }}>Model</th>
+      <th style={{ width: "40%" }}>GPU/Computer version</th>
+      <th style={{ width: "60%" }}>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={6} >SVD XT 1.1 </td>
+      <td>Macbook Pro M3MAX 36G</td>
+      <td>Unrunnable</td>
+    </tr>
+    <tr>
+      <td>Win RTX4090</td>
+      <td>81.38s</td>
+    </tr>
+    <tr>
+      <td>T4</td>
+      <td>323.3s</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>200.08s</td>
+    </tr>
+    <tr>
+      <td>A10G</td>
+      <td>135.3s</td>
+    </tr>
+    <tr>
+      <td>A100(40G)</td>
+      <td>52.8s</td>
+    </tr>
+  </tbody>
+</table>}
+
+Based on the test results, cloud GPUs are more suitable for running larger models or more complex workflows. If your computer has low specs or if you need to run a larger model, our cloud GPU service might be a better fit for you. However, if your GPU is high-end, like an RTX 4090, your local setup might generate images faster, and in that case, there would be no need to use our cloud version.
+
+## Q5: Why is image generation with higher-spec GPUs not faster?
+
+If you look closely at the table above, you’ll see that the A100 is slower to generate images for the SD1.5 model than the A10G. This is because there's a difference in the startup speed of the GPU server. Given that the A100 is a popular GPU, it might require queuing, hence a longer startup time. Moreover, generating SD1.5 images doesn’t utilize the full capabilities of the A100, so the overall image generation isn't faster.
+
+However, if you're running workflows for video generation, the A100's speed will be much faster than that of the A10G, as video generation workflows require more GPU computing resources. In this scenario, the A100's performance shines through, and its processing speed can even surpass a local RTX 4090.
+
+So, after our testing, we recommend the following:
+1. If using the SD1.5 model or relatively simple workflows, a T4 GPU is sufficient.
+2. For the SDXL model or more complex workflows, an A10G is recommended.
+3. If generating videos, we advise using an A100.

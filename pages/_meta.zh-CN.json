@@ -5,6 +5,16 @@
   "basics": "🏎️｜基础篇",
   "advanced": "🛩️｜中级篇",
   "expert": "🚀｜高级篇",
+  "privacy-policy": {
+    "title": "Privacy Policy",
+    "type": "page",
+    "display": "hidden"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "type": "page",
+    "display": "hidden"
+  },
   "space": {
     "title": "💻 产品",
     "type": "page",

@@ -1,0 +1,183 @@
+---
+date: April 30th, 2024
+image: /blog/AI-weekly-018/banner.png
+title: AI Weekly 018
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 018
+
+## 🆕 更新了什么？
+**产品更新：**
+
+本周我们团队依然忙于云端版本的开发，所以本次更新主要以优化和修复为主：
+- 适配了 VHS 插件，你现在可以在 Comflowy 里使用该插件了。
+- 适配了 ComfyUI 的 --listen 模式。
+- 修复了以下 bug：
+  - 修复了 pip 安装会强制弹窗的问题。
+  - 修复了 Gallery 和 Home 页面没有显示 save_animatedwebp 节点保存的 webp 文件后，应用白屏的问题。
+  - 修复了 load_image 节点即使有图也依然会报图片缺失的问题。
+  - 修复了 load_image 节点选中图片后，依然报错的问题。
+  - 修复了将模型文件放到模型文件夹后，刷新后，节点依然没有显示模型文件的问题。
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## 🤩 每周 AI 精选
+
+### 🪐值得尝试的 Workflow
+
+[**fluffy icon - V3**](https://openart.ai/workflows/bat_jumbo_66/fluffy-icon/omNuvOmFN7hxLNOhMS1G)
+
+这个工作流可以将我们常用的软件 Logo 做成毛绒绒的质感，在最新的更新中，它将 controlnet 修改为 lineart ，使 Logo 边缘更加柔和，同时增加了 controlnet color 控制图像颜色。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/001.png">
+    <img src="/blog/AI-weekly-018/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**sketch2manga**](https://github.com/dmMaze/sketch2manga)
+
+Sketch2Manga 支持用户将线条画或彩色插图自动转换为漫画风格。在使用过程中，你可以从官网上将图片拖入 ComfyUI 来获取 workflow 。
+
+提示词：masterpiece, best quality, illustration, simple background, 1girl, hakurei_reimu
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/002.png">
+    <img src="/blog/AI-weekly-018/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+你可以订阅我们的 [**newsletter**](https://comflowy.substack.com/) 以及公众号，或者加入 [**Discord**](https://discord.gg/cj623WvcVx)，以获取最新的教程。
+
+### 🏗️值得尝试的插件  
+
+[**ComfyUI-Flowty-CRM**](https://github.com/flowtyone/ComfyUI-Flowty-CRM/blob/master/workflow_rembg_crm_cuda.json)
+
+CRM 是一个高保真的单图像到 3D 生成模型，这个工具通过多项改进，如CPU支持、简化的依赖、自动图像处理和高效的输出格式，极大地提升了易用性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/003.png">
+    <img src="/blog/AI-weekly-018/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**comfyui-workspace-manager**](https://github.com/11cafe/comfyui-workspace-manager)
+
+这个插件可以组织和管理你在 ComfyUI 中的所有 workflow 和模型，支持你在工作流之间无缝切换使用。例如：导入、导出工作流程、重用子工作流程、安装模型、或在单个工作区中浏览模型。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/004.png">
+    <img src="/blog/AI-weekly-018/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI_LayerStyle**](https://github.com/chflame163/ComfyUI_LayerStyle)
+
+这个插件在 ComfyUI 里实现了诸多 Photoshop 的功能，如合成图层和蒙版等，使用户能够在单一平台上完成复杂的图像处理任务，无需再频繁地在不同软件间切换。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/005.png">
+    <img src="/blog/AI-weekly-018/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+[**Pegasus-1**](https://www.twelvelabs.io/blog/upgrading-pegasus-1)
+
+Pegasus-1 是个分析视频的多模态模型，可以理解和生成视频内容相关的语言文本，为视频生成标题、主题或者摘要，它还能够准确回答与视频内容相关的问题，其宣称视频解读能力比 Gemini Pro 1.5 还要强，目前未开源，你可以通过 API 使用。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/006.png">
+    <img src="/blog/AI-weekly-018/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Phi-3-mini**](https://arxiv.org/abs/2404.14219)
+
+微软推出了一款新型语言模型 phi-3-mini ，它虽然只有3.8亿参数，却能在手机上高效运行，并且性能上与参数量更大的模型如 GPT-3.5 不相上下。这一成果得益于其经过精心筛选和合成优化的训练数据，涵盖了丰富的网络信息和定制数据。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/007.png">
+    <img src="/blog/AI-weekly-018/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**OpenCRISPR-1**](https://www.biorxiv.org/content/10.1101/2024.04.22.590591v1)
+
+OpenCRISPR-1 是利用 AI 和 LLMs 技术设计出的一种新型 CRISPR 基因编辑工具。通过分析超过百万个CRISPR序列，该工具在编辑人类基因时展现出了更高的精确度和效率。这项成果凸显了AI在生物技术领域的应用潜力，为未来解决农业、生物技术和人类健康中的基因编辑挑战提供了新工具。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/008.png">
+    <img src="/blog/AI-weekly-018/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品
+
+[**MenteeBot**](https://www.menteebot.com/)
+
+MenteeBot是一款多功能机器人，设计用于家庭和仓库环境中执行各种任务。这款机器人能够听懂人类指令并能通过视觉模仿快速学习新任务，配备了高级的感知系统和人机交互技术。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/009.png">
+    <img src="/blog/AI-weekly-018/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Reka Core**](https://www.reka.ai/)
+
+Reka Al 最近推出了多款多模态语言模型，包括 Reka Core ,Flash 和 Edge 三种，他们能够处理文本、图像、视频和音频输入，其宣称他们的模型和 GPT 4 性能不相上下。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/010.png">
+    <img src="/blog/AI-weekly-018/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**DreamWorld Al**](https://www.dream-world.ai/)
+
+这个 AI 产品号称只需一个摄像头就能捕捉全身动作并生成动态数字人，无需穿戴任何装备。它能够精确捕捉面部表情，并且允许用户实时控制虚拟角色，适用于动画制作和直播表演。目前产品正在内测，感兴趣的朋友可以注册试试。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/011.png">
+    <img src="/blog/AI-weekly-018/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Humanify**](https://blendermarket.com/products/humanify---one-click-realism)
+
+Humanify 是一个专为 Blender 设计的一键式皮肤着色器插件，它能帮助用户一键生成逼真的人类皮肤效果，非常适合在 3D 建模和动画制作中创建真实人物的艺术家和设计师。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-018/012.png">
+    <img src="/blog/AI-weekly-018/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+
+<Subscribe />
+
+
+
+
+
+
+
+
+

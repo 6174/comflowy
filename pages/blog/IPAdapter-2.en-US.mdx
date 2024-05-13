@@ -1,0 +1,193 @@
+---
+date: April 30th, 2024
+image: /blog/IPAdapter-2/banner.png
+title: How to use IPAdapter Plus for content transformation and integration in ComfyUI?
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# How to use IPAdapter Plus for content transformation and integration in ComfyUI?
+
+Last issue, we introduced the function of IPAdapter in style transfer. In this issue, we will continue the topic. In addition to style transfer, the IPAdapter node can also perform image content transformation and integration.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/001.png">
+    <img src="/blog/IPAdapter-2/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## Display of Effects
+
+The IPAdapter model can easily apply the style or theme of a reference image to the generated image, providing an effect similar to single-image LoRA. You can control the influence of the two images by adjusting the values of the weights. I tried this workflow with the following avatar and poster. As you can see, by blending image features, you only need to choose two images you like; there is no need to start drawing or designing from scratch to create personalized original images.
+
+### 1. Ghibli-Style Avatar
+
+In the modern digital world, the presentation of personal images is becoming increasingly diverse, and original avatars have become an important element of personal expression and social interaction. An attractive original avatar can increase a user's social advantage. Ghibli animations are known for their warm, imaginative stories and profound themes. Using an avatar in this style can enhance the emotional depth of social interactions. Therefore, I attempted to create an original Ghibli-style avatar using IPAdapter.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/002.png">
+    <img src="/blog/IPAdapter-2/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+The method is quite simple: you just need to choose any Ghibli-style reference image and combine it with your own photo. This way, the generated avatar retains personal image features while protecting personal privacy, and it provides a safe online identity marker.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/003.png">
+    <img src="/blog/IPAdapter-2/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Ghibli style, illustration, anime, hand-drawn,Vivid colors， colorful, high quality, wallpaper, high definition, rich details, delicate portrait，Cartoon, portrait, cute.Hand-drawn.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/004.png">
+    <img src="/blog/IPAdapter-2/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+When selecting the reference image, I deliberately chose one that matched the pose, angle, and props of the real photo. You can control the final effect by adjusting the weights. I aimed for a balanced final result that preserves the character's features while transforming the style intensity, so I set the weight to 2.5 for the image below.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/005.png">
+    <img src="/blog/IPAdapter-2/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+If you want the facial features of the generated avatar to resemble you more closely, you can change the model under the IPAdapter Unified Loader node to a face model. For the differences between the standard IPAdapter model and the face model, please refer to the section on downloading models in [**How to perform style transfer using IPAdapter Plus in ComfyUI?**](https://www.comflowy.com/blog/IPAdapter-Plus)
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/006.png">
+    <img src="/blog/IPAdapter-2/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2. Living Like Modern People Series
+
+In addition to creating avatars, I've also tried using this workflow to create images with a sense of "time travel." This creative series imagines ancient figures in modern lifestyles in a humorous way. Can it offer you a moment of relaxation and fun amidst the busy modern life?
+
+#### Imagine if ancient people went to space
+
+Prompt：Astronaut, Space, Ancient-style Beauty，Oxygen mask，National Style，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，Ultimate Composition ，Exquisite features, rich details，Chinese traditional clothing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/007.png">
+    <img src="/blog/IPAdapter-2/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+#### Imagine if an emperor rode a motorcycle
+
+Prompt：Chinese Emperor, Riding a Motorcycle, Head ornament ，National Style，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，Ultimate Composition ，Exquisite features, rich details，Chinese traditional clothing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/008.png">
+    <img src="/blog/IPAdapter-2/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+#### Imagine if ancient people took the subway
+
+Prompt：Beautiful portrait.，Ancient People ， Court Lady，Subway Car or Metro Car，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，Ancient People on the Subway ，Ultimate Composition ，Exquisite features, rich details，Song Dynasty Aesthetics，Hanfu，Chinese traditional clothing.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/009.png">
+    <img src="/blog/IPAdapter-2/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+####  Imagine if shadow puppets took the subway
+
+Prompt：1 girl，Shadow Puppet，Subway Car or Metro Car，National Style (often refers to traditional Chinese elements or style in art and design， Illustration，High Quality，Shadow Puppet Riding the Subway ，Ultimate Composition ，Exquisite features, rich details.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/010.png">
+    <img src="/blog/IPAdapter-2/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 3. Mondrian Mashup Poster
+
+What sparks will fly when Mondrian's geometric abstraction meets traditional Chinese freehand landscape painting? I used Mondrian's classic work "Composition with Red, Yellow, and Blue" as a reference image to see what effect it would have when fused with the style of landscape freehand painting.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/011.png">
+    <img src="/blog/IPAdapter-2/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Using Mondrian's 《Composition with Red, Yellow, and Blue》" as a style reference, the vivid contrasting colors and bold lines are integrated into the landscape. The volumes are expressed through simple color blocks, and the blending of colors aligns with the concept of 'clear in the near and vague in the distance.' The sense of space and volume is harmoniously represented through the solidity and void of colors and lines.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/012.png">
+    <img src="/blog/IPAdapter-2/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Mondrian ，Mondrian-style Landscape，National Style (often refers to traditional Chinese elements or style in art and design）， Illustration，High Quality，，Ultimate Composition ，Exquisite features, rich details，
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/013.png">
+    <img src="/blog/IPAdapter-2/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### 4. Cyberpunk Style
+
+The cyberpunk style often uses bright neon colors contrasted with dark backgrounds to create a futuristic urban nightscape atmosphere. This style frequently showcases the clash between high technology and everyday life. Images might feature advanced technological products coexisting with dilapidated urban environments, such as dense skyscrapers, intricate networks of roads and bridges, and futuristic urban infrastructure.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/014.png">
+    <img src="/blog/IPAdapter-2/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Using the ComfyUI IPAdapter Plus workflow, whether it's street scenes or character creation, we can easily integrate these elements into images, creating visually striking works with a strong cyberpunk feel. With the help of IPAdapter, this process becomes more efficient and diverse, allowing creators to explore and experiment with different design concepts and generate impressive cyberpunk-style images.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/015.png">
+    <img src="/blog/IPAdapter-2/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+From the final results, you can see that whether it's street scenes, characters, or even cold plaster, this workflow can give them a cyberpunk feel. If you're interested, you might want to try creating something using this approach.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/016.png">
+    <img src="/blog/IPAdapter-2/016.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Cyberpunk，Bioluminescence， Studio Lighting，Transparent Glass Texture，Refraction of Light，UHD (Ultra High Definition) Image， Movie Poster，Layered Print Poster Composition， Ultra Clear or High Definition，Ultimate Composition
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/IPAdapter-2/017.png">
+    <img src="/blog/IPAdapter-2/017.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
+<Subscribe />
+
+
+
+
+
