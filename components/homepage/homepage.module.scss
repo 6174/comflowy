@@ -1,0 +1,8 @@
+.homepage{
+  background-color: red;
+  :global {
+    .title {
+      color: blue;
+    }
+  }
+}
