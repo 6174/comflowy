@@ -3,24 +3,66 @@
   overflow: hidden;
   :global {
     .bg {
+      width: 100vw;
+      height: 100vh;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      position: fixed;
+      position: absolute;
+      pointer-events: none;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      z-index: -1;
       .content {
-        margin: 0 10vw;
-        width: 80vw;
         height: 100%;
+        width: 70%;
+        max-width: 120rem;
         background-size: 160px 160px;
         background-image: repeating-linear-gradient(to right, #2A2A2C, #2A2A2C 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0));
       }
     }
-    .title {
-      // color: blue;
+
+    .hero-block {
+      margin-top: 40px;
+      >.flex>.content {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h1 {
+          font-size: 3rem;
+          font-weight: bold;
+          line-height: 1.1;
+          margin-bottom: 1rem;
+        }
+        .cta {
+          margin: 20px;
+        }
+      }
+      .hero-image {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 80%;
+          max-width: 900px;
+        }
+        .gradient-bg {
+          position: absolute;
+          pointer-events: none;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: -1;
+          svg {
+            width: 100%;
+          }
+        }
+      }
     }
+
   }
 }
