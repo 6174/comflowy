@@ -6,13 +6,13 @@ export function Sections() {
     <div className="sections">
       <div className="section">
         <h2>Better control the AI's output</h2>
-        <p className="description">Unlike any tool you’ve used before.  Not only can you control the AI's output with text commands, but you also control the AI in various ways to generate images that meet your requirements.</p>
+        <p className="description" style={{margin: "40px auto"}}>Unlike any tool you’ve used before.  Not only can you control the AI's output with text commands, but you also control the AI in various ways to generate images that meet your requirements.</p>
         <div className="section-block image">
           <Image src={ImageControl.src} width={1636} height={839} alt="contrlboard"/>
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flexbox">
         <DebugMode />
         <div className="box">
           <RichTemplates />

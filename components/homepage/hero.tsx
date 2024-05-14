@@ -10,7 +10,7 @@ export function HeroBlock() {
   return (
     <div className="hero-block">
       <LineBg/>
-      <div className="flex">
+      <div className="flexbox">
         <div className="content">
           {lang === 'zh-CN' ? 
             (<h1>让<span className="color-text">AI图像/视频</span>生成变得简单</h1>)

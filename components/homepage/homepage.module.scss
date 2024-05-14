@@ -2,9 +2,9 @@
   width: 100%;
   overflow: hidden;
   :global {
-    .flex {
+    .flexbox {
       display: flex;
-      overflow: initial !important;
+      flex-wrap: wrap;
     }
     button {
       margin-right: 20px;
@@ -33,6 +33,7 @@
       text-align: center;
       margin: 20px 0;
       font-size: 48px;
+      line-height: 1.2;
     }
 
     p.description {
@@ -40,10 +41,10 @@
       font-size: 20px;
       color: var(--fontColor-w1);
       margin: 20px auto;
-      width: 600px;
       line-height: 1.1;
       opacity: .6;
       margin-bottom: 40px;
+      max-width: 600px;
     }
 
     .bg {
@@ -67,17 +68,18 @@
 
     .hero-block {
       margin: 10vh 0 20vh;
-      >.flex>.content {
+      >.flexbox>.content {
         width: 35%;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        min-width: 500px;
+        margin: 100px 0;
         h1 {
           font-size: 64px;
           font-weight: 500;
           line-height: 1.1;
           margin-bottom: 1rem;
-         
         }
         p {
           opacity: .6;
@@ -89,6 +91,7 @@
       }
       .hero-image {
         flex: 1;
+        min-width: 400px;
         position: relative;
         display: flex;
         justify-content: center;
@@ -118,11 +121,15 @@
     .sections {
       margin-top: 100px;
       margin-left: -20px;
+      p.description {
+        margin: 20px 0;
+      }
       .section-block {
         border: solid 1px #4E506A;
         border-radius: 20px;
         margin: 20px;
         padding: 30px;
+        flex: 1;
         h2 {
           text-align: left;
           margin-top: 0;
