@@ -1,12 +1,14 @@
-import { Button } from "nextra/components";
 import HeroImage from "./hero.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { t, useLang } from "@/i18n";
 import { KEYS } from "@/i18n/i18n.types";
+
 export function HeroBlock() {
   const router = useRouter();
   const lang = useLang();
+  console.log("lang", lang);
+
   return (
     <div className="hero-block">
       <LineBg/>
