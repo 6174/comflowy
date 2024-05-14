@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  --backgroundColor: #19191D;
+  --backgroundColorL1: #24252E;
+  --backgroundColorL1_5: #212126;
+  --backgroundColorL2: #31333F;
+  --backgroundColorL3: #454758;
+  --primaryColor: #2BCBBB;
+  --secondaryColor: #2BAFF7;
+  --borderColor: #262837;
+  --actionBorderColor: #4A4A4D;
+  --actionHoverColor: #353640;
+  --popupBorderColor: #34353D;
+  --fontColor: white;
+  --fontColor-w1: #C5C5D3;
+  --borderRadius: 8px;
+  // --box-shadow: 0 8px 18px 0 rgb(11 11 77 / 4%), 0 0 2px 0 rgb(16 16 83 / 16%);
+  --box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15), 0px 0px 2px 0px rgba(0, 0, 0, 0.30);
+  --cardBackground: #262837;
+  --card-bg:#292a35a6;
+  --cardHover: #34374b;
+  --transition: all ease .2s;
+  --sb-track-color: #19191D;
+  --sb-thumb-color: #34374b;
+  --sb-size: 8px;
+  -webkit-font-smoothing: antialiased;
+}
+
 .site-heading-title {
   font-size: 40px;
   text-align: center;

@@ -1,17 +1,25 @@
 import { Button } from "nextra/components";
 import HeroImage from "./hero.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 export function HeroBlock() {
+  const router = useRouter();
+
   return (
     <div className="hero-block">
       <LineBg/>
       <div className="flex">
         <div className="content">
-          <h1>State-of-the-art AI Image/Video generation with ease</h1>
+          <h1>State-of-the-art <span className="color-text">AI Image/Video </span> generation with ease</h1>
           <p>Experience a simpler and more affordable way to generate top-tier AI creations with Comflowy's workflow-based technology.</p>
           <div className="cta">
-            <Button>Open Source</Button>
-            <Button>Start on Cloud</Button>
+            <button onClick={ev => {
+              ev.preventDefault();
+              window.open("https://app.comflowy.com", "_blank");
+            }}>Start on Cloud</button>
+            <button onClick={ev => {
+              router.push("/preparation-for-study/install");
+            }}> Open Source </button>
           </div>
         </div>
         <div className="hero-image">
