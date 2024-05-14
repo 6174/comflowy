@@ -67,3 +67,12 @@ html[data-page="/index"] {
     }
   }
 }
+
+
+nav a[href="/docs"] span {
+  font-weight: normal !important;
+  color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
+  &:hover {
+    color: white !important;
+  }
+}
