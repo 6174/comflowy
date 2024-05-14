@@ -76,3 +76,18 @@ nav a[href="/docs"] span {
     color: white !important;
   }
 }
+
+.btn {
+  margin-right: 20px;
+  background-color: white;
+  border: transparent;
+  color: #121215;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  display: inline-block;
+  transition: var(--transition);
+  &:hover {
+    background-color: #ececec;
+  }
+}
