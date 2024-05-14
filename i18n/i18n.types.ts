@@ -1,5 +1,6 @@
 export enum KEYS {
   appName = "appName",
+  heroDescription = "heroDescription",
 }
 
 export type i18nKey = keyof typeof KEYS;

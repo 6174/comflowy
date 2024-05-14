@@ -2,16 +2,24 @@ import { Button } from "nextra/components";
 import HeroImage from "./hero.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { t, useLang } from "@/i18n";
+import { KEYS } from "@/i18n/i18n.types";
 export function HeroBlock() {
   const router = useRouter();
-
+  const lang = useLang();
   return (
     <div className="hero-block">
       <LineBg/>
       <div className="flex">
         <div className="content">
-          <h1>State-of-the-art <span className="color-text">AI Image/Video </span> Generation with ease</h1>
-          <p>Experience a simpler and more affordable way to generate top-tier AI creations with Comflowy's workflow-based technology.</p>
+          {lang === 'zh-CN' ? 
+            (<h1>让<span className="color-text">AI图像/视频</span>生成变得简单</h1>)
+            : (
+              <h1>State-of-the-art <span className="color-text">AI Image/Video </span> Generation Made Easy</h1>
+            )
+          }
+
+          <p>{t(KEYS.heroDescription)}</p>
           <div className="cta">
             <button onClick={ev => {
               ev.preventDefault();
