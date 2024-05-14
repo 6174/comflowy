@@ -7,7 +7,7 @@ import { KEYS } from "@/i18n/i18n.types";
 export function HeroBlock() {
   const router = useRouter();
   const lang = useLang();
-  console.log("lang", lang);
+  console.log("lang", lang, router.pathname);
 
   return (
     <div className="hero-block">
@@ -133,3 +133,4 @@ function GradientBg() {
     </div>
   )
 }
+
