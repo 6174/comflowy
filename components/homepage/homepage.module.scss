@@ -1,7 +1,6 @@
 .homepage{
   width: 100%;
-  overflow: hidden;
-  :global {
+  :global { 
     .flexbox {
       display: flex;
       flex-wrap: wrap;
@@ -147,6 +146,32 @@
       margin-top: 200px;
       h2 {
         text-align: left;
+      }
+    }  
+    
+    .homepage-mobile {
+      .hero-block > .flexbox > .content {
+        width: 100%;
+        min-width: initial;
+        margin: 60px 0;
+        h1 {
+          font-size: 60px;
+        }
+        .cta {
+          align-items: center;
+          justify-content: center;
+          button:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      .hero-block .hero-image {
+        flex: initial;
+        width: 100%;
+        min-width: initial;
+        img {
+          width: 100%;
+        }
       }
     }
   }

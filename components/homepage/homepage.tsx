@@ -5,6 +5,7 @@ import { HomePageMobile } from "./homepage-mobile";
 import { HomePageDesktop } from "./homepage-desktop";
 export function HomePage() {
   const isMobile = useIsMobile();
+  console.log("isMobile", isMobile)
   return (
     <div className={styles.homepage}>
       {isMobile ? <HomePageMobile /> : <HomePageDesktop />}

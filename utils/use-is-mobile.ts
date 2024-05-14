@@ -1,3 +1,4 @@
+import { debug } from 'console';
 import { useState, useEffect } from 'react';
 
 
@@ -13,7 +14,6 @@ export function useIsMobile() {
 
   return isMobile;
 }
-
 
 function checkIsMobile(ua: string) {
   if (!ua) return false;
