@@ -10,7 +10,7 @@ export function HeroBlock() {
       <LineBg/>
       <div className="flex">
         <div className="content">
-          <h1>State-of-the-art <span className="color-text">AI Image/Video </span> generation with ease</h1>
+          <h1>State-of-the-art <span className="color-text">AI Image/Video </span> Generation with ease</h1>
           <p>Experience a simpler and more affordable way to generate top-tier AI creations with Comflowy's workflow-based technology.</p>
           <div className="cta">
             <button onClick={ev => {
