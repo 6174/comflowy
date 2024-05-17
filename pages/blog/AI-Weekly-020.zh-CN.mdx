@@ -1,0 +1,193 @@
+---
+date: May 16th, 2024
+image: /blog/AI-weekly-020/banner.png
+title: AI Weekly 020
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 020
+
+## 🆕 更新了什么？
+
+博客更新：[Comflowy Cloud FAQ](https://www.comflowy.com/zh-CN/blog/comflowy-cloud-faq)
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## 🤩 每周 AI 精选  
+
+### 🪐值得尝试的 Workflow 
+
+[**IMAGE TO JADE STYLE**](https://openart.ai/workflows/xiongmu/image-to-jade-style/BRuUXjQhMaLu0dPOvZHD)
+
+这是一个可以生成翡翠质感的 workflow，特别是在国风插画和人像照片中，表现很不错。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/001.png">
+    <img src="/blog/AI-weekly-020/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Manga Cosplay**](https://openart.ai/workflows/datou/manga-cosplay/SgsFFSuOeFe7Qzs3eHij)
+
+这是一个可以使用真人照片生成漫画感插图的工作流，主要使用了 InstantID 和 BRIA RMBG 去除背景。不过其仅适用于单人场景，因为它只替换一张脸。如果你想使用多人场景，可以关闭 faceswap 模块。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/002.png">
+    <img src="/blog/AI-weekly-020/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+你可以订阅我们的 [**newsletter**](https://comflowy.substack.com/) 以及公众号，或者加入 [**Discord**](https://discord.gg/cj623WvcVx)，以获取最新的教程。
+
+### 🏗️值得尝试的插件 
+
+[**ComfyUI-Gemini**](https://github.com/ZHO-ZHO-ZHO/ComfyUI-Gemini)
+
+这个插件支持最新的 Gemini 1.5 Pro 模型，允许用户执行系统指令设置、多模态和多轮对话，以及处理文本、图像、视频和音频文件，文件大小上限为20G。它还提供了高 token 支持，能够处理长文本输入。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/003.png">
+    <img src="/blog/AI-weekly-020/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-IC-Light-Native**](https://github.com/huchenlei/ComfyUI-IC-Light-Native)
+
+IC-Light 是一个能够在图像中生成打光效果的开源项目，它提供了两种模型：文本条件重打光和背景条件重打光，允许用户通过简单的提示来控制图像的光照和氛围。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/004.png">
+    <img src="/blog/AI-weekly-020/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+[**AniTalker**](https://arxiv.org/abs/2405.03121v1)
+
+AniTalker 能够将单一静态肖像和输入的音频转换成具有自然流畅动作的动画对话视频。就像给照片里的人物赋予了生命，让他们能够根据音频中的声音动起来，嘴唇的开合会和说话声同步，面部表情和头部动作也很自然，就像真人在说话一样。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/005.png">
+    <img src="/blog/AI-weekly-020/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Vidu**](https://arxiv.org/abs/2405.04233)
+
+Vidu 是一款高性能文本到视频生成器，能够在一次生成长达 16 秒的 1080p 视频。它是一种以 U-ViT 为骨干的扩散模型，能够生成现实和富有想象力的视频，并理解一些专业的摄影技术，比如下图中演示了可以控制画面中光源的方向与移动。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/006.png">
+    <img src="/blog/AI-weekly-020/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**MistoLine**](https://github.com/TheMistoAI/MistoLine)
+
+MistoLine 能够将手绘的草图直接生成符合草图轮廓的高质量图像。它是一个基于 SDXL-ControINet 的模型，可以在 ComfyUI 中使用，其通过利用用户提供的各种线稿作为输入（包括手绘草图、不同预处理器生成的线稿以及模型自动生成的轮廓线），实现对不同类型线稿的灵活适应，和高精度图像生成。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/007.png">
+    <img src="/blog/AI-weekly-020/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**xLSTM**](https://arxiv.org/abs/2405.04517)
+
+xLSTM 是对原有的 LSTM（长短期记忆网络）的一次升级。LSTM 是一种在处理序列数据，比如语言和时间序列预测时非常有效的工具。但是，当数据量非常大时，LSTM 处理起来会有一些困难，xLSTM 通过引入指数门控，修改 LSTM 内存结构解决了这些问题。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/008.png">
+    <img src="/blog/AI-weekly-020/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Lumina-T2X**](https://arxiv.org/abs/2405.05945v1)
+
+Lumina-T2X 能够将文本描述转换为高清图像、视频、3D模型和音频。它使用特殊的技术处理文本，可以生成高分辨率和任意尺寸的多模态内容。简单来说，只要你能描述出来，Lumina-T2X 就能根据你的描述创造出相应的视觉或音频内容。与 OpenAI 的文生图工具 DALL-E 相比，Lumina-T2X 能够处理包含文生图的多种模态内容生成，同时展现了高分辨率图像方面的能力，模型架构和规模也超过了如 DALL-E 或 GPT-3 的某些版本。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/009.png">
+    <img src="/blog/AI-weekly-020/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品  
+
+[**Stylar**](https://www.stylar.ai/?ref=aihub.cn)
+
+新上线的 Stylar 产品，声称自己是最可控的人工智能图像和设计工具，它将生成式 AI 和编辑工具结合在一个平台上，同时提供多种风格库和组合工具，用户通过修改自然语言指令，能完成从图像生成到编辑的所有操作，并实现图像的定制化设计。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/010.png">
+    <img src="/blog/AI-weekly-020/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Krea Video**](https://www.krea.ai/apps/video/v1/getting-started/unlock)
+
+Krea Video 是 Krea 最新推出的 AI 生成视频功能，它可以通过关键帧和文本提示生成视频，用户可以在时间轴上灵活移动和调整设计视频内容，实现多样化的视觉效果和叙事方式。与其他视频剪辑工具相比， Krea Video 关键帧让用户能够精确控制视频在不同时间点的视觉效果和内容风格，确保视频每一帧都满足创意和品牌需求。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/011.png">
+    <img src="/blog/AI-weekly-020/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Ilus AI**](https://ilus.ai/?utm_source=ai-bot.cn)
+
+Ilus AI 是一款 AI 插画生成器，它能够快速生成各种风格的插画，包括墨线画、涂鸦和扁平化设计等。用户可以选择预设的插图风格，通过输入关键词来自动生成插图，或者上传自己的插画样本来训练个性化的 AI 模型。生成的插画支持导出为 SVG 和 PNG 格式，方便在不同应用场景下使用。 
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/012.png">
+    <img src="/blog/AI-weekly-020/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Danswer**](https://www.danswer.ai/)
+
+Danswer 是一个开源的 AI 助手，专为企业环境设计，它能够快速连接到公司的文档、应用程序和人员，利用内部知识库，提供基于真实来源的 AI 回答，也提供了超过 25 种即插即用的集成选项，支持多种大型模型提供商或允许用户插入自己的自托管大型语言模型（LLM）。另外，该产品已获得 YC 的投资。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-020/013.png">
+    <img src="/blog/AI-weekly-020/013.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
