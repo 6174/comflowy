@@ -1,15 +1,15 @@
 import { sdTutorials } from "./tutorials-data";
 import styles from "./tutorials.style.module.scss";
-export function Docs() {
+export function Templates() {
   return (
-    <div className="docs">
-      <h2><span className="color-text">Smooth</span> Learning Curve</h2>
-      <Tutorials/>
+    <div className="templates">
+      <h2>Looking for inspiration? <br/> Start with these workflow.</h2>
+      <TemplatesList/>
     </div>
   )
 }
 
-function Tutorials() {
+function TemplatesList() {
   return (
     <div className={styles.tutorials}>
       <div className="tutorial-card-list">

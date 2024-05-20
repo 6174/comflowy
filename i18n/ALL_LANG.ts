@@ -6,8 +6,8 @@ const ALLLang: i18nAllLang = {
     'zh-CN': 'Comflowy',
   },
   [KEYS.heroDescription]: {
-    'en-US': 'Experience a simpler and more affordable way to generate top-tier AI creations with Comflowy\'s workflow-based technology.',
-    'zh-CN': '体验使用Comflowy的基于工作流的技术生成顶尖AI创作的更简单，更经济的方式。',
+    'en-US': 'Intervene with AI by way of workflow to get better results.',
+    'zh-CN': '通过工作流程对人工智能进行干预，以获得更好的效果。',
   }
 };
 

@@ -1,4 +1,4 @@
-import { Docs } from "./docs";
+import { Templates } from "./templates";
 import { HeroBlock } from "./hero";
 import { Sections } from "./sections";
 
@@ -7,7 +7,7 @@ export function HomePageDesktop() {
     <div className="homepage-desktop">
       <HeroBlock />
       <Sections />
-      <Docs />
+      <Templates />
     </div>
   )
 }

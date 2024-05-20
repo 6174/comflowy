@@ -13,9 +13,9 @@ export function HeroBlock() {
       <div className="flexbox">
         <div className="content">
           {lang === 'zh-CN' ? 
-            (<h1>让<span className="color-text">AI图像/视频</span>生成变得简单</h1>)
+            (<h1>让<span className="color-text">AI 图像/视频</span>生成变得强大</h1>)
             : (
-              <h1>State-of-the-art <span className="color-text">AI Image/Video </span> Generation Made Easy</h1>
+              <h1>Empowering <span className="color-text">AI Image</span> and  <span className="color-text">Video Generation</span> </h1>
             )
           }
 
@@ -24,11 +24,9 @@ export function HeroBlock() {
             <button onClick={ev => {
               ev.preventDefault();
               window.open("https://app.comflowy.com", "_blank");
-            }}>Start on Cloud</button>
-            <button onClick={ev => {
-              router.push("/preparation-for-study/install");
-            }}> Open Source </button>
+            }}>Sign up for free</button>
           </div>
+          <p>or use open-source version →</p>
         </div>
         <div className="hero-image">
           <GradientBg/>
