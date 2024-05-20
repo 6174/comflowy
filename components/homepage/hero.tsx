@@ -26,7 +26,9 @@ export function HeroBlock() {
               window.open("https://app.comflowy.com", "_blank");
             }}>Sign up for free</button>
           </div>
-          <p>or use open-source version →</p>
+          <a href="https://github.com/6174/comflowyspace/releases" target="_blank">
+            <p>or use open-source version →</p>
+          </a>
         </div>
         <div className="hero-image">
           <GradientBg/>
