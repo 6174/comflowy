@@ -1,4 +1,4 @@
-import HeroImage from "./hero.png";
+import HeroImage from "./editor.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { t, useLang } from "@/i18n";
