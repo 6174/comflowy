@@ -35,6 +35,7 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ image, title, url }) => {
     <div
       className="template-card"
       onClick={() => {
+        window.open(url, '_blank');
         console.log("open", url)
       }}
     >

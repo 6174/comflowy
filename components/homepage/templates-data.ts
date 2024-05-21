@@ -21,75 +21,76 @@ export type Template = {
   url: string;
 };
 
+const url = "https://app.comflowy.com/templates";
 export const TemplatesInfo: Template[] = [
   {
     image: instantIDBasicThumbnail.src,
     title: "InstantID Basic",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: instantIDIPAdapterThumbnail.src,
     title: "InstantID IP Adapter",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: instantIDPosedThumbnail.src,
     title: "InstantID Posed",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: oldPhotoThumbnail.src,
     title: "Old Photo Restoration",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: instantIDStickerThumbnail.src,
     title: "Portrait to Sticker",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: memojiThumbnail.src,
     title: "Image to Memoji",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: replaceBackgroundwithRMBGThumbnail.src,
     title: "Replacement Product Background with RMBG",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: replaceBackgroundThumbnail.src,
     title: "Replacement Product Background",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: rMBGRemoveBackgroundThumbnail.src,
     title: "Remove Background(RMBG)",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: layerDiffusionRemoveBackgroundThumbnail.src,
     title: "Remove Background(Layer Diffusion)",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: combineBackgroundWithRMBGTumbnail.src,
     title: "Combine Product Background with RMBG",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: combineBackgroundTumbnail.src,
     title: "Combine Product Background",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: bIRefNetRemoveBackgroundThumbnail.src,
     title: "Remove Background(BIRefNet)",
-    url: "https://www.comflowy.com/",
+    url,
   },
   {
     image: instantIDGhibliThumbnail.src,
     title: "Portrait to Ghibli",
-    url: "https://www.comflowy.com/",
+    url,
   },
 ];
