@@ -71,6 +71,11 @@
 
     .hero-block {
       margin: 10vh 0 10vh;
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
       >.flexbox>.content {
         width: 35%;
         display: flex;
@@ -236,6 +241,7 @@
         padding: 10px;
         transition: var(--transition);
         height: 330px;
+        cursor: pointer;
         &:hover {
           transform: scale(1.05);
         }
