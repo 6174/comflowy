@@ -4,6 +4,7 @@
   height: 100%;
   padding-left: 10px;
   margin-left: -10px;
+  overflow: hidden;
   :global {
     .tutorial-card-list {
       display: grid;
