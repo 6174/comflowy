@@ -4,7 +4,6 @@ import LoadAnyModelImg from "./sections/load-any-model.png";
 import VideoGernerationImg from "./sections/video-gerneration.webp";
 import WorkflowManagementImg from "./sections/workflow-management.png";
 import SupportTemplatesImg from "./sections/support-templates.png";
-import AccompanyingTutorialImg from "./sections/accompanying-tutorial.png";
 import GithubPageImg from "./sections/github-page.png";
 import DownloadImg from "./sections/download.png";
 import ComfyanonymousImg from "./sections/comfyanonymous.png";
@@ -14,11 +13,8 @@ import CubiqImg from "./sections/cubiq.jpeg";
 import Fannovel16Img from "./sections/fannovel16.png";
 import ZhoImg from "./sections/zho.png";
 
-
 import Image from "next/image";
-import { h } from "nextra/dist/types-c8e621b7";
-import { transform } from "next/dist/build/swc";
-import { TutorialsInfo } from "./tutorials-data";
+import { TutorialList } from "./tutorials";
 
 export function Sections() {
   return (
@@ -140,7 +136,7 @@ function AccompanyingTutorial() {
         <h2>Accompanying Tutorial</h2>
         <p className="description">All templates come with accompanying text tutorials and video demonstrations.</p>
       </div>
-
+      <TutorialList/>
       {/* <Image src={AccompanyingTutorialImg.src} width={900} height={100} alt="powerful plugin sysetm" style={{margin: "10px 0px 10px 100px", transform:"scale(1.1)"}}/> */}
     </div>
   )
