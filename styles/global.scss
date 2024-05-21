@@ -61,6 +61,14 @@ html[data-page="/index"] {
     background-color: transparent !important;
     visibility: hidden;
   }
+
+  body.fixed-header .nextra-nav-container>div {
+    background-color: #1212153b !important;
+    border-bottom: none;
+    box-shadow: none;
+    visibility: visible;
+  }
+  
   article {
     div.nx-block {
       visibility: hidden;
