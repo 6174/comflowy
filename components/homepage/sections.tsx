@@ -18,6 +18,7 @@ import ZhoImg from "./sections/zho.png";
 import Image from "next/image";
 import { h } from "nextra/dist/types-c8e621b7";
 import { transform } from "next/dist/build/swc";
+import { TutorialsInfo } from "./tutorials-data";
 
 export function Sections() {
   return (
@@ -139,7 +140,8 @@ function AccompanyingTutorial() {
         <h2>Accompanying Tutorial</h2>
         <p className="description">All templates come with accompanying text tutorials and video demonstrations.</p>
       </div>
-      <Image src={AccompanyingTutorialImg.src} width={900} height={100} alt="powerful plugin sysetm" style={{margin: "10px 0px 10px 100px", transform:"scale(1.1)"}}/>
+
+      {/* <Image src={AccompanyingTutorialImg.src} width={900} height={100} alt="powerful plugin sysetm" style={{margin: "10px 0px 10px 100px", transform:"scale(1.1)"}}/> */}
     </div>
   )
 }

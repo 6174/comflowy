@@ -1,4 +1,4 @@
-import { Templates } from "./templates";
+import { Templates } from "./tutorials";
 import { HeroBlock } from "./hero";
 import { Sections } from "./sections";
 
