@@ -100,3 +100,8 @@ nav a[href="/docs"] span {
     background-color: #ececec;
   }
 }
+
+.pointer-none {
+  pointer-events: none;
+  user-select: none;
+}

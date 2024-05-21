@@ -75,7 +75,7 @@ function LoadAnyModel() {
     <div className="section-block rich-templates">
       <h2>Load Any AI Model</h2>
       <p className="description">You can use all the current open-source models available on the market with our product, such as SD 1.5, SDXL, and even Playground.</p>
-      <Image src={LoadAnyModelImg.src} width={800} height={1024} alt="powerful plugin sysetm" style={{margin: "40px 0px 0px 0px",transform:"scale(1.05)"}}/>
+      <Image className="pointer-none" src={LoadAnyModelImg.src} width={800} height={1024} alt="powerful plugin sysetm" style={{margin: "40px 0px 0px 0px",transform:"scale(1.05)"}}/>
     </div>
   )
 }
@@ -87,7 +87,7 @@ function VideoGerneration() {
         <h2>Video Generation</h2>
         <p className="description" style={{padding:"0px 10px 0px 0px"}}>Besides creating images, you can also generate videos.</p>
       </div>
-      <Image src={VideoGernerationImg.src} width={400} height={1024} alt="powerful plugin sysetm" style={{borderRadius: "10px"}}/>
+      <Image className="pointer-none" src={VideoGernerationImg.src} width={400} height={1024} alt="powerful plugin sysetm" style={{borderRadius: "10px"}}/>
     </div>
   )
 }
@@ -113,7 +113,7 @@ function WorkflowManagement() {
     <div className="section-block workflow-management">
       <h2>Workflow Management</h2>
       <p className="description">Manage your Workflow more conveniently, and every change you make will be automatically saved, so you no longer need to manually export and save your workflow.</p>
-      <Image src={WorkflowManagementImg.src} width={500} height={1024} alt="workflow management" style={{margin: "100px 0px 80px 40px",transform:"scale(1.8)"}}/>
+      <Image className="pointer-none" src={WorkflowManagementImg.src} width={500} height={1024} alt="workflow management" style={{margin: "100px 0px 80px 40px",transform:"scale(1.8)"}}/>
     </div>
   )
 }
@@ -124,7 +124,7 @@ function SupportsTemplates() {
       <GradientBg />
       <h2>Supports Templates</h2>
       <p className="description">Setting up a workflow is tedious? The product supports one-click use of templates, eliminating the hassle of building workflows.</p>
-      <Image src={SupportTemplatesImg.src} width={500} height={1024} alt="workflow management" style={{margin: "20px 0px 20px 40px",transform:"scale(1.2)"}}/>
+      <Image className="pointer-none" src={SupportTemplatesImg.src} width={500} height={1024} alt="workflow management" style={{margin: "20px 0px 20px 40px",transform:"scale(1.2)"}}/>
     </div>
   )
 }
