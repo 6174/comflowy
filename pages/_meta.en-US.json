@@ -27,6 +27,11 @@
     "type": "page",
     "display": "hidden"
   },
+  "pricing": {
+    "title": "Pricing",
+    "type": "page",
+    "href": "./pricing"
+  },
   "docs-link": {
     "title": "Docs",
     "type": "page",

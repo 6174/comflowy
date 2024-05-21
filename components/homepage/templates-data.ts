@@ -43,14 +43,20 @@ export const TemplatesInfo: Template[] = [
     title: "Old Photo Restoration",
     url,
   },
+  
+  {
+    image: memojiThumbnail.src,
+    title: "Image to Memoji",
+    url,
+  },
   {
     image: instantIDStickerThumbnail.src,
     title: "Portrait to Sticker",
     url,
   },
-  {
-    image: memojiThumbnail.src,
-    title: "Image to Memoji",
+    {
+    image: instantIDGhibliThumbnail.src,
+    title: "Portrait to Ghibli",
     url,
   },
   {
@@ -61,16 +67,6 @@ export const TemplatesInfo: Template[] = [
   {
     image: replaceBackgroundThumbnail.src,
     title: "Replacement Product Background",
-    url,
-  },
-  {
-    image: rMBGRemoveBackgroundThumbnail.src,
-    title: "Remove Background(RMBG)",
-    url,
-  },
-  {
-    image: layerDiffusionRemoveBackgroundThumbnail.src,
-    title: "Remove Background(Layer Diffusion)",
     url,
   },
   {
@@ -89,8 +85,13 @@ export const TemplatesInfo: Template[] = [
     url,
   },
   {
-    image: instantIDGhibliThumbnail.src,
-    title: "Portrait to Ghibli",
+    image: rMBGRemoveBackgroundThumbnail.src,
+    title: "Remove Background(RMBG)",
+    url,
+  },
+  {
+    image: layerDiffusionRemoveBackgroundThumbnail.src,
+    title: "Remove Background(Layer Diffusion)",
     url,
   },
 ];

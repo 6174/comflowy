@@ -26,6 +26,11 @@
     "type": "page",
     "display": "hidden"
   },
+  "pricing": {
+    "title": "价格",
+    "type": "page",
+    "href": "./pricing"
+  },
   "docs-link": {
     "title": "文档",
     "type": "page",
