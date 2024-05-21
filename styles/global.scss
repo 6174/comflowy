@@ -27,7 +27,6 @@ html, body {
   --sb-thumb-color: #34374b;
   --sb-size: 8px;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 .site-heading-title {
@@ -53,6 +52,7 @@ html, body {
 html[data-page="/index"] {
   body {
     background-color: #121215;
+    overflow-x: hidden;
   }
   footer {
     background-color: #121215 !important;
