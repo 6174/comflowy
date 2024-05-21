@@ -95,7 +95,7 @@ function VideoGerneration() {
 function FlexibleWorkflowMode() {
     const backgroundImageStyle = {
       backgroundImage: `url(${FlexibleWorkflowModeImg.src})`,
-      backgroundSize: '100% 100%',
+      backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
       height: '700px',
@@ -143,28 +143,29 @@ function AccompanyingTutorial() {
 }
 
 function SpecialThanks() {
+  const size = 60;
   return (
-    <div className="section-block supports-templates">
+    <div className="section-block special-thanks">
       <h2>Special Thanks</h2>
       <p className="description">The reason Comflowy boasts such powerful capabilities is largely thanks to the robust open-source community, with a special shoutout to ComfyUI. That's why we've also offered an open-source version, which has already seen nearly 20 iterations.</p>
       <div style={{display: "flex", alignItems:"center", margin:"40px 0px"}}>
          <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank">
-          <Image src={ComfyanonymousImg.src} width={120} height={100} alt="download" style={{borderRadius: "200px", transform:"scale(0.7)"}}/>
+          <Image src={ComfyanonymousImg.src} width={size} height={size} alt="download"/>
          </a>
          <a href="https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation" target="_blank">
-          <Image src={DorotaLunaImg.src} width={120} height={100} alt="download" style={{borderRadius: "200px", transform:"scale(0.7)"}}/>
+          <Image src={DorotaLunaImg.src} width={size} height={size} alt="download"/>
          </a>
          <a href="https://github.com/ltdrdata/ComfyUI-Manager" target="_blank">
-          <Image src={LtdrdataImg.src} width={120} height={100} alt="download" style={{borderRadius: "200px", transform:"scale(0.7)"}}/>
+          <Image src={LtdrdataImg.src} width={size} height={size} alt="download"/>
          </a>
          <a href="https://github.com/cubiq" target="_blank">
-          <Image src={CubiqImg.src} width={120} height={100} alt="download" style={{borderRadius: "200px", transform:"scale(0.7)"}}/>
+          <Image src={CubiqImg.src} width={size} height={size} alt="download"/>
          </a>
          <a href="https://github.com/Fannovel16/comfyui_controlnet_aux" target="_blank">
-          <Image src={Fannovel16Img.src} width={120} height={100} alt="download" style={{borderRadius: "200px", transform:"scale(0.7)"}}/>
+          <Image src={Fannovel16Img.src} width={size} height={size} alt="download"/>
          </a>
          <a href="https://github.com/ZHO-ZHO-ZHO" target="_blank">
-          <Image src={ZhoImg.src} width={120} height={100} alt="download" style={{borderRadius: "200px", transform:"scale(0.7)"}}/>
+          <Image src={ZhoImg.src} width={size} height={size} alt="download"/>
          </a>
       </div>
     </div>
@@ -173,7 +174,7 @@ function SpecialThanks() {
 
 function OpenSourceVersion() {
   return (
-    <div className="section-block supports-templates">
+    <div className="section-block opensource-version">
       <h2>Open-source Version</h2>
       <div style={{display: "flex", alignItems:"center"}}>
         <a href="https://github.com/6174/comflowyspace/releases" target="_blank">

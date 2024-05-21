@@ -193,8 +193,34 @@
         text-align: center;
         margin-top: 0;
       }
-    }  
+    } 
     
+    .special-thanks {
+      a {
+        width: 60px;
+        display: inline-block;
+        border-radius: 100px;
+        margin-right: -10px;
+        overflow: hidden;
+
+        &:hover {
+          transform: scale(1.1);
+          img {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+
+    .opensource-version, .special-thanks {
+      img {
+        transition: var(--transition);
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
     .homepage-mobile {
       .hero-block > .flexbox > .content {
         width: 100%;

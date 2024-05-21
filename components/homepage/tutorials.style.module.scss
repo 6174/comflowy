@@ -12,12 +12,26 @@
       padding: 10px 10px 10px 0;
     }
 
+    .tutorial-card-row {
+      width: 800px;
+      height: 120px;
+      display: flex;
+      .tutorial-card {
+        margin: 10px;
+      }
+      &.row2 {
+        position: relative;
+        left: 60px;
+      }
+    }
+
     .tutorial-banner-list {
       display: flex;
       grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
       grid-gap: 20px;
       padding: 10px 10px 10px 0;
     }
+
 
     .h3 {
       margin-top: 12px;
