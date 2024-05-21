@@ -20,6 +20,7 @@
       transition: var(--transition);
       &:hover {
         background-color: #ececec;
+        transform: scale(1.05);
       }
     }
 
