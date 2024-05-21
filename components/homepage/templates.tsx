@@ -1,5 +1,8 @@
-import { sdTutorials } from "./tutorials-data";
+import { I } from "nextra/dist/types-c8e621b7";
+import { TemplatesInfo } from "./templates-data";
 import styles from "./tutorials.style.module.scss";
+import Image from "next/image";
+
 export function Templates() {
   return (
     <div className="templates">
@@ -12,35 +15,40 @@ export function Templates() {
 function TemplatesList() {
   return (
     <div className={styles.tutorials}>
-      <div className="tutorial-card-list">
-        {sdTutorials.map((card, index) => (
-          <TutorialCard key={index} {...card} />
+      <div className="template-card-list">
+        {TemplatesInfo.map((card, index) => (
+          <TemplateCard key={index} {...card} />
         ))}
       </div>
     </div>
   )
 }
 
-interface TutorialCardProps {
+interface TemplateCardProps {
   image: string;
   title: string;
   url: string;
-  tag: string;
 }
 
-const TutorialCard: React.FC<TutorialCardProps> = ({ image, title, url }) => {
+const TemplateCard: React.FC<TemplateCardProps> = ({ image, title, url }) => {
   return (
     <div
-      className="tutorial-card"
+      className="template-card"
       onClick={() => {
         console.log("open", url)
       }}
-      style={{
-        backgroundImage: `url(${image})`,
-      }}
     >
-      <div className="name" style={{ position: 'absolute' }}>
-        {title}
+      <div className="image">
+        <Image src={image} alt={title} width={300} height={300} />
+      </div>
+
+      <div className="content">
+        <div className="title">
+          {title}
+        </div>
+        <div className="action">
+          <a href="https://app.comflowy.com/templates" target="_blank">Try Now →</a>
+        </div>
       </div>
     </div>
   );

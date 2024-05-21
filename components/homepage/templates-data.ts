@@ -1,18 +1,18 @@
-import instantIDBasicThumbnail from "./templatesThumbnails/InstantID_basic.png";
-import instantIDIPAdapterThumbnail from "./templatesThumbnails/InstantID_ipadapter.png";
-import instantIDPosedThumbnail from "../templatesThumbnails/InstantID_posed.png";
-import layerDiffusionRemoveBackgroundThumbnail from "./templatesThumbnails/layer_diffusion_remove_background.png";
-import instantIDStickerThumbnail from "./templatesThumbnails/InstantID-Sticker.png";
-import oldPhotoThumbnail from "./templatesThumbnails/OldPhoto.png";
-import memojiThumbnail from "./templatesThumbnails/Memoji.png";
-import replaceBackgroundwithRMBGThumbnail from "./templatesThumbnails/replace-background-withRMBG.png";
-import replaceBackgroundThumbnail from "./templatesThumbnails/replace-background.png";
-import combineBackgroundWithRMBGTumbnail from "./templatesThumbnails/combine-background-withRMBG.png";
-import combineBackgroundTumbnail from "./templatesThumbnails/combine-background.png";
-import rMBGRemoveBackgroundThumbnail from "./templatesThumbnails/RMBG-remove-background.png";
-import bIRefNetRemoveBackgroundThumbnail from "./templatesThumbnails/BIRefNet-remove-background.png";
-import instantIDGhibliThumbnail from "./templatesThumbnails/InstantID-Ghibli.png";
-import replaceObjectsAndMaterialsThumbnail from "./templatesThumbnails/replace-objects-and-materials.png";
+import instantIDBasicThumbnail from "./templates-thumbnails/instant_basic.png";
+import instantIDIPAdapterThumbnail from "./templates-thumbnails/instant_ipadapter.png";
+import instantIDPosedThumbnail from "./templates-thumbnails/instant_posed.png";
+import instantIDStickerThumbnail from "./templates-thumbnails/instant_sticker.png";
+
+import layerDiffusionRemoveBackgroundThumbnail from "./templates-thumbnails/layer_diffusion_remove_background.png";
+import oldPhotoThumbnail from "./templates-thumbnails/OldPhoto.png";
+import memojiThumbnail from "./templates-thumbnails/Memoji.png";
+import replaceBackgroundwithRMBGThumbnail from "./templates-thumbnails/replace-background-withRMBG.png";
+import replaceBackgroundThumbnail from "./templates-thumbnails/replace-background.png";
+import combineBackgroundWithRMBGTumbnail from "./templates-thumbnails/combine-background-withRMBG.png";
+import combineBackgroundTumbnail from "./templates-thumbnails/combine-background.png";
+import rMBGRemoveBackgroundThumbnail from "./templates-thumbnails/RMBG-remove-background.png";
+import bIRefNetRemoveBackgroundThumbnail from "./templates-thumbnails/BIRefNet-remove-background.png";
+import instantIDGhibliThumbnail from "./templates-thumbnails/instant_ghibli.png";
 
 export type Template = {
   image: string;
