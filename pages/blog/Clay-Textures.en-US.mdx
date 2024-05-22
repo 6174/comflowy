@@ -1,0 +1,173 @@
+---
+date: May 22th, 2024
+image: /blog/Clay-Textures/001.png
+title: How to Generate Clay Textures with ComfyUI?
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# How to Generate Clay Textures with ComfyUI?
+
+This workflow is like a magic wand. With a simple wave, it transforms the characters on the screen from their two-dimensional constraints into tangible clay artworks. Those flat images instantly become three-dimensional and textured. Whether you want to prank a friend or add a unique artistic touch to your photos, this tutorial will guide you on how to get started with ease.
+
+## 一、Download and Install
+
+Workflow Reference Link: [**IMAGE TO CLAY STYLE**](https://openart.ai/workflows/xiongmu/image-to-clay-style/KRjSiOFyPSHO5QCQ4raV)
+
+### Step One: Install the Plugin
+
+**Method One:**
+
+Download and unzip [**ComfyUI-WD14-Tagger**](https://github.com/pythongosssss/ComfyUI-WD14-Tagger)、[**ComfyUI-Advanced-ControlNet**](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet) 、[**ComfyUI-Custom-Scripts**](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)、[**ComfyUI_Comfyroll_CustomNodes**](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)、[**comfyui_controlnet_aux**](https://github.com/Fannovel16/comfyui_controlnet_aux)、[**comfy-image-saver**](https://github.com/giriss/comfy-image-saver)  into the ComfyUI\custom_nodes directory, or use ComfyUI's Manager to install this plugin. If you do not know how to install the plugin, you can refer to this tutorial : [**How to install ComfyUI extension?**](https://www.comflowy.com/advanced/how-to-install-comfyui-extension)
+
+( Note: The model required by [**ComfyUI-WD14-Tagger**](https://github.com/pythongosssss/ComfyUI-WD14-Tagger) needs to be placed in the ComfyUI\models\onnx folder. )
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/002.png">
+    <img src="/blog/Clay-Textures/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+**Method Two:**
+
+If you are using Comflowy, you can search for and download ComfyUI-Advanced-ControlNet on the Extensions page on the left, or drag it into the workflow for one-click installation.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/003.png">
+    <img src="/blog/Clay-Textures/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### Step Two: Download Models
+
+**Checkpoints Models：**
+
+- [**SDXL\juggernautXL_v9Rdphoto2Lightning.safetensors**](https://huggingface.co/SanchezVFX/sdxl/blob/074e6df87aba1fc40a430824cb5e23530abd51ae/juggernautXL_v9Rdphoto2Lightning.safetensors) ：This model achieves highly realistic outputs in terms of skin details, lighting, and contrast, making it particularly suitable for generating photo-grade images. It is ideal for architectural photography, wildlife photography, automotive photography, and food photography, where high-quality, detail-rich scenes are essential.
+
+**Two LoRA models for generating clay textures:**
+
+- [**SDXL\CLAYMATE_V2.03_.safetensors**](https://huggingface.co/nerualdreming/Best_LoRas_Mar24/blob/main/CLAYMATE_V2.03_.safetensors)
+
+- [**SDXL\DD-made-of-clay-XL-v2.safetensors**](https://huggingface.co/DoctorDiffusion/doctor-diffusion-s-claymation-style-lora/blob/main/DD-made-of-clay-XL-v2.safetensors)
+
+## 二、Display of Effects
+
+### 1. Portrait Conversion
+
+I tried using this workflow to achieve a perfect transformation from ordinary photos to clay textures. The details of the person's posture, expressions, and clothing were fully reproduced while incorporating the unique style of clay art. Whether it's the facial expressions or the hand gestures, everything showcases the distinctive charm of clay textures.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/001.png">
+    <img src="/blog/Clay-Textures/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+During the transformation process, the details of the person were meticulously refined. The facial contours became softer, with each line carefully redrawn to present a clay-like texture. The skin appeared more delicate, as if every inch had been handcrafted. This detailed treatment not only preserved the realism of the person but also imbued them with a unique artistic style, making the final result both lifelike and whimsical.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/004.png">
+    <img src="/blog/Clay-Textures/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+The harmonization of colors is an essential part of the transformation process. By adjusting and optimizing the tones of the original photos, the colors of the clay texture appear more vivid and saturated. Each color block is meticulously handled to ensure smooth and natural transitions. This careful treatment not only retains the original color characteristics of the person but also bestows them with a fresh visual appeal, making the images truly captivating.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/005.png">
+    <img src="/blog/Clay-Textures/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+The handling of lighting effects is crucial for achieving the clay texture transformation. By cleverly arranging light sources and shadows, the three-dimensionality of the characters is further enhanced. The play of light and shadow on the clay surface creates a warm and soft visual experience. This not only elevates the image's depth but also makes the clay figures appear more lively and three-dimensional, as if they are standing in the sunlight, ready to interact with you.
+
+
+### 2. Anime Characters
+
+In the process of converting anime characters to clay textures, the first step is to soften the lines. Anime lines are typically sharp and distinct, while clay textures require softer and more natural edges. Through this softening process, the contours of the anime characters become more rounded and smooth, showcasing a warm, handcrafted feel.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/006.png">
+    <img src="/blog/Clay-Textures/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Anime characters typically have a two-dimensional texture, while clay textures require a three-dimensional effect. By adding clay textures and detailed surface treatments, the skin, clothing, and other details of the characters become more realistic and three-dimensional. Each detail is meticulously crafted, as if it were hand-molded from clay, providing a tangible, touchable quality.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/007.png">
+    <img src="/blog/Clay-Textures/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Color plays a crucial role in the conversion to clay textures. Anime colors are usually flat, while clay textures require richer tones and gradients. By adjusting the saturation and brightness of the colors, the characters appear more vibrant and natural. The color transitions are smoother, avoiding the distinct color blocks common in anime, and instead presenting a hand-painted effect.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/008.png">
+    <img src="/blog/Clay-Textures/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 3. Reinterpreting "Loving Vincent"
+
+When converting the characters from the film "Loving Vincent" to clay textures, the first step is to meticulously recreate the characters' details. Every facial feature, clothing detail, and expression of the characters is carefully reproduced, giving them a unique clay texture. This approach not only preserves the original characteristics of the characters but also makes each detail more vivid and three-dimensional, as if the characters were handcrafted clay artworks.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/009.png">
+    <img src="/blog/Clay-Textures/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+The characters in the film often exhibit rich and varied colors, and when converting them to clay textures, the reshaping of color is crucial. By adjusting the saturation and brightness of the colors, the clay characters appear more vibrant and natural. The color transitions are smoother, avoiding the harsh demarcation of color blocks, ensuring that the characters retain the captivating color appeal of Van Gogh's paintings even in their new texture.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/010.png">
+    <img src="/blog/Clay-Textures/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+The characters in the film are rich in expressions and full of emotion. When converted to clay textures, these expressions become more three-dimensional and realistic. Through detailed depiction of expressions, every smile and every glance of the clay-textured characters appears lifelike. The unique soft texture of clay enhances the conveyance of emotions, allowing the audience to deeply feel the characters' inner worlds.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/011.png">
+    <img src="/blog/Clay-Textures/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Positive Prompts: claymotion, made-of-clay, stopmotion, polymer clay, ultra light clay, High quality, details, cartoonish, 8k
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/012.png">
+    <img src="/blog/Clay-Textures/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Negative Prompts: nsfw, paintings, cartoon, anime, sketches, worst quality, low quality, normal quality, lowres, watermark, monochrome, grayscale, ugly, blurry, Tan skin, dark skin, black skin, skin spots, skin blemishes, age spot, glans, disabled, distorted, bad anatomy, morbid, malformation, amputation, bad proportions, twins, missing body, fused body, extra head, poorly drawn face, bad eyes, deformed eye, unclear eyes, cross-eyed, long neck, malformed limbs, extra limbs, extra arms, missing arms, bad tongue, strange fingers, mutated hands, missing hands, poorly drawn hands, extra hands, fused hands, connected hand, bad hands, wrong fingers, missing fingers, extra fingers, 4 fingers, 3 fingers, deformed hands, extra legs, bad legs, many legs, more than two legs, bad feet, wrong feet, extra feets,
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/013.png">
+    <img src="/blog/Clay-Textures/013.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+

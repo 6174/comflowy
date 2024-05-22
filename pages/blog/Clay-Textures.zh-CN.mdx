@@ -1,0 +1,170 @@
+---
+date: May 22th, 2024
+image: /blog/Clay-Textures/001.png
+title: 如何用 ComfyUI 生成粘土质感？
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何用 ComfyUI 生成粘土质感？
+
+这个工作流就像是一个魔法棒，轻轻一挥，就能让屏幕上的人物跳出二维的束缚，变成可以触摸的粘土艺术品，让那些平面的图像瞬间变得立体、有质感起来。无论你是想恶搞一下朋友，还是想为自己的照片增添一份独特的艺术感，这篇教程将会告诉你如何轻松上手。
+
+## 一、下载与安装
+
+Workflow 引用链接：[**IMAGE TO CLAY STYLE**](https://openart.ai/workflows/xiongmu/image-to-clay-style/KRjSiOFyPSHO5QCQ4raV)
+
+### 第一步：安装插件 
+
+**方法一：**
+
+下载并解压 [**ComfyUI-WD14-Tagger**](https://github.com/pythongosssss/ComfyUI-WD14-Tagger)、[**ComfyUI-Advanced-ControlNet**](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet) 、[**ComfyUI-Custom-Scripts**](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)、[**ComfyUI_Comfyroll_CustomNodes**](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)、[**comfyui_controlnet_aux**](https://github.com/Fannovel16/comfyui_controlnet_aux)、[**comfy-image-saver**](https://github.com/giriss/comfy-image-saver) 到 ComfyUI\custom_nodes 中，也可以使用 ComfyUI 的 Manager 来安装此插件。如果不知道如何安装插件，可以查看这篇教程：[**如何安装 ComfyUI 插件？**](https://www.comflowy.com/zh-CN/advanced/how-to-install-comfyui-extension)
+
+（注：[**ComfyUI-WD14-Tagger**](https://github.com/pythongosssss/ComfyUI-WD14-Tagger) 中所需要的 model 需要放在ComfyUI\models\onnx文件夹下）
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/002.png">
+    <img src="/blog/Clay-Textures/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+**方法二：**
+
+如果你使用的是 Comflowy ，可以在左侧 Extensions 页面中搜索下载，或者拖入工作流一键安装。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/003.png">
+    <img src="/blog/Clay-Textures/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 第二步：下载模型 
+
+**Checkpoints 模型：**
+
+- [**SDXL\juggernautXL_v9Rdphoto2Lightning.safetensors**](https://huggingface.co/SanchezVFX/sdxl/blob/074e6df87aba1fc40a430824cb5e23530abd51ae/juggernautXL_v9Rdphoto2Lightning.safetensors) ：这个模型在皮肤细节、光照和对比度方面实现了高真实感输出，特别适合生成照片级别的图像。适用于建筑摄影、野生动物摄影、汽车摄影和食物摄影等需要生成高质量、细节丰富的场景。
+
+**两个用于生成粘土质感的 Lora 模型：**
+
+- [**SDXL\CLAYMATE_V2.03_.safetensors**](https://huggingface.co/nerualdreming/Best_LoRas_Mar24/blob/main/CLAYMATE_V2.03_.safetensors)
+
+- [**SDXL\DD-made-of-clay-XL-v2.safetensors**](https://huggingface.co/DoctorDiffusion/doctor-diffusion-s-claymation-style-lora/blob/main/DD-made-of-clay-XL-v2.safetensors)
+
+## 二、效果展示 
+
+### 1. 人像转换
+
+我尝试用这个工作流进行了从普通照片到粘土质感完美蜕变。人物的姿态、表情以及服装的细节都得到了全面的重现，同时又融入了粘土艺术的独特风格。无论是面部的表情，还是手部的姿势，都展现出了粘土质感的独特魅力。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/001.png">
+    <img src="/blog/Clay-Textures/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+在转换过程中，人物的细节得到了精细处理。面部的轮廓变得更加柔和，每一条线条都被细致地重绘，呈现出粘土般的质感。皮肤的纹理显得更加细腻，仿佛每一寸皮肤都被手工捏制而成。这种细节处理不仅保留了人物的真实感，还赋予了他们独特的艺术风格，使得最终的效果既逼真又充满童趣。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/004.png">
+    <img src="/blog/Clay-Textures/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+色彩的调和是转换过程中不可忽视的部分。通过对原始照片色调的调整和优化，粘土质感的颜色显得更加鲜艳和饱满。每一个色块都经过细致的处理，确保颜色的过渡自然流畅。这样处理后的图像不仅保留了原始人物的色彩特征，还赋予了他们一种全新的视觉魅力，让人耳目一新。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/005.png">
+    <img src="/blog/Clay-Textures/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+光影效果的处理是粘土质感转换的关键。通过对光源和阴影的巧妙安排，人物的立体感得到了进一步加强。光影在粘土表面流动，带来一种温暖而柔和的视觉体验。这不仅提升了图像的层次感，还使得粘土人物显得更加生动和立体，仿佛他们正站在阳光下等待着与你互动。
+
+
+### 2. 动漫人物
+
+在将动漫人物转换为粘土质感的过程中，首先需要对线条进行柔化处理。动漫中的线条通常比较锐利和分明，而粘土质感需要更柔和和自然的边缘。通过这种柔化处理，动漫人物的轮廓变得更加圆润和平滑，展现出一种手工捏制的温暖感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/006.png">
+    <img src="/blog/Clay-Textures/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+动漫人物的质感通常是二维的，而粘土质感则需要增加三维立体效果。通过添加粘土的纹理和细腻的表面处理，人物的皮肤、服饰以及其他细节部分显得更加真实和立体。每一处细节都经过精心处理，仿佛是由粘土手工捏制而成，给人一种触手可及的质感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/007.png">
+    <img src="/blog/Clay-Textures/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+色彩在粘土质感的转换中起着至关重要的作用。动漫中的色彩通常比较平面化，而粘土质感需要更丰富的色调和渐变。通过调整色彩的饱和度和亮度，使得人物的颜色更加鲜活和自然。色彩的过渡也更加柔和，避免了动漫中常见的色块分明的现象，从而呈现出一种手工绘制的效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/008.png">
+    <img src="/blog/Clay-Textures/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 3. 重述《至爱梵高·星空之谜》
+
+在将电影《至爱梵高·星空之谜》中的角色转换为粘土质感时，首先需要对角色的细节进行精细还原。每一个角色的面部特征、服饰细节以及表情都被仔细重现，赋予了他们独特的粘土质感。这种处理不仅保留了原角色的特征，还使得每个细节都显得更加生动和立体，仿佛角色是用手工捏制而成的艺术品。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/009.png">
+    <img src="/blog/Clay-Textures/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+电影中的角色色彩往往丰富而多变，在转换为粘土质感时，色彩的重塑至关重要。通过调整颜色的饱和度和亮度，使得粘土角色的色彩更加鲜活和自然。色彩的过渡也更加柔和，避免了颜色块的生硬分界，使得角色在新的质感下依然保有梵高画作中的色彩魅力。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/010.png">
+    <img src="/blog/Clay-Textures/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+电影中的角色表情丰富且充满情感，转换为粘土质感后，这些表情变得更加立体和逼真。通过细致的表情刻画，粘土质感下的角色每一个微笑、每一个眼神都显得栩栩如生。情感的表达通过粘土特有的柔和质感得到了更强的传达，使得观众能够更深入地感受到角色的内心世界。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/011.png">
+    <img src="/blog/Clay-Textures/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+正向提示词：claymotion, made-of-clay, stopmotion, polymer clay, ultra light clay, High quality, details, cartoonish, 8k
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/012.png">
+    <img src="/blog/Clay-Textures/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+负向提示词：nsfw, paintings, cartoon, anime, sketches, worst quality, low quality, normal quality, lowres, watermark, monochrome, grayscale, ugly, blurry, Tan skin, dark skin, black skin, skin spots, skin blemishes, age spot, glans, disabled, distorted, bad anatomy, morbid, malformation, amputation, bad proportions, twins, missing body, fused body, extra head, poorly drawn face, bad eyes, deformed eye, unclear eyes, cross-eyed, long neck, malformed limbs, extra limbs, extra arms, missing arms, bad tongue, strange fingers, mutated hands, missing hands, poorly drawn hands, extra hands, fused hands, connected hand, bad hands, wrong fingers, missing fingers, extra fingers, 4 fingers, 3 fingers, deformed hands, extra legs, bad legs, many legs, more than two legs, bad feet, wrong feet, extra feets,
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Clay-Textures/013.png">
+    <img src="/blog/Clay-Textures/013.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
