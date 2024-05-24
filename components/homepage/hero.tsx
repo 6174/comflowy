@@ -5,6 +5,8 @@ import { t, useLang } from "@/i18n";
 import { KEYS } from "@/i18n/i18n.types";
 import InputVideoPlayerProps from "../video-player";
 
+
+
 export function HeroBlock() {
   const router = useRouter();
   const lang = useLang();
@@ -33,7 +35,7 @@ export function HeroBlock() {
         </div>
         <div className="hero-image">
           <GradientBg/>
-          <InputVideoPlayerProps url="https://youtu.be/xwyomTJWfrM"/>
+          <InputVideoPlayerProps url="https://image.app-image.com/comflowy%2Fdocs%2F1716563097578.mov"/>
           {/* <Image src={HeroImage.src} alt="Hero Image" width={942} height={609} /> */}
         </div>
       </div>

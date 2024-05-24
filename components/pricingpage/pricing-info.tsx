@@ -14,6 +14,11 @@ const localPlansInfo = [{
   price: "10000"
 }];
 
+interface BillingPageProps {
+  plans: SelectStripeProductType[];
+  subscriptions: SelectStripeSubscriptionType[];
+}
+
 export const PricingPlanItem = (props: BillingPageProps)  => {
   const { plans, subscriptions } = props;
   const planMap: Record<string, SelectStripeProductType & any> = {};
