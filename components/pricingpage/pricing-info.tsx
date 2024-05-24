@@ -1,13 +1,67 @@
 import React from 'react';
+import styles from "./pricing.module.scss";
+import { t, useLang } from "@/i18n";
+import { KEYS } from "@/i18n/i18n.types";
 
-export const PricingPlanItem = () => {
+const localPlansInfo = [{
+  productName: "Hobbyist",
+  price: "1000"
+}, {
+  productName: "Pro",
+  price: "3000"
+}, {
+  productName: "Mega",
+  price: "10000"
+}];
+
+export const PricingPlanItem = (props: BillingPageProps)  => {
+  const { plans, subscriptions } = props;
+  const planMap: Record<string, SelectStripeProductType & any> = {};
+
+  if (Array.isArray(localPlansInfo)) {
+    localPlansInfo.forEach(plan => planMap[plan.productName] = plan);
+  }
+
+  if (Array.isArray(plans)) {
+    plans.forEach(plan => planMap[plan.name] = { 
+      ...planMap[plan.name], 
+      ...plan
+    });
+  }
+
+  let sortedPlans = [];
+  if (Array.isArray(plans)) {
+    sortedPlans = plans.sort((a, b) => {
+      const aprice = a.prices[0].unit_amount;
+      const bprice = b.prices[0].unit_amount;
+      return aprice - bprice
+    });
+  }
+
   return (
     <div className="billing-plan-item">
-      
+      <div className="plan-table">
+        <table border={0}>
+          <thead>
+            <tr className="noborder">
+              <th style={{width: 180}}></th>
+              <th>
+                <FreePlan/>
+              </th>
+              <th>
+                <HobbyistPlan/>
+              </th>
+              <th>
+                <ProPlan/>
+              </th>
+            </tr>
+          </thead>
+          <TableBodyDetails/>
+        </table>
+      </div>
     </div>
   )
 }
-
 
 function FreePlan() {
   return (
@@ -20,15 +74,36 @@ function FreePlan() {
           }}>$0</span>/{t(KEYS.month)} 
         </div>
       </div>
-      <div style={{ height: 60 }}><Button  
-          style={{
-            width: 140,
-            display: "inline-flex",
-            justifyContent: "center",
-            marginTop: 10
-          }}
-          onClick={() => window.open('https://github.com/6174/comflowyspace/releases', '_blank')}
-      >{t(KEYS.download)}</Button></div>
+    </div>
+  )
+}
+
+function HobbyistPlan() {
+  return (
+    <div className="billing-plan-item">
+      <h2>Hobbyist</h2>
+      <div className="content">
+        <div className="price">
+          <span style={{
+            fontSize: 30
+          }}>$10</span>/{t(KEYS.month)} 
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ProPlan() {
+  return (
+    <div className="billing-plan-item">
+      <h2>Pro</h2>
+      <div className="content">
+        <div className="price">
+          <span style={{
+            fontSize: 30
+          }}>$20</span>/{t(KEYS.month)} 
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,16 @@
 export enum KEYS {
   appName = "appName",
   heroDescription = "heroDescription",
+  month = "month",
+  usage = "usage",
+  yourComputerGPU = "yourComputerGPU",
+  gpuCredit = "gpuCredit",
+  features = "features",
+  payOnlyForActiveGPUUsage = "payOnlyForActiveGPUUsage",
+  noSetupInstallation = "noSetupInstallation",
+  support = "support",
+  communitySupport = "communitySupport",
+  discordGroupsForPaidUsers = "discordGroupsForPaidUsers",
 }
 
 export type i18nKey = keyof typeof KEYS;

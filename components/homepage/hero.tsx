@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { t, useLang } from "@/i18n";
 import { KEYS } from "@/i18n/i18n.types";
+import InputVideoPlayerProps from "../video-player";
 
 export function HeroBlock() {
   const router = useRouter();
@@ -32,7 +33,8 @@ export function HeroBlock() {
         </div>
         <div className="hero-image">
           <GradientBg/>
-          <Image src={HeroImage.src} alt="Hero Image" width={942} height={609} />
+          <InputVideoPlayerProps url="https://youtu.be/xwyomTJWfrM"/>
+          {/* <Image src={HeroImage.src} alt="Hero Image" width={942} height={609} /> */}
         </div>
       </div>
     </div>

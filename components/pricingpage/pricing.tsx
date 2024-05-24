@@ -1,11 +1,11 @@
 import { PricingPlanItem } from "./pricing-info";
 import { PricingFaqs } from "./pricing-faq";
+import styles from "./pricing.module.scss";
 
 export function PricingPage() {
   return (
-    <div className="homepage-desktop">
+    <div className={styles.billingPage}>
       <PricingPlanItem />
-      <PricingFaqs />
     </div>
   )
 }
