@@ -5,7 +5,7 @@ import styles from "./pricing.module.scss";
 export function PricingPage() {
   return (
     <div className={styles.billingPage}>
-      <PricingPlanItem />
+      <PricingPlanItem plans={[]} subscriptions={[]} />
     </div>
   )
 }

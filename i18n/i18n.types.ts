@@ -22,6 +22,8 @@ export type LanguageType = "zh-CN" | "en-US";
 export type LanguageTranslation = {
   'en-US': string,
   'zh-CN'?: string,
+  'ja'?: string,
+  'ru'?: string
 }
 export type i18nAllLang = {
   [key in i18nKey]: LanguageTranslation

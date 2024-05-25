@@ -3,6 +3,9 @@ import styles from "./pricing.module.scss";
 import { t, useLang } from "@/i18n";
 import { KEYS } from "@/i18n/i18n.types";
 
+type SelectStripeProductType = any;
+type SelectStripeSubscriptionType = any;
+
 const localPlansInfo = [{
   productName: "Hobbyist",
   price: "1000"
