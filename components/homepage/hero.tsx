@@ -31,7 +31,7 @@ export function HeroBlock() {
         </div>
         <div className="hero-image">
           <GradientBg/>
-          <InputVideoPlayerProps url="https://image.app-image.com/comflowy%2Fdocs%2F1716563097578.mov"/>
+          <InputVideoPlayerProps url="https://image.app-image.com/comflowy%2Fdocs%2F1716638215566.mov"/>
           {/* <Image src={HeroImage.src} alt="Hero Image" width={942} height={609} /> */}
         </div>
       </div>
