@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import ALLLang from "./ALL_LANG";
 import { LanguageType, i18nKey } from "./i18n.types";
 import { useState, useEffect } from "react";
-
+import { isWindow } from "../utils/is-window";
 let currentLang = 'en-US';
 
 export function changeLang(lang: string) {
@@ -22,7 +22,6 @@ export function t(key: i18nKey): string {
   return key;
 }
 
-const isWindow = typeof window !== 'undefined';
 export function useLang() {
   const router = useRouter();
   const defaultLang = isWindow ? getLang() : getLangFromPathName(router.pathname);

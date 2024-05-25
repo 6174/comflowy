@@ -1,11 +1,7 @@
-import HeroImage from "./editor.png";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { t, useLang } from "@/i18n";
 import { KEYS } from "@/i18n/i18n.types";
 import InputVideoPlayerProps from "../video-player";
-
-
 
 export function HeroBlock() {
   const router = useRouter();
