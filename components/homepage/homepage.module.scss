@@ -76,6 +76,12 @@
           text-decoration: underline;
         }
       }
+      video {
+        border: solid 1px #4E506A;
+        border-radius: 8px;
+        width: initial !important;
+        height: initial !important;
+      }
       >.flexbox>.content {
         width: 35%;
         display: flex;
