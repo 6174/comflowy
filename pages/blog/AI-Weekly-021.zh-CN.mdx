@@ -1,0 +1,171 @@
+---
+date: May 25th, 2024
+image: /blog/AI-weekly-021/banner.png
+title: AI Weekly 021
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# AI Weekly 021
+
+## 🆕 更新了什么？
+
+博客更新：[如何用 ComfyUI 生成粘土质感？](https://www.comflowy.com/zh-CN/blog/Clay-Textures)
+
+下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
+
+## 🤩 每周 AI 精选  
+
+### 🪐值得尝试的 Workflow 
+
+[**her**](https://openart.ai/workflows/datou/her/A45EfKxrlB8MkFItvsym)
+
+这个工作流的灵感来源于电影海报《Her》，通过这个工作流，你可以轻松地将自己的想法和情感融入到电影海报中，创造出一个既具有个人特色又符合电影主题的独特作品。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/001.png">
+    <img src="/blog/AI-weekly-021/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**SKETCH TO REALFACE**](https://openart.ai/workflows/xiongmu/sketch-to-realface/TKilAKd2dMgTUseMTTsI)
+
+这个工作流只需要你上传一张简单的素描作品，无论是手绘的草图还是数字绘图，它便可以帮你生成一个真人质感的照片，且五官的精致度和与原图长相的还原度很高。此外，它还会对人物的肤色、光影效果进行精细调整，以增强照片的逼真度。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/002.png">
+    <img src="/blog/AI-weekly-021/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+你可以订阅我们的 [**newsletter**](https://comflowy.substack.com/) 以及公众号，或者加入 [**Discord**](https://discord.gg/cj623WvcVx)，以获取最新的教程。
+
+### 🏗️值得尝试的插件 
+
+[**ComfyUI-Anyline**](https://github.com/TheMistoAI/ComfyUI-Anyline)
+
+Anyline 是一个 ControlNet 预处理模型，可以从大多数图像中准确提取对象边缘、图像细节和文本内容。用户可以输入任何类型的图像，快速获得边缘清晰、细节保留充分、文本保真度高的线条图，然后作为稳定扩散条件生成的输入。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/003.png">
+    <img src="/blog/AI-weekly-021/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**ComfyUI-Frame-Interpolation**](https://github.com/Fannovel16/ComfyUI-Frame-Interpolation)
+
+这是一个视频帧插值工具集，用于在视频帧之间生成中间帧，从而提升视频的流畅度和质量。它提供了多种高效的帧插值算法实现，支持内存优化和调度乘数配置，以适应不同的视频处理需求。该工具集的优势在于其灵活性和易用性，允许用户通过自定义节点快速实现视频帧的插值效果，同时支持非CUDA设备，扩大了其适用性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/004.png">
+    <img src="/blog/AI-weekly-021/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 📄 值得关注的论文 & 技术
+
+[**Chameleon**](https://arxiv.org/abs/2405.09818)
+
+Chameleon 是由 Meta 的 FAIR 团队开发的基于早期融合令牌的混合模式模型。它能够理解和生成任意序列的图像和文本，包括视觉问答、图像字幕、文本生成、图像生成和长格式混合模态生成，并在处理过程中无缝地在不同的数据类型之间切换。例如它可以在生成一段文字后，生成一张相关的图片，或者在描述一张图片的同时生成相关的文字。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/005.png">
+    <img src="/blog/AI-weekly-021/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Slicedit**](https://matankleiner.github.io/slicedit/resources/paper.pdf)
+
+Slicedit 是一个文字视频编辑工具，允许用户通过简单的文字输入来精确编辑视频内容。它采用先进的 T2I 扩散模型，不仅保留了原始视频的结构和流畅运动，还能根据目标文本增强视频的连贯性。而 Stable Video Diffusion 则专注于创造全新的视频内容，适用于内容创作、娱乐和研究领域。与此不同，Slicedit 致力于提供专业的视频编辑服务，通过精准的"切片"技术，满足用户对现有视频内容的编辑和修改需求。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/006.png">
+    <img src="/blog/AI-weekly-021/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Semantic Gaussians**](https://arxiv.org/abs/2403.15624)
+
+Semantic Gaussians 是一项3D场景理解技术，它能够将多视图图像转换成3D空间中的语义高斯点。这项技术能够实现动态物体跟踪、复杂物体的多部分分割，并通过自然语言指令进行直观的图像编辑。例如，它可以识别并分割吉他的不同部分，或根据用户的语言指令如“删除玻璃瓶”来编辑场景。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/007.png">
+    <img src="/blog/AI-weekly-021/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**TextureDreamer**](https://arxiv.org/abs/2401.09416)
+
+TextureDreamer 是一个由 Moonshot AI 开发的 AI 模型，专门用于生成和处理纹理，它能够仅用3到5张输入图像就将纹理转移到任意3D模型上。其生成的逼真纹理，可以用于3D渲染、游戏开发、电影制作以及其他需要高质量纹理的领域。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/008.png">
+    <img src="/blog/AI-weekly-021/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**TRANSAGENTS**](https://arxiv.org/pdf/2405.11804)
+
+TRANSAGENTS 是一个基于大型语言模型（LLMs）的多代理翻译系统，专门为文学文本的翻译而设计。它通过模拟传统翻译流程，由多个具有不同角色的代理合作，包括高级编辑、翻译等，智能体协同工作，以克服文学文本翻译的复杂性，从而提升翻译质量。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/009.png">
+    <img src="/blog/AI-weekly-021/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 🛠️ 值得尝试的产品  
+
+[**PictoGraphic**](https://pictographic.io/?ref=producthunt)
+
+PictoGraphic 是一个插图库，它提供了超过40000张图像和 SVG 文件，涵盖多种风格和概念，以满足设计师的不同需求。你在这里可以找到自己想要的免费插图，也可以在几秒钟内通过文本提示生成自定义插图。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/010.png">
+    <img src="/blog/AI-weekly-021/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Apriora**](https://www.apriora.ai/)
+
+Apriora 是一个智能招聘助手，它通过自动化面试安排和实时视频面试功能，大幅提升了招聘效率。Apriora 进行的实时视频面试是对话互动式的，它能够覆盖技术筛选、电话筛选、编程等多种形式。面试结束后，系统会提供定制化报告，协助招聘团队根据企业需求做出明智的招聘决策。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/011.png">
+    <img src="/blog/AI-weekly-021/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+[**Audio Native**](https://elevenlabs.io/blog/audio-native/)
+
+Audio Native 是一个集成在网页中的音频播放工具，它具备自动语音合成功能，通过与 ElevenLabs 的文本到语音技术合作，能够将网页上的文字内容转换为语音输出。用户只需在网页中插入一小段HTML代码，即可将Audio Native播放器嵌入到网页上，实现内容的语音播放。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/AI-weekly-021/012.png">
+    <img src="/blog/AI-weekly-021/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
+
+
+
