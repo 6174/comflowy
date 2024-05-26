@@ -109,7 +109,7 @@ function ProPlan() {
         <div className="price">
           <span style={{
             fontSize: 30
-          }}>$20</span>/{t(KEYS.month)} 
+          }}>$30</span>/{t(KEYS.month)} 
         </div>
       </div>
     </div>
