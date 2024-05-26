@@ -1,8 +1,10 @@
+import styles from "./pricingpage/pricing.module.scss";
+
 export function FAQBox({ title, children }) {
   return (
     <details
       open
-      className="last-of-type:mb-0 rounded-lg bg-neutral-50 dark:bg-neutral-800 p-2 mt-4"
+      className={`last-of-type:mb-0 rounded-lg dark:bg-neutral-800 p-2 mt-4 ${styles.faq}`}
     >
       <summary>
         <strong className="text-lg">{title}</strong>

@@ -52,7 +52,7 @@ export default function BlogSubscribe() {
   return (
     <div
       style={{
-        border: '1px solid #EEE',
+        border: 'solid 1px #4E506A',
         borderRadius: '10px',
         padding: '20px 10px 10px 10px',
         margin: '20px 0px',
@@ -84,10 +84,10 @@ export default function BlogSubscribe() {
           }
         </div>
       </div>
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center', margin: "20px 0" }}>
         <button 
           onClick={() => setShowIframe(!showIframe)}
-          className="mx-auto mt-6 mb-4 px-4 py-2 border border-gray-500 rounded-md"
+          className="btn"
         >
           {BUTTON[locale]}
         </button>

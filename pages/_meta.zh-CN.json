@@ -1,10 +1,21 @@
 {
-  "index": "Comflowy 介绍",
+  "docs": "Docs",
   "introduction": "📖｜介绍",
   "preparation-for-study": "⏳｜下载与安装",
   "basics": "🏎️｜基础篇",
   "advanced": "🛩️｜中级篇",
   "expert": "🚀｜高级篇",
+  "index": {
+    "title": "首页",
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "layout": "full",
+      "pagination": false
+    }
+  },
   "privacy-policy": {
     "title": "Privacy Policy",
     "type": "page",
@@ -15,15 +26,18 @@
     "type": "page",
     "display": "hidden"
   },
-  "space": {
-    "title": "💻 产品",
+  "pricing": {
+    "title": "价格",
     "type": "page",
-    "theme": {
-      "sidebar": false
-    }
+    "href": "./pricing"
+  },
+  "docs-link": {
+    "title": "教程",
+    "type": "page",
+    "href": "/tutorial"
   },
   "blog": {
-    "title": "📰 博客",
+    "title": "博客",
     "type": "page",
     "theme": {
       "sidebar": false,
@@ -31,7 +45,7 @@
     }
   },
   "model": {
-    "title": "🤖 模型",
+    "title": "模型",
     "type": "page",
     "theme": {
       "sidebar": false,
@@ -40,7 +54,7 @@
     }
   },
   "change-log": {
-    "title": "📦 Changelog",
+    "title": "更新日志",
     "type": "page",
     "theme": {
       "toc": true

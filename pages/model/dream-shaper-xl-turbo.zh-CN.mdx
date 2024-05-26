@@ -1,17 +1,15 @@
 ---
-title: DreamShaper XL
+title: DreamShaper XL Turbo
 image: /model/dream-shaper-xl/banner.png
 tag: Checkpoint
 size: 6.46 GB
-description: Explore DreamShaper XL, a high-quality AI model by Lykon, specializing in generating realistic and anime-style portraits. Based on SD XL Turbo, it's perfect for non-commercial research.
-keywords: AI, DreamShaper XL, Lykon, image generation, portraits, anime-style, non-commercial research, SD XL Turbo
 ---
 
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import ModelDetailCard from '../../components/model-detail-card';
 import {Cards} from '../../components/model-cards';
 
-# DreamShaper XL
+# DreamShaper XL Turbo
 
 <ModelDetailCard 
   Name={<span>DreamShaper V8.0</span>}
@@ -22,16 +20,19 @@ import {Cards} from '../../components/model-cards';
   Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
   License={<span>Stability AI Non-Commercial Research Community License</span>}
   Commercial={false}
-  Specializes={<span>Generating portraits of real people and anime-style content.</span>}
+  Specializes={<span>生成真人肖像，以及动漫类内容。</span>}
   Score={"8"}
   Downloadlink={"https://civitai.com/models/112902/dreamshaper-xl"}
   Size={"6.46 GB"}
 />
 
-### Comflowy Review
-The author of DreamShaper has created a model based on SDXL Turbo tuning, and the quality of the generated images still maintains a consistently high standard. However, because SDXL Turbo is limited in commercial use, this model's rating is relatively lower compared to its SD 1.5 version.
+### 编辑评语
 
-### Creator's sample images
+DreamShaper 的作者制作的基于 SDXL Turbo 微调的模型，生成图片的效果依旧保持一贯的高水准。但因为 SDXL Turbo 是有限商用，所以这个模型的评分相对它的 SD 1.5 版本低一些。
+
+注意：这个版本的应该在 CFG scale 2 下使用，采样步数在 4-8 之间。这个版本只能在 DPM++ SDE Karras 下使用（不是 2M）。
+
+### 作者样张
 <br/>
 <PhotoProvider>
   <PhotoView src="/model/dream-shaper-xl/001.png">
@@ -50,9 +51,10 @@ The author of DreamShaper has created a model based on SDXL Turbo tuning, and th
   * CFG scale: 2
   * Denoise: 0.5
 
-### Recommended Resources
 
-In addition to this model, DreamShaper also offers other models, such as the Inpainting model and the LCM model.
+### 推荐资源
+
+除了这个模型，DreamShaper 还有其他的模型，比如 Inpainting 模型、LCM 模型。
 <br/>
 {
   <div className="grid grid-cols-3 gap-4">
@@ -76,3 +78,7 @@ In addition to this model, DreamShaper also offers other models, such as the Inp
     />
   </div>
 }
+
+
+
+

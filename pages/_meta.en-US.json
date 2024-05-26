@@ -1,11 +1,22 @@
 
 {
-  "index": "Comflowy", 
+  "docs": "Docs",
   "introduction": "📖｜Introduction",
   "preparation-for-study": "⏳｜Download and Install",
   "basics": "🏎️｜Basics",
   "advanced": "🛩️｜Advanced",
   "expert": "🚀｜Expert",
+  "index": {
+    "title": "Home",
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "layout": "full",
+      "pagination": false
+    }
+  },
   "privacy-policy": {
     "title": "Privacy Policy",
     "type": "page",
@@ -16,15 +27,18 @@
     "type": "page",
     "display": "hidden"
   },
-  "space": {
-    "title": "💻 Product",
+  "pricing": {
+    "title": "Pricing",
     "type": "page",
-    "theme": {
-      "sidebar": false
-    }
+    "href": "./pricing"
+  },
+  "docs-link": {
+    "title": "Tutorial",
+    "type": "page",
+    "href": "/tutorial"
   },
   "blog": {
-    "title": "📰 Blog",
+    "title": "Blog",
     "type": "page",
     "theme": {
       "sidebar": false,
@@ -32,7 +46,7 @@
     }
   },
   "model": {
-    "title": "🤖 Model",
+    "title": "Model",
     "type": "page",
     "theme": {
       "sidebar": false,
@@ -41,7 +55,7 @@
     }
   },
   "change-log": {
-    "title": "📦 Changelog",
+    "title": "Changelog",
     "type": "page",
     "theme": {
       "toc": true

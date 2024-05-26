@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  --backgroundColor: #19191D;
+  --backgroundColorL1: #24252E;
+  --backgroundColorL1_5: #212126;
+  --backgroundColorL2: #31333F;
+  --backgroundColorL3: #454758;
+  --primaryColor: #2BCBBB;
+  --secondaryColor: #2BAFF7;
+  --borderColor: #262837;
+  --actionBorderColor: #4A4A4D;
+  --actionHoverColor: #353640;
+  --popupBorderColor: #34353D;
+  --fontColor: white;
+  --fontColor-w1: #C5C5D3;
+  --borderRadius: 8px;
+  // --box-shadow: 0 8px 18px 0 rgb(11 11 77 / 4%), 0 0 2px 0 rgb(16 16 83 / 16%);
+  --box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15), 0px 0px 2px 0px rgba(0, 0, 0, 0.30);
+  --cardBackground: #262837;
+  --card-bg:#292a35a6;
+  --cardHover: #34374b;
+  --transition: all ease .2s;
+  --sb-track-color: #19191D;
+  --sb-thumb-color: #34374b;
+  --sb-size: 8px;
+  -webkit-font-smoothing: antialiased;
+}
+
 .site-heading-title {
   font-size: 40px;
   text-align: center;
@@ -20,4 +47,61 @@
   p {
     line-height: 1.4;
   }
+}
+
+html[data-page="/index"] {
+  body {
+    background-color: #121215;
+    overflow-x: hidden;
+  }
+  footer {
+    background-color: #121215 !important;
+    border-top: none !important;
+  }
+  .nextra-nav-container>div {
+    background-color: transparent !important;
+    visibility: hidden;
+  }
+
+  body.fixed-header .nextra-nav-container>div {
+    background-color: #1212153b !important;
+    border-bottom: none;
+    box-shadow: none;
+    visibility: visible;
+  }
+  
+  article {
+    div.nx-block {
+      visibility: hidden;
+    }
+  }
+}
+
+
+nav a[href="/docs"] span, nav a[href="/zh-CN/docs"] span{
+  font-weight: 300 !important;
+  color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
+  &:hover {
+    color: white !important;
+  }
+}
+
+.btn {
+  margin-right: 20px;
+  background-color: white;
+  border: transparent;
+  color: #121215;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  display: inline-block;
+  transition: var(--transition);
+  &:hover {
+    background-color: #ececec;
+  }
+}
+
+.pointer-none {
+  pointer-events: none;
+  user-select: none;
 }

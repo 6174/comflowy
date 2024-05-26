@@ -1,0 +1,129 @@
+.tutorials {
+  overflow-y: auto;
+  padding-top: 14px;
+  height: 100%;
+  padding-left: 10px;
+  margin-left: -10px;
+  overflow: hidden;
+  :global {
+    .tutorial-card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(246px, 1fr));
+      grid-gap: 10px;
+      padding: 10px 10px 10px 0;
+    }
+
+    .tutorial-card-row {
+      width: 800px;
+      height: 120px;
+      display: flex;
+      .tutorial-card {
+        margin: 10px;
+      }
+      &.row2 {
+        position: relative;
+        left: 60px;
+      }
+    }
+
+    .tutorial-banner-list {
+      display: flex;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      grid-gap: 20px;
+      padding: 10px 10px 10px 0;
+    }
+
+
+    .h3 {
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .p {
+      margin-top: 2px;
+      margin-bottom: 2px;
+      opacity: 0.5;
+      font-size: 14px;
+      padding-right: 4px;
+    }
+
+    .totorial-banner {
+      cursor: pointer;
+      height: 200px;
+      width: 100%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      transition: var(--transition);
+      border-radius: 8px;
+      .image {
+        width: 100%;
+        height: 100px;
+      }
+      .tag {
+        line-height: 16px;
+        opacity: 0.5;
+        color: black;
+        font-size: 16px;
+        margin-top: 25px;
+        margin-left: 20px;
+        text-transform: uppercase;
+      }
+      .title {
+        line-height: 20px;
+        color: black;
+        font-weight: bold;
+        font-size: 22px;
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      .subtitle {
+        margin-top: 10px;
+        line-height: 22px;
+        color: #141417;
+        opacity: 0.5;
+        font-size: 16px;
+        margin-left: 20px;
+      }
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .tutorial-card {
+      cursor: pointer;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      width: 100%;
+      height: 100px;
+      transition: var(--transition);
+      border-radius: 8px;
+      .image {
+        width: 100%;
+        height: 98px;
+      }
+      .name {
+        width: 130px;
+        line-height: 22px;
+        color: black;
+        font-weight: 600;
+        font-size: 18px;
+        opacity: 0.8;
+        margin-right: 20px;
+      }
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+}

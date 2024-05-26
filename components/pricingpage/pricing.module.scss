@@ -1,0 +1,91 @@
+.billingPage {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 40px;
+  
+  :global {
+    // .billing-plans { }
+    
+    .plan-table {
+      border: solid 1px var(--borderColor);
+      border-radius: 10px !important;
+      padding: 10px 10px 40px 10px;
+    }
+
+    .discount-banner {
+      border: solid 1px var(--primaryColor);
+      border-radius: 10px !important;
+      font-weight: 600;
+      padding: 5px 20px 5px 20px;
+      //background-color: var(--primaryColor);
+      color: var(--primaryColor);
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      tr {
+        border-bottom: solid 1px var(--borderColor);
+        &.noborder {
+          border-bottom: none;
+        }
+      }
+      th {
+        width: 100px;
+        vertical-align: baseline;
+      }
+      td {
+        padding: 10px;
+      }
+      
+      .billing-plan-item {
+        border-radius: 12px;
+        // border: 1px solid rgba(71, 71, 71, 0.10);
+        // background: var(--cardBackground);
+        padding: 20px 20px 20px 10px;
+        transition: var(--transition);
+        width: 160px;
+        text-align: left;
+        h2 {
+          margin:0 0 10px 0;
+        }
+        .description {
+          height: 60px;
+        }
+        .meta-info {
+          font-size: 12px;
+          width: 180px;
+          opacity: .6;
+          font-weight: normal;
+        }
+        .actions {
+          margin-top: 20px;
+          button {
+            width: 100%;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    .billing-faq {
+      margin-top: 20px;
+      p {
+        color: #A4A4A5;
+      }
+      a {
+        color: var(--primaryColor);
+      }
+    }
+    
+  }
+}
+
+.faq {
+  a {
+    color: var(--primaryColor) !important;
+  }
+}

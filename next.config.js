@@ -6,7 +6,8 @@ const withNextra = require('nextra')({
 module.exports = withNextra({
   i18n: {
     locales: ['zh-CN', 'en-US'],
-    defaultLocale: 'en-US'
+    defaultLocale: 'en-US',
+    localeDetection: false,
   },
   async headers() {
     return [
