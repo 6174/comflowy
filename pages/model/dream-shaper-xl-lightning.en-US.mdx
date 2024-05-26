@@ -1,0 +1,82 @@
+---
+title: DreamShaper XL Lightning
+image: /model/dream-shaper-xl-lightning/banner.png
+tag: Checkpoint
+size: 6.46 GB
+description: Explore DreamShaper XL, a high-quality AI model by Lykon, specializing in generating realistic and anime-style portraits. Based on SD XL Turbo, it's perfect for non-commercial research.
+keywords: AI, DreamShaper XL, Lykon, image generation, portraits, anime-style, non-commercial research, SD XL Turbo
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# DreamShaper XL Lightning
+
+<ModelDetailCard 
+  Name={<span>DreamShaper V8.0</span>}
+  Image={"/model/dream-shaper-xl-lightning/modelimg.png"}
+  Uploaded={<span>Feb 22, 2024</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SD XL Lightning</span>}
+  Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
+  License={<span>Stability AI Non-Commercial Research Community License</span>}
+  Commercial={false}
+  Specializes={<span>Generating portraits of real people and anime-style content.</span>}
+  Score={"8"}
+  Downloadlink={"https://civitai.com/models/112902/dreamshaper-xl"}
+  Size={"6.46 GB"}
+/>
+
+### Comflowy Review
+
+The author of DreamShaper has created a model based on SDXL Lightning tuning, and the quality of the generated images still maintains a consistently high standard. However, because SDXL Lightning is limited in commercial use, this model's rating is relatively lower compared to its SD 1.5 version.
+
+Lightning version should be used at CFG scale 2 and with around 3-6 sampling steps. This should work only with DPM++ SDE Karras. Avoid exceeding 1024 sampling steps in the first step.
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/dream-shaper-xl-lightning/001.png">
+    <img src="/model/dream-shaper-xl-lightning/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** In Casey Baugh's evocative style, art of a beautiful young girl cyborg with long brown hair, futuristic, scifi, intricate, elegant, highly detailed, majestic, Baugh's brushwork infuses the painting with a unique combination of realism and abstraction, greg rutkowski, surreal gold filigree, broken glass, (masterpiece, sidelighting, finely detailed beautiful eyes: 1.2), hdr, realistic painting, natural skin, textured skin, closed mouth, crystal eyes, butterfly filigree, chest armor, eye makeup, robot joints, long hair moved by the wind, window facing to another world, Baugh's distinctive style captures the essence of the girl's enigmatic nature, inviting viewers to explore the depths of her soul, award winning art
+* **Negative Prompt:** ugly, deformed, noisy, blurry, low contrast, text, BadDream, 3d, cgi, render, fake, anime, open mouth, big forehead, long neck
+* **Batch Size:** 768x1088
+* **KSampler:**
+  * Steps: 4
+  * Seed: 3698264988
+  * Sampler: DPM++ SDE 
+  * Scheduler: Karras
+  * CFG scale: 2
+  * Denoise: 0.5
+
+
+### Recommended Resources
+
+In addition to this model, DreamShaper also offers other models, such as the Inpainting model and the LCM model.
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/dream-shaper/banner.png"}
+      title={"DreamShaper V8.0"}
+      href={"/model/dream-shaper-v-8"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-lcm/banner.png"}
+      title={"DreamShaper LCM V8.0"}
+      href={"/model/dream-shaper-lcm"}
+      tag={"Checkpoint"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-inpainting/modelimg.png"}
+      title={"DreamShaper V8.0 Inpainting"}
+      href={"/model/dream-shaper-inpainting-v-8"}
+      tag={"Checkpoint"}
+    />
+  </div>
+}

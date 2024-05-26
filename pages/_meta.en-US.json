@@ -33,9 +33,9 @@
     "href": "./pricing"
   },
   "docs-link": {
-    "title": "Docs",
+    "title": "Tutorial",
     "type": "page",
-    "href": "/docs"
+    "href": "/tutorial"
   },
   "blog": {
     "title": "Blog",
