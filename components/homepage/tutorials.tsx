@@ -30,7 +30,7 @@ const TutorialCard: React.FC<TutorialCardProps> = ({ image, title, url }) => {
     <div
       className="tutorial-card"
       onClick={() => {
-        console.log("open", url)
+        window.open(url, "_blank")
       }}
       style={{
         backgroundImage: `url(${image})`,
