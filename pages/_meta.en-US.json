@@ -30,7 +30,7 @@
   "pricing": {
     "title": "Pricing",
     "type": "page",
-    "href": "./pricing"
+    "href": "/pricing"
   },
   "docs-link": {
     "title": "Tutorial",
