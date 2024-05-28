@@ -53,6 +53,15 @@
       "pagination": false
     }
   },
+    "templates":{
+    "title": "模板",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "toc": true,
+      "pagination": false
+    }
+  },
   "change-log": {
     "title": "更新日志",
     "type": "page",
