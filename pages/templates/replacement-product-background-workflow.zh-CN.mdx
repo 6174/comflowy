@@ -29,28 +29,32 @@ import ImageSlider from '../../components/image-slider';
 
 ## 生图效果
 
-<ImageSlider images={['/template/e-commerce/combine-background.png', '/template/e-commerce/combine-background.png', '/template/e-commerce/combine-background.png', '/template/e-commerce/combine-background.png', '/template/e-commerce/combine-background.png']} />
+<ImageSlider images={[
+  '/template/e-commerce/replace-background.png', 
+  '/template/e-commerce/replace-background/002.png', 
+  '/template/e-commerce/replace-background/003.png', 
+  '/template/e-commerce/replace-background/004.png', 
+  '/template/e-commerce/replace-background/005.png'
+]} />
 
 ## 使用方法
 
 <br/>
 <PhotoProvider>
-  <PhotoView src="/template/e-commerce/001.png">
-    <img src="/template/e-commerce/001.png" alt="" className='rounded-lg'/>
+  <PhotoView src="/template/e-commerce/replace-background/001.png">
+    <img src="/template/e-commerce/replace-background/001.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
 使用方法很简单。步骤如下：
 1. 在「Upload Product Image」节点上传一张产品图片。
-2. 在「Upload Background Image」节点上传一张背景图片。
-3. 点击 Run 按钮。既可将产品图片和背景图片融合。
+2. 在「Background Prompt」节点输入你想要的背景图片的描述。
+3. 点击 Run 按钮。既可生成带背景的图片。
 
 另外，如果你想要效果更好，需要注意：
-1. 最好手动填写一下 postive prompt。描述一下产品，以及你想要的灯光效果。
-2. 为了生成效果更好，在上传图片节点后面，我都加了 Resize 节点，使得产品图和背景图的尺寸一致，都是 512x512。如果你想要生成其他尺寸的图片记得调整下两个 Resize 节点尺寸设置。
-3. 上传的产品和背景图，最好跟 Resize 节点设置的比例一致，比如 Resize 设置为 512x512，那么产品图也最好也是方形，不然 Resize 后，会导致图片内容变形。
-4. 如果你想改变光源，可以自己调整 Create Gradient Mask 节点，目前默认的是从左到右的光源。
-5. 如果你不喜欢我预设的模型，可以使用其他 base 模型是 1.5 的模型。
+1. 上传的产品，最好跟 Resize 节点设置的比例一致，比如 Resize 设置为 512x512，那么产品图也最好也是方形，不然 Resize 后，会导致图片内容变形。
+2. 如果你想改变光源，可以自己调整 Create Gradient Mask 节点，目前默认的是从左到右的光源。
+3. 如果你不喜欢我预设的模型，可以使用其他 base 模型是 1.5 的模型。
 
 ## Rating & Review
 

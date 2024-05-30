@@ -16,7 +16,7 @@ const ImageSlider = ({ images }) => {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <div style={{ position: 'relative', width: '100%', margin:'20px 0px 0px 0px' }}>
       <button 
         onMouseEnter={() => setIsHoveredLeft(true)}
         onMouseLeave={() => setIsHoveredLeft(false)}
@@ -52,9 +52,11 @@ const ImageSlider = ({ images }) => {
                 alt={`Slide ${index}`} 
                 style={{ 
                   width: '400px', 
-                  height: 'auto', 
+                  height: '100%', 
+                  objectFit: 'contain',
                   borderRadius: '10px', 
-                  margin: '10px', 
+                  margin: 'auto 10px',
+                  display: 'block',
                 }} 
               />
             </PhotoView>
