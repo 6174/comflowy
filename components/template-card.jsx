@@ -11,6 +11,7 @@ export default function TemplateCard({ pageData }) {
         href={pageData.path}
         tag={pageData.frontMatter?.tag}
         author={pageData.frontMatter?.author || "Unknown"}
+        score = {pageData.frontMatter?.score || 0}
       />
     </div>
   );

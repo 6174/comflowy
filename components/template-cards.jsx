@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from 'next/link';
 import { useState, useEffect, useMemo } from 'react';
 
-export function Cards({image, title, href, tag, author}) {
+export function Cards({image, title, href, tag, author, score}) {
   // const { theme } = useTheme()
 
   // const bglightThemeStyle = "bg-gray-100";
@@ -19,6 +19,9 @@ export function Cards({image, title, href, tag, author}) {
   // const carddarkThemeStyle = "border-zinc-600 hover:border-zinc-500";
   // const cardStyle = theme === 'dark' ? carddarkThemeStyle : cardlightThemeStyle;
 
+  const yellowStars = Math.floor(score / 2);
+  const grayStars = 5 - yellowStars;
+
   return (
     <a href={href} className={`flex flex-col flex-grow w-full rounded-lg border border-[#373A4C] overflow-hidden block bg-[#252630] hover:bg-[#34374b]`}>
       <img className="flex-col h-44 object-cover m-3 rounded-lg border border-[#31353A]" src={image} alt={title} />
@@ -32,6 +35,13 @@ export function Cards({image, title, href, tag, author}) {
               <p className="text-sm text-[#FFFFFF]/50">{author}</p>
             </>
           )}
+          <div className="font-bold ml-8">
+            {score}
+          </div>
+          <div className='flex size-4 ml-2'>
+            {[...Array(yellowStars)].map((_, i) => <img key={i} src="/yellow-star.svg" alt="Star Icon" />)}
+            {[...Array(grayStars)].map((_, i) => <img key={i} src="/gary-star.svg" alt="Star Icon" />)}
+          </div>
         </div>
       </div>
     </a>
@@ -66,6 +76,7 @@ export function PageCard({pagesUnderRoute, selectedTag}){
             href={page.route}
             tag={page.frontMatter?.tag}
             author={page.frontMatter?.author || "Unknown"}
+            score = {page.frontMatter?.score || 0}
           />
         );
       })}
