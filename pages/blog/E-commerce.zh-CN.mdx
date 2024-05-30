@@ -1,0 +1,193 @@
+---
+date: May 30th, 2024
+image: /blog/E-commerce/001.png
+title: 电商系列
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 电商系列
+
+在电商领域，时间是宝贵的资源，效率是成功的关键。电商工作者面临着快速响应市场变化、吸引和保持顾客兴趣的挑战。需要迅速制作出高质量、专业产品图像的解决方案，以适应不断变化的营销需求。
+
+这些工作流正是为了满足这些需求而设计的。它们提供了一种自动化、高效的图像处理方法，能够轻松去除产品背景、更换背景，甚至将产品与全新的背景无缝融合。这些功能不仅简化了图像编辑的过程，还确保了图像的专业品质，帮助电商工作者节省了宝贵的时间和资源，降低了对专业设计师的依赖的同时也降低了成本。
+
+## Workflow 页面介绍
+
+如果你想使用现成的工作流，可以直接在 Templates 页面中找到我们精挑细选过的主题模板，帮助你节省时间的同时，最大限度地保证生成的质量符合你的预期。
+
+## 1. 产品去背景
+
+产品去背景的工作流能够帮助你更快，更好的制作海报。例如下图，我为一个护肤品去除背景后可以将它植入任何我喜欢的电商海报中。步骤也很简单，你只需选择下面介绍的任意一个工作流，上传产品图片进行产品识别并去除背景，保存无背景的产品，拖入 PS 或者其他软件进行合成。 
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/001.png">
+    <img src="/blog/E-commerce/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 1.1  Remove Background(RMBG)
+
+这个工作流利用三个简单的节点就能提取出海报中的产品，识别并抠图的质量很高。你只需要上传图像，模型将自动帮你删除图像的背景。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/002.png">
+    <img src="/blog/E-commerce/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+注意，这个工作流程使用了 RMBG 模型来去除背景，不用于商业用途，但生成的图像会与输入图像保持一致。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/003.png">
+    <img src="/blog/E-commerce/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 1.2 Remove Background(BIRefNet)
+
+与上个工作流类似，这个工作流程使用了 BIRefNet 模型，你只需上传图像，它便能帮你去除背景。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/004.png">
+    <img src="/blog/E-commerce/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+这个工作流可以用于商业用途，能够帮助公司节省宝贵的时间和资源。通过自动化的图片生成和抠图过程，公司可以减少对专业设计师的依赖，同时加快产品上线的速度。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/005.png">
+    <img src="/blog/E-commerce/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+## 2. 产品换背景
+
+在电商领域，我们常常会遇到，需要有同一个产品需要放在不同场景中的效果图，来帮助顾客进行选择。特别是像家具这种大件，需要特定家居场景的物品，如果之前的背景不合适，想要重拍会变得非常麻烦。这时你可以选择用 AI 帮你换背景，以最快的速度和最好的效果生成更多风格的介绍海报。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/006.png">
+    <img src="/blog/E-commerce/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.1  Replacement Product Background with RMBG
+
+我尝试为沙发更换家居环境，还将日常生活中常用的耳机、护肤品等更换了产品背景。以家具为例，通过这个工作流你可以将沙发的图片放置在各种家居环境中，无论是现代简约风、传统古典风还是自然田园风，都能轻松实现。 顾客能够直观地看到同一款沙发在不同家居风格中的实际效果，快速比较沙发与自家装修风格的匹配度，增加购买欲望。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/007.png">
+    <img src="/blog/E-commerce/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+这个工作流程使用了 RMBG 模型来去除背景，不用于商业用途，但生成的产品图像会与输入图像一致。用户可以通过上传产品图片，并输入想要更换的背景提示词，实现背景的无缝更换。无论是更换氛围感背景，还是调整产品氛围，都能帮你快速实现。不仅节省了时间，还提高了工作效率，也能让产品展示更加生动和吸引人。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/008.png">
+    <img src="/blog/E-commerce/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 2.2  Replacement Product Background
+
+上传产品图片，您可以通过输入提示更换产品背景。这个工作流程比 RMBG 版本更适合商业用途，但生成图像的一致性可能会稍差一些。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/009.png">
+    <img src="/blog/E-commerce/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+注：通过提示词生成背景，会使产品与背景的融合度更强，很有可能改变了原图中产品的原貌。如果你想要更好的控制产品的颜色或质感，例如下图中黑色瓶盖，透明瓶身的香水，就需要添加颜色，材质等提示词。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/010.png">
+    <img src="/blog/E-commerce/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+## 3. 产品与背景相融合
+
+电商中的同一个产品可能要在不同的店铺中进行上架，往往需要制作很多不同的海报进行宣传，工作耗时耗力。如果你对产品的宣传图不满意，可以借助这两个工作流生成更高质量的宣传图。你只需要在各类素材网站上选择任意你喜欢的产品摄影背景图，通过产品与背景相融合的工作流，便能一键将你自己的产品无缝融合进新的背景中，减少拍摄时间和成本，且效果更佳可控。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/011.png">
+    <img src="/blog/E-commerce/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 3.1 Combine Product Background with RMBG
+
+这个工作流的便捷性体现在只需您上传产品图片和背景图片，它便能自动将产品与背景巧妙地结合起来，通过识别产品轮廓并精确地从原始背景中分离出来，再无缝地融入到新背景中。这不仅节省了手动编辑图片的时间，还确保了最终图像的专业品质和视觉效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/012.png">
+    <img src="/blog/E-commerce/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+注意，这个工作流程使用了 RMBG 模型来去除背景，不用于商业用途，但生成的图像会与输入图像保持一致。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/013.png">
+    <img src="/blog/E-commerce/013.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 3.2  Combine Product Background
+
+与上个工作流类似，它也能通过上传产品图片和背景图片，生成新的产品摄影图。即使是没有专业图像编辑经验的用户，也能通过简单的上传操作，轻松制作出高质量的图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/014.png">
+    <img src="/blog/E-commerce/014.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+这降低了技术门槛，使得每个人都能够享受到创意设计的乐趣，实现个性化的图像制作。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/015.png">
+    <img src="/blog/E-commerce/015.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+## 4. 风格转移
+
+这个工作流只需你上传产品照片和想要生成的风格，它便能帮你进行风格迁移，生成效果相近的海报。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/016.png">
+    <img src="/blog/E-commerce/016.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+有时候，我们很难通过提示词或者借助 Lora 准确描述自己想要的效果，它的方便之处在于，你不用再频繁选择相应的 Lora 或思考提示词进行生成，只需寻找参考图，便能达到 LoRA +提示词描述的效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/E-commerce/017.png">
+    <img src="/blog/E-commerce/017.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
