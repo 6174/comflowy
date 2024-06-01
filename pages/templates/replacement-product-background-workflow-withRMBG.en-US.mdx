@@ -1,0 +1,66 @@
+---
+title: Replace Product Background (RMBG)
+image: /template/e-commerce/replace-background-withRMBG.png
+tag: E-Commerce
+author: JimmyWong
+score: 8
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import TemplateDetailCard from '../../components/template-detail-card';
+import {Cards} from '../../components/model-cards';
+import ImageSlider from '../../components/image-slider';
+
+<br/>
+
+<TemplateDetailCard 
+  Name = {<span>Replace Product Background with RMBG</span>}
+  Uploaded={<span>May 28, 2024</span>}
+  Type={<span>E-Commerce</span>}
+  Author={<div className="flex" ><img src="/author.jpg" alt="Author Image" className="mr-2 ml-1 size-5 rounded-full" /><span>Jimmy Wong</span></div>}
+  Commercial={true}
+  Score={"8"}
+  Downloadlink={"https://app.comflowy.com"}
+/>
+
+## Release Notes
+
+* 2024-05-28: Version 1.0 uses the IC-Lighting and RMBG models to replace the background of product images with different content. 
+
+## Preview
+
+<ImageSlider images={[
+  '/template/e-commerce/replace-background-withRMBG.png', 
+  '/template/e-commerce/replace-background-rmbg/003.png', 
+  '/template/e-commerce/replace-background-rmbg/004.png', 
+  '/template/e-commerce/replace-background-rmbg/002.png', 
+]} />
+
+## How to Use
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/template/e-commerce/replace-background-rmbg/001.jpeg">
+    <img src="/template/e-commerce/replace-background-rmbg/001.jpeg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+The process is user-friendly and can be completed in the following steps:
+
+1. Upload a product image at the "Upload Product Image" node.
+2. Enter the description of the desired background in the "Background Prompt" node.
+3. Click the "Run" button to generate an image of the product with the new background.
+
+For improved results, consider the following tips:
+
+1. Ensure that the product image uploaded matches the aspect ratio specified in the Resize node. For example, if the Resize is set to 512x512, it's best if the product image is also square to prevent distortion after resizing.
+2. To alter the light source, you can adjust the "Create Gradient Mask" node yourself. The default setting simulates light coming from left to right.
+3. If the preset models don't meet your preferences, you're free to use any other base model that is compatible with version 1.5.
+
+## Rating & Review
+
+Coming soon...
+
+## Discussion & Feedback
+
+Coming soon...

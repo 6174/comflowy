@@ -1,0 +1,67 @@
+---
+title: Replace Product Background
+image: /template/e-commerce/replace-background.png
+tag: E-Commerce
+author: JimmyWong
+score: 8
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import TemplateDetailCard from '../../components/template-detail-card';
+import {Cards} from '../../components/model-cards';
+import ImageSlider from '../../components/image-slider';
+
+<br/>
+
+<TemplateDetailCard 
+  Name = {<span>Replace Product Background</span>}
+  Uploaded={<span>May 28, 2024</span>}
+  Type={<span>E-Commerce</span>}
+  Author={<div className="flex" ><img src="/author.jpg" alt="Author Image" className="mr-2 ml-1 size-5 rounded-full" /><span>Jimmy Wong</span></div>}
+  Commercial={false}
+  Score={"8"}
+  Downloadlink={"https://app.comflowy.com"}
+/>
+
+## Release Notes
+
+* 2024-05-28: Version 1.0 utilizes the IC-Lighting model to change the background of product images to something else. 
+
+## Preview
+
+<ImageSlider images={[
+  '/template/e-commerce/replace-background.png', 
+  '/template/e-commerce/replace-background/002.png', 
+  '/template/e-commerce/replace-background/003.png', 
+  '/template/e-commerce/replace-background/004.png', 
+  '/template/e-commerce/replace-background/005.png'
+]} />
+
+## How to Use
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/template/e-commerce/replace-background/001.png">
+    <img src="/template/e-commerce/replace-background/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Using this is straightforward, just follow these steps:
+
+1. Upload a product image at the "Upload Product Image" node.
+2. Enter a description of the background you want in the "Background Prompt" node.
+3. Hit the Run button to generate your product image with the new background.
+
+If you want even better results, keep the following in mind:
+
+1. Make sure that the product you're uploading matches the aspect ratio set by the Resize node. For example, if the Resize is set to 512x512, your product image should also be square; otherwise, the Resize might warp the content.
+2. You can alter the light source to your preference by adjusting the Create Gradient Mask node; it's preset to simulate light coming from left to right by default.
+3. If my preset models don't match your taste, feel free to use any other base model that supports version 1.5.
+
+## Rating & Review
+
+Coming soon...
+
+## Discussion & Feedback
+
+Coming soon...

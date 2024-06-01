@@ -1,0 +1,58 @@
+---
+title: Remove Background
+image: /template/e-commerce/remove-background-withBIRefNet.png
+tag: E-Commerce
+author: JimmyWong
+score: 8
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import TemplateDetailCard from '../../components/template-detail-card';
+import {Cards} from '../../components/model-cards';
+import ImageSlider from '../../components/image-slider';
+
+<br/>
+
+<TemplateDetailCard 
+  Name = {<span>Remove Background</span>}
+  Uploaded={<span>May 28, 2024</span>}
+  Type={<span>E-Commerce</span>}
+  Author={<div className="flex" ><img src="/author.jpg" alt="Author Image" className="mr-2 ml-1 size-5 rounded-full" /><span>Jimmy Wong</span></div>}
+  Commercial={true}
+  Score={"8"}
+  Downloadlink={"https://app.comflowy.com"}
+/>
+
+## Release Notes
+
+* 2024-05-28: Version 1.0 employs the BIRefNet model to replace the background of product images with different content, making it simpler for you to isolate your product for various presentations or digital showcases.
+
+## Preview
+
+<ImageSlider images={[
+  '/template/e-commerce/remove-background-withBIRefNet.png', 
+  '/template/e-commerce/remove-background/002.png', 
+  '/template/e-commerce/remove-background/003.png', 
+  '/template/e-commerce/remove-background/004.png', 
+]} />
+
+## How to Use
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/template/e-commerce/remove-background/001.png">
+    <img src="/template/e-commerce/remove-background/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+The method is quite straightforward. Just follow these steps:
+1. Upload a product image at the "Upload Product Image" node.
+2. Press the "Run" button to generate an image of the product without any background.
+
+## Rating & Review
+
+Coming soon...
+
+## Discussion & Feedback
+
+Coming soon...
