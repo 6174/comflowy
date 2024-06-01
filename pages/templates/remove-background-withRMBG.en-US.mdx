@@ -1,0 +1,60 @@
+---
+title: Remove Background with RMBG
+image: /template/e-commerce/remove-background-withRMBG.png
+tag: E-Commerce
+author: JimmyWong
+score: 8
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import TemplateDetailCard from '../../components/template-detail-card';
+import {Cards} from '../../components/model-cards';
+import ImageSlider from '../../components/image-slider';
+
+<br/>
+
+<TemplateDetailCard 
+  Name = {<span>Remove Background with RMBG</span>}
+  Uploaded={<span>May 28, 2024</span>}
+  Type={<span>E-Commerce</span>}
+  Author={<div className="flex" ><img src="/author.jpg" alt="Author Image" className="mr-2 ml-1 size-5 rounded-full" /><span>Jimmy Wong</span></div>}
+  Commercial={false}
+  Score={"8"}
+  Downloadlink={"https://app.comflowy.com"}
+/>
+
+## Release Notes
+
+* 2024-05-28: Version 1.0 utilizes the RMBG model to swap the background of product photos with different scenes or elements.
+
+## Preview
+
+<ImageSlider images={[
+  '/template/e-commerce/remove-background-withRMBG.png', 
+  '/template/e-commerce/remove-background-rmbg/002.png', 
+  '/template/e-commerce/remove-background-rmbg/003.png', 
+  '/template/e-commerce/remove-background-rmbg/004.png', 
+]} />
+
+## How to Use
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/template/e-commerce/remove-background-rmbg/001.jpeg">
+    <img src="/template/e-commerce/remove-background-rmbg/001.jpeg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Using this tool is quite easy. Just follow the steps below:
+1. Upload a product photo at the "Upload Product Image" section.
+2. Hit the "Run" button to create a photo of the product without its background.
+
+It's important to note that this workflow employs the RMBG model, which is not for commercial use.
+
+## Rating & Review
+
+Coming soon...
+
+## Discussion & Feedback
+
+Coming soon...

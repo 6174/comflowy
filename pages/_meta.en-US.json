@@ -54,6 +54,14 @@
       "pagination": false
     }
   },
+  "templates":{
+    "title": "Templates",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "pagination": false
+    }
+  },
   "change-log": {
     "title": "Changelog",
     "type": "page",

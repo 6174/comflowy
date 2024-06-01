@@ -1,0 +1,65 @@
+---
+title: 融合产品背景
+image: /template/e-commerce/combine-background.png
+tag: 电商
+author: JimmyWong
+score: 8
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import TemplateDetailCard from '../../components/template-detail-card';
+import {Cards} from '../../components/model-cards';
+import ImageSlider from '../../components/image-slider';
+
+<br/>
+
+<TemplateDetailCard 
+  Name = {<span>融合产品背景</span>}
+  Uploaded={<span>May 28, 2024</span>}
+  Type={<span>电商</span>}
+  Author={<div className="flex" ><img src="/author.jpg" alt="Author Image" className="mr-2 ml-1 size-5 rounded-full" /><span>Jimmy Wong</span></div>}
+  Commercial={true}
+  Score={"8"}
+  Downloadlink={"https://app.comflowy.com"}
+/>
+
+## 版本记录
+
+* 2024-05-28：V1.0 使用的是 IC-Lighting 模型实现将产品图和背景图融合成一张图的功能。
+
+## 生图效果
+
+<ImageSlider images={[
+  '/template/e-commerce/combine-background.png', 
+  '/template/e-commerce/combine-background/002.png', 
+  '/template/e-commerce/combine-background/003.png', 
+]} />
+
+## 使用方法
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/template/e-commerce/combine-background/001.png">
+    <img src="/template/e-commerce/combine-background/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+使用方法很简单。步骤如下：
+1. 在「Upload Product Image」节点上传一张产品图片。
+2. 在「Upload Background Image」节点上传一张背景图片。
+3. 点击 Run 按钮。既可将产品图片和背景图片融合。
+
+另外，如果你想要效果更好，需要注意：
+1. 最好手动填写一下 postive prompt。描述一下产品，以及你想要的灯光效果。
+2. 为了生成效果更好，在上传图片节点后面，我都加了 Resize 节点，使得产品图和背景图的尺寸一致，都是 512x512。如果你想要生成其他尺寸的图片记得调整下两个 Resize 节点尺寸设置。
+3. 上传的产品和背景图，最好跟 Resize 节点设置的比例一致，比如 Resize 设置为 512x512，那么产品图也最好也是方形，不然 Resize 后，会导致图片内容变形。
+4. 如果你想改变光源，可以自己调整 Create Gradient Mask 节点，目前默认的是从左到右的光源。
+5. 如果你不喜欢我预设的模型，可以使用其他 base 模型是 1.5 的模型。
+
+## Rating & Review
+
+Coming soon...
+
+## 讨论 & 返图
+
+Coming soon...

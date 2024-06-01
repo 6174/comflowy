@@ -1,0 +1,69 @@
+---
+title: Combine Product Background with RMBG
+image: /template/e-commerce/combine-background-withRMBG.png
+tag: E-Commerce
+author: JimmyWong
+score: 6
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import TemplateDetailCard from '../../components/template-detail-card';
+import {Cards} from '../../components/model-cards';
+import ImageSlider from '../../components/image-slider';
+
+<br/>
+
+<TemplateDetailCard 
+  Name = {<span>Combine Product Background with RMBG</span>}
+  Uploaded={<span>May 28, 2024</span>}
+  Type={<span>E-Commerce</span>}
+  Author={<div className="flex" ><img src="/author.jpg" alt="Author Image" className="mr-2 ml-1 size-5 rounded-full" /><span>Jimmy Wong</span></div>}
+  Commercial={false}
+  Score={"6"}
+  Downloadlink={"https://app.comflowy.com"}
+/>
+
+## Release Notes
+
+* 2024-05-28: Version 1.0 employs both IC-Lighting and RMBG models to seamlessly integrate product and background images into one.
+
+## Preview
+
+<ImageSlider images={[
+  '/template/e-commerce/combine-background-withRMBG.png', 
+  '/template/e-commerce/combine-background-rmbg/002.png', 
+  '/template/e-commerce/combine-background-rmbg/003.png', 
+  '/template/e-commerce/combine-background-rmbg/004.png', 
+]} />
+
+## How to Use
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/template/e-commerce/combine-background-rmbg/001.png">
+    <img src="/template/e-commerce/combine-background-rmbg/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Here's your simple guide to using it:
+
+1. Upload a product image at the "Upload Product Image" section.
+2. Upload a background image at the "Upload Background Image" section.
+3. Click the "Run" button to merge the product and background images.
+
+To achieve an even better effect, consider the following:
+
+1. It’s beneficial to manually fill in a positive prompt. Describe your product and the lighting effect you'd like.
+2. To improve the generation effect, I've included a Resize node after the image upload sections, making both product and background images the same size, at 512x512. If you wish to generate images of different sizes, make sure to adjust the dimensions in the Resize nodes accordingly.
+3. Ideally, the uploaded product and background images should align with the aspect ratio of the Resize node. For example, if the Resize setting is 512x512, the images should preferably be square to avoid distortion after resizing.
+4. If the preset models don't meet your needs, you're welcome to use other base models that are version 1.5 compatible.
+
+Please note: This workflow utilizes the RMBG model; thus, it is not intended for commercial use. However, it tends to yield better results in background removal.
+
+## Rating & Review
+
+Coming soon...
+
+## Discussion & Feedback
+
+Coming soon...

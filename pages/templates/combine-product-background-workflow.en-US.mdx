@@ -1,0 +1,67 @@
+---
+title: Combine Product Background
+image: /template/e-commerce/combine-background.png
+tag: E-Commerce
+author: JimmyWong
+score: 8
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import TemplateDetailCard from '../../components/template-detail-card';
+import {Cards} from '../../components/model-cards';
+import ImageSlider from '../../components/image-slider';
+
+<br/>
+
+<TemplateDetailCard 
+  Name = {<span>Combine Product Background</span>}
+  Uploaded={<span>May 28, 2024</span>}
+  Type={<span>E-Commerce</span>}
+  Author={<div className="flex" ><img src="/author.jpg" alt="Author Image" className="mr-2 ml-1 size-5 rounded-full" /><span>Jimmy Wong</span></div>}
+  Commercial={true}
+  Score={"8"}
+  Downloadlink={"https://app.comflowy.com"}
+/>
+
+## Release Notes
+
+* 2024-05-28: Version 1.0 integrates the IC-Lighting model to fuse product and background images seamlessly.
+
+## Preview
+
+<ImageSlider images={[
+  '/template/e-commerce/combine-background.png', 
+  '/template/e-commerce/combine-background/002.png', 
+  '/template/e-commerce/combine-background/003.png', 
+]} />
+
+## How to Use
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/template/e-commerce/combine-background/001.png">
+    <img src="/template/e-commerce/combine-background/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Here's how to use it with ease:
+
+1. Upload a product image at the "Upload Product Image" node.
+2. Upload a background image at the "Upload Background Image" node.
+3. Click the "Run" button to blend the product and background images together.
+
+For an even better outcome, keep the following in mind:
+
+1. It's recommended to manually input a positive prompt. Describe your product and the lighting effect you desire.
+2. To enhance the output, I've added a Resize node after the image upload sections, standardizing the dimensions of both product and background images to 512x512. If a different image size is needed, remember to adjust the settings in both Resize nodes correspondingly.
+3. The uploaded product and background images should ideally match the Resize node's aspect ratio. For instance, if the Resize is set to 512x512, it's best if the images are square. Otherwise, resizing them might lead to distorted content.
+4. To change the light source, feel free to tweak the "Create Gradient Mask" node. The default setting is light coming from left to right.
+5. If the preset models are not to your liking, other base models compatible with version 1.5 are also an option.
+
+## Rating & Review
+
+Coming soon...
+
+## Discussion & Feedback
+
+Coming soon...
