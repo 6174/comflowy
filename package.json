@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
+    "@tawk.to/tawk-messenger-react": "^2.0.2",
     "cors": "^2.8.5",
     "lodash": "^4.17.21",
     "next": "^13.5.6",
