@@ -1,7 +1,13 @@
 import { useRouter } from 'next/router'
-import { useConfig } from 'nextra-theme-docs'
-import logo from '../public/logo.png'
+import NextLink from "next/link"
+import { DocsThemeConfig, ThemeSwitch, useConfig } from 'nextra-theme-docs'
+import logo from './public/logo.png'
+import githubIconPath from './public/icons/github.svg';
+import discordIconPath from './public/icons/discord.svg';
+import twitterIconPath from './public/icons/twitter.svg';
+import Image from 'next/image';
 import { t } from 'nextra/dist/types-c8e621b7'
+import { text } from 'stream/consumers'
 
 const Vercel = ({ height = 20 }) => (
   <svg height={height} viewBox="0 0 283 64" fill="none">
@@ -26,6 +32,31 @@ const EDIT_TEXT = {
   'zh-CN': '在 GitHub 上编辑此页 →',
   'en-US': 'Edit this page on GitHub →',
 
+}
+
+const classes = {
+  link: "hover:underline decoration-from-font [text-underline-position:from-font]",
+}
+
+function List({
+  title,
+  items,
+}: {
+  title: string
+  items: { title: string; url: string }[]
+}) {
+  return (
+    <ul className="text-sm flex flex-col gap-4 max-lg:w-[46%]">
+      <h3 className="text-lg font-bold">{title}</h3>
+      {items.map(item => (
+        <li key={item.title}>
+          <NextLink href={item.url} className={classes.link}>
+            {item.title}
+          </NextLink>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 export default {
@@ -53,18 +84,62 @@ export default {
   footer: {
     text: () => {
       return (
-        <div className="flex w-full flex-col items-center sm:items-start">
-          <span>
-            <a href='./terms'>Terms of Service</a>
-            {' · '}
-            <a href='./privacy-policy'>Privacy Policy</a>
-          </span>
-          <span>
-            {new Date().getFullYear()} ©{' '}
-            <a>
-              Comflowy
-            </a>
-          </span>
+        <div className="w-full">
+          <div className="flex justify-between items-start mb-24 flex-wrap gap-10">
+            <NextLink href="/" className="max-lg:w-full flex items-center">
+              <img src={logo.src} alt="Logo" width={40} height={logo.height} />
+              <p className='text-2xl font-bold ml-3'>Comflowy</p>
+            </NextLink>
+            <List
+              title="Resources"
+              items={[
+                { title: "Tutorial", url: "./docs" },
+                { title: "Model", url: "./model"},
+                { title: "Blog", url: "./blog"},
+                { title: "Template", url: "./templates"},
+                { title: "Help Center", url: "https://https://comflowy.tawk.help" },
+                { title: "Community", url: "https://discord.gg/t7jwRy83uN" },
+              ]}
+            />
+            <List
+              title="Product"
+              items={[
+                { title: "Pricing", url: "./pricing" },
+                { title: "Changelog", url: "./change-log" },
+                { title: "Feature Request", url: "https://comflowy.featurebase.app/" },
+                { title: "Product Roadmap", url: "https://comflowy.featurebase.app/roadmap" },
+              ]}
+            />
+            <List
+              title="Compare"
+              items={[
+                {
+                  title: "Comflowy vs. ComfyUI",
+                  url: "./blog",
+                },
+              ]}
+            />
+            <List
+              title="& More"
+              items={[
+                { title: "Terms of Service", url: "./terms" },
+                { title: "Privacy Policy", url: "./privacy-policy" },
+              ]}
+            />
+          </div>
+          <div className="flex justify-between flex-wrap gap-10">
+            <p className="text-sm">
+              Copyright © {new Date().getFullYear()} Comflowy. All
+              rights reserved.
+            </p>
+            {/* <div className="flex flex-col gap-4 lg:items-end">
+              <ul className="flex gap-5">
+                <Image src={githubIconPath} alt="GitHub" />
+                <Image src={discordIconPath} alt="Discord" />
+                <Image src={twitterIconPath} alt="Twitter" />
+              </ul>
+            </div> */}
+          </div>
         </div>
       )
     },
