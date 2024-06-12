@@ -50,7 +50,7 @@ function List({
       <h3 className="text-lg font-bold">{title}</h3>
       {items.map(item => (
         <li key={item.title}>
-          <NextLink href={item.url} className={classes.link}>
+          <NextLink href={item.url} className={classes.link} target="_blank">
             {item.title}
           </NextLink>
         </li>
@@ -117,6 +117,13 @@ export default {
                   title: "Comflowy vs. ComfyUI",
                   url: "./blog",
                 },
+              ]}
+            />
+            <List
+              title="Friends"
+              items={[
+                { title: "Llamagen", url: "https://llamagen.ai/"},
+                { title: "Way To AGI", url: "https://www.waytoagi.com/" },
               ]}
             />
             <List
