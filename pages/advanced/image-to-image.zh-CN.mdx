@@ -4,6 +4,16 @@ import Subscribe from "components/subscribtion";
 
 # 图生图
 
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main)：你可以下载 h 或 l 版本，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth)：将其放到 ComfyUI 里的 models/style_models 文件夹内。
+  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14)：将其放到 ComfyUI 里的 models/clip_vision 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
+</Callout>
+
 完成基础篇的学习后，你可能对生成的图片不满意，比如觉得：
 
 * 生成的图片分辨率不够。
@@ -11,14 +21,6 @@ import Subscribe from "components/subscribtion";
 * 亦或者觉得想要加强对生成过程的控制，比如想控制图中人物的姿势等。
 
 中级篇将会介绍更多方法，帮助你解决以上问题。不过在讲解以上问题的解决方案之前，我想先介绍一下 Stable Diffusion 的另一个关键工作流：图生图。
-
-<Callout type="warning" emoji="⚠️">
-  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
-  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main)：你可以下载 h 或 l 版本，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth)：将其放到 ComfyUI 里的 models/style_models 文件夹内。
-  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14)：将其放到 ComfyUI 里的 models/clip_vision 文件夹内。
-</Callout>
 
 ## 原理介绍
 

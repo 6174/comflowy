@@ -4,6 +4,14 @@ import Subscribe from "components/subscribtion";
 
 # SD Prompt 基础
 
+<Callout type="warning" emoji="⚠️">
+  考虑到 SDXL 生图效果更好，所以本章节主要介绍 SDXL 的 Prompt。所以正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [SDXL 1.0 Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/tree/main)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+  * [SDXL 1.0 Refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/tree/main)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
+</Callout>
+
 了解完 ComfyUI 的所有基础节点和操作后，你应该就能使用 ComfyUI 生成图片了。
 
 但是，生成的图片效果可能并不是你想要的，比如你想要生成的图片是动漫风格的，但生成的图片却是真人风格的，这时你就需要通过某些手段让 AI 生成特定风格的图片。要想调整图片风格，有多种方法：
@@ -11,12 +19,6 @@ import Subscribe from "components/subscribtion";
 * **方法一**：通过 prompt 来影响生成图片的效果。这个是最简单的做法。基本上使用 default workflow 就能实现。本章会介绍如何使用 prompt 来调整图片风格。同时介绍一些更高效的方法。
 * **方法二**：通过加载不同的 Checkpoint 模型来影响生成图片的效果。这个是最简单的做法，你可以查看基础选修里的 [模型推荐](./basic-optional/model-recommendation) 了解行业常用模型。
 * **方法三**：通过 LoRA 来影响生成图片的效果。这个方法稍微复杂一些，但是相较于方法一，可用的模型会更多，而且文件也小非常多。后续我会给大家介绍一下 LoRA 的使用方法。
-
-<Callout type="warning" emoji="⚠️">
-  考虑到 SDXL 生图效果更好，所以本章节主要介绍 SDXL 的 Prompt。所以正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
-  * [SDXL 1.0 Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/tree/main)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-  * [SDXL 1.0 Refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/tree/main)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-</Callout>
 
 ## 基本原则
 

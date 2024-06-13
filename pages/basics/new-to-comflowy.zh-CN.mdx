@@ -5,9 +5,135 @@ import {Cards} from '../../components/model-cards';
 
 # Comflowy 新手入门
 
-本文会带你快速了解 Comflowy 的使用方法。
+<Callout type="warning" emoji="⚠️">
+  注意！如果你使用的是 ComfyUI，则可以跳过此章节。
+</Callout>
 
-## ① 安装
+如果你对 ComfyUI 完全不了解，并且第一次使用 Comflowy，本文会带你快速了解 Comflowy 的基本使用方法。
+
+## Comflowy Cloud 版本
+
+首先，需要注意，我们[云端版本](https://app.comflowy.com)不支持免费试用，如果你想要使用 Comflowy 的云端版本，你需要付费订阅。如果你不想付费使用，可以尝试我们的本地版本。
+
+### ① 生成第一张图片
+
+对于云端版本来说，你只需要注册一个账号，然后就可以直接使用了。所以相较于本地版本，少了一步安装。同时，我们还内置了不少模型，无需下载即可使用。
+
+首次使用，我建议你先新建一个工作流，然后运行一下我们的默认工作流。点击底部的 Run（图中 2）按钮即可启动工作流。此时需要你等待一段时间，一段时间后，即可看到图片。
+
+另外，你会看到 Run 按钮旁边还会有一个 GPU 选项，这是我们的云端版本支持的 GPU 选项（图中 1），你可以根据自己的需求选择不同的 GPU。我比较推荐 A10G，详细的 GPU 介绍请查看[我们的帮助中心文档](https://comflowy.tawk.help/zh-cn/article/how-to-choose-the-right-gpu)。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/new-to-comflowy/001.png">
+      <img src="/new-to-comflowy/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### ② 尝试内置的模板
+
+Comflowy 云端版本内置了不少模板，你可以选择几个使用一下。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/new-to-comflowy/002.png">
+      <img src="/new-to-comflowy/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### ③ 继续学习教程
+
+恭喜你 🎉
+你已经学会最基础的 Comflowy 的使用方法了，接下来你可以根据自己的需求学习对应的章节。
+
+我强烈建议你可以先学习 Stable Diffusion 的基础知识，这样你会更好的理解 AI 生图的原理，也会更好地使用 Comflowy：
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/stable-diffusion-foundation/cardbanner.png"}
+      title={"Stable Diffusion 基础"}
+      href={"../basics/stable-diffusion-foundation"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/comfyui-foundation/cardbanner001.png"}
+      title={"Comflowy Basic ①"}
+      href={"../basics/comfyui-foundation"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/comfyui-foundation/cardbanner002.png"}
+      title={"Comflowy Basic ②"}
+      href={"../basics/basic-nodes"}
+      tag={"教程"}
+    />
+  </div>
+}
+
+如果你想要进一步学习文生图相关的技巧，你可以查看以下章节：
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/stable-diffusion-prompt/cardbanner001.png"}
+      title={"SD Prompt 基础"}
+      href={"../basics/prompt"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/stable-diffusion-prompt/cardbanner002.png"}
+      title={"Embedding"}
+      href={"../basics/embedding"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/comfyui-lora/cardbanner.png"}
+      title={"LoRA"}
+      href={"../basics/lora"}
+      tag={"教程"}
+    />
+  </div>
+}
+
+如果你想要学习一些图生图有关的技巧，你可以查看以下章节：
+
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/comfyui-img2img/cardbanner.png"}
+      title={"图生图基础"}
+      href={"../advanced/image-to-image"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/comfyui-upscale/cardbanner.png"}
+      title={"Upscale"}
+      href={"../advanced/upscale"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/comfyui-inoutpainting/banner.png"}
+      title={"In/Outpainting"}
+      href={"/advanced/in-out-painting"}
+      tag={"教程"}
+    />
+    <Cards 
+      image={"/comfyui-controlnet/cardbanner.png"}
+      title={"ControlNet"}
+      href={"../advanced/controlnet"}
+      tag={"教程"}
+    />
+  </div>
+}
+
+
+## Comflowy 本地版
+
+### ① 安装
 
 首先你需要安装 Comflowy 或者 ComfyUI。你可以查看以下章节来学会如何安装 Comflowy 或者 ComfyUI：
 
@@ -24,13 +150,13 @@ import {Cards} from '../../components/model-cards';
       image={"/blog/comflowy-faq/cardbanner.png"}
       title={"Comflowy FAQ"}
       href={"../blog/comflowy-faq"}
-      tag={"教程"}
+      tag={"博客"}
     />
   </div>
 }
 
 
-## ② 下载模型
+### ② 下载模型
 
 完成安装之后，你还没法直接使用产品生成图片。你还需要下载模型。根据电脑的配置不同，我会推荐你使用不同的模型。
 
@@ -62,7 +188,7 @@ import {Cards} from '../../components/model-cards';
   </div>
 }
 
-## ③ 导入模型
+### ③ 导入模型
 
 当你下载好模型后，你需要将模型导入到一个叫 checkpoint 的文件夹中。如果你使用的是 Comflowy，你可以切换到 Models 的界面，然后点击右上角的 Model Folder 的按钮（图中①），
 打开该文件夹后，点击进入里面的 checkpoint 文件夹，将你下载好的模型放入其中。最后再点击一下 Refresh 按钮（图中②）。
@@ -74,7 +200,7 @@ import {Cards} from '../../components/model-cards';
   </PhotoView>
 </PhotoProvider>
 
-## ④ 生成第一张图片
+### ④ 生成第一张图片
 
 将模型导入到文件夹并 Refresh 系统后，你就可以点击 My Workflow 界面，然后点击 New Workflow 按钮，进入到 Workflow 界面。
 此时你可以在最左边的节点下拉框选择你之前下载好的模型（图中①），然后点击下方的 Generate 按钮（图中②），耐心等待一段时间后，你会在最右边的节点看到生成好的图片（图中③）。
@@ -86,12 +212,12 @@ import {Cards} from '../../components/model-cards';
   </PhotoView>
 </PhotoProvider>
 
-## ⑤ 进阶学习
+### ⑤ 进阶学习
 
 恭喜你 🎉
 你已经学会最基础的 Comflowy 的使用方法了，接下来你可以根据自己的需求学习对应的章节。
 
-但我强烈建议你可以先学习 Stable Diffusion 的基础知识，这样你会更好的理解 AI 生图的原理，也会更好地使用 Comflowy：
+我强烈建议你可以先学习 Stable Diffusion 的基础知识，这样你会更好的理解 AI 生图的原理，也会更好地使用 Comflowy：
 
 <br/>
 {

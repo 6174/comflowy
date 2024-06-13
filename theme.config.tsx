@@ -34,6 +34,16 @@ const EDIT_TEXT = {
 
 }
 
+const TOCAD_TITLE = {
+  'en-US': 'Tired of complex setup?',
+  'zh-CN': '厌倦了各种复杂的设置？',
+}
+
+const TOCAD_DES = {
+  'zh-CN': '试试我们云端版本：',
+  'en-US': 'Try our cloud version:',
+}
+
 const classes = {
   link: "hover:underline decoration-from-font [text-underline-position:from-font]",
 }
@@ -71,6 +81,21 @@ export default {
   },
   toc: {
     float: true,
+    extraContent:  () => {
+      const { locale } = useRouter();
+      return (
+        <div className='mt-2 border border-white rounded-lg p-2 w-full'>
+            <p className='font-bold'>{TOCAD_TITLE[locale]}</p>
+            <p className='mt-2'>{TOCAD_DES[locale]}</p>
+            <a
+              href={`https://app.comflowy.com`}
+              target="_blank"
+            >
+              <u>Comflowy →</u>
+            </a>
+        </div>
+      )
+    },
   },
   navigation: {
     prev: true,

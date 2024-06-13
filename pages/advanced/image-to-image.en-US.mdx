@@ -10,6 +10,16 @@ import Subscribe from "components/subscribtion";
 
 # Image-to-Image
 
+<Callout type="warning" emoji="⚠️">
+ Before officially starting this chapter, please download the following models and put them into the corresponding folders:
+  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper): place it inside the models/checkpoints folder in ComfyUI.
+  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main): you can download the h or l version, and place it inside the models/checkpoints folder in ComfyUI.
+  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth): place it inside the models/style_models folder in ComfyUI.
+  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14): place it inside the models/clip_vision folder in ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
 After completing the basic learning, you might not be satisfied with the generated images, for example:
 
 * The resolution of the generated images is not enough.
@@ -17,14 +27,6 @@ After completing the basic learning, you might not be satisfied with the generat
 * Or maybe you want to enhance control over the generation process, such as controlling the pose of the character in the picture.
 
 The intermediate section will introduce more methods to help you solve the above problems. But before discussing the solutions to these issues, I'd like to introduce another crucial workflow of Stable Diffusion: image-to-image.
-
-<Callout type="warning" emoji="⚠️">
- Before officially starting this chapter, please download the following models and put them into the corresponding folders:
-  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper): place it inside the models/checkpoints folder in ComfyUI.
-  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main): you can download the h or l version, and place it inside the models/checkpoints folder in ComfyUI.
-  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth): place it inside the models/style_models folder in ComfyUI.
-  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14): place it inside the models/clip_vision folder in ComfyUI.
-</Callout>
 
 ## Principle Introduction
 

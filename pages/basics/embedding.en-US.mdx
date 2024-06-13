@@ -10,6 +10,14 @@ import Subscribe from "components/subscribtion";
 
 # Embedding
 
+<Callout type="warning" emoji="⚠️">
+  Before officially starting this chapter, please download the following models and place the model files in the corresponding folders:
+  * [Tom Cruise embedding](https://civitai.com/models/6019/tom-cruise-embedding): Put it in the models/embeddings folder in ComfyUI.
+  * [BadDream](https://civitai.com/models/72437?modelVersionId=77169): Put it in the models/embeddings folder in ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
 In the chapter "Stable Diffusion Basics," I have explained why a machine can recognize what a Cat looks like. The key is that the Text Encoder turns the natural prompt into an Embedding of a word feature vector. For example, when Cat is turned into a word feature vector, it may include:
 
 * Morphological features: The vector representation may capture the morphological characteristics of a Cat, such as its body shape, the shape of its head, the location of its limbs, etc. These features can help distinguish a Cat from other animals or objects.
@@ -20,11 +28,6 @@ So, following this principle, could we adjust this mapping technique and thus ge
 
 For example, we can map S* to the visual features of Garfield Cat so that whenever we input O_Cat in a prompt in the future, the generated picture would be of Garfield.
 
-<Callout type="warning" emoji="⚠️">
-  Before officially starting this chapter, please download the following models and place the model files in the corresponding folders:
-  * [Tom Cruise embedding](https://civitai.com/models/6019/tom-cruise-embedding): Put it in the models/embeddings folder in ComfyUI.
-  * [BadDream](https://civitai.com/models/72437?modelVersionId=77169): Put it in the models/embeddings folder in ComfyUI.
-</Callout>
 
 ## Principle Introduction
 

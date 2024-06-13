@@ -1,85 +1,73 @@
----
-title: Comflowy 介绍
----
+import Subscribe from "components/subscribtion";
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import {Cards} from '../components/model-cards';
 
-<img src="/index/Comflowy_banner.png" alt="Comflowy Banner" width="100%" height="100" style={{
-    display: "block",
-    margin: "0 auto",
-    marginTop: 20
-}}/>
+# 👋 Hi, 朋友
 
-<h1 className="site-heading-title">Comflowy - ComfyUI 社区</h1>
-<div className="one-sentence text-center text-pretty md:w-7/12 sm:w-8/12 max-[640px]:w-11/12" style={{
-    margin: "0 auto",
-    marginTop: -40,
-    opacity: .8,
-    lineHeight: 1.4
-}}>
-    探索 ComfyUI 的无限可能，致力于以 ComfyUI 和 Stable Diffusion 为核心，打造更优质的生产工具、构建开发者与用户内容社区。
-</div>
+感谢你的关注，本教程是一个面向新手的 ComfyUI 教程，旨在帮助大家快速上手 ComfyUI，以及了解 Stable Diffusion 模型和 ComfyUI 的基本原理。
+
+另外，因为我们同时开发了一款在线版本的 ComfyUI，所以教程里还会包含一些在线版本的操作。如果你只是想要学习 ComfyUI 的基本操作，可以跳过这部分。
+
+如果你觉得这份教程不错，不妨给我们的 [GitHub](https://github.com/6174/comflowy) 点个 star，或者分享给你的朋友。
+
+另外，你可以订阅我们的 [newsletter](https://comflowy.substack.com/) 以及[公众号](https://mp.weixin.qq.com/s/a3oFiYqx41inWWFU0YcuDw)，或者加入 [Discord](https://discord.gg/cj623WvcVx)，以获取最新的教程。
+
+## 本教程的目标读者
+本教程的目标读者是：
+1. 想要学习 AI 生图的设计师 & 创作者。
+2. 有一定 AI 生图基础，亦或者使用过 Midjourney 或 SD WebUI，想学习 ComfyUI 的新手。
+
+如果你只是单纯想要学习如何通过 AI 生图，并且只是娱乐一下，我不建议你学习 ComfyUI。
+
+## 学习路径
+
+本教程主要分成四个模块，各位可以按顺序学习：
+1. [下载与安装](./preparation-for-study)。主要介绍 ComfyUI 的安装、模型下载、插件安装等。如果你使用的是我们的云端版本，你可以跳过这一部分。
+2. [基础篇](./basics)。介绍 ComfyUI 的基本使用方法，以及 Stable Diffusion 模型的基本原理。完成这基础篇后，你可以使用 ComfyUI 搭建基础的 Stable Diffusion，并使用文生图的方式，输出各种各样的图。
+3. [中级篇](./advanced)。完成基础篇的学习后，你可能对生成的图片不满意，比如觉得生成的图片分辨率不够，觉得生成的图片部分内容不满意，想要对其进行修改，亦或者觉得想要加强对生成过程的控制，比如想控制图中人物的姿势等。中级篇将会介绍更多方法，帮助你解决以上问题。
+4. [高级篇](./expert)。高级篇将会教大家综合初中级学到的内容，做出更复杂的图片。以及学会文生视频相关的操作。
+
+## 如何学习
+
+我认为最好的方法是通过**实践**学习。
+
+* 如果你使用的是我们的开源本地版或者[云端版本](app.comflowy.com)，你可以在产品里的「模板」页面看到本教程涉及的所有工作流。你可以直接打开这些工作流，尝试一下。也可以根据教程的步骤，一步一步操作，自己搭建。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/index/005.png">
+      <img src="/index/005.png" alt="" width="100%" style={{ display: "block", margin: "0 auto" }} className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+* 本教程的设计，更多地是讲解目前 AI 生图的关键技术，比如 IPAdapter、ControlNet 等，以及 Stable Diffusion 模型的基本原理。这些知识对于你学习其他 AI 生图工具也是有帮助的。但在实操上，比较少涉及，所以除了教程外，我们还开设了博客，会有更多的实操案例，供大家参考：
 
 <br/>
-
-## 🤔 Why
-
-我们认为 AI 生图领域的未来一定是围绕 Stable Diffusion 展开，而 ComfyUI 相比于 Stable Diffusion WebUI 等其他开源产品具备非常强的[差异化能力](https://www.comflowy.com/zh-CN/introduction/why-learn-ComfyUI#sd-web-ui-vs-comfyui)，它具备高度的扩展性和应用可能性，真正做到了让开发者和用户能够根据自己的需求打造个性化的生图流程。
-
-尽管如此，ComfyUI 却缺乏系统成熟的教程和经验文档，工具也缺乏良好的体验设计，以至上手门槛过高被很多 Stable Diffusion 用户拒之门外。但反过来这也让我们团队看到，如果解决了这些问题，那兴许能够有机会让 ComfyUI 走向大众化，所以我们决定先做一个 ComfyUI 社区 - [Comflowy](https://www.comflowy.com/)。
-
-<br/>
-
-## 😎 How
-这个社区能提供什么：
-
-<div className="mt-4 md:flex sm:flex min-[640px]:flex-row">
-  <img src="/index/001.png" alt="Image description" className="md:w-1/3 sm:w-1/3 max-[640px]:1/5"/>
-  <div className="md:ml-4 sm:ml-4 max-[640px]:ml-0 max-[640px]:mt-4">
-    **提供更完善系统的 Stable Diffusion & ComfyUI 教程**
-    <div className="mt-4">
-    目前市面上关于 ComfyUI 的教程数量较少，而且它们并不成体系。想要充分利用 ComfyUI，仅仅依赖这些零散的信息显然是不够的。因此，我们计划系统地学习并输出涵盖 ComfyUI 各方面的教程。
-    </div>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/blog/face-swap/004.png"}
+      title={"如何使用 ComfyUI 实现换脸？"}
+      href={"../blog/face-swap"}
+      tag={"博客"}
+    />
+    <Cards 
+      image={"/blog/artistic-typography-poster/banner.png"}
+      title={"如何生成艺术字海报？"}
+      href={"../blog/artistic-typography-poster"}
+      tag={"博客"}
+    />
+    <Cards 
+      image={"/index/006.png"}
+      title={"查看更多博客 →"}
+      href={"./blog"}
+      tag={"博客"}
+    />
   </div>
-</div>
+}
 
-<div className="mt-8 md:flex sm:flex min-[640px]:flex-row">
-  <img src="/index/002.png" alt="Image description" className="md:w-2/5 sm:w-2/5 max-[640px]:1/5 md:order-last sm:order-last max-[640px]:order-first" />
-  <div className="md:mr-4 sm:mr-4 max-[640px]:mr-0 max-[640px]:mt-4">
-    **提供可以互动讨论的 Discord 社群**
-    <div className="mt-4">
-    交流学习是社区发展的核心推动力。欢迎您加入我们的 [Discord 社群](https://discord.gg/cj623WvcVx)，与其他 ComfyUI 用户进行交流和讨论。
-    </div>
-  </div>
-</div>
+## 特别感谢
 
-<div className="mt-8 md:flex sm:flex min-[640px]:flex-row">
-  <img src="/index/003.png" alt="Image description" className="md:w-1/3 sm:w-1/3 max-[640px]:1/5"/>
-  <div className="md:ml-4 sm:ml-4 max-[640px]:ml-0 max-[640px]:mt-4">
-    **提供一个 Workflow、模型内容数据库**
-    <div className="mt-4">
-    ComfyUI 的一项重要价值在于能够分享或导入 Workflow。我们认为这一功能被严重低估，因此我们计划基于此建立一个 Workflow 数据库，以便更多人能够分享自己的 Workflow，并从中受益。此外，随着 AI 模型的不断丰富，我们通常难以确定哪种模型最适合使用。因此，我们还希望在提供 Workflow 的同时，建立一个模型数据库，帮助用户更好地选择适用的模型。
-    </div>
-  </div>
-</div>
-
-<div className="mt-8 md:flex sm:flex min-[640px]:flex-row">
-  <img src="/index/004.png" alt="Image description" className="md:w-2/5 sm:w-2/5 max-[640px]:1/5 md:order-last sm:order-last max-[640px]:order-first"/>
-  <div className="md:mr-4 sm:mr-4 max-[640px]:mr-0 max-[640px]:mt-4">
-    **提供一个开源版的 Better ComfyUI - [Comflowyspace](/zh-CN/space)**
-    <div className="mt-4">
-    尽管 ComfyUI 具有巨大的潜力，但目前其产品交互体验仍有许多可以提升的空间。正巧我们的团队擅长改进用户体验，因此我们希望能够将我们的专业能力贡献给 ComfyUI 生态系统，真正推动 ComfyUI 走向大众化。
-    </div>
-  </div>
-</div>
-
-目前的社区维护者包括 `@Marc` 和 `@Jimmy`，期待各位的积极贡献与参与。欢迎加入我们，共同推动 ComfyUI 社区的发展。
-
-## 🥰 喜欢 Comflowy?
-如果你喜欢 Comflowy 不妨给我们一个 [⭐ Star](https://github.com/6174/comflowy) 或者 [👀 Watch](https://github.com/6174/comflowy/subscription) 我们的项目，从而能马上获得最新的更新！
-你的每一个鼓励和反馈都能支持我们走得更远。
-
-除了通过以上方式支持我们外，也欢迎各位与我们一起共建 Comflowy。
-
-你可以在阅读教程的时候：
-1. 遇到错别字、句子不通顺，欢迎通过 [Discord](https://discord.gg/n4GCmVxNzd) 或者 Github [Issue](https://github.com/6174/comflowy/issues/new/choose) 给我们反馈，我们会对其进行修改。一经采纳会将你的名字罗列在 [Changelog](/change-log) 内。
-2. 如果你在读教程的过程中，遇到一些不懂的地方，需要求助，可以在我们的 Discord 的[求助频道](https://discord.gg/B8KxkPJBMr)提问，亦或者在 Github 上提交求助 [Issue](https://github.com/6174/comflowy/issues/new/choose) ，我们会尽力帮助你解决问题。
-3. 除了教程外，我们还连载一份 AI 相关的 newsletter，如果你在平常的学习中，遇到了一些有趣的 AI 相关的文章，或者亦或者产品，欢迎在我们的 Discord 的[分享频道](https://discord.gg/fzzdw6e8vk)分享，亦或者在 Github 上提交 newsletter [Issue](https://github.com/6174/comflowy/issues/new/choose)，一经采纳我们会将其收录到我们的 newsletter 中，让更多的人看到。
+本教程制作过程中，内容和案例参考了以下教程或文档：
+* [ComfyUI Example](https://comfyanonymous.github.io/ComfyUI_examples/)
+* [ComfyUI Workflows](https://github.com/cubiq/ComfyUI_Workflows)
+* [Stable Diffusion Art](https://stable-diffusion-art.com/)
