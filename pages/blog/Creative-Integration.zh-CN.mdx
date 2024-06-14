@@ -1,0 +1,148 @@
+---
+date: June 12th, 2024
+image: /blog/Creative-Integration/003.png
+title: Creative Integration
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Creative Integration
+
+这期分享的工作流程主要得益于 IP Adapter 这个插件。它能够用图片替换 LoRA 的功能。以往，我们需要借助 LoRA 模型和提示词来生成特定风格的图片，现在只需要找到一张具有确定风格的照片，就可以实现类似于 LoRA + 提示词描述的效果。这样，不仅可以实现风格转换与融合，还能够进行线稿图上色和材质替换等效果。
+
+### IP Adapter Combine IP
+
+这个工作流通过融合图像特征的方式，能够将输入图像和参考图像的人脸或风格相融合，你只需选择两张自己喜欢的图片，无需从头开始绘制或设计，就可以创造出个性化原创图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/001.png">
+    <img src="/blog/Creative-Integration/001.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+它的方便之处在于，只需你输入两张图像，模型便能为你生成了一张结合了两张输入图像的风格和内容的图像。如果你想看到更多效果展示，可以点击这篇博客：[**如何在 ComfyUI 中使用 IPAdapter Plus 进行内容转换和融合？**](https://www.comflowy.com/zh-CN/blog/IPAdapter-2)
+
+#### 生成吉卜力风格头像
+
+一个吸引人的原创头像可以增加用户的社交优势，以我们常看的吉卜力动漫为例，如果想要生成类似画风的头像，你可以通过这个工作流上传你自己的照片和一张吉卜力风格的图片，就能生成属于自己的原创头像了，这样生成的头像既具有个人形象特征，又保护了个人隐私。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/002.png">
+    <img src="/blog/Creative-Integration/002.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 生成 NFT 头像
+
+NFT 头像作为Web3 世界中数字身份的象征，是一种独特且可验证的个人标识。NFT 头像的交易流动性高，可以在多个平台上自由买卖，为创作者和收藏家提供了投资和收益的机会。如果你可以运行这个工作流，就轻而易举地拥有了无限次生成 NFT 头像的机会。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/003.png">
+    <img src="/blog/Creative-Integration/003.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 生成特色海报
+
+通过这个工作流程，你可以将自己夸张的灵感变为现实。在此之前，我们可能很难想象蒙德里安的几何抽象派与中国传统写意山水结合后的效果。而现在，仅需几秒钟，这种效果便能展现在眼前。你可以利用这种方式融合任意风格，生成独特的海报，感受艺术间别样的碰撞。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/004.png">
+    <img src="/blog/Creative-Integration/004.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### Sketch to Image
+
+这个工作流只需输入一张黑白草图和一张具有特定风格的图像，模型会根据草图的轮廓和细节，将其转换为与该特殊风格相匹配的彩色图像。这样，你不仅可以为简单的线稿添加丰富的色彩和纹理，还能赋予其独特的艺术风格。无论是卡通风格、油画风格，还是抽象艺术风格，模型都能精准地融合这些元素，生成令人惊艳的彩色图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/005.png">
+    <img src="/blog/Creative-Integration/005.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 生成插画   
+
+Prompt：A girl riding a motorcycle on the road,Laugh，blue sky with white clouds, on the green grassland, by the seaside.Signboard，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/006.png">
+    <img src="/blog/Creative-Integration/006.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 生成原画人物  
+
+Prompt：Classical beauty, headdress, exquisite features，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/007.png">
+    <img src="/blog/Creative-Integration/007.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 生成海报
+
+Prompt：Temple of Heaven, Great Wall, Peony，peaceful, detailed, high quality，colorful
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/008.png">
+    <img src="/blog/Creative-Integration/008.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+### Replace Objects and Materials
+
+这个工作流只需上传一张图像，模型就能自动识别并替换图像中的物体和材料。无论你是想更换图中的家具、还是重新定义建筑的外观，这个模型都能精准地进行替换。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/009.png">
+    <img src="/blog/Creative-Integration/009.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 单主体替换
+
+我选用了一组小动物的照片作为输入图，尝试将它们的材质替换为冰块效果。可以看到，原本柔软可爱的动物们在转换后，从毛发的纹理到眼睛的光泽，都被逼真地还原为晶莹剔透的冰块质感，仿佛在冬日的阳光下闪耀。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/010.png">
+    <img src="/blog/Creative-Integration/010.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 家具材质替换
+
+如果你是家具设计师，还可以通过这个工作流为产品更换材质，快速预览不同材质在家具上的实际效果，比如木材、金属、织物等。在虚拟环境中将这些材质应用到家具模型上，观察每种材质的视觉效果和触感模拟。此外，通过这种方式，你还能更好地与客户沟通，向他们展示不同材质组合的可能性，让他们更直观地看到最终产品的效果，从而做出更符合他们需求的选择。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/011.png">
+    <img src="/blog/Creative-Integration/011.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+#### 特定内容替换
+
+我用这个工作流将碗里的米饭替换成了红烧肉，效果非常逼真。你不仅可以替换碗中的食物，还可以替换任何特定的物品。比如，你可以将照片中的书本替换成电子设备，将普通的饮料杯替换成精致的陶瓷杯。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Creative-Integration/012.png">
+    <img src="/blog/Creative-Integration/012.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
