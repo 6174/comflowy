@@ -74,6 +74,7 @@ export default {
   docsRepositoryBase: 'https://github.com/6174/comflowy/tree/master/example', // base URL for the docs repository
   titleSuffix: ' – comflowy',
   unstable_flexsearch: true,
+  search: false,
   useNextSeoProps() {
     return {
       titleTemplate: '%s – Comflowy',
@@ -122,7 +123,7 @@ export default {
                 { title: "Model", url: "./model"},
                 { title: "Blog", url: "./blog"},
                 { title: "Template", url: "./templates"},
-                { title: "Help Center", url: "https://https://comflowy.tawk.help" },
+                { title: "Help Center", url: "https://comflowy.tawk.help" },
                 { title: "Community", url: "https://discord.gg/t7jwRy83uN" },
               ]}
             />
