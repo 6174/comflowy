@@ -9,6 +9,10 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 
+<Callout type="warning" emoji="⚠️">
+  如果你时常遇到插件无法使用的情况，可以考虑注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面内置了 50 多款常用插件，注册即可使用
+</Callout>
+
 ComfyUI 的插件功能非常强大，但安装起来却很复杂，甚至有可能会出现每个人的安装方法都不一样的情况。本文会教大家一些通用的解决方案，希望能给大家一些解决问题的思路。
 
 ## 第一步，下载插件
@@ -67,7 +71,7 @@ ComfyUI 的插件功能非常强大，但安装起来却很复杂，甚至有可
           <br/>
           <PhotoProvider>
             <PhotoView src="/install-comfyui-and-model/015.png">
-                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
             </PhotoView>
           </PhotoProvider>
           然后输入以下命令，启动 ComfyUI:
@@ -115,7 +119,7 @@ ComfyUI 的插件功能非常强大，但安装起来却很复杂，甚至有可
           <br/>
           <PhotoProvider>
             <PhotoView src="/install-comfyui-and-model/015.png">
-                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
             </PhotoView>
           </PhotoProvider>
           然后输入以下命令，启动 ComfyUI:
@@ -179,3 +183,6 @@ Cannot import D:\Program\ComfyUI\custom_nodes\ComfyUI_InstantID module for custo
 > The pre-trained models are available on huggingface, download and place them in the ComfyUI/models/ipadapter directory (create it if not present). You can also use any custom location setting an ipadapter entry in the extra_model_paths.yaml file.
 
 你只需要点击链接下载，或者通过搜索的方式搜索到模型，并将模型文件放到对应的文件夹即可。
+
+<br/>
+<Subscribe />

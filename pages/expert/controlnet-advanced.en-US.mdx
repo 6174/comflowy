@@ -4,23 +4,26 @@ import Subscribe from "components/subscribtion";
 
 # ControlNet Advanced
 
-In the ControlNet basics, I introduced several ways to use ControlNet, but these methods all require you to directly import Pose, Depth, and other graphics into the workflow. What if these pictures aren't available?
-
-The best way is to directly use the existing images and convert them into Pose or Depth images. The advanced chapters will teach you how to use plugins to convert images for ControlNet use.
-
 <Callout type="warning" emoji="⚠️">
   Before starting this chapter, please download the following models and place the model files in the corresponding folders:
   * [Dreamshaper](https://civitai.com/models/4384/dreamshaper): Place it within the models/checkpoints folder in ComfyUI.
   * [ControlNet Scribble](https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.safetensors?download=true): Place it within the models/controlnet folder in ComfyUI.
   * [ControlNet Openpose](https://huggingface.co/lllyasviel/sd-controlnet-openpose/resolve/main/diffusion_pytorch_model.safetensors?download=true): Place it between the models/controlnet folder in ComfyUI.
   * [ControlNet Canny](https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth): Place it between the models/controlnet folder in ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
 </Callout>
+
+In the ControlNet basics, I introduced several ways to use ControlNet, but these methods all require you to directly import Pose, Depth, and other graphics into the workflow. What if these pictures aren't available?
+
+The best way is to directly use the existing images and convert them into Pose or Depth images. The advanced chapters will teach you how to use plugins to convert images for ControlNet use.
 
 ## Image canny ControlNet workflow
 In the compulsory course, I introduced the Scribble ControlNet workflow, which can convert hand-drawn drafts into images. However, if you don't have a hand-drawn draft, but want to generate from someone else's picture, I suggest not converting the picture into a scribble picture, but using Canny. The resulting reference picture is more accurate than the hand-drawn style. For example, like this:
+<br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/011.png">
-      <img src="/comfyui-controlnet/011.png" alt="" />
+      <img src="/comfyui-controlnet/011.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -48,7 +51,7 @@ As you can see from the example above, Canny is somewhat similar to the first Sc
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-controlnet/012.png">
-        <img src="/comfyui-controlnet/012.png" alt="" />
+        <img src="/comfyui-controlnet/012.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
@@ -86,7 +89,7 @@ The method is also simple.
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-controlnet/008.png">
-        <img src="/comfyui-controlnet/008.png" alt="" />
+        <img src="/comfyui-controlnet/008.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -99,7 +102,7 @@ The method is also simple.
 Lastly, you may encounter a situation where your client provides reference images for your design, for example design a logo. In this case, besides letting the AI generate directly, you can also use these reference images to let AI produce a new logo.
 
 <Callout emoji="💡">
-  f you're interested in how to use AI to generate logos, feel free to read our blog article: [How to generate App logo using ComfyUI?](/blog/generate-app-logo)
+  If you're interested in how to use AI to generate logos, feel free to read our blog article: [How to generate App logo using ComfyUI?](/blog/generate-app-logo)
 </Callout>
 <Steps>
 
@@ -112,7 +115,7 @@ All you have to do is replace the Empty Latent Image in the original ControlNet 
 <br/>
   <PhotoProvider>
     <PhotoView src="/blog/generate-app-logo/007.png">
-      <img src="/blog/generate-app-logo/007.png" alt="" />
+      <img src="/blog/generate-app-logo/007.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>

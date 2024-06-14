@@ -10,22 +10,26 @@ import {FAQBox} from "components/FAQ";
 
 # Upscale
 
-You may not be familiar with the term "Upscale," but you probably have seen some products that claim to "restore old photos" which can transform low-resolution photos into high-definition images.
-
-On the left is a very low-resolution image, and on the right is an image that has been restored and enlarged through technical means. Doesn't it look quite impressive? The technology used behind these types of products is known as Upscale.
-
-<PhotoProvider>
-  <PhotoView src="/comfyui-upscale/001.png">
-    <img src="/comfyui-upscale/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>
-
 <Callout type="warning" emoji="⚠️">
  Before officially starting this chapter, please download the following models and put them into the corresponding folders:
   * [Real-ESRGAN x2](https://openmodeldb.info/models/2x-realesrgan-x2plus): place it inside the models/upscale_models folder in ComfyUI.
   * [BSRGAN x2](https://openmodeldb.info/models/2x-BSRGAN): place it inside the models/upscale_models folder in ComfyUI.
   * [BSRGAN x4](https://openmodeldb.info/models/4x-BSRGAN): place it inside the models/upscale_models folder in ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
 </Callout>
+
+You may not be familiar with the term "Upscale," but you probably have seen some products that claim to "restore old photos" which can transform low-resolution photos into high-definition images.
+
+On the left is a very low-resolution image, and on the right is an image that has been restored and enlarged through technical means. Doesn't it look quite impressive? The technology used behind these types of products is known as Upscale.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-upscale/001.png">
+    <img src="/comfyui-upscale/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+
 
 ## Introduction to the Principle
 
@@ -71,7 +75,7 @@ Let's first look at how to upscale an image using algorithms:
   <br/>
     <PhotoProvider>
       <PhotoView src="/comfyui-upscale/005.png">
-        <img src="/comfyui-upscale/005.png" alt="" />
+        <img src="/comfyui-upscale/005.png" alt="" className='rounded-lg'/>
       </PhotoView>
     </PhotoProvider>
 </Steps>
@@ -115,7 +119,7 @@ In order to better memorize the above-established workflow, I suggest everyone j
     <br/>
     <PhotoProvider>
       <PhotoView src="/comfyui-upscale/002.png">
-        <img src="/comfyui-upscale/002.png" alt="" />
+        <img src="/comfyui-upscale/002.png" alt="" className='rounded-lg'/>
       </PhotoView>
     </PhotoProvider>
   </Tabs.Tab>
@@ -129,10 +133,10 @@ This method, which directly upscales in the latent space, is known as Hi-res Lat
 
 * The second picture is enlarged without changing the information of the first picture, but when you look closely at the local picture, there is a sense of algorithmic smearing.
 * In addition to enlarging, the third picture also supplements details of the picture, such as the clouds above. However, there are also downsides as the content of the picture may vary slightly, such as the cat's hand disappears (of course, this can be overcome by slight parameter adjustment, but it could be slightly more complicated).
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-upscale/003.png">
-    <img src="/comfyui-upscale/003.png" alt="" />
+    <img src="/comfyui-upscale/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -162,7 +166,7 @@ After comparing the differences, let's take a look at how to build a Hi-res Late
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-upscale/004.png">
-      <img src="/comfyui-upscale/004.png" alt="" />
+      <img src="/comfyui-upscale/004.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
   
@@ -201,7 +205,7 @@ You might want to try connecting the workflow yourself:
       <br/>
       <PhotoProvider>
         <PhotoView src="/comfyui-upscale/006.png">
-          <img src="/comfyui-upscale/006.png" alt="" />
+          <img src="/comfyui-upscale/006.png" alt="" className='rounded-lg'/>
         </PhotoView>
       </PhotoProvider>
     </Steps>

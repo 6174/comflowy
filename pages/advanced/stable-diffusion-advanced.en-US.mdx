@@ -3,6 +3,11 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
 # Stable Diffusion Advanced
+
+<Callout type="warning" emoji="⚠️">
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
 In the basic section, we introduced the basic model of Stable Diffusion. In this advanced section, we will introduce Stable Diffusion XL through ComfyUI's workflow.
 
 ## Model Introduction
@@ -17,7 +22,7 @@ So how is it different from the previous version? Let's visualize it:
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-advanced/001.png">
-    <img src="/stable-diffusion-advanced/001.png" alt="" />
+    <img src="/stable-diffusion-advanced/001.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -50,7 +55,7 @@ After downloading, open ComfyUI, load the Default workflow, and then we will bui
   <br/>
   <PhotoProvider>
     <PhotoView src="/stable-diffusion-advanced/002.png">
-      <img src="/stable-diffusion-advanced/002.png" alt="" />
+      <img src="/stable-diffusion-advanced/002.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -59,7 +64,7 @@ After downloading, open ComfyUI, load the Default workflow, and then we will bui
   <br/>
   <PhotoProvider>
     <PhotoView src="/stable-diffusion-advanced/003.png">
-      <img src="/stable-diffusion-advanced/003.png" alt="" />
+      <img src="/stable-diffusion-advanced/003.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -77,7 +82,7 @@ After downloading, open ComfyUI, load the Default workflow, and then we will bui
   <br/>
   <PhotoProvider>
     <PhotoView src="/stable-diffusion-advanced/004.png">
-      <img src="/stable-diffusion-advanced/004.png" alt="" />
+      <img src="/stable-diffusion-advanced/004.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -96,7 +101,7 @@ After downloading, open ComfyUI, load the Default workflow, and then we will bui
   <br/>
   <PhotoProvider>
     <PhotoView src="/stable-diffusion-advanced/005.png">
-      <img src="/stable-diffusion-advanced/005.png" alt="" />
+      <img src="/stable-diffusion-advanced/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
   To explain the last two settings, as mentioned in the model introduction at the beginning, SDXL consists of two models and runs a certain number of steps separately. To make the total steps equal to 25, the second KSampler cannot start from 0 but has to continue from the steps of the first KSampler. So we need to set the start_at_step of the second KSampler to be consistent with the end_at_step of the first KSampler.
@@ -108,10 +113,12 @@ After downloading, open ComfyUI, load the Default workflow, and then we will bui
 </Steps>
 
 Lastly, let's compare. Under the same prompt, the difference between only base and utilizing both together is clear. The left image is Base, the right image is Base + Refiner. Isn't the right image more natural and more detailed?
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-advanced/006.png">
-      <img src="/stable-diffusion-advanced/006.png" alt="" />
+      <img src="/stable-diffusion-advanced/006.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
+
+<br/>
 <Subscribe />

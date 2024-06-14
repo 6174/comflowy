@@ -10,22 +10,24 @@ import Subscribe from "components/subscribtion";
 
 # In/Outpainting
 
+<Callout type="warning" emoji="⚠️">
+  Please download the following model and place the model file in the corresponding folder before officially starting to learn this chapter:
+  * [Dreamshaper 8-inpainting](https://civitai.com/models/4384?modelVersionId=131004): Place it in the models/checkpoints folder in ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
 After you have generated an image using Stable Diffusion, you might be unsatisfied with some parts of the image. For instance, if you were discontented with the character's hair in the picture, you might try to modify the Prompt by adding "red hair" and then regenerate the image. But by using this method, the character's portrait might turn red, and other areas might also change.
 
 So how to change only a certain area without affecting other areas?
 
-<Callout type="warning" emoji="⚠️">
-  Please download the following model and place the model file in the corresponding folder before officially starting to learn this chapter:
-  * [Dreamshaper 8-inpainting](https://civitai.com/models/4384?modelVersionId=131004): Place it in the models/checkpoints folder in ComfyUI.
-</Callout>
-
 ## Inpainting Workflow
 
 Let me explain how to build Inpainting using the following scene as an example. The picture on the left was first generated using the text-to-image function. I was not satisfied with the color of the character's hair, so I used ComfyUI to regenerate the character with red hair based on the original image. Comparing with the original image, the new image did not change in areas other than the hair:
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-inoutpainting/003.png">
-      <img src="/comfyui-inoutpainting/003.png" alt="" />
+      <img src="/comfyui-inoutpainting/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -43,7 +45,7 @@ To replace a part of the image with something else, the main technique used is I
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-inoutpainting/001.png">
-        <img src="/comfyui-inoutpainting/001.png" alt="" />
+        <img src="/comfyui-inoutpainting/001.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -57,7 +59,7 @@ To replace a part of the image with something else, the main technique used is I
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-inoutpainting/002.png">
-        <img src="/comfyui-inoutpainting/002.png" alt="" />
+        <img src="/comfyui-inoutpainting/002.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
@@ -68,7 +70,7 @@ In addition to modifying parts of the content, another common requirement is to 
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-inoutpainting/004.png">
-      <img src="/comfyui-inoutpainting/004.png" alt="" />
+      <img src="/comfyui-inoutpainting/004.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -86,7 +88,7 @@ The steps are similar to Inpainting, so you can continue to use the workflow for
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-inoutpainting/005.png">
-        <img src="/comfyui-inoutpainting/005.png" alt="" />
+        <img src="/comfyui-inoutpainting/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>

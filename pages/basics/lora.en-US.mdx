@@ -16,6 +16,8 @@ import Subscribe from "components/subscribtion";
   * [AnythingElse V4](https://civitai.com/models/4855/anythingelse-v4): Put it in the models/checkpoints folder in ComfyUI.
   * [OrangeMixs](https://huggingface.co/WarriorMama777/OrangeMixs): Put it in the models/vae folder in ComfyUI.
   * [LCM-LoRA](https://huggingface.co/latent-consistency/lcm-lora-sdxl/tree/main): Put it in the models/loras folder in ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
 </Callout>
 
 ## Theory Introduction
@@ -25,7 +27,7 @@ Before discussing how to use it, as usual, let's talk about the principle of LoR
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">
-    <img src="/stable-diffusion-foundation/005.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/005.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -33,7 +35,7 @@ How does the Noise Predictor work? In simple terms, it involves a series of comp
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/001.png">
-      <img src="/comfyui-lora/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -46,7 +48,7 @@ LoRA allows parameters to be injected into each existing layer without disruptin
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/002.png">
-      <img src="/comfyui-lora/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -55,7 +57,7 @@ To understand by analogy, LoRA can be considered similar to a camera "filter". T
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/003.jpg">
-      <img src="/comfyui-lora/003.jpg" alt="" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/003.jpg" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -75,14 +77,14 @@ Alright, after briefly introducing the principle of LoRA, let's have a look at h
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-lora/004.png">
-        <img src="/comfyui-lora/004.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+        <img src="/comfyui-lora/004.png" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
   Moreover, if you look closely at my workflow, you will find that I did not directly use the VAE of the checkpoint, but added an extra VAE. This is because the entire denoising process is conducted in Latent Space, so certain LoRAs may perform better under certain VAE algorithms. Whichever VAE and Sampler algorithm to use would generally be announced by those sharing LoRA, as in the case of the Anime Lineart LoRA that I used, which has the following recommended configuration:
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-lora/005.png">
-        <img src="/comfyui-lora/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+        <img src="/comfyui-lora/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -97,10 +99,10 @@ In addition to affecting the style of the output image, the latest LCM-LoRA can 
 * LCM-LoRA supports generating 1024X1024 images, while Turbo can only support up to 512X512.
 
 * Generally speaking, images generated using LCM-LoRA have better results. Below are comparison samples (source [Stable Diffusion Art](https://stable-diffusion-art.com/sdxl-turbo/)), LCM-LoRA is on the left, and Turbo is on the right:
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/006.png">
-      <img src="/comfyui-lora/006.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/006.png" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -123,7 +125,7 @@ Let's discuss how to configure LCM-LoRA on ComfyUI. The connection method is the
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-lora/007.png">
-        <img src="/comfyui-lora/007.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+        <img src="/comfyui-lora/007.png" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>

@@ -4,6 +4,14 @@ import Subscribe from "components/subscribtion";
 
 # Embedding
 
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Tom Cruise embedding](https://civitai.com/models/6019/tom-cruise-embedding)：将其放到 ComfyUI 里的 models/embeddings 文件夹内。
+  * [BadDream](https://civitai.com/models/72437?modelVersionId=77169)：将其放到 ComfyUI 里的 models/embeddings 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
+</Callout>
+
 在 Stable Diffusion 基础一章中，我有介绍过为何机器能知道 Cat 是长什么样子的。关键是 Text Encoder 将自然语意的 Prompt 转成了词特征向量 Embedding。比如 Cat 转为词特征向量后就有可能包含：
 
 * 形态特征：向量表示可能会捕捉到 Cat 的形态特征，比如它的体型、头部的形状、四肢的位置等。这些特征可以帮助区分 Cat 与其他动物或物体。
@@ -14,11 +22,6 @@ import Subscribe from "components/subscribtion";
 
 比如说，我们可以将 S* 映射到一只加菲猫的视觉特征，那么以后我们在 Prompt 里输入 O_Cat 时，生成的图片就会是加菲猫了。
 
-<Callout type="warning" emoji="⚠️">
-  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
-  * [Tom Cruise embedding](https://civitai.com/models/6019/tom-cruise-embedding)：将其放到 ComfyUI 里的 models/embeddings 文件夹内。
-  * [BadDream](https://civitai.com/models/72437?modelVersionId=77169)：将其放到 ComfyUI 里的 models/embeddings 文件夹内。
-</Callout>
 
 ## 原理介绍
 

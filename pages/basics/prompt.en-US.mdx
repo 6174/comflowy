@@ -9,6 +9,15 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
 # SD Prompt Basics
+
+<Callout type="warning" emoji="⚠️">
+  Considering that SDXL produces better image effects, this chapter mainly introduces SDXL's Prompt. Therefore, before officially starting this chapter, please download the following models and place the model files in the corresponding folders:
+  * [SDXL 1.0 Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/tree/main): Place it in the models/checkpoints folder within ComfyUI.
+  * [SDXL 1.0 Refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/tree/main): Place it in the models/checkpoints folder within ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
 After understanding all the basic nodes and operations of ComfyUI, you should be able to use ComfyUI to generate images. 
 
 However, the effect of the generated image might not be what you want. For instance, you may want to create an anime-style image, but the result is a realistic one. In that case, you need to resort to certain methods to make the AI generate images with a specific style. To adjust the image style, there are several methods:
@@ -16,12 +25,6 @@ However, the effect of the generated image might not be what you want. For insta
 * **Method one**: Influence the image generation through the use of prompts. This is the simplest practice. Basically, using a default workflow should suffice. This chapter will explain how to use prompts to adjust the image style and introduce some more effective methods.
 * **Method two**: Influence the image generation by loading different Checkpoint models. This is a straightforward practice; you can check [Model Recommendations](./basic-optional/model-recommendation) in the basic elective to learn about commonly used models in the industry.
 * **Method three**: Influence the image generation through LoRA. This method is a bit more complex, but compared to method one, more models are available, and the files are significantly smaller. Later, I will introduce you to the usage of LoRA.
-
-<Callout type="warning" emoji="⚠️">
-  Considering that SDXL produces better image effects, this chapter mainly introduces SDXL's Prompt. Therefore, before officially starting this chapter, please download the following models and place the model files in the corresponding folders:
-  * [SDXL 1.0 Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/tree/main): Place it in the models/checkpoints folder within ComfyUI.
-  * [SDXL 1.0 Refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/tree/main): Place it in the models/checkpoints folder within ComfyUI.
-</Callout>
 
 ## Basic Principles
 
@@ -97,7 +100,7 @@ Let's recall how we can generate multiple images?
     <br/>
     <PhotoProvider>
       <PhotoView src="/stable-diffusion-prompt/003.png">
-        <img src="/stable-diffusion-prompt/003.png" alt="" />
+        <img src="/stable-diffusion-prompt/003.png" alt="" className='rounded-lg'/>
       </PhotoView>
     </PhotoProvider>
 

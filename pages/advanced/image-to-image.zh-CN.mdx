@@ -4,6 +4,16 @@ import Subscribe from "components/subscribtion";
 
 # 图生图
 
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main)：你可以下载 h 或 l 版本，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth)：将其放到 ComfyUI 里的 models/style_models 文件夹内。
+  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14)：将其放到 ComfyUI 里的 models/clip_vision 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
+</Callout>
+
 完成基础篇的学习后，你可能对生成的图片不满意，比如觉得：
 
 * 生成的图片分辨率不够。
@@ -11,14 +21,6 @@ import Subscribe from "components/subscribtion";
 * 亦或者觉得想要加强对生成过程的控制，比如想控制图中人物的姿势等。
 
 中级篇将会介绍更多方法，帮助你解决以上问题。不过在讲解以上问题的解决方案之前，我想先介绍一下 Stable Diffusion 的另一个关键工作流：图生图。
-
-<Callout type="warning" emoji="⚠️">
-  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
-  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main)：你可以下载 h 或 l 版本，并将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth)：将其放到 ComfyUI 里的 models/style_models 文件夹内。
-  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14)：将其放到 ComfyUI 里的 models/clip_vision 文件夹内。
-</Callout>
 
 ## 原理介绍
 
@@ -34,7 +36,7 @@ Stable Diffusion 模型图生图主流方法有两种：
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/003.png">
-    <img src="/comfyui-img2img/003.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/comfyui-img2img/003.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -46,7 +48,7 @@ Stable Diffusion 模型图生图主流方法有两种：
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/004.png">
-    <img src="/comfyui-img2img/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/comfyui-img2img/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -59,8 +61,6 @@ Stable Diffusion 模型图生图主流方法有两种：
 * 如果你将图片作为文字 prompt 的补充，那生成的图片里也会包含原图里的元素。比如上面原理介绍的图里，我将一张有桥、河流、城墙的图输入给模型，而文字 prompt 并没有提到图里的这些内容。
 但最终生成的图里却包含了原图里的信息（桥、河流、城墙），甚至风格也跟原图很类似。这种 workflow 一般称为 unCLIP model workflow。
 * 另一种则是仅将原图的风格输入给模型，这样生成的图片就会有原图的风格，而不会有原图的内容。这种 workflow 一般称为 Style model workflow。
-
-<Subscribe />
 
 ## Simple img2img workflow
 既然原理很简单，你应该能猜测出应该如何搭建 Simple img2img workflow。你不妨自己先试试，搭建一个 workflow 😎
@@ -88,7 +88,7 @@ Stable Diffusion 模型图生图主流方法有两种：
       <br/>
       <PhotoProvider>
         <PhotoView src="/comfyui-img2img/001.png">
-          <img src="/comfyui-img2img/001.png" alt="" />
+          <img src="/comfyui-img2img/001.png" alt="" className='rounded-lg'/>
         </PhotoView>
       </PhotoProvider>
     </Steps>
@@ -133,7 +133,7 @@ Stable Diffusion 模型图生图主流方法有两种：
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-img2img/005.png">
-      <img src="/comfyui-img2img/005.png" alt="" />
+      <img src="/comfyui-img2img/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
@@ -144,7 +144,7 @@ Stable Diffusion 模型图生图主流方法有两种：
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/006.png">
-    <img src="/comfyui-img2img/006.png" alt="" />
+    <img src="/comfyui-img2img/006.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -171,7 +171,7 @@ Stable Diffusion 模型图生图主流方法有两种：
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-img2img/007.png">
-      <img src="/comfyui-img2img/007.png" alt="" />
+      <img src="/comfyui-img2img/007.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 

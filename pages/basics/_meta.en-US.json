@@ -1,8 +1,9 @@
 {
-  "stable-diffusion-foundation": "1. Stable Diffusion Basics",
-  "comfyui-foundation": "2. Text-to-image",
-  "basic-nodes": "3. Basic operations",
-  "prompt": "4. SD Prompt Basics",
-  "embedding": "5. Embedding",
-  "lora": "6. LoRA"
+  "new-to-comflowy": "1. New to Comflowy?",
+  "stable-diffusion-foundation": "2. Stable Diffusion Basics",
+  "comfyui-foundation": "3. Text-to-image",
+  "basic-nodes": "4. Basic operations",
+  "prompt": "5. SD Prompt Basics",
+  "embedding": "6. Embedding",
+  "lora": "7. LoRA"
 }

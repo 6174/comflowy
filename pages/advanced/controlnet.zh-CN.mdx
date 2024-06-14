@@ -4,15 +4,17 @@ import Subscribe from "components/subscribtion";
 
 # ContorlNet
 
-在使用 Stable Diffusion 的时候，你可能会希望控制构图，但通过 prompt 调整，效果并不会特别好。本章会教大家几个常用的 ControlNet 方法，以此解决控制构图的需求。
-
 <Callout type="warning" emoji="⚠️">
   正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
   * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
   * [ControlNet Scribble](https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.safetensors?download=true)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
   * [ControlNet Openpose](https://huggingface.co/lllyasviel/sd-controlnet-openpose/resolve/main/diffusion_pytorch_model.safetensors?download=true): 将其放到 ComfyUI 里的 models/controlnet 文件夹内。
   * [ControlNet Canny](https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
 </Callout>
+
+在使用 Stable Diffusion 的时候，你可能会希望控制构图，但通过 prompt 调整，效果并不会特别好。本章会教大家几个常用的 ControlNet 方法，以此解决控制构图的需求。
 
 ## 原理介绍
 本质上来说，我在整个进阶教程中教的所有方法都是 image to image 的方法。都是通过图片给予模型不同的信息，从而让模型生成我们想要的图片。而 ControlNet 则是通过图片的结构信息来控制模型生成的图片。这里的结构信息，可以是简笔画，也可以是一张图片的 mask，甚至是一张图片的边缘信息。这些信息都可以通过 ControlNet 来控制模型生成的图片。
@@ -22,7 +24,7 @@ import Subscribe from "components/subscribtion";
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/003.png">
-      <img src="/comfyui-controlnet/003.png" alt="" width="90%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-controlnet/003.png" alt="" width="90%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -35,7 +37,7 @@ import Subscribe from "components/subscribtion";
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/001.png">
-      <img src="/comfyui-controlnet/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-controlnet/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -58,7 +60,7 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
       <br/>
       <PhotoProvider>
         <PhotoView src="/comfyui-controlnet/004.png">
-            <img src="/comfyui-controlnet/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            <img src="/comfyui-controlnet/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
         </PhotoView>
       </PhotoProvider>
       
@@ -84,7 +86,7 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
       <br/>
       <PhotoProvider>
         <PhotoView src="/comfyui-controlnet/002.png">
-            <img src="/comfyui-controlnet/002.png" alt="" />
+            <img src="/comfyui-controlnet/002.png" alt="" className='rounded-lg'/>
         </PhotoView>
       </PhotoProvider>
       <Callout emoji="💡">
@@ -102,7 +104,7 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
 
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/005.jpg">
-      <img src="/comfyui-controlnet/005.jpg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-controlnet/005.jpg" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -110,17 +112,16 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
 <br/> 
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/006.jpg">
-      <img src="/comfyui-controlnet/006.jpg" alt="" />
+      <img src="/comfyui-controlnet/006.jpg" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 那么整个 workflow 的搭建跟上一个 workflow 是一样的，只是在 Load ControlNet Model 节点里，我们需要加载 ControlNet Openpose 模型，并加载骨架图：
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/007.png">
-      <img src="/comfyui-controlnet/007.png" alt="" />
+      <img src="/comfyui-controlnet/007.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
-
 
 
 ## Depth ControlNet workflow
@@ -130,7 +131,7 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/009.png">
-      <img src="/comfyui-controlnet/009.png" alt="" />
+      <img src="/comfyui-controlnet/009.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -142,7 +143,7 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/010.png">
-      <img src="/comfyui-controlnet/010.png" alt="" />
+      <img src="/comfyui-controlnet/010.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -150,7 +151,7 @@ OK，大家对 Scribble ControlNet 有一定的印象后，我们再来一起看
 第四种 ControlNet 的用法是通过 Canny 边缘图来控制模型生成的图片。这种方法的好处是，你可以通过 Canny 边缘图来控制模型生成的图片的边缘。比如像这样：
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/011.png">
-      <img src="/comfyui-controlnet/011.png" alt="" />
+      <img src="/comfyui-controlnet/011.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -158,7 +159,8 @@ Workflow 搭建与之前的类似，只要将 ControlNet 模型换成 Canny 模�
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/013.png">
-      <img src="/comfyui-controlnet/013.png" alt="" />
+      <img src="/comfyui-controlnet/013.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
+<br/>
 <Subscribe />

@@ -4,21 +4,24 @@ import Subscribe from "components/subscribtion";
 
 # In/Outpainting
 
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Dreamshaper 8-inpainting](https://civitai.com/models/4384?modelVersionId=131004)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
+</Callout>
+
 当你使用 Stable Diffusion 生成完图片后，你可能对图片里的某些部分不太满意。比如，你对图片里的人物头发不满意，你可能会通过修改 Prompt 的方式，比如添加了 red hair，然后重新生成图片。但使用这种方式人物的头像变成了红色，可能其他地方也会发生变化。
 
 那要如何不影响其他地方的，只改变某一区域呢？
 
-<Callout type="warning" emoji="⚠️">
-  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
-  * [Dreamshaper 8-inpainting](https://civitai.com/models/4384?modelVersionId=131004)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-</Callout>
-
 ## Inpainting workflow
 
 我以下面这个场景为例解释下如何搭建 Inpainting，左侧这张图是我先用文生图功能生成的，我对图中人物的发色不满意，于是我用 ComfyUI 在原图的基础上重新生成了红色头发的人物，且对比原图，新图片除了头发外，其他地方都没有发生变化：
+<br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-inoutpainting/003.png">
-      <img src="/comfyui-inoutpainting/003.png" alt="" />
+      <img src="/comfyui-inoutpainting/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -36,7 +39,7 @@ import Subscribe from "components/subscribtion";
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-inoutpainting/001.png">
-        <img src="/comfyui-inoutpainting/001.png" alt="" />
+        <img src="/comfyui-inoutpainting/001.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -50,7 +53,7 @@ import Subscribe from "components/subscribtion";
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-inoutpainting/002.png">
-        <img src="/comfyui-inoutpainting/002.png" alt="" />
+        <img src="/comfyui-inoutpainting/002.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
@@ -61,7 +64,7 @@ import Subscribe from "components/subscribtion";
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-inoutpainting/004.png">
-      <img src="/comfyui-inoutpainting/004.png" alt="" />
+      <img src="/comfyui-inoutpainting/004.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -78,7 +81,7 @@ import Subscribe from "components/subscribtion";
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-inoutpainting/005.png">
-        <img src="/comfyui-inoutpainting/005.png" alt="" />
+        <img src="/comfyui-inoutpainting/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>

@@ -11,17 +11,19 @@ import {FAQBox} from "components/FAQ";
 
 # Text-to-image
 
-In the last chapter, we introduced the basic principles of Stable Diffusion and how to use it to generate images. In this chapter, we will cover the basic operations of ComfyUI and how to use ComfyUI to generate images.
-
 <Callout type="warning" emoji="⚠️">
-  Before starting this chapter, please make sure that you have completed the installation of ComfyUI or Comflowy Space, and have downloaded the Stable Diffusion v1.5 or Stable Diffusion XL model. Also, ensure that the model files are placed in the appropriate folder.
+  Before starting this chapter, please make sure that you have completed the installation of ComfyUI , and have downloaded the Stable Diffusion v1.5 or Stable Diffusion XL model. Also, ensure that the model files are placed in the appropriate folder.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
 </Callout>
+
+In the last chapter, we introduced the basic principles of Stable Diffusion and how to use it to generate images. In this chapter, we will cover the basic operations of ComfyUI and how to use ComfyUI to generate images.
 
 ## Default Workflow
 
-<Tabs items={['ComflowySpace', 'ComfyUI']}>
+<Tabs items={['Comflowy', 'ComfyUI']}>
   <Tabs.Tab>
-  If you are using Comflowy Space, when you open the application, you will be greeted with an interface like this one.
+  If you are using Comflowy, when you open the application, you will be greeted with an interface like this one. If you're using our cloud version, you should see a similar interface.
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-foundation/006.png">
@@ -48,7 +50,7 @@ In the last chapter, we introduced the basic principles of Stable Diffusion and 
     <br/>
     <PhotoProvider>
       <PhotoView src="/comfyui-foundation/001.png">
-        <img src="/comfyui-foundation/001.png" alt="" />
+        <img src="/comfyui-foundation/001.png" alt="" className='rounded-lg'/>
       </PhotoView>
     </PhotoProvider>
 
@@ -63,7 +65,7 @@ For easier explanation later, let me first briefly introduce the individual boxe
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/005.jpg">
-    <img src="/comfyui-foundation/005.jpg" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/comfyui-foundation/005.jpg" alt="" width="70%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -71,7 +73,7 @@ Looking back at these nodes, all of them were mentioned in the last chapter. If 
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/002.png">
-    <img src="/comfyui-foundation/002.png" alt="" />
+    <img src="/comfyui-foundation/002.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -236,7 +238,7 @@ In fact, these nodes are like Lego blocks. They can be combined freely while fol
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/003.png">
-    <img src="/comfyui-foundation/003.png" alt="" />
+    <img src="/comfyui-foundation/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 

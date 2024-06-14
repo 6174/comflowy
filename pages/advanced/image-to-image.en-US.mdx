@@ -10,6 +10,16 @@ import Subscribe from "components/subscribtion";
 
 # Image-to-Image
 
+<Callout type="warning" emoji="⚠️">
+ Before officially starting this chapter, please download the following models and put them into the corresponding folders:
+  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper): place it inside the models/checkpoints folder in ComfyUI.
+  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main): you can download the h or l version, and place it inside the models/checkpoints folder in ComfyUI.
+  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth): place it inside the models/style_models folder in ComfyUI.
+  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14): place it inside the models/clip_vision folder in ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
 After completing the basic learning, you might not be satisfied with the generated images, for example:
 
 * The resolution of the generated images is not enough.
@@ -17,14 +27,6 @@ After completing the basic learning, you might not be satisfied with the generat
 * Or maybe you want to enhance control over the generation process, such as controlling the pose of the character in the picture.
 
 The intermediate section will introduce more methods to help you solve the above problems. But before discussing the solutions to these issues, I'd like to introduce another crucial workflow of Stable Diffusion: image-to-image.
-
-<Callout type="warning" emoji="⚠️">
- Before officially starting this chapter, please download the following models and put them into the corresponding folders:
-  * [Dreamshaper](https://civitai.com/models/4384/dreamshaper): place it inside the models/checkpoints folder in ComfyUI.
-  * [stable-diffusion-2-1-unclip](https://huggingface.co/stabilityai/stable-diffusion-2-1-unclip/tree/main): you can download the h or l version, and place it inside the models/checkpoints folder in ComfyUI.
-  * [coadapter-style-sd15v1](https://huggingface.co/TencentARC/T2I-Adapter/blob/main/models/coadapter-style-sd15v1.pth): place it inside the models/style_models folder in ComfyUI.
-  * [OpenAI CLIP Model](https://huggingface.co/openai/clip-vit-large-patch14): place it inside the models/clip_vision folder in ComfyUI.
-</Callout>
 
 ## Principle Introduction
 
@@ -41,7 +43,7 @@ First, remember the Stable Diffusion principle. The image-to-text process denois
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/003.png">
-    <img src="/comfyui-img2img/003.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/comfyui-img2img/003.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -54,7 +56,7 @@ The second method does not redraw the input image, but uses the input image as p
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/004.png">
-    <img src="/comfyui-img2img/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/comfyui-img2img/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -68,7 +70,6 @@ Additionally, how to use the Image data can also affect the effect of the genera
 But the final image contains information from the original image (bridge, river, city wall), and even the style is very similar to the original image. This kind of workflow is generally referred to as the unCLIP model workflow.
 * Another approach is to input only the style of the original image to the model, so the generated image will have the style of the original image but not the content of the original image. This kind of workflow is generally referred to as the Style model workflow.
 
-<Subscribe />
 
 ## Simple img2img workflow
 Since the principle is simple, you should be able to guess how to set up a simple img2img workflow. You might as well try it yourself first, set up a workflow 😎
@@ -96,7 +97,7 @@ Since the principle is simple, you should be able to guess how to set up a simpl
       <br/>
       <PhotoProvider>
         <PhotoView src="/comfyui-img2img/001.png">
-          <img src="/comfyui-img2img/001.png" alt="" />
+          <img src="/comfyui-img2img/001.png" alt="" className='rounded-lg'/>
         </PhotoView>
       </PhotoProvider>
     </Steps>
@@ -140,7 +141,7 @@ After introducing the redraw, let's talk about the reference. First is the unCLI
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-img2img/005.png">
-      <img src="/comfyui-img2img/005.png" alt="" />
+      <img src="/comfyui-img2img/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
@@ -152,7 +153,7 @@ Additionally, you can also try inputting multiple images into the model, and the
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/006.png">
-    <img src="/comfyui-img2img/006.png" alt="" />
+    <img src="/comfyui-img2img/006.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -176,7 +177,7 @@ Another type of redraw involves only using the style of the image and not its co
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-img2img/007.png">
-      <img src="/comfyui-img2img/007.png" alt="" />
+      <img src="/comfyui-img2img/007.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>

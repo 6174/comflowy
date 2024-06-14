@@ -10,6 +10,8 @@ import Subscribe from "components/subscribtion";
   * [AnythingElse V4](https://civitai.com/models/4855/anythingelse-v4)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
   * [OrangeMixs](https://huggingface.co/WarriorMama777/OrangeMixs)：将其放到 ComfyUI 里的 models/vae 文件夹内。
   * [LCM-LoRA](https://huggingface.co/latent-consistency/lcm-lora-sdxl/tree/main)：将其放到 ComfyUI 里的 models/loras 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
 </Callout>
 
 ## 原理介绍
@@ -18,7 +20,7 @@ import Subscribe from "components/subscribtion";
 <br/>
 <PhotoProvider>
   <PhotoView src="/stable-diffusion-foundation/005.png">
-    <img src="/stable-diffusion-foundation/005.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/stable-diffusion-foundation/005.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -26,7 +28,7 @@ Noise Predictor 是如何工作的呢？简单理解就是进行了一系列的�
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/001.png">
-      <img src="/comfyui-lora/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -38,14 +40,14 @@ LoRA 是在不破坏任何一层函数，而是将参数注入到原有的每一
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/002.png">
-      <img src="/comfyui-lora/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/002.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 用类比来理解，可以将 LoRA 视为类似相机「滤镜」。下方两张图都是用相同的模型、Prompt 和 Seed 生成。左侧这张图是没有 LoRA 的效果，而右边则是加了笔绘风 LoRA 的效果，加了笔绘风 LoRA 的图看起来会更像漫画线稿一些，而且看起是不是有点像是给左边的图加了滤镜？
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/003.jpg">
-      <img src="/comfyui-lora/003.jpg" alt="" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/003.jpg" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 这就是加 LoRA 的作用，如果你觉得普通的 Stable Diffusion 模型不够好看，或者风格不是你喜欢的，不妨试试添加一些 LoRA。
@@ -64,14 +66,14 @@ OK，简单介绍完 LoRA 的原理后，我们再来看看在 ComfyUI 上该如
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-lora/004.png">
-        <img src="/comfyui-lora/004.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+        <img src="/comfyui-lora/004.png" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
   另外，如果你细看我的 workflow，你会发现我并没有直接使用 checkpoint 的 VAE 而是自己加了额外的 VAE。这是因为，整个 Denoise 过程都是在 Latent Space 进行的，所以有一些 LoRA 在某些 VAE 算法下效果会更好。使用何种 VAE，以及 Sampler 算法，LoRA 的共享者一般都会公布出来，比如我使用的这个 Anime Lineart LoRA 其推荐的配置是这样的：
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-lora/005.png">
-        <img src="/comfyui-lora/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+        <img src="/comfyui-lora/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -86,10 +88,10 @@ LoRA 除了能影响出图的风格外，最新的 LCM-LoRA 还可以提升出�
 * LCM-LoRA 支持生成 1024X1024 图片，而 Turbo 最大只支持 512X512。
 
 * 相对来说，使用 LCM-LoRA 生成的图片效果更好，以下是对比样张（来源 [Stable Diffusion Art](https://stable-diffusion-art.com/sdxl-turbo/)），左边是 LCM-LoRA，右边是 Turbo：
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-lora/006.png">
-      <img src="/comfyui-lora/006.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+      <img src="/comfyui-lora/006.png" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -113,7 +115,7 @@ LoRA 除了能影响出图的风格外，最新的 LCM-LoRA 还可以提升出�
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-lora/007.png">
-        <img src="/comfyui-lora/007.png" alt="" style={{ display: "block", margin: "0 auto" }}/>
+        <img src="/comfyui-lora/007.png" alt="" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
