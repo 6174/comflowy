@@ -4,24 +4,27 @@ import Subscribe from "components/subscribtion";
 
 # ControlNet 进阶
 
-在 ControlNet 基础篇，我介绍了几种使用 ControlNet 的方式，但这些方式都需要你直接将 Pose、Depth 等图导入到工作流。那如果没有这些图又该怎么办呢？
-
-最好的方式就是直接使用已有的图，然后将其转化为 Pose 或者 Depth 图片。进阶篇会教大家如何使用插件将图片转化为 ControlNet 能使用的图片。
-
 <Callout type="warning" emoji="⚠️">
   正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
   * [Dreamshaper](https://civitai.com/models/4384/dreamshaper)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
   * [ControlNet Scribble](https://huggingface.co/lllyasviel/sd-controlnet-scribble/resolve/main/diffusion_pytorch_model.safetensors?download=true)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
   * [ControlNet Openpose](https://huggingface.co/lllyasviel/sd-controlnet-openpose/resolve/main/diffusion_pytorch_model.safetensors?download=true): 将其放到 ComfyUI 里的 models/controlnet 文件夹内。
   * [ControlNet Canny](https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth)：将其放到 ComfyUI 里的 models/controlnet 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
 </Callout>
+
+在 ControlNet 基础篇，我介绍了几种使用 ControlNet 的方式，但这些方式都需要你直接将 Pose、Depth 等图导入到工作流。那如果没有这些图又该怎么办呢？
+
+最好的方式就是直接使用已有的图，然后将其转化为 Pose 或者 Depth 图片。进阶篇会教大家如何使用插件将图片转化为 ControlNet 能使用的图片。
 
 ## Image canny ControlNet workflow
 在必修课中，我介绍了 Scribble ControlNet workflow, 这个 workflow 可以将手绘稿转化成图片。但如果你没有手绘稿，而是想用别人的图片来生成的话，我不建议将图片转化为 scribble 图片，而是使用
  Canny。这样生成的参考图片比手绘风格更加精准。比如像这样：
+ <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-controlnet/011.png">
-      <img src="/comfyui-controlnet/011.png" alt="" />
+      <img src="/comfyui-controlnet/011.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -49,7 +52,7 @@ import Subscribe from "components/subscribtion";
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-controlnet/012.png">
-        <img src="/comfyui-controlnet/012.png" alt="" />
+        <img src="/comfyui-controlnet/012.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
@@ -86,7 +89,7 @@ import Subscribe from "components/subscribtion";
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-controlnet/008.png">
-        <img src="/comfyui-controlnet/008.png" alt="" />
+        <img src="/comfyui-controlnet/008.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 
@@ -110,7 +113,7 @@ import Subscribe from "components/subscribtion";
   <br/>
   <PhotoProvider>
     <PhotoView src="/blog/generate-app-logo/007.png">
-      <img src="/blog/generate-app-logo/007.png" alt="" />
+      <img src="/blog/generate-app-logo/007.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>

@@ -5,21 +5,24 @@ import {FAQBox} from "components/FAQ";
 
 # Upscale
 
-你可能不知道 Upscale 是什么，但你应该有看过一些所谓的「老照片」修复产品，它可以将一些分辨率很低的照片转化成高清照片。
-
-左边这张图是一张分辨率很低的照片，右边则是通过技术手段修复并放大后的图片，看起来效果是不是还挺不错的？而这类产品背后所用到的技术就是 Upscale。
-<PhotoProvider>
-  <PhotoView src="/comfyui-upscale/001.png">
-    <img src="/comfyui-upscale/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
-  </PhotoView>
-</PhotoProvider>
-
 <Callout type="warning" emoji="⚠️">
   正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
   * [Real-ESRGAN x2](https://openmodeldb.info/models/2x-realesrgan-x2plus)：将其放到 ComfyUI 里的 models/upscale_models 文件夹内。
   * [BSRGAN x2](https://openmodeldb.info/models/2x-BSRGAN)：将其放到 ComfyUI 里的 models/upscale_models 文件夹内。
   * [BSRGAN x4](https://openmodeldb.info/models/4x-BSRGAN)：将其放到 ComfyUI 里的 models/upscale_models 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
 </Callout>
+
+你可能不知道 Upscale 是什么，但你应该有看过一些所谓的「老照片」修复产品，它可以将一些分辨率很低的照片转化成高清照片。
+
+左边这张图是一张分辨率很低的照片，右边则是通过技术手段修复并放大后的图片，看起来效果是不是还挺不错的？而这类产品背后所用到的技术就是 Upscale。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comfyui-upscale/001.png">
+    <img src="/comfyui-upscale/001.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
 
 ## 原理介绍
 
@@ -65,7 +68,7 @@ import {FAQBox} from "components/FAQ";
   <br/>
     <PhotoProvider>
       <PhotoView src="/comfyui-upscale/005.png">
-        <img src="/comfyui-upscale/005.png" alt="" />
+        <img src="/comfyui-upscale/005.png" alt="" className='rounded-lg'/>
       </PhotoView>
     </PhotoProvider>
 </Steps>
@@ -110,7 +113,7 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
     <br/>
     <PhotoProvider>
       <PhotoView src="/comfyui-upscale/002.png">
-        <img src="/comfyui-upscale/002.png" alt="" />
+        <img src="/comfyui-upscale/002.png" alt="" className='rounded-lg'/>
       </PhotoView>
     </PhotoProvider>
   </Tabs.Tab>
@@ -124,10 +127,10 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
 
 * 图二是在不改变图一信息的情况下，将图片放大，但细看图片局部有种算法的涂抹感。
 * 图三除了做到了放大外，还对图片细节进行了补充，比如上方的云朵。但也有不好的地方，画面内容也会出现一些差异，比如猫的手消失了（当然这个可以通过一些参数微调克服，但会稍微麻烦一点）。
-
+<br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-upscale/003.png">
-    <img src="/comfyui-upscale/003.png" alt="" />
+    <img src="/comfyui-upscale/003.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -157,7 +160,7 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-upscale/004.png">
-      <img src="/comfyui-upscale/004.png" alt="" />
+      <img src="/comfyui-upscale/004.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
   
@@ -196,7 +199,7 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
       <br/>
       <PhotoProvider>
         <PhotoView src="/comfyui-upscale/006.png">
-          <img src="/comfyui-upscale/006.png" alt="" />
+          <img src="/comfyui-upscale/006.png" alt="" className='rounded-lg'/>
         </PhotoView>
       </PhotoProvider>
     </Steps>
@@ -226,6 +229,6 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
   从代码逻辑上来说，upscale 放大图像的方法其实是用基础的图像处理方法，["nearest-exact", "bilinear", "area", "bicubic", "bislerp"]  ，这些方法生成大尺寸图像成本低很多。
 </FAQBox>
 
-
+<br/>
 
 <Subscribe />

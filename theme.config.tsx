@@ -141,7 +141,7 @@ export default {
               items={[
                 {
                   title: "Comflowy vs. ComfyUI",
-                  url: "./blog",
+                  url: "../introduction/comflowy-vs-comfyui",
                 },
               ]}
             />

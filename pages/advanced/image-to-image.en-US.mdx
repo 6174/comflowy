@@ -43,7 +43,7 @@ First, remember the Stable Diffusion principle. The image-to-text process denois
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/003.png">
-    <img src="/comfyui-img2img/003.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/comfyui-img2img/003.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -56,7 +56,7 @@ The second method does not redraw the input image, but uses the input image as p
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/004.png">
-    <img src="/comfyui-img2img/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+    <img src="/comfyui-img2img/004.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }} className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -70,7 +70,6 @@ Additionally, how to use the Image data can also affect the effect of the genera
 But the final image contains information from the original image (bridge, river, city wall), and even the style is very similar to the original image. This kind of workflow is generally referred to as the unCLIP model workflow.
 * Another approach is to input only the style of the original image to the model, so the generated image will have the style of the original image but not the content of the original image. This kind of workflow is generally referred to as the Style model workflow.
 
-<Subscribe />
 
 ## Simple img2img workflow
 Since the principle is simple, you should be able to guess how to set up a simple img2img workflow. You might as well try it yourself first, set up a workflow 😎
@@ -98,7 +97,7 @@ Since the principle is simple, you should be able to guess how to set up a simpl
       <br/>
       <PhotoProvider>
         <PhotoView src="/comfyui-img2img/001.png">
-          <img src="/comfyui-img2img/001.png" alt="" />
+          <img src="/comfyui-img2img/001.png" alt="" className='rounded-lg'/>
         </PhotoView>
       </PhotoProvider>
     </Steps>
@@ -142,7 +141,7 @@ After introducing the redraw, let's talk about the reference. First is the unCLI
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-img2img/005.png">
-      <img src="/comfyui-img2img/005.png" alt="" />
+      <img src="/comfyui-img2img/005.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
@@ -154,7 +153,7 @@ Additionally, you can also try inputting multiple images into the model, and the
 <br/>
 <PhotoProvider>
   <PhotoView src="/comfyui-img2img/006.png">
-    <img src="/comfyui-img2img/006.png" alt="" />
+    <img src="/comfyui-img2img/006.png" alt="" className='rounded-lg'/>
   </PhotoView>
 </PhotoProvider>
 
@@ -178,7 +177,7 @@ Another type of redraw involves only using the style of the image and not its co
   <br/>
   <PhotoProvider>
     <PhotoView src="/comfyui-img2img/007.png">
-      <img src="/comfyui-img2img/007.png" alt="" />
+      <img src="/comfyui-img2img/007.png" alt="" className='rounded-lg'/>
     </PhotoView>
   </PhotoProvider>
 </Steps>
