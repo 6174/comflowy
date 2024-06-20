@@ -68,5 +68,22 @@
     "theme": {
       "toc": true
     }
-  }
+  },
+  "compare":{
+    "title": "Compare",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "pagination": false
+    },
+    "display": "hidden"
+  },
+  "404": { 
+    "type": "page", 
+    "theme": { 
+      "timestamp": false, 
+      "typesetting": "article" 
+    } 
+  } 
 }

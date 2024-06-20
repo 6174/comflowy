@@ -53,7 +53,7 @@
       "pagination": false
     }
   },
-    "templates":{
+  "templates":{
     "title": "模板",
     "type": "page",
     "theme": {
@@ -68,5 +68,22 @@
     "theme": {
       "toc": true
     }
+  },
+  "compare":{
+    "title": "比较",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "pagination": false
+    },
+    "display": "hidden"
+  },
+  "404": { 
+    "type": "page", 
+    "theme": { 
+      "timestamp": false, 
+      "typesetting": "article" 
+    } 
   }
 }
