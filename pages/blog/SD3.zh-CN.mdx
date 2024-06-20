@@ -1,0 +1,195 @@
+---
+date: June 20th, 2024
+image: /blog/SD3/banner.png
+title: SD3
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# SD3
+
+备受期待的 Stable Diffusion 3 终于向公众开放了，此次开放的模型准确来说是 Stable Diffusion 3 Medium，它拥有20亿参数，以其轻巧的体积和对硬件的低要求，使它能够轻松地在普通笔记本电脑上运行。作为 Stability AI 迄今为止最先进的文本到图像开源模型，SD3 在图像质量、文本内容生成、复杂提示理解和资源效率方面有了显著提升，今天就为大家详细介绍一下 SD3 的特点以及如何在 ComfyUI 中使用它。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/001.png">
+    <img src="/blog/SD3/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### SD3 模型优劣势
+
+#### SD3模型的主要优势
+
+- 图像质量整体提升，能生成照片般细节逼真、色彩鲜艳、光照自然的图像；能灵活适应多种风格，无需微调，仅通过提示词就能生成动漫、厚涂等风格化图像；具有 16 通道的 VAE，可以更好地表现手部以及面部细节。
+
+- 能够理解复杂的自然语言提示，如空间推理、构图元素、姿势动作、风格描述等。对于「第一瓶是蓝色的，标签是“1.5”，第二瓶是红色的，标签是“SDXL”，第三瓶是绿色的，标签是“SD3”」这样复杂的内容，SD3 依旧能准确生成，而且文本效果比 Midjourney 还要准确。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/002.png">
+    <img src="/blog/SD3/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+- 通过 Diffusion Transformer 架构，SD3 Medium 在英文文本拼写、字距等方面更加正确合理。
+
+#### SD3模型的缺点
+
+- SD3 Medium 模型的授权范围是开放的非商业许可证，也就是说没有官方许可的情况下，模型不得用于商业用途。
+
+- 暂时无法生成中文
+
+- 虽然 SD3 在图像质量、细节、对提示词的理解、文本内容生成能力上有了明显提升，但是也存在一些不足，比如在生成手部的时候依旧会出现错误，以及在生成 全身的人物时会出现严重的崩坏。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/003.png">
+    <img src="/blog/SD3/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### SD3 Default Workflow
+
+#### SD3 模型下载
+
+当前开源的包含三种中型参数模型，可以在 HuggingFace 免费下载，包括：
+
+- sd3_medium.safetensors : 包括 MMDiT 和 VAE 权重，但不包括任何文本编码器。
+
+- sd3_medium_incl_clips_t5xxlfp8.safetensors : 包含所有必要的权重，包括 T5XXL 文本编码器的 fp8 版本，提供质量和资源要求之间的平衡。
+
+- sd3_medium_incl_clips.safetensors : 包括除 T5XXL 文本编码器之外的所有必需权重。它需要最少的资源，但如果没有 T5XXL 文本编码器，模型的性能将会有所不同。
+
+我使用了相同的提示词和参数将 incl clip 这两个模型进行对比：
+
+Prompt：Digital art, portrait of an anthropomorphic roaring Tiger warrior with full armor, close up in the middle of a battle, behind him there is a banner with the text "Open Source".
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/004.png">
+    <img src="/blog/SD3/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+这是 SD3 的一个基础工作流，它能更加准确地生成文字，图像质量也有整体提升，但目前只能生成英文，不支持中文。需要注意的是，这里需要用 incl clip 的模型。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/005.png">
+    <img src="/blog/SD3/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：a dog and a cat are both standing on a red box. In the middle, there is a blue ball with a parrot standing on top of it. The box has "SD3" written on it.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/006.png">
+    <img src="/blog/SD3/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Smiling cartoon dog sits at a table, coffee mug on hand, as a room goes up in flames. “Guo Bao is fine,” the dog assures himself.
+
+### SD3 Triple Clip Model Workflow
+
+使用 SD3 的三个模型生成效果的精度并没有太大差别，区别主要在于对 prompt 的理解能力。sd3_medium_incl_clips.safetensors 和sd3_medium_incl_clips_t5xxlfp8.safetensors相对于sd3_medium.safetensors ，会对 Prompt 的理解能力相对更强。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/007.png">
+    <img src="/blog/SD3/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：a female character with long, flowing hair that appears to be made of ethereal, swirling patterns resembling the Northern Lights or Aurora Borealis. The background is dominated by deep blues and purples, creating a mysterious and dramatic atmosphere. The character's face is serene, with pale skin and striking features. She wears a dark-colored outfit with subtle patterns. The overall style of the artwork is reminiscent of fantasy or supernatural genres
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/008.png">
+    <img src="/blog/SD3/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：A birthday cake with a deep black chocolate sponge as its base,  "Happy Birthday"，covered with a layer of smooth mirror glaze that reflects a dazzling brilliance. The edges of the cake are decorated with delicate golden sugar beads, forming a bright frame. In the center of the top, a blooming rose is crafted with exquisite sugar art skills, with clear layers of petals that are lifelike. Around the rose, patterns composed of tiny digital pixel points are embellished, twinkling with a soft light in the virtual space, creating a dreamlike effect. The sides of the cake are meticulously outlined with geometric shapes using silver frosting, adding a sense of modernity and artistic flair. The entire cake exudes an enticing luster in the virtual world, making one admire it even knowing it is not edible.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/009.png">
+    <img src="/blog/SD3/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+可以看出，SD3在处理长文本提示词时表现出了很优异的能力，相对于之前输入关键词作为提示词，SD3能够更好的理解成段文字的语义。
+
+### SD3 + Portrait Master Workflow
+
+这个工作流主要是通过 SD3 模型来处理人像，你可以通过它自定义人物的年龄、种族、体型、姿势，还可以设置眼睛，嘴唇的颜色和形状。设置化妆的参数，脸型，头发（发型、长度、蓬松度），面部细节（肤感、毛孔、酒窝、雀斑、痣）、灯光等等。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/010.png">
+    <img src="/blog/SD3/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+我尝试自定义人物的特征，改变发型，妆容，着装，所生成的图像风格等等，Portrait Master v.2.9 节点的好处是每个选项都可以单独选择，灵活度很高，关于人像调整的选项也很齐全。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/011.png">
+    <img src="/blog/SD3/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+你也可以在自定义人物外形特征的同时增加其他质感，如滤镜、颜色调整、细节增强等，让人物照片看起来更柔和自然。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/012.png">
+    <img src="/blog/SD3/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### SD3 与 SDXL 对比展示
+
+我将 SD3 模型与 SDXL 模型用相同的参数和提示词进行生图，其实在最后的效果上并没有太大的区别，但对于长文本提示，试用下来 SD3 的理解能力更好，相同的提示词，SDXL 模型有时会出现图片崩坏的情况。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/013.png">
+    <img src="/blog/SD3/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：selfie photo of a wizard with long beard and purple robes, he is apparently in the middle of Tokyo. Probably taken from a phone.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/014.png">
+    <img src="/blog/SD3/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：photo of a young woman with long, wavy brown hair tied in a bun and glasses. She has a fair complexion and is wearing subtle makeup, emphasizing her eyes and lips. She is dressed in a black top. The background appears to be an urban setting with a building facade, and the sunlight casts a warm glow on her face.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/SD3/015.png">
+    <img src="/blog/SD3/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：anime art of a steampunk inventor in their workshop, surrounded by gears, gadgets, and steam. He is holding a blue potion and a red potion, one in each hand.
+
+<Subscribe />
+
+
+
+
+
+
+
+
