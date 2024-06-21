@@ -82,7 +82,7 @@ function FreePlan() {
           }}>$0</span>/{t(KEYS.month)} 
         </div>
         <a href="https://github.com/6174/comflowyspace/releases" target="_blank" rel="noopener noreferrer">
-          <button class="border rounded-lg p-2 mt-2">Download</button>
+          <button className="border rounded-lg p-2 mt-2">Download</button>
         </a>
       </div>
     </div>
@@ -100,7 +100,7 @@ function HobbyistPlan() {
           }}>$10</span>/{t(KEYS.month)} 
         </div>
         <a href="https://app.comflowy.com/billing" target="_blank" rel="noopener noreferrer">
-          <button class="border rounded-lg p-2 mt-2">Subscription</button>
+          <button className="border rounded-lg p-2 mt-2">Subscription</button>
         </a>
       </div>
     </div>
@@ -118,7 +118,7 @@ function ProPlan() {
           }}>$30</span>/{t(KEYS.month)} 
         </div>
         <a href="https://app.comflowy.com/billing" target="_blank" rel="noopener noreferrer">
-          <button class="border rounded-lg p-2 mt-2">Subscription</button>
+          <button className="border rounded-lg p-2 mt-2">Subscription</button>
         </a>
       </div>
     </div>
