@@ -141,7 +141,7 @@ export default {
               items={[
                 {
                   title: "Comflowy vs. ComfyUI",
-                  url: "../introduction/comflowy-vs-comfyui",
+                  url: "../compare/comflowy-compare-comfyui",
                 },
               ]}
             />
@@ -149,7 +149,7 @@ export default {
               title="Friends"
               items={[
                 { title: "Llamagen", url: "https://llamagen.ai/"},
-                { title: "Way To AGI", url: "https://www.waytoagi.com/" },
+                { title: "Woy AI Tools Directory", url: "https://woy.ai/"},
               ]}
             />
             <List
