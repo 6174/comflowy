@@ -41,13 +41,33 @@ To replace a part of the image with something else, the main technique used is I
   After adding the node, load the image you want to modify. Then connect the Load Image node with the VAE Encode (for Inpainting) and connect VAE Encode (for Inpainting) with KSampler.
 
   ### Smear the Area You Want to Change
-  After all lines are connected, right-click on the Load Image node and click Open in MaskEditor in the menu. Once you enter the MaskEditor, you can smear the places you want to change. For example, if I want to change the character's hair in the picture to red, I just need to smear the character's hair in the image. In addition, you can use the Thickness below to change the size of the brush. After completion, click Save to node at the right bottom corner.
-  <br/>
-  <PhotoProvider>
-    <PhotoView src="/comfyui-inoutpainting/001.png">
-        <img src="/comfyui-inoutpainting/001.png" alt="" className='rounded-lg'/>
-    </PhotoView>
-  </PhotoProvider>
+  <Tabs items={['ComfyUI', 'Comflowy']}>
+    <Tabs.Tab>
+    After all lines are connected, right-click on the Load Image node and click Open in MaskEditor in the menu. Once you enter the MaskEditor, you can smear the places you want to change. For example, if I want to change the character's hair in the picture to red, I just need to smear the character's hair in the image. In addition, you can use the Thickness below to change the size of the brush. After completion, click Save to node at the right bottom corner.
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-inoutpainting/001.png">
+            <img src="/comfyui-inoutpainting/001.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+    </Tabs.Tab>
+    <Tabs.Tab>
+      If you're using Comflowy, right-click on the Load Image node, and in the menu, click on Edit Image to perform Mask operations. 
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-inoutpainting/006.png">
+            <img src="/comfyui-inoutpainting/006.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+      Click on the Pen button at the bottom to smear the area you want to edit just like in ComfyUI, or you can use graphic tools to draw the Mask. Once you're done, click the Save button on the top left.
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-inoutpainting/007.png">
+            <img src="/comfyui-inoutpainting/007.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+    </Tabs.Tab>
+  </Tabs>
 
   ### Switch the Model and Configure
   Next, switch the model in Load Checkpoint to the inpainting model. Here's a tip: it's best if the model used for Inpainting is the same as the one used for the original image. For example, the astronaut image I want to modify was generated using Dreamshaper, so in the Inpainting scenario, I'm using the Dreamshaper Inpainting model.

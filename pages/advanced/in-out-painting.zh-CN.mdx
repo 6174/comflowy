@@ -35,13 +35,33 @@ import Subscribe from "components/subscribtion";
   添加完节点后，加载你想要修改的图片。并将 Load Image 节点和 VAE Encode（for Inpainting）相连。VAE Encode（for Inpainting）和 KSampler 相连。
 
   ### 涂抹出想要修改的区域
-  连完所有连线后。右键点击 Load Image 节点，在菜单里点击 Open in MaskEditor。进入到 MaskEditor 后，可以涂抹出你想要修改的地方，比如我想要将图片中的人物的头发改成红色，我只要涂抹图片中人物的头发即可。另外，你可以使用下方的 Thickness 修改笔刷的大小。完成后，点击右下角的 Save to node 即可。
-  <br/>
-  <PhotoProvider>
-    <PhotoView src="/comfyui-inoutpainting/001.png">
-        <img src="/comfyui-inoutpainting/001.png" alt="" className='rounded-lg'/>
-    </PhotoView>
-  </PhotoProvider>
+  <Tabs items={['ComfyUI', 'Comflowy']}>
+    <Tabs.Tab>
+    连完所有连线后。右键点击 Load Image 节点，在菜单里点击 Open in MaskEditor。进入到 MaskEditor 后，可以涂抹出你想要修改的地方，比如我想要将图片中的人物的头发改成红色，我只要涂抹图片中人物的头发即可。另外，你可以使用下方的 Thickness 修改笔刷的大小。完成后，点击右下角的 Save to node 即可。
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-inoutpainting/001.png">
+            <img src="/comfyui-inoutpainting/001.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+    </Tabs.Tab>
+    <Tabs.Tab>
+      如果你使用的是 Comflowy，右键点击 Load Image 节点，在菜单里点击 Edit Image，也能进行 Mask 的操作。
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-inoutpainting/006.png">
+            <img src="/comfyui-inoutpainting/006.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+      点击底部的 Pen 可以像 ComfyUI 一样涂抹出你想要修改的区域，也可以用图形工具来绘制 Mask。绘制完成后，点击左上角的 Save 按钮。
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/comfyui-inoutpainting/007.png">
+            <img src="/comfyui-inoutpainting/007.png" alt="" className='rounded-lg'/>
+        </PhotoView>
+      </PhotoProvider>
+    </Tabs.Tab>
+  </Tabs>
 
   ### 切换模型 & 配置
   接着，将 Load Checkpoint 里的模型切换成 inpainting 模型。这里有一个技巧，使用 Inpainting 的模型最好和初始图片使用的模型一致，比如我要修改的这张宇航员图片是用 Dreamshaper 生成的，所以在 Inpainting 场景我用的是 Dreamshaper 的 Inpainting 模型。
