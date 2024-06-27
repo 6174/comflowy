@@ -3,10 +3,14 @@ date:  February 4th, 2024
 image: /blog/comflowy-faq/banner.png
 ---
 
-# Comflowy FAQ
+# Comflowy 本地版 FAQ
 
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
+
+<Callout type="warning" emoji="⚠️">
+  注意：此 FAQ 是针对 Comflowy 本地版的，如果你使用的是 Comflowy 云端版本，请去我们的 [Help Center](https://comflowy.tawk.help)。
+</Callout>
 
 ## 目录
 
@@ -76,6 +80,15 @@ rm -rf ~/miniconda3/miniconda.sh
 ```
 
 ## 使用
+
+### “upsample_nearest2d_channels_last” not implemented for ‘Half’
+
+当你在运行 Workflow 的时候，如果运行到 KSampler 节点，弹出这个错误。那你最好看看你的电脑操作系统是不是最新的，这个问题有可能是因为你用了一个较旧的操作系统。
+
+解决方法有两种：
+
+1. 升级电脑系统
+2. 在首页的 Setting 里找到 FP 设置，然后将其设置为 32。有两个 FP 设置，可以尝试两个都设为 32，然后测试一下。
 
 ### Value not in list
 

@@ -8,6 +8,10 @@ image: /blog/comflowy-faq/banner.png
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
+<Callout type="warning" emoji="⚠️">
+  Note: This FAQ is for the local version of Comflowy. If you're using the Comflowy cloud version, please visit our [Help Center](https://comflowy.tawk.help).
+</Callout>
+
 ## Contents
 
 - Installation
@@ -61,6 +65,15 @@ rm -rf ~/miniconda3/miniconda.sh
 ```
 
 ## Using
+
+### “upsample_nearest2d_channels_last” not implemented for ‘Half’
+
+When running your workflow, if you encounter an error at the KSampler node, it's a good idea to check if your computer's operating system is up-to-date. This issue might arise because you're using an outdated operating system.
+
+There are two solutions:
+
+1. Upgrade your computer system.
+2. Go to the Settings on the homepage and find the FP settings, then set them to 32. There are two FP settings available, try setting both to 32 and test it out.
 
 ### Value not in list
 
