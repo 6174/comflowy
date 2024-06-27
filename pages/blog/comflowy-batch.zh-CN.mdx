@@ -1,0 +1,134 @@
+---
+date: June 26th, 2024
+image: /comflowy-batch/002.png
+title: 如何使用 Comflowy Batch 功能？
+---
+
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 如何使用 Comflowy Batch 功能？
+
+如果熟悉 ComfyUI 的朋友应该知道，ComfyUI 有一个非常强大的功能，叫做 Batch。这个功能可以帮助你连续生成多张图片，也可以帮助你批量放大多张图片。
+
+在 Comflowy 中，我们也提供了类似的功能，除此之外，我们的 Batch 功能还能做到一些 ComfyUI 不好实现的场景。接下来我会为大家介绍如何使用 Comflowy 的 Batch 功能。
+
+## 场景一：连续生图
+
+不管是在 ComfyUI 还是在 Comflowy 中，要想连续生图，只需要在 Empty Latent Image 节点里设置 Batch Size 就能做到连续出图（如下图所示）。如果你设置的 Batch Size 为 10，点击 Run 后就会连续生成 10 张图片。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/001.png">
+      <img src="/comflowy-batch/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+但并不是所有的 Workflow 都会使用到 Empty Laten Image 节点，比如一些使用到 ControlNet 或者高清修复的工作流。那这种情况下，如何实现连续生图呢？
+
+此时就需要用到 Batch 功能了。你会在底部工具栏上，看到一个 Batch 的选项：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/004.png">
+      <img src="/comflowy-batch/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+你只要点击 Batch 的下拉按钮，选择需要运行的次数，然后点击 Run 就能实现连续生图了。
+
+<Callout type="info">
+  不过需要注意，我们暂时只支持连续生成 10 次，如果你有更多的需求，可以加入 [Discord](https://discord.gg/xqB9VyEX) 与我们反馈。
+</Callout>
+
+## 场景二：批量放大多张图片
+
+除了连续生图外，我们还赋予了 Batch 更强大的功能。各位可能会遇到这样的情况，搭建好了 Workflow 以后，需要批量处理一些图片。
+但是每次都需要上传一张图后，点击 Run，接着再上传一张图，再运行一次。这样的操作效率非常低。同时还有可能忘记了上一次是否传过某张图，导致了重复的工作。
+
+为了解决这个问题，我们提供了 Custom Batch 功能。你可以在 Batch 的下拉按钮里选择 Custom Batch：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/002.png">
+      <img src="/comflowy-batch/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+接着你会看到这样的的一个界面：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/005.png">
+      <img src="/comflowy-batch/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+然后点击 New Batch 按钮，进入下一个界面：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/006.png">
+      <img src="/comflowy-batch/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+进入到这个界面后，可以在顶部的筛选框选择你要批量配置的参数。以批量放大多张图片需求为例，可以在下拉框选择 Load Image：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/007.png">
+      <img src="/comflowy-batch/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+选择 Load Image 后，点击 New Item 按钮：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/008.png">
+      <img src="/comflowy-batch/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+然后你就可以在这里上传其他照片，添加完一张后，再点击 New Item 添加第二张。上传完所有的图片后，你就可以点击 Select All 按钮，然后点击下方的 Start New Run 按钮。
+
+如果你要上传三张甚至以上的图片就可以再点击多次 New Item。像我这个 Case 里，我就只上传了两张图片：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/009.png">
+      <img src="/comflowy-batch/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+然后你就可以在 Run 里看到所有生成的图片了：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/010.png">
+      <img src="/comflowy-batch/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Callout type="info">
+  不过需要注意，我们暂时只支持连续生成 10 次，如果用上面的那个案例解释，就是你只能一次批量设置 10 张图。如果你有更多的需求，可以加入 [Discord](https://discord.gg/xqB9VyEX) 与我们反馈。
+</Callout>
+
+## 场景三：批量测试参数
+
+除了上传图片外，你可能还有测试各种参数的需求。比如当你需要测试 Prompt 时，你可能需要修改一次参数，就点一次 Run。
+
+亦或者在 Workflow 中添加多个 CLIP 节点和 KSampler 节点来测试。而在 Comflowy 云端版本中，就可以使用我们的 Custom Batch 功能来实现这个需求。
+
+跟前一个场景类似，你需要在 Batch 参数里添加 CLIP，然后填入你需要测试的 Prompt：
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/comflowy-batch/011.png">
+      <img src="/comflowy-batch/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+最后点击 Start New Run 按钮即可。当然除了 CLIP，你还可以添加其他的参数，比如 CFG 等等。
