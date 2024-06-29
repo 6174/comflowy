@@ -1,0 +1,228 @@
+---
+date: June 29th, 2024
+image: /blog/Image-Restoration/banner.png
+title: 人脸修复类工作流整合
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# 人脸修复类工作流整合
+
+你有没有使用 AI 生成过模糊或面部被崩坏的照片？看着那些不尽人意的图片，可能第一反应是重新生成。但也有可能会遇到重复生成多次，依然不满意的情况。现在，你只需运用人脸修复的工作流就能轻松应对这些挑战。不仅能提升画质的清晰度，让模糊的面孔变得清晰可辨，还能修复皮肤质感，还原肌肤的自然光泽和细腻。对于那些因年代久远而受损的老照片，或是生成过程中崩坏导致的面部畸形，人脸修复技术同样能够提供有效的解决方案。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/banner.png">
+    <img src="/blog/Image-Restoration/banner.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### SUPIR 2k Upscale SUPIR 2k 
+
+这个工作流使用了 SUPIR 模型，可以将图像升级至 2k 分辨率。SUPIR 模型通过分析低分辨率图像中的信息，智能地预测并重建缺失的像素，从而实现图像分辨率的显著提升。这不仅仅是简单的放大，而是在保持原有图像特征的基础上，增加图像的细节和清晰度，使得原本模糊或低质量的图像在视觉上更加清晰和真实。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/001.png">
+    <img src="/blog/Image-Restoration/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+工作流的第一步是对原始图像进行质量评估，确定其需要提升的分辨率级别。接下来，SUPIR 模型将对图像进行预处理，包括降噪和边缘增强，以确保在放大过程中图像的原始特征得到保留。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/002.png">
+    <img src="/blog/Image-Restoration/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+随后，模型将应用其核心算法，通过深度学习网络对图像进行像素级的重建，以确保新生成的像素与周围像素在色彩、纹理和光照上保持一致性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/003.png">
+    <img src="/blog/Image-Restoration/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+在像素重建完成后，工作流还包括后处理步骤，如锐化和色彩校正，以进一步提升图像的视觉效果。最终，用户将得到一张分辨率更高、细节更丰富、质量更优的2k图像。
+
+### Ultra Upscale 12k 
+
+这个工作流使用了 Ultra 模型，能够将图像升级至 12k 分辨率。Ultra 模型能够识别并增强图像中的每一个细节，从而实现超分辨率的图像输出，这个技术将图像的分辨率提升至前所未有的12k级别，远远超越了传统的高清和4k标准。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/004.png">
+    <img src="/blog/Image-Restoration/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+工作流的开始是对原始图像的全面质量评估，以确定其升级至12k分辨率的潜力。随后，Ultra 模型将对图像进行预处理，包括但不限于降噪、色彩校正和对比度优化，确保图像在放大过程中保持其原有的视觉品质。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/005.png">
+    <img src="/blog/Image-Restoration/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+最终，用户将获得一张分辨率高达12k的图像，它不仅在清晰度上达到了极致，更在细节、色彩和动态范围上展现出了卓越的质量。无论是用于专业的影视制作、高端的艺术展示，还是日常的图像欣赏，这个工作流都能提供令人惊叹的视觉体验，满足最挑剔的眼睛。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/006.png">
+    <img src="/blog/Image-Restoration/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### Old Photo Restoration 老照片修复
+
+修复老照片是一项充满情感和技术挑战的任务。每张旧照片都是时间的见证，承载着珍贵的记忆和故事。然而，随着时间的流逝，这些照片可能会遭受各种损伤，如褪色、划痕、折痕、模糊等，不仅影响了照片的美观，而且影响到了记忆的保存。如果你想要修复这些宝贵的影像，就可以使用这个工作流，你只需上传一张旧照片，它便能够帮你智能地识别并修复照片中的缺陷，使受损的照片看起来焕然一新。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/007.png">
+    <img src="/blog/Image-Restoration/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+在运行老照片修复工作流时，ControlNet 的 lineart 模型扮演着至关重要的角色。它可以对照片中的人物轮廓进行智能识别和优化，确保在修复过程中，人物的边缘线条保持其原有的流畅性和准确性，即使在图像质量较差或存在遮挡的情况下也能保持高准确率。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/008.png">
+    <img src="/blog/Image-Restoration/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: lady in white shirt, masterpiece,best quality,(photorealistic:1.1),8k raw photo,a,detailed face，detailed skin,depth of field,
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/009.png">
+    <img src="/blog/Image-Restoration/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+修复模型可以对照片中的缺陷进行精确识别，智能填充缺失区域、恢复褪色的颜色、平滑折痕和去除划痕等。在修复过程中，还会特别关注照片中的人物面部。面部是照片中情感表达的核心，因此，模型会使用专门的面部修复技术，确保人物的面部特征得到恰当的恢复和增强，同时保持其原有的自然和真实感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/010.png">
+    <img src="/blog/Image-Restoration/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+修复完成后，工作流还包括一个细致的后处理阶段，应用专业的色彩管理和细节增强技术，以进一步提升照片的整体视觉效果。包括对色彩饱和度、亮度和对比度的微调，以及对细节的锐化处理，确保修复后的照片在视觉上更加生动和吸引人。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/011.png">
+    <img src="/blog/Image-Restoration/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+最终，用户将收到一张经过精心修复的老照片，它不仅恢复了原有的清晰度和色彩，更在细节上得到了增强，仿佛时光倒流，让珍贵的记忆重新焕发生机。这个工作流不仅为个人用户提供了一种简便的方式来保存和分享他们的记忆，也为专业摄影师和档案馆提供了一种高效的工具，用于历史照片的数字化修复和存档。
+
+### 修复人像皮肤质感
+
+这是一个文生图的工作流，需要你输入提示词进行生成，这些提示词是用户对期望修复效果的直接描述，可以是简单的如“光滑皮肤”、“减少皱纹”、“提亮肤色”，也可以是更具体的描述，如“复古风格的皮肤质感”或“自然光泽感”。输入的提示词将直接影响模型的修复策略和最终效果。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/012.png">
+    <img src="/blog/Image-Restoration/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+工作流将进入修复阶段，会根据提示词的引导，进行人像修复。如皮肤平滑算法、纹理填充技术、色彩校正等，对人物的皮肤质感进行细致的修复。这一过程不仅能够减少皮肤上的瑕疵和不均匀性，还能够增强皮肤的自然光泽和立体感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/013.png">
+    <img src="/blog/Image-Restoration/013.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: best quality, masterpiece, ultra detailed,flowing, ink sketch, color ink, ink rendering, octane render, pastels, rice paper, photo of a beautiful 20 y.o woman, beautiful detailed eyes, (alternate hairstyle), ultra detailed hair, graceful, (charming), (delicate), pretty, cute, lace dress, character in the center of the frame, fantasy, looking at viewer
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/014.png">
+    <img src="/blog/Image-Restoration/014.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: Elegant qualities, excellence of the work, detailed depiction, graceful and smooth, a photograph of a 20-year-old young woman, exquisite detailed eyes, beautiful hairstyle design, noble, charming allure, meticulously crafted, lovely and captivating, lace dress attire, central figure in the composition, realm of fantasy, making eye contact with the audience.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/015.png">
+    <img src="/blog/Image-Restoration/015.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: Exquisite craftsmanship, artistic masterpiece, detailed depiction, smooth lines, a captivating photo of a 20-year-old American women, beautiful deep eyes, carefully designed short hair, elegant demeanor, exquisite delicacy, charming allure, lovely face, lovely and charming, stylish denim jacket, focal point of the composition, fantasy setting, making eye contact with the audience，American women
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/016.png">
+    <img src="/blog/Image-Restoration/016.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt: Tall stature, elegant demeanor, deep gaze, voluminous hair, smooth skin, stylish attire, charming smile, exquisite makeup
+
+### 修复崩坏的畸形人脸
+
+你有没有使用AI生成过面部被崩坏的照片？如果答案是肯定的，你可能会对AI在面部修复方面的潜力感到惊讶。通过这个工作流，即使是面部严重受损的照片，也能够通过 AI 技术得到有效的修复。这不仅为个人用户提供了一种简便的方式来恢复他们珍贵的记忆，也为专业摄影师和档案馆提供了一种高效的工具，用于修复和保存受损的面部图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/017.png">
+    <img src="/blog/Image-Restoration/017.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+工作流的第一步是对受损的人脸图像进行分析。AI 模型会识别图像中的面部区域，并评估面部特征的完整性和准确性。这一步骤涉及到复杂的面部识别算法，能够即使在面部严重受损的情况下也能准确地定位面部特征。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/018.png">
+    <img src="/blog/Image-Restoration/018.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+接下来，它能根据面部识别的结果，对崩坏的面部特征进行重建。这包括但不限于眼睛、鼻子、嘴巴和轮廓等关键部位。模型会根据大量的训练数据，学习到正常面部特征的典型模式，并尝试在受损区域重建这些模式。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/019.png">
+    <img src="/blog/Image-Restoration/019.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+在面部特征重建的过程中，还会考虑到面部的整体比例和对称性，确保修复后的面部特征在视觉上保持自然和谐，避免出现不协调或不自然的现象。此外，它还能够处理一些特殊情况，如面部表情的修复、肤色和纹理的一致性等。这使得修复后的图像不仅在结构上得到恢复，更在细节上展现出生动和真实感。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/020.png">
+    <img src="/blog/Image-Restoration/020.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+最后，工作流还包括一个后处理阶段，对修复后的图像进行进一步的优化和调整。例如色彩校正、对比度增强、细节锐化等，以确保最终的图像质量达到最佳状态。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Image-Restoration/021.png">
+    <img src="/blog/Image-Restoration/021.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：1 girl, smile, profound facial features,Clean neck,delicate skin，clear facial features, smooth facial contour
+
+<Subscribe />
