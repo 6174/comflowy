@@ -1,0 +1,127 @@
+---
+date: June 1st, 2024
+image: /api/banner.png
+title: Comflowy API 使用指南
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import Subscribe from "components/subscribtion";
+
+# Comflowy API 使用指南
+
+目前我们仅支持应用后端的 API 调用流程，后续会支持基于前端 SDK 的 API 调用。
+
+## 第一步：获取 API KEY 
+在首页的 Setting 里你会看到属于你个人的 API Key。点击 Copy 按钮，将 API Key 复制并保存。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/api/001.png">
+    <img src="/api/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+## 第二步：基于 API KEY 获取 Access_Token
+
+``` typescript
+  const GET_API = `https://app.comflowy.com/api/open/v0/auth/token?ppt=${API_KEY}`
+  const type RESPONSE = {
+      access_token: string
+  }
+```
+
+## 第三步：基于 ACCESS_TOKEN 运行工作流
+
+<Steps>
+  ### 找到工作流的 ID
+  选择你想要在 API 中使用的工作流，打开工作流编辑页面，可以在 URL 中找到工作流的 ID。例如：
+
+  ```text
+    https://app.comflowy.com/app?id=3fef208b-7d25-4d9a-8ec9-c79eb2153234
+  ```
+
+  这里的 `3fef208b-7d25-4d9a-8ec9-c79eb2153234` 就是工作流的 ID。
+
+  ### 请求运行 API 和参数
+
+  ```typescript
+  // Method: POST
+  // Header: {"Authorization": `Bearer ${ACCESS_TOKEN}`}
+  const RUN_API = `https://app.comflowy.com/api/open/v0/run`
+  type RUN_POST_PAYLOAD = {
+      workflow_id: string;
+      params: Record<string, any>;
+      callback_urls: {
+          on_result_url: string;
+      }
+  }
+  type RUN_POST_RESULT = {
+      success: boolean;
+      data: {
+          run_id: string
+      } 
+  }
+```
+
+  ### 请求结果参数
+``` typescript
+    type ON_RESULT_PAYLOAD = {
+      type: "success" | "failed",
+      error?: string;
+      run_id: string;
+      output_images: string[];
+      full_outputs: Record<NodeId, {images: string[]}>
+  }
+  type ON_PROGRESS_EVENT_PAYLOAD = {
+      type: "waiting" | "pending" | "running" | "message",
+      payload: any
+  }
+```
+
+  ### 基于 run_id 查询 run 结果
+```typescript
+  // Method: POST
+  // Header: {"Authorization": `Bearer ${ACCESS_TOKEN}`}
+  const CHECK_RUN_API = `https://app.comflowy.com/api/open/v0/check?id=${RUN_ID}`
+  type CHECK_RUN_RESULT = {
+      success: boolean;
+      data: {
+          status: "waiting" | "pending" | "running" | "success" | "failed";
+          error?: string;
+          output_images: string[];
+          full_outputs: Record<NodeId, {images: string[]}>
+      } 
+  }
+```
+</Steps>
+
+## 第四步：配置工作流参数变量
+
+打开浏览器的控制台，在需要的工作流的节点输入参数字段上右键连续点击两次，会打印出节点信息。下面这张截图就是我右键点击 KSampler 里的 Sampler 后（图中标识 ①），Console 会显示如下结果：
+
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/api/003.png">
+      <img src="/api/003.png" alt="" className="rounded-lg"/>
+    </PhotoView>
+  </PhotoProvider>
+
+你需要基于节点的 Field_id （图中标识②）作为请求参数的变量名称。同时你可以在 Field_info 中可以找到该变量对应的参数（图中标识③），比如图中选中的是 Select 类型，Field_info 中可以找到对应的选项。
+
+请求参数案例：
+
+``` typescript
+const run_payload = 
+{
+    workflow_id: "test_workflow_id";
+    params: {
+        "3::sampler_name": "euler",
+        "6::text": "beautiful scenery nature glass bottle landscape, , purple galaxy bottle," 
+    },
+    callback_urls: {
+        on_result_url: "test_url",
+        on_progress_event_url: "test_url"
+    }
+}
+```
