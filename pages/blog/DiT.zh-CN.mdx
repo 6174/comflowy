@@ -1,0 +1,143 @@
+---
+date: July 6th, 2024
+image: /blog/Dit/banner.png
+title: Lumina 长照片生成 & 混元大模型
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Lumina 长照片生成 & 混元大模型
+
+## Lumina Long Photo 长照片
+
+这个工作流主要使用 Lumina 模型来生成长图像，Lumina 模型能够理解长图像的结构，将其拆分为多个独立的部分或“区块”。每个区块都可以用提示词控制，实现独立生成，最后这个工作流会把这些不同内容合成为一张风格统一，视觉感受和谐的长图，保持整体的一致性和协调性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/001.png">
+    <img src="/blog/Dit/001.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+例如上图，我们可以将这个长图分成四个部分，从左至右分别控制每个部分生成为：瀑布、河流、雄伟的鹿、红枫树。可以看到最后生成的效果图，与提示词输入想要生成的内容是一致的。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/002.png">
+    <img src="/blog/Dit/002.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 游戏场景
+
+在生成游戏场景之前，我们往往需要规划场景的总体布局和风格。比如选择场景的类型（如城堡、森林、地下城等），以及确定场景的氛围和主题。Lumina 模型可以根据你提供的提示词，生成具有特定地形特征的场景，如崎岖的山地、平坦的草原或蜿蜒的河流，也能生成树木、灌木、花朵和其他自然元素，或者指定建筑风格，如哥特式、现代或未来主义。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/003.png">
+    <img src="/blog/Dit/003.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+游戏场景不仅仅是视觉上的，它们还承载着叙事和情感引导的功能。设计师通过场景布局和元素设计来引导玩家的情感和故事进程，这时便可通过提供一系列提示词来指导 Lumina 模型生成每个区块的内容。这些提示词可以包括颜色、风格、主题、元素等，确保生成的图像符合自己的期望。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/004.png">
+    <img src="/blog/Dit/004.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+尽管每个区块是独立生成的，但 Lumina 模型会确保所有区块在风格和视觉上保持一致性，包括颜色调、纹理、光影效果等，以实现视觉上的和谐。当所有区块生成完毕，工作流将自动将它们拼接在一起，形成一个完整的长图像。合成过程中，模型会调整边缘和过渡，以确保没有明显的接缝或不协调的区域。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/005.png">
+    <img src="/blog/Dit/005.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+### 描述梦境
+
+每个人的梦境都是独特的。通过个性化的提示词，Lumina模型可以生成反映用户个人梦境的图像。我们常常对梦境的记忆并不完全清晰，可能只能记得出现的某几样事物，那么你就可以将这几个关键内容输入提示词，生成梦境场景。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/006.png">
+    <img src="/blog/Dit/006.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+甚至可以反映用户的情感状态，如快乐、悲伤或恐惧。提示词可以包括情感关键词，帮助模型捕捉并表达这些情绪。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/007.png">
+    <img src="/blog/Dit/007.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+梦境通常包含抽象和超现实的元素。使用 Lumina 模型，用户可以生成无法用传统逻辑解释的图像，如漂浮的岛屿、扭曲的空间或梦幻的色彩。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/008.png">
+    <img src="/blog/Dit/008.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+## Hunyuan Chinese Model 混元大模型
+
+对于中文用户来说，使用中文提示词来运行工作流程是更加高效且直观的方法，这个工作流能支持使用中文提示词表达自己的创意和想法，生成图像。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/009.png">
+    <img src="/blog/Dit/009.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+你可以使用简单的句子、成语、诗句或任何形式的中文描述作为提示词，工作流都能够识别并作出响应。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/010.png">
+    <img src="/blog/Dit/010.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+这个工作流的场景构建能力很强，用户可以通过中文提示词描述一个场景，工作流程能够理解场景的构成要素，生成具有空间感和故事性的图像，例如：在夜市卖烤红薯的夫妻、在图书馆看书的女孩、在公园休憩的老人等等。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/011.png">
+    <img src="/blog/Dit/011.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+它能够根据提示词中的描述渲染出相应的环境氛围，如夜市的热闹、图书馆的宁静、公园的悠闲等。对于场景中的人物，也能够捕捉到他们的年龄、性别、服饰、表情等特征，并在图像中进行细致的描绘。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/012.png">
+    <img src="/blog/Dit/012.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+它还能够模拟不同的光照条件，如夜晚的灯光、室内的柔和光线等，增强图像的真实感和立体感。在生成的场景图像中，工作流程会添加丰富的细节，如夜市的摊位、图书馆的书架、公园的长椅等，使场景更加生动。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/Dit/013.png">
+    <img src="/blog/Dit/013.png" alt="" className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
+
+
+
+
+
