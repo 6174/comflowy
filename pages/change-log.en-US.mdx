@@ -2,6 +2,34 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # 📦 Changelog
 
+## 2024-07-11
+### 🎉 Comflowy Open Source Version v0.2.1-alpha Release
+**Product Update:**
+**Product Updates**:
+1. Plugin Adaptation:
+    - Support Anything Everywhere node
+    - Support Image scale to side node
+    - Support Get Node and Set node nodes
+    - Support Image Compare node
+    - Fix the issue of UI overlap after uploading video in the VHS load video node
+    - Adapt the CLIP Set Last Layer node to fix the issue of negative parameters not being able to run
+    - When the Primitive node is connected to the seed, add the Control option
+
+2. Mask Editor Optimization:
+    - Fix the issue of the image becoming blurred after drawing a mask
+    - Fix the issue of burrs in the brushstrokes
+    - Fix the issue of two pop-up windows popping up after clicking on the Mask Editor
+    - Fix the issue of the node reporting an error after editing
+
+### Comflowy Cloud Version
+**Product Updates**:
+
+All the updates of the open-source version are also supported by the cloud version. At the same time, we also provide additional support for:
+1. Support the latest Kuaishou image generation model, which can generate images in Chinese and has very high image quality.
+2. Support ByteDance's PuLID model, which can be used as an alternative to InstantID and has better effects on some faces.
+3. Support the BurshNet plugin and corresponding templates, which have very good effects on Inpainting and Outpainting.
+4. After importing a workflow containing unknown nodes or uninstalled nodes, other similar available nodes will be recommended, and one-click replacement is supported.
+
 ## 2024-06-21
 ### 🎉 ComflowySpace Cloud Version and v0.2.0-alpha Release
 **Product Update:**

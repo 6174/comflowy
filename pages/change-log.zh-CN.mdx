@@ -2,8 +2,35 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 # 📦 Changelog
 
+## 2024-07-11
+### 🎉 Comflowy Open Source Version v0.2.1-alpha Release
+**产品更新：**
+1. 适配插件：
+    - 支持 Anything Everywhere 节点
+    - 支持 Image scale to side 节点
+    - 支持 Get Node 和 Set node 节点
+    - 支持 Image Compare 节点
+    - 修复 VHS load video 节点，在上传 video 后 UI 重叠问题
+    - 适配 CLIP Set Last Layer 节点，修复负数参数无法运行的问题
+    - Primitive 节点连接 seed 时，增加 Control 选项
+
+2. Mask Editor 优化：
+    - 修复画 Mask 后，图片会变模糊的问题
+    - 修复笔触有毛刺的问题
+    - 修复点击 Mask Editor 后会弹两次弹窗的问题
+    - 修复编辑后节点会报 Error 的问题
+
+### Comflowy Cloud Version
+**产品更新：**
+
+开源版本的所有更新，云端版本也同步支持。同时我们还额外支持了：
+1. 支持最新的快手生图模型，此模型可以使用中文生图，且其生成的图片质量非常搞。
+2. 支持字节的 PuLID 模型，此模型可以作为 InstantID 的替代，在某些人脸上效果更好。
+3. 支持 BurshNet 插件，以及相应的模板，此插件在 Inpainting 和 Outpainting 上效果非常好。
+4. 导入包含未知节点或未安装节点的工作流后，会推荐其他类似可用节点，并支持一键替换。
+
 ## 2024-06-21
-### 🎉 ComflowySpace Cloud Version and v0.2.0-alpha Release
+### 🎉  ComflowySpace Cloud Version and v0.2.0-alpha Release
 **产品更新：**
 
 云端版本已经支持 SD3 模型，并且预制了相应的模板。你可以直接在云端版本上使用 SD3 模型，生成更高质量的图片。
