@@ -1,0 +1,183 @@
+---
+date: July 12th, 2024
+image: /blog/PuLID-BrushNet/banner.png
+title: PuLID 个性化身份定制 & BrushNet 图像修复
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# PuLID 个性化身份定制 & BrushNet 图像修复
+
+在创意与技术的交汇点上，PuLID 和 BrushNet 给我们带来了新的惊喜。PuLID，这个无需调整的文生图生成高手，以其对比对齐和精确ID损失的绝技，让个性化角色和场景的创造变得轻而易举。而 BrushNet ，作为图像修复的魔术师，以其创新的双分支扩散模型，让任何缺失或瑕疵的图像都能得到更加完美的重生。这两者不仅为设计师们提供了强大的工具，更为我们的数字世界带来了无限的想象空间。今天，就让我们一探究竟，如何借助这两位AI艺术家的神来之笔，让我们的创意工作更加得心应手。
+
+## [**PuLID**](https://arxiv.org/abs/2404.16022) 
+
+PuLID 是一种创新的无需微调的身份定制方法，专门用于提升文本到图像生成模型中个性化身份保持的能力。通过利用一个快速的 Lightning T2I 分支和对比对齐技术，PuLID 不仅实现了高身份保真度，还减少了对原始模型行为的干扰，保持了诸如背景、照明、构图和风格等图像元素的一致性，同时提供了出色的编辑性和灵活性。它结合了先进的快速采样技术和精确的身份损失计算，显著提高了生成图像的质量。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/001.png">
+    <img src="/blog/PuLID-BrushNet/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### PuLID Basic 
+
+我们利用 PuLID 技术，探索如何将特定面孔的人物形象转化为赛博朋克风格。PuLID 不仅能够帮我们定制具有高度 ID 保真度的图像，还能将抽象的概念转化为具体的视觉作品，让我们的创意不受限制。通过PuLID，创造更多独特的角色，例如：一个穿着风衣的侦探，或者是一个拥有机械臂的女战士。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/002.png">
+    <img src="/blog/PuLID-BrushNet/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+我们可以从一个简单的文本描述开始，比如'Cyberpunk character'，然后逐步构建出具有赛博朋克特色的人物。PuLID 先是进行 ID 特征提取，再通过对比，指导适配器在不影响原始模型行为的情况下插入 ID 信息，最后再与真实面部嵌入计算准确的 ID 损失，提高 ID 相似度。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/003.png">
+    <img src="/blog/PuLID-BrushNet/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Cyberpunk，Bioluminescence， Studio Lighting，Transparent Glass Texture，Refraction of Light，UHD (Ultra High Definition) Image， Movie Poster，Layered Print Poster Composition， Ultra Clear or High Definition，Ultimate Composition
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/004.png">
+    <img src="/blog/PuLID-BrushNet/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### PuLID IPAdapter Style Transfer
+
+当巴黎奥运会的钟声即将敲响，世界各地的目光都聚焦于这座光影之城。在这样的背景下，我们利用 PuLID 技术，结合 IPAdapter 的风格转换功能，创造了一个独特的场景——一个皮克斯风格的人物站在埃菲尔铁塔下，将动画的魅力与现实世界的标志性建筑巧妙融合。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/005.png">
+    <img src="/blog/PuLID-BrushNet/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在风格选择上，我们选择了皮克斯风格，这种风格以其鲜艳的色彩、夸张的表情和丰富的情感而闻名，能够为这个场景增添一份活力和趣味。接着，我们利用 PuLID 的 ID 定制功能，设计了一个具有皮克斯风格的人物，她身穿白色T恤，牛仔裤，放松随意的姿势站在埃菲尔铁塔下。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/006.png">
+    <img src="/blog/PuLID-BrushNet/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+通过 IPAdapter ，我们将皮克斯风格的特征与人物形象融合，确保风格转换的自然和协调。在 PuLID 的帮助下，对人物的光影、服装和背景细节进行了精细调整，以确保整个图像的和谐统一，最后，我们便可以得到一个站在埃菲尔铁塔下的皮克斯风格人物。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/007.png">
+    <img src="/blog/PuLID-BrushNet/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### PuLID Attention Mask 
+
+在相同的背景下，我们尝试生成两个不同面部特征的皮克斯风格人物，站在埃菲尔铁塔下，她们具有不同的面部表情和特征。PuLID 的 Attention Mask 功能允许我们对图像的特定区域进行重点控制，确保面部特征的多样性和准确性。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/008.png">
+    <img src="/blog/PuLID-BrushNet/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+利用 PuLID 的风格定制能力，我们将皮克斯的动画风格融入人物设计中，通过精确控制，我们为两个人物设计了截然不同的面部特征，一个可能拥有明亮的眼睛和开朗的笑容，而另一个则可能有着深邃的眼神和一丝神秘的微笑。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/009.png">
+    <img src="/blog/PuLID-BrushNet/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## [**BrushNet**](https://arxiv.org/pdf/2403.06976) 
+
+BrushNet是一个即插即用的图像修复模型，它利用双分支架构巧妙地处理图像中的遮蔽区域，通过分别优化掩蔽特征和噪声潜在表示，显著提高了修复图像的质量和一致性。该模型不依赖于特定预训练的扩散模型，能够灵活地插入并增强现有模型的修复能力，同时提供细致的控制选项，使用户能够根据实际需求调整修复细节，适用于多种复杂的图像编辑和虚拟试穿等应用场景。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/010.png">
+    <img src="/blog/PuLID-BrushNet/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### BrushNet Basic
+
+在 AI 美食的奇妙世界里，想象力是我们的食材，而 BrushNet 是我们的烹饪工具。今天，我们将带您走进一场视觉与味觉的盛宴，看看如何用 BrushNet 将一种食物图像转换成另一种完全不同的食物图像，从蛋糕到汉堡，每一口都咬得到创意的满足；从打卤面到蛋炒饭，每一口都尝得到技术的进步。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/011.png">
+    <img src="/blog/PuLID-BrushNet/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+1. 首先，选择你想要转换的食物图像，例如一个蛋糕照片。使用这个工作流，BrushNet 会帮你创建一个遮罩，覆盖你希望转换的图像区域。例如，将整个蛋糕的形状转换成汉堡。
+
+2. BrushNet 通过其 VAE 编码器提取原始图像的特征，并将其与目标风格的特征融合，利用 BrushNet 的双分支机制，将遮罩区域的图像特征与目标特征进行扩散和融合。
+
+3. 在转换过程中，对生成的图像进行细节上的调整和优化，确保转换后的食物看起来真实且具有吸引力。完成所有调整后，生成最终的转换图像，一个看起来令人垂涎欲滴的汉堡，尽管它最初是一个蛋糕。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/012.png">
+    <img src="/blog/PuLID-BrushNet/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+使用这个工作流要注意：
+
+1. 需要在加载图像节点上传您想要调整的图像。
+
+2. 在节点 GroundingDinoSAMSegment 的提示中输入您想要调整的对象的名称。例如下图需要调整的地方是：牛肉。
+
+3. 在积极的CLIP文本节点中输入想要更改后的内容，例如：面包。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/013.png">
+    <img src="/blog/PuLID-BrushNet/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### BrushNet with IPA 
+
+BrushNet 的工作流除了替换物品外，它还可以给新生成的内容添加质感。例如将沙发转换为粉色毛绒质感，将盛满咖啡的杯子转换为蓝色玻璃质感，将泡芙的图像转换为看起来像由咖啡豆制成的蛋糕，表面具有咖啡豆的质感和颜色。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/014.png">
+    <img src="/blog/PuLID-BrushNet/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在 BrushNet 的工作流中，首先将图像加载到系统中。使用 GroundingDinoSAMSegment 功能，输入你想要调整或替换的对象名称，例如“沙发”。确定你想要添加到新内容的属性和质感。例如，如果你想将沙发替换成毛绒质感，在 Positive CLIP Text node 中输入描述所需质感的文本，如“毛绒质感”。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/015.png">
+    <img src="/blog/PuLID-BrushNet/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+在转换过程中，BrushNet 会对生成的图像进行细节上的调整和优化，确保新内容的质感和属性看起来真实且符合预期。
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/016.png">
+    <img src="/blog/PuLID-BrushNet/016.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+

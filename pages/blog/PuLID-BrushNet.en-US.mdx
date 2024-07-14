@@ -1,0 +1,183 @@
+---
+date: July 12th, 2024
+image: /blog/PuLID-BrushNet/banner.png
+title: PuLID Personalized Identity Customization & BrushNet Image Restoration
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# PuLID Personalized Identity Customization & BrushNet Image Restoration
+
+At the intersection of creativity and technology, PuLID and BrushNet bring us new surprises. PuLID, a master of generating lifelike images without the need for adjustment, makes the creation of personalized characters and scenes easy with its unique skills in contrast alignment and precise ID loss. BrushNet, as a magician of image restoration, allows any missing or flawed images to be reborn more perfectly with its innovative dual-branch diffusion model. These two not only provide designers with powerful tools but also bring infinite imagination to our digital world. Today, let's explore how to use the divine strokes of these two AI artists to make our creative work more effortless and intuitive.
+
+## [**PuLID**](https://arxiv.org/abs/2404.16022) 
+
+PuLID is an innovative identity customization method that requires no fine-tuning, specifically designed to enhance the ability to maintain personalized identities in text-to-image generation models. By leveraging a fast Lightning T2I branch and contrast alignment technology, PuLID not only achieves high identity fidelity but also minimizes interference with the original model's behavior, maintaining consistency in image elements such as background, lighting, composition, and style, while providing excellent editability and flexibility. It combines advanced rapid sampling techniques with precise identity loss calculation, significantly improving the quality of the generated images.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/001.png">
+    <img src="/blog/PuLID-BrushNet/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### PuLID Basic 
+
+Using the PuLID technology, we explore how to transform the image of a person with a specific face into a cyberpunk style. PuLID is not only capable of helping us customize images with a high degree of ID fidelity, but it can also turn abstract concepts into concrete visual works, allowing our creativity to be unrestricted. With PuLID, we can create more unique characters, such as: a detective in a trench coat, or a female warrior with a mechanical arm.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/002.png">
+    <img src="/blog/PuLID-BrushNet/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+We can start with a simple text description, such as "Cyberpunk character," and then gradually build a character with cyberpunk characteristics. PuLID first performs ID feature extraction, then guides the adapter to insert ID information without affecting the behavior of the original model through comparison. Finally, it calculates the accurate ID loss with the real facial embedding to improve ID similarity.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/003.png">
+    <img src="/blog/PuLID-BrushNet/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Prompt：Cyberpunk，Bioluminescence， Studio Lighting，Transparent Glass Texture，Refraction of Light，UHD (Ultra High Definition) Image， Movie Poster，Layered Print Poster Composition， Ultra Clear or High Definition，Ultimate Composition
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/004.png">
+    <img src="/blog/PuLID-BrushNet/004.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### PuLID IPAdapter Style Transfer
+
+As the bells of the Paris Olympics are about to chime, the eyes of the world are all focused on this city of light and shadow. Against this backdrop, we have utilized PuLID technology, combined with the style transformation function of IPAdapter, to create a unique scene—a character in the style of Pixar standing beneath the Eiffel Tower, skillfully blending the charm of animation with the iconic architecture of the real world.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/005.png">
+    <img src="/blog/PuLID-BrushNet/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In terms of style selection, we chose the Pixar style, which is renowned for its vibrant colors, exaggerated expressions, and rich emotions, capable of adding vitality and interest to the scene. Subsequently, we utilized PuLID's ID customization feature to design a character in the Pixar style, dressed in a white T-shirt and jeans, standing casually beneath the Eiffel Tower.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/006.png">
+    <img src="/blog/PuLID-BrushNet/006.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Using IPAdapter, we integrate the characteristics of the Pixar style with the character's image to ensure a natural and harmonious style transformation. With the help of PuLID, we finely adjust the character's lighting, clothing, and background details to ensure the harmony and unity of the entire image. Finally, we can obtain a Pixar-style character standing under the Eiffel Tower.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/007.png">
+    <img src="/blog/PuLID-BrushNet/007.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### PuLID Attention Mask 
+
+Against the same backdrop, we attempt to generate two Pixar-style characters with different facial features standing under the Eiffel Tower, each with distinct facial expressions and traits. PuLID's Attention Mask feature allows us to focus control on specific areas of the image, ensuring the diversity and accuracy of the facial features.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/008.png">
+    <img src="/blog/PuLID-BrushNet/008.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+Leveraging PuLID's style customization capabilities, we integrate the Pixar animation style into the character design. Through precise control, we design two characters with distinctly different facial features. One might have bright eyes and a cheerful smile, while the other could have deep eyes and a hint of a mysterious smile.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/009.png">
+    <img src="/blog/PuLID-BrushNet/009.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## [**BrushNet**](https://arxiv.org/pdf/2403.06976) 
+
+BrushNet is a plug-and-play image restoration model that cleverly handles occluded areas in images through its dual-branch architecture. By separately optimizing the occlusion features and the latent representation of noise, it significantly improves the quality and consistency of the restored images. This model does not rely on specific pre-trained diffusion models and can be flexibly inserted to enhance the restoration capabilities of existing models. It also provides detailed control options, allowing users to adjust the restoration details according to actual needs, making it suitable for a variety of complex image editing and virtual try-on applications.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/010.png">
+    <img src="/blog/PuLID-BrushNet/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### BrushNet Basic
+
+In the wonderful world of AI cuisine, imagination is our ingredient, and BrushNet is our cooking tool. Today, we will take you on a feast for the eyes and taste buds, to see how BrushNet can transform an image of one type of food into an entirely different kind of food image. From cakes to burgers, every bite is a fulfillment of creativity; from braised noodles to fried rice with eggs, every taste is a testament to the advancement of technology.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/011.png">
+    <img src="/blog/PuLID-BrushNet/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+1. First, select the food image you want to transform, such as a photo of a cake. Using this workflow, BrushNet will help you create a mask to cover the area of the image you wish to transform. For example, transform the entire shape of the cake into a hamburger.
+
+2. BrushNet extracts the features of the original image through its VAE encoder and merges them with the features of the target style. Utilizing BrushNet's dual-branch mechanism, it diffuses and integrates the image features of the masked area with the target features.
+
+3. During the transformation process, make detailed adjustments and optimizations to the generated image to ensure that the transformed food looks realistic and appealing. After completing all adjustments, the final transformed image is produced—a mouth-watering hamburger, even though it originally was a cake.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/012.png">
+    <img src="/blog/PuLID-BrushNet/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+When using this workflow, please pay attention to the following:
+
+1. You need to upload the image you want to adjust at the image loading node.
+
+2. Enter the name of the object you want to adjust in the prompt of the GroundingDinoSAMSegment node. For example, if the area that needs adjustment in the image below is beef, you would enter "beef."
+
+3. Enter the content you want to change to in the positive CLIP text node, such as "bread."
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/013.png">
+    <img src="/blog/PuLID-BrushNet/013.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### BrushNet with IPA 
+
+The workflow of BrushNet not only replaces objects but also adds texture to the newly generated content. For example, it can transform a sofa into one with a plush, pink texture, change a coffee cup filled with coffee into one with a blue glass texture, and convert the image of a puff pastry to resemble a cake made from coffee beans, with the surface having the texture and color of coffee beans.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/014.png">
+    <img src="/blog/PuLID-BrushNet/014.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+In the workflow of BrushNet, first load the image into the system. Use the GroundingDinoSAMSegment feature to input the name of the object you want to adjust or replace, such as "sofa." Determine the attributes and textures you want to add to the new content. For example, if you want to replace the sofa with a plush texture, enter the text describing the desired texture in the Positive CLIP Text node, such as "plush texture."
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/015.png">
+    <img src="/blog/PuLID-BrushNet/015.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+During the transformation process, BrushNet makes detailed adjustments and optimizations to the generated image, ensuring that the texture and attributes of the new content appear realistic and meet expectations.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/blog/PuLID-BrushNet/016.png">
+    <img src="/blog/PuLID-BrushNet/016.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />
+
