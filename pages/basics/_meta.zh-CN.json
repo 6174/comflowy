@@ -1,9 +1,10 @@
 {
   "new-to-comflowy": "1. Comflowy 新手入门",
-  "stable-diffusion-foundation": "2. Stable Diffusion 基础",
-  "comfyui-foundation": "3.  文生图",
-  "basic-nodes": "4. 基本操作",
-  "prompt": "5. SD Prompt 基础",
-  "embedding": "6. Embedding",
-  "lora": "7. LoRA"
+  "comfyui-workflow": "2. ComfyUI 核心概念",
+  "stable-diffusion-foundation": "3. Stable Diffusion 基础",
+  "comfyui-foundation": "4. 文生图",
+  "basic-nodes": "5. 基本操作",
+  "prompt": "6. SD Prompt 基础",
+  "embedding": "7. Embedding",
+  "lora": "8. LoRA"
 }

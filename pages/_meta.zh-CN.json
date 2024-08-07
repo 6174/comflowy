@@ -56,11 +56,8 @@
   "templates":{
     "title": "模板",
     "type": "page",
-    "theme": {
-      "sidebar": false,
-      "toc": true,
-      "pagination": false
-    }
+    "href": "https://community.comflowy.com",
+    "newWindow": true
   },
   "change-log": {
     "title": "更新日志",

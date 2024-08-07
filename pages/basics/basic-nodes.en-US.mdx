@@ -1,13 +1,27 @@
 ---
 title: Basic operations
 description: Dive into the basics of ComfyUI, a powerful tool for AI-based image generation. Learn about node connections, basic operations, and handy shortcuts. This guide demystifies the process of setting up and using ComfyUI, making it an essential read for anyone looking to harness the power of AI for image generation.
-keywords: ["ComfyUI Basics", "AI Image Generation", "Node Connections", "Basic Operations", "Shortcuts", "KSampler", "CLIP Text Encode", "AI Workflow", "AI Learning", "AI Tutorial", "Image Generation Shortcuts", "ComfyUI Operations"]
+keywords:
+  [
+    'ComfyUI Basics',
+    'AI Image Generation',
+    'Node Connections',
+    'Basic Operations',
+    'Shortcuts',
+    'KSampler',
+    'CLIP Text Encode',
+    'AI Workflow',
+    'AI Learning',
+    'AI Tutorial',
+    'Image Generation Shortcuts',
+    'ComfyUI Operations',
+  ]
 ---
 
-import { Steps, Callout, Tabs } from 'nextra-theme-docs';
-import { PhotoProvider, PhotoView } from 'react-image-previewer';
-import Subscribe from "components/subscribtion";
-import {FAQBox} from "components/FAQ";
+import { Steps, Callout, Tabs } from 'nextra-theme-docs'
+import { PhotoProvider, PhotoView } from 'react-image-previewer'
+import Subscribe from 'components/subscribtion'
+import { FAQBox } from 'components/FAQ'
 
 # Basic Operations
 
@@ -31,19 +45,20 @@ Second, if you've previously used SD WebUI, you've likely downloaded numerous mo
 ### ③ ComfyUI Also Allows You to See Preview Images Like Midjourney Does
 
 Third, when producing images, mj allows you to see the process of the image generation, and comfyui can do this too. First, you need to install ComfyUI Manager, then in the settings, set the Preview Method to Latent2RGB (this method is faster in generating images):
-<br/>
+
+<br />
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/010.png">
-    <img src="/comfyui-foundation/010.png" alt="" className='rounded-lg'/>
+    <img src="/comfyui-foundation/010.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
 After setting it up, when you generate an image, you'll be able to see preview images during the process at the KSampler node:
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/009.png">
-    <img src="/comfyui-foundation/009.png" alt="" className='rounded-lg'/>
+    <img src="/comfyui-foundation/009.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -59,10 +74,10 @@ For example, if you've added a LoRA node to the Workflow and after running it, y
 
 Unlike Bypass, which "skips a certain node and lets the subsequent nodes run," Mute "stops a node and all nodes following it" from running. For instance, in the following workflow, there's a node for enlarging images (indicated by the green arrow), and the nodes connected after it are all related to enlargement. Since running the enlargement node can be time-consuming, if you don't want every image to be enlarged, you might set the enlargement node to Mute. This way, the program won't continue past it.
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/011.png">
-    <img src="/comfyui-foundation/011.png" alt="" className='rounded-lg'/>
+    <img src="/comfyui-foundation/011.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -70,19 +85,19 @@ Unlike Bypass, which "skips a certain node and lets the subsequent nodes run," M
 
 The fifth tip is about batch generation. Currently, there are three ways to perform batch image generation within ComfyUI. One of them is by setting a Batch (indicated by ① in the image below). For example, setting it to 4 will allow you to generate 4 images at once, similar to how Midjourney does (as shown by ② in the image below).
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/012.png">
-    <img src="/comfyui-foundation/012.png" alt="" className='rounded-lg'/>
+    <img src="/comfyui-foundation/012.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
 Another method is to use Auto Queue. First, you need to check the Extra Options box (indicated by ① in the image below). Then, check the Auto Queue box (as shown by ② below), and after that, click on Queue Prompt (marked as ③ below). This will set the workflow to automatically rerun upon completion, and it will continue to do so until you uncheck the Auto Queue option.
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/comfyui-foundation/013.png">
-    <img src="/comfyui-foundation/013.png" alt="" className='rounded-lg'/>
+    <img src="/comfyui-foundation/013.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -92,19 +107,19 @@ The last method is the most straightforward: simply click several times manually
 
 Lastly, here are some common keyboard shortcuts:
 
-* Double-clicking on an empty space will bring up the search box.
-* Holding down the space bar and moving the mouse allows you to move the view in all directions.
-* To select multiple nodes, you can shift-click on the nodes.
-* Moving a Group node will also move all the nodes it encompasses. If you only want to move the Group itself, first click and hold the title of the Group, then press and hold the control key; this will move only the Group. Remember, you must first click and move the title, then press control; reversing the order won't work.
-* If you find that a node is taking up too much space, you can quickly resize it by clicking on the upper left corner of the node.
-* Typing "Embedding" in the Prompt input box will prompt suggestions. If you have the [ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts) plugin installed, it will also display LoRA suggestions.
+- Double-clicking on an empty space will bring up the search box.
+- Holding down the space bar and moving the mouse allows you to move the view in all directions.
+- To select multiple nodes, you can shift-click on the nodes.
+- Moving a Group node will also move all the nodes it encompasses. If you only want to move the Group itself, first click and hold the title of the Group, then press and hold the control key; this will move only the Group. Remember, you must first click and move the title, then press control; reversing the order won't work.
+- If you find that a node is taking up too much space, you can quickly resize it by clicking on the upper left corner of the node.
+- Typing "Embedding" in the Prompt input box will prompt suggestions. If you have the [ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts) plugin installed, it will also display LoRA suggestions.
 
 ## Other Shortcuts
 
 Below is the complete shortcut list:
 
 | Keybind                   | Explanation                                                                                                        |
-|---------------------------|--------------------------------------------------------------------------------------------------------------------|
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Ctrl + Enter              | Queue up current graph for generation                                                                              |
 | Ctrl + Shift + Enter      | Queue up current graph as first for generation                                                                     |
 | Ctrl + Z/Ctrl + Y         | Undo/Redo                                                                                                          |
@@ -126,4 +141,5 @@ Below is the complete shortcut list:
 | H                         | Toggle visibility of history                                                                                       |
 | R                         | Refresh graph                                                                                                      |
 | Double-Click LMB          | Open node quick search palette                                                                                     |
+
 <Subscribe />

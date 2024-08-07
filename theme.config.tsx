@@ -44,6 +44,11 @@ const TOCAD_DES = {
   'en-US': 'Try our cloud version:',
 }
 
+const BANNER_TEXT = {
+  'zh-CN': '🎉 新版模板库已上线。马上尝试 →',
+  'en-US': '🎉 New template library is released. Try Now →',
+}
+
 const classes = {
   link: "hover:underline decoration-from-font [text-underline-position:from-font]",
 }
@@ -79,6 +84,17 @@ export default {
     return {
       titleTemplate: '%s – Comflowy',
     }
+  },
+  banner: {
+    key: 'template-library-release',
+    text: () => {
+      const { locale } = useRouter();
+      return (
+        <a href="https://community.comflowy.com" target="_blank">
+          {BANNER_TEXT[locale]}
+        </a>
+      )
+    },
   },
   toc: {
     float: true,
@@ -122,7 +138,7 @@ export default {
                 { title: "Tutorial", url: "./docs" },
                 { title: "Model", url: "./model"},
                 { title: "Blog", url: "./blog"},
-                { title: "Template", url: "./templates"},
+                { title: "Template", url: "https://community.comflowy.com"},
                 { title: "Help Center", url: "https://comflowy.tawk.help" },
                 { title: "Community", url: "https://discord.gg/t7jwRy83uN" },
               ]}

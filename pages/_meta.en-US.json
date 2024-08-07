@@ -57,10 +57,8 @@
   "templates":{
     "title": "Templates",
     "type": "page",
-    "theme": {
-      "sidebar": false,
-      "pagination": false
-    }
+    "href": "https://community.comflowy.com",
+    "newWindow": true
   },
   "change-log": {
     "title": "Changelog",
