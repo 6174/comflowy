@@ -1,59 +1,98 @@
-import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import { PhotoProvider, PhotoView } from 'react-image-previewer'
 
 # 📦 Changelog
 
-## 2024-08-02
-### 🎉 Comflowy Open Source Version v0.2.2-alpha Release
+## 2024-08-30
+
+### 🎉 Comflowy Open Source Version v0.2.3-alpha Release
+
 **产品更新：**
+
+1. 添加节点面板：为了提到添加节点的效率，我们提供了预览功能，你可以将鼠标 hover 到节点名称上，并在弹窗中预览节点效果。
+   <br />
+   <PhotoProvider>
+     <PhotoView src="/changelog/002.png">
+       <img src="/changelog/002.png" alt="" className="rounded-lg" />
+     </PhotoView>
+   </PhotoProvider>
+2. 节点支持显示开发者的注释信息，方便你更高效的使用节点。
+   <br />
+   <PhotoProvider>
+     <PhotoView src="/changelog/003.png">
+       <img src="/changelog/003.png" alt="" className="rounded-lg" />
+     </PhotoView>
+   </PhotoProvider>
+3. 适配了以下节点，包括：
+   - 适配了 show text 节点
+   - 适配了 Audio 节点
+4. 修复了以下 bug：
+   - 修复了修改 workflow 名称后，无法保存的问题
+   - 修复了部分节点的 UI 显示错位问题
+
+## 2024-08-02
+
+### 🎉 Comflowy Open Source Version v0.2.2-alpha Release
+
+**产品更新：**
+
 1. 对于已经安装好 ComfyUI 以及 Conda 的用户，现在可以在安装的时候，选择已安装的 ComfyUI 和 Conda 路径。不会再重复安装。
 2. 修复：
    - 部分节点 convert to input 不可以用的情况
-   - primitive seed 节点增加 control after generate 功能 
+   - primitive seed 节点增加 control after generate 功能
    - 修复 primitive 有概率没有传递参数的问题
 
 另外，我们最近还重构了我们的[模板社区](https://community.comflowy.com/)，支持更多的模板，欢迎大家使用。对于正在使用本地开源版的朋友，暂时可以通过先导出，再导入到本地的方式使用。后续我们会优化此使用流程。
 
 同时我们还启动了 ComfyUI 从入门到精通系列视频教程的录制计划，欢迎大家订阅关注：
+
 - [B 站频道](https://space.bilibili.com/1409205119)
 - [小红书](https://www.xiaohongshu.com/user/profile/6073d38d00000000010068a6)
-- [抖音]( https://v.douyin.com/iMv1pDQK/)
+- [抖音](https://v.douyin.com/iMv1pDQK/)
 
 ## 2024-07-11
+
 ### 🎉 Comflowy Open Source Version v0.2.1-alpha Release
+
 **产品更新：**
+
 1. 适配插件：
-    - 支持 Anything Everywhere 节点
-    - 支持 Image scale to side 节点
-    - 支持 Get Node 和 Set node 节点
-    - 支持 Image Compare 节点
-    - 修复 VHS load video 节点，在上传 video 后 UI 重叠问题
-    - 适配 CLIP Set Last Layer 节点，修复负数参数无法运行的问题
+
+   - 支持 Anything Everywhere 节点
+   - 支持 Image scale to side 节点
+   - 支持 Get Node 和 Set node 节点
+   - 支持 Image Compare 节点
+   - 修复 VHS load video 节点，在上传 video 后 UI 重叠问题
+   - 适配 CLIP Set Last Layer 节点，修复负数参数无法运行的问题
 
 2. Mask Editor 优化：
-    - 修复画 Mask 后，图片会变模糊的问题
-    - 修复笔触有毛刺的问题
-    - 修复点击 Mask Editor 后会弹两次弹窗的问题
-    - 修复编辑后节点会报 Error 的问题
+   - 修复画 Mask 后，图片会变模糊的问题
+   - 修复笔触有毛刺的问题
+   - 修复点击 Mask Editor 后会弹两次弹窗的问题
+   - 修复编辑后节点会报 Error 的问题
 
 ### Comflowy Cloud Version
+
 **产品更新：**
 
 开源版本的所有更新，云端版本也同步支持。同时我们还额外支持了：
+
 1. 支持最新的快手生图模型，此模型可以使用中文生图，且其生成的图片质量非常高。
 2. 支持字节的 PuLID 模型，此模型可以作为 InstantID 的替代，在某些人脸上效果更好。
 3. 支持 BurshNet 插件，以及相应的模板，此插件在 Inpainting 和 Outpainting 上效果非常好。
 4. 导入包含未知节点或未安装节点的工作流后，会推荐其他类似可用节点，并支持一键替换。
 
 ## 2024-06-21
-### 🎉  ComflowySpace Cloud Version and v0.2.0-alpha Release
+
+### 🎉 ComflowySpace Cloud Version and v0.2.0-alpha Release
+
 **产品更新：**
 
 云端版本已经支持 SD3 模型，并且预制了相应的模板。你可以直接在云端版本上使用 SD3 模型，生成更高质量的图片。
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/changelog/001.png">
-    <img src="/changelog/001.png" alt="" className='rounded-lg'/>
+    <img src="/changelog/001.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -67,33 +106,38 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 我们在此处公开了我们的产品近期的[开发迭代计划](https://comflowy.featurebase.app/roadmap), 欢迎大家查看，并提交你希望我们支持的功能。
 
-* 下载开源版本：[Comflowy](https://github.com/6174/comflowyspace/releases)
-* 试试云端版本：[Comflowy Cloud](https://app.comflowy.com)
+- 下载开源版本：[Comflowy](https://github.com/6174/comflowyspace/releases)
+- 试试云端版本：[Comflowy Cloud](https://app.comflowy.com)
 
 ## 2024-06-04
+
 ### 🎉 ComflowySpace Cloud Version and v0.1.9-alpha Release
+
 **产品更新：**
 
 经过一个月的开发，我们的云端版本终于上线了。感兴趣的朋友可以[注册](https://www.comflowy.com)使用。它与本地开源版的区别有：
+
 1. 预装了各种常用插件，开箱即用。
 2. 可以直接从 Civitai 网站选模型使用，不需要自己下载到本地。
 3. 云端 GPU 运行，能运行更复杂的工作流。
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/space/015.png">
-    <img src="/space/015.png" alt="" className='rounded-lg'/>
+    <img src="/space/015.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
 除了云端版本上线外，我们还更新了开源本地版本：
+
 - 模型页面支持直接从 Civitai 上直接下载模型：
-<br/>
-<PhotoProvider>
-  <PhotoView src="/space/014.png">
-    <img src="/space/014.png" alt="" className='rounded-lg'/>
-  </PhotoView>
-</PhotoProvider>
+
+  <br />
+  <PhotoProvider>
+    <PhotoView src="/space/014.png">
+      <img src="/space/014.png" alt="" className="rounded-lg" />
+    </PhotoView>
+  </PhotoProvider>
 
 - 优化了插件页面的性能。同时支持通过搜索节点的方式，搜索所需要的插件。
 - 增加了 What‘s New 入口，后续更新能更方便了解更新了什么功能。
@@ -102,10 +146,13 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-04-29
+
 ### 🎉 ComflowySpace v0.1.8-alpha Release
+
 **产品更新：**
 
 本周我们团队依然忙于云端版本的开发，所以本次更新主要以优化和修复为主：
+
 - 适配了 VHS 插件，你现在可以在 Comflowy 里使用该插件了。
 - 适配了 ComfyUI 的 --listen 模式。
 - 修复了以下 bug：
@@ -118,7 +165,9 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-04-21
+
 ### 🎉 ComflowySpace v0.1.7-alpha Release
+
 **产品更新：**
 
 - 点击节点会高亮连接线。
@@ -136,9 +185,10 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
-
 ## 2024-04-12
+
 ### 🎉 ComflowySpace v0.1.6-alpha Release
+
 **产品更新：**
 
 - 现在可以通过直接将 workflow 文件拖拽到 Home 页面的方式进行导入 workflow。
@@ -151,16 +201,18 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
   - 修复了导入 workflow 文件后，应用白屏的问题。
   - 修复了部分导入的兼容性问题。
 
-
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-04-03
+
 ### 🎉 ComflowySpace v0.1.5-alpha Release
+
 **产品更新：**
-<br/>
+
+<br />
 <PhotoProvider>
   <PhotoView src="/space/013.png">
-    <img src="/space/013.png" alt="" className='rounded-lg'/>
+    <img src="/space/013.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -177,12 +229,15 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-03-28
+
 ### 🎉 ComflowySpace v0.1.4-alpha Release
+
 **产品更新：**
-<br/>
+
+<br />
 <PhotoProvider>
   <PhotoView src="/space/012.png">
-    <img src="/space/012.png" alt="" className='rounded-lg'/>
+    <img src="/space/012.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -193,12 +248,15 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-03-26
+
 ### 🎉 ComflowySpace v0.1.3-alpha Release
+
 **产品更新：**
-<br/>
+
+<br />
 <PhotoProvider>
   <PhotoView src="/space/011.png">
-    <img src="/space/011.png" alt="" className='rounded-lg'/>
+    <img src="/space/011.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -216,13 +274,15 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-03-21
+
 ### 🎉 ComflowySpace v0.1.2-alpha Release
+
 **产品更新：**
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/space/010.png">
-    <img src="/space/010.png" alt="" className='rounded-lg'/>
+    <img src="/space/010.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -238,16 +298,18 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-03-12
+
 ### 🎉 ComflowySpace v0.1.1-alpha Release
+
 **产品更新：**
 
 - 增加了 ControlBoard 功能，你可以通过侧边栏去调整各个节点的参数，无需再苦恼找不到调整参数的地方。
 - 增加了显眼的 Cancel 按钮，取消运行更方便。
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/space/009.png">
-    <img src="/space/009.png" alt="" className='rounded-lg'/>
+    <img src="/space/009.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -260,6 +322,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 ## 2024-03-07
+
 ### 🎉 ComflowySpace v0.1.0-alpha Release
 
 **产品更新：**
@@ -276,62 +339,75 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 下载链接：[Comflowyspace](https://github.com/6174/comflowyspace/releases)
 
 **新增教程：**
+
 - [如何安装 ComfyUI 插件？](https://www.comflowy.com/zh-CN/blog/how-to-install-comfyui-extension)
 
 ## 2024-02-29
+
 ### 🎉 ComflowySpace v0.0.9-alpha Release
+
 **产品更新：**
+
 - 通知中心：为了方便大家调试 workflow，我们将控制台中常见的错误信息转换成了可读的通知。不过目前仅将通知进行了抽取，还没有进一步给出解决方案，后续会逐步完善。也欢迎各位向我们反馈遇到的报错。
-<br/>
-<PhotoProvider>
-  <PhotoView src="/space/006.png">
-    <img src="/space/006.png" alt="" className='rounded-lg'/>
-  </PhotoView>
-</PhotoProvider>
+  <br />
+  <PhotoProvider>
+    <PhotoView src="/space/006.png">
+      <img src="/space/006.png" alt="" className="rounded-lg" />
+    </PhotoView>
+  </PhotoProvider>
 - 添加节点面板：为了提到添加节点的效率，我们提供了 Pin 功能，你可以将常用的节点 Pin 住，方便下次使用。感谢 Discord 用户 salissalissalis 的建议。
-<br/>
-<PhotoProvider>
-  <PhotoView src="/space/007.png">
-    <img src="/space/007.png" alt="" className='rounded-lg'/>
-  </PhotoView>
-</PhotoProvider>
+
+  <br />
+  <PhotoProvider>
+    <PhotoView src="/space/007.png">
+      <img src="/space/007.png" alt="" className="rounded-lg" />
+    </PhotoView>
+  </PhotoProvider>
 
 - 修复了多个安装适配问题。同时优化了安装和启动产品页面，并增加了对应的提示信息。
-<br/>
-<PhotoProvider>
-  <PhotoView src="/space/008.png">
-    <img src="/space/008.png" alt="" className='rounded-lg'/>
-  </PhotoView>
-</PhotoProvider>
+
+  <br />
+  <PhotoProvider>
+    <PhotoView src="/space/008.png">
+      <img src="/space/008.png" alt="" className="rounded-lg" />
+    </PhotoView>
+  </PhotoProvider>
 
 - 修复了多语言适配问题，感谢 Discord 用户 andyr9337 的反馈。
 
 **新增教程：**
+
 - [如何使用 ComfyUI 将漫画人物生成真人 ②](https://www.comflowy.com/blog/generate-anime-characters-02)
 
 ## 2024-02-20
+
 ### 🎉 ComflowySpace v0.0.8-alpha Release
+
 **产品更新：**
+
 - Load image 节点支持 Mask editor 功能，以及下拉菜单增加图片预览功能，选择图片更方便。
-<br/>
-<PhotoProvider>
-  <PhotoView src="/space/004.png">
-    <img src="/space/004.png" alt="" className='rounded-lg'/>
-  </PhotoView>
-</PhotoProvider>
+  <br />
+  <PhotoProvider>
+    <PhotoView src="/space/004.png">
+      <img src="/space/004.png" alt="" className="rounded-lg" />
+    </PhotoView>
+  </PhotoProvider>
 - 模型 Tab 增加了模型推荐功能。各位可以从这里看到我们认为值得下载的模型。
-<br/>
-<PhotoProvider>
-  <PhotoView src="/space/005.png">
-    <img src="/space/005.png" alt="" className='rounded-lg'/>
-  </PhotoView>
-</PhotoProvider>
+  <br />
+  <PhotoProvider>
+    <PhotoView src="/space/005.png">
+      <img src="/space/005.png" alt="" className="rounded-lg" />
+    </PhotoView>
+  </PhotoProvider>
 
 下载链接：https://github.com/6174/comflowyspace/releases
 
 ## 2024-02-15
+
 ### 🎉 ComflowySpace v0.0.7-alpha Release
+
 **产品更新：**
+
 - 为了更好地定位各种 bug，我们增加了一些日志记录功能。
 - 优化了搜索功能，现在可以搜索到插件的节点了。感谢 Discord 用户 Marlouis_ZXK 提出的建议。
 - 优化了 Conda 安装适配，感谢 Discord 用户 Kadir Nar 和 Github 用户 Tobe2d 协助我们测试并修复了此问题。
@@ -339,26 +415,28 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 **新增教程：**
 
 网站更新了 LoRA 模型相关的推荐，欢迎各位下载试用：
+
 - [10 个值得下载的 LoRA 模型](https://www.comflowy.com/zh-CN/blog/ten-lora-worth-downloading)
 
-
 ## 2024-02-06
+
 ### 🎉 ComflowySpace v0.0.6-alpha Release
 
 **产品更新：**
-<br/>
+
+<br />
 <PhotoProvider>
   <PhotoView src="/space/002.png">
-    <img src="/space/002.png" alt="" className='rounded-lg'/>
+    <img src="/space/002.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
 - 我们在模型 Tab 和 Tutorial Tab 增加了更多的引导，以帮助大家能更快上手我们的产品。
 
-<br/>
+<br />
 <PhotoProvider>
   <PhotoView src="/space/003.png">
-    <img src="/space/003.png" alt="" className='rounded-lg'/>
+    <img src="/space/003.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -369,16 +447,19 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 **新增教程：**
 
 网站也同步更新了以下文章：
+
 1. [Comflowy 新手入门](https://www.comflowy.com/zh-CN/introduction/new-to-comflowy)
 2. [10 个值得下载的模型](https://www.comflowy.com/zh-CN/blog/ten-models-worth-downloading)
 3. [如何选择合适的模型？](https://www.comflowy.com/zh-CN/blog/how-to-choose-a-model)
 
 ## 2024-02-02
+
 ### 🎉 ComflowySpace v0.0.5-alpha Release
-<br/>
+
+<br />
 <PhotoProvider>
   <PhotoView src="/space/001.png">
-    <img src="/space/001.png" alt="" className='rounded-lg'/>
+    <img src="/space/001.png" alt="" className="rounded-lg" />
   </PhotoView>
 </PhotoProvider>
 
@@ -399,6 +480,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 ### 🎉 ComflowySpace v0.0.4-alpha Release
 
 **产品更新：**
+
 - CLIPTextEncode 节点支持连接 postive 或 negative 端点后自动变颜色和标题。
 - Workflow 缺失插件节点时，支持一键下载并安装。
 - 修复了模板 Workflow 节点重叠的问题。
@@ -413,30 +495,35 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 ## 2024-01-23
 
 ### 🎉 ComflowySpace v0.0.3-alpha Release
+
 **产品更新：**
+
 - 支持导出 workflow。
 - 应用支持自动更新。
 - 修复了一些 UI 显示错位的问题。
 - 修复了导出图片不带 workflow 参数的问题。
 
-## 2024-01-21 
+## 2024-01-21
 
 ### 🎉 ComflowySpace v0.0.2-alpha Release
-**产品更新：**
-* 支持 Mac x86 版本（需要注意，如果你是 Intel 的 Macbook，安装前，请确认该电脑配备 AMD 独立显卡，不然无法使用！）
-* 修复了安装过程中，无法下载 Conda 问题。
 
+**产品更新：**
+
+- 支持 Mac x86 版本（需要注意，如果你是 Intel 的 Macbook，安装前，请确认该电脑配备 AMD 独立显卡，不然无法使用！）
+- 修复了安装过程中，无法下载 Conda 问题。
 
 ## 2024-01-18
 
 **上周新增教程：:**
+
 - [如何使用 ComfyUI 实现换脸？](https://www.comflowy.com/zh-CN/blog/face-swap)：第二篇最佳实践教程，教大家最近比较火的 AI 换脸。
 - [ControlNet 进阶](https://www.comflowy.com/zh-CN/advanced/advanced-optional/controlnet-advanced)：增加了 image ControlNet 的教程。
 
+## 2024-01-17
 
-## 2024-01-17 
 ### 🎉 ComflowySpace v0.0.1-alpha Release
-<br/>
+
+<br />
 <PhotoProvider>
   <PhotoView src="/space/banner.png">
     <img src="/space/banner.png" alt="" />
@@ -452,23 +539,29 @@ ComflowySpace 是一款基于 ComfyUI 二次开发的产品，使用功能上与
 - 优化了非常多 ComfyUI 的体验问题，使用起来更方便和简单。
 
 ## 2024-01-11
+
 **上周新增教程：:**
+
 - [如何使用 ComfyUI 生成 App 的 logo?](https://www.comflowy.com/zh-CN/blog/generate-app-logo)：我们的教程教了很多 ComfyUI 的使用方法，但也有一些同学反馈，当想要将 ComfyUI 用在工作上时，又不知道该如何下手。另外，ComfyUI 里有很多小的配置项，教程里也没有一一介绍，有些配置不知道该如何配置。所以，我们决定写一系列的实操教程，通过实际的工作案例来教大家将 ComfyUI 运用到工作当中，同时还会教大家一些使用 ComfyUI 的小技巧，从而帮助大家更好地使用 ComfyUI。
 - [Stable Diffusion 进阶](https://www.comflowy.com/zh-CN/advanced/advanced-optional/stable-diffusion-advanced)：增加了 Stable Difffusion XL workflow，通过这个 workflow 可以生成更精致的图片。
 
 **教程更新：**
+
 - [ControlNet](https://www.comflowy.com/zh-CN/advanced/controlnet): 更新了 Canny ControlNet workflow。
 - [云端安装](https://www.comflowy.com/zh-CN/preparation-for-study/optional/install-cloud): 更新了 Q&A 环节。感谢 Discord 用户 **designwill** 和 **lys623** 的反馈。
 - [ComfyUI 基础 ➁](https://www.comflowy.com/zh-CN/basics/basic-nodes): 增加了 Q&A 环节。感谢 Discord 用户 **123321123** 的反馈。
 - [图生图](https://www.comflowy.com/zh-CN/advanced/image-to-image)：修改了一些错别字。感谢 Github 用户 **lys623** 的反馈。
 
 ## 2024-01-02
+
 **上周新增教程：:**
+
 - [ControlNet](https://www.comflowy.com/zh-CN/advanced/controlnet)
 - [云端安装 ComfyUI](https://www.comflowy.com/zh-CN/preparation-for-study/optional/install-cloud)：感谢 Discord 用户 **otto pan** 给予的内容建议。
 - [特别感谢](https://www.comflowy.com/change-log)：网站增加了更新日志，以及特别感谢页面。以此感谢为我们教程和产品提出宝贵意见的朋友们。
 
-**教程更新：** 
+**教程更新：**
+
 - [安装 ComfyUI](https://www.comflowy.com/zh-CN/preparation-for-study/install)：补充了 pip3 相关的指令。感谢 Github 用户 **[fansanqiu](https://github.com/fansanqiu)** 提出的 [Issue](https://github.com/6174/comflowy/issues/2)。
 - [下载 & 导入模型](https://www.comflowy.com/zh-CN/preparation-for-study/model)：增加了导入 SD WebUI 文件夹里的模型的流程。感谢 Discord 用户 **Haaan**提出此问题。
 - [安装插件](https://www.comflowy.com/zh-CN/preparation-for-study/optional/custom-nodes)：补充了启动 ComfyUI 的代码。感谢 Discord 用户**Tennisatw** 指出此问题。
