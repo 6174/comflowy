@@ -90,7 +90,7 @@ export default {
     text: () => {
       const { locale } = useRouter();
       return (
-        <a href="https://community.comflowy.com" target="_blank">
+        <a href="https://app.comflowy.com" target="_blank">
           {BANNER_TEXT[locale]}
         </a>
       )
@@ -138,7 +138,7 @@ export default {
                 { title: "Tutorial", url: "./docs" },
                 { title: "Model", url: "./model"},
                 { title: "Blog", url: "./blog"},
-                { title: "Template", url: "https://community.comflowy.com"},
+                { title: "Template", url: "https://app.comflowy.com"},
                 { title: "Help Center", url: "https://comflowy.tawk.help" },
                 { title: "Community", url: "https://discord.gg/t7jwRy83uN" },
               ]}
