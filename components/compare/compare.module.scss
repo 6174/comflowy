@@ -1,0 +1,258 @@
+.header {
+  color: white;
+  display: flex;
+  flex-direction: space-between;
+  align-items: center;
+  gap: 100px;
+}
+
+.headerContainer {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #4B5563;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #9CA3AF;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-top: 1rem;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #18181b;
+  margin-top: 2rem;
+  color: white;
+}
+
+.tableHeader {
+  background-color: rgba(32, 33, 41, 0.6);
+  th {
+    padding: 0.75rem;
+    font-weight: 600;
+    border: 1px solid #262731;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:not(:first-child) {
+      text-align: center;
+    }
+  }
+}
+
+.tableRow {
+  background-color: #141417;
+}
+
+.tableCell {
+  padding: 20px;
+  text-align: left;
+  border: 1px solid #262731;
+}
+
+.checkIcon {
+  margin: 0 auto;
+  display: block;
+  width: 23px;
+}
+
+.localBadge, .cloudBadge {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.localBadge {
+  background-color: #065f46;
+}
+
+.cloudBadge {
+  background-color: #1e40af;
+}
+
+.notSupported {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 18px;
+    height: 20px;
+    margin-right: 0.1rem;
+  }
+}
+
+.notSupportedText {
+  color: #e5e7eb; // text-white-500
+  padding-left: 0.5rem; // pl-2
+}
+
+.fullWidthRow {
+  background-color: #141417;
+  
+  td {
+    padding: 10px;
+    font-weight: 600;
+    text-align: left;
+    border: 1px solid #262731;;
+  }
+}
+
+.templates {
+  margin-top: 160px;
+
+  h2 {
+    text-align: center;
+    margin-top: 0;
+  }
+}
+
+.sections {
+  margin-top: 80px;
+  margin-left: -20px;
+  p.description {
+    margin: 20px 0;
+    line-height: 1.5;
+  }
+
+  .sectionBlock {
+    border: solid 1px #4E506A;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px 20px 0px 20px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background-color: #121216;
+
+    p {
+      text-align: left;
+    }
+
+    &.image {
+      padding: 0;
+    }
+
+    .gradientBg {
+      background-color: #121216;
+      position: absolute;
+      pointer-events: none;
+      height: 100%;
+      top: 20%;
+      left: 10%;
+      transform: scale(2.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: -1;
+      opacity: 0.8;
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+
+  .supports-templates {
+    .gradient-bg {
+      background-color: #121216;
+      position: absolute;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      top: 10%;
+      left: -5%;
+      transform: scale(1.0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: -1;
+      opacity: 0.8;
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+
+  .flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    .box {
+      flex: 1.6;
+    }
+  }
+
+  .colorText {
+    color: transparent;
+    background: linear-gradient(126deg, #2CC8C3 0%, #2BB5EC 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 48px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    text-align: left;
+    margin: 10px 0;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  p.description {
+    text-align: center;
+    font-size: 20px;
+    color: var(--fontColor-w1);
+    margin: 20px auto;
+    line-height: 1.1;
+    opacity: .6;
+    margin-bottom: 40px;
+    max-width: 800px;
+  }
+  p.cardDescription {
+    text-align: left;
+    font-size: 16px;
+    color: var(--fontColor-w1);
+    margin: 20px auto;
+    opacity: .6;
+  }
+}
