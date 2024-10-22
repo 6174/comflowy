@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Image001 from './hero-section-images/001.png'
+import Image001 from './hero-section-images/001.jpg'
 import Image002 from './hero-section-images/002.png'
 import Image003 from './hero-section-images/003.png'
 import Image004 from './hero-section-images/004.png'
@@ -12,11 +12,8 @@ interface Creator {
 }
 
 const creators: Creator[] = [
-  { name: "Luka Alex", image: Image001.src, link: "https://www.google.com" },
-  { name: "Enzo Avigo", image: Image002.src, link: "https://www.google.com" },
-  { name: "Jimmy", image: Image003.src, link: "https://www.google.com" },
-  { name: "Enzo Avigo", image: Image004.src, link: "https://www.google.com" },
-  { name: "Enzo Avigo", image: Image001.src, link: "https://www.google.com" },
+  { name: "Jimmy Wong", image: Image001.src, link: "https://app.comflowy.com/u/a26154cb-4a72-406b-aa6a-d38d4d98e8ed" },
+  { name: "Sylvie", image: Image002.src, link: "https://app.comflowy.com/u/45ec8e87-b331-482f-b011-3e8bea99f2a8" },
 ];
 
 export function PowerSection() {

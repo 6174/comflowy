@@ -139,7 +139,7 @@ export default {
                 { title: "Model", url: "./model"},
                 { title: "Blog", url: "./blog"},
                 { title: "Template", url: "https://app.comflowy.com"},
-                { title: "Help Center", url: "https://comflowy.tawk.help" },
+                { title: "Help Center", url: "https://intercom.help/comflowy/" },
                 { title: "Community", url: "https://discord.gg/t7jwRy83uN" },
               ]}
             />

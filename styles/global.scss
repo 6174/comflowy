@@ -64,14 +64,16 @@ html[data-page="/index"] {
     padding: 2.5rem 0 0 0 !important; // 增加上下内边距
 
     nav {
-      max-width: 800px !important; // 或者您想要的最大宽度
       margin: 0 auto !important;
+      max-width: calc(100% - 4rem) !important; // 新增：设置最大宽度
+      width: 1400px !important;
       background: #20212ACC !important; // 深色半透明背景
       backdrop-filter: blur(10px) !important; // 背景模糊效果
       border-radius: 10px !important; // 圆角边框
       display: flex !important;
       align-items: center !important;
-      justify-content: space-between !important;
+      justify-content: center !important;
+      padding: 0 20px !important;
     }
 
     // Logo 样式
