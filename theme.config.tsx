@@ -85,17 +85,17 @@ export default {
       titleTemplate: '%s – Comflowy',
     }
   },
-  banner: {
-    key: 'template-library-release',
-    text: () => {
-      const { locale } = useRouter();
-      return (
-        <a href="https://app.comflowy.com" target="_blank">
-          {BANNER_TEXT[locale]}
-        </a>
-      )
-    },
-  },
+  // banner: {
+  //   key: 'template-library-release',
+  //   text: () => {
+  //     const { locale } = useRouter();
+  //     return (
+  //       <a href="https://app.comflowy.com" target="_blank">
+  //         {BANNER_TEXT[locale]}
+  //       </a>
+  //     )
+  //   },
+  // },
   toc: {
     float: true,
     extraContent:  () => {
