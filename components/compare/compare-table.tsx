@@ -39,13 +39,13 @@ const CompareTable: React.FC<CompareTableProps> = ({ rows }) => {
         <tr>
           <th>Compare features</th>
           <th>ComfyUI</th>
-          <th>
+          <th className={styles.tableGradientColumn}>
             Comflowy
-            <span className={styles.localBadge}>Local</span>
+            <span className={styles.cloudBadge}>Cloud</span>
           </th>
           <th>
             Comflowy
-            <span className={styles.cloudBadge}>Cloud</span>
+            <span className={styles.localBadge}>Local</span>
           </th>
         </tr>
       </thead>
@@ -59,7 +59,10 @@ const CompareTable: React.FC<CompareTableProps> = ({ rows }) => {
             <tr key={rowIndex} className={styles.tableRow}>
               <td className={styles.tableCell}>{row.feature}</td>
               {row.columns?.map((column, columnIndex) => (
-                <td key={columnIndex} className={styles.tableCell}>
+                <td
+                  key={columnIndex}
+                  className={`${styles.tableCell} ${columnIndex === 1 ? styles.tableGradientColumn : ''}`}
+                >
                   {renderCell(column)}
                 </td>
               ))}

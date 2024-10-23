@@ -4,6 +4,7 @@
   flex-direction: space-between;
   align-items: center;
   gap: 100px;
+  margin-top: 100px;
 }
 
 .headerContainer {
@@ -20,7 +21,7 @@
 }
 
 .title {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: bold;
   margin-bottom: 1rem;
   line-height: 1.2;
@@ -50,10 +51,27 @@
 
 .table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   background-color: #18181b;
   margin-top: 2rem;
   color: white;
+  position: relative;
+}
+
+// 添加这个新的选择器
+.tableGradientColumn {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(43, 181, 236, 0.2);
+    z-index: 0;
+  }
 }
 
 .tableHeader {
@@ -62,6 +80,9 @@
     padding: 0.75rem;
     font-weight: 600;
     border: 1px solid #262731;
+    position: relative;
+    font-size: 18px;
+    height: 60px; // 添加固定高度
 
     &:first-child {
       text-align: left;
@@ -78,9 +99,12 @@
 }
 
 .tableCell {
-  padding: 20px;
+  padding: 10px 12px;
   text-align: left;
-  border: 1px solid #262731;
+  border: 0.5px solid #262731;
+  position: relative;
+  font-size: 16px;
+  height: 80px; // 添加固定高度
 }
 
 .checkIcon {
@@ -254,5 +278,18 @@
     color: var(--fontColor-w1);
     margin: 20px auto;
     opacity: .6;
+  }
+}
+
+.tableHeader,
+.tableRow {
+  th,
+  td {
+    &:first-child {
+      width: 22%; // 第一列占 1/5 宽度
+    }
+    &:not(:first-child) {
+      width: 26%; // 其余三列平均分配剩余的 4/5 宽度
+    }
   }
 }

@@ -52,7 +52,7 @@
 
     .bg {
       width: 100vw;
-      height: 600vh;
+      height: 420vh;
       top: 0;
       left: 0;
       position: absolute;
@@ -72,34 +72,36 @@
     .hero-block {
       display: flex;
       flex-direction: column;
-      padding: 100px 0;
       color: white;
     }
 
     .hero-content {
       max-width: 100%;
-      margin: 0 auto;
+      margin: 40px auto;
+      padding-top: 30px;
       display: flex;
-      align-items: center;
-      margin-bottom: 100px;
-      position: relative; // 添加相对定位
+      align-items: top;
+      margin-bottom: 20px;
+      position: relative;
     }
 
     .title-image {
-      max-width: 70%; // 调整最大宽度
-      width: 100%; // 设置固定宽度
-      position: relative; // 改为相对定位
+      width: 40%; // 修改为占 2/5
+      position: relative;
       z-index: 1;
+      scale: 1.4;
+      left: 0; // 移除左侧偏移
     }
 
     .text-content {
-      width: 100%; // 给文本内容一个固定宽度
-      position: relative; // 保持相对定位
+      padding-top: 30px;
+      width: 60%; // 修改为占 3/5
+      position: relative;
       z-index: 2;
     }
 
     .hero-block h1 {
-      font-size: 80px;
+      font-size: 96px;
       font-weight: bold;
       line-height: 1.2;
       margin-bottom: 10px;
@@ -122,7 +124,7 @@
     }
 
     .hero-block .subtitle {
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 20px;
       color: #A1A1AA;
     }
@@ -130,19 +132,19 @@
     .hero-block .sign-up-btn {
       background: linear-gradient(to right, #2BCBBB, #2BB5EC);
       color: black;
-      padding: 10px 20px;
+      padding: 12px 26px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 24px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       svg {
-        width: 20px;
-        height: 20px;
-        margin-right: 8px;
+        width: 30px;
+        height: 30px;
+        margin-right: 12px;
       }
     }
 
@@ -175,6 +177,7 @@
     }
 
     .power-section {
+      margin-top: 100px;
       text-align: center;
       padding: 4rem 0;
 
@@ -853,6 +856,7 @@
     }
   }
 }
+
 
 
 
