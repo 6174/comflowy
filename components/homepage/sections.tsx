@@ -108,7 +108,7 @@ function FlexibleWorkflowMode() {
   )
 }
 
-function WorkflowManagement() {
+export function WorkflowManagement() {
   return (
     <div className="section-block workflow-management">
       <h2>Workflow Management</h2>
@@ -118,7 +118,7 @@ function WorkflowManagement() {
   )
 }
 
-function SupportsTemplates() {
+export function SupportsTemplates() {
   return (
     <div className="section-block supports-templates" style={{backgroundColor:"transparent"}}>
       <GradientBg />

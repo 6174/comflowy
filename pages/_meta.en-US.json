@@ -63,9 +63,8 @@
   "change-log": {
     "title": "Changelog",
     "type": "page",
-    "theme": {
-      "toc": true
-    }
+    "href": "https://comflowy.usereaction.com/changelog",
+    "newWindow": true
   },
   "compare":{
     "title": "Compare",

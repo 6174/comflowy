@@ -58,16 +58,60 @@ html[data-page="/index"] {
     background-color: #121215 !important;
     border-top: none !important;
   }
-  .nextra-nav-container>div {
-    background-color: transparent !important;
-    visibility: hidden;
+
+  .nextra-nav-container {
+    background: transparent !important; // 移除背景色
+    padding: 2.5rem 0 0 0 !important; // 增加上下内边距
+
+    nav {
+      margin: 0 auto !important;
+      max-width: calc(100% - 4rem) !important; // 新增：设置最大宽度
+      width: 1400px !important;
+      background: #20212ACC !important; // 深色半透明背景
+      backdrop-filter: blur(10px) !important; // 背景模糊效果
+      border-radius: 10px !important; // 圆角边框
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 20px !important;
+    }
+
+    // Logo 样式
+    .nextra-nav-container-logo {
+      display: flex !important;
+      align-items: center !important;
+
+      img {
+        height: 24px !important; // 调整 logo 大小
+        margin-right: 0.5rem !important;
+      }
+    }
+
+    // 导航链接样式
+    .nextra-nav-container-menu {
+      display: flex !important;
+      align-items: center !important;
+      gap: 1.5rem !important; // 链接之间的间距
+
+      a {
+        color: rgba(255, 255, 255, 0.7) !important; // 链接颜色
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        text-decoration: none !important;
+        transition: color 0.2s ease !important;
+
+        &:hover {
+          color: rgba(255, 255, 255, 1) !important; // 悬停时的颜色
+        }
+      }
+    }
   }
 
-  body.fixed-header .nextra-nav-container>div {
-    background-color: #1212153b !important;
-    border-bottom: none;
-    box-shadow: none;
-    visibility: visible;
+  // 确保导航栏在滚动时保持在顶部
+  .nextra-nav-container-blur {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
   }
   
   article {

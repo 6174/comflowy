@@ -52,7 +52,7 @@
 
     .bg {
       width: 100vw;
-      height: 300vh;
+      height: 420vh;
       top: 0;
       left: 0;
       position: absolute;
@@ -65,82 +65,646 @@
         width: 70%;
         max-width: 120rem;
         background-size: 160px 160px;
-        background-image: repeating-linear-gradient(to right, #242426, #242426 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0));
+        background-image: repeating-linear-gradient(to right, #1b1b1c, #242426 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0));
       }
     }
 
     .hero-block {
-      margin: 10vh 0 10vh;
-      a {
-        &:hover {
-          text-decoration: underline;
+      display: flex;
+      flex-direction: column;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 100%;
+      margin: 40px auto;
+      padding-top: 30px;
+      display: flex;
+      align-items: top;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .title-image {
+      width: 40%; // 修改为占 2/5
+      position: relative;
+      z-index: 1;
+      scale: 1.4;
+      left: 0; // 移除左侧偏移
+    }
+
+    .text-content {
+      padding-top: 30px;
+      width: 60%; // 修改为占 3/5
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-block h1 {
+      font-size: 96px;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero-block .color-text {
+      transform: translateY(-50%);
+      background: linear-gradient(to right, #2BCBBB, #2BB5EC);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+
+    .hero-block .cta-section {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-block .subtitle {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #A1A1AA;
+    }
+
+    .hero-block .sign-up-btn {
+      background: linear-gradient(to right, #2BCBBB, #2BB5EC);
+      color: black;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      svg {
+        width: 30px;
+        height: 30px;
+        margin-right: 12px;
+      }
+    }
+
+    .hero-block .open-source-link {
+      color: #A1A1AA;
+      font-size: 20px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .hero-images {
+      position: relative;
+      width: 100%;
+    }
+
+    .main-app-image {
+      width: 92%;
+      border-radius: 8px;
+    }
+
+    .mobile-app-image {
+      position: absolute;
+      right: 20px;
+      bottom: -40px;
+      width: 25%;
+      border-radius: 8px;
+    }
+
+    .power-section {
+      margin-top: 100px;
+      text-align: center;
+      padding: 4rem 0;
+
+      h2 {
+        font-size: 56px;
+        color: #ffffff;
+        margin-bottom: 2rem;
+      }
+
+      .creators-list {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .creator-item {
+        display: flex;
+        align-items: center;
+        background-color: #1F2028;
+        border-radius: 2rem;
+        padding: 0.5rem 0.5rem;
+
+        .creator-image {
+          border-radius: 50%;
+          margin-right: 1rem;
+        }
+
+        .creator-name {
+          color: #ffffff;
+          font-size: 20px;
+          margin-right: 10px;
         }
       }
-      video {
-        border: solid 1px #4E506A;
-        border-radius: 8px;
-        width: 642px !important; 
-        height: 362px !important;
-      }
-      >.flexbox>.content {
-        width: 35%;
+    }
+    .transforming-section {
+
+      margin-top: 100px;
+
+      .transforming-section-title {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-width: 500px;
-        margin: 100px 0;
-        h1 {
-          font-size: 64px;
-          font-weight: 500;
-          line-height: 1.1;
-          margin-bottom: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        justify-items: center;
+        margin-bottom: 40px;
+        .transforming-section-title-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          max-width: 500px;
+        }
+        h2 {
+          font-size: 56px;
+          color: #ffffff;
+          text-align: left; // 明确设置标题左对齐
+          max-width: 600px;
         }
         p {
-          opacity: .6;
-        }
-        .cta {
-          display: flex;
-          margin: 40px 0px 10px 0px;
+          font-size: 20px;
+          color: #a1a1aa;
+          margin-bottom: 18px;
+          text-align: left; // 明确设置段落左对齐
         }
       }
-      .hero-image {
-        flex: 1;
-        min-width: 400px;
-        position: relative;
+
+      .transforming-section-content {
+        padding: 3rem 2rem 0rem 2rem;
+        margin-right: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        border: solid 1px #363845;
+        border-radius: 20px;
+        background-color: #121216;
+      }
+
+      .try-now-btn {
+        display: inline-flex;
+        align-items: center;
+        background-color: transparent;
+        color: #ffffff;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 4px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      
+        svg {
+          margin-left: 0.5rem;
+        }
+      
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .left-panel {
+        flex: 3;
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+        text-align: left; // 确保所有文本左对齐
+        
+        .workflow-image {
+          width: 100%;
+          height: auto;
+        }
+      }
+    
+      .middle-panel {
+        flex: 0 0 60px;
         display: flex;
         justify-content: center;
         align-items: center;
-        img {
-          width: 80%;
-          max-width: 900px;
+    
+        .arrow {
+          font-size: 2rem;
+          color: white;
         }
-        .gradient-bg {
-          position: absolute;
-          pointer-events: none;
+      }
+    
+      .right-panel {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+    
+        .app-image {
           width: 100%;
-          height: 100%;
-          transform: scale(1.1);
-          left: -4%;
+          height: auto;
+        }
+      }
+    }
+    .all-in-one-section {
+      margin-top: 100px;
+      text-align: center;
+
+      h2 {
+        font-size: 56px;
+        color: #ffffff;
+        margin-bottom: 18px;
+      }
+
+      p {
+        font-size: 20px;
+        color: var(--fontColor-w1);
+        opacity: .6;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        line-height: 1.6;
+      }
+
+      .model-logos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 600px; // 调整为适合您设计的宽度
+
+        .model-logo {
+          width: 100%;
+          height: 70px;
+          background-color: #27282E;
+          border-radius: 40px;
           display: flex;
           justify-content: center;
           align-items: center;
-          z-index: -1;
-          svg {
-            width: 100%;
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1); // 将logo转为白色
           }
         }
       }
     }
+    .save-big {
+      .price-comparison {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        position: relative;
 
-    .sections {
+        .other-services,
+        .comflowy-price {
+          background-color: #1F2028;
+          border-radius: 10px;
+          padding: 20px;
+          flex: 1;
+        }
+
+        .other-services {
+          padding: 20px 50px 20px 30px;
+          margin-right: 10px;
+          .service-name {
+            font-size: 32px;
+            margin-right: 30px;
+          }
+          .service,
+          .total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+          }
+
+          .total {
+            border-top: 2px solid #4E506A;
+            padding-top: 20px;
+            margin-top: 20px;
+          }
+        }
+
+        .comflowy-price {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-left: 10px;
+          padding: 48px 20px;
+          .price {
+            font-size: 60px;
+            color: #2CC8C3;
+          }
+        }
+
+        .arrow {
+          position: absolute;
+          top: 35%;
+          left: 54%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          background-color: #1F2028;
+          border-radius: 50%;
+          height: 70px;
+          width: 70px;
+          z-index: 1;
+          border: solid 10px #121216;
+        }
+
+        .price {
+          font-size: 32px;
+          color: #FF6B6B;
+        }
+      }
+    }
+    .from-app-to-revenue-section {
       margin-top: 100px;
+      padding: 4rem 0;
+      text-align: center;
+      overflow: hidden;
+
+      h2 {
+        font-size: 56px;;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+      }
+
+      p {
+        font-size: 20px;
+        color: var(--fontColor-w1);
+        opacity: .6;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        line-height: 1.6;
+      }
+
+      .card-scroll-container {
+        margin-top: 40px;
+        width: 100%;
+        overflow: visible; // 保持 visible
+        position: relative;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h3 {
+          margin: 0;
+          font-size: 32px;
+        }
+
+        .pagination-buttons {
+          display: flex;
+          gap: 0.1rem;
+        }
+      }
+
+      .card-scroll {
+        display: flex;
+        transition: transform 0.3s ease;
+        width: max-content; // 保持 max-content
+        padding-right: 100%; // 添加右侧填充，确保最后的卡片也能完全显示
+      }
+
+      .scroll-button {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: solid 1px #4E506A;
+        border-radius: 50%;
+        height: 56px;
+        width: 56px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          width: 12px;
+          height: 18px;
+        }
+      }
+
+      .card {
+        flex: 0 0 280px; // 保持固定宽度
+        margin-right: 16px; // 保持右边距
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #1e1e24;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .creator-info {
+          display: flex;
+          align-items: top;
+          text-align: left;
+          padding: 0 20px;
+          margin-top: 4px;
+          margin-bottom: 10px;
+          width: 100%;
+          .creator-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            margin-right: 8px;
+            padding-top: 2px;
+          }
+          .creator-name {
+            font-size: 12px;
+            color: #A1A1AA;
+            text-align: left;
+            padding: 0px 0px 0px 10px;
+          }
+          .card-title {
+            padding: 0px 10px;
+            margin: 0 10px 0 0;
+            font-size: 16px;
+            color: white;
+            opacity: 1;
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%; 
+            box-sizing: border-box; // 确保padding不会增加元素的总宽度
+            position: relative;
+          
+            &:hover::after {
+              content: attr(title);
+              position: absolute;
+              left: 10px;
+              top: 100%;
+              background-color: rgba(0, 0, 0, 0.8);
+              color: white;
+              padding: 5px;
+              border-radius: 4px;
+              z-index: 1;
+              white-space: normal;
+              word-wrap: break-word;
+              max-width: 200px;
+            }
+          }
+        }
+      }
+    }
+    .get-started-section {
+      position: relative;
+      border-radius: 16px;
+      margin: 100px auto;
+      max-width: 100%;
+      overflow: hidden;
+      height: 600px;
+      .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .text-button-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 244px;
+        padding: 0 230px;
+      }
+      h2 {
+        font-size: 38px;
+        font-weight: bold;
+        color: #ffffff;
+        margin-left: 10px;
+        padding-right: 20px;
+        position: relative; // 添加相对定位
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: 6px; // 边框宽度
+          background: linear-gradient(to bottom, #2CC8C3 0%, #2BB5EC 100%);
+          border-radius: 4px;
+        }
+      }
+      .gradient-bg {
+        position: absolute;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transform: scale(0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        svg {
+          width: 100%;
+        }
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+
+        &.github {
+          position: relative;
+          background-color: transparent;
+          color: #2CC8C3;
+          border: none;
+          z-index: 1;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(126deg, #2CC8C3 0%, #2BB5EC 100%);
+            border-radius: 9999px;
+            z-index: -1;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            background-color: #1B2363;
+            border-radius: 9999px;
+            z-index: -1;
+          }
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+
+          svg {
+            margin-right: 0.5rem;
+          }
+
+          .github-text {
+            background: linear-gradient(126deg, #2CC8C3 0%, #2BB5EC 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+
+          &:hover {
+            .github-text {
+              color: #2CC8C3; // 悬停时使用单一颜色,以提高可读性
+            }
+          }
+        }
+
+        &.get-start {
+          color: white;
+          font-weight: bold;
+          background: linear-gradient(126deg, #2CC8C3 0%, #2BB5EC 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+    .sections {
       margin-left: -20px;
       p.description {
         margin: 20px 0;
         line-height: 1.5;
       }
       .section-block {
-        border: solid 1px #4E506A;
+        border: solid 1px #363845;
         border-radius: 20px;
         margin: 20px;
         padding: 30px;
@@ -148,9 +712,10 @@
         position: relative;
         overflow: hidden;
         background-color: #121216;
-        h2 {
+        h3 {
           text-align: left;
           margin-top: 0;
+          font-size: 32px;
         }
         p {
           text-align: left;
@@ -304,3 +869,15 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+

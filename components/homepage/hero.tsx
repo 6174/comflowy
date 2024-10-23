@@ -1,45 +1,79 @@
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { t, useLang } from "@/i18n";
 import { KEYS } from "@/i18n/i18n.types";
-import InputVideoPlayerProps from "../video-player";
+
+import HeroImage001 from "./homepage-images/hero-image-001.png";
+import HeroImage002 from "./homepage-images/hero-image-002.png";
+import HeroImage003 from "./homepage-images/hero-image-003.png";
 
 export function HeroBlock() {
+  const [text, setText] = useState("Profit");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const words = ["Profit", "App"];
+  const [wordIndex, setWordIndex] = useState(0);
+
   const router = useRouter();
-  const lang = useLang();
+
+  const handleSignUp = () => {
+    router.push('https://app.comflowy.com');
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (isDeleting) {
+        setText((prev) => prev.slice(0, -1));
+        if (text === '') {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      } else {
+        const currentWord = words[wordIndex];
+        setText((prev) => currentWord.slice(0, prev.length + 1));
+        if (text === currentWord) {
+          // 添加延迟，使单词完整显示后停留一段时间
+          setTimeout(() => setIsDeleting(true), 1000);
+          return;
+        }
+      }
+    }, isDeleting ? 50 : 150);
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, wordIndex]);
+
   return (
     <div className="hero-block">
-      <LineBg/>
-      <div className="flexbox">
-        <div className="content">
-          {lang === 'zh-CN' ? 
-            (<h1>让<span className="color-text">AI 图像/视频</span>生成变得强大</h1>)
-            : (
-              <h1>Empowering <span className="color-text">AI Image</span> and  <span className="color-text">Video Generation</span> </h1>
-            )
-          }
-
-          <p>{t(KEYS.heroDescription)}</p>
-          <div className="cta">
-            <button onClick={ev => {
-              ev.preventDefault();
-              window.open("https://app.comflowy.com", "_blank");
-            }}>Sign up for free</button>
+      <LineBg />
+      <div className="hero-content">
+        <div className="text-content">
+          <h1>
+            From ComfyUI<br />
+            Workflow to <span className="color-text"><span className="text-change">{text}</span></span>
+          </h1>
+          <div className="cta-section">
+            <p className="subtitle">For everyone from Creator to Entrepreneurs</p>
+            <button className="sign-up-btn" onClick={handleSignUp}>
+              <svg width="34" height="32" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.66212 28.759H18.7027C21.5239 28.759 22.9873 27.2825 22.9873 24.4348V18.5022H20.4033V24.2766C20.4033 25.5027 19.7573 26.175 18.4785 26.175H4.87306C3.59425 26.175 2.96144 25.5027 2.96144 24.2766V4.69897C2.96144 3.4729 3.59425 2.80054 4.87306 2.80054H18.4785C19.7573 2.80054 20.4033 3.4729 20.4033 4.69897V10.4866H22.9873V4.54077C22.9873 1.7063 21.5239 0.216553 18.7027 0.216553H4.66212C1.84084 0.216553 0.377457 1.7063 0.377457 4.54077V24.4348C0.377457 27.2825 1.84084 28.759 4.66212 28.759ZM13.1524 15.6941H26.4414L28.3926 15.6018L27.4302 16.4192L25.4658 18.2649C25.2285 18.4758 25.0967 18.7791 25.0967 19.0823C25.0967 19.6755 25.5449 20.1765 26.1514 20.1765C26.4678 20.1765 26.7051 20.0447 26.9292 19.8206L31.2007 15.4041C31.5039 15.0876 31.6094 14.7976 31.6094 14.4812C31.6094 14.1648 31.5039 13.8748 31.2007 13.5583L26.9292 9.12866C26.7051 8.90454 26.4678 8.78589 26.1514 8.78589C25.5449 8.78589 25.0967 9.2605 25.0967 9.86694C25.0967 10.157 25.2285 10.4734 25.4658 10.6843L27.4302 12.5432L28.4058 13.3606L26.4414 13.2551H13.1524C12.5064 13.2551 11.9527 13.8088 11.9527 14.4812C11.9527 15.1536 12.5064 15.6941 13.1524 15.6941Z" fill="#121215" />
+              </svg>
+              Sign up for free
+            </button>
+            <a href="https://github.com/6174/comflowyspace" className="open-source-link" target="_blank" >or use open-source version →</a>
           </div>
-          <a href="https://github.com/6174/comflowyspace/releases" target="_blank">
-            <p>or use open-source version →</p>
-          </a>
         </div>
-        <div className="hero-image">
-          <GradientBg/>
-          <InputVideoPlayerProps url="https://image.app-image.com/comflowy%2Fdocs%2F1716638215566.mov"/>
-          {/* <Image src={HeroImage.src} alt="Hero Image" width={942} height={609} /> */}
+        <div className="title-image">
+          <img src={HeroImage003.src} alt="No credit card required" />
         </div>
+      </div>
+      <div className="hero-images">
+        <img src={HeroImage001.src} alt="ComfyUI Workflow" className="main-app-image" />
+        <img src={HeroImage002.src} alt="Mobile App" className="mobile-app-image" />
       </div>
     </div>
   )
 }
 
-function LineBg() {
+export function LineBg() {
   return (
     <div className="bg">
       <div className="content">
@@ -47,88 +81,3 @@ function LineBg() {
     </div>
   )
 }
-
-function GradientBg() {
-  return (
-    <div className="gradient-bg">
-      <svg width="1347" height="648" viewBox="0 0 1347 648" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g opacity="0.5">
-          <rect opacity="0.5" x="293.147" y="237.404" width="876.705" height="173.263" rx="86.6316" stroke="url(#paint0_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.5" x="275.292" y="220.73" width="912.417" height="206.61" rx="103.305" stroke="url(#paint1_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.5" x="309.813" y="255.269" width="843.374" height="137.534" rx="68.7671" stroke="url(#paint2_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.4" x="216.312" y="167.809" width="1028.75" height="312.383" rx="156.191" stroke="url(#paint3_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.4" x="255.368" y="203.139" width="950.635" height="241.723" rx="120.862" stroke="url(#paint4_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.4" x="237.468" y="185.904" width="986.437" height="276.191" rx="138.096" stroke="url(#paint5_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.3" x="196.783" y="147.989" width="1069.43" height="352.021" rx="176.011" stroke="url(#paint6_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.3" x="174.001" y="132.479" width="1115" height="383.043" rx="191.521" stroke="url(#paint7_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.2" x="152.845" y="116.968" width="1157.31" height="414.064" rx="207.032" stroke="url(#paint8_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.1" x="104.023" y="80.7769" width="1254.95" height="486.447" rx="243.223" stroke="url(#paint9_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.1" x="131.689" y="102.319" width="1199.62" height="443.362" rx="221.681" stroke="url(#paint10_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.05" x="35.6748" y="38.5532" width="1391.65" height="570.894" rx="285.447" stroke="url(#paint11_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.05" x="73.1035" y="62.6812" width="1316.79" height="522.638" rx="261.319" stroke="url(#paint12_radial_1237_15621)" strokeWidth="3" />
-          <rect opacity="0.05" x="1.5" y="1.5" width="1460" height="645" rx="322.5" stroke="url(#paint13_radial_1237_15621)" strokeWidth="3" />
-        </g>
-        <defs>
-          <radialGradient id="paint0_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324.036) rotate(90) scale(88.1316 439.852)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint1_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324.036) rotate(90) scale(104.805 457.708)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint2_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324.036) rotate(90) scale(70.2671 423.187)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint3_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(730.686 324.001) rotate(90) scale(157.691 515.874)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint4_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(730.686 324) rotate(90) scale(122.362 476.818)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint5_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(730.686 324) rotate(90) scale(139.596 494.719)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint6_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(177.511 536.216)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint7_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(193.021 558.999)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint8_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(208.532 580.155)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint9_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(244.723 628.976)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint10_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(223.181 601.311)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint11_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(286.947 697.325)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint12_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(262.819 659.896)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-          <radialGradient id="paint13_radial_1237_15621" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(731.5 324) rotate(90) scale(324 731.5)">
-            <stop stopColor="#2BCBBB" />
-            <stop offset="1" stopColor="#2AAFF7" />
-          </radialGradient>
-        </defs>
-      </svg>
-
-    </div>
-  )
-}
-

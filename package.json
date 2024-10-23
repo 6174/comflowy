@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
+    "@intercom/messenger-js-sdk": "^0.0.14",
     "@tawk.to/tawk-messenger-react": "^2.0.2",
     "cors": "^2.8.5",
     "lodash": "^4.17.21",
