@@ -62,9 +62,8 @@
   "change-log": {
     "title": "更新日志",
     "type": "page",
-    "theme": {
-      "toc": true
-    }
+    "href": "https: //comflowy.usereaction.com/changelog",
+    "newWindow": true
   },
   "compare":{
     "title": "比较",

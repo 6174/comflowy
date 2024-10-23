@@ -147,7 +147,7 @@ export default {
               title="Product"
               items={[
                 { title: "Pricing", url: "./pricing" },
-                { title: "Changelog", url: "./change-log" },
+                { title: "Changelog", url: "https://comflowy.usereaction.com/changelog" },
                 { title: "Feature Request", url: "https://comflowy.featurebase.app/" },
                 { title: "Product Roadmap", url: "https://comflowy.featurebase.app/roadmap" },
               ]}
