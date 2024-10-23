@@ -672,6 +672,19 @@
           svg {
             margin-right: 0.5rem;
           }
+
+          .github-text {
+            background: linear-gradient(126deg, #2CC8C3 0%, #2BB5EC 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+
+          &:hover {
+            .github-text {
+              color: #2CC8C3; // 悬停时使用单一颜色,以提高可读性
+            }
+          }
         }
 
         &.get-start {
@@ -856,6 +869,7 @@
     }
   }
 }
+
 
 
 
