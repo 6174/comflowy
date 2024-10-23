@@ -147,7 +147,7 @@ export function FromAppToRevenueSection() {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" , marginTop: "20px"}}>
               <h3 >Low Fees</h3>
               <p style={{textAlign: "center", padding: "20px 10px 0px 10px", margin: "0px" }}>
-                Own your profit. Sign up for Store Pro for 5% take rate.
+                Only 5% fee, compared to Gumroad's 10% and Patreon's 12%.
               </p>
             </div>
           </div>
