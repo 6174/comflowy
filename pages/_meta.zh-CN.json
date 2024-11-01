@@ -29,7 +29,13 @@
   "pricing": {
     "title": "价格",
     "type": "page",
-    "href": "/pricing"
+    "href": "/pricing",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "layout": "full",
+      "pagination": false
+    }
   },
   "docs-link": {
     "title": "教程",

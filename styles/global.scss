@@ -49,7 +49,7 @@ html, body {
   }
 }
 
-html[data-page="/index"] {
+html[data-page="/index"], html[data-page="/pricing"] {
   body {
     background-color: #121215;
     overflow-x: hidden;

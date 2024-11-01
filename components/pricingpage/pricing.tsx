@@ -1,3 +1,4 @@
+import PricingHeader from "./pricing-header";
 import { PricingPlanItem } from "./pricing-info";
 import { PricingFaqs } from "./pricing-faq";
 import styles from "./pricing.module.scss";
@@ -7,7 +8,9 @@ export function PricingPage() {
   const lang = useLang();
   return (
     <div className={styles.billingPage}>
-      <PricingPlanItem plans={[]} subscriptions={[]} />
+      <PricingHeader />
+      <PricingPlanItem />
+      <PricingFaqs />
     </div>
   )
 }

@@ -1,91 +1,253 @@
 .billingPage {
-  max-width: 900px;
-  margin: auto;
-  margin-top: 40px;
-  
+  width: 100%;
   :global {
-    // .billing-plans { }
-    
-    .plan-table {
-      border: solid 1px var(--borderColor);
-      border-radius: 10px !important;
-      padding: 10px 10px 40px 10px;
-    }
-
-    .discount-banner {
-      border: solid 1px var(--primaryColor);
-      border-radius: 10px !important;
-      font-weight: 600;
-      padding: 5px 20px 5px 20px;
-      //background-color: var(--primaryColor);
-      color: var(--primaryColor);
-      margin-bottom: 20px;
-    }
-
-    table {
+    .billing-plan-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 24px;
       width: 100%;
-      tr {
-        border-bottom: solid 1px var(--borderColor);
-        &.noborder {
-          border-bottom: none;
-        }
-      }
-      th {
-        width: 100px;
-        vertical-align: baseline;
-      }
-      td {
-        padding: 10px;
-      }
-      
-      .billing-plan-item {
+      max-width: 1400px;
+      margin: 0 auto;
+
+      .billing-plan-item-pro {
+        flex: 1;
+        background: linear-gradient(to bottom, #1B4D4C, #2D4356);
+        color: white;
         border-radius: 12px;
-        // border: 1px solid rgba(71, 71, 71, 0.10);
-        // background: var(--cardBackground);
-        padding: 20px 20px 20px 10px;
-        transition: var(--transition);
-        width: 160px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         text-align: left;
-        h2 {
-          margin:0 0 10px 0;
+      }
+
+      .billing-plan-item-hobbyist {
+        flex: 1;
+        background: #2A2B36;
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: left;
+      }
+
+      .billing-plan-item-free {
+        flex: 1;
+        background: #1E1F28;
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: left;
+      }
+
+      h2 {
+        font-size: 36px;
+        margin: 0;
+      }
+
+      .price {
+        font-size: 24px;
+        span {
+          font-size: 54px;
+          font-weight: bold;
         }
-        .description {
-          height: 60px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-weight: bold;
+        // Pro 按钮样式
+        &.pro {
+          background: linear-gradient(to right, #2DC0B2, #2AAFF7);
+          color: white;
         }
-        .meta-info {
-          font-size: 12px;
-          width: 180px;
-          opacity: .6;
-          font-weight: normal;
+        
+        // Hobbyist 按钮样式
+        &.hobbyist {
+          background: white;
+          color: black;
         }
-        .actions {
-          margin-top: 20px;
-          button {
-            width: 100%;
-            text-align: center;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-          }
+        
+        // Free 按钮样式
+        &.free {
+          background: #363845;
+          color: white;
         }
       }
     }
 
-    .billing-faq {
-      margin-top: 20px;
-      p {
-        color: #A4A4A5;
-      }
-      a {
-        color: var(--primaryColor);
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 30px 0 15px 0;
+      opacity: 0.8;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .usage {
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .feature-item {
+        display: flex;
+        align-items: left;
+        gap: 8px;
+        font-size: 18px;
+        font-weight: normal;
+        
+        &.enabled:before {
+          content: "";
+          display: inline-block;
+          width: 28px;
+          height: 28px;
+          background-image: url("data:image/svg+xml,%3Csvg width='29' height='29' viewBox='0 0 29 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M21.1129 7.31661C21.6814 7.67771 21.8495 8.43126 21.4883 8.99972L14.1327 20.5792C13.9222 20.9106 13.565 21.1203 13.1731 21.1428C12.7811 21.1652 12.4024 20.9975 12.1554 20.6923L7.9316 15.4715C7.50802 14.9479 7.58907 14.1801 8.11263 13.7565C8.63619 13.3329 9.404 13.414 9.82758 13.9375L12.9841 17.8391L19.4298 7.69206C19.7909 7.1236 20.5444 6.95551 21.1129 7.31661Z' fill='%232DC0B2'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center;
+          vertical-align: middle;
+        }
+        
+        &.disabled:before {
+          content: "";
+          display: inline-block;
+          width: 28px;
+          height: 28px;
+          background-image: url("data:image/svg+xml,%3Csvg width='29' height='29' viewBox='0 0 29 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M21.1272 7.22038C21.6267 7.70965 21.6349 8.51117 21.1456 9.01064L16.1433 14.1172L21.2499 19.1195C21.7493 19.6088 21.7576 20.4103 21.2683 20.9098C20.7791 21.4093 19.9775 21.4175 19.4781 20.9282L14.3715 15.9259L9.36917 21.0325C8.8799 21.5319 8.07838 21.5402 7.57891 21.0509C7.07945 20.5616 7.07119 19.7601 7.56046 19.2607L12.5628 14.1541L7.45624 9.15176C6.95678 8.66249 6.94852 7.86097 7.43779 7.36151C7.92706 6.86204 8.72858 6.85378 9.22804 7.34305L14.3346 12.3454L19.3369 7.23884C19.8262 6.73937 20.6277 6.73111 21.1272 7.22038Z' fill='%23ED6A5E'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center;
+          vertical-align: middle;
+        }
       }
     }
-    
   }
 }
 
 .faq {
-  a {
-    color: var(--primaryColor) !important;
+  :global {
+    .faq-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    .faq-title {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 60px 0 0 0;
+    }
+    .faq-item {
+      background: #141417;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid #4E506A;
+    }
+
+    .faq-question {
+      padding: 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+
+      .question-text {
+        font-size: 22px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+    }
+
+    .faq-answer {
+      padding: 0 24px 24px 44px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      line-height: 1.6;
+      animation: slideDown 0.3s ease-out;
+      .answer-paragraph {
+        font-size: 18px;
+        margin: 0.8em 0;
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pricingHeader {
+  margin-top: 64px;
+  text-align: left;
+  margin-bottom: 60px;
+  
+  h1 {
+    font-size: 64px;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+
+  .discountInfo {
+    width: 50%;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .code {
+    color: #2DC0B2;
+    font-family: monospace;
+  }
+}
+
+.lineBg {
+  width: 100vw;
+  height: 180vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  z-index: -1;
+
+  .content {
+    height: 100%;
+    width: 70%;
+    max-width: 120rem;
+    background-size: 160px 160px;
+    background-image: repeating-linear-gradient(to right, #1b1b1c, #242426 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0));
   }
 }
