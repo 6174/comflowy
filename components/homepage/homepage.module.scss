@@ -854,7 +854,7 @@
 
         .hero-content {
           flex-direction: column;
-          margin: 20px 0;
+          margin: 10px 0;
           
           .text-content {
             width: 100%;
@@ -876,7 +876,7 @@
         }
 
         .sign-up-btn {
-          width: 46%;
+          width: 48%;
           justify-content: center;
           font-size: 16px !important;
           padding: 8px 0px !important;
@@ -1026,13 +1026,22 @@
       .all-in-one-section {
         .model-logos {
           max-width: 400px;
+          gap: 1rem;
+          .model-logo {
+            width: 100%;
+            height: auto;
+          }
         }
+        
       }
 
       .save-big {
+        p {
+          margin-bottom: 10px !important;
+        }
         .price-comparison {
           .other-services {
-            padding: 20px 26px 10px 20px;
+            padding: 16px 20px 10px 16px;
             .service-name, .price {
               font-size: 20px !important; 
             }
@@ -1040,11 +1049,11 @@
           .arrow {
             border: solid 6px #121216;
             font-size: 10px;
-            height: 50px;
-            width: 50px;
-            left: 64%;
+            height: 46px;
+            width: 46px;
+            left: 60%;
             .arrow-svg {
-              width: 30%;
+              width: 28%;
               height: 100%;
             }
           }
@@ -1133,6 +1142,9 @@
           p {
             font-size: 16px;
           }
+        }
+        .save-big {
+          padding: 20px;
         }
         .section-block-content {
           max-width: 400px;
