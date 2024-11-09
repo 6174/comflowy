@@ -847,7 +847,7 @@
         padding: 10px;
         
         h1 {
-          font-size: 48px !important;
+          font-size: 44px !important;
           line-height: 1.1;
           margin-bottom: 20px;
         }
@@ -936,7 +936,9 @@
           flex-direction: column;
           align-items: center;
           text-align: center;
-          
+          h2 {
+            text-align: center;
+          }
           .transforming-section-title-content {
             text-align: center;
             margin: auto;
@@ -1048,7 +1050,7 @@
           }
           .comflowy-price {
             margin-left: 2px;
-            padding: 60px 20px;
+            padding: 60px 10px;
             span {
               font-size: 20px !important;
             }
