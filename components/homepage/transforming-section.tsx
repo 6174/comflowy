@@ -50,7 +50,9 @@ export function TransformingSection() {
             <LoadAnyModel />
             <VideoGerneration />
           </div>
-          <PowerfulPlugin />
+          <div className="box">
+            <PowerfulPlugin />
+          </div>
         </div>
       </div>
     </>
@@ -59,11 +61,11 @@ export function TransformingSection() {
 
 function PowerfulPlugin() {
   return (
-    <div className="section-block debug-mode" style={{ backgroundColor: "transparent" }}>
+    <div className="section-block powerful-plugin" style={{ backgroundColor: "transparent" }}>
       <GradientBg />
-      <h3>Powerful Plugin System</h3>
-      <p className="description">Thanks to the open-source community, our product boasts a robust plugin system. Through these plugins, you can tap into a variety of the latest AI technologies such as ControlNet, IPAdapter, and InstantID.</p>
-      <Image src={PowerfulPluginImg.src} width={800} height={1024} alt="powerful plugin sysetm" style={{ margin: "60px 0px 0px 20px", paddingBottom: "20px", transform: "scale(1.1)" }} />
+      <h3>Powerful Extension System</h3>
+      <p className="description">Thanks to the open-source community, our product boasts a robust extension system. Through these extensions, you can tap into a variety of the latest AI technologies such as ControlNet, IPAdapter, and InstantID.</p>
+      <Image className="powerful-plugin-image" src={PowerfulPluginImg.src} width={540} height={0} alt="powerful plugin sysetm" style={{ margin: "40px 0px 0px 40px", paddingBottom: "0px", transform: "scale(1.05)" }} />
     </div>
   )
 }
@@ -73,19 +75,19 @@ function LoadAnyModel() {
     <div className="sections section-block rich-templates">
       <h3>Using cloud power GPU</h3>
       <p className="description">Forget about "CUDA out of memory" errors. It's time to go BRRRR, 10x faster with 80GB of memory!</p>
-      <Image className="pointer-none" src={CloudGPUImg.src} width={800} height={1024} alt="powerful plugin sysetm" style={{ margin: "40px 0px 0px 0px", transform: "scale(1.05)" }} />
+      <Image className="pointer-none cloud-gpu-image" src={CloudGPUImg.src} width={800} height={1024} alt="powerful plugin sysetm" style={{ margin: "40px 0px 0px 0px", transform: "scale(1.05)" }} />
     </div>
   )
 }
 
 function VideoGerneration() {
   return (
-    <div className="sections section-block workflow-management" style={{ display: "flex" }}>
+    <div className="sections section-block video-generation" style={{ display: "flex" }}>
       <div>
         <h3>Video Generation</h3>
         <p className="description" style={{ padding: "0px 10px 0px 0px" }}>Besides creating images, you can also generate videos.</p>
       </div>
-      <Image className="pointer-none" src={VideoGernerationImg.src} width={400} height={1024} alt="powerful plugin sysetm" style={{ borderRadius: "10px" }} />
+      <Image className="pointer-none video-generation-image" src={VideoGernerationImg.src} width={400} height={1024} alt="powerful plugin sysetm" style={{ borderRadius: "10px" }} />
     </div>
   )
 }

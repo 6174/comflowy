@@ -842,35 +842,328 @@
       }
     }
 
-    .homepage-mobile {
-      .hero-block > .flexbox > .content {
-        width: 100%;
-        min-width: initial;
-        margin: 60px 0;
+    @media (max-width: 768px) {
+      .hero-block {
+        padding: 10px;
+        
         h1 {
-          font-size: 60px;
+          font-size: 48px !important;
+          line-height: 1.1;
+          margin-bottom: 20px;
         }
-        .cta {
-          align-items: center;
+
+        .hero-content {
+          flex-direction: column;
+          margin: 20px 0;
+          
+          .text-content {
+            width: 100%;
+            padding-top: 0;
+          }
+          
+          .title-image {
+            width: 100%;
+            scale: 1;
+            margin: 20px 0;
+          }
+        }
+
+        .subtitle {
+          font-size: 20px !important;
+        }
+        .open-source-link {
+          font-size: 18px !important;
+        }
+
+        .sign-up-btn {
+          width: 46%;
           justify-content: center;
-          button:last-child {
-            margin-right: 0;
+          font-size: 16px !important;
+          padding: 8px 0px !important;
+          .sign-up-btn-svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .title-image {
+          display: none;
+        }
+
+        .hero-images {
+          margin-top: 20px;
+          
+          .main-app-image {
+            width: 100%;
+          }
+          
+          .mobile-app-image {
+            width: 35%;
+            right: 10px;
+            bottom: -30px;
           }
         }
       }
-      .hero-block .hero-image {
-        flex: initial;
-        width: 100%;
-        min-width: initial;
-        img {
-          width: 100%;
+      
+      .power-section,
+      .transforming-section,
+      .from-app-to-revenue-section,
+      .all-in-one-section {
+        padding: 10px 10px;
+        
+        h2 {
+          font-size: 28px !important;
         }
+        
+        p {
+          font-size: 16px !important;
+        }
+      }
+
+      .power-section {
+        margin-top: 60px;
+        .creator-image {
+          width: 34px;
+          height: 34px;
+        }
+        .creator-name {
+          font-size: 16px !important;
+        }
+      }
+
+      .transforming-section {
+        margin-top: 100px;
+        .transforming-section-title {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          
+          .transforming-section-title-content {
+            text-align: center;
+            margin: auto;
+            max-width: 100%;
+            padding: 0 20px;
+            
+            a {
+              text-align: center;
+              margin: 20px auto;
+            }
+            
+            p {
+              text-align: center;
+              margin: 0 auto;
+            }
+          }
+        }
+        .transforming-section-content {
+          padding: 2.5rem 1.5rem 2rem 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: stretch;
+          border: solid 1px #363845;
+          border-radius: 20px;
+          background-color: #121216;
+          margin-right: 0px;
+        }
+        .left-panel {
+          flex: 3;
+          padding-right: 0.5rem;
+          padding-bottom: 0.5rem;
+          text-align: left; // 确保所有文本左对齐
+
+          .workflow-image {
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .middle-panel {
+          flex: 0 0 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .arrow {
+            font-size: 1.5rem;
+            color: white;
+          }
+        }
+
+        .right-panel {
+          flex: 1;
+          display: flex;
+          align-items: flex-end;
+
+          .app-image {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      .card-scroll-container {
+        overflow-x: auto;
+        padding: 0 20px;
+        .card-header {
+          text-align: left;
+          h3 {
+            font-size: 24px;
+          }
+        }
+        .card {
+          flex: 0 0 260px;
+          margin-right: 10px;
+        }
+        .scroll-button.prev {
+          margin-right: 14px;
+        }
+        .scroll-button.next {
+          margin-right: 0px;
+        }
+      }
+
+      .all-in-one-section {
+        .model-logos {
+          max-width: 400px;
+        }
+      }
+
+      .save-big {
+        .price-comparison {
+          .other-services {
+            padding: 20px 26px 10px 20px;
+            .service-name, .price {
+              font-size: 20px !important; 
+            }
+          }
+          .arrow {
+            border: solid 6px #121216;
+            font-size: 10px;
+            height: 50px;
+            width: 50px;
+            left: 56%;
+            .arrow-svg {
+              width: 30%;
+              height: 100%;
+            }
+          }
+          .comflowy-price {
+            margin-left: 2px;
+            padding: 60px 20px;
+            span {
+              font-size: 20px !important;
+            }
+          }
+        }
+      }
+
+      .get-started-section {
+        margin: 60px 10px 0px 10px;
+        height: auto;
+        padding: 40px 20px;
+        background-color: #24242c;
+        border: solid 1px #363845;
+        .background-image {
+         display: none;
+        }
+        .text-button-container {
+          flex-direction: column;
+          margin-top: 40px;
+          padding: 0;
+          gap: 20px;
+          .logo {
+            flex-direction: column;
+            gap: 10px;
+            .logo-image {
+              margin-bottom: 20px;
+            }
+            h2 {
+              font-size: 28px;
+              margin: 0;
+              padding: 0;
+              text-align: center;
+              
+              &::after {
+                display: none;
+              }
+            }
+          }
+          .buttons {
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+            .button {
+              width: 100%;
+              justify-content: center;
+            }
+            .github {
+              color: #363845;
+              &::before {
+                background: none !important;
+                background-color: white !important;
+              }
+              &::after {
+                background-color: white !important;
+              }
+              color: black;
+              .github-text {
+                color: black;
+              }
+            }
+          }
+        }
+      }
+
+      .sections {
+        .flexbox {
+          flex-direction: column;
+          padding: 20px 0px 20px 20px;
+          .box {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+          }
+        }
+        .section-block {
+          margin: 0px 0px 30px 0px;
+          h3 {
+            font-size: 24px;
+          }
+          p {
+            font-size: 16px;
+          }
+        }
+        .section-block-content {
+          max-width: 400px;
+          p {
+            margin-top: 10px;
+            margin-bottom: 30px;
+          }
+        }
+        .cloud-gpu-image {
+          margin-top: 20px !important;
+        }
+        .powerful-plugin {     
+          .powerful-plugin-image {
+            margin: 40px 0px 0px 6px !important;
+          }
+        }
+        .video-generation {
+          margin-bottom: 10px;
+          .video-generation-image {
+            margin-left: 10px;
+            width: 50%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .template-card-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        padding: 10px 0;
       }
     }
   }
 }
-
-
 
 
 

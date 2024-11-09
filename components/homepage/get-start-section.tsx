@@ -6,11 +6,11 @@ import logo from '../../public/logo.png'
 export function GetStartedSection() {
   return (
     <section className="get-started-section">
-      <Image src={BackGroundImage} alt="Background" layout="fill" objectFit="cover" style={{ backgroundPosition: 'center'}}/>
+      <Image className="background-image" src={BackGroundImage} alt="Background" layout="fill" objectFit="cover" style={{ backgroundPosition: 'center'}}/>
       <div className="content">
         <div className="text-button-container">
           <div className="logo">
-            <Image src={logo} alt="Logo" width={60} height={60} />
+            <Image className="logo-image" src={logo} alt="Logo" width={60} height={60} />
             <h2>Ready to explore?</h2>
           </div>
           <div className="buttons">

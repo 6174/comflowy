@@ -156,9 +156,9 @@ export function FromAppToRevenueSection() {
               <Image src={BlockImage2.src} alt="mobile" width={200} height={200} layout="responsive" />
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}>
-              <h3>Multi-Currency Support</h3>
+              <h3 style={{ textAlign: "center" }}>Multi-Currency Support</h3>
               <p style={{textAlign: "center", padding: "20px 10px 0px 10px", margin: "0px" }}>
-                We support world's major currencies.
+                We support world's major currencies. Ability to sell the App to global users.
               </p>
             </div>
           </div>
