@@ -10,6 +10,12 @@
       max-width: 1400px;
       margin: 0 auto;
 
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 16px;
+      }
+
       .billing-plan-item-pro {
         flex: 1;
         background: linear-gradient(to bottom, #1B4D4C, #2D4356);
@@ -20,6 +26,9 @@
         flex-direction: column;
         gap: 10px;
         text-align: left;
+        @media (max-width: 768px) {
+            padding: 20px;
+          }
       }
 
       .billing-plan-item-hobbyist {
@@ -31,6 +40,9 @@
         flex-direction: column;
         gap: 10px;
         text-align: left;
+        @media (max-width: 768px) {
+            padding: 20px;
+          }
       }
 
       .billing-plan-item-free {
@@ -42,18 +54,35 @@
         flex-direction: column;
         gap: 10px;
         text-align: left;
+        
+        @media (max-width: 768px) {
+          padding: 20px;
+        }
       }
 
       h2 {
         font-size: 36px;
         margin: 0;
+        
+        @media (max-width: 768px) {
+          font-size: 28px;
+        }
       }
 
       .price {
         font-size: 24px;
+        
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
+        
         span {
           font-size: 54px;
           font-weight: bold;
+          
+          @media (max-width: 768px) {
+            font-size: 42px;
+          }
         }
       }
 
@@ -143,12 +172,20 @@
     .faq-section {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 40px 0;
+      padding: 40px 20px;
+      
+      @media (max-width: 768px) {
+        padding: 30px 16px;
+      }
     }
     .faq-title {
       font-size: 36px;
       font-weight: bold;
-      margin: 60px 0 0 0;
+      margin: 60px 20px 0 20px;
+      
+      @media (max-width: 768px) {
+        font-size: 28px;
+      }
     }
     .faq-item {
       background: #141417;
@@ -171,8 +208,11 @@
         font-size: 22px;
         font-weight: 500;
         display: flex;
-        align-items: center;
+        align-items: top;
         gap: 12px;
+        @media (max-width: 768px) {
+          font-size: 18px;
+        }
       }
     }
 
@@ -191,6 +231,12 @@
         &:last-child {
           margin-bottom: 0;
         }
+        @media (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+      @media (max-width: 768px) {
+        padding: 0 20px 20px 20px;
       }
     }
   }
@@ -212,11 +258,16 @@
   margin-top: 64px;
   text-align: left;
   margin-bottom: 60px;
+  padding: 0 20px;
   
   h1 {
     font-size: 64px;
     margin-bottom: 24px;
     font-weight: bold;
+    
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
   }
 
   .discountInfo {
@@ -224,6 +275,11 @@
     font-size: 18px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
+    
+    @media (max-width: 768px) {
+      width: 100%;
+      font-size: 16px;
+    }
   }
 
   .code {
