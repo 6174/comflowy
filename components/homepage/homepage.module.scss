@@ -909,7 +909,7 @@
       .from-app-to-revenue-section,
       .all-in-one-section {
         padding: 10px 10px;
-        
+        margin-top: 60px;
         h2 {
           font-size: 28px !important;
         }
@@ -1156,7 +1156,8 @@
         .cloud-gpu-image {
           margin-top: 20px !important;
         }
-        .powerful-plugin {     
+        .powerful-plugin {  
+          margin-bottom: 0px;   
           .powerful-plugin-image {
             margin: 40px 0px 0px 6px !important;
           }
@@ -1166,6 +1167,7 @@
           .video-generation-image {
             margin-left: 10px;
             width: 50%;
+            height: auto;
             object-fit: cover;
           }
         }

@@ -74,6 +74,10 @@ html[data-page="/index"], html[data-page="/pricing"] {
       align-items: center !important;
       justify-content: center !important;
       padding: 0 20px !important;
+      .text-pretty{
+        display: flex;
+        align-items: center;
+      }
     }
 
     // Logo 样式
