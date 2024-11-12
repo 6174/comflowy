@@ -1004,26 +1004,31 @@
             height: auto;
           }
         }
-      }
+        
+        .card-scroll-container {
+          overflow: hidden;
+          padding: 0 20px;
 
-      .card-scroll-container {
-        overflow-x: auto;
-        padding: 0 20px;
-        .card-header {
-          text-align: left;
-          h3 {
-            font-size: 24px;
+          .card-header {
+            text-align: left;
+
+            h3 {
+              font-size: 24px;
+            }
           }
-        }
-        .card {
-          flex: 0 0 260px;
-          margin-right: 10px;
-        }
-        .scroll-button.prev {
-          margin-right: 14px;
-        }
-        .scroll-button.next {
-          margin-right: 0px;
+
+          .card {
+            flex: 0 0 260px;
+            margin-right: 10px;
+          }
+
+          .scroll-button.prev {
+            margin-right: 14px;
+          }
+
+          .scroll-button.next {
+            margin-right: 0px;
+          }
         }
       }
 
