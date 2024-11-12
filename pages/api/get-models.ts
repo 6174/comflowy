@@ -88,8 +88,8 @@ const getModel = async(req: NextApiRequest, res: NextApiResponse) => {
       },
       {
         image: dreamShaperXL.src,
-        title: "DreamShaper XL",
-        url: "https://www.comflowy.com/model/dream-shaper-xl",
+        title: "DreamShaper XL Lightning",
+        url: "https://www.comflowy.com/model/dream-shaper-xl-lightning",
         tag: "Checkpoint",
         size: "6.46 GB"
       },
