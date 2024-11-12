@@ -309,6 +309,125 @@
           height: auto;
         }
       }
+
+      .card-scroll-container {
+        margin-top: 40px;
+        width: 100%;
+        overflow: visible; // 保持 visible
+        position: relative;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h3 {
+          margin: 0;
+          font-size: 32px;
+        }
+
+        .pagination-buttons {
+          display: flex;
+          gap: 0.1rem;
+        }
+      }
+
+      .card-scroll {
+        display: flex;
+        transition: transform 0.3s ease;
+        width: max-content; // 保持 max-content
+        padding-right: 100%; // 添加右侧填充，确保最后的卡片也能完全显示
+      }
+
+      .scroll-button {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: solid 1px #4E506A;
+        border-radius: 50%;
+        height: 56px;
+        width: 56px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          width: 12px;
+          height: 18px;
+        }
+      }
+
+      .card {
+        flex: 0 0 280px; // 保持固定宽度
+        margin-right: 16px; // 保持右边距
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #1e1e24;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .creator-info {
+          display: flex;
+          align-items: top;
+          text-align: left;
+          padding: 0 20px;
+          margin-top: 4px;
+          margin-bottom: 10px;
+          width: 100%;
+
+          .creator-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            margin-right: 8px;
+            padding-top: 2px;
+          }
+
+          .creator-name {
+            font-size: 12px;
+            color: #A1A1AA;
+            text-align: left;
+            padding: 0px 0px 0px 10px;
+          }
+
+          .card-title {
+            padding: 0px 10px;
+            margin: 0 10px 0 0;
+            font-size: 16px;
+            color: white;
+            opacity: 1;
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            box-sizing: border-box; // 确保padding不会增加元素的总宽度
+            position: relative;
+
+            &:hover::after {
+              content: attr(title);
+              position: absolute;
+              left: 10px;
+              top: 100%;
+              background-color: rgba(0, 0, 0, 0.8);
+              color: white;
+              padding: 5px;
+              border-radius: 4px;
+              z-index: 1;
+              white-space: normal;
+              word-wrap: break-word;
+              max-width: 200px;
+            }
+          }
+        }
+      }
     }
     .all-in-one-section {
       margin-top: 100px;
@@ -444,121 +563,6 @@
         max-width: 800px;
         margin: 0 auto 3rem;
         line-height: 1.6;
-      }
-
-      .card-scroll-container {
-        margin-top: 40px;
-        width: 100%;
-        overflow: visible; // 保持 visible
-        position: relative;
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-
-        h3 {
-          margin: 0;
-          font-size: 32px;
-        }
-
-        .pagination-buttons {
-          display: flex;
-          gap: 0.1rem;
-        }
-      }
-
-      .card-scroll {
-        display: flex;
-        transition: transform 0.3s ease;
-        width: max-content; // 保持 max-content
-        padding-right: 100%; // 添加右侧填充，确保最后的卡片也能完全显示
-      }
-
-      .scroll-button {
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: solid 1px #4E506A;
-        border-radius: 50%;
-        height: 56px;
-        width: 56px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        svg {
-          width: 12px;
-          height: 18px;
-        }
-      }
-
-      .card {
-        flex: 0 0 280px; // 保持固定宽度
-        margin-right: 16px; // 保持右边距
-        text-decoration: none;
-        color: #ffffff;
-        background-color: #1e1e24;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: translateY(-5px);
-        }
-
-        .creator-info {
-          display: flex;
-          align-items: top;
-          text-align: left;
-          padding: 0 20px;
-          margin-top: 4px;
-          margin-bottom: 10px;
-          width: 100%;
-          .creator-avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            margin-right: 8px;
-            padding-top: 2px;
-          }
-          .creator-name {
-            font-size: 12px;
-            color: #A1A1AA;
-            text-align: left;
-            padding: 0px 0px 0px 10px;
-          }
-          .card-title {
-            padding: 0px 10px;
-            margin: 0 10px 0 0;
-            font-size: 16px;
-            color: white;
-            opacity: 1;
-            line-height: 1.4;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%; 
-            box-sizing: border-box; // 确保padding不会增加元素的总宽度
-            position: relative;
-          
-            &:hover::after {
-              content: attr(title);
-              position: absolute;
-              left: 10px;
-              top: 100%;
-              background-color: rgba(0, 0, 0, 0.8);
-              color: white;
-              padding: 5px;
-              border-radius: 4px;
-              z-index: 1;
-              white-space: normal;
-              word-wrap: break-word;
-              max-width: 200px;
-            }
-          }
-        }
       }
     }
     .get-started-section {
@@ -1131,7 +1135,7 @@
           .box {
             display: flex;
             flex-direction: column;
-            padding: 10px;
+            padding-bottom: 10px;
           }
         }
         .section-block {
@@ -1153,8 +1157,11 @@
             margin-bottom: 30px;
           }
         }
-        .cloud-gpu-image {
-          margin-top: 20px !important;
+        .cloud-gpu {
+          margin-bottom: 10px;
+          .cloud-gpu-image {
+            margin-top: 20px !important;
+          }
         }
         .powerful-plugin {  
           margin-bottom: 0px;   
@@ -1162,13 +1169,16 @@
             margin: 40px 0px 0px 6px !important;
           }
         }
-        .video-generation {
-          margin-bottom: 10px;
-          .video-generation-image {
-            margin-left: 10px;
-            width: 50%;
-            height: auto;
-            object-fit: cover;
+        .no-setup {
+          margin-bottom: 20px;
+          display: inline-block !important;
+          .no-setup-content {
+            margin: 0px !important;
+          }
+          .no-setup-image {
+            margin: 60px 0px 0px 40px !important;
+            height: 50%;
+            transform: scale(1.6) !important;
           }
         }
       }

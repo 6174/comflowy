@@ -69,7 +69,7 @@ export const TutorialsInfo: Tutorial[] = [
     image: newtocomflowy.src,
     title: "New to ComFlowy?",
     subtitle: "Quickly learn how to use Comflowy.",
-    url: "https://www.comflowy.com/introduction/new-to-comflowy",
+    url: "https://www.comflowy.com/basics/new-to-comflowy",
     tag: "get started"
   },
   {

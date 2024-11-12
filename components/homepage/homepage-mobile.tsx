@@ -5,6 +5,7 @@ import { TransformingSection } from './transforming-section';
 import { FromAppToRevenueSection } from './from-app-to-revenue-section';
 import { AllInOneSection } from './all-in-one-section';
 import { GetStartedSection } from './get-start-section';
+import { EditorSection } from "./editor";
 
 export function HomePageMobile() {
   return (
@@ -14,6 +15,7 @@ export function HomePageMobile() {
       <TransformingSection />
       <FromAppToRevenueSection />
       <AllInOneSection />
+      <EditorSection />
       <GetStartedSection />
     </div>
   )
