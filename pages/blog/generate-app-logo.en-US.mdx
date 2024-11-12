@@ -116,7 +116,7 @@ Currently, there are two methods to accomplish this.
 
 The first one is the Reference-only ControlNet method. Simply put, the model uses an image as a reference to generate a new picture.
 
-To set up this workflow, you need to use the experimental nodes from ComfyUI, so you'll need to install the [ComfyUI_experiments](https://github.com/comfyanonymous/ComfyUI_experiments) plugin. You can use the ComfyUI Manager for installation or download and import manually. If you're unsure how to install it, you can refer to the [plugin installation](../preparation-for-study/optional/custom-nodes) tutorial.
+To set up this workflow, you need to use the experimental nodes from ComfyUI, so you'll need to install the [ComfyUI_experiments](https://github.com/comfyanonymous/ComfyUI_experiments) plugin. You can use the ComfyUI Manager for installation or download and import manually. If you're unsure how to install it, you can refer to the [install ComfyUI Manager](../preparation-for-study/install-comfyui-manager) tutorial.
 
 After installing, you just need to replace the Empty Latent Image in the original ControlNet workflow with a reference image. First double-click on the space, search for Reference, and you'll see the ReferenceOnlySimple node. Add this node and connect it to Ksampler. Since this node only supports importing latent, you need to use VAE Encode to convert the image into latent. The final workflow is as follows:
 

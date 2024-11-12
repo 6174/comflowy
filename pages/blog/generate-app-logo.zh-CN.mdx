@@ -111,7 +111,7 @@ import Subscribe from "components/subscribtion";
 
 第一种是 Reference-only ControlNet 方法。你可以简单理解为模型用某张图片作为参考，生成新的图片。
 
-搭建这个 workflow 需要用到 ComfyUI 的实验性节点，所以你需要先安装 [ComfyUI_experiments](https://github.com/comfyanonymous/ComfyUI_experiments) 这个插件。你可以使用 ComfyUI Manager 来安装，或者自己手动下载导入安装。如果不懂得如何安装，可以查看[安装插件](../preparation-for-study/optional/custom-nodes)教程。
+搭建这个 workflow 需要用到 ComfyUI 的实验性节点，所以你需要先安装 [ComfyUI_experiments](https://github.com/comfyanonymous/ComfyUI_experiments) 这个插件。你可以使用 ComfyUI Manager 来安装，或者自己手动下载导入安装。如果不懂得如何安装，可以查看[安装 ComfyUI Manager](../preparation-for-study/install-comfyui-manager)教程。
 
 完成安装后，只需要在原有的 ControlNet workflow 中，将 Empty Latent Image 替换为一个参考图片。首先双击空白处，搜索 Reference 即可看到 ReferenceOnlySimple 的节点，添加该节点，并将与 Ksampler 连接起来。因为这个节点仅支持导入 latent，所以你还需要使用 VAE Encode 将图片转成 latent。最后的 workflow 如下图所示：
 
