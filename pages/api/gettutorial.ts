@@ -112,7 +112,7 @@ const getTutorial = async(req: NextApiRequest, res: NextApiResponse) => {
       {
         image: stablediffusionadvanced.src,
         title: "Stable Diffusion Advanced",
-        url: "https://www.comflowy.com/advanced/advanced-optional/stable-diffusion-advanced"
+        url: "https://www.comflowy.com/advanced/stable-diffusion-advanced"
       },
       {
         image: controlnetadvanced.src,
