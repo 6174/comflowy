@@ -155,8 +155,6 @@ After comparing the differences, let's take a look at how to build a Hi-res Late
 
   ### Configure the Upscaler Latent Node Parameters
   
-  I commonly use the third one. I will explain the differences between each model and algorithm in the [Advanced Upscaling](./advanced-optional/upscale-advanced.mdx) article during Intermediate Advancement.
-  
   Apart from adjusting the algorithm, it's also necessary to set the width and height to the final size of the image. For example, if my original image is 512 and I want to enlarge it 2 times, then I will set this as 1024. Crop refers to whether to cut or not, and I select disable here. 
   <Callout emoji="💡">
     If you feel that setting width and height separately is less efficient and you want to set only the multiplication factor, then you might consider using the Upscale Latent By node, which lets you directly set the scale.
