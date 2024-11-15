@@ -76,7 +76,7 @@ function List({
 
 export default {
   project: { link: 'https://github.com/6174/comflowy' }, // GitHub link in the navbar
-  docsRepositoryBase: 'https://github.com/6174/comflowy/tree/master/example', // base URL for the docs repository
+  docsRepositoryBase: 'https://github.com/6174/comflowy/tree/main', // base URL for the docs repository
   titleSuffix: ' – comflowy',
   unstable_flexsearch: true,
   search: false,
