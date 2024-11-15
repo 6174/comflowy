@@ -121,7 +121,7 @@ OK，介绍完如何搭建 workflow，我们再来聊下上面没有聊到的模
 
 ## Hi-res fix latent upscale workflow
 
-另外一种 Upscale 的方式是 Upscale latent，方法也很简单，在 VAE Decode 节点后连上 Upscale Image 节点就行了。
+另外一种 Upscale 的方式是 Upscale latent，方法也很简单，在 VAE Decode 节点前加上 Upscale Image 节点就行了。
 
 这个直接在潜空间 upscale 的方法被称为 Hi-res Latent fix Upscale。以下是几张效果图，第一张是用 SD XL 生成的 512X512 的图片，第二张是用前面教的 Upscale pixel workflow 并使用 BSRGAN 模型 upscale 2 倍的效果，第三张是用 Hi-res Latent fix Upscale 方法生成，对比可以发现：
 
