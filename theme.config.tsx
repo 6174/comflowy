@@ -166,6 +166,7 @@ export default {
               items={[
                 { title: "Llamagen", url: "https://llamagen.ai/"},
                 { title: "Woy AI Tools Directory", url: "https://woy.ai/"},
+                { title: "Flux101", url: "https://flux101.com/"},
               ]}
             />
             <List
