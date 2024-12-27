@@ -29,6 +29,7 @@
     "nextra": "^2.13.3",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
+    "react-compare-slider": "^3.1.0",
     "react-dom": "^18.2.0",
     "react-image-previewer": "^1.1.6",
     "react-player": "^2.16.0"

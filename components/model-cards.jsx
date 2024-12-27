@@ -22,7 +22,7 @@ export function Cards({image, title, href, tag, size}) {
   return (
     <a href={href} className={`flex flex-col flex-grow w-full rounded-lg border border-[#373A4C] overflow-hidden block bg-[#252630] hover:bg-[#34374b]`}>
       <img className="flex-col h-44 object-cover m-3 rounded-lg border border-[#31353A]" src={image} alt={title} />
-      <div className={`mx-3 mt-1 mb-3`}>
+      <div className={`mx-3 mt-1 mb-2`}>
         <h2 className="text-base font-bold">{title}</h2>
         <div className={`mt-2.5 bg-[#FFFFFF]/10 py-1 px-2 rounded text-sm inline-block whitespace-nowrap`}>{tag}</div>
         <div className={`mt-3 flex items-center`}>

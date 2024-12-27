@@ -1,10 +1,20 @@
 {
-  "docs": "关于本教程",
-  "introduction": "📖｜介绍",
-  "preparation-for-study": "⏳｜下载与安装",
-  "basics": "🏎️｜基础篇",
-  "advanced": "🛩️｜中级篇",
-  "expert": "🚀｜高级篇",
+  "tutorial": {
+    "title": "教程",
+    "type": "page"
+  },
+  "app-recom": {
+    "title": "应用推荐",
+    "type": "page"
+  },
+  "blog": {
+    "title": "博客",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "pagination": false
+    }
+  },
   "index": {
     "title": "首页",
     "type": "page",
@@ -36,34 +46,6 @@
       "layout": "full",
       "pagination": false
     }
-  },
-  "docs-link": {
-    "title": "教程",
-    "type": "page",
-    "href": "/docs"
-  },
-  "blog": {
-    "title": "博客",
-    "type": "page",
-    "theme": {
-      "sidebar": false,
-      "pagination": false
-    }
-  },
-  "model": {
-    "title": "模型",
-    "type": "page",
-    "theme": {
-      "sidebar": false,
-      "toc": true,
-      "pagination": false
-    }
-  },
-  "templates":{
-    "title": "模板",
-    "type": "page",
-    "href": "https://app.comflowy.com",
-    "newWindow": true
   },
   "change-log": {
     "title": "更新日志",

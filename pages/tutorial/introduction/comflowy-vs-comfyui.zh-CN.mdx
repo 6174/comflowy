@@ -1,5 +1,6 @@
 import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
 # Comflowy vs ComfyUI
 
@@ -41,7 +42,15 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 
 ### 4. 支持应用模式
 
-Comflowy 除了支持像 ComfyUI 那样的工作流模式外，还支持将工作流转为应用，这样你就不用去关注繁琐的工作流，而是像使用熟悉的应用那样，使用该工作流。同时我们还支持分享功能，你可以将你的应用分享给其他 Comflowy 订阅用户使用。
+Comflowy 除了支持像 ComfyUI 那样的工作流模式外，还支持将工作流转为应用，这样你就不用去关注繁琐的工作流，而是像使用熟悉的应用那样，使用该工作流。同时我们还支持分享功能，你可以将你的应用分享给其他 Comflowy 订阅用户使用:
+
+<br/>
+
+<ReactCompareSlider
+  itemOne={<ReactCompareSliderImage src="/introduction/011.png" alt="Image one" />}
+  itemTwo={<ReactCompareSliderImage src="/introduction/010.png" alt="Image two" />}
+  className='rounded-lg'
+/>
 
 ## Comflowy 目前的不足
 

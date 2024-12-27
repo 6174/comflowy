@@ -1,11 +1,21 @@
 
 {
-  "docs": "About this Tutorial",
-  "introduction": "📖｜Introduction",
-  "preparation-for-study": "⏳｜Download and Install",
-  "basics": "🏎️｜Basics",
-  "advanced": "🛩️｜Advanced",
-  "expert": "🚀｜Expert",
+  "tutorial": {
+    "title": "Tutorial",
+    "type": "page"
+  },
+  "app-recom": {
+    "title": "App Recommendation",
+    "type": "page"
+  },
+  "blog": {
+    "title": "Blog",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "pagination": false
+    }
+  },
   "index": {
     "title": "Home",
     "type": "page",
@@ -37,34 +47,6 @@
       "layout": "full",
       "pagination": false
     }
-  },
-  "docs-link": {
-    "title": "Tutorial",
-    "type": "page",
-    "href": "/docs"
-  },
-  "blog": {
-    "title": "Blog",
-    "type": "page",
-    "theme": {
-      "sidebar": false,
-      "pagination": false
-    }
-  },
-  "model": {
-    "title": "Model",
-    "type": "page",
-    "theme": {
-      "sidebar": false,
-      "toc": true,
-      "pagination": false
-    }
-  },
-  "templates":{
-    "title": "Templates",
-    "type": "page",
-    "href": "https://app.comflowy.com",
-    "newWindow": true
   },
   "change-log": {
     "title": "Changelog",

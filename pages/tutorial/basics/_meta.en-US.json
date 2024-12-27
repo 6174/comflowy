@@ -1,10 +1,8 @@
 {
-  "new-to-comflowy": "1. New to Comflowy?",
-  "comfyui-workflow": "2. ComfyUI Core concepts",
-  "stable-diffusion-foundation": "3. Stable Diffusion Basics",
+  "introduction-to-comflowy": "1. New to Comflowy?",
+  "comfyui-core-workflow": "2. ComfyUI Core Workflow",
   "comfyui-foundation": "4. Text-to-image",
-  "basic-nodes": "5. Basic operations",
-  "prompt": "6. SD Prompt Basics",
+  "prompt": "4. Prompt",
   "embedding": "7. Embedding",
   "lora": "8. LoRA"
 }

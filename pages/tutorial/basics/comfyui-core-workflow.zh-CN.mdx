@@ -1,0 +1,310 @@
+---
+title: ComfyUI 核心工作流
+description: 
+keywords: ["基础工作流", "AI Image Generation", "ComfyUI", "Noise Predictor", "UNet Algorithm", "Image Enhancement", "AI Learning", "AI Tutorial", "Image Generation Techniques", "Loopy Recurrent Attention", "Camera Filter Effect", "Stable Diffusion"]
+---
+
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
+import {VerticalCard} from '../../../components/vertical-card';
+
+# ComfyUI 核心工作流
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/core-workflow.png">
+    <img src="/core-concepts/core-workflow.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+本讲中，我们将介绍 ComfyUI 的核心工作流。基本上其余的 AI 能力，都基于这个核心工作流实现。
+
+同时我希望通过这个工作流，让大家对 ComfyUI 有一个更直观的认识。以及分享几个新手在使用 ComfyUI 的时候，常常会犯错的点。
+
+另外，因为篇幅的原因，我不会细讲 Stable Diffusion 和 Flux 的实现细节原理。如果你对 Stable Diffusion 和 Flux 的实现原理感兴趣，可以查看以下两个教程：
+
+<br/>
+
+<VerticalCard 
+  image={"https://image.app-image.com/flux101/flux-logo-with-leaf-light.png"}
+  title={"Flux Model"}
+  description={"介绍 Flux 模型，包括其架构和实现原理。"}
+  href={"https://flux101.com/basics/flux-model"}
+/>
+
+<br/>
+
+<VerticalCard 
+  image={"https://image.app-image.com/diffusion101/stable-diffusion.png"}
+  title={"Stable Diffusion 基础"}
+  description={"介绍 Stable Diffusion 的基础概念、架构。"}
+  href={"https://diffusion101.com/basics/stable-diffusion-foundation"}
+/>
+
+## 1. Diffusion 模型
+
+很多初学 ComfyUI 的小伙伴，对 ComfyUI 的第一印象就是复杂，不知道从哪里下手。前一讲中我也解释了 ComfyUI 的实际工作原理。各位应该对其有一个更直观的认识。
+
+第二个新手常遇到的问题是不知道该如何连接这些节点。根本不知道这些点应该连哪个。
+
+正如我在前一讲中提到的，ComfyUI 是一个可以让你通过图形化的方式来设计与运行 Diffusion 模型工作流代码的工具。
+
+当你打开 ComfyUI 后，看到的这些节点和线段连接起来的东西，本质上来说是 Diffusion 模型的工作流。
+
+各位其实没有必要去死记硬背，这些节点和线段的连接方式。而是需要理解 Diffusion 模型是如何运作的。这些节点和连线，只是模型的可视化的表现。记忆这些可视化的表现是没有意义的，而是要去理解模型的实际运作方式。
+
+这样才能做到知其然，知其所以然。不然当你有新的需求的时候，你根本不知道该怎么去实现。
+
+言归正传，我们来聊聊 Diffusion 模型。Diffusion 模型中文翻译为扩散模型。那为什么叫它扩散呢？
+
+扩散其实是一个物理现象，它指的是物质从高浓度区域向低浓度区域扩散。常见的例子有墨水滴入水中（如下图,图片由 AI 生成），墨水会逐渐扩散到整个水中。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/001.png">
+    <img src="/core-concepts/001.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+那如果我们我们能将水都去掉，是否就意味着我们能将墨水还原回来呢？那这跟 AI 生图有什么关系呢？
+
+如果我们将这个墨水的例子，换成 AI 生图。是不是可以这么理解。图片其实就是一堆数据，我们是否可以将这些图片数据，像墨水那样，将其放到一个充满随机数据的容器中，然后再将反方向还原？
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/002.jpeg">
+    <img src="/core-concepts/002.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+那科学家们是怎么做的呢？
+
+图片在最终变成一张看不清楚的图片之前，会经过多次的噪声添加。就像是将墨水滴入水中，它是有一个逐步扩散的过程，直到墨水完全扩散到水中。我们将图片数据逐步添加噪声，直到图片变成一张看不清楚的图片。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/003.jpeg">
+    <img src="/core-concepts/003.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+那我们就可以拿这些数据去训练一个神经网络模型，来预测添加的随机数据（噪声）。当这个模型训练好了之后，我们就可以输入一张充满随机噪声的图片，然后让这个模型来反向预测出添加的随机数据（噪声），然后我们逐步将这些噪声从图片中移除，直到图片变成一张清晰的图片：
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/004.jpeg">
+    <img src="/core-concepts/004.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+正如米开朗基罗在完成大卫雕像后，说过的一句话那样：雕像本来就在石头里，我只是把不要的部分去掉。
+
+Diffusion 模型做的事情，就像是在「雕刻」图片，它将一张充满噪点的图片，通过神经网络模型，一步步地「雕刻」成一张清晰的图片。
+
+## 2. Stable Diffusion 工作流
+
+在现实中，如果我们要让一个雕塑家雕刻一个雕像，我们只需要告诉他，我们要雕刻一个什么样的雕像。
+
+但是，很可惜，这个雕塑家（Diffusion 模型），只会雕刻，没有学会听懂人话。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/005.png">
+    <img src="/core-concepts/005.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+所以我们还需要一个翻译家，将我们的指令翻译成雕塑家能听懂的语言。那除了 Diffusion 模型，我们还需要一个 Text Encoder 模型，将我们的指令翻译成雕塑家能听懂的语言。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/006.png">
+    <img src="/core-concepts/006.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+除了指令之外，我们还需要给一块大理石给雕塑家吧，不然雕塑家怎么雕刻呢？按照我们之前所说的那样，我们就需要给 Diffusion 模型（雕塑家）一个充满噪点的图片（大理石）：
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/007.png">
+    <img src="/core-concepts/007.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+走到这一步，其实已经可以让雕塑家进行雕刻了，但是实际的操作中，我们发现，直接预测图像的数据，数据量比较大，导致预测的速度太慢了。所以科学家们又想到一个方法，能不能将这些数据，先进行压缩，然后再进行预测。
+
+就像是原来要雕刻一个 1m 高的雕像，现在只需要雕刻一个 10cm 高的雕像。那速度肯定会快很多的。最终科学家们想到了一个方法，那就是将图像数据放到一个叫所谓的 Latent Space 的空间中（潜空间），然后再进行预测。潜在空间的大小为 4x64x64，比图像像素空间小 48 倍。这样速度就快了很多。
+
+那我们现在就要将雕塑家关到潜空间里干活，那我们输入的图片，也必须是切合潜空间的数据，所以输入的图片就是 Random Latent Image。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/008.png">
+    <img src="/core-concepts/008.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+速度变快了，但又产生了一个新的问题，压缩过后的数据，就不是人能看的了，那还需要一个翻译家（Decoder 模型），将潜空间的数据，还原成人能看的图片。这里我们会用到的模型是 VAE 模型：
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/009.png">
+    <img src="/core-concepts/009.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+以上这个流程就是一个所谓的 Stable Diffusion 工作流，可以看到整个过程，不仅仅只有 Diffusion 模型，还有 Text Encoder 模型和 VAE Decoder 模型。所以，实际上 Stable Diffusion 不是一个模型，更像是一个系统。
+
+那放到 ComfyUI 里又该是怎样的情况呢？
+
+你其实完全可以按照这个流程，在 ComfyUI 里搭建一个 Stable Diffusion 的工作流。
+
+首先，我们需要一个 Text Encoder 节点，那我们可以双击空白处，唤起节点搜索框，搜索 Text Encoder 节点，然后拖入到画布中（图中 ①），然后你会发现，这个节点左右有个叫 CLIP 的端点，需要连什么呢？这个节点只是给你输入指令的，它仍然需要加载 CLIP 模型才能使用。就像是你要请个翻译来进行翻译，那也得选择一个翻译家一样，不然计算机怎么知道你要请哪个翻译呢？所以前面我们还需要连接一个 Load CLIP 节点（图中 ②）。 
+
+并且我们要连接的是 Stable Diffusion 的模型，所以需要在 CLIP 节点里使用 Stable Diffusion 的专用 CLIP 模型（图中 ③）。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/010.png">
+    <img src="/core-concepts/010.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+有了翻译家 Text Encoder 节点，我们还需要一个雕刻家 Diffusion 节点，那我们还需要一个 Load Diffusion 节点，并选择 Stable Diffusion 的模型（图中①），以及一块大理石 Empty Latent Image 节点（图中②），在这个节点里的参数比较重要，这里就是设置大理石的大小，换句话来说就是设置最终生成图片的大小。 还有 Batch 就是设置一次出多少张图。另外，我们还需要让雕刻家在潜空间里干活，所以需要一个 KSampler 节点（图中③，名字不好理解），KSampler 里的详细配置，我会在后续的课程中讲解。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/011.png">
+    <img src="/core-concepts/011.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+各位在连线的时候会发现一个小技巧，各个节点的端点，颜色和名字不一样的。某些端点只能连接有限的节点，比如 Text Encode 节点的左端点 CLIP ，只能连接 CLIP 节点。你没法将 Latent 端点连接到 Text Encode 上，这其实是为了防止你犯错。
+
+你可以看到 Text Encode 节点的右端点叫 Conditioning ，是橙色的，的确可以连接到 KSampler 节点的左边的橙色端点上，只是这个端点名叫 postive。并且我们还有一个 negative 没有连。
+
+其实 negative 端点是用来连接另一个 Text Encode 节点的，专门用于输入负向指令。第一个 text encode 节点是用来输入正向指令的，换句话来说就是你希望 AI 生成的东西，第二个 text encode 节点是用来输入负向指令(图中①)，换句话来说就是你不希望 AI 生成的东西。
+
+最后我们再将 VAE decoder （图中②）和 Load VAE 节点（图中③）连上，还有最后，我们还需要一个保存生成图片的 Save Image 节点（图中④），这样就是一个完整的工作流了。
+
+我们只需要在正向指令输入框里输入正向指令（图中⑤），然后点击运行按钮（图中⑥），就可以生成图片了（图中⑦）。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/012.jpeg">
+    <img src="/core-concepts/012.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+ComfyUI 里的这个工作流，就是我前面讲解 Stable Diffusion 工作流的一个可视化实现。当你懂得了 Stable Diffusion 的工作流后，你再去使用 ComfyUI 的时候，你会发现，你根本不需要死记怎么连，完全按照 Stable Diffusion 的实现工作流就可以自己连上了。需要要记的，可能就只有 KSampler 节点。
+
+这就是我前面提到的，如果你想要精通 ComfyUI，你最关键的是要理解各种模型的实现原理。
+
+<Callout type="warning" emoji="⚠️">
+  这里我想提醒下各位，在我的这个工作流中，只要需要加载模型的地方，我都加载了 Stable Diffusion 相关的模型，比如在 VAE 节点里，我就加载了一个 Stable Diffusion 的 VAE 模型。很多新手用户遇到报错，或者最终结果不理想，很常见的原因，就是在工作流中，没有使用一致的基础模型。比如在我这个案例里，你有可能在 VAE 里加载了 SDXL 的模型，然后结果出来了一张黑色图片：
+  <br/>
+  <PhotoProvider>
+  <PhotoView src="/core-concepts/014.png">
+    <img src="/core-concepts/014.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+</Callout>
+
+OK 我们回到工作流。
+
+可能用过 ComfyUI 的小伙伴会疑惑，为什么我这里搭建的 Stable Diffusion 工作流，和 ComfyUI 默认创建的工作流不一样。其实 ComfyUI 默认创建的工作流，与我的这个工作流只有一个区别，就是它用了 Load Checkpoint 节点。我们将这个节点放出来，对比看看。你会发现，其实 Checkpoint 节点，就是一个三合一的节点。
+
+它的右端点是 Model、Clip 和 VAE，跟我们添加的三个节点是一致的。如果你将我们添加的三个节点，都删掉，然后使用 Checkpoint 节点也能顺利出图。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/013.png">
+    <img src="/core-concepts/013.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+<Callout type="warning" emoji="⚠️">
+  这里我想提醒下各位第二点。很多新手用户常遇到的第二个错误，是没有在节点里，加载合适的模型。比如，在上述的例子里，Checkpoint 节点是个三合一的节点，那就意味着它加载的模型也是一个三合一的模型，如果你只是下载了 Diffusion 模型，并将其放到 Checkpoint 文件夹里，就会遇到无法运行的情况。因为缺失了 CLIP 和 VAE 模型。
+</Callout>
+
+## 3. Diffusion in Transformer 工作流
+
+说完 Stable Diffusion 的工作流，我们再来看看现在最流行的 Diffusion in Transformer 的工作流。像 Flux 或者 Stable Diffusion 3 都是基于这个架构的。因为 Flux 目前用得比较多，所以我以 Flux 为例。
+
+整体的架构主要有两个区别。我们还是拿雕塑家做为例子。首先在 Text Encoder 节点里，Flux 使用了两个 CLIP 模型进行翻译。增加了一个叫 T5 的 CLIP 模型（图中①）。这个翻译家会将指令进行翻译，但这些翻译的数据，不会给到 Diffusion 模型，而是加到 Random Latent Image 的数据里（图中②）。
+
+你可以简单理解为，这个翻译家，根据你的指令，找了一块比较像你的指令的大理石给雕塑家。因为这块石头底子比较好，所以雕塑家雕刻出来的东西，就会比较像你的指令。
+
+这就是为何 Flux 模型在指令的准确性上，会比 Stable Diffusion 模型要高的原因。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/015.png">
+    <img src="/core-concepts/015.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+第二个区别，就是 Diffusion 模型。Flux 使用的是一个叫 Transformer 的架构。而 Stable Diffusion 使用的是一个叫 UNet 的架构。这里我就不展开了，感兴趣的朋友，可以查看以下两个教程：
+
+<br/>
+
+<VerticalCard 
+  image={"https://image.app-image.com/flux101/flux-logo-with-leaf-light.png"}
+  title={"Flux Model"}
+  description={"介绍 Flux 模型，包括其架构和实现原理。"}
+  href={"https://flux101.com/basics/flux-model"}
+/>
+
+<br/>
+
+<VerticalCard 
+  image={"https://image.app-image.com/diffusion101/stable-diffusion.png"}
+  title={"Stable Diffusion 基础"}
+  description={"介绍 Stable Diffusion 的基础概念、架构。"}
+  href={"https://diffusion101.com/basics/stable-diffusion-foundation"}
+/>
+
+
+OK，继续回到我们的 ComfyUI，基于这个理解，我们只需要小改动下我们之前搭建的工作流就可以了，只要将 CLIP Loader 节点，换成 Dual CLIP Loader 节点，然后选择对应的模型。
+
+然后 Diffusion 节点和 VAE 节点，换成 Flux 的 Diffusion 模型，就可以了。你会发现，Flux 生成的图的确会比 Stable Diffusion 要好很多。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/core-concepts/016.png">
+    <img src="/core-concepts/016.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+当然你也可以像之前那样，使用 Checkpoint 节点，来实现 Flux 的工作流。但你需要去下载对应的三合一 Checkpoint 模型文件才行。实际使用的时候，你会发现，好像比较少人用 Flux 的 Checkpoint 节点，原因就是三合一模型太大了。Flux dev 一个模型就 20 多 G，加上 CLIP 和 VAE 模型，就更大了。这并不利于模型的分享。
+
+所以一般情况，社区用户微调的模型，都是基于 Diffusion 模型 fine-tune 的版本，而不像 Stable Diffusion 那样，用 Checkpoint 版本。至于社区模型是什么，我会在下一节课介绍。
+
+<Callout type="warning" emoji="⚠️">
+  各位在看 Flux 101 教程，或者其他 Flux 教程的时候，你会发现，工作流里面还会有一个 Flux Guidance 节点（图中 ①）。这个节点是 Flux 模型特有的，可以控制 prompt 的权重，一般你只需要设置为 3.5 即可。另外，在 KSampler 节点里，你会发现，它有一个叫 Guidance Scale （CFG）的参数，在 Flux 工作流里只需要设为 1 即可。
+  <br/>
+  <PhotoProvider>
+  <PhotoView src="/core-concepts/017.jpeg">
+    <img src="/core-concepts/017.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+</Callout>

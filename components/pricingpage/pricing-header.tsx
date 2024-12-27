@@ -40,13 +40,13 @@ export default function PricingHeader() {
     <div className={styles.pricingHeader}>
       <LineBg />
       <h1>{t.title}</h1>
-      <p className={styles.discountInfo}>
+      {/* <p className={styles.discountInfo}>
         {t.discountInfo.hobbyist.before}
         <span className={styles.code}>{t.discountInfo.hobbyist.code}</span>
         {t.discountInfo.hobbyist.after}
         <span className={styles.code}>{t.discountInfo.pro.code}</span>
         {t.discountInfo.pro.after}
-      </p>
+      </p> */}
     </div>
   );
 }

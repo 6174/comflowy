@@ -1,0 +1,170 @@
+---
+title: 社区模型和 LoRA
+description: 
+keywords: ["社区模型", "LoRA", "AI Image Generation", "ComfyUI", "Noise Predictor", "UNet Algorithm", "Image Enhancement", "AI Learning", "AI Tutorial", "Image Generation Techniques", "Loopy Recurrent Attention", "Camera Filter Effect", "Stable Diffusion"]
+---
+
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {FAQBox} from "components/FAQ";
+import {VerticalCard} from '../../../components/vertical-card';
+
+# 社区模型和 LoRA
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/model-and-lora.png">
+    <img src="/model-and-lora/model-and-lora.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+从本节课开始，我会开始介绍更多 ComfyUI 的进阶能力。很多学习 ComfyUI 的小伙伴，都会觉得 ComfyUI 很难学。那是因为 ComfyUI 的节点很多，且涉及很多很多的技术。所以大部分的同学都只会用别人的工作流，而不会自己搭建工作流。
+
+而且市面上大部分的教程，也都只教怎么连线，没有解释为什么。所以很多同学，连线的时候，都不知道连的节点是干什么用的。
+
+为了让大家更好地理解，以及搞懂 ComfyUI 里的各种技术。我梳理了一份思维导图，我会按照这个大纲给大家进行讲解。我希望各位看完课程后，各位可以不再将 ComfyUI 看成乐高，而是一个七巧板，摆脱图纸的依赖，可以随意组合，搭建出自己的工作流。
+
+## 1. 判断是文生图还是图生图
+
+我们一起来看看这份思维导图，第一层是 ComfyUI 生图，第二层我将其划分成两个，一个是文生图，另一个是图生图。还是用雕塑家来举例，当你要让雕塑家雕塑某个雕像时，你一般会通过语言或文字的方式，告诉雕塑家，你想要雕像的样子。
+
+但有一些时候，很难通过语言或文字的方式，告诉雕塑家，你想要雕像的样子。比如你想要雕塑家，雕一个你妈妈的样子，但雕塑家根本不知道你妈妈长什么样。那怎么办呢？
+
+最好的方法就是，你给雕塑家一张你妈妈的照片，然后告诉雕塑家，你想要雕像的样子，和照片上一样。所以当我们学习 ComfyUI 生图的时候，基本只有两条路线，一个是文生图，另一个是图生图。
+
+你可以根据你的需求，在这一层进行决策。你想要生成的图片，你能通过文字描述出来，那就选择文生图，如果不行，那就选择图生图。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/001-cn.png">
+    <img src="/model-and-lora/001-cn.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+我们这节课会先介绍文生图，后续会介绍图生图。
+
+我们回到之前我们连接的 ComfyUI 工作流，不管是 Stable Diffusion 还是 Flux，在不添加其他模型的情况下，要想改变模型生成的图片的结果。我们能调整什么呢？我们遍历一遍工作流，看看有哪些东西可以调整？
+
+1. 模型：我们工作流里用到了多个模型，我们是否可以通过调整模型来改变生成图片的结果？
+2. Prompt：调整指令肯定能改变生成图片的结果。
+3. 参数：工作流里有各种各样的参数，是不是我们可以通过调整参数就能改变结果？
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/002.jpeg">
+    <img src="/model-and-lora/002.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+我们先来说说第一个模型。不管是 Stable Diffusion 还是 Flux，基本都是由三个模型组成：
+
+1. Diffusion 模型
+2. CLIP 模型
+3. VAE 模型
+
+我们从下往上看， VAE 在早期的 Stable Diffusion 版本中，通过更改模型，可以让模型生成的图片更加精细，但后来随着模型的发展，VAE 的作用越来越小，所以现在大部分的模型，都默认使用 VAE 模型。调整 VAE 模型，并不会带来特别多的正向增益。
+
+然后再来说下 CLIP 模型，CLIP 模型主要的作用是，将指令翻译成 Diffusion 模型能懂的指令。理论上来说，提升这个的确会对生成图片有帮助，但从目前的技术发展来看，更新 CLIP 模型的同时，也需要对 Diffusion 模型进行调整，所以目前业界较少往提升 CLIP 模型的方向发展。
+
+最后就只剩下调整 Diffusion 模型了。
+
+## 2. 使用社区模型
+
+要想调整 Diffusion 模型，有两种方法，第一种方式就是使用社区的模型。什么是社区的模型？其实就是一些模型爱好者，基于 Flux 或者 Stable Diffusion 模型，进行微调后的模型。
+
+什么是微调过的模型？如果我们拿雕刻家的例子解释。微调过的模型，就像是二次学习雕刻的雕塑家，社区的模型爱好者，拿了一些新的图片给基础模型（比如 Stable DIffusion 或者 Flux dev 模型）再次学习，然后模型就学会了新的雕刻技能。
+
+使用社区模型有什么好处呢？像 Flux 模型，开发者在训练这个模型的时候，做了很多去风格化的工作，所以相对来说，Flux 模型生成的图片，会显得比较真实，但缺点就是跟其他模型相比，比如 Midjourney 相比，生成的图片看上去有点不太好看。
+
+拿现实中的例子来说，用 Flux 模型生成的图片，就像用 iPhone 拍出来的照片，看上去平平无奇。而用 Midjourney 生成的图片，就像用徕卡相机拍出来的照片，看上去色彩上会更丰富一些。
+
+如果你要想让模型生成的图片，更具风格化，就可以考虑使用微调过的模型。
+
+我比较常用的是 Civitai 模型社区，你可以在里面找到很多模型。不管你是 Flux 还是 Stable Diffusion，你都可以在 Civitai 中找到对应的模型。首先，你需要在 Civitai 里搜索你想要的模型，搜索的时候，你除了在搜索框里输入你想要的模型名字外（图中①），你还需要在左侧的筛选设置里，勾选 Checkpoint 模型（图中②）。
+
+这个才是 Diffusion 模型。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/004.jpeg">
+    <img src="/model-and-lora/004.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+另外，还需要注意，如果你下载的模型是 Flux 的，虽然 Civitai 中显示的是 Checkpoint 模型，但实际上它并不包含 CLIP 和 VAE 模型。所以你只能放到 Load Diffusion Model 节点里使用。同理，你在其他的模型社区下载的模型，也需要注意这一点。需要看清楚，你下载的这个模型，到底是包含 CLIP 和 VAE 模型的模型的 ComfyUI Checkpoint 模型文件，还是 Diffusion 模型文件。
+
+一般这些信息都会在模型的描述中，你需要在下载前仔细阅读。
+
+选择好了模型后，进入模型的详情页面，不要立即下载，还是要先看看以下几个关键信息。一般 C 站的模型会有多个版本，你可以在图中 ① 看到你当前选择的版本是哪个，比如下图模型版本则是 Flux ，然后你需要看右侧的模型详情。我一般会关注这个模型是基于哪个模型进行微调的，比如下图模型是基于 Flux 模型进行微调的（图中②）。最后我会看模型作者写的介绍（图中③），看看使用这个模型需要注意什么。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/003.jpeg">
+    <img src="/model-and-lora/003.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+
+## 3. 使用 LoRA 模型
+
+除了直接使用社区模型外，你还可以使用 LoRA 模型。LoRA 你可以将它类比为类似滤镜。不需要更换 Diffusion 模型，仅需要在其基础上，插入一个小的 LoRA模型，就可以让模型生成带有特殊风格的照片。
+
+
+ComfyUI 的工作流也比较简单，你只需要添加一个叫 Load LoRA  Model Only 的节点（图中①），连在 Load Diffusion Model 后，就可以使用 LoRA 模型了，下图这个我是使用了一个叫 Flux MJV6 的模型。让模型生成类似 Midjourney 风格的图片。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/005.png">
+    <img src="/model-and-lora/005.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+另外，你还可以连接多个 LoRA 模型，比如下面的这个工作流，我就添加了两个 LoRA 模型，并且分别给两个模型设置了不同的权重，Flux MJV6 权重设为 0.5，另一个 Super-realism，则设置为 1。权重越高，模型生成的图片就越接近这个模型。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/006.png">
+    <img src="/model-and-lora/006.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+<Callout type="warning" emoji="⚠️">
+  当你需要对 LoRA 模型进行测试的时候，你可以不必通过删除节点的方式来取消 LoRA 模型，你只需右键 LoRA 节点，选择 Bypass 即可。点击后节点会变换样式（下方右图）。这样 ComfyUI 运行到这个节点，就会跳过这个节点，不会使用 LoRA 模型。
+  <br/>
+  <PhotoProvider>
+  <PhotoView src="/model-and-lora/007.png">
+    <img src="/model-and-lora/007.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+</Callout>
+
+使用 LoRA 模型，除了能让模型生成特殊风格的图片外。还可以让模型生成特殊人脸的图片，比如我拿我的自拍照片训练了一个 Flux LoRA 模型，然后我就可以让模型生成带有我的人脸的照片了。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/008.jpeg">
+    <img src="/model-and-lora/008.jpeg" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+除了人物外，衣服或其它物件都可以拿来训练 LoRA 模型。当你使用该模型后，模型就能生成带有该衣服或物件的图片了。在后续的章节中，我会教大家如何训练 LoRA 模型。
+
+<Callout type="warning" emoji="⚠️">
+  当各位在使用 LoRA 模型的时候，一定一定要留意你下载的模型的 base 模型是什么。比如前面的例子中，我下载的 Flux MJV6 模型，它的 base 模型是 Flux 模型。那就能在 Flux 模型上使用。如果你下载的是 Stable Diffusion 的 LoRA 模型，那你就需要使用 Stable Diffusion 的模型。不然工作流就会报错。
+</Callout>
+
+
+
+
+
+
+

@@ -2,42 +2,75 @@ import { Steps, Callout, Tabs } from 'nextra-theme-docs';
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import Subscribe from "components/subscribtion";
 
-# SD Prompt 基础
+# Prompt
 
-<Callout type="warning" emoji="⚠️">
-  考虑到 SDXL 生图效果更好，所以本章节主要介绍 SDXL 的 Prompt。所以正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
-  * [SDXL 1.0 Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/tree/main)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
-  * [SDXL 1.0 Refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/tree/main)：将其放到 ComfyUI 里的 models/checkpoints 文件夹内。
+<br/>
 
-  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
-</Callout>
+<PhotoProvider>
+  <PhotoView src="/prompt/prompt.png">
+    <img src="/prompt/prompt.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
 
-了解完 ComfyUI 的所有基础节点和操作后，你应该就能使用 ComfyUI 生成图片了。
+## 1. 写好 Prompt 并不简单
 
-但是，生成的图片效果可能并不是你想要的，比如你想要生成的图片是动漫风格的，但生成的图片却是真人风格的，这时你就需要通过某些手段让 AI 生成特定风格的图片。要想调整图片风格，有多种方法：
+我们继续讲解上一章的思维导图。你除了可以调整模型外，还可以调整 Prompt。
 
-* **方法一**：通过 prompt 来影响生成图片的效果。这个是最简单的做法。基本上使用 default workflow 就能实现。本章会介绍如何使用 prompt 来调整图片风格。同时介绍一些更高效的方法。
-* **方法二**：通过加载不同的 Checkpoint 模型来影响生成图片的效果。这个是最简单的做法，你可以查看基础选修里的 [模型推荐](../model) 了解行业常用模型。
-* **方法三**：通过 LoRA 来影响生成图片的效果。这个方法稍微复杂一些，但是相较于方法一，可用的模型会更多，而且文件也小非常多。后续我会给大家介绍一下 LoRA 的使用方法。
+<br/>
 
-## 基本原则
+<PhotoProvider>
+  <PhotoView src="/model-and-lora/001-cn.png">
+    <img src="/model-and-lora/001-cn.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
 
-介绍如何写 prompt 前，我们先来介绍下写 prompt 的基本原则。
+但写好 Prompt 并不简单，我总结了以下几个原则：
 
-### 原则一：prompt 不是越长越好
+- 原则一：prompt 不是越长越好
+
 很多人刚学习 prompt 时，会觉得 prompt 越长越好，但实际上这是不对的。精准表达你的意图才是最重要的，而不是堆积非常多无用的词语。
 
 另外，长度最好保持在 75 个 token（或约 60 个字）以内。
 
-### 原则二：越重要的词放在靠前的位置
+- 原则二：越重要的词放在靠前的位置
 很多人在写 prompt 时，会较常忽略这一点。比如说，如果你想要生成一张猫的图片，那么你应该将「猫」这个词放在靠前的位置，而不是放在靠后的位置。
 
-### 原则三：善用符号
+- 原则三：善用符号
 
 * 使用逗号分隔：虽然 SDXL 在语意理解上已经有了很大的提升，但是在使用 prompt 时，还是建议使用逗号来分隔不同的意图。
 * 使用 () 调整权重：你可以输入 `(keyword:weight)` 方式来控制关键词的权重，比如 `(hight building: 1.2 )` 就意味着 hight building 的权重变高，如果填写的权重数小于 1，则意味着这个词的权重会变低，生成的图与这个词更不相关。
 
-## 基本模板
+- 原则四：尽量使用翻译，而不是让 AI 写 prompt
+
+AI 写 prompt 的时候，常常会添加一些在你预期外的东西。当然有一些可能效果不错，但经过我的测试，往往是添加了我不太需要的东西。
+
+所以，我建议你尽量使用翻译，而不是让 AI 写 prompt。在 ComfyUI 里，有不少翻译差异插件可以实现。部分翻译节点使用的是类似 Google 翻译这样的服务。你也可以使用 LLM 节点进行翻译。效果都还不错。
+
+要想在 ComfyUI 里使用 LLM 节点，有两种方法，第一种是在本地直接运行一个 LLM 服务，然后使用 LLM 节点连接上这个 LLM 服务。但我不建议你使用这种方法，因为一是你需要安装额外的软件，二是运行 LLM 会额外占用你的显存，有可能导致你生图的时候出现显存不足的情况。第二种方法是使用 LLM API 节点，简单理解就是这个节点会调用外部的 LLM 服务，比如 OpenAI 的 API。这样好处是不需要你额外安装软件，二是不会占用你的显存。但你有可能需要支付一些费用。
+
+但现在也有一些免费的 LLM API 节点，比如我们的 Comflowy LLM 节点 🙂，你可以通过 ComfyUI Manger 安装，或者直接去到我们的插件 [Github 页面](https://github.com/6174/comflowy-nodes) 下载使用。
+
+安装好插件后，只需要添加 Comflowy LLM 节点（图中①），然后在 system prompt 里输入「将我输入的内容翻译成英文」，然后在 llm model 里选择你想要使用的模型。然后将其接到 CLIP Text Encode 节点。如果你想要显示这个节点的输出效果，可以在这个节点后，接入一个 Show Any 节点（图中②）。输入完 Prompt 后，点击运行，你就能在 Show any 节点看到翻译后的 Prompt 了。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/prompt/001.png">
+    <img src="/prompt/001.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+<Callout type="warning" emoji="⚠️">
+  你可能不知道如何将 LLM 节点连到 CLIP Text Encode 节点上，这里我简单介绍一下。右键点击 CLIP Text Encode 节点，选择「Convert Widget to Input」，然后选择「Convert text to input」，这样 CLIP Text Encode 节点的输入框就会消失，然后多一个 text 端点。
+  <br/>
+  <PhotoProvider className='mt-10'>
+    <PhotoView src="/prompt/002.png">
+      <img src="/prompt/002.png" alt="" className="rounded-lg" />
+    </PhotoView>
+  </PhotoProvider>
+</Callout>
+
+## 2. Prompt 基本模板
 
 了解完基本原则后，我们介绍下写 prompt 的模板，一般 prompt 会包含以下内容：
 1. **Subject**：因为主体是最重要的，所以主体一般会放在首位。
@@ -52,11 +85,7 @@ import Subscribe from "components/subscribtion";
     * What：什么艺术类型的风格？或者艺术运动的风格？
     * Where：什么国家的风格？
 
-<Callout emoji="💡">
-  如果你还学习过我的 [Midjourney 的教程](https://learningprompt.wiki/docs/midjourney/mj-tutorial-text-prompt/framework-summary)，你会发现 SD 的 prompt 少了「构图」这一部分。这是因为，我认为构图最好使用其他方式输入给模型，比如 ControlNet 或 img2img 等方式通过图片传给模型（这些在中级篇会介绍），而不是直接写在 prompt 里。这样模型的输出会更符合预期一些。
-</Callout>
-
-## 学习 prompt 的方法
+## 3. 学习 prompt 的方法
 
 其实了解完 prompt 的基本原则和模板后，你就已经可以写 prompt 并生成图片了。但是，我认为绝大数人（包括我）其实很难一次就生成你脑海中满意的图片。原因是：
 
@@ -73,59 +102,69 @@ import Subscribe from "components/subscribtion";
 * [PromptHero](https://prompthero.com/)：这也是一个很不错的 AI 图片社区，但感觉比 Civitai 小一些。
 * [Learning Prompt](https://learningprompt.wiki/)：虽然我当年写的教程是针对 Midjourney 的，但里面场景案例对于学习 Stable Diffusion 依然有参考意义。
 
-## Batch image workflow
-为了提高出图效率，我会建议你这么做：
-* 选择相对较快的模型出图，如果你是用的 SDXL，那么就选择 SDXL Base。或者使用最新的 Turbo。
-* ComfyUI 生成图片跟 Midjourney 有个很大的区别，就是它不像 Midjourney 那样并发生图，而是一张一张图出。所以在实验 Prompt 的时候，建议先一次出一张图。不满意，就多点击几次 Queue Prompt。
-* 当你满意了，就可以使用一次生成多张图片了。
+## 4. 不会写也可以靠插件帮忙
 
-在前面介绍 ComfyUI 的基础节点的时候，我提到可以通过调整某个节点的参数，就可以一次生成多张图片。
+最后，除了自己写 Prompt 外，你也可以使用一些插件帮忙。这些插件本质上来说，其实就是一个表单选择器，可以通过选择方式，生成你想要的 Prompt。
 
-不妨回忆下如何出多张图呢？
+我这里推荐
 
-<Tabs items={['提示', '答案']}>
-  <Tabs.Tab>
-    如果忘记了，可以回去看看 [ComfyUI 基础①](./comfyui-foundation) 一文。
-  </Tabs.Tab>
-  <Tabs.Tab>
-    **答案就是在 Empty Latent Image 的 batch_size。如果你将此参数设置成 4，就意味着每次生成 4 张图。**
+### 4.1 Bilbox ComfyUI
 
-    但你可能会想，生成的四张图在 ComfyUI 里有点小，如果我想单独看其中一张图应该怎么办呢？方法很简单：
+第一个插件是 [Bilbox ComfyUI](https://github.com/syllebra/bilbox-comfyui)。这个插件可以帮你更好地组织你的 prompt。
 
-    <br/>
-      <PhotoProvider>
-        <PhotoView src="/stable-diffusion-prompt/003.png">
-          <img src="/stable-diffusion-prompt/003.png" alt="" className='rounded-lg'/>
-        </PhotoView>
-      </PhotoProvider>
-    <Steps>
-      ### 新增 Latent from Batch 节点
-      首先右键 → Add Node → latent → batch → Latent from Batch，添加这个节点。
-      
-      ### 新增 VAE 和 Save Image 节点
-      然后，还需要新增两个节点，VAE Decode 和 Save Image。你可以在右键 → Add Node → latent 里找到 Decode，然后再右键 → Add Node → image 里找到 Save Image 节点。
+你可以通过 ComfyUI Manager 安装此插件，亦或者通过 Git Clone 的方式安装。详细的安装方式，可以参考[安装 ComfyUI 插件](https://comflowy.com/advanced/how-to-install-comfyui-extension)一文。
 
-      ### 连接节点
-      接着，我们需要将 Latent from Batch 节点的左端点与 KSampler 的右端点相连，其右端点跟新增的 VAE Decode 节点的左端点相连，然后再将 VAE Decode 节点的右端点与 Save Image 节点的左端点相连。VAE Decode 还有一个没连接的 vae 就跟 checkpoints 里的 vae 相连即可。
+<Callout type="warning" emoji="⚠️">
+  注意，这个插件比较适合写相片类图片的 prompt。
+</Callout>
 
-      ### 调整参数
-      在 Latent from Batch 节点，你会看到这个节点有两个参数设置项：
-      * batch_index：输入你要放大的第几张图，但需要注意，这里的索引是从 0 开始的，也就是说，如果你想要放大第一张图，那么这里需要填 0。
-      * length：指想要提取图片的数量，如果输入 1，就是提取一张。
-      
-      最后，我们要将 KSampler 的 control_after_generate 设置成 fixed，这样设置好后，然后点击 Queue Prompt 生成图片。生成完图片后，你可以调整 Latent from Batch 节点的 batch_index 参数，然后再点一下 Queue Prompt，就能看到不同的图片了。
+使用方法很简单，首先需要在 `CLIP Text Encode` 节点（图中①）前插入一个 `BilboX` 节点（图中②），并将其与 `CLIP Text Encode` 节点的 `text` 端点相连。然后根据插件的提示，填写或选择你需要的 Prompt 即可。比如下图，我选择了街拍照，还添加了一些光线的选择。最后生成的图非常完美：
 
-      如果你要生成新的 4 张图，就将 control_after_generate 设置成 increment，然后再点一下 Queue Prompt 即可。
-      
-      记得当你要切换 batch_index 之前，要：
-      * 将 seed 数减 1。
-      * 重新将 control_after_generate 设置为 fixed。
+<br/>
 
-      <Callout emoji="💡">
-        还有一个小技巧，你可以通过鼠标左键点击节点后，CTRL + M 来启用/禁用节点。在上面的示例中，你可以禁用 Latent From Batch 节点以及连接的 VAE Decode 和 Save Image，只有在遇到你感兴趣的图像时才重新启用它们。
-      </Callout>
-    </Steps>
-  </Tabs.Tab>
-</Tabs>
+<PhotoProvider>
+  <PhotoView src="/prompt/flux-bilbox.png">
+    <img src="/prompt/flux-bilbox.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+
+
+另外，可能有人不知道如何将 `CLIP Text Encode` 节点的 `text` 端点显示出来。其实很简单，只需要在 `CLIP Text Encode` 节点（图中①）上右键，然后在菜单中选择 `Convert Widget to Input` （图中②），然后选择 `Convert text to input`（图中③）即可。
+
+<PhotoProvider>
+  <PhotoView src="/prompt/003.png">
+    <img src="/prompt/003.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+
+### 4.2 Flux Prompt Generator
+
+第一个插件比较适合生成照片类的 Prompt，但第二个插件则可以帮你生成更完备的 Flux 的 prompt，它就是 [Flux Prompt Generator](https://github.com/fairy-root/Flux-Prompt-Generator)。
+
+安装完插件后，将其添加到 workflow 中，你可以看到它的选项比第一个插件更多：
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/prompt/flux-prompt-generator.png">
+    <img src="/prompt/flux-prompt-generator.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+
+### 4.3 ComfyUI Portrait Master
+
+最后一个插件是 [ComfyUI Portrait Master](https://github.com/florestefano1975/comfyui-portrait-master)。这个插件在脸部细节的设置会比较多，可以帮你写出更适合 Portrait 场景的 Prompt。
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/prompt/flux-portrait-master.png">
+    <img src="/prompt/flux-portrait-master.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
 
 <Subscribe />
