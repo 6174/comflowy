@@ -1,0 +1,57 @@
+---
+title: Add More Details
+image: /model/lora/add-more-details.png
+tag: LoRA
+size: 9.11 MB
+---
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Add More Details
+
+<ModelDetailCard 
+  Name={<span>Add More Details</span>}
+  Image={"/model/lora/add-more-details-modelimg.png"}
+  Uploaded={<span>Jun 2, 2023</span>}
+  Type={<span>LoRA</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
+  License={<span>None</span>}
+  Commercial={true}
+  Specializes={<span>Anime and portraits.</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/87153?type=Model&format=SafeTensor"}
+  Size={"9.11 MB"}
+/>
+
+### Comflowy Review
+This is a LoRA by the creator of Dreamshaper that can add more detail to images, making them appear more realistic. This model performs exceptionally well with anime and portrait content.
+
+### Best Practices
+* LoRA weight: 0.5 ～ 1
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/lora/003.png">
+    <img src="/model/lora/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** 
+```plaintext
+upper body, (Thick Body:1.4), (Long Blond Hair:1.4), Green Eyes, HDR (High Dynamic Range), Ray Tracing, NVIDIA RTX, Super-Resolution, Unreal 5, Subsurface Scattering, PBR Texturing, Post-Processing, Anisotropic Filtering, Depth-Of-Field ,Maximum Clarity And Sharpness, Multi-Layered Textures, Albedo And Specular Maps, Surface Shading, Accurate Simulation Of Light-Material Interaction, Octane Render, Two-Tone Lighting, Low ISO, White Balance, Rule Of Thirds, Wide Aperture, 8K RAW, Efficient Sub-Pixel, Sub-Pixel Convolution, (Luminescent Particles:1.4), {{Masterpiece, Best Quality, Extremely Detailed CG, Unity 8k Wallpaper, 3D, Cinematic Lighting, Lens Flare}}, <lora:more_details:-1> , <lora:mecha_offset:1>
+```
+* **Negative Prompt:** 
+```plaintext
+(Mask:1.4), (face mask:1.4), (Worst Quality, Low Quality, Normal Quality:1.4), (Fuze:1.4), (Malformed Hands:1.4),(Poorly Drawn Hands:1.4),(Mutated Fingers:1.4),(Extra Limbs:1.35),(Poorly Drawn Face:1.4), Lowres, Bad Anatomy, Text, Error, Missing Fingers, Extra Digit, Fewer Digits, Cropped, Jpeg Artifacts, Signature, Watermark, Username, Bad Body, Bad Proportions, Gross Proportions, Missing Arms, Missing Legs, Extra Fingers, Extra Arms, Extra Legs, Malformed Limbs, Fused Fingers, Too Many Fingers, Long Neck, Cross-Eyed, Poorly Drawn Hands, Mutation, Deformed, Blurry, Ugly, Duplicate, Morbid, Mutilated, Out Of Frame, Body Out Of Frame, Username, Two Earpiece, Earring, Two Earring, Loli , Bad Feet, Bad Face, Anatomical Nonsense, Unfinished, Sketch, Monotone, Greyscale, Doujinshi, Simple Background, Artist Name, Artist Logo, Meme, Stitched, Censored, Chart, Comparison, Lineup, Before And After, Missing Limb, Furry, Futanari, Femboy, Pony, Animal, Sonic, Pokmon, Cuts, Blood, Organs, Corpse, Disfigured, Malformed, Mutated, Dirty, Peeing, Pee, Scat, Old, Obesity, Fat, easynegative,  ng_deepnegative_v1_75t
+```
+* **Batch Size:** 512x768
+* **KSampler:**
+  * Steps: 20
+  * Seed: 2519899179
+  * Sampler: DPM++ 2M 
+  * Scheduler: Karras
+  * CFG scale: 7
+  * Denoising: 0.4

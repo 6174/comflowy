@@ -1,0 +1,200 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs'
+import { PhotoProvider, PhotoView } from 'react-image-previewer'
+import Subscribe from 'components/subscribtion'
+import { FAQBox } from 'components/FAQ'
+
+# ComfyUI 核心概念
+
+## 视频教程
+
+如果觉得这个视频不错，不妨给视频一个一键三连，你的支持是我创作的最大动力：
+
+[ComfyUI 从入门到精通 ①](https://www.bilibili.com/video/BV1Bzv4e9E2c/)
+
+<br />
+<iframe
+  src="//player.bilibili.com/player.html?isOutside=true&aid=112881454549244&bvid=BV1Bzv4e9E2c&cid=500001633868263&p=1"
+  allowfullscreen="allowfullscreen"
+  width="100%"
+  height="480"
+  scrolling="no"
+  frameborder="0"
+  sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
+></iframe>
+
+也欢迎大家通过以下渠道订阅关注：
+
+- [B 站频道](https://space.bilibili.com/1409205119)
+- [小红书](https://www.xiaohongshu.com/user/profile/6073d38d00000000010068a6)
+- [抖音](https://v.douyin.com/iMv1pDQK/)
+
+## 文字版教程
+
+打开 comfyui 你应该会在浏览器里看到这样的界面。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/001.png">
+    <img src="/comfyui-foundation/001.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+如果你使用的是 Comflowy，打开应用后，你会看到这样的一个界面，如果你使用的是我们的云端版本，应该也是类似的界面。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/006.png">
+    <img src="/comfyui-foundation/006.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+点击顶部的 New workflow（新建工作流）按钮，你会看到这样的一个界面：
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-foundation/007.png">
+    <img src="/comfyui-foundation/007.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+进入到这个界面后，大部分同学应该都会疑惑，为何这个产品长这样？它跟你熟悉的产品，比如 PS 或者 Figma 很不一样，一般软件不都是各种各样的按钮，而 ComfyUI 则是一些块块和连线。看起来很复杂的样子。
+
+接下来，我来解释下:
+
+1. 这些块块和连线是什么?
+2. 这个 Workflow 模式到底是什么？它跟各位熟悉的软件有何不同。
+3. 这么做有什么好处？
+
+了解这些问题的答案，将有助于你后续的学习。
+
+各位在使用 Photoshop 或者 Figma 的时候，一般是上传一张图片，点击一下按钮，然后软件就会返回一个结果。比如这个就是一个去背景的案例。点一下去背景功能的按钮，就能得到一张无背景的图片。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/001.png">
+    <img src="/comfyui-core/001.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+那如果是在 ComfyUI 里又是如何实现的呢？为了更好地演示 ComfyUI 的能力，让我切换到另一个工作流。这个默认工作流我会在下一讲的课程中进行详细的讲解。
+
+首先，我想先介绍几个名词，以及这些块块的含义。这些块块和连线所连接的整个东西，我们称它为 Workflow 工作流。这些块块我们称为节点。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/003.png">
+    <img src="/comfyui-core/003.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+然后，再来介绍下这几个节点是用来干什么的。首先第一个，Load Image 加载图片节点，这个很好理解，就是加载图片的，我这加载了一张 Tayler Swift 的照片，然后这个节点跟一个叫 background remove 去背景的节点相连，听名字应该是跟去背景有关。然后这个节点又跟一个叫 Save Image 的节点相连，功能也很好理解就是保存图片。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/004.png">
+    <img src="/comfyui-core/004.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+我们从左往右细看看一下这三个节点。第一个节点，加载了一张图片，然后通过连线，将这张图片传递给了去背景节点，然后去背景节点完成去背景工作后，将图片输出给了保存图片节点，保存图片节点接收到了图片数据，显示出了这张图片。
+
+听完我这么解释，是不是这些块块和连线就不那么难以理解了呢？
+
+<Callout>
+  简单理解的话，你可以将 ComfyUI
+  的每个节点视为你以前使用的各种产品的一个个的功能。只是这些功能，不再像 PS 或
+  Figma
+  那样做成一个个的功能按钮，而是一个个节点，然后通过连线相连。但实际操作，跟你熟悉的软件也有一些共通之处。要想去除一张图片的背景，是不是你需要上传一张图，然后运行去背景功能，最后得到一张无背景的图片。
+</Callout>
+
+不过你可能好奇，为啥要这么做呢？这样做有什么好处呢？
+
+我们再来看回之前的案例，如果我不想去背景，而是添加背景，再加描边呢？
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/002.png">
+    <img src="/comfyui-core/002.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+按照各位熟悉的软件的做法，可能就是做成 2 ～ 3 个功能，点击去背景按钮，软件去完背景后，再上传图片，换背景，再点一下加描边功能，来添加描边。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/005.png">
+    <img src="/comfyui-core/005.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+那在 ComfyUI 里是怎样的？
+
+我们要添加背景和描边，那按照我前面提到的，是不是加个加背景和描边功能的节点就好了？那怎么添加节点呢？
+
+**我要教大家的第一个快捷操作。** 双击空白处，可以唤起节点的搜索框，就能通过搜索的方式找到你需要的节点。让我来添加一个叫 LayerStyle stroke 的节点。
+
+我们先不着急连线。我想简单介绍下节点。节点从上到下是节点名，连线端点，左边的端点，代表输入，右边代表输出，每个端点都会显示该端点是个什么类型的端点，比如这个节点的右边端点是 image，意味着它输出的是图片的数据，Save image 节点只有左边的端点，意味着它只有输入，没有输出。这里需要注意，你只能将同类的端点相连。比如我添加一个 KSampler 节点，你会看到这个节点的输入端点就有很多，然后都不是 Image 类型的，如果我点击 LayerStyle Stroke 的 Image 端点，拉一条线与这个节点相连，会怎么样呢？你会发现是连不上的。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/006.png">
+    <img src="/comfyui-core/006.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+如果你有一些编程的基础，你或许对这个节点的设计会有种似曾相识的感觉。其实你可以将这些节点，简单理解为一个个的函数。输入数据，运行函数，完成运算后，输出数据。
+
+在连接节点的时候，你会发现另一个节点的特性：一个输出端点可以连接多个节点，但输入端点只能连一个节点。
+
+这是什么意思呢？这个 Layer Style Stroke 节点输出 Image 类型，我就可以在它的后面连一个 Save Image 节点，甚至多个 Save Image。这就是「输出端点可以同时连接多个节点」的意思，但是如果你想将 Save Image 节点与去背景和 LayerStyle 节点相连，你会发现是做不到的，这也很好理解，如果我同时输入两张图片的数据，那 Save Image 应该怎么做呢？难道将两张图的数据融合在一起显示？那可能就不符合大家的需求了。
+
+那你可能会说，这种连线方式，就操作来说，跟之前使用的应用挺像的，也是要上传原图，上传背景图。只是，原来的点击功能按钮，变成了一个个的节点。
+
+好像更麻烦了。
+
+的确如果你是生成一张图，但从步骤来看，这种 Workflow 的形式，并不比传统的模式高效。但当你要处理 10 张图呢？甚至 100 张图呢？
+
+这种 Workflow 的形式是不是就很好用了？你只需要批量上传图片，然后点击一下运行，程序就会按顺序去处理这些图片。而传统的软件就很难给所有功能都提供批量的能力。
+
+所以这种工作流的产品设计第一个好处是能实现自动化操作。很适合做一些批量的工作。另外，节点与节点的自由组合连接模式，还会带来另一个好处，那就是灵活。
+
+灵活体现在两个方面：
+
+<Callout>
+  第一：你可以根据自己的需求去任意的搭建工作流，这样甚至能实现一些传统软件较难实现的效果。
+</Callout>
+
+举个例子，我想实现输入两张图，一张图是人物图，第二张图是参考图，然后让 AI 生成一张人物与人物图一致，同时视觉风格跟参考图一致的图片。这里涉及两种技术，各位可以不深究，后面的课程我会详细讲解。你现在只需要知道，一个技术叫 InstantID，可以让生成的图片中的人物与输入图一致，一个叫 Style transfer 风格迁移，可以让 AI 生成与输入图一致风格的图片。如果先运行 InstantID 再运行风格迁移会得到第一张图，如果是先运行风格迁移，再运行 InstantID，你会得到第二张图。你可以看到他们的效果是不一样。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/007.png">
+    <img src="/comfyui-core/007.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+像这种功能，因为涉及到 AI 生图，所以它不像前面提到的去背景功能那样，可以通过导入再导出的方式去人肉地实现，这就需要软件的开发者去开发实现。哪个先运行，哪个后运行，都需要代码控制。这都有额外的开发成本，对于传统的产品来说，就很难支持这种能力，最有可能是软件的开发者固定了一个运行顺序，让你去使用。而且我这里也就只涉及两个关键技术，如果更多呢？那传统的软件就更难实现了。
+
+<Callout>
+  另外，除了这种先后顺序的灵活外，还有单个节点的灵活性——社区拓展。
+</Callout>
+
+得益于这种节点式的产品设计，以及本身 ComfyUI 也是一款开源的产品。所以会有很多开发者去开发各式各样的插件。比如我前面使用的去背景节点，就是一位独立开发者开发的节点。甚至你还可以根据自己的需求，安装不同开发者开发的相同功能的节点，比如就有很多开发者开发了不同的去背景节点，你可以根据自己的需求去选择使用哪一个。
+
+而且整个生态也非常繁荣，按照统计，大概有 8000 多个节点了。一般最新的 AI 技术上线，过几天就会有相应的插件节点上线。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/009.png">
+    <img src="/comfyui-core/009.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>
+
+我们最后再来总结一下。本节课的内容。有几个关键概念和操作需要牢记。
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/comfyui-core/008.png">
+    <img src="/comfyui-core/008.png" alt="" className="rounded-lg" />
+  </PhotoView>
+</PhotoProvider>

@@ -1,0 +1,111 @@
+---
+date: December 13th, 2024
+image: /app-recom/get-more-out-of-flux/hero.png
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import { VerticalCard } from '@/components/vertical-card'
+
+# 充分发挥 Flux 的潜力
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/app-recom/get-more-out-of-flux/hero.png">
+      <img src="/app-recom/get-more-out-of-flux/hero.png" alt="" width="100%" style={{ display: "block", margin: "0 auto" }} className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+## Flux Pro
+
+正如我们在 Flux 101 里[介绍的那样](https://flux101.com/en/basics/flux-model)，Flux 模型分为 Flux.1 Schnell 、 Flux.1 Dev 以及 Flux.1 Pro 三个版本。
+
+前两个版本你都可以在本地使用，但 Flux.1 Pro 只能通过 API 使用，考虑到不是所有人都了解如何使用 API，所以我们还开发了一款 Flux.1 Pro 的应用供各位使用，各位可以看看 Pro 和 Dev 差异在哪里：
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/fluxpro.png" title="Flux Pro →" description="支持 Flux.1 Pro 以及 Flux 1.1 Pro 模型。" href="https://app.comflowy.com/app/153bbc35-b70e-494b-af5a-14eba0f794b9" />
+
+另外，如果你本地无法运行 Flux.1 Dev 模型，也可以试试我们开发的 Flux.1 Dev 应用，生成一张图大约仅需 10 秒，同时最大支持一次生成 4 张图：
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/fluxdev.png" title="Flux Dev →" description="支持 Flux.1 Dev 模型，最大支持一次生成 4 张图。" href="https://app.comflowy.com/app/28e42489-4c34-4c36-9825-f65ad32dd831" />
+
+
+## Flux LoRA 
+
+Flux 模型相对于各位常用的 Stable Diffusion 模型，或者 Midjourney 模型，最大的一个区别就在于开发者为了让模型更易于训练 LoRA，做了很多去风格化的训练。这样做也带来了一个好处，使用 Flux 模型生成的图看起来会更加真实（因为没啥风格），特别是人物的生成。
+
+但这也导致了 Flux 模型缺少风格，生成的图片看起来，不像 Midjourney 那样好看。
+
+所以在使用 Flux 模型生图的时候，我认为它比 Stable Diffusion 模型或者 SDXL 模型更需要使用 LoRA 模型。经过我的测试，我比较推荐各位使用以下几个 LoRA 模型。经过我的测试，我比较推荐各位使用以下几个 LoRA 模型。
+
+### 1. Midjourney Mix2 LoRA
+
+第一个是 [Midjourney Mix2 LoRA](https://huggingface.co/strangerzonehf/Flux-Midjourney-Mix2-LoRA) ，有了这个 LoRA 你就可以生成具有类似 Midjourney 那样风格强烈的图片。
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/mj6-1.jpg" title="Midjourney Mix2 →" description="这个应用使用了 Midjourney LoRA，生成的图片具有很强烈的 Midjourney 风格。" href="https://app.comflowy.com/app/9f9e653a-9b3c-4ba5-a877-170b34e2c7ab" />
+
+以下是使用 Midjourney Mix2 LoRA 生成的图片。可以看到效果都很不错：
+
+<br/>
+
+<div className="flex flex-row space-x-3 w-full pr-6">
+  <PhotoProvider>
+    <PhotoView src="/app-recom/get-more-out-of-flux/mj6-3.jpg">
+      <img src="/app-recom/get-more-out-of-flux/mj6-3.jpg" alt="" className="w-1/3 rounded-lg border border-[#373A4C]"/>
+    </PhotoView>
+  </PhotoProvider>
+  <PhotoProvider>
+    <PhotoView src="/app-recom/get-more-out-of-flux/mj6-1.jpg">
+      <img src="/app-recom/get-more-out-of-flux/mj6-1.jpg" alt="" className="w-1/3 rounded-lg border border-[#373A4C] "/>
+    </PhotoView>
+  </PhotoProvider>
+  <PhotoProvider>
+    <PhotoView src="/app-recom/get-more-out-of-flux/mj6-2.jpg">
+      <img src="/app-recom/get-more-out-of-flux/mj6-2.jpg" alt="" className="w-1/3 rounded-lg border border-[#373A4C]"/>
+    </PhotoView>
+  </PhotoProvider>
+</div>
+
+### 2. Super Realism Portrait LoRA
+
+第二个是 [Super Realism Portrait LoRA](https://huggingface.co/strangerzonehf/Flux-Super-Realism-LoRA) 。虽然 Flux 更擅长生成真实人物，但因为去掉了太多风格化的参数，所以导致其生成的人物有的时候会看起来有很浓的 AI 生成风格，而这个 LoRA 模型就是为了让 Flux 模型生成的图片看起来没有那么 AI 而设计的。
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/realism.jpg" title="Super Realism Portrait →" description="这个应用使用了 Super Realism Portrait LoRA，如果你想要 Flux 生成的人物看起来更真实，那么这个 LoRA 模型就非常适合你。" href="https://app.comflowy.com/app/8cf707c7-e8d6-4906-9ef9-823f2b33c90d" />
+
+### 3. 其他风格化 LoRA 推荐
+
+除了以上两个我比较推荐的 LoRA 模型，还有一些其他的风格化 LoRA 模型，各位可以自行尝试。
+
+Yarn Art LoRA，可以生成毛线球风格的图片：
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/yarn-1.jpg" title="Yarn Art →" description="我很喜欢毛线球风格的图片，所以这个 LoRA 模型我也很推荐。" href="https://app.comflowy.com/app/2ad2e880-6006-417e-abc1-fe5f8bce9d11" />
+
+
+Logos LoRA，可以生成 Logo 风格的图片：
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/logo-1.jpg" title="Logos →" description="虽然这个应用可以生成 Logo 风格的图片，但写 Prompt 的时候，可能需要一点技巧。" href="https://app.comflowy.com/app/c610b653-cc64-4e11-bc62-76368b86184b" />
+
+能生成 Clash Royale 风格 Icon 的 LoRA：
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/clash-1.jpg" title="Clash Royale →" description="这是我很喜欢的 Clash Royale 游戏风格的 LoRA，主要用于生成游戏 Icon。" href="https://app.comflowy.com/app/a3feb0ed-96bf-4511-9d84-d3c41c9dff0d" />
+
+还有能生成 Vector Journey 风格的图片的 LoRA：
+
+<br/>
+
+<VerticalCard image="/app-recom/get-more-out-of-flux/vectorjourney.jpg" title="Vector Journey →" description="通过它，你能生成主角是卡通风格，但背景是真实场景的图片。" href="https://app.comflowy.com/app/55a28ee0-1d29-4f85-ab06-7a52667af0ad" />
+
+更多应用欢迎访问我们的 [Discover 页面](https://app.comflowy.com/) 查看。

@@ -1,0 +1,69 @@
+import Subscribe from "components/subscribtion";
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import {VerticalCard} from '../../components/vertical-card';
+
+# 👋 Hi, 朋友
+
+<br/>
+
+<PhotoProvider>
+  <PhotoView src="/index/comflowy-hero.png">
+      <img src="/index/comflowy-hero.png" alt="" width="100%" style={{ display: "block", margin: "0 auto" }} className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+感谢你的关注，本教程是一个面向新手的 ComfyUI 教程，旨在帮助大家快速上手 ComfyUI。
+
+另外，因为我们同时基于 ComfyUI 开发了一款一款新产品 Comflowy，所以教程里还会包含一些 Comflowy 的操作。如果你只是想要学习 ComfyUI 的基本操作，可以跳过这些部分。
+
+如果你觉得这份教程不错，不妨给我们的 [GitHub](https://github.com/6174/comflowy) 点个 star，或者分享给你的朋友。
+
+最后，你可以订阅我们的 [Newsletter](https://comflowy.substack.com/) 以及 [公众号](https://mp.weixin.qq.com/s/a3oFiYqx41inWWFU0YcuDw)，或者加入 [Discord](https://discord.gg/cj623WvcVx)，以获取最新的教程。
+
+## 本教程的目标读者
+本教程的目标读者是：
+1. 想要学习 AI 生图或生视频的设计师 & 创作者。
+2. 用过一些 AI 生图工具，比如 Midjourney 或 SD WebUI，想进一步生成更具控制能力的 ComfyUI 的新手。
+
+如果你只是单纯想要学习如何通过 AI 生图，并且只是娱乐一下，我不建议你学习 ComfyUI。
+
+另外，本教程主要讲的是 ComfyUI 的一些常见用法，如果你想要学习像 Flux 或者 Stable Diffusion 3 等这些模型的用法，可以查阅我们的另外两个教程网站：
+
+<br/>
+
+<VerticalCard 
+  image={"/index/flux101-hero.png"}
+  title={"Flux 101"}
+  description={"Flux 101 是一个面向新手的 Flux 教程，旨在帮助大家快速上手 Flux。同时也会介绍一些 Flux 的原理，以及如何使用 ComfyUI 搭建 Flux 工作流。"}
+  href={"https://flux101.com"}
+/>
+
+<br/>
+
+<VerticalCard 
+  image={"/index/diffusion101-hero.png"}
+  title={"Diffusion 101"}
+  description={"Diffusion 101 是一个面向新手的 Stable Diffusion 教程，旨在帮助大家快速上手 Stable Diffusion。"}
+  href={"https://diffusion101.com"}
+/>
+
+
+## 学习路径
+
+本教程主要分成四个模块，各位可以按顺序学习：
+1. [下载与安装](./preparation-for-study)。主要介绍 ComfyUI 的安装、模型下载、插件安装等。如果你使用的是我们的云端版本，你可以跳过这一部分。
+2. [基础篇](./basics)。介绍 ComfyUI 的基本使用方法，以及 Stable Diffusion 模型的基本原理。完成这基础篇后，你可以使用 ComfyUI 搭建基础的 Stable Diffusion，并使用文生图的方式，输出各种各样的图。
+3. [中级篇](./advanced)。完成基础篇的学习后，你可能对生成的图片不满意，比如觉得生成的图片分辨率不够，觉得生成的图片部分内容不满意，想要对其进行修改，亦或者觉得想要加强对生成过程的控制，比如想控制图中人物的姿势等。中级篇将会介绍更多方法，帮助你解决以上问题。
+4. [高级篇](./expert)。高级篇将会教大家综合初中级学到的内容，做出更复杂的图片。以及学会文生视频相关的操作。
+
+## 如何学习
+
+1. 我认为最好的方法是通过**实践**学习。你可以通过使用我们的开源本地版或者[云端版本](https://www.comflowy.com)，一步一步操作，自己搭建。
+2. 另外，还有就是看更多的案例，学习别人的工作流，你可以通过访问我们云端版本的 [Discover 板块](https://app.comflowy.com/)，查看更多案例。
+
+## 特别感谢
+
+本教程制作过程中，内容和案例参考了以下教程或文档：
+* [ComfyUI Example](https://comfyanonymous.github.io/ComfyUI_examples/)
+* [ComfyUI Workflows](https://github.com/cubiq/ComfyUI_Workflows)
+* [Stable Diffusion Art](https://stable-diffusion-art.com/)

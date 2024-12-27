@@ -1,0 +1,98 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Embedding
+
+<Callout type="warning" emoji="⚠️">
+  正式开始学习本章前，请先下载以下模型，并将模型文件放到对应的文件夹内：
+  * [Tom Cruise embedding](https://civitai.com/models/6019/tom-cruise-embedding)：将其放到 ComfyUI 里的 models/embeddings 文件夹内。
+  * [BadDream](https://civitai.com/models/72437?modelVersionId=77169)：将其放到 ComfyUI 里的 models/embeddings 文件夹内。
+
+  如果你想要使用本章的工作流，可以使用下载使用 Comflowy 本地版，或者注册使用 Comflowy [云端版本](https://app.comflowy.com)，里面都内置了本章的工作流。并且如果你使用的是云端版本，你可以直接使用我们内置的模型，无需下载。
+</Callout>
+
+在 Stable Diffusion 基础一章中，我有介绍过为何机器能知道 Cat 是长什么样子的。关键是 Text Encoder 将自然语意的 Prompt 转成了词特征向量 Embedding。比如 Cat 转为词特征向量后就有可能包含：
+
+* 形态特征：向量表示可能会捕捉到 Cat 的形态特征，比如它的体型、头部的形状、四肢的位置等。这些特征可以帮助区分 Cat 与其他动物或物体。
+* 视觉特征：向量表示可能会包含 Cat 的视觉特征，比如它的颜色、斑纹、眼睛的形状等。这些特征可以帮助识别 Cat 的外观特点。
+* 语义含义：向量表示可能会包含与 Cat 相关的语义含义，比如它是一种宠物、一种独立的动物、与人类有亲密关系等。这些含义可以帮助理解 Cat 在人类文化和社会中的角色和意义。
+
+那如果按照这个原理，我们是否能通过调整这种映射方式，从而通过输入某个特殊词让模型生成特殊的内容呢？
+
+比如说，我们可以将 S* 映射到一只加菲猫的视觉特征，那么以后我们在 Prompt 里输入 O_Cat 时，生成的图片就会是加菲猫了。
+
+
+## 原理介绍
+
+那这种映射是如何实现的呢？
+
+如前面所说的那样，我们可以针对从 prompt 到向量这个映射过程对 CLIP 模型进行特殊的训练，修改其映射关系。从而达到改变最终输入图片风格，甚至样貌等目标。可视化流程类似这样：
+
+<PhotoProvider>
+  <PhotoView src="/stable-diffusion-prompt/001.png">
+    <img src="/stable-diffusion-prompt/001.png" alt="" width="60%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+当用户输入 A photo of S* 时，各个词语会被分成特定的词向量，即图中灰色的方块。一些基础词对图片并没有影响，那我们就可以不管（锁住的部分），然后我们可以训练一个新词出来，然后映射出特殊的词向量。
+
+这些向量里的元素可能包含了加菲猫的各种视觉特征。这样以后我们在 Prompt 里输入 S* 时，生成的图片就会是加菲猫了。
+
+这就是为何我们能通过在 prompt 里输入 Style 词来改变图片风格，甚至输入人名就能生成特定人物图的原因（当然这并不仅仅是 CLIP 的功劳，也有 Diffusion 模型的功劳）。
+
+## Postive embedding workflow
+
+那我们在 ComfyUI 里能做这些事情吗？很抱歉，我们没法在 ComfyUI 里去对 CLIP 模型进行训练。但我们可以使用别人训练好的。
+
+因为 Stable Diffusion 模型可以输入正向和反向的 Prompt 那也就意味着你可以分别在这两处使用 Embedding。首先我们来讲下正向的 Embedding。
+
+假设我们要生成一张 Tom Cruise 的图片，我们可以直接在 Prompt 里输入 Tom Cruise。但是生成的图片 (左图所示) 效果就比较一般，甚至脸也有点变形。如果我们使用 Embedding，就可以生成更像 Tom Cruise 的图片 (右图所示)。
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-diffusion-prompt/004.jpg">
+    <img src="/stable-diffusion-prompt/004.jpg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+那在 ComfyUI 里应该如何使用 Embedding 呢？
+<Steps>
+  ### 下载 Embedding 模型
+  第一步是下载你需要的 Embedding 模型，你可以在 [Civitai](https://civitai.com/) 上找到各种各样的 Embedding 模型。我这使用的时是 [Tom Cruise embedding](https://civitai.com/models/6019/tom-cruise-embedding)。下载后将其放到 ComfyUI 里的 models/embeddings 文件夹内。
+  
+  ### 在 Positive Prompt 里使用 Embedding
+  点击右侧面板的 load default 按钮。加载完成后，在 positive prompt 里输入以下 prompt：
+  ``` shell
+  embedding:tocru69
+  ```
+  <Callout type="warning" emoji="⚠️">
+    需要注意：
+    * 第一步导入完之后，最好点一下 refresh 按钮，这样可以确保模型已经加载成功。
+    * 另外，Embedding 后应该输入的是 Embedding 文件的名称，比如下图中我这里就将 embedding 文件重命名为 tom-cruise，所以这里输入就不是 embedding:tocru69 而是 embedding:tom-cruise。
+  </Callout>
+  <br/>
+  <PhotoProvider>
+    <PhotoView src="/stable-diffusion-prompt/005.png">
+      <img src="/stable-diffusion-prompt/005.png" alt="" className='rounded-lg'/>
+    </PhotoView>
+  </PhotoProvider>
+
+</Steps>
+
+## Negative embedding workflow
+
+另一个常用的 Embedding 场景是在 negative prompt 里使用，从而降低某些特殊情况出现的概率，比如生成有 6 根手指的手掌。下方左图，是我用 DreamShaper 生成的手，你会发现它很诡异，两只手融合在了一起，而且还有 6 根手指的手掌。
+
+然后我们在 negative prompt 里加上 BadDream 和 UnrealisticDream 的 Embedding 后，手部的生成就好了不少，如下方右图所示。当然，这两个 embedding 并不仅仅局限于此，如果你很喜欢用 DreamShaper 模型生图，那在 negative prompt 里加上这两个 embedding 会大大提高生成图片的质量。
+<Callout type="warning" emoji="⚠️">
+  加了 negative embedding 后，也并不意味着生成的图片就一定会没有问题，它只是提高了生成好图片的概率，但并不是绝对的。你仍然需要通过调整 prompt 和多生成几次来解决图片质量差的问题。
+</Callout>
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-diffusion-prompt/006.jpg">
+    <img src="/stable-diffusion-prompt/006.jpg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Subscribe />

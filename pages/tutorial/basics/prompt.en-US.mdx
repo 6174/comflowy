@@ -1,0 +1,137 @@
+---
+title: Stable Diffusion Prompt Basics
+description: Master the basics of Stable Diffusion Prompts in AI-based image generation with ComfyUI. Learn how to influence image generation through prompts, loading different Checkpoint models, and using LoRA. This guide offers a deep dive into the principles of writing prompts, the structure of a basic template, and methods for learning prompts, making it a valuable resource for those looking to enhance their AI image generation skills.
+keywords: ["Stable Diffusion Prompts", "AI Image Generation", "ComfyUI", "Image Style Adjustment", "Checkpoint Models", "LoRA", "Prompt Writing Principles", "Prompt Template", "AI Learning", "AI Tutorial", "Image Generation Techniques", "SDXL Model"]
+---
+
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# SD Prompt Basics
+
+<Callout type="warning" emoji="⚠️">
+  Considering that SDXL produces better image effects, this chapter mainly introduces SDXL's Prompt. Therefore, before officially starting this chapter, please download the following models and place the model files in the corresponding folders:
+  * [SDXL 1.0 Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/tree/main): Place it in the models/checkpoints folder within ComfyUI.
+  * [SDXL 1.0 Refiner](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/tree/main): Place it in the models/checkpoints folder within ComfyUI.
+
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
+After understanding all the basic nodes and operations of ComfyUI, you should be able to use ComfyUI to generate images. 
+
+However, the effect of the generated image might not be what you want. For instance, you may want to create an anime-style image, but the result is a realistic one. In that case, you need to resort to certain methods to make the AI generate images with a specific style. To adjust the image style, there are several methods:
+
+* **Method one**: Influence the image generation through the use of prompts. This is the simplest practice. Basically, using a default workflow should suffice. This chapter will explain how to use prompts to adjust the image style and introduce some more effective methods.
+* **Method two**: Influence the image generation by loading different Checkpoint models. This is a straightforward practice; you can check [Model Recommendations](../model) in the basic elective to learn about commonly used models in the industry.
+* **Method three**: Influence the image generation through LoRA. This method is a bit more complex, but compared to method one, more models are available, and the files are significantly smaller. Later, I will introduce you to the usage of LoRA.
+
+## Basic Principles
+
+Before introducing how to write prompts, let's first introduce the basic principles of writing prompts.
+
+### Principle 1: A prompt is not the longer, the better
+Many people who first learn about prompts think that the longer the prompt, the better. However, this is incorrect. It's most important to accurately express your intention, not to accumulate a lot of useless words.
+
+Moreover, it's best to keep the length within 75 tokens (or around 60 characters).
+
+### Principle 2: Place important words in a forward position
+Many people often overlook this when writing prompts. For example, if you want to generate an image of a cat, you should place "cat" in an earlier position rather than later.
+
+### Principle 3: Make good use of symbols
+
+* Use commas for separation: Although SDXL has greatly improved in semantic understanding, it is still recommended to use commas to separate different intentions when using prompts.
+* Use parentheses to adjust weight: You can enter `(keyword:weight)` to control the weight of the keyword. For example, `(high building: 1.2)` implies that the weight of the high building is increased. If the weight number entered is less than 1, it means that this word's weight will be reduced, and the generated image will be less related to this word.
+
+## Basic Template
+
+After understanding the basic principles, we introduce the template for writing prompts. Generally, prompt will include the following contents:
+1. **Subject**: Since the subject is the most important, it is generally placed first.
+2. **Environment**: The environment includes:
+    * The environment around the subject, such as "in a forest", "on a grassland", etc.
+    * Lighting, such as "lightning", "moonlight", etc.
+    * Weather, such as "rain", "snow", etc.
+3. **Medium**: The medium can be the shooting medium of the picture, like a "camera", or the bearing medium, like an "oil painting".
+4. **Style**: You can use the 4W mnemonic:
+    * When: Which era's style?
+    * Who: Whose style do you want? (individual or organization)
+    * What: What kind of art type or art movement style?
+    * Where: What country's style?
+
+<Callout emoji="💡">
+  If you have also studied my [Midjourney tutorial](https://learningprompt.wiki/docs/midjourney/mj-tutorial-text-prompt/framework-summary), you'll find that SD's prompt is missing the "composition" part. This is because, I believe it's best to input the composition to the model using other methods, such as through pictures using ControlNet or img2img (which will be introduced in the intermediate part), rather than directly written in the prompt. This way, the model's output will more closely align with expectations.
+</Callout>
+
+## Methods for Learning Prompts
+
+In fact, after understanding the basic principles and template of prompts, you are already able to write prompts and generate images. However, I believe that most people (including myself) will find it difficult to generate the satisfactory image in their minds at once. The reasons are:
+
+* Majority of people lack cognitive understanding of beauty: this is a big issue, since you don't know what kind of image you want, you don't know how to write the prompt.
+* Majority of people lack knowledge relevant to fine arts: Even if you know what beauty is, you don't know how to express it. For example, if you don't know that there is a painter named "Van Gogh" in the world, you won't likely write words like "Van Gogh style" in the prompt.
+
+So, is there a solution?
+
+**I think the best method is to "imitate before surpassing".** First, see how others write it, modify it based on your own needs, and try different variables in a controlled manner, such as only changing one word at a time. This way, you can understand how each word affects the generated image.
+
+I would like to recommend a few good learning websites:
+
+* [Civitai](https://civitai.com/images): The famous C site, currently the largest AI image community in the world. I've learned a lot there.
+* [PromptHero](https://prompthero.com/): This is also a good AI image community, but it feels smaller than Civitai.
+* [Learning Prompt](https://learningprompt.wiki/): Although the tutorial I wrote back then was for Midjourney, the scenario examples inside are still relevant for learning Stable Diffusion.
+
+## Batch Image Workflow
+To improve image efficiency, I suggest you do it this way:
+* Choose a relatively faster model to output images; If you use the SDXL, then select SDXL Base. Or use the latest Turbo.
+* ComfyUI has a significant difference in generating images compared to Midjourney; it doesn't generate images concurrently like Midjourney but rather one after the other. So when experimenting with prompts, it's recommended to generate one image at a time. If you're not satisfied, just click Queue Prompt a few more times.
+* When you are satisfied, you can generate multiple images at once.
+
+When introducing the basic nodes of ComfyUI earlier, I mentioned that you could generate multiple images at once by adjusting the parameters of a certain node.
+
+Let's recall how we can generate multiple images?
+
+<Tabs items={['Hint', 'Answer']}>
+  <Tabs.Tab>
+    If you have forgotten, you can go back and take a look at [ComfyUI ① Basics](./comfyui-foundation) 一文。
+  </Tabs.Tab>
+  <Tabs.Tab>
+    **The answer is the batch_size in Empty Latent Image. If you set this parameter to 4, it means you generate 4 images each time.**
+
+    But you may also wonder, the four images generated in ComfyUI are a bit small, what should I do if I want to see one of them individually? The method is simple:
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/stable-diffusion-prompt/003.png">
+        <img src="/stable-diffusion-prompt/003.png" alt="" className='rounded-lg'/>
+      </PhotoView>
+    </PhotoProvider>
+
+    <Steps>
+      ### Add a Latent from Batch node
+      First, right-click → Add Node → latent → batch → Latent from Batch to add this node.
+      
+      ### Add a VAE and Save Image node
+      Then, you need to add two more nodes, VAE Decode and Save Image. You can find Decode under right-click → Add Node → latent, and then find Save Image node under right-click → Add Node → image.
+
+      ### Connect the Nodes
+      Next, we need to connect the left endpoint of the Latent from Batch node with the right endpoint of the KSampler node, and its right endpoint with the newly-added VAE Decode node's left endpoint, and finally connect the right endpoint of the VAE Decode node with the left endpoint of the Save Image node. The unconnected vae of VAE Decode can be connected to vae in checkpoints.
+
+      ### Adjust Parameters
+      In the Latent from Batch node, you'll see two settings for this node:
+      * batch_index: Enter which image you want to enlarge. Note that the index starts from 0, which means if you want to enlarge the first image, you need to enter 0 here.
+      * length: Indicates the number of images you want to extract. If you enter 1, it means extracting one.
+
+      Finally, set the control_after_generate of KSampler to fixed, then click Queue Prompt to generate images. After the images are generated, you can adjust the batch_index parameter of the Latent from Batch node, then click Queue Prompt again to see different images.
+
+      If you want to generate a new 4 images, just set control_after_generate to increment, then click Queue Prompt again.
+
+      Remember before you switch batch_index, you have to:
+      * Cut the seed number by 1.
+      * Reset the control_after_generate to fixed.
+
+      <Callout emoji="💡">
+        Another small tip is that you can enable/disable a node by left-clicking on it and pressing CTRL + M. In the above example, you can disable the Latent From Batch node as well as the connected VAE Decode and Save Image, and only re-enable them when you encounter an image you are interested in.
+      </Callout>
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
+
+<Subscribe />

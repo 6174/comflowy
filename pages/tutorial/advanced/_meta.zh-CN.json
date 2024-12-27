@@ -1,0 +1,9 @@
+{
+  "image-to-image": "1. 图生图",
+  "upscale": "2. Upscale",
+  "in-out-painting": "3. In/Outpainting",
+  "controlnet": "4. ControlNet",
+  "how-to-install-comfyui-extension": "5. 安装插件",
+  "stable-diffusion-advanced": "6. SD 进阶",
+  "prompt-advanced": "7. Prompt 进阶"
+}

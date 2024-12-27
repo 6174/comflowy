@@ -1,0 +1,168 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+import {VerticalCard} from '../../../components/vertical-card';
+
+# 下载 & 导入模型
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/download-and-import.png">
+      <img src="/install-comfyui-and-model/download-and-import.png" alt="" width="100%" style={{ display: "block", margin: "0 auto" }} className="rounded-lg"/>
+  </PhotoView>
+</PhotoProvider>
+
+安装完 ComfyUI 后，你需要下载对应的模型，并将对应的模型导入到对应的文件夹内。在讲解如何下载模型之前，我们先来简单了解一下 Diffusion 的不同版本之间的差别，你可以根据你自己的需求下载一个合适的版本。
+
+## 不同模型的差别
+
+目前主要 AI 生图模型主要用到的是一个叫 Diffusion 的核心技术，目前主流的开源模型中，有两个流派：
+
+1. Stable Diffusion：使用此技术的有 Stable Diffusion v1.5、v2.0、XL 等。
+2. Diffusion in Transformer：使用此技术的有 SD3、SD3.5、Flux 模型。
+
+单纯以生图的基础质量来看，Diffusion in Transformer 的模型会比 Stable Diffusion 的模型效果更好。但因为上市时间比较短，所以相对来说，Stable Diffusion 模型的生态会比 Diffusion in Transformer 的模型生态更好。而且对电脑的配置也比较低。如果你是初次使用 ComfyUI，我建议你先使用 Stable Diffusion 的模型。
+
+本教程不会展开讲 Diffusion 的原理，如果你想要了解更多这两种模型的区别，以及如何使用，可以去这两个教程了解：
+
+<br/>
+
+<VerticalCard 
+  image={"/index/diffusion101-hero.png"}
+  title={"Diffusion 101"}
+  description={"Diffusion 101 是一个面向新手的 Stable Diffusion 教程，旨在帮助大家快速上手 Stable Diffusion。"}
+  href={"https://diffusion101.com"}
+/>
+
+<br/>
+
+<VerticalCard 
+  image={"/index/flux101-hero.png"}
+  title={"Flux 101"}
+  description={"Flux 101 是一个面向新手的 Flux 教程，旨在帮助大家快速上手 Flux。同时也会介绍一些 Flux 的原理，以及如何使用 ComfyUI 搭建 Flux 工作流。"}
+  href={"https://flux101.com"}
+/>
+
+## 模型下载 
+
+我常用的下载渠道有两个，一个是 HuggingFace，另一个是 CivitAI。
+
+### HuggingFace
+
+你可以将 HuggingFace 理解为 AI 届的 Github。上面会有不少人或组织会将他们的模型分享到上面。你可以通过 HuggingFace 的搜索功能来搜索你想要的模型。
+
+比如我们搜索 Stable Diffusion v1.5，你会看到这样的页面，然后我们点击页面里的 Files and versions 按钮（图中 1），接着你会看到很多文件，此时你需要选择你需要下载的模型文件，然后点击下载按钮（图中 2）：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/010.png">
+      <img src="/install-comfyui-and-model/010.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+一般你会看到两种后缀的模型：
+
+- **safetensors**：这种模型一般用的是 numpy 格式保存，这就意味着它只保存了张量数据，没有任何代码，加载这类文件会更安全和更快。
+- **ckpt**：这种文件是序列化过的，这意味着它们可能会包含一些恶意代码，加载这类模型就可能会带来安全风险。
+
+所以在上述的案例中，我会推荐你下载 safetensors 格式的模型。
+
+另外，我建议你在搜索模型的时候，需要看看是不是该模型的官方发的，一般我会看模型的下载数，一般下载数越多的模型，越有可能是官方发的。
+
+### CivitAI
+
+与 HuggingFace 不同，CivitAI 站点更偏向于 UGC 一些，所以你会看到更多个人训练的模型，但是这并不意味着它们的质量会差，相反，你会发现有些模型的质量非常好。
+
+而且 CivitAI 比 HuggingFace 多了很多好用的功能，比如你可以通过筛选等方式，看到各种各样优秀的模型：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/011.png">
+      <img src="/install-comfyui-and-model/011.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+同样的，你也可以通过 CivitAI 的搜索功能来搜索你想要的模型，并下载该模型，以 DreamShaper 为例，你只要点击下载按钮（图中 1）即可下载模型：
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/012.png">
+      <img src="/install-comfyui-and-model/012.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+<Callout type="warning" emoji="⚠️">
+  在后续的教程中，我会使用到各种模型，你都可以根据自己的需求在以上两个渠道下载不同的模型。但现在我建议你先在 HuggingFace 上下载 Stable Diffusion v1.5 和 Stable Diffusion XL 模型，前者有很多配套的模型，而后者的出图效果相对比较好，不少最新的模型也都有基于它去优化。
+</Callout>
+
+## 模型导入
+
+<Tabs items={['ComfyUI 导入','ComflowySpace 导入']}>
+
+  <Tabs.Tab>
+    在下载完模型后，我们需要将模型导入到 ComfyUI 的 models 目录下，这样 ComfyUI 才能够加载到对应的模型。
+
+    <Callout type="info">
+    如果你曾经安装过 SD WebUI，并且下载过比较多的模型，那此时你不需要手动再导入模型，只需要更改一下配置文件即可。
+    </Callout>
+
+    <Tabs items={['未安装过 SD WebUI', '已安装 SD WebUI']}>
+      <Tabs.Tab>
+        模型下载好后，我们要将对应的模型放到 ComfyUI 的 models 目录下。
+        <Steps>
+          ### 打开 ComfyUI 项目文件夹
+          你可以使用上一章提到的 Github Desktop，打开 ComfyUI 项目的文件夹。在 Github Desktop 上点击「Show in Finder」按钮，如果是 Win 则是「Show in Explorer」按钮。即可打开该项目的文件夹。然后你需要点击进入到 models 目录下：
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/013.png">
+                <img src="/install-comfyui-and-model/013.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+
+          ### 将模型添加到对应的文件夹
+          进入到 Model 文件夹后，你会看到很多个文件夹，这些文件夹分别对应着不同的模型，你需要将你下载的模型放到对应的文件夹下。比如我们刚刚下载的是 Stable Diffusion v1.5 模型，属于 checkpoints 就需要将该模型放到 checkpoints 文件夹下。后续我们会介绍不同的类型的模型，你需要将其放到对应的文件夹里，比如后面会介绍的 LoRA 模型就要放到 loras 文件夹下。
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/014.png">
+                <img src="/install-comfyui-and-model/014.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+        </Steps>
+      </Tabs.Tab>
+      <Tabs.Tab>
+        <Steps>
+          ### 打开 ComfyUI 项目文件夹
+          打开 ComfyUI 项目文件夹，并在 ComfyUI 文件夹里找到一个叫 `extra_model_paths.yaml.example` 的文件。
+          
+          ### 修改文件名
+          接着，将这个文件名改为 `extra_model_paths.yaml`。
+          
+          ### 右键使用 VSCode 打开该文件，并修改配置
+          打开文件后，找到这一行代码：
+          ``` yaml
+          base_path: path/to/stable-diffusion-webui/ 
+          ```
+          将冒号后面的路径改为你的 SD webui 的路径。比如你是 Mac 用户，那就可能是：
+          ```shell
+          Users/jimmy/stable-diffusion-webui/
+          ```
+          如果你是 Win 用户，那就可能是 
+          ```shell
+          C:/Users/jimmy/stable-diffusion-webui/
+          ```
+        </Steps>
+      </Tabs.Tab>
+    </Tabs>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    如果你使用的是 ComflowySpace，那么你可以直接在 ComflowySpace 上导入模型。具体的操作步骤如下：
+    1. 切换到 Models 的界面，然后点击右上角的 Model Folder 的按钮（图中①），
+    2. 打开该文件夹后，点击进入里面的 checkpoint 文件夹，将你下载好的模型放入其中。
+    3. 最后再点击一下 Refresh 按钮（图中②）。
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/install-comfyui-and-model/023.png">
+          <img src="/install-comfyui-and-model/023.png" alt="" className='rounded-lg'/>
+      </PhotoView>
+    </PhotoProvider>
+  </Tabs.Tab>
+</Tabs>
+
+🎉 恭喜你，又完成了一个重要的步骤，接下来我们就可以正式进入 ComfyUI 基础篇的学习了。
+
+<Subscribe />

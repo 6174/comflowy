@@ -1,0 +1,201 @@
+---
+title: Installing Plugins
+description: This guide provides detailed instructions on how to install plugins and the ComfyUI Manager for ComfyUI, a powerful tool for AI image generation. Learn how to enhance your ComfyUI experience with additional tools and features. Ideal for users looking to maximize their efficiency with ComfyUI.
+keywords: [ComfyUI, ComfyUI Manager, Plugin Installation, AI Image Generation, VS Code, Terminal Commands, GitHub Desktop, Efficiency Tools, AI Tools, Image Manipulation, AI Workflow, AI Tutorial]
+---
+
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Installing ComfyUI Manager
+
+<Callout type="warning" emoji="⚠️">
+  If you are using our Comflowy (whether it's the cloud version or the open-source local version), there is no need to download and install this plugin, as its core functions are already integrated within the product.
+</Callout>
+
+Once the model is installed, you can actually start learning the basics, but I also want to teach you how to install plugins. ComfyUI has a number of useful plugins that can significantly increase your efficiency. In this chapter, I will use ComfyUI Manager as an example to show you how to install plugins.
+
+If you are technically proficient, you can directly view the [official documentation](https://github.com/ltdrdata/ComfyUI-Manager) of ComfyUI Manager.
+
+
+## Installation
+
+There are two installation methods. One is using VS Code or Terminal for installation, and the other is manual import. If you're familiar with command-line tools, I would recommend the first method. If you don't want to use the command line, consider the manual way.
+<Tabs items={['VS Code/Terminal', 'Manual']}>
+  <Tabs.Tab>
+    <Steps>
+      ### Open the ComfyUI project using VS Code / Terminal
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          If you have installed Github Desktop, you can directly click the "Open in Visual Studio Code" button in the application. If not, find the ComfyUI project folder and drag the entire folder into VS Code.
+        </Tabs.Tab>
+        <Tabs.Tab>
+          Open Terminal, type cd, use a space, then paste the directory of the ComfyUI project folder (If you don't know how to find this directory, please refer to Step 3 from the chapter [Installing ComfyUI](../install.mdx).For instance, the final input from you should see something like this (**note: don't copy my code, your folder location should be different from mine, this is just an illustration**):
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+        </Tabs.Tab>
+      </Tabs>
+      ### Enter Commands
+      If you are using VS Code, click the second icon in the top right corner of VS Code, and you will see a command input interface at the bottom of the software similar to what you saw before in Terminal. Enter the following command and press Enter. If you're using Terminal, directly enter the following command:
+      ```shell copy
+      cd custom_nodes
+      ```
+      Then:
+      ```shell copy
+      git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+      ```
+      ### Start ComfyUI
+      At this point, we need to start ComfyUI. It's important to note that you cannot directly enter the start command, but you need to first cd back to the previous directory (which is the ComfyUI directory) in Terminal. 
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          The simplest method is to click on the small trash can in the upper right corner of the Terminal in VS Code. Then click the second icon in the upper right corner, and you'll be back in the ComfyUI directory.
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          Finally, enter the following command to start ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          This is also very simple, you need to press the upward arrow key on your keyboard and the command you inputonce in your Terminal will reappear in the input box. You need to go back to the very first step.
+          For instance, you should see something like this (**note: don't copy my code, your folder location should be different from mine, this is just an illustration**):
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          Finally, enter the following command to start ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+          After starting ComfyUI, you should see two additional buttons on the right panel, Manager and Share. This indicates that you have successfully completed the installation.
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/016.png">
+                <img src="/install-comfyui-and-model/016.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Steps>
+      ### Download ComfyUI Manager
+      Before downloading, I suggest you shut down the ComfyUI service and then proceed with the download.
+
+      First, you need to download the ComfyUI Manager. You can click [here](https://github.com/ltdrdata/ComfyUI-Manager) to download, then click the green button in the upper right corner and select Download ZIP. 
+      <br/>
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/022.png">
+            <img src="/install-comfyui-and-model/022.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+      ### Extract
+      Next, extract the downloaded file. You will find a folder named ComfyUI-Manager-main. You need to rename this folder to ComfyUI-Manager.
+
+      ### Move
+      Then, move the ComfyUI-Manager folder into the custom_nodes folder of your ComfyUI project.
+      
+      ### Launch ComfyUI
+      Finally, all you need to do is launch ComfyUI.
+      <Tabs items={['VS Code', 'Terminal']}>
+        <Tabs.Tab>
+          The simplest method is to click on the small trash can in the upper right corner of the Terminal in VS Code. Then click the second icon in the upper right corner, and you'll be back in the ComfyUI directory.
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/015.png">
+                <img src="/install-comfyui-and-model/015.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+          Finally, enter the following command to start ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+          This is also very simple, you need to press the upward arrow key on your keyboard and the command you inputonce in your Terminal will reappear in the input box. You need to go back to the very first step.
+          For instance, you should see something like this (**note: don't copy my code, your folder location should be different from mine, this is just an illustration**):
+          ```shell
+          cd /Users/jimmywang/Documents/GitHub/ComfyUI
+          ```
+          Finally, enter the following command to start ComfyUI:
+          ```shell copy
+          python main.py --force-fp16 
+          ```
+          After starting ComfyUI, you should see two additional buttons on the right panel, Manager and Share. This indicates that you have successfully completed the installation.
+          <br/>
+          <PhotoProvider>
+            <PhotoView src="/install-comfyui-and-model/016.png">
+                <img src="/install-comfyui-and-model/016.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+            </PhotoView>
+          </PhotoProvider>
+        </Tabs.Tab>
+      </Tabs>
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
+
+### Unexpected situations
+Unexpectedly, it's possible that after you start, you don't see the ComfyUI Manager panel. Meanwhile, you'll see something like the following in your Terminal:
+```shell
+Cannot import /Users/jimmywang/Documents/GitHub/ComfyUI/custom_nodes/ComfyUI-Manager module for custom nodes: No module named 'torchvision'
+```
+This means you need to install torchvision. First, you need to close the ComfyUI service (by clicking Ctrl+C in the Terminal panel). Then, enter the following in the Terminal:
+```shell copy
+pip install torchvision
+```
+After completing the installation, restart ComfyUI.
+
+## ComfyUI Manager Feature Introduction
+There are two functions of the plugin that I frequently use. I'll introduce the remaining features in the subsequent chapters.
+
+### Download Model
+First, click the Manager button on the right panel, and a dialog box like this will appear. Then, click the "Install Models" button in the middle.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/017.png">
+      <img src="/install-comfyui-and-model/017.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+Then, a pop-up window like this will appear. The first column represents the type of node this model is used on. You can click the Install button on the right, according to your needs, to download and install. Once downloaded, the plugin will automatically place the model in the corresponding folder. You don't need to move it manually.
+But please note, you cannot generate images while downloading.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/018.png">
+      <img src="/install-comfyui-and-model/018.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+### Downloading and Installing Plugins
+
+Another feature I often use is plugin installation. Many developers have created a variety of plugins for ComfyUI, greatly enhancing its functionality. For example, the LLM Text Prompt plugin enables the LLM model to generate prompts without any need for manual input.
+
+Clicking on the Manager button on the right side panel will bring up a box. Next, click on the 'Install Custom Nodes' button in the middle, leading you to this interface:
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/019.png">
+      <img src="/install-comfyui-and-model/019.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+You can use the search function at the top right to look for the desired plugin. Then click on the Install button on the right to complete the installation. After your installation, you'll need to restart ComfyUI to see the installed plugin.
+
+<Callout type="warning" emoji="⚠️">
+  Please note that after restarting ComfyUI, you can double-click on the blank space and enter the nodes' name from the plugin. If the search yields results, it means the installation has been successful. If you can't find it, return to the Install Custom Nodes list in the ComfyUI Manager, search for the plugin, and check if its status is installed. If it is marked as installed, try refreshing the browser page, or close and reopen the browser page, and then search again.
+</Callout>
+
+### Complete Missing Nodes
+There is a Load button on the right panel of ComfyUI. By clicking this button, you can import other people's workflows into ComfyUI, but sometimes, the workflow you import uses some plugins that you haven't installed. In this case, ComfyUI will pop up a prompt to tell you that some nodes are not installed.
+
+This is when you can use another common function of the ComfyUI Manager, Install Missing Custom Nodes.
+
+After clicking this feature, the plugin will automatically search for nodes that you haven't installed, and then load a list. Click the install button on the right side of the list to complete the installation. Of course, you can click Install Custom Nodes in the ComfyUI Manager menu to search and install by yourself. 
+
+Finally, if you are still unable to complete the missing nodes using the above plugin function, you can also search for the corresponding nodes on Github to see if you can find them.
+
+<Subscribe />

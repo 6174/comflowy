@@ -1,0 +1,6 @@
+{
+  "install": "1. 安装 ComfyUI",
+  "model": "2. 下载 & 导入模型",
+  "install-comfyui-manager": "3. 安装 ComfyUI Manager",
+  "install-cloud": "4. 云端安装"
+}

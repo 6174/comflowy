@@ -1,0 +1,46 @@
+---
+title: Meina Mix
+image: /model/anime/meina-mix.png
+tag: Checkpoint
+size: 1.99 GB
+---
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# Meina Mix
+
+<ModelDetailCard 
+  Name={<span>Meina Mix</span>}
+  Image={"/model/anime/meina-mix-modelimg.png"}
+  Uploaded={<span>Jul 17, 2023</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SD 1.5</span>}
+  Author={<a href="https://civitai.com/user/Meina">Meina</a>}
+  License={<span>CreativeML Open RAIL-M</span>}
+  Commercial={true}
+  Specializes={<span>动漫类内容。</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/119057?type=Model&format=SafeTensor&size=pruned&fp=fp16"}
+  Size={"1.99 GB"}
+/>
+### 编辑评语
+质量和多样性都很高的模型，关键配套也不错，还带 Inpainting 模型。所以分数比较高。如果你想用 SD 1.5 微调的模型生成动漫图，我认为这应该是你的首选。
+
+### 作者样张
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/anime/003.png">
+    <img src="/model/anime/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+* **Positive Prompt:** 1girl, japanese clothes, ponytail ,white hair, purple eyes, magic circle, blue fire, blue flames, wallpaper, landscape, blood, blood splatter, depth of field, night, light particles, light rays, sidelighting, thighs, fate \(series\), genshin impact, ****, open jacket, skirt, thighhighs, cloud
+* **Negative Prompt:** (worst quality:1.6, low quality:1.6), (zombie, sketch, interlocked fingers, comic)
+* **Batch Size:** 512x1024
+* **KSampler:**
+  * Steps: 30
+  * Seed: 3474686987
+  * Sampler: DPM++ 2M 
+  * Scheduler: Karras
+  * CFG scale: 7
+  * Denoising: 0.45

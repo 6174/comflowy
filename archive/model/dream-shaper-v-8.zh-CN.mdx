@@ -1,0 +1,85 @@
+---
+title: DreamShaper V8.0
+image: /model/dream-shaper/banner.png
+tag: Checkpoint
+size: 1.99 GB
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# DreamShaper V8.0
+
+<ModelDetailCard 
+  Name={<span>DreamShaper V8.0</span>}
+  Image={"/model/dream-shaper/modelimg.png"}
+  Uploaded={<span>Jul 29, 2023</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SD v1.5</span>}
+  Author={<a href="https://civitai.com/user/Lykon">Lykon</a>}
+  License={<span>CreativeML Open RAIL-M</span>}
+  Commercial={true}
+  Specializes={<span>生成真人肖像，以及动漫类内容。</span>}
+  Score={"10"}
+  Downloadlink={"https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16"}
+  Size={"1.99 GB"}
+/>
+
+### 编辑评语
+
+DreamShaper 的作者最初将此模型定位为 MidJourney 的替代。因为作者认为 MidJourney 过于封闭，所以才有了 DreamShaper 的诞生。
+整体图片生成的质量非常好，如果你想要生成真人肖像，或者动漫类的内容，都可以使用这个模型。
+
+### 作者样张
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/dream-shaper/001.jpg">
+    <img src="/model/dream-shaper/001.jpg" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** (masterpiece), (extremely intricate:1.3), (realistic), portrait of a girl, the most beautiful in the world, (medieval armor), metal reflections, upper body, outdoors, intense sunlight, far away castle, professional photograph of a stunning woman detailed, sharp focus, dramatic, award winning, cinematic lighting, octane render  unreal engine,  volumetrics dtx, (film grain, blurry background, blurry foreground, bokeh, depth of field, sunset, motion blur:1.3), chainmail
+* **Negative Prompt:** BadDream, (UnrealisticDream:1.3)
+* **Batch Size:** 512x832
+* **KSampler:**
+  * Steps: 30
+  * Seed: 5775713
+  * Sampler: DPM++ SDE 
+  * Scheduler: Karras
+  * CFG scale: 9
+  * Denoise: 0.9
+
+### 推荐资源
+
+除了这个模型，DreamShaper 还有其他的模型，比如 Inpainting 模型、LCM 模型。
+<br/>
+{
+  <div className="grid grid-cols-3 gap-4">
+    <Cards 
+      image={"/model/dream-shaper-xl/banner.png"}
+      title={"DreamShaper XL Lightning"}
+      href={"/model/dream-shaper-xl-lightning"}
+      tag={"Checkpoint"}
+      size={"6.46 GB"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-lcm/banner.png"}
+      title={"DreamShaper LCM V8.0"}
+      href={"/model/dream-shaper-lcm"}
+      tag={"Checkpoint"}
+      size={"1.99 GB"}
+    />
+    <Cards 
+      image={"/model/dream-shaper-inpainting/modelimg.png"}
+      title={"DreamShaper V8.0 Inpainting"}
+      href={"/model/dream-shaper-inpainting-v-8"}
+      tag={"Checkpoint"}
+      size={"1.99 GB"}
+    />
+  </div>
+}
+
+
+
+

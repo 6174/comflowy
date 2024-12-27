@@ -1,0 +1,52 @@
+---
+title: RealVisXL 
+image: /model/realistic/realvisxl.png
+tag: Checkpoint
+size: 6.46 GB
+description: Discover RealVisXL, an AI model by SG_161222, excelling in generating lifelike characters, landscapes, buildings, and objects. Ideal for non-commercial research.
+keywords: AI, RealVisXL, SG_161222, image generation, characters, landscapes, buildings, objects, non-commercial research, SDXL Turbo, Inpainting model
+---
+
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import ModelDetailCard from '../../components/model-detail-card';
+import {Cards} from '../../components/model-cards';
+
+# RealVisXL
+
+<ModelDetailCard 
+  Name={<span>RealVisXL</span>}
+  Image={"/model/realistic/realvisxl-modelimg.png"}
+  Uploaded={<span>Dec 23, 2023</span>}
+  Type={<span>Checkpoint</span>}
+  BaseModel={<span>SDXL Turbo</span>}
+  Author={<a href="https://civitai.com/user/SG_161222">SG_161222</a>}
+  License={<span>Stability AI Non-Commercial Research Community License</span>}
+  Commercial={false}
+  Specializes={<span>Generates images of characters as well as realistic landscapes, buildings, and objects.</span>}
+  Score={"9"}
+  Downloadlink={"https://civitai.com/api/download/models/272378"}
+  Size={"6.46 GB"}
+/>
+
+### Comflowy Review
+
+This is the SDXL specimen of Realistic Vision, which creates more lifelike characters compared to the SD 1.5 version, with a significant improvement in results. Moreover, the overall suite is well-rounded, including the Inpainting model, which is why it has been awarded a score of 9, higher than the previous version.
+
+### Creator's sample images
+<br/>
+<PhotoProvider>
+  <PhotoView src="/model/realistic/005.png">
+    <img src="/model/realistic/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+* **Positive Prompt:** fashion photography of 23 y.o blonde woman, beautiful makeup, wearing dot dress, 35mm
+* **Negative Prompt:**  (octane render, render, drawing, anime, bad photo, bad photography:1.3), (worst quality, low quality, blurry:1.2), (bad teeth, deformed teeth, deformed lips), (bad anatomy, bad proportions:1.1), (deformed iris, deformed pupils), (deformed eyes, bad eyes), (deformed face, ugly face, bad face), (deformed hands, bad hands, fused fingers), morbid, mutilated, mutation, disfigured
+* **Batch Size:** 896x1152
+* **KSampler:** 
+  * Steps: 8
+  * Seed: 1383965240
+  * Sampler: DPM++ SDE 
+  * Scheduler: Karras
+  * CFG scale: 1
+  * Denoising : 0.35

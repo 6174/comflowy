@@ -1,0 +1,113 @@
+import { Steps, Callout, Tabs } from 'nextra-theme-docs';
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import Subscribe from "components/subscribtion";
+
+# Stable Cascade
+
+<Callout type="warning" emoji="⚠️">
+  If you want to use the workflow from this chapter, you can either download and use the Comflowy local version or sign up and use the Comflowy [cloud version](https://app.comflowy.com), both of which have the chapter's workflow built-in. Additionally, if you're using the cloud version, you can directly use our built-in models without needing to download anything.
+</Callout>
+
+## Model Introduction
+
+This is the new text-to-image model released by Stability AI, utilizing the Würstchen architecture. The most significant difference from the Stable Diffusion model is its smaller latent space. While the Stable Diffusion model has a latent space compression factor of 8, Stable Cascade's is 42. This means that an original 1024 x 1024 image will be encoded to 24 x 24. The benefit of this is faster image generation and lower training costs. Compared to SD 1.5, the cost of Stable Cascade is reduced by 16 times.
+
+Moreover, this model is compatible with various existing technologies such as finetuning, LoRA, ControlNet, IP-Adapter, LCM, etc.
+
+According to evaluations by Stability AI, Stable Cascade also performs better in terms of prompt alignment and aesthetic quality:
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-cascade/005.png">
+      <img src="/stable-cascade/005.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+## Comparison with Midjourney
+
+You may be curious, how does this model compare with Midjourney? Let's take a look. I randomly selected a few prompts from the Midjourney user community and entered them into both the Midjourney and Stable Cascade models.
+Considering Midjourney generates four images at a time, I also set the batch size to 4, allowing us to compare the generation costs of the two models.
+
+### Prompt 1
+
+```text filename="prompt" copy
+a painting of a cotton tree, in the style of light gray, dansaekhwa, in the style of light gray and light brown, li shuxing, naoko takeuchi, subtle atmospheric perspective, elegant simplicity, flowing draperies, watercolors
+```
+
+Firstly, the prompt mentions two main subjects: a cotton tree and draperies (placed later in the prompt). The style is a Chinese ink painting with light gray and light brown colors.
+In my opinion, Stable Cascade outperforms Midjourney in prompt alignment as its results adhere more closely to the requirements of the prompt.
+
+However, in terms of aesthetics, it's a matter of personal preference. I find Midjourney's images to be more diverse, while Stable Cascade's seem consistently similar, for example, in the shape of the branches.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-cascade/001.png">
+      <img src="/stable-cascade/001.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Prompt 2
+
+```text filename="prompt" copy
+24-year-old young Asian female traveler, smiling, long black curly hair, wearing a white top with light green lining, a yellow backpack, denim trousers, victory gesture, and blue canvas shoes, gazing into the camera, full body, portrait full-length photo, ultra HD graphics style, wide angle visual for banners or advertisements, clean background
+```
+
+Next, let's look at a portrait. Overall, because the prompt is better written than the first one, both Midjounrey and Stable Cascade understand it accurately. However, upon closer inspection of the face, you'll notice that Stable Cascade's output appears somewhat distorted.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-cascade/002.png">
+      <img src="/stable-cascade/002.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Prompt 3
+
+```text filename="prompt" copy
+fat cute fluffy tortoiseshell cat with a belly, funny facial expressions, exaggerated action, 3D character, white background, a little hairy, elongated shape, cartoon style, minimalism
+```
+
+Looking at a cartoon-styled prompt, the results from both parties are close. If I had to choose, I would personally prefer Midjourney's outcome.
+
+<br/>
+<PhotoProvider>
+  <PhotoView src="/stable-cascade/003.png">
+      <img src="/stable-cascade/003.png" alt="" className='rounded-lg'/>
+  </PhotoView>
+</PhotoProvider>
+
+### Conclusion
+
+Besides the three prompts above, I tested several more. Subjectively, I believe that in terms of prompt alignment, Stable Cascade outperforms Midjourney, but Midjourney is superior in aesthetics.
+
+However, I think that comparing aesthetics is relatively subjective, so it is best to try it out for yourself.
+
+Finally, I would like to mention some points that may have been overlooked in this comparison:
+
+1. Stable Cascade generates images faster than Midjourney (especially if you have a good graphics card). If you really want to use AI for work, the speed of image generation greatly affects your efficiency.
+2. Another advantage of Stable Cascade is its reliance on a large open-source ecosystem, giving you capabilities that Midjourney does not offer, such as the IPAdapter and ControlNet.
+
+## Stable Cascade Workflow
+
+Firstly, you need to download the Stable Cascade model from [here](https://huggingface.co/stabilityai/stable-cascade/tree/main/comfyui_checkpoints). Make sure to download both stage b and stage c and place them in the models/checkpoints directory.
+
+Then, you may also need to upgrade your ComfyUI to ensure it is the latest version. Additionally, if you find it difficult to set up the workflow, you can try using ComflowySpace we developed, which will include this workflow template.
+  <Steps>
+    ### Adjusting the Default Workflow
+    - Open ComfyUI's Default workflow and change the Empty Latent Image node to StableCascade_EmptyLatentImage.
+    - This node has an additional feature, compression, which is the latent space compression factor mentioned earlier; set this to 42.
+    - Then, change the checkpoint node's model to the stage c model you downloaded. Ensure it's stage c.
+
+    ### Adding Nodes
+
+    - Add another Checkpoint, KSampler nodes, and a StableCascade_StageB_Conditioning node.
+    - In the second Checkpoint node, select the stage b model. A correctly connected workflow should look like this:
+
+    <br/>
+    <PhotoProvider>
+      <PhotoView src="/stable-cascade/004.jpeg">
+          <img src="/stable-cascade/004.jpeg" alt="" className='rounded-lg'/>
+      </PhotoView>
+    </PhotoProvider>
+  </Steps>
+
+<Subscribe />

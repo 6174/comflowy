@@ -1,0 +1,316 @@
+---
+title: Installing ComfyUI
+description: This comprehensive guide provides step-by-step instructions on how to install ComfyUI, a powerful tool for AI image generation. Learn how to set up ComfyUI in your system, starting from installing Pytorch to running ComfyUI in your terminal. Perfect for beginners and experts alike in AI image generation and manipulation.
+keywords: [ComfyUI, Installation Guide, AI Image Generation, Pytorch Installation, Terminal Commands, Source Code, Manual Installation, System Terminal, AI Tools, Image Manipulation, AI Workflow, AI Tutorial]
+---
+
+import { Steps, Callout, Tabs } from 'nextra-theme-docs'
+import { PhotoProvider, PhotoView } from 'react-image-previewer'
+import Subscribe from 'components/subscribtion'
+
+# Installing ComfyUI
+
+<Callout type="info">
+  If you find the installation process too complicated, or if you tried installing but failed, yet still want to use ComfyUI, I suggest using our [cloud version](https://app.comflowy.com). Simply register to start using it.
+</Callout>
+
+There are currently two methods for installing ComfyUI; you can choose one based on your needs:
+
+* Install on local: Install ComfyUI on your own computer, so you can run ComfyUI locally. This way is almost cost-free. But if your computer's GPU configuration is relatively poor, the speed of generating images can be slower.
+* Install in the cloud: Install ComfyUI in the cloud. The advantage of this is that the cloud configuration is relatively high, the speed of image generation will be faster, but it requires a certain cost.
+
+This section will primarily discuss how to install ComfyUI locally. If you want to install in the cloud, you can jump to [cloud installation](./install-cloud).
+
+## Local installation method
+
+### Command Line Installation
+
+There are two methods for local installation. The first method is the most universal — command line installation, which also tends to have a lower probability of issues upon subsequent use. However, there may be a certain threshold for users not familiar with command lines and code. Therefore, this tutorial mainly introduces this method. If you encounter any problems during the installation, you are welcome to join our [Discord](https://discord.gg/cj623WvcVx) group for a discussion, where we will try our best to help you.
+
+Additionally, the source code for ComfyUI can be found [here](https://github.com/comfyanonymous/ComfyUI), and the installation instructions are included in the Readme. You can also operate according to the Readme document, and it's not mandatory to follow my tutorial.
+
+### Package Installation
+
+The second method is package installation. This method is relatively simple to install, download and use, at present, I recommend two packages:
+
+**① Official package of ComfyUI:** Please note that it currently **only supports Windows system**, and the graphics card must be Nvidia. The download link is [here](https://github.com/comfyanonymous/ComfyUI/releases), you only need to download the latest version, and you can use it after decompressing.
+
+**② Comflowy Local Version:** Compared to the ComfyUI package, I recommend you install our newly developed open-source ComfyUI product, ComflowySpace 😎. This is a product based on the secondary development of ComfyUI, and its usage function is consistent with ComfyUI. But we have made a lot of optimizations:
+
+* Support for Mac system.
+* Support for template functions not available in ComfyUI, allowing one-click use of all templates provided in this tutorial.
+* Optimized many experience issues with ComfyUI, making it more convenient and simple to use. For a full introduction, you can check [here](../space), as well as the differences between Comflowy and ComfyUI are detailed in [this article](../blog/comflowy-vs-comfyui).
+
+Welcome everyone to download and use it. The download link is [here](https://github.com/6174/comflowyspace/releases).
+<br/>
+<PhotoProvider>
+  <PhotoView src="/space/banner.png">
+      <img src="/space/banner.png" alt="" />
+  </PhotoView>
+</PhotoProvider>
+
+## Command line installation steps
+
+### Step one, install Pytorch
+<Callout type="info">
+  If you have already installed SD WebUI, then you can skip to the second step.
+</Callout>
+
+First, you need to open the system Terminal, which can
+generally be found through a system search.
+
+It looks like this on Mac and Windows.
+Due to different versions, it may look different on Windows from my screenshot. As
+long as the name is right, it's fine:
+
+<br />
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/001.png">
+    <img
+      src="/install-comfyui-and-model/001.png"
+      alt=""
+      width="60%"
+      style={{ display: 'block', margin: '0 auto' }}
+    />
+  </PhotoView>
+</PhotoProvider>
+
+Then open the Terminal. Regardless of the system, you should see a similar interface. The UI color may be different, but there should be a line of characters followed by a blinking cursor:
+
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/002.png">
+    <img
+      src="/install-comfyui-and-model/002.png"
+      alt=""
+      width="70%"
+      style={{ display: 'block', margin: '0 auto' }}
+    />
+  </PhotoView>
+</PhotoProvider>
+
+At this point, different systems will require different commands.
+
+<Tabs items={['Windows', 'Mac']}>
+  <Tabs.Tab>
+    For Windows users, I recommend you use a computer with an NVIDIA graphics card.
+    <Steps>
+      ### Download Miniconda3
+      Enter the command below at first:
+      ```shell copy
+          curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe -o miniconda.exe
+      ```
+      ### Install Miniconda3
+      After the download is complete, continue to enter the following code to install Miniconda3:
+      ```shell copy
+          start /wait "" miniconda.exe /S
+      ```
+
+      ### Install Pytorch
+      Install the nightly version of Pytorch. Enter the following command:
+      ```shell copy
+          pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
+      ```
+    </Steps>
+
+  </Tabs.Tab>
+  
+  <Tabs.Tab>
+    The installation on Mac requires different codes depending on the chip of your computer.
+    <Steps>
+      ### Download Miniconda3
+      Enter the command below at first:
+      ```shell
+      # M chip
+      curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+      # x86
+      curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+      ```
+      
+      ### Install Miniconda3
+      After the download is complete, continue to enter the following code to install Miniconda3:
+      ```shell
+        # M chip
+        sh Miniconda3-latest-MacOSX-arm64.sh
+        # x86
+        sh Miniconda3-latest-MacOSX-x86_64.sh
+      ```
+      During the installation of Miniconda 3, you will see "Please, press ENTER to continue," at this point, you need to press the enter key. Then you will proceed to the agreement reading phase. You need to continue pressing the enter key until "Do you accept the license terms?" is displayed. At that point, you need to type in yes and press enter. Finally, you will be asked to confirm the installation directory. There's generally no need to make changes, just pressing enter will do. If "Thank you for installing Miniconda3!" is displayed, it means you have successfully completed the installation.
+
+      ### Install Pytorch
+      Finally, regardless of whether it's an M chip or x86, paste the following code into the Terminal:
+
+      ```shell copy
+        pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+      ```
+      This step might take some time since it involves downloading and installing some stuff, so please be patient. Once "Successfully installed XXXXX" or "Requirement already satisfied" is displayed, this indicates that you have completed all the installations.
+    </Steps>
+
+  </Tabs.Tab>
+</Tabs>
+
+### Step two, download ComfyUI
+
+This step requires you to pull the ComfyUI code locally. If you are comfortable with Git, run the following code in the Terminal to complete this step:
+
+```shell copy
+  git clone https://github.com/comfyanonymous/ComfyUI
+```
+
+If you're not familiar with Git, I recommend using the [Github Desktop](https://desktop.github.com/) to pull the code, it's a simpler way.
+
+<Steps>
+  ### Download and install Github Desktop 
+  After downloading and installing Github Desktop, open this application. 
+  
+  ### Clone the ComfyUI repository
+  Then,open the [Github page of
+  ComfyUI](https://github.com/comfyanonymous/ComfyUI), cick on the green button
+  at the top right (pictured below ①), and click on "Open with GitHub Desktop"
+  within the menu (pictured below ②). At this point, the browser will ask if you
+  want to open GitHub Desktop, click "yes".
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/003.png">
+      <img
+        src="/install-comfyui-and-model/003.png"
+        alt=""
+        width="70%"
+        style={{ display: 'block', margin: '0 auto' }}
+      />
+    </PhotoView>
+  </PhotoProvider>
+  ### Complete the download 
+  Then GitHub Desktop will let you choose a saving location, you can adjust it as needed then click okay. Github Desktop will
+  sync the cloud-based code to your local machine, you will have completed the
+  code sync if you see the interface below.
+  <PhotoProvider>
+    <PhotoView src="/install-comfyui-and-model/004.png">
+      <img
+        src="/install-comfyui-and-model/004.png"
+        alt=""
+        width="70%"
+        style={{ display: 'block', margin: '0 auto' }}
+      />
+    </PhotoView>
+  </PhotoProvider>
+</Steps>
+
+### Step three, install dependencies
+You need to install dependencies after downloading the code. There are two ways to install dependencies.
+
+<Tabs items={['VS Code(Recommend)', 'Terminal']}>
+  <Tabs.Tab>
+    If you have installed [Visual Studio Code](https://code.visualstudio.com/), you only need to:
+    <Steps>
+      ### Open the project folder
+      Click the "Open in Visual Studio Code" button on Github Desktop. VS Code will then open up.
+      
+      ### Open VS Code Terminal
+      Next, you need to tap the second icon at the top right of VS Code, and you will see a command entry interface at the bottom of the software, similar to what you've seen in the Terminal before.
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/005.png">
+            <img src="/install-comfyui-and-model/005.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+      
+      ### Enter command
+      For the final step, you need to enter the following command in the Terminal at the bottom and then press the enter key:
+      ```shell
+      # Refer to the Q&A below in case of any network issues.
+      pip install -r requirements.txt
+      ```
+      <Callout type="warning" emoji="⚠️">
+        You may encounter errors with pip installation, in this case, you can try pip3:
+        ```shell copy
+        pip3 install -r requirements.txt
+        ```
+      </Callout>
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    If you haven't installed VS Code and don't wish to do so, you can use Terminal to install these dependencies. All you need to do is follow the steps below:
+    <Steps>
+      ### Open the project folder
+      Click on the "Show in Finder" button in Github Desktop. If you're on Windows, it should say "Show in Explorer".
+      
+      ### Locate the project folder's path
+      At this point, Finder will open the ComfyUI folder. You need to right click in an empty space, then select Get Info (or a similar option like 'Folder Details'). You'll see the location information for this folder in a new window, similar to that shown on the image below. Users on Windows can see this information directly in the folder navigation. Select and copy this information. What you copy should look like a series of slashes and characters. For instance, mine looks like this: /Users/jimmywang/Documents/GitHub.
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/006.png">
+            <img src="/install-comfyui-and-model/006.png" alt="" width="40%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+      ### cd into the project folder
+      Open Terminal, type cd followed by a space, then paste the path you copied in the previous step. Be careful to add ComfyUI at the end before you hit enter. If all goes well, it should look like this. For instance, the final input from you should look something like this (**note: don't copy my code, your folder location should be different from mine, this is just an illustration**):
+       ```shell
+      cd /Users/jimmywang/Documents/GitHub/ComfyUI
+      ```
+      <PhotoProvider>
+        <PhotoView src="/install-comfyui-and-model/007.png">
+            <img src="/install-comfyui-and-model/007.png" alt="" width="70%" style={{ display: "block", margin: "0 auto" }}/>
+        </PhotoView>
+      </PhotoProvider>
+      ### Enter command
+      The final step is to enter the following code and press enter:
+      ```shell
+      # Refer to the Q&A below in case of any network issues.
+      pip install -r requirements.txt
+      ```
+      <Callout type="warning" emoji="⚠️">
+        You may encounter errors with pip installation, in this case, you can try pip3:
+        ```shell copy
+        pip3 install -r requirements.txt
+        ```
+      </Callout>
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
+Regardless of which method you use, in the end, you should see "Successfully installed XXXXX." This means you've completed the installation.
+
+### Step four, start the service
+Whether you ran the command in VS Code or the Terminal in the last step, you can continue to enter the following command:
+```shell copy
+  python main.py
+```
+<Callout type="warning" emoji="⚠️">
+  At this step, if you want ComfyUI to run faster, you can enter the following command:
+  ```shell copy
+    python main.py --force-fp16
+  ```
+  Additionally, if you encounter similar errors as in the previous step, you can try using python3:
+  ```shell copy
+    python3 main.py
+  ``` 
+</Callout>
+
+When you see "To see the GUI go to: http://127.0.0.1:8188", it means you've completed the installation of ComfyUI and successfully ran it. Now all you need to do is copy and paste the address in your browser:
+
+```shell copy
+  http://127.0.0.1:8188/ 
+```
+
+You should see the following interface. Congratulations, ComfyUI has been installed successfully. However, you cannot yet run Stable DIffusion for image generation. You'll need to download the crucial model, and in the next chapter, I'll teach you how to download and install the required models.
+<br/>
+<PhotoProvider>
+  <PhotoView src="/install-comfyui-and-model/008.png">
+      <img src="/install-comfyui-and-model/008.png" alt="" width="80%" style={{ display: "block", margin: "0 auto" }}/>
+  </PhotoView>
+</PhotoProvider>
+
+## Q&A
+
+**Q: What if I can't download content in the terminal command line?**
+
+This is because your network hasn't been set up to bypass the firewall in the terminal. You will need to properly configure the proxy in the terminal.
+```shell
+# The specific ports depend on your own bypass service. It's best to configure this in your default terminal startup options.
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+```
+**Q: How to handle the terminal displaying "ERROR: Could not find a version that satisfies the requirement pyyaml (from versions: none)"?**
+>This question was asked by Discord user **Lulu**.
+
+This is due to the lack of pyyaml, you can run:
+```shell
+ pip install pyyaml
+ ```
+After the installation is completed, continue installing ComfyUI.
+<Subscribe />
