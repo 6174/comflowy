@@ -252,7 +252,7 @@ import {FAQBox} from "components/FAQ";
 
 - **同类相连**：只有同类才能相互连接起来，比如 KSampler 左侧的 model 端点，就只能跟另一个 MODEL 输出点相连。或者跟具象点说，只有同颜色的端点能相连，如果你将 CLIP Text Encode 右边橙色的点，连到 KSampler 的紫色点 model 上是不可能的。因为他们类型不一样。橙色点只能跟橙色点连。另外，还有一个技巧，当你点击端点并拉出一条线的时候，只有那些能连接的线会高亮出来，不能连的会变暗。
 
-- **左进右出**：比如 KSampler 左边的 model、positive、negative、latent_image 都是是输入端，输出端是右边的 LATENT。你可以将其理解为一个函数，左边输入数字，右边是输出。那也就意味着你不能将一个节点右边的输出端，连到另一节点右边的输出端。
+- **左进右出**：比如 KSampler 左边的 model、positive、negative、latent_image 都是输入端，输出端是右边的 LATENT。你可以将其理解为一个函数，左边输入数字，右边是输出。那也就意味着你不能将一个节点右边的输出端，连到另一节点右边的输出端。
 
 - **一进多出**：一个输入端只能和另一个节点的输出端相连，没法和多个输出端相连。比如上图中的 KSampler 的 positive 端点，只能和一个 CLIP Text Encode 相连，没法同时连多个。但一个输出端，能和多个输入端相连。还是上面那个例子，一个 CLIP Text Encode 可以和多个 KSampler 相连，比如可以和 KSampler A 的 positive 端连，也可以和 KSampler B 的 negative 点连，最后出两张图。
 
